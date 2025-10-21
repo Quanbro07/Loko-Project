@@ -1,13 +1,13 @@
-package com.exproject.lokobackend;
+package com.exproject.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LokoBackendApplicationTests {
+class BackendApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
