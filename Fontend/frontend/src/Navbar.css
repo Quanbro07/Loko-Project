@@ -1,0 +1,28 @@
+.navbar-background-wrapper {
+    width: 100%;
+    background-color: #003c72;
+    padding: 10px 0;
+}
+
+.navbar-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.list-item {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    /* Remove underline for all list items */
+}
+
+.list-item.active {
+    color: orange;
+    /* Active link color */
+}

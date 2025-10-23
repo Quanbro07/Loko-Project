@@ -1,0 +1,31 @@
+.homepage-background {
+    background-image: url('./img/bgchomepage.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* Ensure it's flex-start */
+    margin-top: 0;
+}
+
+.loko {
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 4px rgba(56, 56, 56, 0.678);
+    font-family: "Fascinate Inline", system-ui;
+}
+
+.itinerary-results-container {
+    margin-top: 20px;
+    /* Adjust as needed to position below input */
+    z-index: 10;
+    /* Ensure it appears above other elements if needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
