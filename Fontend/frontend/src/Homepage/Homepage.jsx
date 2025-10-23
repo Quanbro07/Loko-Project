@@ -1,14 +1,17 @@
-import Input from "./Input";
-import Navbar from "./Navbar";
+import Input from "../Input/Input";
+import Navbar from "../Navbar/Navbar";
 import './Homepage.css';
 import React, { useState } from 'react';
 import Lottie from 'lottie-react';
-import paperPlaneAnimation from './lottie/Paper plane.json';
-import Output from './Output';
+import paperPlaneAnimation from '../lottie/Paper plane.json';
+import Output from '../Output/Output';
+import Footer from "../Footer/Footer";
+import { useLanguage } from '../Language/LanguageContext'; // Import useLanguage
 
 const Homepage = () => {
     const [showLoadingAnimation, setShowLoadingAnimation] = useState(false);
     const [hasSearched, setHasSearched] = useState(false);
+    const { translate } = useLanguage(); // Use the hook
 
     const handleSearch = () => {
         setShowLoadingAnimation(true);
@@ -23,7 +26,7 @@ const Homepage = () => {
     return (
         <div className="homepage-background">
             <Navbar />
-            <div className='loko'>LOKO</div>
+            <div className='loko'>{translate('homepage_loko')}</div>
             <Input onSearch={handleSearch} />
             <div className="itinerary-results-container">
                 {showLoadingAnimation && (
@@ -33,6 +36,7 @@ const Homepage = () => {
                 )}
                 {!showLoadingAnimation && hasSearched && <Output />}
             </div>
+            <Footer />
         </div>
     );
 };

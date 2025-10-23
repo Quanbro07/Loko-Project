@@ -6,11 +6,13 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Input.css';
 import { Button, Checkbox } from '@mui/material';
+import { useLanguage } from '../Language/LanguageContext'; // Import useLanguage
 // import Lottie from 'lottie-react'; // Remove Lottie import
 // import paperPlaneAnimation from './lottie/Paper plane.json'; // Remove Lottie animation import
 
 const CustomDateInput = forwardRef((props, ref) => {
     const { value, onClick, placeholderText } = props;
+    const { translate } = useLanguage(); // Use the hook
 
     const getDayAndDate = (dateString) => {
         if (!dateString) return { day: '', date: '', fullDate: '', formattedDate: '', formattedDay: '', };
@@ -38,7 +40,7 @@ const CustomDateInput = forwardRef((props, ref) => {
                     <div className="date-display">{formattedDate}</div>
                 </>
             ) : (
-                <div className="placeholder-display">{placeholderText}</div>
+                <div className="placeholder-display">{translate(placeholderText)}</div>
             )}
         </div>
     );
@@ -47,49 +49,55 @@ const CustomDateInput = forwardRef((props, ref) => {
 const Input = ({ onSearch }) => { // Accept onSearch prop
     const [selectedDateGo, setSelectedDateGo] = useState(null);
     const [selectedDateReturn, setSelectedDateReturn] = useState(null);
-    const [travelType, setTravelType] = useState('Một mình');
+    const { translate } = useLanguage(); // Use the hook
+    const [travelType, setTravelType] = useState(translate('input_travel_type_solo'));
     const [selectedProvince, setSelectedProvince] = useState('');
     const [destinationError, setDestinationError] = useState(false);
     const [dateGoError, setDateGoError] = useState(false);
     const [dateReturnError, setDateReturnError] = useState(false);
     const [travelTypeError, setTravelTypeError] = useState(false);
     // const [showLoadingAnimation, setShowLoadingAnimation] = useState(false); // Remove internal showLoadingAnimation
-    const provinces = [
-        "Hà Nội",
-        "Huế",
-        "Quảng Ninh",
-        "Cao Bằng",
-        "Lạng Sơn",
-        "Lai Châu",
-        "Điện Biên",
-        "Sơn La",
-        "Thanh Hóa",
-        "Nghệ An",
-        "Hà Tĩnh",
-        "Tuyên Quang",
-        "Lào Cai",
-        "Thái Nguyên",
-        "Phú Thọ",
-        "Bắc Ninh",
-        "Hưng Yên",
-        "Hải Phòng",
-        "Ninh Bình",
-        "Quảng Trị",
-        "Đà Nẵng",
-        "Quảng Ngãi",
-        "Gia Lai",
-        "Khánh Hòa",
-        "Lâm Đồng",
-        "Đắk Lắk",
-        "TP Hồ Chí Minh",
-        "Đồng Nai",
-        "Tây Ninh",
-        "Cần Thơ",
-        "Vĩnh Long",
-        "Đồng Tháp",
-        "Cà Mau",
-        "An Giang"
-    ];
+
+    const getTranslatedProvinces = () => {
+        return [
+            translate("input_province_ha_noi"),
+            translate("input_province_hue"),
+            translate("input_province_quang_ninh"),
+            translate("input_province_cao_bang"),
+            translate("input_province_lang_son"),
+            translate("input_province_lai_chau"),
+            translate("input_province_dien_bien"),
+            translate("input_province_son_la"),
+            translate("input_province_thanh_hoa"),
+            translate("input_province_nghe_an"),
+            translate("input_province_ha_tinh"),
+            translate("input_province_tuyen_quang"),
+            translate("input_province_lao_cai"),
+            translate("input_province_thai_nguyen"),
+            translate("input_province_phu_tho"),
+            translate("input_province_bac_ninh"),
+            translate("input_province_hung_yen"),
+            translate("input_province_hai_phong"),
+            translate("input_province_ninh_binh"),
+            translate("input_province_quang_tri"),
+            translate("input_province_da_nang"),
+            translate("input_province_quang_ngai"),
+            translate("input_province_gia_lai"),
+            translate("input_province_khanh_hoa"),
+            translate("input_province_lam_dong"),
+            translate("input_province_dak_lak"),
+            translate("input_province_hcmc"), // Assuming you have this key for TP Hồ Chí Minh
+            translate("input_province_dong_nai"),
+            translate("input_province_tay_ninh"),
+            translate("input_province_can_tho"),
+            translate("input_province_vinh_long"),
+            translate("input_province_dong_thap"),
+            translate("input_province_ca_mau"),
+            translate("input_province_an_giang")
+        ];
+    };
+
+    const provinces = getTranslatedProvinces();
 
     const handleSearch = () => {
         // Reset all error states at the beginning
@@ -119,9 +127,9 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
 
         if (hasError) {
             // No alert for error, just visual cue
-            console.log("Vui lòng điền đầy đủ thông tin.");
+            console.log(translate('input_fill_all_info'));
         } else {
-            console.log("Tìm kiếm thành công!");
+            console.log(translate('input_search_success'));
             // setShowLoadingAnimation(true); // Remove internal showLoadingAnimation
             // // Hide the animation after 3 seconds (adjust as needed)
             // setTimeout(() => {
@@ -134,9 +142,9 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
     return (
         <div className='input-container'>
             <div className='destination'>
-                <label htmlFor="province-select">Địa điểm bạn muốn đến:</label>
+                <label htmlFor="province-select">{translate('input_destination_label')}</label>
                 <select className={`option-select ${destinationError ? 'input-error-flash' : ''}`} value={selectedProvince} onChange={(e) => setSelectedProvince(e.target.value)}>
-                    <option value="" >--Tỉnh/Thành phố--</option>
+                    <option value="" >{translate('input_province_placeholder')}</option>
                     {provinces.map((province, index) => (
                         <option key={index} value={province}>{province}</option>
                     ))}
@@ -149,9 +157,9 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
                         selected={selectedDateGo}
                         onChange={date => setSelectedDateGo(date)}
                         dateFormat="MM-dd-yyyy"
-                        placeholderText="Ngày đi"
+                        placeholderText={translate('input_date_go_placeholder')}
                         showOutsideDays={false}
-                        customInput={<CustomDateInput placeholderText="Ngày đi" />}
+                        customInput={<CustomDateInput placeholderText="input_date_go_placeholder" />}
                         minDate={new Date()}
                     />
                 </div>
@@ -161,15 +169,15 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
                         selected={selectedDateReturn}
                         onChange={date => setSelectedDateReturn(date)}
                         dateFormat="MM-dd-yyyy"
-                        placeholderText="Ngày về"
+                        placeholderText={translate('input_date_return_placeholder')}
                         showOutsideDays={false}
-                        customInput={<CustomDateInput placeholderText="Ngày về" />}
+                        customInput={<CustomDateInput placeholderText="input_date_return_placeholder" />}
                         minDate={selectedDateGo || new Date()}
                     />
                 </div>
             </div>
             <div className='amount'>
-                <div className='name'>Số lượng:</div>
+                <div className='name'>{translate('input_quantity_label')}</div>
                 <div className={`travel-type-group ${travelTypeError ? 'input-error-flash' : ''}`}>
                     <RadioGroup
                         row
@@ -180,41 +188,41 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
                             setTravelType(event.target.value);
                         }}
                     >
-                        <FormControlLabel value="Solo" control={<Radio />} label="Một mình" />
-                        <FormControlLabel value="Group" control={<Radio />} label="Nhóm" />
+                        <FormControlLabel value={translate('input_travel_type_solo')} control={<Radio />} label={translate('input_travel_type_solo')} />
+                        <FormControlLabel value={translate('input_travel_type_group')} control={<Radio />} label={translate('input_travel_type_group')} />
                     </RadioGroup>
                 </div>
             </div>
             <div className='age'>
-                <div className='age-title'>Thành phần:</div>
-                <FormControlLabel className='child' value='Child' control={<Checkbox />} label="Trẻ em" />
-                <FormControlLabel className='adult' value='Adult' control={<Checkbox />} label="Người lớn tuổi" />
+                <div className='age-title'>{translate('input_component_label')}</div>
+                <FormControlLabel className='child' value='Child' control={<Checkbox />} label={translate('input_child')} />
+                <FormControlLabel className='adult' value='Adult' control={<Checkbox />} label={translate('input_elderly')} />
             </div>
             <div className='type'>
-                <div className='type-title'>Thể loại:</div>
-                <div className='type-list'><FormControlLabel value='Cruisine' control={<Checkbox />} label="Ẩm thực" />
-                    <FormControlLabel value='Adventure' control={<Checkbox />} label="Mạo hiểm" />
-                    <FormControlLabel value='Rest' control={<Checkbox />} label="Nghỉ dưỡng" />
-                    <FormControlLabel value='Playground' control={<Checkbox />} label="Vui chơi giải trí" />
-                    <FormControlLabel value='Photograph' control={<Checkbox />} label="Chụp hình sống ảo" />
-                    <FormControlLabel value='History' control={<Checkbox />} label="Văn hóa lịch sử" />
-                    <FormControlLabel value='Honeymoon' control={<Checkbox />} label="Tuần trăng mật" />
-                    <FormControlLabel value='Nightlife' control={<Checkbox />} label="Giải trí đêm" />
-                    <FormControlLabel value='Sea' control={<Checkbox />} label="Du lịch biển đảo" /></div>
+                <div className='type-title'>{translate('input_category_label')}</div>
+                <div className='type-list'><FormControlLabel value='Cruisine' control={<Checkbox />} label={translate('input_cuisine')} />
+                    <FormControlLabel value='Adventure' control={<Checkbox />} label={translate('input_adventure')} />
+                    <FormControlLabel value='Rest' control={<Checkbox />} label={translate('input_rest')} />
+                    <FormControlLabel value='Playground' control={<Checkbox />} label={translate('input_entertainment')} />
+                    <FormControlLabel value='Photograph' control={<Checkbox />} label={translate('input_photography')} />
+                    <FormControlLabel value='History' control={<Checkbox />} label={translate('input_history_culture')} />
+                    <FormControlLabel value='Honeymoon' control={<Checkbox />} label={translate('input_honeymoon')} />
+                    <FormControlLabel value='Nightlife' control={<Checkbox />} label={translate('input_nightlife')} />
+                    <FormControlLabel value='Sea' control={<Checkbox />} label={translate('input_beach_island_tourism')} /></div>
 
             </div>
             <div>
-                <div className='hour'>Thời gian hoạt động:</div>
+                <div className='hour'>{translate('input_operation_time_label')}</div>
                 <div className='hour-list'>
-                    <FormControlLabel value='1st' control={<Checkbox />} label="08h-12h" />
-                    <FormControlLabel value='2nd' control={<Checkbox />} label="14h-18h" />
-                    <FormControlLabel value='3rd' control={<Checkbox />} label="18h-22h" />
-                    <FormControlLabel value='4th' control={<Checkbox />} label="22h-24h" />
-                    <FormControlLabel value='5th' control={<Checkbox />} label="24h-06h" />
+                    <FormControlLabel value='1st' control={<Checkbox />} label={translate('input_time_08h_12h')} />
+                    <FormControlLabel value='2nd' control={<Checkbox />} label={translate('input_time_14h_18h')} />
+                    <FormControlLabel value='3rd' control={<Checkbox />} label={translate('input_time_18h_22h')} />
+                    <FormControlLabel value='4th' control={<Checkbox />} label={translate('input_time_22h_24h')} />
+                    <FormControlLabel value='5th' control={<Checkbox />} label={translate('input_time_24h_06h')} />
                 </div>
             </div>
             <div className="search-button-container">
-                <button className="search-button" onClick={handleSearch}>Tìm kiếm</button>
+                <button className="search-button" onClick={handleSearch}>{translate('input_search_button')}</button>
             </div>
             {/* Remove internal Lottie animation block */}
             {/*

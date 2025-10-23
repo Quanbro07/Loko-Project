@@ -1,22 +1,24 @@
 import React from 'react';
 import './AboutUsOutput.css';
+import { useLanguage } from '../Language/LanguageContext'; // Import useLanguage
 
 const AboutUsOutput = ({ itineraryData, id }) => {
+    const { translate } = useLanguage(); // Use the hook
     return (
         <div className="aboutus-output-container" id={id}>
-            <h3>GỢI Ý DU LỊCH</h3>
+            <h3>{translate('aboutus_output_suggested_itinerary')}</h3>
             <table className="aboutus-itinerary-table">
                 <thead>
                     <tr>
-                        <th>Địa điểm</th>
-                        <th>Thời gian</th>
-                        <th>Mô tả</th>
+                        <th>{translate('output_location')}</th>
+                        <th>{translate('output_time')}</th>
+                        <th>{translate('output_description')}</th>
                     </tr>
                 </thead>
                 <tbody>
                     {itineraryData && itineraryData.length === 0 ? (
                         <tr>
-                            <td colSpan="3" style={{ textAlign: 'center' }}>Không có dữ liệu lịch trình để hiển thị.</td>
+                            <td colSpan="3" style={{ textAlign: 'center' }}>{translate('output_no_itinerary_data')}</td>
                         </tr>
                     ) : (
                         itineraryData.map((item, index) => (

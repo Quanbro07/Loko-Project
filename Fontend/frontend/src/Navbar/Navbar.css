@@ -13,16 +13,38 @@
     margin: 0 auto;
 }
 
+.flag-container {
+    display: flex;
+    gap: 10px;
+    /* Space between flags */
+}
+
+.flag {
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 .list-item {
     font-size: 18px;
     color: #ffffff;
     font-weight: bold;
     font-style: normal;
     text-decoration: none;
-    /* Remove underline for all list items */
 }
 
 .list-item.active {
     color: orange;
-    /* Active link color */
+}
+
+#vietnamese {
+    background-image: url('../img/Vflag.png');
+}
+
+#english {
+    background-image: url('../img/Eflag.png');
 }
