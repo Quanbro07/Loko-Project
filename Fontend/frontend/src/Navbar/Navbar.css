@@ -48,3 +48,100 @@
 #english {
     background-image: url('../img/Eflag.png');
 }
+
+/* Auth Container Styles */
+.auth-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.auth-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.login-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.login-btn:hover {
+    background-color: #ffffff;
+    color: #003c72;
+}
+
+.register-btn {
+    background-color: #ff6b35;
+    color: #ffffff;
+    border: 2px solid #ff6b35;
+}
+
+.register-btn:hover {
+    background-color: #e55a2b;
+    border-color: #e55a2b;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: 2px solid #dc3545;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-name {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-list {
+        width: 90%;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .auth-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .auth-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .user-info {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

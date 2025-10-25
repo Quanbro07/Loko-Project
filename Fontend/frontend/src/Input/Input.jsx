@@ -7,6 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './Input.css';
 import { Button, Checkbox } from '@mui/material';
 import { useLanguage } from '../Language/LanguageContext'; // Import useLanguage
+import { useAuth } from '../Auth/AuthContext'; // Import useAuth
 // import Lottie from 'lottie-react'; // Remove Lottie import
 // import paperPlaneAnimation from './lottie/Paper plane.json'; // Remove Lottie animation import
 
@@ -50,6 +51,7 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
     const [selectedDateGo, setSelectedDateGo] = useState(null);
     const [selectedDateReturn, setSelectedDateReturn] = useState(null);
     const { translate } = useLanguage(); // Use the hook
+    const { isAuthenticated, openAuthModal } = useAuth(); // Use the auth hook
     const [travelType, setTravelType] = useState(translate('input_travel_type_solo'));
     const [selectedProvince, setSelectedProvince] = useState('');
     const [destinationError, setDestinationError] = useState(false);
@@ -100,6 +102,12 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
     const provinces = getTranslatedProvinces();
 
     const handleSearch = () => {
+        // Check if user is authenticated first
+        if (!isAuthenticated) {
+            openAuthModal('login');
+            return;
+        }
+
         // Reset all error states at the beginning
         setDestinationError(false);
         setDateGoError(false);

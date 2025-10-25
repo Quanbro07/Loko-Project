@@ -9,6 +9,7 @@ import com.exproject.backend.exception.customException.InvalidTokenException;
 import com.exproject.backend.exception.customException.PasswordConflictException;
 import com.exproject.backend.exception.customException.UserAlreadyExistException;
 import com.exproject.backend.user.UserRepository;
+import com.exproject.backend.user.dto.UserResponse;
 import com.exproject.backend.user.info.Role;
 import com.exproject.backend.user.info.User;
 import lombok.RequiredArgsConstructor;
@@ -69,9 +70,18 @@ public class AuthenticationService {
         String jwtAccessToken = jwtService.generateAccessToken(newUser);
         String jwtRefreshToken = jwtService.generateRefreshToken(newUser);
 
+        UserResponse userResponse = UserResponse.builder()
+                .username(newUser.getUsername())
+                .email(newUser.getEmail())
+                .age(newUser.getAge())
+                .gender(newUser.getGender())
+                .role(newUser.getRole())
+                .build();
+
         return AuthenticationResponse.builder()
                 .accessToken(jwtAccessToken)
                 .refreshToken(jwtRefreshToken)
+                .user(userResponse)
                 .build();
     }
 
@@ -90,9 +100,18 @@ public class AuthenticationService {
         String jwtAccessToken = jwtService.generateAccessToken(user);
         String jwtRefreshToken = jwtService.generateRefreshToken(user);
 
+        UserResponse userResponse = UserResponse.builder()
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .age(user.getAge())
+                .gender(user.getGender())
+                .role(user.getRole())
+                .build();
+
         return AuthenticationResponse.builder()
                 .accessToken(jwtAccessToken)
                 .refreshToken(jwtRefreshToken)
+                .user(userResponse)
                 .build();
     }
 
