@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Navbar from "../Navbar/Navbar";
 import './Aboutus.css';
 import AboutUsOutput from './AboutUsOutput';
-import { useLanguage } from '../Language/LanguageContext'; // Import useLanguage
+import { useLanguage } from '../Language/LanguageContext';
+import Footer from "../Footer/Footer";
 
 const Aboutus = () => {
     const [activeTab, setActiveTab] = useState('su-menh');
@@ -85,6 +86,7 @@ const Aboutus = () => {
                 <AboutUsOutput itineraryData={dataSet2} id="s2" />
                 <AboutUsOutput itineraryData={dataSet3} id="s3" />
             </div>
+            <Footer />
         </div>
     )
 }

@@ -7,6 +7,7 @@ import googleIcon from '../img/googleicon.png';
 import reactjsIcon from '../img/reactjsicon.png';
 import dockerIcon from '../img/dockericon.png';
 import serpAPIIcon from '../img/SerpAPI.png';
+import lottieIcon from '../img/lottieicon.png';
 const Footer = () => {
     const { translate } = useLanguage(); // Use the hook
     return (
@@ -24,6 +25,17 @@ const Footer = () => {
                 <div className='footer-left-info'>
                     <div className='footer-info-title' id='i13a'>Lĩnh vực hoạt động:</div>
                     <div className='footer-info-description' id='i13b'>Lập kế hoạch và cá nhân hóa, quản lý dữ liệu du lịch</div>
+                </div>
+            </div>
+            <div className='footer-right'>
+                <div className='loko'>Đối tác</div>
+                <div className='footer-right-info'>
+                    <img src={googleIcon} className='icon1' id="i1" />
+                    <img src={reactjsIcon} className='icon1' id="i2" />
+                    <img src={dockerIcon} className='icon1' id="i3" />
+                    <img src={serpAPIIcon} className='icon1' id="i4" />
+                    <img src={lottieIcon} className='icon1' id="i5" />
+
                 </div>
             </div>
             <div className='footer-mid'>
@@ -46,15 +58,7 @@ const Footer = () => {
                     <a href="https://www.instagram.com/truongdhkhoahoctunhien_hcmus/" target="_blank" rel="noopener noreferrer"><img src={instagramIcon} alt="Instagram Icon" className='icon' /></a>
                 </div>
             </div>
-            <div className='footer-right'>
-                <div className='loko'>Đối tác</div>
-                <div className='footer-right-info'>
-                    <img src={googleIcon} className='icon1' id="i1" />
-                    <img src={reactjsIcon} className='icon1' id="i2" />
-                    <img src={dockerIcon} className='icon1' id="i3" />
-                    <img src={serpAPIIcon} className='icon1' id="i4" />
-                </div>
-            </div>
+
         </div>
     )
 }

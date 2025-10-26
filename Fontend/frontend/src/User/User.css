@@ -1,0 +1,185 @@
+.ticket-container {
+    width: 800px;
+    height: 400px;
+    background-color: #fff;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    /* overflow: hidden; */
+    /* Temporarily removed for debugging */
+    position: relative;
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #003c72;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.ticket-company {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.plane-icon {
+    height: 40px;
+}
+
+.ticket-body {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f7f7f7;
+    gap: 20px;
+}
+
+.ticket-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.passenger-info {
+    border-right: 2px dashed #999;
+    padding-right: 20px;
+}
+
+.travel-stats {
+    border-right: 2px dashed #999;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.avatar-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.avatar-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #003c72;
+}
+
+.info-item {
+    margin-bottom: 15px;
+}
+
+.label {
+    font-size: 14px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.value {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ticket-footer {
+    background-color: #003c72;
+    color: white;
+    padding: 10px 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
+
+.barcode {
+    font-family: 'Libre Barcode 39', cursive;
+    letter-spacing: 2px;
+}
+
+body {
+    background-color: #dbdbdb;
+}
+
+.edit-sticky-button {
+    position: absolute;
+    top: 60px;
+    /* Reverted to initial position */
+    right: -20px;
+    /* Reverted to initial position */
+    background-color: #f0f0f0;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #003c72;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: rotate(5deg);
+    /* Reverted to initial rotation */
+    z-index: 10;
+    cursor: pointer;
+    border: none;
+    /* Reverted to initial */
+}
+
+.edit-controls {
+    position: absolute;
+    top: 60px;
+    /* Reverted to initial position */
+    right: 20px;
+    /* Reverted to initial position */
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+
+.save-button,
+.cancel-button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.save-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.barcode-img {
+    width: 200px;
+    height: 100px;
+}

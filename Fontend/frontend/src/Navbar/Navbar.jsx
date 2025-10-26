@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className='navbar-background-wrapper'>
             <div className='navbar-list'>
                 <NavLink to="/" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_home')}</NavLink>
-                <div className='list-item'>{translate('navbar_account')}</div>
+                <NavLink to="/user" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_account')}</NavLink>
                 <NavLink to="/aboutus" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_about_us')}</NavLink>
                 <div className='flag-container'>
                     <div className='flag' id='vietnamese' onClick={() => setLanguage('vi')}></div>
