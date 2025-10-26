@@ -4,25 +4,28 @@ import avatarSample from '../img/avatar-sample.jpg';
 import barcodeSample from '../img/barcode-sample.png';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
+// Removed import { useLanguage } from '../Language/LanguageContext';
 
 const User = () => {
     const [isEditing, setIsEditing] = useState(false);
+    // Removed const { translate: dictionary } = useLanguage();
+
     return (
-        <div>
+        <div className="user-page-background">
             <Navbar />
             <div className='ticket-container'>
                 <div className='ticket-header'>
-                    <div className='ticket-company'>LOKO</div>
                     <img src="/img/plane-ticket.png" alt="Plane Ticket" className="plane-icon" />
+                    <div className='ticket-company'>LOKO</div>
                 </div>
                 {isEditing ? (
                     <div className='edit-controls'>
-                        <button className='save-button'>Lưu</button>
-                        <button className='cancel-button' onClick={() => setIsEditing(false)}>Hủy</button>
+                        <button className='save-button'><span>Lưu</span></button>
+                        <button className='cancel-button' onClick={() => setIsEditing(false)}><span>Hủy</span></button>
                     </div>
                 ) : (
                     <button className='edit-sticky-button' onClick={() => setIsEditing(true)}>
-                        Thay đổi thông tin
+                        <span>Thay đổi thông tin</span>
                     </button>
                 )}
                 <div className='ticket-body'>

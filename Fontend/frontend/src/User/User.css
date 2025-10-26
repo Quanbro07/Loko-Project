@@ -16,13 +16,16 @@
 
 .ticket-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /* Aligned to the left */
     align-items: center;
     padding: 20px;
     background-color: #003c72;
     color: white;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    gap: 10px;
+    /* Added gap between icon and text */
 }
 
 .ticket-company {
@@ -58,8 +61,10 @@
 
 .travel-stats {
     border-right: 2px dashed #999;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 10px;
+    /* Reduced padding */
+    padding-left: 10px;
+    /* Reduced padding */
 }
 
 .avatar-section {
@@ -123,16 +128,11 @@
     letter-spacing: 2px;
 }
 
-body {
-    background-color: #dbdbdb;
-}
-
 .edit-sticky-button {
     position: absolute;
     top: 60px;
-    /* Reverted to initial position */
-    right: -20px;
-    /* Reverted to initial position */
+    right: 0px;
+    /* Adjusted for debugging */
     background-color: #f0f0f0;
     padding: 10px 25px;
     border-radius: 5px;
@@ -140,20 +140,17 @@ body {
     font-weight: bold;
     color: #003c72;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transform: rotate(5deg);
-    /* Reverted to initial rotation */
+    transform: rotate(-5deg);
+    /* Rotated to point from northeast to southwest */
     z-index: 10;
     cursor: pointer;
     border: none;
-    /* Reverted to initial */
 }
 
 .edit-controls {
     position: absolute;
     top: 60px;
-    /* Reverted to initial position */
     right: 20px;
-    /* Reverted to initial position */
     z-index: 10;
     display: flex;
     gap: 10px;
@@ -182,4 +179,8 @@ body {
 .barcode-img {
     width: 200px;
     height: 100px;
+}
+
+.user-page-background {
+    background-color: #dbdbdb;
 }
