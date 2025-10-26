@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: loko-postgres
+    environment:
+      POSTGRES_DB: lokodb
+      POSTGRES_USER: loko
+      POSTGRES_PASSWORD: lokopass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - loko-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U loko"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend Service (Spring Boot)
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: loko-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/lokodb
+      SPRING_DATASOURCE_USERNAME: loko
+      SPRING_DATASOURCE_PASSWORD: lokopass
+      SPRING_PROFILES_ACTIVE: product
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - loko-network
+    restart: unless-stopped
+
+  # Frontend Service (React)
+  frontend:
+    build:
+      context: ./Fontend/frontend
+      dockerfile: Dockerfile
+    container_name: loko-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8080
+    depends_on:
+      - backend
+    networks:
+      - loko-network
+    restart: unless-stopped
+
+networks:
+  loko-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

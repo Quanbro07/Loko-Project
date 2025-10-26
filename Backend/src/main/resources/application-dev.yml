@@ -1,0 +1,25 @@
+
+
+spring:
+  application:
+    name: Backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/loko_project
+    username: postgres
+    password: quanbro7
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+    hibernate:
+      ddl-auto: create-drop
+
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
+
