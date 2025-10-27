@@ -1,0 +1,29 @@
+.visited-map-container {
+  /* Full-bleed map: span the full viewport width. Keep internal padding for content,
+     and center using negative margin technique so it can be placed inside a centered container. */
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 12px;
+  margin-bottom: 40px;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.visited-map-container svg {
+  width: 100%;
+  height: 640px; /* larger height for a more prominent map */
+  display: block;
+}
+
+.visited-map-loading {
+  width: 100%;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 14px;
+}
