@@ -1,0 +1,10 @@
+Các loại tag được dùng: beach, island, mountain, hill, river, lake, waterfall, cave, park, garden, viewpoint, harbor, square, market, shopping, village, nature, stadium, museum, palace, fortress, bridge, tower, statue, landmark, temple, pagoda, cathedral, religion, hotel, resort, homestay, restaurant, street-food, spa, yacht / cruise, amusement, zoo, diving, trekking, camping, watersport, family, kid, couple, trendy, crowded, dangerous, night-spot, budget-friendly, luxury
+Ẩm thực	                       restaurant, street-food, market
+Vui chơi giải trí	       amusement, shopping, zoo, stadium, park
+Mạo hiểm	               trekking, camping, diving, watersport, mountain, cave, waterfall, dangerous
+Chụp hình sống ảo	       viewpoint, landmark, bridge, tower, statue, garden, nature, beach, island
+Văn hóa lịch sử	 	       museum, palace, fortress, temple, pagoda, cathedral, religion, village, landmark
+Nghỉ dưỡng		       hotel, resort, homestay, spa, beach, island, nature
+Tuần trăng mật		       couple, resort, beach, island, yacht / cruise, viewpoint, garden, luxury
+Giải trí đêm		       night-spot, harbor, square, shopping (night market), trendy
+Du lịch biển đảo	       beach, island, harbor, diving, watersport, yacht / cruise
