@@ -48,7 +48,8 @@
 .footer-right-info {
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    column-gap: 10px;
+
 }
 
 .footer-bottom-mid-info {
@@ -57,10 +58,6 @@
     justify-content: start;
     gap: 10px;
 }
-
-/* .icon1 {
-    height: 30px;
-} */
 
 #i2 {
     height: 70px;

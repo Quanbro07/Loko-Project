@@ -19,9 +19,9 @@
     align-items: start;
     justify-content: space-between;
     margin: -5% 10%;
-    /* Adjust margin for info, ensure it's not negative */
     gap: 100px;
     height: 250px;
+    font-size: 20px;
 }
 
 .selection-bar {

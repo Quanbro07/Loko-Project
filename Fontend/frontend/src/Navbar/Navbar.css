@@ -9,7 +9,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 50%;
     margin: 0 auto;
 }
 
@@ -48,7 +47,6 @@
     background-image: url('../img/Eflag.png');
 }
 
-/* Auth Container Styles */
 .auth-container {
     display: flex;
     align-items: center;
@@ -57,7 +55,7 @@
 
 .auth-buttons {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .auth-btn {
@@ -70,6 +68,7 @@
     transition: all 0.2s ease;
     text-decoration: none;
     display: inline-block;
+    width: 130px;
 }
 
 .login-btn {
@@ -121,26 +120,45 @@
     max-width: 200px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .navbar-list {
         width: 90%;
         flex-wrap: wrap;
         gap: 10px;
     }
-    
+
     .auth-buttons {
         flex-direction: column;
         gap: 5px;
     }
-    
+
     .auth-btn {
         padding: 6px 12px;
         font-size: 12px;
     }
-    
+
     .user-info {
         flex-direction: column;
         gap: 5px;
     }
+}
+
+.mid-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex: 2;
+}
+
+.left-nav {
+    flex: 1;
+    margin: 0px 10px;
+}
+
+.right-nav {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    margin-right: 30px;
 }
