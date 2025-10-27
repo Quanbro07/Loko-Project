@@ -1,16 +1,86 @@
 import './User.css'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import avatarSample from '../img/avatar-sample.jpg';
 import barcodeSample from '../img/barcode-sample.png';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import avatarChange from '../img/avatar-change.png';
+import VisitedMap from '../Map/VisitedMap';
 // Removed import { useLanguage } from '../Language/LanguageContext';
 
 const User = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [avatar, setAvatar] = useState(avatarSample); // State for avatar
+        const [visitedSlugs, setVisitedSlugs] = useState(["ha-noi", "an-giang", "da-nang", "tp-ho-chi-minh"]);
     // Removed const { translate: dictionary } = useLanguage();
+
+        // Utility: remove diacritics and slugify (keeps same logic as VisitedMap)
+        function removeDiacritics(str) {
+            if (!str) return '';
+            return str
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^\w\s-]/g, '')
+                .trim();
+        }
+
+        function slugify(str) {
+            if (!str) return '';
+            const noDia = removeDiacritics(str);
+            return noDia
+                .toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[^a-z0-9-]/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/(^-|-$)/g, '');
+        }
+
+        // Fetch visited provinces from backend. Assumptions:
+        // - Endpoint: GET /api/user/visited (can be changed below)
+        // - Response: JSON array. Either array of slug strings ["ha-noi","da-nang"]
+        //   or array of objects with `name` or `slug` properties.
+        useEffect(() => {
+            let mounted = true;
+            const endpoint = '/api/user/visited';
+            fetch(endpoint)
+                .then((res) => {
+                    if (!res.ok) throw new Error('Network error');
+                    return res.json();
+                })
+                .then((data) => {
+                    if (!mounted) return;
+                    if (!Array.isArray(data)) {
+                        // unexpected shape: keep default sample
+                        return;
+                    }
+
+                    // If array of strings and they look like slugs, use directly
+                    if (data.length > 0 && typeof data[0] === 'string') {
+                        const maybeSlugs = data.map((s) => slugify(s));
+                        setVisitedSlugs(maybeSlugs);
+                        return;
+                    }
+
+                    // If array of objects, try to pick slug or name
+                    const slugs = data.map((item) => {
+                        if (!item) return '';
+                        if (item.slug) return slugify(item.slug);
+                        if (item.name) return slugify(item.name);
+                        // try common keys
+                        if (item.ten) return slugify(item.ten);
+                        return '';
+                    }).filter(Boolean);
+
+                    if (slugs.length) setVisitedSlugs(slugs);
+                })
+                .catch((err) => {
+                    // keep default sample on error; optionally log
+                    // eslint-disable-next-line no-console
+                    console.warn('Could not load visited provinces from backend:', err);
+                });
+
+            return () => { mounted = false; };
+        }, []);
 
     const handleAvatarChange = (event) => {
         const file = event.target.files[0];
@@ -87,7 +157,9 @@ const User = () => {
                     <img src={barcodeSample} className="barcode-img" />
                 </div>
             </div>
-            <div className='map'></div>
+                {/* Visited provinces map: pass an array of province slugs (normalized, e.g. "ha-noi", "an-giang").
+                    The list is fetched from backend (GET /api/user/visited) when available. */}
+                <VisitedMap visited={visitedSlugs} />
             <Footer className="footer" />
         </div>
     )
