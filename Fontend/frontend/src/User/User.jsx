@@ -4,11 +4,24 @@ import avatarSample from '../img/avatar-sample.jpg';
 import barcodeSample from '../img/barcode-sample.png';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
+import avatarChange from '../img/avatar-change.png';
 // Removed import { useLanguage } from '../Language/LanguageContext';
 
 const User = () => {
     const [isEditing, setIsEditing] = useState(false);
+    const [avatar, setAvatar] = useState(avatarSample); // State for avatar
     // Removed const { translate: dictionary } = useLanguage();
+
+    const handleAvatarChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setAvatar(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     return (
         <div className="user-page-background">
@@ -55,8 +68,18 @@ const User = () => {
                         </div>
                     </div>
                     <div className='ticket-section avatar-section'>
-                        <div className='avatar-container'>
-                            <img src={avatarSample} alt="Avatar" className="avatar-img" />
+                        <div className='avatar-wrapper'>
+                            <img src={avatar} alt="Avatar" className="avatar-img" />
+                            <input
+                                type="file"
+                                id="avatarUpload"
+                                accept="image/*"
+                                style={{ display: 'none' }}
+                                onChange={handleAvatarChange}
+                            />
+                            <label htmlFor="avatarUpload" className="avatar-change-label">
+                                <img src={avatarChange} alt="Change Avatar" className="avatar-change" />
+                            </label>
                         </div>
                     </div>
                 </div>
