@@ -1,0 +1,93 @@
+[
+    {
+        "time": "08:03 - 08:48",
+        "place": "Khu Du Lịch Cáp Treo Đà Lạt",
+        "place_id": "ChIJE8cuCEcTcTERB0WLwyEghrw",
+        "latitude": 11.9232151,
+        "longitude": 108.4437784
+    },
+    {
+        "time": "08:54 - 09:39",
+        "place": "Dalat Eiffel Tower",
+        "place_id": "ChIJbfftq7UTcTERLC_KGZ673l0",
+        "latitude": 11.937313999999999,
+        "longitude": 108.438459
+    },
+    {
+        "time": "09:59 - 11:29",
+        "place": "Công viên Ánh Sáng",
+        "place_id": "ChIJVVVV0S8TcTERVkpaNHeU6HA",
+        "latitude": 11.938746799999999,
+        "longitude": 108.4366172
+    },
+    {
+        "time": "11:30 - 12:30",
+        "place": "Carrot Restaurant - Món Âu ngon Đà Lạt",
+        "place_id": "ChIJJQGeQfkTcTER14Ezv_VNFuY",
+        "latitude": 11.937328599999999,
+        "longitude": 108.433532
+    },
+    {
+        "time": "12:33 - 14:33",
+        "place": "Làng hoa Vạn Thành - Khu du lịch VẠN HOA ĐÀ LẠT",
+        "place_id": "ChIJ81XqLIttcTERxaKfjsUtgdc",
+        "latitude": 11.947042699999999,
+        "longitude": 108.41315159999999
+    },
+    {
+        "time": "14:38 - 15:08",
+        "place": "Nông Trại Cún Puppy Farm",
+        "place_id": "ChIJ0_q8BhJtcTERbdJWwhlkJPU",
+        "latitude": 11.9629818,
+        "longitude": 108.38900939999999
+    },
+    {
+        "time": "15:18 - 16:48",
+        "place": "Vườn Ánh Sáng Lumiere",
+        "place_id": "ChIJN9uEubMTcTERcFHA6dsZDVA",
+        "latitude": 11.976118,
+        "longitude": 108.44383409999999
+    },
+    {
+        "time": "16:51 - 17:36",
+        "place": "Thiền viện Vạn Hạnh",
+        "place_id": "ChIJH_7rytsScTER5rbDMu7mYGQ",
+        "latitude": 11.963377999999999,
+        "longitude": 108.44423069999999
+    },
+    {
+        "time": "17:40 - 18:25",
+        "place": "Chùa Linh Sơn",
+        "place_id": "ChIJ8QdeytcScTERwQAUlLCr1CM",
+        "latitude": 11.9502832,
+        "longitude": 108.43687759999999
+    },
+    {
+        "time": "18:29 - 18:59",
+        "place": "Quảng trường Lâm Viên",
+        "place_id": "ChIJKQb-oyQTcTERiVn-etOO62Y",
+        "latitude": 11.9393622,
+        "longitude": 108.44520299999999
+    },
+    {
+        "time": "19:00 - 20:30",
+        "place": "Công Viên Yersin",
+        "place_id": "ChIJiz-UGCMTcTERTIi6Ssjhh3g",
+        "latitude": 11.939727099999999,
+        "longitude": 108.44666009999999
+    },
+    {
+        "time": "20:35 - 21:20",
+        "place": "Da Chien Hill - city sightseeing",
+        "place_id": "ChIJBaiN9_kTcTERxuPCnmIzoMc",
+        "latitude": 11.9384939,
+        "longitude": 108.4828039
+    },
+    {
+        "time": "21:24 - 21:54",
+        "place": "Tp. Đà Lạt",
+        "place_id": "ChIJsYgJ8v4ScTERMPkrZ4siX60",
+        "latitude": 11.9404192,
+        "longitude": 108.45831319999999
+    }
+]
