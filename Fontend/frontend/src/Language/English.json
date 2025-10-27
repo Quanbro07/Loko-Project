@@ -125,5 +125,6 @@
     "auth_no_account": "Don't have an account? ",
     "auth_have_account": "Already have an account? ",
     "auth_login_link": "Login now",
-    "auth_register_link": "Register now"
+    "auth_register_link": "Register now",
+    "navbar_search": "Planning"
 }

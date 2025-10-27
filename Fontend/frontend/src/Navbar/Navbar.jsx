@@ -22,7 +22,7 @@ const Navbar = () => {
             <div className='navbar-list'>
                 <div className='left-nav'></div>
                 <div className='mid-nav'>
-                    <NavLink to="/" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_home')}</NavLink>
+                    <NavLink to="/homepage" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_home')}</NavLink>
                     <NavLink
                         to="/user"
                         className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}
@@ -34,6 +34,7 @@ const Navbar = () => {
                         }}
                     >{translate('navbar_account')}</NavLink>
                     <NavLink to="/aboutus" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_about_us')}</NavLink>
+                    <NavLink to="/search" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_search')}</NavLink>
                     <div className='flag-container'>
                         <div className='flag' id='vietnamese' onClick={() => setLanguage('vi')}></div>
                         <div className='flag' id='english' onClick={() => setLanguage('en')}></div>

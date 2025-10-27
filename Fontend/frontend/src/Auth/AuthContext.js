@@ -6,7 +6,7 @@ export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [user, setUser] = useState(() => {
         const savedUser = localStorage.getItem('user');
-        return savedUser ? JSON.parse(savedUser) : null;
+        return savedUser && savedUser !== 'undefined' ? JSON.parse(savedUser) : null;
     });
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [showAuthModal, setShowAuthModal] = useState(false);

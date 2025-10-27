@@ -125,5 +125,6 @@
     "auth_no_account": "Chưa có tài khoản? ",
     "auth_have_account": "Đã có tài khoản? ",
     "auth_login_link": "Đăng nhập ngay",
-    "auth_register_link": "Đăng ký ngay"
+    "auth_register_link": "Đăng ký ngay",
+    "navbar_search": "Lên kế hoạch"
 }
