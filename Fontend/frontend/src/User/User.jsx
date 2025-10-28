@@ -11,7 +11,7 @@ import VisitedMap from '../Map/VisitedMap';
 const User = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [avatar, setAvatar] = useState(avatarSample); // State for avatar
-        const [visitedSlugs, setVisitedSlugs] = useState(["ha-noi", "an-giang", "da-nang", "tp-ho-chi-minh"]);
+    const [visitedSlugs, setVisitedSlugs] = useState([]);
     // Removed const { translate: dictionary } = useLanguage();
 
         // Utility: remove diacritics and slugify (keeps same logic as VisitedMap)
@@ -19,7 +19,7 @@ const User = () => {
             if (!str) return '';
             return str
                 .normalize('NFD')
-                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[̀-ͯ]/g, '')
                 .replace(/[^\w\s-]/g, '')
                 .trim();
         }

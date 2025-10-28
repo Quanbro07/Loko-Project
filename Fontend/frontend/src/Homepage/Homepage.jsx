@@ -2,73 +2,139 @@ import React, { useState, useEffect } from 'react';
 import "./Homepage.css";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import { useLanguage } from '../Language/LanguageContext'; // Import useLanguage
+import { useLanguage } from '../Language/LanguageContext';
+import slide1 from '../img/slide1.jpg';
+import slide2 from '../img/slide2.jpg';
+import slide3 from '../img/slide3.jpg';
+import slide4 from '../img/slide4.jpg';
+import slide5 from '../img/slide5.jpg'
 
 const Homepage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const { translate } = useLanguage(); // Use the hook
+    const { translate } = useLanguage();
 
     const dataSet1 = [
         {
-            diadiem: translate('aboutus_my_khe'),
-            thoigian: translate('aboutus_time_0600'),
-            mota: translate('aboutus_morning_swim')
+            diadiem: translate('planning_ninhbinh_tamcoc'),
+            thoigian: translate('8am'),
+            mota: translate('planning_ninhbinh_tamcoc_description')
         },
         {
-            diadiem: translate('aboutus_ba_na_hill'),
-            thoigian: translate('aboutus_time_1330'),
-            mota: translate('aboutus_move_to_ba_na_hill')
+            diadiem: translate('planning_ninhbinh_trangan'),
+            thoigian: translate('12pm'),
+            mota: translate('planning_ninhbinh_trangan_description')
         },
         {
-            diadiem: translate('aboutus_hoi_an_ancient_town'),
-            thoigian: translate('aboutus_time_0800'),
-            mota: translate('aboutus_visit_ancient_town')
+            diadiem: translate('planning_ninhbinh_hangmua'),
+            thoigian: translate('4pm'),
+            mota: translate('planning_ninhbinh_hangmua_description')
         }
     ];
 
     const dataSet2 = [
         {
-            diadiem: translate('aboutus_hcmc'),
-            thoigian: translate('aboutus_one_day'),
-            mota: translate('aboutus_hcmc_description')
+            diadiem: translate('planning_phuquy_dautruong'),
+            thoigian: translate('8am'),
+            mota: translate('planning_phuquy_dautruong_description')
         },
         {
-            diadiem: translate('aboutus_phu_quoc'),
-            thoigian: translate('aboutus_four_days_three_nights'),
-            mota: translate('aboutus_phu_quoc_description')
+            diadiem: translate('planning_phuquy_lan'),
+            thoigian: translate('1pm'),
+            mota: translate('planning_phuquy_lan_description')
+        },
+        {
+            diadiem: translate('planning_phuquy_docphuot'),
+            thoigian: translate('6am'),
+            mota: translate('planning_phuquy_docphuot_description')
         },
     ];
 
     const dataSet3 = [
         {
-            diadiem: translate('aboutus_can_tho'),
-            thoigian: translate('aboutus_two_days'),
-            mota: translate('aboutus_can_tho_description')
+            diadiem: translate('planning_fansipan_tamquan'),
+            thoigian: translate('8am'),
+            mota: translate('planning_fansipan_tamquan_description')
+        },
+        {
+            diadiem: translate('planning_fansipan_baothap'),
+            thoigian: translate('10am'),
+            mota: translate('planning_fansipan_baothap_description')
         },
     ];
 
+    const dataSet4 = [
+        {
+            diadiem: translate('planning_danang_mykhe'),
+            thoigian: translate('6am'),
+            mota: translate('planning_danang_mykhe_description')
+        },
+        {
+            diadiem: translate('planning_danang_hoian'),
+            thoigian: translate('2pm'),
+            mota: translate('planning_danang_hoian_description')
+        },
+        {
+            diadiem: translate('planning_danang_chualinhung'),
+            thoigian: translate('8am'),
+            mota: translate('planning_danang_chualinhung_description')
+        },
+    ];
+
+    const dataSet5 = [
+        {
+            diadiem: translate('planning_hcm_cafe'),
+            thoigian: translate('5am'),
+            mota: translate('planning_hcm_cafe_description')
+        },
+        {
+            diadiem: translate('planning_hcm_baotang'),
+            thoigian: translate('9am'),
+            mota: translate('planning_hcm_baotang_description')
+        },
+        {
+            diadiem: translate('planning_hcm_nhahang'),
+            thoigian: translate('6pm'),
+            mota: translate('planning_hcm_nhahang_description')
+        },
+        {
+            diadiem: translate('planning_hcm_bar'),
+            thoigian: translate('11pm'),
+            mota: translate('planning_hcm_bar_description')
+        }
+    ]
+
     const slidesData = [
         {
-            image: '/img/aboutusbanner.jpg', // Example image path
-            title: 'Lịch trình Đà Nẵng',
+            image: slide1,
+            title: translate('planning_ninhbinh_title'),
             dataSet: dataSet1,
         },
         {
-            image: '/img/aboutusbanner1.jpg',
-            title: 'Lịch trình TP.HCM',
+            image: slide2,
+            title: translate('planning_phuquy_title'),
             dataSet: dataSet2,
         },
         {
-            image: '/img/bgc-homepage.png',
-            title: 'Lịch trình Cần Thơ',
+            image: slide3,
+            title: translate('planning_fansipan_title'),
             dataSet: dataSet3,
         },
+        {
+            image: slide4,
+            title: translate('planning_danang_title'),
+            dataSet: dataSet4,
+        },
+        {
+            image: slide5,
+            title: translate('planning_hcm_title'),
+            dataSet: dataSet5,
+        }
     ];
 
     useEffect(() => {
         const slideInterval = setInterval(() => {
             setCurrentSlide((prevSlide) => (prevSlide === slidesData.length - 1 ? 0 : prevSlide + 1));
-        }, 5000); // Change slide every 5 seconds
+        }, 5000);
 
         return () => clearInterval(slideInterval);
     }, [slidesData.length]);
@@ -88,21 +154,23 @@ const Homepage = () => {
                 <div className='carousel-container' style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                     {slidesData.map((slide, index) => (
                         <div key={index} className='carousel-item' style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                            <div className='slide-info-box'>
-                                <h3>{slide.title}</h3>
-                                <div className='planning-table'>
-                                    <div className='table-header'>
-                                        <span>{translate('output_location')}</span>
-                                        <span>{translate('output_time')}</span>
-                                        <span>{translate('output_description')}</span>
-                                    </div>
-                                    {slide.dataSet.map((item, itemIndex) => (
-                                        <div key={itemIndex} className='table-row'>
-                                            <span>{item.diadiem}</span>
-                                            <span>{item.thoigian}</span>
-                                            <span>{item.mota}</span>
+                            <div className='glass-itinerary-box'>
+                                <div className='slide-info-box'>
+                                    <h3 className='slide-title'>{slide.title}</h3>
+                                    <div className='planning-table'>
+                                        <div className='table-header'>
+                                            <span>{translate('output_location')}</span>
+                                            <span>{translate('output_time')}</span>
+                                            <span>{translate('output_description')}</span>
                                         </div>
-                                    ))}
+                                        {slide.dataSet.map((item, itemIndex) => (
+                                            <div key={itemIndex} className='table-row'>
+                                                <span>{item.diadiem}</span>
+                                                <span>{item.thoigian}</span>
+                                                <span>{item.mota}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
