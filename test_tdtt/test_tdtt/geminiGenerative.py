@@ -9,7 +9,7 @@ import google.generativeai as genai
 API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
 # ==============================================================================
 
-INPUT_FILE = "da_lat_attractions.json"
+INPUT_FILE = "da_nang_attractions.json"
 OUTPUT_FILE = "attractions_with_tags.json"
 
 genai.configure(api_key=API_KEY)
@@ -18,53 +18,65 @@ MODEL = genai.GenerativeModel("models/gemini-2.5-flash") # Đã cập nhật lê
 BATCH_SIZE = 50
 
 PROMPT_TEMPLATE = """
-You are a **Professional Place Classification System**.
-Your job: assign factual tags to each place in the given list.
+You are a Professional Place Classification System.
+
+Task:
+Given a single place name (short, e.g., "Ha Long Bay" or "Ben Thanh Market, HCMC"), assign **2 to 5** tags that most accurately describe the place's PRIMARY and important SECONDARY characteristics, chosen ONLY from the allowed list below.
 
 ━━━━━━━━━━━━━━
-✅ ALLOWED TAG LIST (MUST USE ONLY these exact labels):
+✅ ALLOWED TAG LIST (USE EXACT LABELS ONLY):
 
-beach, viewpoint, shopping, hotel, park, lake, museum, temple, religion,
-mountain, hill, nature, island, bridge, amusement, zoo, historic, market,
-statue, waterfall, harbor, square, tower, cave, palace, village, stadium,
-dangerous, kid, hotel, restaurant, food
+beach, island, mountain, river, lake, waterfall, cave, park, garden, viewpoint,
+harbor, square, market, shopping, village, nature, stadium, museum, palace,
+fortress, bridge, tower, statue, landmark, temple, pagoda, cathedral, religion,
+hotel, resort, homestay, restaurant, street-food, spa, "yacht / cruise", amusement,
+zoo, diving, trekking, camping, watersport, family, kid, couple, trendy, crowded,
+dangerous, night-spot, budget-friendly, luxury
+
+(Use the string `"yacht / cruise"` exactly if applicable.)
 
 ━━━━━━━━━━━━━━
-STRICT CLASSIFICATION POLICY:
+STRICT RULES (READ CAREFULLY — THEY ARE ENFORCED):
 
-1️⃣ MAXIMUM 3 tags per place.
-2️⃣ Only tag MAIN characteristics (primary purpose only)
-3️⃣ No guessing. If not sure → []
-4️⃣ Use only allowed tag list
-5️⃣ No secondary functions or assumptions
-6️⃣ Special rules:
-   - “shopping” → only shopping areas or markets
-   - “hotel” → only lodging-focused buildings
-   - “viewpoint” → main attraction = scenic view
-   - “temple” = pagodas, churches, shrines
-     Also add “religion” if correct
-   - “historic” = heritage/historical importance
-   - "dangerous" is for place people usually do adventurous activities and not for kids or elderly
-   - "kid" → place that suitable and highly recommended for kid
-7️⃣ If a place has multiple roles → choose main one
+1) **OUTPUT SIZE** — For every valid place, return **between 2 and 5 tags**.  
+   - The first tag must represent the place's **primary function or natural category** (e.g., "beach", "museum", "market").  
+   - The remaining 1–4 tags should represent **secondary but factual** attributes (e.g., "viewpoint", "family", "street-food").
+
+2) **NO GUESSING** — Only tag attributes that are:
+   - Widely known facts about the place, or
+   - Directly implied by the place type or common, reliable sources.
+   If you cannot reliably identify 2 meaningful tags, return `[]` (empty array).
+
+3) **NO ASSUMPTIONS / NO INFERENCE FROM NAME ONLY** — Do NOT infer commercial or demographic attributes from a name unless they are strongly associated (e.g., "Ben Thanh Market" → "market", "street-food"). Do NOT assign "restaurant" for a market unless the entity is primarily a restaurant.
+
+4) **NO EXTRA TAGS** — Use ONLY tags from the allowed list. Do not invent new labels or synonyms.
+
+5) **SENSIBLE FALLBACKS** — If exactly 1 highly-certain primary tag is known, pick **one** general fallback among `nature`, `landmark`, or `shopping` (only if applicable) to reach the minimum of 2 tags. Use the fallback that is least assumptive (prefer `nature` for natural sites, `landmark` for named monuments).
+
+6) **SPECIAL TAG RULES**:
+   - `"shopping"` → only for malls, markets, shopping streets; not for a street that occasionally has shops.
+   - `"hotel"`, `"resort"`, `"homestay"` → only when the place is primarily accommodation.
+   - `"viewpoint"` → only if the site’s main draw is the scenic view.
+   - `"temple"`, `"pagoda"`, `"cathedral"` → use the specific one; add `"religion"` only if the religious function is central and widely recognized.
+   - `"dangerous"` → only for places where adventurous or hazardous activities are typical (cliffs without barriers, extreme trekking, deep-cave exploration).
+   - `"kid"`, `"family"` → only when the place is explicitly suitable or designed for children/families (theme parks, zoos with family facilities).
+   - `"crowded"`, `"trendy"`, `"night-spot"`, `"budget-friendly"`, `"luxury"` → use these only if the place is commonly described this way in travel/guide sources (do not guess).
+
+7) **PREFER FACTS OVER MARKETING** — Do not tag marketing adjectives (e.g., don’t tag “luxury” unless the place is widely recognized as luxury).
+
+8) **NO EXPLANATION** — Output must be exactly and only the JSON (see format). No extra text, no commentary.
 
 ━━━━━━━━━━━━━━
 OUTPUT FORMAT (STRICT):
 
 {{
-  "results": [
-    {{ "place": "<place1>", "tags": ["t1","t2"] }},
-    {{ "place": "<place2>", "tags": [] }}
-  ]
+  "results": [
+    {{ "place": "<place1>", "tags": ["t1","t2"] }},
+    {{ "place": "<place2>", "tags": [] }}
+  ]
 }}
 
-ABSOLUTELY NO:
-- Explanation
-- Extra keys
-- Natural language
-
 ━━━━━━━━━━━━━━
-
 Classify these places:
 
 {locations}

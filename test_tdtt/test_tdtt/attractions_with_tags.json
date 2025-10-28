@@ -1,1084 +1,1120 @@
 [
   {
-    "title": "Thung lũng Tình Yêu",
-    "place_id": "ChIJc6HmQ70ScTER9nFcY5EPR7k",
-    "latitude": 11.9788096,
-    "longitude": 108.44830809999999,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:30–22:00",
-      "thứ hai": "07:30–22:00",
-      "thứ ba": "07:30–22:00",
-      "thứ tư": "07:30–22:00",
-      "thứ năm": "07:30–22:00",
-      "thứ sáu": "07:30–22:00",
-      "thứ bảy": "07:30–22:00"
-    },
-    "description": "Công viên huyền ảo có vườn cây & hồ nước. Công viên lãng mạn có tác phẩm ng.thuật kỳ lạ, vườn đặc sắc và hồ nước có những chiếc thuyền hình thiên nga.",
-    "tags": [
-      "park",
-      "nature",
-      "lake"
-    ]
-  },
-  {
-    "title": "Quảng trường Lâm Viên",
-    "place_id": "ChIJKQb-oyQTcTERiVn-etOO62Y",
-    "latitude": 11.9393622,
-    "longitude": 108.44520299999999,
-    "types": [
-      "Quảng trường",
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "Mở cửa cả ngày",
-      "thứ hai": "Mở cửa cả ngày",
-      "thứ ba": "Mở cửa cả ngày",
-      "thứ tư": "Mở cửa cả ngày",
-      "thứ năm": "Mở cửa cả ngày",
-      "thứ sáu": "Mở cửa cả ngày",
-      "thứ bảy": "Mở cửa cả ngày"
-    },
-    "description": "Quảng trường ven hồ có thiết kế ấn tượng. Quảng trường ven hồ nổi bật với những tòa nhà ốp kính hiện đại nổi tiếng, có nhiều quầy thực phẩm và sự kiện âm nhạc.",
-    "tags": [
-      "square"
-    ]
-  },
-  {
-    "title": "Đường Hầm Điêu Khắc",
-    "place_id": "ChIJv2dGwzhrcTERWbixSfB_mD0",
-    "latitude": 11.882505199999999,
-    "longitude": 108.41156939999999,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:00–17:00",
-      "thứ hai": "07:00–17:00",
-      "thứ ba": "07:00–17:00",
-      "thứ tư": "07:00–17:00",
-      "thứ năm": "07:00–17:00",
-      "thứ sáu": "07:00–17:00",
-      "thứ bảy": "07:00–17:00"
-    },
-    "description": "Công viên với tác phẩm điêu khắc đất sét. Khu trưng bày nghệ thuật với các tác phẩm điêu khắc bằng đất sét khổng lồ đủ thể loại từ thằn lằn đến tàu hỏa.",
-    "tags": [
-      "historic",
-      "museum"
-    ]
-  },
-  {
-    "title": "Khu du lịch Thác Datanla",
-    "place_id": "ChIJQTO5pKEUcTERZcAVKbeOzvg",
-    "latitude": 11.9034324,
-    "longitude": 108.4496999,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:30–16:30",
-      "thứ hai": "07:30–16:30",
-      "thứ ba": "07:30–16:30",
-      "thứ tư": "07:30–16:30",
-      "thứ năm": "07:30–16:30",
-      "thứ sáu": "07:30–16:30",
-      "thứ bảy": "07:30–16:30"
-    },
-    "description": "Thác nước nhỏ có khu vui chơi và đi bộ. Khu thắng cảnh nhộn nhịp có nhiều thác nước nhỏ, tàu lượn siêu tốc, tuyến cáp treo và các con đường mòn đi bộ.",
-    "tags": [
-      "waterfall",
-      "dangerous",
-      "nature"
-    ]
-  },
-  {
-    "title": "Đồi Mộng Mơ Đà Lạt",
-    "place_id": "ChIJa_Qc87wScTER41LYPsXeeyM",
-    "latitude": 11.9778728,
-    "longitude": 108.445152,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:30–17:30",
-      "thứ hai": "07:30–17:30",
-      "thứ ba": "07:30–17:30",
-      "thứ tư": "07:30–17:30",
-      "thứ năm": "07:30–17:30",
-      "thứ sáu": "07:30–17:30",
-      "thứ bảy": "07:30–17:30"
-    },
-    "description": "Cánh đồng hoa, nhà hàng và sân gôn. Khu nghỉ dưỡng nằm giữa những rừng thông và vườn hoa rực rỡ với nhà hàng và sân gôn 9 lỗ.",
-    "tags": [
-      "park",
-      "nature"
-    ]
-  },
-  {
-    "title": "DINH BẢO ĐẠI III",
-    "place_id": "ChIJD6_GOjUTcTERT0qgP1esodo",
-    "latitude": 11.9299576,
-    "longitude": 108.4296378,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:00–17:30",
-      "thứ hai": "07:00–17:30",
-      "thứ ba": "07:00–17:30",
-      "thứ tư": "07:00–17:30",
-      "thứ năm": "07:00–17:30",
-      "thứ sáu": "07:00–17:30",
-      "thứ bảy": "07:00–17:30"
-    },
-    "description": "Hoàng cung lịch sử có tour tham quan. Cung điện rộng lớn của vị hoàng đế cuối cùng tại Việt Nam, hoàn thành năm 1938 với các chuyến tham quan và vườn kiểng.",
-    "tags": [
-      "palace",
-      "historic"
-    ]
-  },
-  {
-    "title": "Khu Du Lịch Cáp Treo Đà Lạt",
-    "place_id": "ChIJE8cuCEcTcTERB0WLwyEghrw",
-    "latitude": 11.9232151,
-    "longitude": 108.4437784,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Tàu điện cáp treo"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:30–16:45",
-      "thứ hai": "07:30–11:45, 13:00–16:45",
-      "thứ ba": "07:30–11:45, 13:00–16:45",
-      "thứ tư": "07:30–11:45, 13:00–16:45",
-      "thứ năm": "07:30–11:45",
-      "thứ sáu": "07:30–11:45, 13:00–16:45",
-      "thứ bảy": "07:30–16:45"
-    },
-    "description": "Đi cáp treo ngắm rừng thông từ trên cao. Cáp treo nhiều màu sắc nhìn ra toàn cảnh thành phố và rừng thông, ngoài ra còn đi đến Thiền Viện Trúc Lâm.",
-    "tags": [
-      "viewpoint"
-    ]
-  },
-  {
-    "title": "Thác Prenn",
-    "place_id": "ChIJ0R9OPSUVcTERw8gKEosLsOs",
-    "latitude": 11.876950899999999,
-    "longitude": 108.47071009999999,
+    "title": "Ngũ Hành Sơn",
+    "place_id": "ChIJ2y5L4dQNQjERxeSLc68fbrw",
+    "latitude": 16.0037104,
+    "longitude": 108.2631605,
     "types": [
       "Điểm thu hút khách du lịch",
       "Thắng cảnh"
     ],
     "operating_hours": {
-      "chủ nhật": "08:00–17:00",
-      "thứ hai": "08:00–17:00",
-      "thứ ba": "08:00–17:00",
-      "thứ tư": "08:00–17:00",
-      "thứ năm": "08:00–17:00",
-      "thứ sáu": "08:00–17:00",
-      "thứ bảy": "08:00–17:00"
+      "thứ tư": "07:00–17:30",
+      "thứ năm": "07:00–17:30",
+      "thứ sáu": "07:00–17:30",
+      "thứ bảy": "07:00–17:30",
+      "chủ nhật": "07:00–17:30",
+      "thứ hai": "07:00–17:30",
+      "thứ ba": "07:00–17:30"
     },
-    "description": null,
+    "description": "Núi hùng vĩ có hang động & chùa chiền. Thắng cảnh Ngũ Hành Sơn có nhiều hang động và chùa chiền được xây cất công phu với cảnh sắc hữu tình.",
     "tags": [
-      "waterfall",
-      "nature"
-    ]
-  },
-  {
-    "title": "Làng Cù Lần",
-    "place_id": "ChIJPWhb3k5ycTERkHYm-NE8qoA",
-    "latitude": 12.0260122,
-    "longitude": 108.36369959999999,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Điểm mốc văn hóa",
-      "Khách sạn nghỉ dưỡng"
-    ],
-    "operating_hours": null,
-    "description": null,
-    "tags": [
-      "village",
-      "nature"
-    ]
-  },
-  {
-    "title": "Thác Cam Ly",
-    "place_id": "ChIJG6o31tpscTERyc4PhsdhlzM",
-    "latitude": 11.9418046,
-    "longitude": 108.4208479,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:00–17:00",
-      "thứ hai": "07:00–17:00",
-      "thứ ba": "07:00–17:00",
-      "thứ tư": "07:00–17:00",
-      "thứ năm": "07:00–17:00",
-      "thứ sáu": "07:00–17:00",
-      "thứ bảy": "07:00–17:00"
-    },
-    "description": "Hồ và thác nước nhỏ ở không gian giản dị. Hồ và thác nước nhỏ, đơn sơ nằm giữa không gian giản dị và có tính phí tham quan.",
-    "tags": [
-      "waterfall",
-      "nature"
-    ]
-  },
-  {
-    "title": "Vườn hoa thành phố Đà Lạt",
-    "place_id": "ChIJZ0qug8wTcTER0m4S0SZkp2I",
-    "latitude": 11.950247899999999,
-    "longitude": 108.4498289,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Công viên",
-      "Vườn"
-    ],
-    "operating_hours": {
-      "chủ nhật": "06:30–18:00",
-      "thứ hai": "06:30–18:00",
-      "thứ ba": "06:30–18:00",
-      "thứ tư": "06:30–18:00",
-      "thứ năm": "06:30–18:00",
-      "thứ sáu": "06:30–18:00",
-      "thứ bảy": "06:30–18:00"
-    },
-    "description": null,
-    "tags": [
-      "park",
-      "nature"
-    ]
-  },
-  {
-    "title": "Công viên Ánh Sáng",
-    "place_id": "ChIJVVVV0S8TcTERVkpaNHeU6HA",
-    "latitude": 11.938746799999999,
-    "longitude": 108.4366172,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Công viên"
-    ],
-    "operating_hours": {
-      "chủ nhật": "Mở cửa cả ngày",
-      "thứ hai": "Mở cửa cả ngày",
-      "thứ ba": "Mở cửa cả ngày",
-      "thứ tư": "Mở cửa cả ngày",
-      "thứ năm": "Mở cửa cả ngày",
-      "thứ sáu": "Mở cửa cả ngày",
-      "thứ bảy": "Mở cửa cả ngày"
-    },
-    "description": null,
-    "tags": [
-      "amusement",
-      "kid"
-    ]
-  },
-  {
-    "title": "Pink Valley Đà Lạt",
-    "place_id": "ChIJ41ZV_1xtcTERQcr9I25lILo",
-    "latitude": 11.953636699999999,
-    "longitude": 108.3878829,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:00–17:00",
-      "thứ hai": "07:00–17:00",
-      "thứ ba": "07:00–19:00",
-      "thứ tư": "07:00–17:00",
-      "thứ năm": "07:00–17:00",
-      "thứ sáu": "07:00–17:00",
-      "thứ bảy": "07:00–17:00"
-    },
-    "description": null,
-    "tags": [
-      "park",
-      "nature"
-    ]
-  },
-  {
-    "title": "Công Viên Yersin",
-    "place_id": "ChIJiz-UGCMTcTERTIi6Ssjhh3g",
-    "latitude": 11.939727099999999,
-    "longitude": 108.44666009999999,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Công viên"
-    ],
-    "operating_hours": {
-      "chủ nhật": "Mở cửa cả ngày",
-      "thứ hai": "Mở cửa cả ngày",
-      "thứ ba": "Mở cửa cả ngày",
-      "thứ tư": "Mở cửa cả ngày",
-      "thứ năm": "Mở cửa cả ngày",
-      "thứ sáu": "Mở cửa cả ngày",
-      "thứ bảy": "Mở cửa cả ngày"
-    },
-    "description": "Công viên có đường đạp xe và đài tưởng niệm. Công viên ven hồ có nhiều đường đạp xe râm mát và phiến đá chạm trổ tôn vinh bác sĩ Alexandre Yersin.",
-    "tags": [
-      "park"
-    ]
-  },
-  {
-    "title": "Chùa Linh Sơn",
-    "place_id": "ChIJ8QdeytcScTERwQAUlLCr1CM",
-    "latitude": 11.9502832,
-    "longitude": 108.43687759999999,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Chùa",
-      "Chùa phật giáo"
-    ],
-    "operating_hours": null,
-    "description": "Chùa thanh tịnh & vườn hoa trên đỉnh núi. Chùa Phật giáo nằm trên đỉnh núi hữu tình bao quanh bởi bầu không khí thiêng liêng, vườn hoa & tượng Phật lớn.",
-    "tags": [
+      "mountain",
+      "cave",
       "temple",
+      "viewpoint",
       "religion"
     ]
   },
   {
-    "title": "Khu du lịch Lá Phong",
-    "place_id": "ChIJKbqQUD4TcTERUAXkyRkE5Ss",
-    "latitude": 11.9285753,
-    "longitude": 108.45165139999999,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:30–17:30",
-      "thứ hai": "07:30–17:30",
-      "thứ ba": "07:30–17:30",
-      "thứ tư": "07:30–17:30",
-      "thứ năm": "07:30–17:30",
-      "thứ sáu": "07:30–17:30",
-      "thứ bảy": "07:30–17:30"
-    },
-    "description": "Rừng cây phong, anh đào và nhà trọ. Khu rừng có hàng nghìn cây phong, anh đào và tùng bách cùng quán cà phê, khu cắm trại và nhà trọ dưới mặt đất.",
-    "tags": [
-      "park",
-      "nature"
-    ]
-  },
-  {
-    "title": "Vườn Ánh Sáng Lumiere",
-    "place_id": "ChIJN9uEubMTcTERcFHA6dsZDVA",
-    "latitude": 11.976118,
-    "longitude": 108.44383409999999,
-    "types": [
-      "Công viên giải trí"
-    ],
-    "operating_hours": {
-      "chủ nhật": "14:00–21:00",
-      "thứ hai": "14:00–21:00",
-      "thứ ba": "14:00–21:00",
-      "thứ tư": "14:00–21:00",
-      "thứ năm": "14:00–21:00",
-      "thứ sáu": "14:00–21:00",
-      "thứ bảy": "14:00–21:00"
-    },
-    "description": null,
-    "tags": [
-      "amusement",
-      "kid"
-    ]
-  },
-  {
-    "title": "Nông Trại Cún Puppy Farm",
-    "place_id": "ChIJ0_q8BhJtcTERbdJWwhlkJPU",
-    "latitude": 11.9629818,
-    "longitude": 108.38900939999999,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:30–17:30",
-      "thứ hai": "07:30–17:30",
-      "thứ ba": "07:30–17:30",
-      "thứ tư": "07:30–17:30",
-      "thứ năm": "07:30–17:30",
-      "thứ sáu": "07:30–17:30",
-      "thứ bảy": "07:30–17:30"
-    },
-    "description": "Vườn hoa và trái cây có khu nuôi chó. Khu vườn bên sườn đồi có trang trại cà chua, những cánh đồng hoa cùng hoạt động hái dâu và vui chơi cùng chó.",
-    "tags": [
-      "zoo",
-      "kid"
-    ]
-  },
-  {
-    "title": "Cánh đồng hoa Cẩm Tú Cầu",
-    "place_id": "ChIJ1aNbAC0ScTER4LPDF4K-nW8",
-    "latitude": 11.9466931,
-    "longitude": 108.5135145,
+    "title": "Bảo tàng Điêu khắc Chăm Đà Nẵng",
+    "place_id": "ChIJLWoAs80ZQjERLKHDYD-ZymI",
+    "latitude": 16.0603007,
+    "longitude": 108.2232677,
     "types": [
       "Điểm thu hút khách du lịch",
-      "Vườn"
+      "Bảo tàng di sản",
+      "Bảo tàng điêu khắc"
     ],
     "operating_hours": {
-      "chủ nhật": "07:00–17:30",
-      "thứ hai": "07:00–17:30",
-      "thứ ba": "07:00–17:30",
-      "thứ tư": "07:00–17:30",
-      "thứ năm": "07:00–17:30",
-      "thứ sáu": "07:00–17:30",
-      "thứ bảy": "07:00–17:30"
-    },
-    "description": "Vườn hoa chuyên trồng cẩm tú cầu. Vườn hoa có lối đi và đài ngắm cảnh nhìn ra cánh đồng cẩm tú cầu xanh nở rộ.",
-    "tags": [
-      "nature",
-      "viewpoint"
-    ]
-  },
-  {
-    "title": "Biệt thự Hằng Nga",
-    "place_id": "ChIJpTjuGjMTcTERhjx317psdj8",
-    "latitude": 11.934733099999999,
-    "longitude": 108.4308805,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Khách sạn",
-      "Thắng cảnh",
-      "Đại lý du lịch tham quan"
-    ],
-    "operating_hours": null,
-    "description": "Nhà khách có lối kiến trúc kỳ dị. Biệt thự cổ quái có kiến trúc mô phỏng thân cây cổ thụ; du khách có thể nhìn toàn cảnh thành phố từ mái nhà.",
-    "tags": [
-      "historic",
-      "statue"
-    ]
-  },
-  {
-    "title": "Nhà Thờ Chánh Tòa Giáo Phận Đà Lạt",
-    "place_id": "ChIJO2W6kDETcTERSsw0agDhJzg",
-    "latitude": 11.9360895,
-    "longitude": 108.43771129999999,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Nhà thờ Công giáo",
-      "Địa điểm hành hương",
-      "Điểm đến tôn giáo",
-      "Cơ sở tôn giáo",
-      "Nhà thờ chính tòa Công giáo"
-    ],
-    "operating_hours": {
-      "chủ nhật": "Mở cửa cả ngày",
-      "thứ hai": "05:15–06:15, 17:15–18:15",
-      "thứ ba": "05:15–06:15, 17:15–18:15",
-      "thứ tư": "05:15–06:15, 17:15–18:15",
-      "thứ năm": "05:15–06:15, 17:15–18:15",
-      "thứ sáu": "05:15–06:15, 17:15–18:15",
-      "thứ bảy": "05:15–06:15, 17:15–18:15"
-    },
-    "description": "Nhà thờ Công giáo có từ thập niên 1930. Nhà thờ Công giáo theo phong cách La Mã có từ năm 1931 nổi bật với vườn cây liền kề và cảnh sắc từ trên cao.",
-    "tags": [
-      "temple",
-      "religion",
-      "historic"
-    ]
-  },
-  {
-    "title": "Đồi Thiên Phúc Đức",
-    "place_id": "ChIJxUPozbAScTERgXK6RNYL8Pw",
-    "latitude": 11.994605799999999,
-    "longitude": 108.42856959999999,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": null,
-    "description": "Cảnh sương mù lúc bình minh và cây thông. Ngọn đồi rợp bóng cây thông có con đường mòn dẫn lối đến và nổi tiếng với cảnh bình minh trên thung lũng sương mù bên dưới.",
-    "tags": [
-      "viewpoint",
-      "hill",
-      "nature"
-    ]
-  },
-  {
-    "title": "Biệt thự Hằng Nga",
-    "place_id": "ChIJpTjuGjMTcTERhjx317psdj8",
-    "latitude": 11.934733099999999,
-    "longitude": 108.4308805,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Khách sạn",
-      "Thắng cảnh",
-      "Đại lý du lịch tham quan"
-    ],
-    "operating_hours": null,
-    "description": "Nhà khách có lối kiến trúc kỳ dị. Biệt thự cổ quái có kiến trúc mô phỏng thân cây cổ thụ; du khách có thể nhìn toàn cảnh thành phố từ mái nhà.",
-    "tags": [
-      "historic",
-      "statue"
-    ]
-  },
-  {
-    "title": "Thiền viện Vạn Hạnh",
-    "place_id": "ChIJH_7rytsScTER5rbDMu7mYGQ",
-    "latitude": 11.963377999999999,
-    "longitude": 108.44423069999999,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Chùa",
-      "Chùa phật giáo"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:00–19:00",
-      "thứ hai": "07:00–19:00",
-      "thứ ba": "07:00–19:00",
-      "thứ tư": "07:00–19:00",
-      "thứ năm": "07:00–19:00",
-      "thứ sáu": "07:00–19:00",
-      "thứ bảy": "07:00–19:00"
-    },
-    "description": "Tu viện với tượng Phật hùng vĩ. Quần thể chùa nổi tiếng với bức tượng Phật bằng vàng trong tư thế thiền định, ngồi trên đài sen.",
-    "tags": [
-      "temple",
-      "religion",
-      "statue"
-    ]
-  },
-  {
-    "title": "Nhà thờ Mai Anh",
-    "place_id": "ChIJ94S-Y9UScTER509fieB9s5I",
-    "latitude": 11.9496557,
-    "longitude": 108.4302407,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Nhà thờ chính tòa Công giáo",
-      "Địa điểm hành hương",
-      "Điểm đến tôn giáo",
-      "Cơ sở tôn giáo",
-      "Nhà thờ Công giáo"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:30–11:30, 13:30–17:30",
-      "thứ hai": "07:30–11:30, 13:30–17:30",
-      "thứ ba": "07:30–11:30, 13:30–17:30",
-      "thứ tư": "07:30–11:30, 13:30–17:30",
-      "thứ năm": "07:30–11:30, 13:30–17:30",
-      "thứ sáu": "07:30–11:30, 13:30–17:30",
-      "thứ bảy": "07:30–11:30, 13:30–17:30"
-    },
-    "description": "Nhà thờ màu hồng và khu vườn thanh bình. Nhà thờ màu hồng nổi tiếng, tọa lạc trong khung cảnh yên bình, có khu vườn đẹp và cửa hàng nhỏ.",
-    "tags": [
-      "temple",
-      "religion",
-      "historic"
-    ]
-  },
-  {
-    "title": "Khu Du Lịch Sinh Thái Hoa Sơn Điền Trang",
-    "place_id": "ChIJtwY5-l5scTERRu6ig1d_VSY",
-    "latitude": 11.9338538,
-    "longitude": 108.3761498,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Đại lý du lịch tham quan",
-      "Đại lý du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:00–17:00",
-      "thứ hai": "07:00–17:00",
-      "thứ ba": "07:00–17:00",
       "thứ tư": "07:00–17:00",
       "thứ năm": "07:00–17:00",
       "thứ sáu": "07:00–17:00",
-      "thứ bảy": "07:00–17:00"
+      "thứ bảy": "07:00–17:00",
+      "chủ nhật": "07:00–17:00",
+      "thứ hai": "07:00–17:00",
+      "thứ ba": "07:00–17:00"
+    },
+    "description": "Bảo tàng nhỏ có các tác phẩm điêu khắc. Bảo tàng nhỏ gọn trưng bày một bộ sưu tập các tác phẩm điêu khắc và văn hóa như trang phục và dụng cụ.",
+    "tags": [
+      "museum",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Bảo tàng 3D Art In Paradise",
+    "place_id": "ChIJcVJkUPcXQjERsA8_dfySw5E",
+    "latitude": 16.0954282,
+    "longitude": 108.2431088,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Bảo tàng nghệ thuật"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:30–18:00",
+      "thứ năm": "08:30–18:00",
+      "thứ sáu": "08:30–18:00",
+      "thứ bảy": "08:30–18:00",
+      "chủ nhật": "08:30–18:00",
+      "thứ hai": "08:30–18:00",
+      "thứ ba": "08:30–18:00"
+    },
+    "description": "Bảo tàng tương tác để chụp ảnh 3D kỳ ảo. Bảo tàng tương tác cho du khách tạo dáng chụp ảnh vui nhộn trước những bức tranh 3D theo chủ đề.",
+    "tags": [
+      "museum",
+      "amusement",
+      "family"
+    ]
+  },
+  {
+    "title": "Đỉnh Bàn Cờ",
+    "place_id": "ChIJBQHuNG49QjER7Mb_Y2I64mk",
+    "latitude": 16.1189365,
+    "longitude": 108.2719826,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "07:30–17:30",
+      "thứ năm": "07:30–17:30",
+      "thứ sáu": "07:30–17:30",
+      "thứ bảy": "07:30–17:30",
+      "chủ nhật": "07:30–17:30",
+      "thứ hai": "07:30–17:30",
+      "thứ ba": "07:30–17:30"
+    },
+    "description": "Đỉnh đồi trên cao nhìn ra thành phố và vịnh. Đài quan sát trên đỉnh đồi có tầm nhìn ra thành phố Đà Nẵng và biển cùng bức tượng đang trầm ngâm đánh cờ.",
+    "tags": [
+      "viewpoint",
+      "mountain",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Vòng quay Mặt Trời (Sun Wheel)",
+    "place_id": "ChIJ9fqsdOcZQjERZcIMEHw3HtY",
+    "latitude": 16.0401624,
+    "longitude": 108.22851709999999,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "16:30–22:00",
+      "thứ năm": "16:30–22:00",
+      "thứ sáu": "16:30–22:00",
+      "thứ bảy": "16:30–22:00",
+      "chủ nhật": "16:30–22:00",
+      "thứ hai": "16:30–22:00",
+      "thứ ba": "16:30–22:00"
+    },
+    "description": "Công viên giải trí chú trọng văn hóa Châu Á. Công viên giải trí có đường đi bộ, bên cạnh các hoạt động, thực phẩm & kiến trúc của nhiều quốc gia Châu Á.",
+    "tags": [
+      "landmark",
+      "viewpoint",
+      "amusement",
+      "family"
+    ]
+  },
+  {
+    "title": "Cầu Rồng",
+    "place_id": "ChIJL1GKWJYZQjERLrEGqlK2kwQ",
+    "latitude": 16.0611042,
+    "longitude": 108.2276926,
+    "types": [
+      "Cầu",
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "Mở cửa cả ngày",
+      "thứ năm": "Mở cửa cả ngày",
+      "thứ sáu": "Mở cửa cả ngày",
+      "thứ bảy": "Mở cửa cả ngày",
+      "chủ nhật": "Mở cửa cả ngày",
+      "thứ hai": "Mở cửa cả ngày",
+      "thứ ba": "Mở cửa cả ngày"
     },
     "description": null,
     "tags": [
-      "nature",
-      "park",
-      "viewpoint"
+      "bridge",
+      "landmark",
+      "night-spot"
     ]
   },
   {
-    "title": "Bảo tàng Lâm Đồng",
-    "place_id": "ChIJD6GVlxsTcTERzdbQxVDnPmQ",
-    "latitude": 11.940465,
-    "longitude": 108.459891,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Văn phòng chính phủ",
-      "Bảo tàng",
-      "Bảo tàng lịch sử địa phương"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:30–11:30, 13:30–17:00",
-      "thứ hai": "07:30–11:30, 13:30–17:00",
-      "thứ ba": "07:30–11:30, 13:30–17:00",
-      "thứ tư": "07:30–11:30, 13:30–17:00",
-      "thứ năm": "07:30–11:30, 13:30–17:00",
-      "thứ sáu": "07:30–11:30, 13:30–17:00",
-      "thứ bảy": "07:30–11:30, 13:30–17:00"
-    },
-    "description": "Bảo tàng dân tộc địa phương. Bảo tàng trưng bày trang phục, đồ thủ công và mỹ nghệ thể hiện văn hóa dân tộc bản địa trong khu vực.",
-    "tags": [
-      "museum",
-      "historic"
-    ]
-  },
-  {
-    "title": "Da Chien Hill - city sightseeing",
-    "place_id": "ChIJBaiN9_kTcTERxuPCnmIzoMc",
-    "latitude": 11.9384939,
-    "longitude": 108.4828039,
+    "title": "Làng Bích họa Đà Nẵng",
+    "place_id": "ChIJkatEeMwZQjERnAUKgmrbNgQ",
+    "latitude": 16.0607296,
+    "longitude": 108.2200532,
     "types": [
       "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:00–21:30",
+      "thứ năm": "08:00–21:30",
+      "thứ sáu": "08:00–21:30",
+      "thứ bảy": "08:00–21:30",
+      "chủ nhật": "08:00–21:30",
+      "thứ hai": "08:00–21:30",
+      "thứ ba": "08:00–21:30"
+    },
+    "description": null,
+    "tags": [
+      "village",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Bảo Tàng Đà Nẵng",
+    "place_id": "ChIJEymIkTYYQjERWO-pgjkKGMk",
+    "latitude": 16.074554199999998,
+    "longitude": 108.2239668,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Bảo tàng lịch sử"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:00–17:00",
+      "thứ năm": "08:00–17:00",
+      "thứ sáu": "08:00–17:00",
+      "thứ bảy": "08:00–17:00",
+      "chủ nhật": "08:00–17:00",
+      "thứ hai": "08:00–17:00",
+      "thứ ba": "08:00–17:00"
+    },
+    "description": "Bảo tàng lịch sử văn hóa ở tòa nhà hiện đại. Bảo tàng về lịch sử Đà Nẵng, nơi trưng bày hiện vật văn hóa và quân sự trong một không gian hiện đại.",
+    "tags": [
+      "museum",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Tượng Cá Chép Hóa Rồng",
+    "place_id": "ChIJ4QBQgowZQjERs200POAfAZs",
+    "latitude": 16.06291,
+    "longitude": 108.229815,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "Mở cửa cả ngày",
+      "thứ năm": "Mở cửa cả ngày",
+      "thứ sáu": "Mở cửa cả ngày",
+      "thứ bảy": "Mở cửa cả ngày",
+      "chủ nhật": "Mở cửa cả ngày",
+      "thứ hai": "Mở cửa cả ngày",
+      "thứ ba": "Mở cửa cả ngày"
+    },
+    "description": null,
+    "tags": [
+      "statue",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Hòa Phú Thành Tourist - Trượt thác Đà Nẵng",
+    "place_id": "ChIJK7np93r3QTER83RICZfg9Po",
+    "latitude": 15.9577622,
+    "longitude": 107.99169769999999,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Câu lạc bộ bắn cung",
+      "Trại thiếu nhi",
+      "Khu cắm trại",
+      "Quán cà phê",
+      "Nhà nghỉ dưỡng cho thuê",
+      "Nhà hàng",
+      "Hồ bơi"
     ],
     "operating_hours": null,
     "description": null,
     "tags": [
-      "viewpoint",
-      "hill"
+      "amusement",
+      "watersport",
+      "waterfall",
+      "family",
+      "dangerous"
     ]
   },
   {
-    "title": "Chợ đà lạt",
-    "place_id": "ChIJERJoQwATcTERR_bBPr8wkUY",
-    "latitude": 11.943022599999999,
-    "longitude": 108.43687779999999,
+    "title": "Ba Na Hills",
+    "place_id": "ChIJyWFmArX3QTERon6tUT6re4Q",
+    "latitude": 15.9951364,
+    "longitude": 107.9961392,
     "types": [
-      "Chợ"
+      "Điểm thu hút khách du lịch",
+      "Thắng cảnh"
+    ],
+    "operating_hours": {
+      "thứ tư": "07:00–20:00",
+      "thứ năm": "07:00–20:00",
+      "thứ sáu": "07:00–20:00",
+      "thứ bảy": "07:00–20:00",
+      "chủ nhật": "07:00–20:00",
+      "thứ hai": "07:00–20:00",
+      "thứ ba": "07:00–20:00"
+    },
+    "description": null,
+    "tags": [
+      "resort",
+      "amusement",
+      "viewpoint",
+      "family",
+      "luxury"
+    ]
+  },
+  {
+    "title": "Cầu Vàng",
+    "place_id": "ChIJj9PFGT33QTERDbUKRxFsdmM",
+    "latitude": 15.994937499999999,
+    "longitude": 107.9965625,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:00–19:00",
+      "thứ năm": "08:00–19:00",
+      "thứ sáu": "08:00–19:00",
+      "thứ bảy": "08:00–19:00",
+      "chủ nhật": "08:00–19:00",
+      "thứ hai": "08:00–19:00",
+      "thứ ba": "08:00–19:00"
+    },
+    "description": null,
+    "tags": [
+      "bridge",
+      "landmark",
+      "viewpoint",
+      "trendy",
+      "crowded"
+    ]
+  },
+  {
+    "title": "Sun World Bà Nà Hills",
+    "place_id": "ChIJyUQ4aw72QTERCXl5YV-4U1w",
+    "latitude": 16.0265144,
+    "longitude": 108.03279719999999,
+    "types": [
+      "Công viên giải trí"
+    ],
+    "operating_hours": {
+      "thứ tư": "07:00–22:00",
+      "thứ năm": "07:00–22:00",
+      "thứ sáu": "07:00–22:00",
+      "thứ bảy": "07:00–22:00",
+      "chủ nhật": "07:00–22:00",
+      "thứ hai": "07:00–22:00",
+      "thứ ba": "07:00–22:00"
+    },
+    "description": "Công viên giải trí có cáp treo trên đỉnh đồi. Công viên giải trí có các trò chơi cảm giác mạnh, cáp treo và Cầu Vàng nhìn ra toàn cảnh núi non.",
+    "tags": [
+      "amusement",
+      "resort",
+      "viewpoint",
+      "family",
+      "crowded"
+    ]
+  },
+  {
+    "title": "Ghềnh Bàng",
+    "place_id": "ChIJW0KcgfI9QjERJpkPfjssyfo",
+    "latitude": 16.1124336,
+    "longitude": 108.31163219999999,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Thắng cảnh"
+    ],
+    "operating_hours": {
+      "thứ tư": "Mở cửa cả ngày",
+      "thứ năm": "Mở cửa cả ngày",
+      "thứ sáu": "Mở cửa cả ngày",
+      "thứ bảy": "Mở cửa cả ngày",
+      "chủ nhật": "Mở cửa cả ngày",
+      "thứ hai": "Mở cửa cả ngày",
+      "thứ ba": "Mở cửa cả ngày"
+    },
+    "description": "Bãi biển nhỏ, gồ ghề nổi tiếng có khỉ. Khu vực ven biển nổi tiếng có khỉ, một khu vực nhỏ đầy cát, các phiến đá gồ ghề và vách đá phủ đầy cây xanh.",
+    "tags": [
+      "nature",
+      "viewpoint",
+      "diving"
+    ]
+  },
+  {
+    "title": "Nhà Vọng Cảnh",
+    "place_id": "ChIJ08DIzjY9QjER4ldy4JXZBLA",
+    "latitude": 16.1351089,
+    "longitude": 108.24537579999999,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "Mở cửa cả ngày",
+      "thứ năm": "Mở cửa cả ngày",
+      "thứ sáu": "Mở cửa cả ngày",
+      "thứ bảy": "Mở cửa cả ngày",
+      "chủ nhật": "Mở cửa cả ngày",
+      "thứ hai": "Mở cửa cả ngày",
+      "thứ ba": "Mở cửa cả ngày"
+    },
+    "description": null,
+    "tags": [
+      "viewpoint",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Hòn Thủy Sơn",
+    "place_id": "ChIJKytgDsgQQjER6al50BDd7vc",
+    "latitude": 16.0034752,
+    "longitude": 108.26254829999999,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Thắng cảnh"
+    ],
+    "operating_hours": {
+      "thứ tư": "07:00–17:00",
+      "thứ năm": "07:00–17:00",
+      "thứ sáu": "07:00–17:00",
+      "thứ bảy": "07:00–17:00",
+      "chủ nhật": "07:00–17:00",
+      "thứ hai": "07:00–17:00",
+      "thứ ba": "07:00–17:00"
+    },
+    "description": "Ngọn núi có chùa và hang động. Ngọn núi có chùa nằm trong hang động cùng 156 bậc đá tự nhiên dẫn lên núi. Có khu vực nghỉ ngơi.",
+    "tags": [
+      "mountain",
+      "cave",
+      "temple",
+      "viewpoint",
+      "religion"
+    ]
+  },
+  {
+    "title": "Ticket Ba Na Hills - Đường Lên Tiên Cảnh",
+    "place_id": "ChIJ6R3K0vz2QTERRGpzbkKvt4o",
+    "latitude": 15.9972041,
+    "longitude": 107.98876299999999,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Công viên giải trí"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:30–17:00",
+      "thứ năm": "08:30–17:00",
+      "thứ sáu": "08:30–17:00",
+      "thứ bảy": "08:30–17:00",
+      "chủ nhật": "08:30–17:00",
+      "thứ hai": "08:30–17:00",
+      "thứ ba": "08:30–17:00"
+    },
+    "description": null,
+    "tags": []
+  },
+  {
+    "title": "Bảo tàng Hồ Chí Minh",
+    "place_id": "ChIJo8fznMYZQjERNtNTUT-ZJyk",
+    "latitude": 16.0486814,
+    "longitude": 108.217581,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Bảo tàng",
+      "Bảo tàng lịch sử"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:00–12:00, 14:00–16:30",
+      "thứ năm": "08:00–12:00, 14:00–16:30",
+      "thứ sáu": "Đóng cửa",
+      "thứ bảy": "08:00–12:00, 14:00–16:30",
+      "chủ nhật": "08:00–12:00, 14:00–16:30",
+      "thứ hai": "Đóng cửa",
+      "thứ ba": "08:00–12:00, 14:00–16:30"
+    },
+    "description": "Bảo tàng về Chủ tịch Hồ Chí Minh. Bảo tàng về cuộc đời của Chủ tịch Hồ Chí Minh, từ thuở nhỏ đến khi trở thành một vị anh hùng dân tộc.",
+    "tags": [
+      "museum",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Hot Springs Park - Công viên Suối khoáng nóng Núi Thần Tài Đà Nẵng",
+    "place_id": "ChIJwbfPdZX3QTERj8sw7f5uZPA",
+    "latitude": 15.9678512,
+    "longitude": 108.0198053,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Điểm tắm suối khoáng nóng kiểu Nhật",
+      "Onsen ban ngày",
+      "Công viên nước"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:30–17:30",
+      "thứ năm": "08:30–17:30",
+      "thứ sáu": "08:30–17:30",
+      "thứ bảy": "08:30–17:30",
+      "chủ nhật": "08:30–17:30",
+      "thứ hai": "08:30–17:30",
+      "thứ ba": "08:30–17:30"
+    },
+    "description": "Hồ tạo sóng, đường trượt và suối nước nóng. Công viên nổi tiếng này nằm giữa không gian xanh, có hồ tạo sóng, sông lười, đường trượt nước và suối nước nóng.",
+    "tags": [
+      "park",
+      "spa",
+      "amusement",
+      "family"
+    ]
+  },
+  {
+    "title": "Bảo tàng Đồng Đình",
+    "place_id": "ChIJaa7lANcXQjERmT3kgV5U7uA",
+    "latitude": 16.1011538,
+    "longitude": 108.2753793,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Bảo tàng nghệ thuật"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:00–17:00",
+      "thứ năm": "08:00–17:00",
+      "thứ sáu": "08:00–17:00",
+      "thứ bảy": "08:00–17:00",
+      "chủ nhật": "08:00–17:00",
+      "thứ hai": "08:00–17:00",
+      "thứ ba": "08:00–17:00"
+    },
+    "description": "Bảo tàng cổ kính & hiện vật truyền thống. Bảo tàng cổ kính giữa khung cảnh núi non trưng bày gốm sứ trong vùng và một ngôi nhà truyền thống.",
+    "tags": [
+      "museum",
+      "garden"
+    ]
+  },
+  {
+    "title": "Phố đi bộ - chợ đêm Bạch Đằng Đà Nẵng",
+    "place_id": "ChIJ6UAZeAAZQjERzK3T81riZmo",
+    "latitude": 16.055193,
+    "longitude": 108.223694,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Khu vực đi bộ"
     ],
     "operating_hours": null,
     "description": null,
     "tags": [
       "market",
+      "night-spot",
       "shopping",
-      "food"
+      "street-food",
+      "crowded"
     ]
   },
   {
-    "title": "God Valley",
-    "place_id": "ChIJG53eZgBpcTERsaTfCuvGzIA",
-    "latitude": 11.9102912,
-    "longitude": 108.3303158,
+    "title": "Bảo tàng Mỹ thuật Đà Nẵng",
+    "place_id": "ChIJ78thjjYYQjERkiy-c9ebVPE",
+    "latitude": 16.0711877,
+    "longitude": 108.21794109999999,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Bảo tàng nghệ thuật"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:00–17:00",
+      "thứ năm": "08:00–17:00",
+      "thứ sáu": "08:00–17:00",
+      "thứ bảy": "08:00–17:00",
+      "chủ nhật": "08:00–17:00",
+      "thứ hai": "08:00–17:00",
+      "thứ ba": "08:00–17:00"
+    },
+    "description": "Bảo tàng nghệ thuật có triển lãm đa dạng. Bảo tàng mỹ thuật trưng bày tranh, tượng, đồ gốm và tác phẩm khác trong không gian hiện đại có quán cà phê.",
+    "tags": [
+      "museum",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Cung Thiếu Nhi Đà Nẵng",
+    "place_id": "ChIJL710Z-gZQjERTwK6WEaLM1c",
+    "latitude": 16.0383904,
+    "longitude": 108.2253727,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Trung tâm văn hoá",
+      "Dịch vụ chăm sóc thanh thiếu niên"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:00–18:00",
+      "thứ năm": "08:00–18:00",
+      "thứ sáu": "08:00–18:00",
+      "thứ bảy": "08:00–18:00",
+      "chủ nhật": "08:00–18:00",
+      "thứ hai": "08:00–18:00",
+      "thứ ba": "08:00–18:00"
+    },
+    "description": null,
+    "tags": [
+      "park",
+      "kid",
+      "family",
+      "amusement"
+    ]
+  },
+  {
+    "title": "The Monkey Mountain",
+    "place_id": "ChIJWw3ooPk9QjERThRNgePJk8I",
+    "latitude": 16.1159837,
+    "longitude": 108.273341,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": null,
+    "description": null,
+    "tags": [
+      "mountain",
+      "nature",
+      "viewpoint"
+    ]
+  },
+  {
+    "title": "Công Viên APEC",
+    "place_id": "ChIJzX1dFjAZQjERswowf61V1fk",
+    "latitude": 16.0581055,
+    "longitude": 108.2232435,
+    "types": [
+      "Công viên"
+    ],
+    "operating_hours": null,
+    "description": null,
+    "tags": [
+      "park",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Suối Lương - Hai Van Park",
+    "place_id": "ChIJ86LzsaUhQjERGxE6itCeBCY",
+    "latitude": 16.1566197,
+    "longitude": 108.1093217,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Công viên sinh thái",
+      "Khách sạn"
+    ],
+    "operating_hours": null,
+    "description": null,
+    "tags": [
+      "park",
+      "river",
+      "nature",
+      "family"
+    ]
+  },
+  {
+    "title": "Đà Nẵng Food Tour",
+    "place_id": "ChIJH5FAHiEYQjERi-kdX4gd-eE",
+    "latitude": 16.0661013,
+    "longitude": 108.22436189999999,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Nhà điều hành du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "08:00–21:00",
+      "thứ năm": "08:00–21:00",
+      "thứ sáu": "08:00–21:00",
+      "thứ bảy": "08:00–21:00",
+      "chủ nhật": "08:00–21:00",
+      "thứ hai": "08:00–21:00",
+      "thứ ba": "08:00–21:00"
+    },
+    "description": null,
+    "tags": []
+  },
+  {
+    "title": "Marble Mountains Ticket Booth (Gate A1)",
+    "place_id": "ChIJDUxk5Y0RQjERvX3OGT-77hM",
+    "latitude": 16.0026808,
+    "longitude": 108.26246979999999,
     "types": [
       "Điểm thu hút khách du lịch"
     ],
     "operating_hours": {
-      "chủ nhật": "07:30–18:00",
-      "thứ hai": "08:00–17:00",
-      "thứ ba": "08:00–17:00",
-      "thứ tư": "08:00–17:00",
-      "thứ năm": "08:00–17:00",
-      "thứ sáu": "08:00–17:00",
-      "thứ bảy": "07:30–18:00"
+      "thứ tư": "07:00–17:00",
+      "thứ năm": "07:00–17:00",
+      "thứ sáu": "07:00–17:00",
+      "thứ bảy": "07:00–17:00",
+      "chủ nhật": "07:00–17:00",
+      "thứ hai": "07:00–17:00",
+      "thứ ba": "07:00–17:00"
+    },
+    "description": null,
+    "tags": []
+  },
+  {
+    "title": "Tượng Quan Thế Âm Bồ Tát",
+    "place_id": "ChIJabEOcucXQjER-8MNU9FNODw",
+    "latitude": 16.0996678,
+    "longitude": 108.2769531,
+    "types": [
+      "Chùa phật giáo"
+    ],
+    "operating_hours": {
+      "thứ tư": "06:30–17:30",
+      "thứ năm": "06:30–17:30",
+      "thứ sáu": "06:30–17:30",
+      "thứ bảy": "06:30–17:30",
+      "chủ nhật": "06:30–17:30",
+      "thứ hai": "06:30–17:30",
+      "thứ ba": "06:30–17:30"
     },
     "description": null,
     "tags": [
+      "statue",
+      "landmark",
+      "religion",
+      "viewpoint"
+    ]
+  },
+  {
+    "title": "Du Thuyền Sông Hàn Đà Nẵng (Stations Tickets)",
+    "place_id": "ChIJe8ah9rsZQjER6VQTZMzcGTw",
+    "latitude": 16.079141099999998,
+    "longitude": 108.2242785,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "Mở cửa cả ngày",
+      "thứ năm": "Mở cửa cả ngày",
+      "thứ sáu": "Mở cửa cả ngày",
+      "thứ bảy": "Mở cửa cả ngày",
+      "chủ nhật": "Mở cửa cả ngày",
+      "thứ hai": "Mở cửa cả ngày",
+      "thứ ba": "Mở cửa cả ngày"
+    },
+    "description": null,
+    "tags": [
+      "yacht / cruise",
+      "river",
+      "night-spot"
+    ]
+  },
+  {
+    "title": "Biển Phước Mỹ",
+    "place_id": "ChIJ72Cf1fUXQjER37hL-Uv9SVU",
+    "latitude": 16.070325999999998,
+    "longitude": 108.24661929999999,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": null,
+    "description": null,
+    "tags": [
+      "beach",
+      "nature",
+      "crowded"
+    ]
+  },
+  {
+    "title": "Chợ Cồn",
+    "place_id": "ChIJu6FQjzUYQjER39TMpgQVRUs",
+    "latitude": 16.0677927,
+    "longitude": 108.21448339999999,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Chợ"
+    ],
+    "operating_hours": {
+      "thứ tư": "07:00–19:00",
+      "thứ năm": "07:00–19:00",
+      "thứ sáu": "07:00–19:00",
+      "thứ bảy": "07:00–19:00",
+      "chủ nhật": "07:00–19:00",
+      "thứ hai": "07:00–19:00",
+      "thứ ba": "07:00–19:00"
+    },
+    "description": "Chợ ngoài trời nhộn nhịp bán đồ ăn và hàng hóa. Khu chợ rộng lớn, tấp nập, có hàng ngàn quầy hàng bán nông sản, quần áo, đồ gia dụng và món ăn đường phố.",
+    "tags": [
+      "market",
+      "shopping",
+      "street-food",
+      "crowded",
+      "budget-friendly"
+    ]
+  },
+  {
+    "title": "Chùa Pháp Lâm",
+    "place_id": "ChIJkzSVjMoZQjERwedbE3VmKt4",
+    "latitude": 16.0622908,
+    "longitude": 108.2155449,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Chùa phật giáo"
+    ],
+    "operating_hours": {
+      "thứ tư": "Mở cửa cả ngày",
+      "thứ năm": "Mở cửa cả ngày",
+      "thứ sáu": "Mở cửa cả ngày",
+      "thứ bảy": "Mở cửa cả ngày",
+      "chủ nhật": "Mở cửa cả ngày",
+      "thứ hai": "Mở cửa cả ngày",
+      "thứ ba": "Mở cửa cả ngày"
+    },
+    "description": "Chùa Phật Giáo 2 tầng xây năm 1934. Ngôi chùa sặc sỡ có pho tượng Phật khổng lồ bằng vàng đang ngồi và các tác phẩm thủ công độc đáo.",
+    "tags": [
+      "pagoda",
+      "religion",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Di tích Thành Điện Hải",
+    "place_id": "ChIJC0W3bjoYQjERVBMskQcoQck",
+    "latitude": 16.0761821,
+    "longitude": 108.22163019999999,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Bảo tồn di sản"
+    ],
+    "operating_hours": null,
+    "description": null,
+    "tags": [
+      "fortress",
+      "landmark",
+      "museum"
+    ]
+  },
+  {
+    "title": "Go Surfing Son Tra",
+    "place_id": "ChIJbdSsCnEXQjERLfPYWxi0OPQ",
+    "latitude": 16.073895,
+    "longitude": 108.2459927,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "07:00–18:00",
+      "thứ năm": "07:00–18:00",
+      "thứ sáu": "07:00–18:00",
+      "thứ bảy": "07:00–18:00",
+      "chủ nhật": "07:00–18:00",
+      "thứ hai": "07:00–18:00",
+      "thứ ba": "07:00–18:00"
+    },
+    "description": null,
+    "tags": [
+      "watersport",
+      "beach"
+    ]
+  },
+  {
+    "title": "Đỉnh núi Chúa",
+    "place_id": "ChIJ82xzp-P2QTERILtIbFc49nk",
+    "latitude": 15.997592899999999,
+    "longitude": 107.9856799,
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Địa danh"
+    ],
+    "operating_hours": null,
+    "description": null,
+    "tags": [
+      "mountain",
+      "viewpoint",
       "nature"
     ]
   },
   {
-    "title": "Tp. Đà Lạt",
-    "place_id": "ChIJsYgJ8v4ScTERMPkrZ4siX60",
-    "latitude": 11.9404192,
-    "longitude": 108.45831319999999,
+    "title": "Bãi Tắm Non Nước",
+    "place_id": "ChIJu59e1rsRQjERB-49hSxMnXo",
+    "latitude": 16.0027923,
+    "longitude": 108.2699727,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "Mở cửa cả ngày",
+      "thứ năm": "Mở cửa cả ngày",
+      "thứ sáu": "Mở cửa cả ngày",
+      "thứ bảy": "Mở cửa cả ngày",
+      "chủ nhật": "Mở cửa cả ngày",
+      "thứ hai": "Mở cửa cả ngày",
+      "thứ ba": "Mở cửa cả ngày"
+    },
+    "description": null,
+    "tags": [
+      "beach",
+      "watersport",
+      "family",
+      "nature"
+    ]
+  },
+  {
+    "title": "Vé cáp treo Bà Nà",
+    "place_id": "ChIJ05f7rD4ZQjER8soSy7r_RX0",
+    "latitude": 16.0254427,
+    "longitude": 108.0320692,
+    "types": [
+      "Tàu điện cáp treo"
+    ],
+    "operating_hours": {
+      "thứ tư": "Mở cửa cả ngày",
+      "thứ năm": "Mở cửa cả ngày",
+      "thứ sáu": "Mở cửa cả ngày",
+      "thứ bảy": "Mở cửa cả ngày",
+      "chủ nhật": "Mở cửa cả ngày",
+      "thứ hai": "Mở cửa cả ngày",
+      "thứ ba": "Mở cửa cả ngày"
+    },
+    "description": null,
+    "tags": []
+  },
+  {
+    "title": "Đài Vọng Hải",
+    "place_id": "ChIJgcYv-aARQjER4tIa7l8xuZw",
+    "latitude": 16.0037117,
+    "longitude": 108.2642039,
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "operating_hours": {
+      "thứ tư": "07:00–17:00",
+      "thứ năm": "07:00–17:00",
+      "thứ sáu": "07:00–17:00",
+      "thứ bảy": "07:00–17:00",
+      "chủ nhật": "07:00–17:00",
+      "thứ hai": "07:00–17:00",
+      "thứ ba": "07:00–17:00"
+    },
+    "description": null,
+    "tags": [
+      "viewpoint",
+      "tower",
+      "landmark"
+    ]
+  },
+  {
+    "title": "Đà Nẵng",
+    "place_id": "ChIJEyolkscZQjERBn5yhkvL8B0",
+    "latitude": 16.0544563,
+    "longitude": 108.0717219,
     "types": null,
     "operating_hours": null,
     "description": null,
     "tags": []
   },
   {
-    "title": "Samten Hills Dalat",
-    "place_id": "ChIJneCVGe5HcTERs3KKPMik6WM",
-    "latitude": 11.6918891,
-    "longitude": 108.4239144,
+    "title": "Bếp Cuốn Đà Nẵng",
+    "place_id": "ChIJ-UgnY_QXQjERJTTHpNvcFNw",
+    "latitude": 16.0579628,
+    "longitude": 108.2451505,
     "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "06:00–20:00",
-      "thứ hai": "06:00–20:00",
-      "thứ ba": "06:00–20:00",
-      "thứ tư": "06:00–20:00",
-      "thứ năm": "06:00–20:00",
-      "thứ sáu": "06:00–20:00",
-      "thứ bảy": "06:00–20:00"
-    },
-    "description": null,
-    "tags": [
-      "temple",
-      "religion",
-      "historic"
-    ]
-  },
-  {
-    "title": "Làng hoa Vạn Thành - Khu du lịch VẠN HOA ĐÀ LẠT",
-    "place_id": "ChIJ81XqLIttcTERxaKfjsUtgdc",
-    "latitude": 11.947042699999999,
-    "longitude": 108.41315159999999,
-    "types": [
-      "Điểm thu hút khách du lịch",
-      "Đại lý du lịch tham quan"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:00–17:00",
-      "thứ hai": "07:00–17:00",
-      "thứ ba": "07:00–17:00",
-      "thứ tư": "07:00–17:00",
-      "thứ năm": "07:00–17:00",
-      "thứ sáu": "07:00–17:00",
-      "thứ bảy": "07:00–17:00"
-    },
-    "description": null,
-    "tags": [
-      "village",
-      "nature",
-      "park"
-    ]
-  },
-  {
-    "title": "Dalat Eiffel Tower",
-    "place_id": "ChIJbfftq7UTcTERLC_KGZ673l0",
-    "latitude": 11.937313999999999,
-    "longitude": 108.438459,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": null,
-    "description": null,
-    "tags": [
-      "tower",
-      "viewpoint",
-      "statue"
-    ]
-  },
-  {
-    "title": "Khu Du Lịch Thác Pongour",
-    "place_id": "ChIJAQAAUBhFcTERMLpEa0AJyoA",
-    "latitude": 11.689304199999999,
-    "longitude": 108.2656291,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:30–17:00",
-      "thứ hai": "07:30–17:00",
-      "thứ ba": "07:30–17:00",
-      "thứ tư": "07:30–17:00",
-      "thứ năm": "07:30–17:00",
-      "thứ sáu": "07:30–17:00",
-      "thứ bảy": "07:30–17:00"
-    },
-    "description": null,
-    "tags": [
-      "waterfall",
-      "nature"
-    ]
-  },
-  {
-    "title": "Chợ Đêm Đà Lạt",
-    "place_id": "ChIJw-dBTv8TcTERPCSnIa35zyE",
-    "latitude": 11.9414015,
-    "longitude": 108.43729119999999,
-    "types": [
-      "Chợ đêm",
-      "Chợ"
-    ],
-    "operating_hours": {
-      "chủ nhật": "17:30–00:00",
-      "thứ hai": "17:30–00:00",
-      "thứ ba": "17:30–00:00",
-      "thứ tư": "17:30–00:00",
-      "thứ năm": "17:30–00:00",
-      "thứ sáu": "17:30–00:00",
-      "thứ bảy": "17:30–00:00"
-    },
-    "description": "Khu chợ bán đồ gia dụng và món ăn đường phố. Khu chợ tấp nập các quầy hàng bán đồ gia dụng, đồ khô và món ăn địa phương chế biến sẵn.",
-    "tags": [
-      "market",
-      "shopping",
-      "food"
-    ]
-  },
-  {
-    "title": "Trung tâm Lưu trữ Quốc gia IV",
-    "place_id": "ChIJm_6uwNRscTEReuu69z-zenM",
-    "latitude": 11.9460096,
-    "longitude": 108.42584339999999,
-    "types": [
-      "Bảo tàng"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:30–04:30",
-      "thứ hai": "07:30–04:30",
-      "thứ ba": "07:30–04:30",
-      "thứ tư": "07:30–04:30",
-      "thứ năm": "07:30–04:30",
-      "thứ sáu": "07:30–04:30",
-      "thứ bảy": "07:30–04:30"
-    },
-    "description": null,
-    "tags": [
-      "historic",
-      "museum"
-    ]
-  },
-  {
-    "title": "Vườn Quốc gia Bidoup Núi Bà",
-    "place_id": "ChIJfxizD44JcTER5yKhSlwQ5rY",
-    "latitude": 12.1336783,
-    "longitude": 108.53352179999999,
-    "types": [
-      "Công viên quốc gia",
-      "Công viên"
-    ],
-    "operating_hours": {
-      "chủ nhật": "09:00–15:00",
-      "thứ hai": "09:00–15:00",
-      "thứ ba": "09:00–15:00",
-      "thứ tư": "09:00–15:00",
-      "thứ năm": "09:00–15:00",
-      "thứ sáu": "09:00–15:00",
-      "thứ bảy": "09:00–15:00"
-    },
-    "description": "Vườn rộng lớn có nhiều loài động thực vật. Một trong những vườn quốc gia lớn nhất Việt Nam có nhiều loại thực vật, cây cối và các loài động vật quý hiếm.",
-    "tags": [
-      "park",
-      "nature",
-      "mountain"
-    ]
-  },
-  {
-    "title": "Tea Bobla Waterfall",
-    "place_id": "ChIJn7anOHL-czERBmUXsLql1W0",
-    "latitude": 11.574769199999999,
-    "longitude": 108.01760999999999,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "07:00–17:00",
-      "thứ hai": "07:00–17:00",
-      "thứ ba": "07:00–17:00",
-      "thứ tư": "07:00–17:00",
-      "thứ năm": "07:00–17:00",
-      "thứ sáu": "07:00–17:00",
-      "thứ bảy": "07:00–17:00"
-    },
-    "description": null,
-    "tags": [
-      "waterfall",
-      "nature"
-    ]
-  },
-  {
-    "title": "Làng Trà Cầu Đất",
-    "place_id": "ChIJUc6ZntsWcTERq5vIKRyghEs",
-    "latitude": 11.8817711,
-    "longitude": 108.5614229,
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "operating_hours": {
-      "chủ nhật": "06:00–18:00",
-      "thứ hai": "06:00–18:00",
-      "thứ ba": "06:00–18:00",
-      "thứ tư": "06:00–18:00",
-      "thứ năm": "06:00–18:00",
-      "thứ sáu": "06:00–18:00",
-      "thứ bảy": "06:00–18:00"
-    },
-    "description": null,
-    "tags": [
-      "village",
-      "nature"
-    ]
-  },
-  {
-    "title": "Tiệm ăn Đà Lạt Phố - Restaurant",
-    "place_id": "ChIJMzXtGY4TcTERzanixs08VxE",
-    "latitude": 11.9442842,
-    "longitude": 108.4348971,
-    "types": [
-      "Nhà hàng",
-      "Quán cà phê"
-    ],
-    "operating_hours": {
-      "chủ nhật": "09:30–21:30",
-      "thứ hai": "09:30–21:30",
-      "thứ ba": "09:30–21:30",
-      "thứ tư": "09:30–21:30",
-      "thứ năm": "09:30–21:30",
-      "thứ sáu": "09:30–21:30",
-      "thứ bảy": "09:30–21:30"
-    },
-    "description": null,
-    "tags": [
-      "restaurant",
-      "food"
-    ]
-  },
-  {
-    "title": "Chef's Dalat",
-    "place_id": "ChIJNcFG0lwTcTERR0Ndu7-IsWY",
-    "latitude": 11.9477289,
-    "longitude": 108.43205119999999,
-    "types": [
-      "Nhà hàng Châu Âu hiện đại"
-    ],
-    "operating_hours": {
-      "chủ nhật": "08:00–22:00",
-      "thứ hai": "08:00–22:00",
-      "thứ ba": "08:00–22:00",
-      "thứ tư": "08:00–22:00",
-      "thứ năm": "08:00–22:00",
-      "thứ sáu": "08:00–22:00",
-      "thứ bảy": "08:00–22:00"
-    },
-    "description": null,
-    "tags": [
-      "restaurant",
-      "food"
-    ]
-  },
-  {
-    "title": "Primavera Italian Restaurant",
-    "place_id": "ChIJ_cUHekUTcTERHJcmjYn1Vc4",
-    "latitude": 11.9437904,
-    "longitude": 108.434288,
-    "types": [
-      "Nhà hàng ý"
-    ],
-    "operating_hours": {
-      "chủ nhật": "12:00–22:00",
-      "thứ hai": "Đóng cửa",
-      "thứ ba": "12:00–22:00",
-      "thứ tư": "12:00–22:00",
-      "thứ năm": "12:00–22:00",
-      "thứ sáu": "12:00–22:00",
-      "thứ bảy": "12:00–22:00"
-    },
-    "description": null,
-    "tags": [
-      "restaurant",
-      "food"
-    ]
-  },
-  {
-    "title": "Carrot Restaurant - Món Âu ngon Đà Lạt",
-    "place_id": "ChIJJQGeQfkTcTER14Ezv_VNFuY",
-    "latitude": 11.937328599999999,
-    "longitude": 108.433532,
-    "types": [
+      "Nhà hàng Việt Nam",
       "Nhà hàng"
     ],
     "operating_hours": {
-      "chủ nhật": "11:00–14:00, 17:00–22:00",
-      "thứ hai": "11:00–14:00, 17:00–22:00",
-      "thứ ba": "11:00–14:00, 17:00–22:00",
-      "thứ tư": "11:00–14:00, 17:00–22:00",
-      "thứ năm": "11:00–14:00, 17:00–22:00",
-      "thứ sáu": "11:00–14:00, 17:00–22:00",
-      "thứ bảy": "11:00–14:00, 17:00–22:00"
+      "thứ tư": "10:30–20:00",
+      "thứ năm": "10:30–21:00",
+      "thứ sáu": "10:30–21:00",
+      "thứ bảy": "10:30–21:00",
+      "chủ nhật": "10:30–21:00",
+      "thứ hai": "10:30–21:00",
+      "thứ ba": "10:30–21:00"
     },
     "description": null,
     "tags": [
       "restaurant",
-      "food"
+      "street-food"
     ]
   },
   {
-    "title": "Indiagate Indian Restaurant",
-    "place_id": "ChIJG2ohADwTcTERtebWhdfbW4I",
-    "latitude": 11.9443293,
-    "longitude": 108.4398202,
+    "title": "Thìa Gỗ Đà Nẵng",
+    "place_id": "ChIJ1xhMtcMZQjER9bUa3xuUKFA",
+    "latitude": 16.052986699999998,
+    "longitude": 108.2415777,
     "types": [
-      "Nhà hàng Ấn Độ"
+      "Nhà hàng Việt Nam",
+      "Nhà hàng cao cấp",
+      "Nhà hàng"
     ],
     "operating_hours": {
-      "chủ nhật": "10:00–22:00",
-      "thứ hai": "10:00–22:00",
-      "thứ ba": "10:00–22:00",
-      "thứ tư": "15:30–22:00",
+      "thứ tư": "10:00–22:00",
       "thứ năm": "10:00–22:00",
       "thứ sáu": "10:00–22:00",
-      "thứ bảy": "10:00–22:00"
+      "thứ bảy": "10:00–22:00",
+      "chủ nhật": "10:00–22:00",
+      "thứ hai": "10:00–22:00",
+      "thứ ba": "10:00–22:00"
+    },
+    "description": "Nhà hàng món Việt thư thái. Nhà hàng bình dân phục vụ chả giò, phở, bánh mì và các món ăn đặc trưng khác của Việt Nam cùng với bia.",
+    "tags": []
+  },
+  {
+    "title": "Bistecca Italian Restaurant in Da Nang",
+    "place_id": "ChIJL7rM6W0ZQjERU-TJeBfMM3I",
+    "latitude": 16.0827532,
+    "longitude": 108.2212419,
+    "types": [
+      "Nhà hàng",
+      "Nhà hàng ý"
+    ],
+    "operating_hours": {
+      "thứ tư": "06:00–10:00, 12:00–22:00",
+      "thứ năm": "06:00–10:00, 12:00–22:00",
+      "thứ sáu": "06:00–10:00, 12:00–22:00",
+      "thứ bảy": "06:00–10:00, 12:00–22:00",
+      "chủ nhật": "06:00–10:00, 12:00–22:00",
+      "thứ hai": "06:00–10:00, 12:00–22:00",
+      "thứ ba": "06:00–10:00, 12:00–22:00"
+    },
+    "description": null,
+    "tags": []
+  },
+  {
+    "title": "Ăn Thôi",
+    "place_id": "ChIJYVPRIUkZQjERH-v3yrc3lt0",
+    "latitude": 16.0682463,
+    "longitude": 108.2248133,
+    "types": [
+      "Nhà hàng Việt Nam",
+      "Nhà hàng"
+    ],
+    "operating_hours": {
+      "thứ tư": "10:30–21:30",
+      "thứ năm": "10:30–21:30",
+      "thứ sáu": "10:30–21:30",
+      "thứ bảy": "10:30–21:30",
+      "chủ nhật": "10:30–21:30",
+      "thứ hai": "10:30–21:30",
+      "thứ ba": "10:30–21:30"
+    },
+    "description": null,
+    "tags": []
+  },
+  {
+    "title": "Sky View Restaurant",
+    "place_id": "ChIJiTQv4ZwXQjERbqeN4rEe0uk",
+    "latitude": 16.0676095,
+    "longitude": 108.24477979999999,
+    "types": [
+      "Nhà hàng cao cấp",
+      "Nhà hàng hỗn hợp"
+    ],
+    "operating_hours": {
+      "thứ tư": "11:00–23:00",
+      "thứ năm": "11:00–23:00",
+      "thứ sáu": "11:00–23:00",
+      "thứ bảy": "11:00–23:00",
+      "chủ nhật": "11:00–23:00",
+      "thứ hai": "11:00–23:00",
+      "thứ ba": "11:00–23:00"
     },
     "description": null,
     "tags": [
       "restaurant",
-      "food"
+      "viewpoint"
     ]
   },
   {
-    "title": "Khách sạn Dalat Palace",
-    "place_id": "ChIJl9p2kTETcTERD2UK-Y4pL70",
-    "latitude": 11.9376172,
-    "longitude": 108.4403766,
-    "types": [
-      "Khách sạn"
-    ],
-    "operating_hours": null,
-    "description": "Khách sạn uy nghi, nhà hàng cao cấp, spa. Khách sạn trang trọng từ thập niên 1920, cảnh hồ, vườn cây tuyệt đẹp, nhà hàng, spa và phòng ở tinh tế.",
-    "tags": [
-      "hotel",
-      "historic"
-    ]
-  },
-  {
-    "title": "MerPerle Dalat Hotel",
-    "place_id": "ChIJb3zd0SsTcTERMXcrD-idmCg",
-    "latitude": 11.9411183,
-    "longitude": 108.4583036,
-    "types": [
-      "Khách sạn"
-    ],
-    "operating_hours": null,
-    "description": null,
-    "tags": [
-      "hotel"
-    ]
-  },
-  {
-    "title": "Mercure Dalat Resort",
-    "place_id": "ChIJP6Esk3sTcTERx5XZn19lUx0",
-    "latitude": 11.9451708,
-    "longitude": 108.45943989999999,
-    "types": [
-      "Khách sạn",
-      "Khách sạn nghỉ dưỡng"
-    ],
-    "operating_hours": null,
-    "description": "Khách sạn sang trọng có nhà hàng và quầy bar. Khách sạn cao cấp từng là một biệt thự từ thập niên 1920, có phòng ở trang nhã, cảnh sân vườn, quầy bar và nhà hàng.",
-    "tags": [
-      "hotel"
-    ]
-  },
-  {
-    "title": "Ana Mandara Villas Dalat Resort & Spa",
-    "place_id": "ChIJS2jADNRscTERN7cFfAWSmGs",
-    "latitude": 11.944039,
-    "longitude": 108.4236,
+    "title": "InterContinental Danang Sun Peninsula Resort",
+    "place_id": "ChIJmZHsE5U9QjERDa3a1CuK3lo",
+    "latitude": 16.1208274,
+    "longitude": 108.3062154,
     "types": [
       "Khách sạn nghỉ dưỡng",
-      "Sân gôn thu nhỏ",
-      "Nhà hàng",
+      "Trung tâm hội thảo",
+      "Nhà hàng cao cấp",
       "Spa",
-      "Bể bơi"
+      "Địa điểm tổ chức lễ cưới"
     ],
     "operating_hours": null,
     "description": null,
     "tags": [
-      "hotel"
+      "resort",
+      "hotel",
+      "luxury",
+      "spa",
+      "family"
     ]
   },
   {
-    "title": "Colline Dalat - Công ty TNHH Đỉnh Đồi",
-    "place_id": "ChIJRXfYM1MTcTERm2W_mcYPd-8",
-    "latitude": 11.9439482,
-    "longitude": 108.4381016,
+    "title": "Peninsula Hotel Danang",
+    "place_id": "ChIJfbl-2sMXQjERKLfkuhtH-BE",
+    "latitude": 16.0815511,
+    "longitude": 108.2471399,
     "types": [
       "Khách sạn"
     ],
     "operating_hours": null,
-    "description": "KS hiện đại có nhà hàng và phòng tập. Khách sạn hiện đại với phòng ở tinh tế, có 2 nhà hàng, 2 quán bar và phòng tập thể dục.",
+    "description": null,
     "tags": [
-      "hotel"
+      "hotel",
+      "luxury"
+    ]
+  },
+  {
+    "title": "Hilton Đà Nẵng",
+    "place_id": "ChIJUw_MMDAYQjER9yNhlCd5fZ8",
+    "latitude": 16.0726665,
+    "longitude": 108.22428599999999,
+    "types": [
+      "Khách sạn"
+    ],
+    "operating_hours": null,
+    "description": null,
+    "tags": [
+      "hotel",
+      "luxury"
+    ]
+  },
+  {
+    "title": "Premier Village Đà Nẵng Resort",
+    "place_id": "ChIJg9GXf2gXQjERMCQm7jjvSe4",
+    "latitude": 16.0420899,
+    "longitude": 108.2507504,
+    "types": [
+      "Khách sạn"
+    ],
+    "operating_hours": null,
+    "description": "Biệt thự xa hoa có bồn ngâm riêng. Resort cao cấp ven biển có nhà hàng, bể bơi, biệt thự sang trọng, bồn ngâm và phòng bếp.",
+    "tags": [
+      "resort",
+      "hotel",
+      "luxury",
+      "family"
+    ]
+  },
+  {
+    "title": "Pullman Danang Beach Resort",
+    "place_id": "ChIJKfL8bWgXQjERWPZKseMae6E",
+    "latitude": 16.0405647,
+    "longitude": 108.2500872,
+    "types": [
+      "Khách sạn nghỉ dưỡng",
+      "Câu lạc bộ bãi biển",
+      "Nơi tổ chức sự kiện",
+      "Câu lạc bộ thể dục",
+      "Khách sạn",
+      "Nhà hàng",
+      "Spa",
+      "Địa điểm tổ chức lễ cưới"
+    ],
+    "operating_hours": null,
+    "description": "Resort sang trọng có bãi tắm riêng. Khu nghỉ dưỡng ven biển có nhà hàng quốc tế, bể bơi vô cực ngoài trời và bãi tắm riêng.",
+    "tags": [
+      "resort",
+      "hotel",
+      "beach",
+      "luxury",
+      "family"
     ]
   }
 ]
