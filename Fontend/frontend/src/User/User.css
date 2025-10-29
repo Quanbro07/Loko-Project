@@ -110,6 +110,22 @@
     font-weight: bold;
 }
 
+.visited-names {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #444;
+}
+
+.visited-names .pill {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #222;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+
 .ticket-footer {
     background-color: #003c72;
     color: white;

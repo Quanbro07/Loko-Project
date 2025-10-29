@@ -27,3 +27,81 @@
   color: #666;
   font-size: 14px;
 }
+
+/* Fullscreen modifier */
+.visited-map-container.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  z-index: 1100;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visited-map-container.fullscreen svg {
+  height: calc(100vh - 40px) !important;
+}
+
+.map-expand-button {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  z-index: 1200;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-expand-button:focus { outline: 2px solid #fff; }
+
+/* layout for map + percent panel */
+.visited-map-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.map-area {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.percent-panel {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.progress-circle {
+  width: 120px;
+  height: 120px;
+}
+
+.percentage {
+  font-size: 8px;
+  fill: #111;
+  font-weight: 700;
+}
+
+.percent-label {
+  font-size: 13px;
+  color: #333;
+  text-align: center;
+}
