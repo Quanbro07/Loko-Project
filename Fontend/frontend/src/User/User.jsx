@@ -11,7 +11,8 @@ import VisitedMap from '../Map/VisitedMap';
 const User = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [avatar, setAvatar] = useState(avatarSample); // State for avatar
-    const [visitedSlugs, setVisitedSlugs] = useState([]);
+        const [visitedSlugs, setVisitedSlugs] = useState(["ha-noi", "an-giang", "da-nang", "tp-ho-chi-minh"]);
+        const [visitedNames, setVisitedNames] = useState([]);
     // Removed const { translate: dictionary } = useLanguage();
 
         // Utility: remove diacritics and slugify (keeps same logic as VisitedMap)
@@ -82,6 +83,38 @@ const User = () => {
             return () => { mounted = false; };
         }, []);
 
+            // Load province GeoJSON to build a slug -> official name map so we can display names next to counts.
+            useEffect(() => {
+                let mounted = true;
+                const GEOJSON_URL = '/vietnam-geojson-data/geojson/country-wide/vietnam-tinh-thanh-34.geojson';
+                fetch(GEOJSON_URL)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (!mounted) return;
+                        if (!data || !Array.isArray(data.features)) return;
+                        const map = {};
+                        data.features.forEach((f) => {
+                            const props = f.properties || {};
+                            const name = props.ten_tinh || props.NAME_1 || props.NAME || props.name || props.ten || '';
+                            if (name) map[slugify(name)] = name;
+                        });
+                        // map created; map current visitedSlugs
+                        const names = visitedSlugs.map((s) => map[s] || prettifySlug(s));
+                        setVisitedNames(names.filter(Boolean));
+                    })
+                    .catch(() => {
+                        // ignore — we'll fallback to prettified slugs
+                        const names = visitedSlugs.map((s) => prettifySlug(s));
+                        setVisitedNames(names);
+                    });
+                return () => { mounted = false; };
+            }, [visitedSlugs]);
+
+            function prettifySlug(slug) {
+                if (!slug) return '';
+                return slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+            }
+
     const handleAvatarChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -134,7 +167,21 @@ const User = () => {
                         </div>
                         <div className='info-item'>
                             <div className='label'>Số tỉnh/thành đã đi cùng LOKO</div>
-                            <div className='value'>24/34</div>
+                                <div className='value'>{visitedSlugs.length}/{34}</div>
+                                <div className='visited-names'>
+                                    {visitedNames && visitedNames.length > 0 ? (
+                                        <>
+                                            {visitedNames.slice(0, 6).map((n, idx) => (
+                                                <span key={n + idx} className="pill">{n}</span>
+                                            ))}
+                                            {visitedNames.length > 6 && (
+                                                <span className="pill">và {visitedNames.length - 6} tỉnh khác</span>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <div style={{color: '#777'}}>Chưa có dữ liệu tỉnh đã đi</div>
+                                    )}
+                                </div>
                         </div>
                     </div>
                     <div className='ticket-section avatar-section'>
