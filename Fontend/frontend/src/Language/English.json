@@ -29,9 +29,9 @@
     "aboutus_vision": "Vision",
     "aboutus_core_values": "Core values",
     "output_suggested_itinerary": "SUGGESTED ITINERARY",
-    "output_location": "Location",
-    "output_time": "Time",
-    "output_description": "Description",
+    "output_location": "LOCATION",
+    "output_time": "TIME",
+    "output_description": "DESCRIPTION",
     "output_no_itinerary_data": "No itinerary data to display.",
     "output_ho_guom": "Ho Guom",
     "output_time_0800_1000": "08:00 - 10:00",
@@ -185,5 +185,6 @@
     "planning_phuquy_title": "Phu Quy Itinerary",
     "planning_fansipan_title": "Fansipan Itinerary",
     "planning_danang_title": "Da Nang Itinerary",
-    "planning_hcm_title": "Ho Chi Minh City Itinerary"
+    "planning_hcm_title": "Ho Chi Minh City Itinerary",
+    "go_with_LOKO": "Go with LOKO"
 }

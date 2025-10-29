@@ -7,7 +7,10 @@ import slide1 from '../img/slide1.jpg';
 import slide2 from '../img/slide2.jpg';
 import slide3 from '../img/slide3.jpg';
 import slide4 from '../img/slide4.jpg';
-import slide5 from '../img/slide5.jpg'
+import slide5 from '../img/slide5.jpg';
+import flyingBirds from '../img/flying-birds.json';
+import Lottie from 'lottie-react';
+import Ad from '../Ad/Ad';
 
 const Homepage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -151,6 +154,12 @@ const Homepage = () => {
         <div>
             <Navbar></Navbar>
             <div className='tour-sample'>
+                <Lottie
+                    animationData={flyingBirds}
+                    loop={true}
+                    autoplay={true}
+                    className="flying-birds-animation"
+                />
                 <div className='carousel-container' style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                     {slidesData.map((slide, index) => (
                         <div key={index} className='carousel-item' style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -161,12 +170,12 @@ const Homepage = () => {
                                         <div className='table-header'>
                                             <span>{translate('output_location')}</span>
                                             <span>{translate('output_time')}</span>
-                                            <span>{translate('output_description')}</span>
+                                            <span className='description-title'>{translate('output_description')}</span>
                                         </div>
                                         {slide.dataSet.map((item, itemIndex) => (
                                             <div key={itemIndex} className='table-row'>
                                                 <span>{item.diadiem}</span>
-                                                <span>{item.thoigian}</span>
+                                                <span className='time-value'>{item.thoigian}</span>
                                                 <span>{item.mota}</span>
                                             </div>
                                         ))}
@@ -179,6 +188,7 @@ const Homepage = () => {
                 <button onClick={prevSlide} className='carousel-button prev'>&#10094;</button>
                 <button onClick={nextSlide} className='carousel-button next'>&#10095;</button>
             </div>
+            <Ad className="ad"></Ad>
             <Footer></Footer>
         </div>
     );

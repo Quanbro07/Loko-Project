@@ -29,16 +29,27 @@
 
 .tour-sample {
     position: relative;
-    width: 80%;
-    margin: 20px auto;
+    width: 100%;
+    margin: 0px auto;
     overflow: hidden;
     box-shadow: 8px 10px 15px #848484;
-    border-radius: 20px;
+    border-radius: 0px;
+    margin-bottom: 20px;
+}
+
+.flying-birds-animation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1500px;
+    z-index: 2;
 }
 
 .carousel-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    width: 100%;
+    /* Ensure carousel container also spans 100% */
 }
 
 .carousel-item {
@@ -54,14 +65,13 @@
     font-size: 20px;
     position: relative;
     padding: 0;
-    border-radius: 20px;
+    border-radius: 0px;
 }
 
 .glass-itinerary-box {
     background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
     border-radius: 15px;
     padding: 20px;
     margin: 20px;
@@ -117,6 +127,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    z-index: 10;
 }
 
 .carousel-button.prev {
@@ -169,4 +180,18 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.description-title {
+    text-align: center;
+}
+
+.time-value {
+    margin-left: 25px;
+    ;
+}
+
+.go-with-loko {
+    margin: 20px 10%;
+    font-size: 40px;
 }

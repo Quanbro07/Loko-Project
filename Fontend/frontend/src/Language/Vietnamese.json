@@ -29,9 +29,9 @@
     "aboutus_vision": "Tầm nhìn",
     "aboutus_core_values": "Giá trị cốt lõi",
     "output_suggested_itinerary": "LỊCH TRÌNH ĐỀ XUẤT",
-    "output_location": "Địa điểm",
-    "output_time": "Thời gian",
-    "output_description": "Mô tả",
+    "output_location": "ĐỊA ĐIỂM",
+    "output_time": "THỜI GIAN",
+    "output_description": "MÔ TẢ",
     "output_no_itinerary_data": "Không có dữ liệu lịch trình để hiển thị.",
     "output_ho_guom": "Hồ Gươm",
     "output_time_0800_1000": "08:00 - 10:00",
@@ -185,5 +185,6 @@
     "planning_phuquy_title": "PHÚ QUÝ",
     "planning_fansipan_title": "FANSIPAN",
     "planning_danang_title": "ĐÀ NẴNG",
-    "planning_hcm_title": "THÀNH PHỐ HỒ CHÍ MINH"
+    "planning_hcm_title": "THÀNH PHỐ HỒ CHÍ MINH",
+    "go-with-LOKO":"Đi cùng LOKO"
 }
