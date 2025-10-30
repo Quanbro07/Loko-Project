@@ -17,7 +17,7 @@ GEOAPIFY_REVGEOCODE_URL = "https://api.geoapify.com/v1/geocode/reverse"
 
 GEOAPIFY_PLACES_URL = "https://api.geoapify.com/v2/places"
 
-# Nếu 90% đường đi từ một điểm bị lỗi (-1), coi đó là tọa độ hỏng
+# Nếu 50% đường đi từ một điểm bị lỗi (-1), coi đó là tọa độ hỏng
 FAILURE_THRESHOLD = 0.50
 # ========================================================
 
