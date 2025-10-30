@@ -10,150 +10,181 @@ import slide4 from '../img/slide4.jpg';
 import slide5 from '../img/slide5.jpg';
 import flyingBirds from '../img/flying-birds.json';
 import Lottie from 'lottie-react';
+import pop1 from '../img/pu1.jpg';
+import pop2 from '../img/pu2.jpg';
 import Ad from '../Ad/Ad';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import logo from '../img/logo.PNG'; // Import logo image
 
 const Homepage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [currentAd, setCurrentAd] = useState(0); // New state for ad images
     const { translate } = useLanguage();
+    const navigate = useNavigate(); // Initialize useNavigate
 
-    const dataSet1 = [
-        {
-            diadiem: translate('planning_ninhbinh_tamcoc'),
-            thoigian: translate('8am'),
-            mota: translate('planning_ninhbinh_tamcoc_description')
-        },
-        {
-            diadiem: translate('planning_ninhbinh_trangan'),
-            thoigian: translate('12pm'),
-            mota: translate('planning_ninhbinh_trangan_description')
-        },
-        {
-            diadiem: translate('planning_ninhbinh_hangmua'),
-            thoigian: translate('4pm'),
-            mota: translate('planning_ninhbinh_hangmua_description')
-        }
-    ];
-
-    const dataSet2 = [
-        {
-            diadiem: translate('planning_phuquy_dautruong'),
-            thoigian: translate('8am'),
-            mota: translate('planning_phuquy_dautruong_description')
-        },
-        {
-            diadiem: translate('planning_phuquy_lan'),
-            thoigian: translate('1pm'),
-            mota: translate('planning_phuquy_lan_description')
-        },
-        {
-            diadiem: translate('planning_phuquy_docphuot'),
-            thoigian: translate('6am'),
-            mota: translate('planning_phuquy_docphuot_description')
-        },
-    ];
-
-    const dataSet3 = [
-        {
-            diadiem: translate('planning_fansipan_tamquan'),
-            thoigian: translate('8am'),
-            mota: translate('planning_fansipan_tamquan_description')
-        },
-        {
-            diadiem: translate('planning_fansipan_baothap'),
-            thoigian: translate('10am'),
-            mota: translate('planning_fansipan_baothap_description')
-        },
-    ];
-
-    const dataSet4 = [
-        {
-            diadiem: translate('planning_danang_mykhe'),
-            thoigian: translate('6am'),
-            mota: translate('planning_danang_mykhe_description')
-        },
-        {
-            diadiem: translate('planning_danang_hoian'),
-            thoigian: translate('2pm'),
-            mota: translate('planning_danang_hoian_description')
-        },
-        {
-            diadiem: translate('planning_danang_chualinhung'),
-            thoigian: translate('8am'),
-            mota: translate('planning_danang_chualinhung_description')
-        },
-    ];
-
-    const dataSet5 = [
-        {
-            diadiem: translate('planning_hcm_cafe'),
-            thoigian: translate('5am'),
-            mota: translate('planning_hcm_cafe_description')
-        },
-        {
-            diadiem: translate('planning_hcm_baotang'),
-            thoigian: translate('9am'),
-            mota: translate('planning_hcm_baotang_description')
-        },
-        {
-            diadiem: translate('planning_hcm_nhahang'),
-            thoigian: translate('6pm'),
-            mota: translate('planning_hcm_nhahang_description')
-        },
-        {
-            diadiem: translate('planning_hcm_bar'),
-            thoigian: translate('11pm'),
-            mota: translate('planning_hcm_bar_description')
-        }
-    ]
-
-    const slidesData = [
-        {
-            image: slide1,
-            title: translate('planning_ninhbinh_title'),
-            dataSet: dataSet1,
-        },
-        {
-            image: slide2,
-            title: translate('planning_phuquy_title'),
-            dataSet: dataSet2,
-        },
-        {
-            image: slide3,
-            title: translate('planning_fansipan_title'),
-            dataSet: dataSet3,
-        },
-        {
-            image: slide4,
-            title: translate('planning_danang_title'),
-            dataSet: dataSet4,
-        },
-        {
-            image: slide5,
-            title: translate('planning_hcm_title'),
-            dataSet: dataSet5,
-        }
-    ];
+    const adImages = [pop1, pop2, slide1]; // Array of ad images
 
     useEffect(() => {
-        const slideInterval = setInterval(() => {
-            setCurrentSlide((prevSlide) => (prevSlide === slidesData.length - 1 ? 0 : prevSlide + 1));
-        }, 5000);
+        const adInterval = setInterval(() => {
+            setCurrentAd((prevAd) => (prevAd === adImages.length - 1 ? 0 : prevAd + 1));
+        }, 1000);
+        return () => clearInterval(adInterval);
+    }, [adImages.length]);
 
-        return () => clearInterval(slideInterval);
-    }, [slidesData.length]);
+    // const dataSet1 = [
+    //     {
+    //         diadiem: translate('planning_ninhbinh_tamcoc'),
+    //         thoigian: translate('8am'),
+    //         mota: translate('planning_ninhbinh_tamcoc_description')
+    //     },
+    //     {
+    //         diadiem: translate('planning_ninhbinh_trangan'),
+    //         thoigian: translate('12pm'),
+    //         mota: translate('planning_ninhbinh_trangan_description')
+    //     },
+    //     {
+    //         diadiem: translate('planning_ninhbinh_hangmua'),
+    //         thoigian: translate('4pm'),
+    //         mota: translate('planning_ninhbinh_hangmua_description')
+    //     }
+    // ];
 
-    const nextSlide = () => {
-        setCurrentSlide((prevSlide) => (prevSlide === slidesData.length - 1 ? 0 : prevSlide + 1));
-    };
+    // const dataSet2 = [
+    //     {
+    //         diadiem: translate('planning_phuquy_dautruong'),
+    //         thoigian: translate('8am'),
+    //         mota: translate('planning_phuquy_dautruong_description')
+    //     },
+    //     {
+    //         diadiem: translate('planning_phuquy_lan'),
+    //         thoigian: translate('1pm'),
+    //         mota: translate('planning_phuquy_lan_description')
+    //     },
+    //     {
+    //         diadiem: translate('planning_phuquy_docphuot'),
+    //         thoigian: translate('6am'),
+    //         mota: translate('planning_phuquy_docphuot_description')
+    //     },
+    // ];
 
-    const prevSlide = () => {
-        setCurrentSlide((prevSlide) => (prevSlide === 0 ? slidesData.length - 1 : prevSlide - 1));
-    };
+    // const dataSet3 = [
+    //     {
+    //         diadiem: translate('planning_fansipan_tamquan'),
+    //         thoigian: translate('8am'),
+    //         mota: translate('planning_fansipan_tamquan_description')
+    //     },
+    //     {
+    //         diadiem: translate('planning_fansipan_baothap'),
+    //         thoigian: translate('10am'),
+    //         mota: translate('planning_fansipan_baothap_description')
+    //     },
+    // ];
+
+    // const dataSet4 = [
+    //     {
+    //         diadiem: translate('planning_danang_mykhe'),
+    //         thoigian: translate('6am'),
+    //         mota: translate('planning_danang_mykhe_description')
+    //     },
+    //     {
+    //         diadiem: translate('planning_danang_hoian'),
+    //         thoigian: translate('2pm'),
+    //         mota: translate('planning_danang_hoian_description')
+    //     },
+    //     {
+    //         diadiem: translate('planning_danang_chualinhung'),
+    //         thoigian: translate('8am'),
+    //         mota: translate('planning_danang_chualinhung_description')
+    //     },
+    // ];
+
+    // const dataSet5 = [
+    //     {
+    //         diadiem: translate('planning_hcm_cafe'),
+    //         thoigian: translate('5am'),
+    //         mota: translate('planning_hcm_cafe_description')
+    //     },
+    //     {
+    //         diadiem: translate('planning_hcm_baotang'),
+    //         thoigian: translate('9am'),
+    //         mota: translate('planning_hcm_baotang_description')
+    //     },
+    //     {
+    //         diadiem: translate('planning_hcm_nhahang'),
+    //         thoigian: translate('6pm'),
+    //         mota: translate('planning_hcm_nhahang_description')
+    //     },
+    //     {
+    //         diadiem: translate('planning_hcm_bar'),
+    //         thoigian: translate('11pm'),
+    //         mota: translate('planning_hcm_bar_description')
+    //     }
+    // ]
+
+    // const slidesData = [
+    //     {
+    //         image: slide1,
+    //         title: translate('planning_ninhbinh_title'),
+    //         dataSet: dataSet1,
+    //     },
+    //     {
+    //         image: slide2,
+    //         title: translate('planning_phuquy_title'),
+    //         dataSet: dataSet2,
+    //     },
+    //     {
+    //         image: slide3,
+    //         title: translate('planning_fansipan_title'),
+    //         dataSet: dataSet3,
+    //     },
+    //     {
+    //         image: slide4,
+    //         title: translate('planning_danang_title'),
+    //         dataSet: dataSet4,
+    //     },
+    //     {
+    //         image: slide5,
+    //         title: translate('planning_hcm_title'),
+    //         dataSet: dataSet5,
+    //     }
+    // ];
+
+    // useEffect(() => {
+    //     const slideInterval = setInterval(() => {
+    //         setCurrentSlide((prevSlide) => (prevSlide === slidesData.length - 1 ? 0 : prevSlide + 1));
+    //     }, 5000);
+
+    //     return () => clearInterval(slideInterval);
+    // }, [slidesData.length]);
+
+    // const nextSlide = () => {
+    //     setCurrentSlide((prevSlide) => (prevSlide === slidesData.length - 1 ? 0 : prevSlide + 1));
+    // };
+
+    // const prevSlide = () => {
+    //     setCurrentSlide((prevSlide) => (prevSlide === 0 ? slidesData.length - 1 : prevSlide - 1));
+    // };
 
     return (
         <div>
             <Navbar></Navbar>
-            <div className='tour-sample'>
+            <div>
+                <div className='travel-with-loko'>
+                    {translate("travel_with_loko").replace('LOKO', '')}
+                    <img src={logo} alt="LOKO Logo" className='loko-in-text-logo' />
+                </div>
+                <div className="homepage-banner">
+                    <div className='left-column'>
+                        <img className='pop-img' src={adImages[currentAd]} alt="Advertisement" />
+                    </div>
+                    <div className='right-column'>
+                        <div className='banner-text'>{translate("banner_text")}</div>
+                        <div className='banner-subtext'>{translate("banner_subtext")}</div>
+                        <button className='get-started' onClick={() => navigate('/search')}>{translate("get_started")}</button>
+                    </div>
+                </div>
+            </div>
+            {/* <div className='tour-sample'>
                 <Lottie
                     animationData={flyingBirds}
                     loop={true}
@@ -187,7 +218,7 @@ const Homepage = () => {
                 </div>
                 <button onClick={prevSlide} className='carousel-button prev'>&#10094;</button>
                 <button onClick={nextSlide} className='carousel-button next'>&#10095;</button>
-            </div>
+            </div> */}
             <Ad className="ad"></Ad>
             <Footer></Footer>
         </div>

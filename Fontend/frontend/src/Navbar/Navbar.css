@@ -156,6 +156,11 @@
     margin: 0px 10px;
 }
 
+.navbar-logo {
+    height: 80px;
+    margin-left: 20px;
+}
+
 .right-nav {
     flex: 1;
     display: flex;

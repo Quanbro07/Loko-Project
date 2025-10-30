@@ -19,7 +19,7 @@
     font-family: "Fascinate Inline", system-ui;
 }
 
-.itinerary-results-container {
+/* .itinerary-results-container {
     margin-top: 20px;
     z-index: 10;
     display: flex;
@@ -49,7 +49,6 @@
     display: flex;
     transition: transform 0.5s ease-in-out;
     width: 100%;
-    /* Ensure carousel container also spans 100% */
 }
 
 .carousel-item {
@@ -66,9 +65,9 @@
     position: relative;
     padding: 0;
     border-radius: 0px;
-}
+} */
 
-.glass-itinerary-box {
+/* .glass-itinerary-box {
     background-color: rgba(255, 255, 255, 0.2);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(8px);
@@ -148,9 +147,9 @@
     border-collapse: collapse;
     border-radius: 20px;
     padding: 0px 30px;
-}
+} */
 
-.table-header,
+/* .table-header,
 .table-row {
     display: grid;
     grid-template-columns: 1fr 0.5fr 1.5fr;
@@ -184,9 +183,9 @@
 
 .description-title {
     text-align: center;
-}
+} */
 
-.time-value {
+/* .time-value {
     margin-left: 25px;
     ;
 }
@@ -194,4 +193,150 @@
 .go-with-loko {
     margin: 20px 10%;
     font-size: 40px;
+} */
+
+.travel-with-loko {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    margin: 40px 0px;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    color: #003c72;
+    animation: textReveal 2.0s ease-out forwards;
+    display: flex;
+    /* Added to align items */
+    align-items: center;
+    /* Added to vertically center items */
+    justify-content: center;
+    /* Added to horizontally center content */
+}
+
+.loko-in-text-logo {
+    height: 150px;
+    margin-left: 10px;
+}
+
+.homepage-banner {
+    width: 1050px;
+    height: 460px;
+    display: flex;
+    flex-direction: row;
+    margin: 0px auto;
+    align-items: center;
+    justify-content: space-between;
+    padding: auto 20px;
+    background: linear-gradient(to bottom right, #001f3f, #003366, #004c8c, #0066cc);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    margin-top: -50px;
+}
+
+/* Define the new animation */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.left-column {
+    position: relative;
+}
+
+.left-column::after {
+    content: '';
+    position: absolute;
+    height: 80%;
+    width: 1px;
+    background-color: white;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pop-img {
+    width: 500px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out;
+    animation: slideIn 0.5s forwards;
+    margin: 30px;
+}
+
+.banner-text {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 40px;
+    text-align: center;
+    padding: 30px;
+    color: #fdfdfd;
+}
+
+.banner-subtext {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #fdfdfd;
+    text-align: center;
+    font-size: 15px;
+}
+
+.get-started {
+    width: 200px;
+    font-size: 30px;
+    height: 60px;
+    margin: 40px auto;
+    color: #fdfdfd;
+    border-radius: 15px;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #ff8c00, #ff4500);
+}
+
+.get-started:hover {
+    cursor: pointer;
+}
+
+.get-started::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transform: skewX(-20deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: 100%;
+    }
+
+    23.33% {
+        left: -100%;
+    }
+
+    100% {
+        left: -100%;
+    }
 }
