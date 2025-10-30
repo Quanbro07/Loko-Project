@@ -91,17 +91,31 @@ def format_and_save_solution(solution, manager, routing, time_dim, instance):
         route_nodes.append((node, arrival, leave))
         start_time = format_time(arrival)
         end_time = format_time(leave)
-        name = PLACES[node]["place"]
+        
+        # --- ✅ Lấy tên địa điểm linh hoạt (ưu tiên title) ---
+        place_info = PLACES[node]
+        name = place_info.get("title") or place_info.get("name") or place_info.get("place") or "Unknown place"
+
         print(f"- [{start_time} → {end_time}] {name} ({SERVICE_TIME[node]} mins)")
         index = solution.Value(routing.NextVar(index))
 
     end_node = manager.IndexToNode(index)
     end_time = solution.Value(time_dim.CumulVar(index))
-    print(f"- [End at {format_time(end_time)}] {PLACES[end_node]['place']}")
+    end_name = (
+        PLACES[end_node].get("title")
+        or PLACES[end_node].get("name")
+        or PLACES[end_node].get("place")
+        or "Unknown place"
+    )
+    print(f"- [End at {format_time(end_time)}] {end_name}")
     print("=" * 60)
     print(f"Total time: {total_time} mins")
 
     visited = [n for n, _, _ in route_nodes]
     skipped = [i for i in range(len(PLACES)) if i not in visited]
+    skipped_names = [
+        PLACES[i].get("title") or PLACES[i].get("name") or PLACES[i].get("place")
+        for i in skipped if i != 0
+    ]
     print(f"\nVisited {len(visited)} places; skipped {len(skipped)}:")
-    print([PLACES[i]["place"] for i in skipped if i != 0])
+    print(skipped_names)
