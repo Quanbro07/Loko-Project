@@ -33,6 +33,7 @@ def create_instance_from_files(preferred_tags=None):
 
         if "restaurant" in tags:
             lunch_nodes.append(locs.index(loc))
+            
         time_windows.append(tw)
 
     return {

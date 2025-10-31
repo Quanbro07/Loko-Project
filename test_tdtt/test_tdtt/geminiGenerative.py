@@ -9,7 +9,7 @@ import google.generativeai as genai
 API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
 # ==============================================================================
 
-INPUT_FILE = "da_nang_attractions.json"
+INPUT_FILE = "ha_noi.json"
 OUTPUT_FILE = "attractions_with_tags.json"
 
 genai.configure(api_key=API_KEY)
@@ -26,12 +26,7 @@ Given a single place name (short, e.g., "Ha Long Bay" or "Ben Thanh Market, HCMC
 ━━━━━━━━━━━━━━
 ✅ ALLOWED TAG LIST (USE EXACT LABELS ONLY):
 
-beach, island, mountain, river, lake, waterfall, cave, park, garden, viewpoint,
-harbor, square, market, shopping, village, nature, stadium, museum, palace,
-fortress, bridge, tower, statue, landmark, temple, pagoda, cathedral, religion,
-hotel, resort, homestay, restaurant, street-food, spa, "yacht / cruise", amusement,
-zoo, diving, trekking, camping, watersport, family, kid, couple, trendy, crowded,
-dangerous, night-spot, budget-friendly, luxury
+snack, restaurant, cafe, night market, market, speciality
 
 (Use the string `"yacht / cruise"` exactly if applicable.)
 
@@ -51,20 +46,15 @@ STRICT RULES (READ CAREFULLY — THEY ARE ENFORCED):
 
 4) **NO EXTRA TAGS** — Use ONLY tags from the allowed list. Do not invent new labels or synonyms.
 
-5) **SENSIBLE FALLBACKS** — If exactly 1 highly-certain primary tag is known, pick **one** general fallback among `nature`, `landmark`, or `shopping` (only if applicable) to reach the minimum of 2 tags. Use the fallback that is least assumptive (prefer `nature` for natural sites, `landmark` for named monuments).
+5) **SPECIAL TAG RULES**:
+    - "snack" → only for small eateries or stalls specializing in light meals, street snacks, or quick bites (e.g., bánh mì stands, dumpling carts, bubble tea shops). Not for full-service restaurants or cafés.
+    - "speciality" → used exclusively for places known for regional signature dishes or must-try local foods. The item must be a well-known specialty of that city or province, and the place must be recognized for serving it. Also, that dishes is hardly to find in other provinces (e.g., "Bún bò Huế" in Huế, "Cao lầu" in Hội An).
+    - "cafe" → applies to coffee shops, tea houses, or beverage-focused venues where the main experience is drinking and relaxing rather than eating full meals. Do not use for restaurants that merely serve coffee.
+    - "restaurant" → only for venues primarily offering full meals (lunch, dinner) with table service or substantial dining menus. Excludes casual snack stalls or cafés.
+    - "market" → for daytime or general public markets where shopping for goods or produce is the main activity. Includes traditional wet markets, local bazaars, and shopping streets open during the day.
+    - "night market" → only for markets operating mainly at night and into late hours, where the evening or night atmosphere is a key attraction.
 
-6) **SPECIAL TAG RULES**:
-   - `"shopping"` → only for malls, markets, shopping streets; not for a street that occasionally has shops.
-   - `"hotel"`, `"resort"`, `"homestay"` → only when the place is primarily accommodation.
-   - `"viewpoint"` → only if the site’s main draw is the scenic view.
-   - `"temple"`, `"pagoda"`, `"cathedral"` → use the specific one; add `"religion"` only if the religious function is central and widely recognized.
-   - `"dangerous"` → only for places where adventurous or hazardous activities are typical (cliffs without barriers, extreme trekking, deep-cave exploration).
-   - `"kid"`, `"family"` → only when the place is explicitly suitable or designed for children/families (theme parks, zoos with family facilities).
-   - `"crowded"`, `"trendy"`, `"night-spot"`, `"budget-friendly"`, `"luxury"` → use these only if the place is commonly described this way in travel/guide sources (do not guess).
-
-7) **PREFER FACTS OVER MARKETING** — Do not tag marketing adjectives (e.g., don’t tag “luxury” unless the place is widely recognized as luxury).
-
-8) **NO EXPLANATION** — Output must be exactly and only the JSON (see format). No extra text, no commentary.
+6) **NO EXPLANATION** — Output must be exactly and only the JSON (see format). No extra text, no commentary.
 
 ━━━━━━━━━━━━━━
 OUTPUT FORMAT (STRICT):
