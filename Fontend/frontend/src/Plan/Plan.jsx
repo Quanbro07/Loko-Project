@@ -1,12 +1,13 @@
 import Input from "../Input/Input";
 import Navbar from "../Navbar/Navbar";
-import '../Homepage/Homepage.css';
+import './Plan.css';
 import React, { useState } from 'react';
 import Lottie from 'lottie-react';
 import paperPlaneAnimation from '../lottie/Paper plane.json';
 import Output from '../Output/Output';
 import Footer from "../Footer/Footer";
 import { useLanguage } from '../Language/LanguageContext';
+import logo from '../img/logo.PNG';
 
 const Plan = () => {
     const [showLoadingAnimation, setShowLoadingAnimation] = useState(false);
@@ -26,7 +27,6 @@ const Plan = () => {
     return (
         <div className="homepage-background">
             <Navbar />
-            <div className='loko'>{translate('homepage_loko')}</div>
             <Input onSearch={handleSearch} />
             <div className="itinerary-results-container">
                 {showLoadingAnimation && (
@@ -36,7 +36,7 @@ const Plan = () => {
                 )}
                 {!showLoadingAnimation && hasSearched && <Output />}
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

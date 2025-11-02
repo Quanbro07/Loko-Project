@@ -2,6 +2,9 @@
     width: 100%;
     background-color: #003c72;
     padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar-list {
@@ -120,28 +123,6 @@
     max-width: 200px;
 }
 
-@media (max-width: 768px) {
-    .navbar-list {
-        width: 90%;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .auth-buttons {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .auth-btn {
-        padding: 6px 12px;
-        font-size: 12px;
-    }
-
-    .user-info {
-        flex-direction: column;
-        gap: 5px;
-    }
-}
 
 .mid-nav {
     display: flex;

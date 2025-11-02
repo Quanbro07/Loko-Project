@@ -13,7 +13,7 @@ function App() {
     <LanguageProvider> {/* Wrap Routes with LanguageProvider */}
       <AuthProvider> {/* Wrap with AuthProvider */}
         <Routes>
-          <Route path="/" element={<Plan />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/user" element={<User />} /> {/* Add new route for User */}

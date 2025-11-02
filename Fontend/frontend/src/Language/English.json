@@ -190,5 +190,15 @@
     "travel_with_loko": "TRAVEL WITH LOKO",
     "banner_text": "Wanderlust is the call? LOKO plans it all! Join us!",
     "get_started": "START",
-    "banner_subtext": "3000+ plans greater than your ex excuses."
+    "banner_subtext": "3000+ plans greater than your ex excuses.",
+    "list-title": "WHAT'S YOUR FAVOURITE ?",
+    "culture": "CULTURE",
+    "external": "OUTDOOR",
+    "adventure": "ADVENTURE",
+    "healing": "HEALING",
+    "modal_title": "MAP CONFUSION ?",
+    "modal_message": "LOKO BRINGS THE SOLUTION!",
+    "input_next_button": "Continue",
+    "input_prev_button": "Back",
+    "input_time_label": "Choose your date"
 }

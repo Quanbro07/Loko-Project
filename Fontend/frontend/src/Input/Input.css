@@ -1,10 +1,10 @@
 .input-container {
-    width: 50%;
-    height: 100%;
+    width: 800px;
+    height: 600px;
     display: flex;
     flex-direction: column;
-    align-items: space-between;
-    justify-content: space-around;
+    align-items: start;
+    justify-content: space-between;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 20px;
@@ -19,29 +19,150 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     border-radius: 10px;
+    margin-top: 40px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-evenly;
+    width: 3200px;
+    height: 600px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.sliding-input {
     padding-top: 20px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.loko-logo {
+    width: 200px;
+    margin: -20px auto;
+}
+
+.search-button,
+.next-button,
+.prev-button {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ef8d23;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 150px;
+}
+
+.button-list {
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.next-button:hover {
+    background-color: #15741a;
+}
+
+.prev-button:hover {
+    background-color: rgb(154, 5, 5);
 }
 
 .destination {
-    display: flex;
-    flex-direction: row;
     align-items: start;
     justify-content: space-around;
 }
 
+.time-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 4px;
+    width: 200px;
+
+}
+
+.time-group {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.time-select {
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 20px;
+    text-align: center;
+    -webkit-appearance: none;
+    /* Tùy chỉnh giao diện mặc định của trình duyệt */
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.hour {
+    text-align: center;
+}
+
+/* Đảm bảo ô giờ có đủ chỗ cho 2 chữ số */
+
+/* Dấu ngăn cách giữa Giờ và Phút */
+.separator {
+    margin: 0 2px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Dấu ngăn cách giữa Start Time và End Time */
+.main-separator {
+    margin: 0 15px;
+    /* Tạo khoảng cách lớn hơn */
+    font-size: 20px;
+    font-weight: 500;
+    color: #888;
+}
+
+.province-select {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
 .option-select {
     width: 300px;
-    height: 30px;
+    height: 50px;
     border-radius: 5px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
     background-color: #ffffff;
     color: #353535;
+    box-shadow: 2px 2px 5px #5e5d5d;
+    cursor: pointer;
 }
 
 .time {
@@ -50,6 +171,7 @@
     flex-direction: row;
     align-items: start;
     justify-content: space-around;
+    gap: 50px;
 }
 
 .date-picker-wrapper {
@@ -57,11 +179,12 @@
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 5px 10px;
     background-color: #ffffff;
-    height: 50px;
-    width: 220px;
+    height: 60px;
+    width: 250px;
+    box-shadow: 2px 2px 5px #333;
 }
 
 .custom-date-input {
@@ -72,8 +195,8 @@
     height: 100%;
     width: 150%;
     cursor: pointer;
-    font-size: 16px;
-    padding-left: 6px;
+    font-size: 20px;
+    padding-left: 10px;
 }
 
 .day-display {
@@ -145,12 +268,20 @@
     visibility: hidden;
 }
 
+#si3 {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
 .amount {
+    width: 800px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    margin: 10px 80px;
+    justify-content: space-around;
+    margin: 10px;
+    font-size: 20px;
 }
 
 .travel-type-group {
@@ -161,20 +292,24 @@
 }
 
 .age {
+    width: 800px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin: -10px 28px;
-    margin-bottom: 0px;
+    font-size: 20px;
 }
 
-.child {
-    transform: translateX(-8px);
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 85px;
 }
 
-.adult {
-    transform: translateX(10px);
+.name,
+.age-title {
+    width: 200px;
 }
 
 .type {
@@ -183,7 +318,9 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin: 0px 35px;
+    margin: -10px 35px;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .type-list {
@@ -196,6 +333,7 @@
 .hour {
     display: flex;
     flex-direction: column;
+    font-size: 20px;
 }
 
 .hour-list {
@@ -211,13 +349,6 @@
 
 }
 
-.search-button-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
 .search-button {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #ef8d23;
@@ -228,6 +359,28 @@
     font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.next-button-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.next-button-container button {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.next-button-container button:hover {
+    background-color: #45a049;
 }
 
 .search-button:hover {
