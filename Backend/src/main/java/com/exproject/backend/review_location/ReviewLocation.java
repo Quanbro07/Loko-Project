@@ -1,7 +1,7 @@
-package com.exproject.backend.trip_history;
+package com.exproject.backend.review_location;
 
-import com.exproject.backend.trip.Trip;
 import com.exproject.backend.location.Location;
+import com.exproject.backend.trip.Trip;
 import com.exproject.backend.user.info.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,15 +9,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "trip_history")
-public class TripHistory {
+@Table(name = "review_location")
+public class ReviewLocation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +26,16 @@ public class TripHistory {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trip_id", nullable = false)
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "trip_id")
     private Trip trip;
 
+    private Integer rating;
 
-    @Column(name = "visit_date")
-    private LocalDate visitDate;
+    @Column(columnDefinition = "TEXT")
+    private String comment;
+
 }

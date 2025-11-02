@@ -69,10 +69,7 @@ public class AuthenticationService {
         String jwtAccessToken = jwtService.generateAccessToken(newUser);
         String jwtRefreshToken = jwtService.generateRefreshToken(newUser);
 
-        return AuthenticationResponse.builder()
-                .accessToken(jwtAccessToken)
-                .refreshToken(jwtRefreshToken)
-                .build();
+        return buildAuthenticationResponse(newUser,jwtAccessToken,jwtRefreshToken);
     }
 
     // Authenticate
@@ -90,10 +87,7 @@ public class AuthenticationService {
         String jwtAccessToken = jwtService.generateAccessToken(user);
         String jwtRefreshToken = jwtService.generateRefreshToken(user);
 
-        return AuthenticationResponse.builder()
-                .accessToken(jwtAccessToken)
-                .refreshToken(jwtRefreshToken)
-                .build();
+        return buildAuthenticationResponse(user,jwtAccessToken,jwtRefreshToken);
     }
 
     public AuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
@@ -108,18 +102,32 @@ public class AuthenticationService {
 
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
 
+        User existUser = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
         // Check Valid Token
         if(jwtService.isTokenValid(userDetails, refreshToken)) {
 
             String jwtAccessToken = jwtService.generateAccessToken(userDetails);
 
-            return AuthenticationResponse.builder()
-                    .accessToken(jwtAccessToken)
-                    .refreshToken(refreshToken)
-                    .build();
+            return buildAuthenticationResponse(existUser,jwtAccessToken,refreshToken);
         }
         else {
             throw new InvalidTokenException("Refresh token is expired or invalid");
         }
+    }
+
+    private AuthenticationResponse buildAuthenticationResponse(User user,
+           String jwtAccessToken,
+           String jwtRefreshToken)
+    {
+
+        return AuthenticationResponse.builder()
+                .accessToken(jwtAccessToken)
+                .refreshToken(jwtRefreshToken)
+                .username(user.getDisplayUserName())
+                .age(user.getAge())
+                .gender(user.getGender())
+                .build();
     }
 }

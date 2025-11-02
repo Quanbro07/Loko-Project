@@ -6,4 +6,4 @@ spring:
     name: loko-backend
 
   profiles:
-    active: product
+    active: dev

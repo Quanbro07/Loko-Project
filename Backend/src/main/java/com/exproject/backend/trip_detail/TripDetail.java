@@ -1,10 +1,19 @@
 package com.exproject.backend.trip_detail;
 
+import com.exproject.backend.location.Location;
 import com.exproject.backend.trip_section.TripSection;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "trip_detail")
 public class TripDetail {
@@ -17,6 +26,10 @@ public class TripDetail {
     @JoinColumn(name = "trip_section_id", nullable = false)
     private TripSection tripSection;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
+
     @Column(name = "sequence_order")
     private Integer sequenceOrder;
 
@@ -28,51 +41,4 @@ public class TripDetail {
 
     @Column(name = "transport_note")
     private String transportNote;
-
-    public TripDetail() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public TripSection getTripSection() {
-        return tripSection;
-    }
-
-    public void setTripSection(TripSection tripSection) {
-        this.tripSection = tripSection;
-    }
-
-    public Integer getSequenceOrder() {
-        return sequenceOrder;
-    }
-
-    public void setSequenceOrder(Integer sequenceOrder) {
-        this.sequenceOrder = sequenceOrder;
-    }
-
-    public LocalTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public LocalTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
-    }
-
-    public String getTransportNote() {
-        return transportNote;
-    }
-
-    public void setTransportNote(String transportNote) {
-        this.transportNote = transportNote;
-    }
 }

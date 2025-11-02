@@ -1,8 +1,20 @@
 package com.exproject.backend.trip_section;
 
 import com.exproject.backend.trip.Trip;
+import com.exproject.backend.trip_detail.TripDetail;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "trip_section")
 public class TripSection {
@@ -15,6 +27,9 @@ public class TripSection {
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip trip;
 
+    @OneToMany(mappedBy = "tripSection", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TripDetail> tripDetails = new ArrayList<>();
+
     @Column(name = "day_number")
     private Integer dayNumber;
 
@@ -24,41 +39,4 @@ public class TripSection {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    public TripSection() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public Trip getTrip() {
-        return trip;
-    }
-
-    public void setTrip(Trip trip) {
-        this.trip = trip;
-    }
-
-    public Integer getDayNumber() {
-        return dayNumber;
-    }
-
-    public void setDayNumber(Integer dayNumber) {
-        this.dayNumber = dayNumber;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }
