@@ -1,25 +1,25 @@
+# main.py
+from tag_rules.food_profile import FoodProfile
 from data_loader import create_instance_from_files
-from itinerary_solver import solve_itinerary, format_and_save_solution
-from tag_rules import get_preferred_tags
+from solvers.food_solver import FoodSolver # <-- SỬA: Import FoodSolver
 
 if __name__ == "__main__":
-    print("Chọn loại hình du lịch:")
-    print("1. Ẩm thực")
-    print("2. Vui chơi giải trí")
-    print("3. Mạo hiểm")
-    print("4. Chụp hình sống ảo")
-    print("5. Văn hóa lịch sử")
-    print("6. Nghỉ dưỡng")
-    print("7. Tuần trăng mật")
-    print("8. Giải trí đêm")
-    print("9. Du lịch biển đảo")
-
-    choice = int(input("Nhập số (1–9): "))
-    preferred_tags = get_preferred_tags(choice)
-    print(f"\n✅ Tags ưu tiên cho lựa chọn {choice}: {preferred_tags}")
-
-    instance = create_instance_from_files(preferred_tags)
-    solution, manager, routing, time_dim = solve_itinerary(instance, 15)
-
-    if solution:
-        format_and_save_solution(solution, manager, routing, time_dim, instance)
+    print("=== DU LỊCH ẨM THỰC ===")
+    
+    # Các tag người dùng ưu tiên (có thể lấy từ UI)
+    preferred_tags = ["restaurant", "speciality"] 
+    
+    # 1. Chọn Profile
+    profile = FoodProfile()
+    
+    # 2. Tải dữ liệu dựa trên profile
+    instance = create_instance_from_files(profile, preferred_tags)
+    
+    # 3. Khởi tạo Solver đặc thù
+    solver = FoodSolver(instance, profile) # <-- SỬA: Khởi tạo Solver
+    
+    # 4. Chạy solver với vòng lặp phản hồi
+    solver.run_solver_with_feedback(
+        max_attempts=3, 
+        time_limit_seconds=30
+    ) # <-- SỬA: Gọi hàm của solver

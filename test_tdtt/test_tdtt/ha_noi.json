@@ -317,56 +317,6 @@
     },
     {
         "type_of_place": "snack",
-        "title": "Gánh Hà Nội",
-        "place_id": "ChIJi-Y8nu2rNTERnDyqLfFQqgs",
-        "latitude": 21.0353626,
-        "longitude": 105.85035359999999,
-        "types": [
-            "Nhà hàng",
-            "Nhà hàng phở",
-            "Nhà hàng cơm",
-            "Nhà hàng Việt Nam"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–23:00",
-            "thứ bảy": "10:00–23:00",
-            "chủ nhật": "10:00–23:00",
-            "thứ hai": "10:00–23:00",
-            "thứ ba": "10:00–23:00",
-            "thứ tư": "10:00–23:00",
-            "thứ năm": "10:00–23:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwQ_yiqnTE9DdfxnruMGVdyK-koujgHEfgUUFtUSPYP2t2weTUt1y4dmOzafAsT-qHkRtiZkRWVmr2ucZNLTpUd66iqFL-PMiRMQqlwdBj5quXs-26azXlo7ZEgmQB64b7ikfeACmrRhDWx=w80-h106-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "MẸT Vietnamese restaurant & Vegetarian Food 3",
-        "place_id": "ChIJB1EGIX-rNTER9GVryLt_d3c",
-        "latitude": 21.0341351,
-        "longitude": 105.85128929999999,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Nhà hàng ăn chay",
-            "Nhà hàng",
-            "Nhà hàng món chay"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–22:30",
-            "thứ bảy": "10:00–22:30",
-            "chủ nhật": "10:00–22:30",
-            "thứ hai": "10:00–22:30",
-            "thứ ba": "10:00–22:30",
-            "thứ tư": "10:00–22:30",
-            "thứ năm": "10:00–22:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwaWqoAkTDkSbf59VJzJc5C2R_HfJuLV_xX5a3vZgMAx-E0_T5S4MWIE6nugNmfBq3nnO_GrmgSHO9ua02-Ix1HQm4VcymTzgFDRUEKjytd03XIrm8GgdSRQpqP8zJgmvYg1s-3=w122-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
         "title": "Maison Marou Flagship Hanoi",
         "place_id": "ChIJMd_X_ZKrNTERBmDflf5QgO4",
         "latitude": 21.0220496,
@@ -536,80 +486,6 @@
         "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7Hra73gQXNKRyXdHOfxMvblcLNCCS4MkHBqXMheZez-jP2FU5Yl3d0aJj4uexmSm3DsL_opXb0DEbfOHrVkin-KhJDB26W7KqjtLwhwLMBPN6ivtEnZ9hAzIBeHOstV3F-ea8=w122-h92-k-no",
         "rating": 4.8,
         "description": "Nhà hàng cao cấp phục vụ ẩm thực Việt Nam. Nhà hàng khách sạn trang nhã phục vụ các món đặc sản địa phương truyền thống của Việt Nam và ẩm thực phương Tây."
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Hong Hoai's Restaurant",
-        "place_id": "ChIJXROtYr6rNTERRKeVXUeNGUY",
-        "latitude": 21.0338439,
-        "longitude": 105.8474725,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Lớp học nấu ăn",
-            "Nhà hàng món chay",
-            "Nhà hàng cho người ăn chay"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–23:00",
-            "thứ bảy": "10:00–23:00",
-            "chủ nhật": "10:00–23:00",
-            "thứ hai": "10:00–23:00",
-            "thứ ba": "10:00–23:00",
-            "thứ tư": "10:00–23:00",
-            "thứ năm": "10:00–23:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyUU61hPl0LLWLT-G1Muxk1Df1C_3l19SNcQVXRXJ-QROMA4sDdMlrm1G82Wl0srgesmkxvpbuQSWVEbyyNnOkbh4l5yWXMDuVuA40lZ7hgZo6LLICvPj8ka-CEJ4yBARkG5hw7=w127-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "MẸT Vietnamese restaurant & Vegetarian Food 1",
-        "place_id": "ChIJhTP76EmrNTEROXzNX7wJjOw",
-        "latitude": 21.030751,
-        "longitude": 105.8495942,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Nhà hàng",
-            "Nhà hàng món chay"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–22:30",
-            "thứ bảy": "10:00–22:30",
-            "chủ nhật": "10:00–22:30",
-            "thứ hai": "10:00–22:30",
-            "thứ ba": "10:00–22:30",
-            "thứ tư": "10:00–22:30",
-            "thứ năm": "10:00–22:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJ35Fmn_tpdKclXkU6QnBsGr-0a5VlkC0KX8gS2oMCdxnRuWvN7rZqubgva4iwB-bGLbiQDt2mOauR41Nfd82ZwEmHoZCzNbqJ4vErhSjndSPalEYQnf4Omii3RMlUnUdfZZyeNbq4clvs=w80-h106-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "MẸT Vietnamese restaurant & Vegetarian Food 5",
-        "place_id": "ChIJo30SQy-rNTER4esp9YxAGpc",
-        "latitude": 21.031441599999997,
-        "longitude": 105.8491895,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Nhà hàng ăn chay",
-            "Nhà hàng",
-            "Nhà hàng món chay"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–22:30",
-            "thứ bảy": "10:00–22:30",
-            "chủ nhật": "10:00–22:30",
-            "thứ hai": "10:00–22:30",
-            "thứ ba": "10:00–22:30",
-            "thứ tư": "10:00–22:30",
-            "thứ năm": "09:00–22:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyQxgYg7jALQOYISLoc1zk144Tmnx921txC92LLTg2DfB5EYABg82PTMPeO-eJ_UNOn-p4Yo-tKLYG8cBQ_1xAIXBMiYMj9ZC4McC-RhhUA4M5BCaLnJvBdwxo6wfwwvHWBTc1s0W-FPws=w163-h92-k-no",
-        "rating": 4.9,
-        "description": null
     },
     {
         "type_of_place": "specialities",
@@ -1185,51 +1061,6 @@
     },
     {
         "type_of_place": "cafe",
-        "title": "C.O.C Legacy Specialty Coffee",
-        "place_id": "ChIJqw8ktzSrNTER1M6QGyJJPvI",
-        "latitude": 21.0340494,
-        "longitude": 105.8518071,
-        "types": [
-            "Quán cà phê"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwrcSZWZo9i25knpdN7GoEtKaC4w89rx1_dVtuzIIZW2bayp-uUg3rg98DLDLMCeqNhlZq7mc0ntErRNyBmVPn7Ajvvfdf7Ug38lDWDlzrhviW_vqccYDVxvozGHTvJIX8Mkb4krg=w80-h106-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Hidden Alley",
-        "place_id": "ChIJoX7SWsCrNTERiqMBuVnD2DU",
-        "latitude": 21.0307854,
-        "longitude": 105.85029949999999,
-        "types": [
-            "Quán cà phê"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxIl-SBpPm4bSYgc06BoH3yAGGOMPZeUcvl4haZGEKSB-Xn5X6hgihqOUIbCQKSeg7T3Tfj-otT_VzGhEiulf-auvKemIXo4ysuMwIEn70GmA0SOIPZoGwgrkCXO-3Yyhah43Y-=w80-h106-k-no",
-        "rating": 4.8,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "The Note Coffee",
-        "place_id": "ChIJl7OUwr-rNTERr7RCHxAFMNU",
-        "latitude": 21.031592699999997,
-        "longitude": 105.8508961,
-        "types": [
-            "Quán cà phê",
-            "Tiệm bánh",
-            "Cửa hàng bán nước quả ép",
-            "Cửa hàng sandwich"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwuUk7L8L01mv37YVe_EKQkr2cFFap450pPOcII0O6UNN-vAYYt5FZuzhRAgr3lYM_fTNfdWxtHFnFKElLcjthom4r8Ktpb0wGbtTn7jer6ilIxi66fwGtFKvz4u4yPFK6J85KD=w122-h92-k-no",
-        "rating": 4.4,
-        "description": "Quán cà phê trang trí bằng giấy độc đáo. Quán cà phê ấm cúng, phục vụ bánh và cà phê, nổi tiếng với bức tường sặc sỡ phủ đầy giấy viết tay của khách."
-    },
-    {
-        "type_of_place": "cafe",
         "title": "Always’",
         "place_id": "ChIJdwHX0marNTERNlL5SJi6ZbA",
         "latitude": 21.033535699999998,
@@ -1323,43 +1154,6 @@
         "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxPb4c7tAk3ge6vMTA7T2YeqXEg4x0CROw5tM1omIp82lqq3-EeKzY64Lz7WbS9wUiDkaO46aatH0tz0h1uxsixC1bC0x1079RSv4_Jq7ZPYLhlZ3u3FjbdnoTn-pp5Yb5yxMFcXQ=w122-h92-k-no",
         "rating": 4.3,
         "description": null
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Hanoi Weekend Night Market Start Point",
-        "place_id": "ChIJ3x01HQCrNTERtBCN9T55LnI",
-        "latitude": 21.032349999999997,
-        "longitude": 105.8514391,
-        "types": [
-            "Cửa hàng quần áo"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx1GijcxmboMuFRI-SA5-Xn7HvM5-FZNYC5ubM5eqGqZDuMhUQiNhA6GxH2u87GcfHaMNvOtyvtUW-XVv8z92HLOEw_yzosjrwkbqxBl7OdXRBdFxkesmsLXKlS5zNNb9iHiquK4nDvaXDv=w80-h106-k-no",
-        "rating": 4.4,
-        "description": null
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Chợ Hàng Da",
-        "place_id": "ChIJ28Sz_b2rNTERhG6JzGZN9y8",
-        "latitude": 21.031482399999998,
-        "longitude": 105.8463316,
-        "types": [
-            "Chợ",
-            "Trung tâm mua sắm"
-        ],
-        "operating_hours": {
-            "thứ sáu": "05:00–20:00",
-            "thứ bảy": "05:00–20:00",
-            "chủ nhật": "05:00–20:00",
-            "thứ hai": "05:00–20:00",
-            "thứ ba": "05:00–20:00",
-            "thứ tư": "05:00–20:00",
-            "thứ năm": "05:00–20:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSws4tHUfDgDDemsZk21zQRBR_epwaLiwa4GkbWY2b1uaDpX9lIjwG059-A0FhrrB5qgS1-ACfTFV4LJrr8bPD0GHPeKzkchl_IkoffuzGEm45WQ8B77hyR-yKesJ1R1IIH6DYA=w124-h92-k-no",
-        "rating": 3.8,
-        "description": "Khu chợ nhiều tầng bán nhiều hàng hóa. Khu chợ 3 tầng nổi tiếng bán đa dạng từ quần áo, đồ thủ công truyền thống đến nông sản."
     },
     {
         "type_of_place": "night market",
@@ -1567,5 +1361,75 @@
         "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxM_s_i2TKU0d_3iZI04cHIwezIaJdhVMt8Gp7EK4i_jQ68iOoqYKmVL9rUTyP2Sv5vMv754a-AQ0IMiPNp7gXW3F5KcPNIFD_pYGJdbyRryZG2frcjcjWT_9oob5STl9DiOfI=w163-h92-k-no",
         "rating": 4.3,
         "description": null
+    },
+    {
+        "type_of_place": "hotel",
+        "title": "Sofitel Legend Metropole Hanoi",
+        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+        "latitude": 21.025412499999998,
+        "longitude": 105.856375,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPTEfG79GUA40UwgmWFz9z0wMbkY5cUqZUMh9id=w184-h92-k-no",
+        "rating": 4.7,
+        "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng."
+    },
+    {
+        "type_of_place": "hotel",
+        "title": "Khách sạn La Mejor và Sky Bar",
+        "place_id": "ChIJvRjrg6arNTERTp-fhVwKIw8",
+        "latitude": 21.0345315,
+        "longitude": 105.8520873,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNXCBgIfpo6BimghgpDopkv9i99CSDbwTqcSnCW=w137-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "hotel",
+        "title": "Hotel de l'Opera Hanoi - MGallery",
+        "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
+        "latitude": 21.024400699999997,
+        "longitude": 105.8555913,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPNlDm_nmiP_Wuwa4L-WpXNT3BGihZpzkAO_QCc=w138-h92-k-no",
+        "rating": 4.5,
+        "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên."
+    },
+    {
+        "type_of_place": "hotel",
+        "title": "Meliá Hanoi",
+        "place_id": "ChIJ2ehlkZOrNTERzL1Vpx8rlfM",
+        "latitude": 21.024347,
+        "longitude": 105.84862319999999,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNNWWg6mya9HR_d-Xvl2NIJ-FhvHnLMICeVe9yD=w80-h120-k-no",
+        "rating": 4.6,
+        "description": "Khách sạn hiện đại có nhà hàng và bể bơi. Khách sạn sang trọng có trung tâm hội nghị, nhà hàng cao cấp, quán bar, cùng bể bơi và phòng tắm hơi."
+    },
+    {
+        "type_of_place": "hotel",
+        "title": "Lotte Hotel Hanoi",
+        "place_id": "ChIJne3U7GyrNTERehxJ0VO9C6o",
+        "latitude": 21.031876099999998,
+        "longitude": 105.81230319999999,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNtduaERO0DR6yFcC0lRHJq0S5aRlHIn69Dvkiw=w80-h126-k-no",
+        "rating": 4.7,
+        "description": "Khách sạn sang trọng, spa, nhìn ra phố. Khách sạn cao tầng và sang trọng, khu spa, 4 nhà hàng, 2 quầy bar và phòng ở cao cấp nhìn ra thành phố."
     }
 ]

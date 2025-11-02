@@ -26,7 +26,7 @@ Given a single place name (short, e.g., "Ha Long Bay" or "Ben Thanh Market, HCMC
 ━━━━━━━━━━━━━━
 ✅ ALLOWED TAG LIST (USE EXACT LABELS ONLY):
 
-snack, restaurant, cafe, night market, market, speciality
+snack, restaurant, cafe, night market, market, speciality, hotel
 
 (Use the string `"yacht / cruise"` exactly if applicable.)
 
@@ -36,11 +36,11 @@ STRICT RULES (READ CAREFULLY — THEY ARE ENFORCED):
 1) **OUTPUT SIZE** — For every valid place, return **between 2 and 5 tags**.  
    - The first tag must represent the place's **primary function or natural category** (e.g., "beach", "museum", "market").  
    - The remaining 1–4 tags should represent **secondary but factual** attributes (e.g., "viewpoint", "family", "street-food").
+   - Each place must have at least one tag
 
 2) **NO GUESSING** — Only tag attributes that are:
    - Widely known facts about the place, or
    - Directly implied by the place type or common, reliable sources.
-   If you cannot reliably identify 2 meaningful tags, return `[]` (empty array).
 
 3) **NO ASSUMPTIONS / NO INFERENCE FROM NAME ONLY** — Do NOT infer commercial or demographic attributes from a name unless they are strongly associated (e.g., "Ben Thanh Market" → "market", "street-food"). Do NOT assign "restaurant" for a market unless the entity is primarily a restaurant.
 
@@ -53,6 +53,7 @@ STRICT RULES (READ CAREFULLY — THEY ARE ENFORCED):
     - "restaurant" → only for venues primarily offering full meals (lunch, dinner) with table service or substantial dining menus. Excludes casual snack stalls or cafés.
     - "market" → for daytime or general public markets where shopping for goods or produce is the main activity. Includes traditional wet markets, local bazaars, and shopping streets open during the day.
     - "night market" → only for markets operating mainly at night and into late hours, where the evening or night atmosphere is a key attraction.
+    - "hotel" → only for hotel. Also, the places with tag hotel cannot have any other tags
 
 6) **NO EXPLANATION** — Output must be exactly and only the JSON (see format). No extra text, no commentary.
 
