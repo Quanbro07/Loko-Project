@@ -7,7 +7,8 @@ Vui chơi giải trí
 	- amusement/water park (uu tien 1 neu noi do co khu voi choi vd: vinpearl)
 	- zoo
 	- aquarium
-	- nightlife/festival
+	- nightlife
+	- festival
 	- cultural performance (uu tien 1 neu noi do co nhung net rieng ve  vui choi vd: cong chieng Tay Nguyen)
 	-> neu noi do co ca park va cultural performance thi uu tien cultural performance hon
 Mạo hiểm
@@ -19,9 +20,35 @@ Mạo hiểm
 	- camping
 	- diving
 	- dangerous
-Chụp hình sống ảo	       viewpoint, landmark, bridge, tower, statue, garden, nature, beach, island, zoo
-Văn hóa lịch sử	 	       museum, palace, fortress, temple, pagoda, cathedral, religion, village, landmark
-Nghỉ dưỡng		       hotel, resort, homestay, spa, beach, island, nature
+Chụp hình sống ảo
+	- viewpoint
+	- hill/mountain/beach/island/waterfall/river/lake (nature)
+	- flower field/garden
+	- landmark/tower/bridge/historical building/palace/citadel/church/temple/pagoda (architecture)
+	- cafe/resort/homestay view dep => cai nay uu tien cuoi
+	- festival
+	=> uu tien 1 se la nature va architecture
+Văn hóa lịch sử
+	- museum
+	- citadel/palace (neu co thanh thi uu tien 1 vd: co do Hue)
+	- church/temple/pagoda
+	- old battlefield (uu tien so 1)
+Nghỉ dưỡng
+	- hotel/resort/homestay
+	- beach
+	- island
+	- camping
+	- spa
+	=> nay thi de nen do uu tien nhu nhau
 Tuần trăng mật		       couple, hotel, homestay, resort, beach, island, yacht / cruise, viewpoint, garden
+	- hotel/resort/homestay -> bat buoc phai co
+	- beach
+	- island
+	- yacht/cruise
+	- viewpoint
 Giải trí đêm		       night-spot, harbor, square, shopping (night market), trendy
+	- night market
+	- walking street
+	- bar
+	- camping
 Du lịch biển đảo	       beach, island, harbor, diving, watersport, yacht / cruise
