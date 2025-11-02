@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
         return savedUser && savedUser !== 'undefined' ? JSON.parse(savedUser) : null;
     });
     const [token, setToken] = useState(localStorage.getItem('token'));
-    const [showAuthModal, setShowAuthModal] = useState(false);
     const [authMode, setAuthMode] = useState('login'); // 'login' or 'register'
 
     useEffect(() => {
@@ -38,7 +37,6 @@ export const AuthProvider = ({ children }) => {
                 setIsAuthenticated(true);
                 localStorage.setItem('token', data.accessToken);
                 localStorage.setItem('user', JSON.stringify(data.user));
-                setShowAuthModal(false);
                 return { success: true };
             } else {
                 const error = await response.json();
@@ -71,7 +69,6 @@ export const AuthProvider = ({ children }) => {
                 setIsAuthenticated(true);
                 localStorage.setItem('token', data.accessToken);
                 localStorage.setItem('user', JSON.stringify(data.user));
-                setShowAuthModal(false);
                 return { success: true };
             } else {
                 const error = await response.json();
@@ -97,15 +94,6 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('user');
     };
 
-    const openAuthModal = (mode = 'login') => {
-        setAuthMode(mode);
-        setShowAuthModal(true);
-    };
-
-    const closeAuthModal = () => {
-        setShowAuthModal(false);
-    };
-
     const switchAuthMode = () => {
         setAuthMode(authMode === 'login' ? 'register' : 'login');
     };
@@ -115,13 +103,11 @@ export const AuthProvider = ({ children }) => {
             isAuthenticated,
             user,
             token,
-            showAuthModal,
             authMode,
             login,
             register,
             logout,
-            openAuthModal,
-            closeAuthModal,
+            setAuthMode,
             switchAuthMode
         }}>
             {children}

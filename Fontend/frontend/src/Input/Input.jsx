@@ -8,6 +8,7 @@ import './Input.css';
 import { Button, Checkbox } from '@mui/material';
 import { useLanguage } from '../Language/LanguageContext'; // Import useLanguage
 import { useAuth } from '../Auth/AuthContext'; // Import useAuth
+import { useNavigate } from 'react-router-dom';
 // import Lottie from 'lottie-react'; // Remove Lottie import
 // import paperPlaneAnimation from './lottie/Paper plane.json'; // Remove Lottie animation import
 
@@ -51,7 +52,8 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
     const [selectedDateGo, setSelectedDateGo] = useState(null);
     const [selectedDateReturn, setSelectedDateReturn] = useState(null);
     const { translate } = useLanguage(); // Use the hook
-    const { isAuthenticated, openAuthModal } = useAuth(); // Use the auth hook
+    const { isAuthenticated } = useAuth(); // Use the auth hook
+    const navigate = useNavigate();
     const [travelType, setTravelType] = useState(translate('input_travel_type_solo'));
     const [selectedProvince, setSelectedProvince] = useState('');
     const [destinationError, setDestinationError] = useState(false);
@@ -104,7 +106,7 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
     const handleSearch = () => {
         // Check if user is authenticated first
         if (!isAuthenticated) {
-            openAuthModal('login');
+            navigate('/auth?mode=login');
             return;
         }
 

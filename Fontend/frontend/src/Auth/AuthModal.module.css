@@ -1,0 +1,321 @@
+/* Basic responsive styles for AuthModal. Tweak values to match Figma. */
+.modal, .content, .title, .subtitle, .form, .label, .input, .submitBtn {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.modal {
+  width: 100%;
+  max-width: 920px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(15,23,42,0.08);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 460px;
+}
+
+/* Full-page auth layout (page-only flow) */
+.pageWrapper {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.pageContainer {
+  /* Desktop artboard target: 1440 x 1024 */
+  width: 100%;
+  max-width: 1440px; /* allow centering up to the target width */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 0;
+  /* Try to match artboard height while allowing scrolling on smaller viewports */
+  min-height: 1024px;
+  margin: 0 auto; /* center horizontally */
+}
+
+.panelLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff; /* keep illustration on white */
+}
+
+.panelRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff; /* keep illustration on white */
+}
+
+.content {
+  padding: 44px 48px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.logo {
+  width: 96px;
+  height: auto;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 1.05;
+  color: #0f172a;
+  margin: 18px 0 6px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.logoCentered {
+  width: 259px;
+  height: 259px;
+  display: block;
+  margin: 0 auto 18px auto;
+  object-fit: contain;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input {
+  flex: 1;
+  height: 44px;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+}
+
+.inputWithDivider {
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+  border-radius: 6px;
+}
+
+.inputPlaceholder {
+  color: #9ca3af;
+}
+
+.toggleBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  color: #9ca3af;
+  display: inline-flex;
+  align-items: center;
+}
+
+.errorMessage {
+  color: #b91c1c;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.submitBtn {
+  height: 48px;
+  width: 100%;
+  background: linear-gradient(90deg, #22c55e 0%, #06b6d4 100%); /* green -> blue gradient to match design */
+  color: #ffffff;
+  border: none;
+  border-radius: 28px; /* pill look like the provided image */
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 8px 22px rgba(6,182,212,0.14);
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+}
+
+.submitBtn:active {
+  transform: translateY(1px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.switch {
+  padding: 18px 32px;
+  text-align: center;
+}
+
+.switch {
+  padding: 18px 0 0 0;
+  text-align: center;
+}
+.switchSmall {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-start;
+  margin-top: 6px;
+}
+.switchBtn {
+  background: transparent;
+  border: none;
+  color: #0ea5a4;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.rememberToggle {
+  width: 40px;
+  height: 22px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+}
+.rememberToggleDot {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  box-shadow: 0 6px 12px rgba(2,6,23,0.06);
+  transition: left .14s ease, background .14s;
+}
+.rememberOn {
+  background: linear-gradient(90deg,#22c55e,#06b6d4);
+}
+.rememberOn .rememberToggleDot {
+  left: 20px;
+}
+.illustrationWrap {
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px;
+}
+
+.illustration {
+  /* fixed art / illustration size requested */
+  width: 537px;
+  height: 786px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 880px) {
+  .pageContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .panelLeft {
+    display: none;
+  }
+
+  .panelRight {
+    padding: 24px;
+  }
+
+  .modal {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+}
+/* Additional responsive rule to ensure the fixed artboard doesn't overflow small screens */
+@media (max-width: 1440px) {
+  .pageContainer {
+    min-height: 800px; /* relax height on narrower screens */
+  }
+}
+
+@media (max-width: 600px) {
+  /* scale down fixed asset sizes on small screens */
+  .logoCentered {
+    width: 160px;
+    height: 160px;
+  }
+
+  .illustration {
+    width: 320px;
+    height: 468px;
+  }
+}
+.illustrationWrap {
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px;
+}
+
+.illustration {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+}
+
+@media (max-width: 880px) {
+  .modal {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+
+  .illustrationWrap {
+    display: none;
+  }
+}
