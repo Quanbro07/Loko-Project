@@ -330,13 +330,28 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
                 </div>
             </div>
             <div className='button-list'>
-                {currentStep > 0 && (
-                    <button className='prev-button' onClick={handlePrev}>{translate('input_prev_button')}</button>
-                )}
-                <button className="search-button" onClick={handleSearch}>{translate('input_search_button')}</button>
-                {currentStep < totalSteps - 1 && (
-                    <button className="next-button" onClick={handleNext}>{translate('input_next_button')}</button>
-                )}
+                {/* Nút PREV: Luôn hiển thị, nhưng bị vô hiệu hóa khi ở bước 0 */}
+                <button
+                    className={`prev-button ${currentStep === 0 ? 'hidden-button' : ''}`}
+                    onClick={handlePrev}
+                    disabled={currentStep === 0} // Vô hiệu hóa nút
+                >
+                    {translate('input_prev_button')}
+                </button>
+
+                {/* Nút SEARCH: Luôn hiển thị ở giữa */}
+                <button className="search-button" onClick={handleSearch}>
+                    {translate('input_search_button')}
+                </button>
+
+                {/* Nút NEXT: Luôn hiển thị, nhưng bị vô hiệu hóa khi ở bước cuối */}
+                <button
+                    className={`next-button ${currentStep === totalSteps - 1 ? 'hidden-button' : ''}`}
+                    onClick={handleNext}
+                    disabled={currentStep === totalSteps - 1} // Vô hiệu hóa nút
+                >
+                    {translate('input_next_button')}
+                </button>
             </div>
         </div>
     )

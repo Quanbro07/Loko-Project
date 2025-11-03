@@ -437,3 +437,17 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9999;
 }
+
+.prev-button:disabled,
+.next-button:disabled,
+.disabled-button {
+    /* Ví dụ đổi màu nền và làm mờ chữ */
+    background-color: #ccc !important;
+    /* Màu xám */
+    color: #666 !important;
+    cursor: not-allowed !important;
+    /* Đổi con trỏ chuột */
+    border: 1px solid #aaa !important;
+    opacity: 0.6;
+    /* Làm mờ đi một chút */
+}
