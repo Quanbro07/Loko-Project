@@ -14,6 +14,15 @@ const User = () => {
         const [visitedSlugs, setVisitedSlugs] = useState(["ha-noi", "an-giang", "da-nang", "tp-ho-chi-minh"]);
         const [visitedNames, setVisitedNames] = useState([]);
     // Removed const { translate: dictionary } = useLanguage();
+        const [name, setName] = useState('NGUYỄN TRỌNG');
+    const [dob, setDob] = useState('01/01/2000');
+    const [gender, setGender] = useState('NAM');
+
+    
+    const [editName, setEditName] = useState(name);
+    const [editDob, setEditDob] = useState(dob);
+    const [editGender, setEditGender] = useState(gender);
+
 
         // Utility: remove diacritics and slugify (keeps same logic as VisitedMap)
         function removeDiacritics(str) {
@@ -115,6 +124,41 @@ const User = () => {
                 return slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
             }
 
+    // SVG Icon bút chì
+    const EditIcon = ({ onClick }) => (
+        <svg onClick={onClick} className='edit-icon-button' width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+        </svg>
+    );
+
+    // Khi bấm vào icon bút chì
+    const handleEditClick = () => {
+        // 1. Sao chép dữ liệu thật sang dữ liệu tạm
+        setEditName(name);
+        setEditDob(dob);
+        setEditGender(gender);
+        // 2. Bật chế độ chỉnh sửa
+        setIsEditing(true);
+    };
+
+    // Khi bấm nút "Lưu"
+    const handleSave = () => {
+        // 1. Cập nhật dữ liệu thật từ dữ liệu tạm
+        setName(editName);
+        setDob(editDob);
+        setGender(editGender);
+        // 2. Tắt chế độ chỉnh sửa
+        setIsEditing(false);
+        // 3. (Thực tế) Gửi API request lên server để lưu
+        // fetch('/api/user/update', { method: 'POST', body: JSON.stringify({ name: editName, dob: editDob, gender: editGender }) })
+        console.log("Đã lưu:", { name: editName, dob: editDob, gender: editGender });
+    };
+
+    // Khi bấm nút "Hủy"
+    const handleCancel = () => {
+        // Chỉ cần tắt chế độ chỉnh sửa, các state tạm (editName,...) sẽ tự reset ở lần bấm bút chì sau
+        setIsEditing(false);
+    };
     const handleAvatarChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -134,30 +178,61 @@ const User = () => {
                     <img src="/img/plane-ticket.png" alt="Plane Ticket" className="plane-icon" />
                     <div className='ticket-company'>LOKO</div>
                 </div>
-                {isEditing ? (
+                {isEditing && (
                     <div className='edit-controls'>
-                        <button className='save-button'><span>Lưu</span></button>
-                        <button className='cancel-button' onClick={() => setIsEditing(false)}><span>Hủy</span></button>
+                        <button className='save-button' onClick={handleSave}><span>Lưu</span></button>
+                        <button className='cancel-button' onClick={handleCancel}><span>Hủy</span></button>
                     </div>
-                ) : (
-                    <button className='edit-sticky-button' onClick={() => setIsEditing(true)}>
-                        <span>Thay đổi thông tin</span>
-                    </button>
                 )}
                 <div className='ticket-body'>
                     <div className='ticket-section passenger-info'>
                         <div className='info-item'>
-                            <div className='label'>Họ và Tên</div>
-                            <div className='value'>NGUYỄN TRỌNG</div>
+                            <div className='label'>
+                                <span>Họ và Tên</span>
+                                {/* Chỉ hiển thị icon khi KHÔNG edit */}
+                                {!isEditing && <EditIcon onClick={handleEditClick} />}
+                            </div>
+                            {isEditing ? (
+                                <input
+                                    className='edit-input'
+                                    value={editName}
+                                    onChange={(e) => setEditName(e.target.value)}
+                                />
+                            ) : (
+                                <div className='value'>{name}</div>
+                            )}
                         </div>
                         <div className='info-item'>
-                            <div className='label'>Ngày tháng năm sinh</div>
-                            <div className='value'>01/01/2000</div>
+                            <div className='label'>
+                                <span>Ngày tháng năm sinh</span>
+                                {!isEditing && <EditIcon onClick={handleEditClick} />}
+                            </div>
+                            {isEditing ? (
+                                <input
+                                    className='edit-input'
+                                    type="text" // hoặc type="date" nếu muốn
+                                    value={editDob}
+                                    onChange={(e) => setEditDob(e.target.value)}
+                                />
+                            ) : (
+                                <div className='value'>{dob}</div>
+                            )}
                         </div>
 
                         <div className='info-item'>
-                            <div className='label'>Giới tính</div>
-                            <div className='value'>NAM</div>
+                            <div className='label'>
+                                <span>Giới tính</span>
+                                {!isEditing && <EditIcon onClick={handleEditClick} />}
+                            </div>
+                            {isEditing ? (
+                                <input
+                                    className='edit-input'
+                                    value={editGender}
+                                    onChange={(e) => setEditGender(e.target.value)}
+                                />
+                            ) : (
+                                <div className='value'>{gender}</div>
+                            )}
                         </div>
                     </div>
                     <div className='ticket-section travel-stats'>
