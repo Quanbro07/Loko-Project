@@ -4,12 +4,6 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { useLanguage } from '../Language/LanguageContext';
 import slide1 from '../img/slide1.jpg';
-import slide2 from '../img/slide2.jpg';
-import slide3 from '../img/slide3.jpg';
-import slide4 from '../img/slide4.jpg';
-import slide5 from '../img/slide5.jpg';
-import flyingBirds from '../img/flying-birds.json';
-import Lottie from 'lottie-react';
 import pop1 from '../img/pu1.jpg';
 import pop2 from '../img/pu2.jpg';
 import Ad from '../Ad/Ad';
@@ -54,7 +48,7 @@ const Homepage = () => {
         setShowModal(false);
     };
     return (
-        <div>
+        <div className='home-page'>
             <Navbar></Navbar>
             <div>
                 <div className='travel-with-loko'>
@@ -74,7 +68,6 @@ const Homepage = () => {
             </div>
             <Ad className="ad"></Ad>
             <SlidingList className="sliding-list"></SlidingList>
-            <Footer></Footer>
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal-content">
@@ -85,6 +78,7 @@ const Homepage = () => {
                     </div>
                 </div>
             )}
+            <Footer className='homepage-footer'></Footer>
         </div>
     );
 };

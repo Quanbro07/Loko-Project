@@ -22,6 +22,7 @@
 .list-item {
     color: black;
     flex-basis: 23%;
+    cursor: pointer;
     /* Adjusted for 4 items with gap */
 }
 
@@ -161,8 +162,9 @@
 
 .sample-tour {
     width: 1000px;
-    height: 350px;
+    height: 250px;
     margin: 50px auto;
+    margin-bottom: 20px;
 }
 
 .sample-tour-content-container {

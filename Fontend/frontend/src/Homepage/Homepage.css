@@ -261,3 +261,14 @@
     background-color: #004c8c;
     color: #fff;
 }
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.homepage-footer {
+    margin-bottom: 0px;
+}

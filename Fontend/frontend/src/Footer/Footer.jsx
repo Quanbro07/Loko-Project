@@ -13,7 +13,7 @@ const Footer = () => {
     return (
         <div className='footer-container'>
             <div className='footer-left'>
-                <div className='loko'>LOKO</div>
+                <div className='footer-title'>LOKO</div>
                 <div className='footer-left-info'>
                     <div className='footer-info-title' id='i11a'>Giấy phép kinh doanh: </div>
                     <div className='footer-info-description' id='i11b'>Giấy chứng nhận nhà đăng ký doanh nghiệp mã số 0401805040 ngày 09/10/2025 (đăng ký lần đầu). Đăng ký các lần thay đổi theo từng thời điểm.</div>
@@ -28,7 +28,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='footer-right'>
-                <div className='loko'>Đối tác</div>
+                <div className='footer-title'>Đối tác</div>
                 <div className='footer-right-info'>
                     <img src={googleIcon} className='icon1' id="i1" />
                     <img src={reactjsIcon} className='icon1' id="i2" />
@@ -39,7 +39,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='footer-mid'>
-                <div className='loko'>Hỗ trợ</div>
+                <div className='footer-title'>Hỗ trợ</div>
                 <div className='footer-mid-info'>
                     <div className='footer-info-title' id='i21a'>Hotline liên hệ:</div>
                     <div className='footer-info-description' id='i21b'>1800 3636</div>

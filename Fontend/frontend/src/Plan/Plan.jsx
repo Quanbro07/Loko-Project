@@ -25,9 +25,11 @@ const Plan = () => {
     };
 
     return (
-        <div className="homepage-background">
-            <Navbar />
-            <Input onSearch={handleSearch} />
+        <div>
+            <div className="homepage-background">
+                <Navbar />
+                <Input onSearch={handleSearch} />
+            </div>
             <div className="itinerary-results-container">
                 {showLoadingAnimation && (
                     <div className="loading-animation-container">
@@ -36,7 +38,7 @@ const Plan = () => {
                 )}
                 {!showLoadingAnimation && hasSearched && <Output />}
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </div>
     );
 };
