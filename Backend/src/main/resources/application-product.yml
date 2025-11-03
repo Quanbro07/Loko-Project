@@ -13,7 +13,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
 
     show-sql: true
 

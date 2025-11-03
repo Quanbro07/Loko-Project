@@ -4,6 +4,17 @@ server:
 spring:
   application:
     name: loko-backend
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: uselesscya420@gmail.com
+    password: hniz qqfl jayu wjzh
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
   profiles:
     active: dev

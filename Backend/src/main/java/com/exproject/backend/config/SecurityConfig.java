@@ -30,7 +30,20 @@ public class SecurityConfig {
                 .csrf(csrf->csrf.disable())
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("api/v1/auth/**").permitAll()
+                                .requestMatchers(
+                                        "api/v1/auth/register",
+                                        "api/v1/auth/authenticate",
+                                        "api/v1/auth/refresh",
+                                        "api/v1/auth/verify",
+                                        "api/v1/auth/resend",
+                                        "api/v1/auth/forget-password",
+                                        "api/v1/auth/verify-password"
+                                ).permitAll()
+
+                                .requestMatchers(
+                                        "api/v1/auth/change-password"
+                                ).authenticated()
+
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(sessionManagement ->
