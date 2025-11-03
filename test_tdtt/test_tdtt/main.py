@@ -7,7 +7,7 @@ if __name__ == "__main__":
     print("=== DU LỊCH ẨM THỰC ===")
     
     # Các tag người dùng ưu tiên (có thể lấy từ UI)
-    preferred_tags = ["restaurant", "speciality"] 
+    preferred_tags = ["restaurant", "speciality", "night market"] 
     
     # 1. Chọn Profile
     profile = FoodProfile()
