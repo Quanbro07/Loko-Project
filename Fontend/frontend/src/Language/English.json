@@ -200,5 +200,7 @@
     "modal_message": "LOKO BRINGS THE SOLUTION!",
     "input_next_button": "Continue",
     "input_prev_button": "Back",
-    "input_time_label": "Choose your date"
+    "input_time_label": "Choose your date",
+    "travel_history_button": "Travel history",
+    "navbar_currentplan": "Current plan"
 }

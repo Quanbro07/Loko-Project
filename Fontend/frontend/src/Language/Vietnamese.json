@@ -200,5 +200,7 @@
     "modal_message": "ĐỂ LOKO LO!",
     "input_next_button": "Kế tiếp",
     "input_prev_button": "Quay lại",
-    "input_time_label": "Chọn thời gian cho chuyến đi"
+    "input_time_label": "Chọn thời gian cho chuyến đi",
+    "travel_history_button": "Lịch sử chuyến đi",
+    "navbar_currentplan": "Chuyến đi hiện tại"
 }

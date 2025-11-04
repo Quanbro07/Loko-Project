@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
+    width: 100%;
 }
 
 .flag-container {
@@ -128,8 +129,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    flex: 2;
+    justify-content: space-evenly;
+    flex: 5;
 }
 
 .left-nav {

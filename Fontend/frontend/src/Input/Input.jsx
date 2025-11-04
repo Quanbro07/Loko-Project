@@ -48,7 +48,7 @@ const CustomDateInput = forwardRef((props, ref) => {
     );
 });
 
-const Input = ({ onSearch }) => { // Accept onSearch prop
+const Input = ({ onSearch, onTryAgain, onAccept, isResultShown }) => { // Accept onSearch prop
     const [selectedDateGo, setSelectedDateGo] = useState(null);
     const [selectedDateReturn, setSelectedDateReturn] = useState(null);
     const { translate } = useLanguage(); // Use the hook
@@ -60,9 +60,9 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
     const [dateGoError, setDateGoError] = useState(false);
     const [dateReturnError, setDateReturnError] = useState(false);
     const [travelTypeError, setTravelTypeError] = useState(false);
-    // const [showLoadingAnimation, setShowLoadingAnimation] = useState(false); // Remove internal showLoadingAnimation
-    const [currentStep, setCurrentStep] = useState(0); // 0, 1, 2, 3
-    const totalSteps = 4; // si1, si2, si3, si4
+    const [currentStep, setCurrentStep] = useState(0);
+    const totalSteps = 4;
+    const [isSearching, setIsSearching] = useState(false);
     const getTranslatedProvinces = () => {
         return [
             translate("input_province_ha_noi"),
@@ -91,7 +91,7 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
             translate("input_province_khanh_hoa"),
             translate("input_province_lam_dong"),
             translate("input_province_dak_lak"),
-            translate("input_province_hcmc"), // Assuming you have this key for TP Hồ Chí Minh
+            translate("input_province_hcmc"),
             translate("input_province_dong_nai"),
             translate("input_province_tay_ninh"),
             translate("input_province_can_tho"),
@@ -101,6 +101,14 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
             translate("input_province_an_giang")
         ];
     };
+    const handleTryAgainClick = () => {
+        if (onTryAgain)
+            onTryAgain();
+    }
+    const handleAcceptClick = () => {
+        if (onAccept)
+            onAccept();
+    }
 
     const provinces = getTranslatedProvinces();
     const handlePrev = () => {
@@ -141,19 +149,20 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
 
         if (stepHasError) {
             console.log(translate('input_fill_all_info'));
-            return; // Dừng lại nếu có lỗi
+            return;
         }
 
 
-        // Chuyển sang bước tiếp theo
         if (currentStep < totalSteps - 1) {
             setCurrentStep(prevStep => prevStep + 1);
         } else if (currentStep === totalSteps - 1) {
-            // Nếu đã ở bước cuối cùng, gọi handleSearch (nếu cần)
             handleSearch();
         }
     }
     const handleSearch = () => {
+        if (isSearching) {
+            return;
+        }
         console.log(translate('input_fill_all_info'));
         // Check if user is authenticated first
         if (!isAuthenticated) {
@@ -174,8 +183,13 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
             // setTimeout(() => {
             //     setShowLoadingAnimation(false);
             // }, 4000);
+            setIsSearching(true);
             onSearch(); // Call onSearch prop to notify Homepage
+            setTimeout(() => {
+                setIsSearching(false);
+            }, 5000);
         }
+
     }
     // setShowLoadingAnimation(true); // Remove internal showLoadingAnimation
     // // Hide the animation after 3 seconds (adjust as needed)
@@ -340,7 +354,7 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
                 </button>
 
                 {/* Nút SEARCH: Luôn hiển thị ở giữa */}
-                <button className="search-button" onClick={handleSearch}>
+                <button className="search-button" onClick={handleSearch} disabled={isSearching}>
                     {translate('input_search_button')}
                 </button>
 
@@ -352,6 +366,10 @@ const Input = ({ onSearch }) => { // Accept onSearch prop
                 >
                     {translate('input_next_button')}
                 </button>
+            </div>
+            <div className='result-button-list' style={{ display: isResultShown ? 'flex' : 'none' }}>
+                <button className='try-again-button' onClick={handleTryAgainClick}>{translate('try_again_button')}</button>
+                <button className='accept-button' onClick={handleAcceptClick}>{translate('accept_button')}</button>
             </div>
         </div>
     )

@@ -3,6 +3,8 @@ import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import './VisitedMap.css';
+import { useLanguage } from '../Language/LanguageContext';
+
 
 const GEOJSON_URL = '/vietnam-geojson-data/geojson/country-wide/vietnam-tinh-thanh-34.geojson';
 
@@ -29,6 +31,8 @@ function slugify(str) {
 const VisitedMap = ({ visited = [] }) => {
   const [geoData, setGeoData] = useState(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const { translate, setLanguage } = useLanguage();
+
   useEffect(() => {
     let mounted = true;
     fetch(GEOJSON_URL)
@@ -144,24 +148,27 @@ const VisitedMap = ({ visited = [] }) => {
         </Geographies>
       </ComposableMap>
       <div className="percent-panel" aria-hidden={isFullscreen}>
-        <svg className="progress-circle" viewBox="0 0 36 36">
-          <circle className="circle-bg" cx="18" cy="18" r="15.9155" fill="none" stroke="#eee" strokeWidth="2" />
-          <circle
-            className="circle"
-            cx="18"
-            cy="18"
-            r="15.9155"
-            fill="none"
-            stroke="#e63946"
-            strokeWidth="2.8"
-            strokeDasharray={`${percent}, 100`}
-            strokeLinecap="round"
-            transform="rotate(-90 18 18)"
-          />
-          <text x="18" y="20.35" className="percentage" textAnchor="middle">{percent}%</text>
-        </svg>
-        <div className="percent-label">{visitedCount}/{totalProvinces} tỉnh đã đi</div>
+        <div className='progress-container'>
+          <svg className="progress-circle" viewBox="0 0 36 36">
+            <circle className="circle-bg" cx="18" cy="18" r="15.9155" fill="none" stroke="#eee" strokeWidth="2" />
+            <circle
+              className="circle"
+              cx="18"
+              cy="18"
+              r="15.9155"
+              fill="none"
+              stroke="#e63946"
+              strokeWidth="2.8"
+              strokeDasharray={`${percent}, 100`}
+              strokeLinecap="round"
+              transform="rotate(-90 18 18)"
+            />
+            <text x="18" y="20.35" className="percentage" textAnchor="middle">{percent}%</text>
+          </svg>
+          <div className="percent-label">{visitedCount}/{totalProvinces} tỉnh đã đi</div>
+        </div>
       </div>
+      
       <Tooltip id="visited-tooltip" place="top" />
     </div>
   );

@@ -22,10 +22,16 @@ const Navbar = () => {
     return (
         <div className='navbar-background-wrapper'>
             <div className='navbar-list'>
-                <div className='left-nav'></div>
+                <div className='left-nav'>
+                    <div className='flag-container'>
+                        <div className='flag' id='vietnamese' onClick={() => setLanguage('vi')}></div>
+                        <div className='flag' id='english' onClick={() => setLanguage('en')}></div>
+                    </div>
+                </div>
                 <div className='mid-nav'>
                     <NavLink to="/homepage" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_home')}</NavLink>
                     <NavLink to="/search" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_search')}</NavLink>
+                    <NavLink to="/currentplan" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_currentplan')}</NavLink>
                     <NavLink
                         to="/user"
                         className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}
@@ -37,10 +43,7 @@ const Navbar = () => {
                         }}
                     >{translate('navbar_account')}</NavLink>
                     <NavLink to="/aboutus" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_about_us')}</NavLink>
-                    <div className='flag-container'>
-                        <div className='flag' id='vietnamese' onClick={() => setLanguage('vi')}></div>
-                        <div className='flag' id='english' onClick={() => setLanguage('en')}></div>
-                    </div>
+
                 </div>
                 <div className='right-nav'>{/* Auth Button */}
                     <div className='auth-container'>

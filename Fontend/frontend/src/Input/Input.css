@@ -440,6 +440,7 @@
 
 .prev-button:disabled,
 .next-button:disabled,
+.search-button:disabled,
 .disabled-button {
     /* Ví dụ đổi màu nền và làm mờ chữ */
     background-color: #ccc !important;
