@@ -40,7 +40,7 @@ const Plan = () => {
     }, [handleSearch]);
     const handleAccept = useCallback(() => {
         console.log('Chấp nhận lịch trình. Chuyển tiếp...');
-        navigate('/user');
+        navigate('/currentplan');
     }, [navigate])
 
     return (

@@ -202,5 +202,9 @@
     "input_prev_button": "Back",
     "input_time_label": "Choose your date",
     "travel_history_button": "Travel history",
-    "navbar_currentplan": "Current plan"
+    "navbar_currentplan": "Current plan",
+    "input_search_result_title": "Wanna use this plan?",
+    "try_count_remaining": "Remaining search: ",
+    "try_again_button": "Generate new plan",
+    "accept_button": "Accept this plan"
 }

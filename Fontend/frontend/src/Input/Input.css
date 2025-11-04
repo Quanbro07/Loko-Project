@@ -452,3 +452,65 @@
     opacity: 0.6;
     /* Làm mờ đi một chút */
 }
+
+/* Input.css */
+
+/* 1. Modal Overlay (Lớp nền trong suốt/mờ) */
+.modal-overlay {
+    position: fixed;
+    /* Cố định vị trí trên viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Nền đen mờ, chặn click */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Đảm bảo nó nằm trên tất cả các phần tử khác */
+}
+
+/* 2. Nội dung Modal (Hộp chứa nút) */
+.result-modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+/* 3. Danh sách nút bên trong Modal */
+.result-button-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    /* Khoảng cách giữa các nút */
+    margin-top: 20px;
+}
+
+/* Định dạng các nút trong Modal */
+.try-again-button,
+.accept-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    flex: 1;
+    /* Chia đều không gian */
+}
+
+.try-again-button {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.accept-button {
+    background-color: #007bff;
+    /* Màu xanh nổi bật */
+    color: white;
+}

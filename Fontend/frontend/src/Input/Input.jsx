@@ -63,6 +63,8 @@ const Input = ({ onSearch, onTryAgain, onAccept, isResultShown }) => { // Accept
     const [currentStep, setCurrentStep] = useState(0);
     const totalSteps = 4;
     const [isSearching, setIsSearching] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [tryCount, setTryCount] = useState(3);
     const getTranslatedProvinces = () => {
         return [
             translate("input_province_ha_noi"),
@@ -102,10 +104,23 @@ const Input = ({ onSearch, onTryAgain, onAccept, isResultShown }) => { // Accept
         ];
     };
     const handleTryAgainClick = () => {
-        if (onTryAgain)
-            onTryAgain();
+        const newTryCount = tryCount - 1;
+        setTryCount(newTryCount);
+        if (newTryCount < 0) {
+            console.log("Try count reached 0. Navigating to /currentplan")
+            setIsModalOpen(false);
+            navigate('/currentplan');
+        }
+        else {
+            console.log('Remaining tries: ${newTryCount}');
+            setIsModalOpen(false);
+            if (onTryAgain)
+                onTryAgain();
+            handleSearch();
+        }
     }
     const handleAcceptClick = () => {
+        setIsModalOpen(false);
         if (onAccept)
             onAccept();
     }
@@ -187,7 +202,8 @@ const Input = ({ onSearch, onTryAgain, onAccept, isResultShown }) => { // Accept
             onSearch(); // Call onSearch prop to notify Homepage
             setTimeout(() => {
                 setIsSearching(false);
-            }, 5000);
+                setIsModalOpen(true);
+            }, 10000);
         }
 
     }
@@ -367,10 +383,48 @@ const Input = ({ onSearch, onTryAgain, onAccept, isResultShown }) => { // Accept
                     {translate('input_next_button')}
                 </button>
             </div>
-            <div className='result-button-list' style={{ display: isResultShown ? 'flex' : 'none' }}>
-                <button className='try-again-button' onClick={handleTryAgainClick}>{translate('try_again_button')}</button>
-                <button className='accept-button' onClick={handleAcceptClick}>{translate('accept_button')}</button>
-            </div>
+            {isModalOpen && (
+                <div className='modal-overlay'>
+                    <div className='result-modal-content'>
+                        {/* HIỂN THỊ SỐ LẦN THỬ LẠI CÒN LẠI */}
+                        <h3 className='modal-title'>
+                            {translate('input_search_result_title')}
+                        </h3>
+
+                        {tryCount > 0 ? (
+                            <p className='modal-message' style={{ fontWeight: 'bold' }}>
+                                {translate('try_count_remaining')}: {tryCount}
+                            </p>
+                        ) : (
+                            <p className='modal-message' style={{ color: 'red', fontWeight: 'bold' }}>
+                                {translate('try_count_exhausted_message')}
+                            </p>
+                        )}
+
+
+                        <div className='result-button-list'>
+                            {/* NÚT THỬ LẠI */}
+                            <button
+                                className='try-again-button'
+                                onClick={handleTryAgainClick}
+                            // Vô hiệu hóa nút Try Again nếu số lần đếm đã hết (nếu bạn muốn người dùng chỉ được Accept)
+                            // disabled={tryCount <= 0} 
+                            >
+                                {translate('try_again_button')}
+                            </button>
+
+                            {/* NÚT ACCEPT */}
+                            <button
+                                className='accept-button'
+                                onClick={handleAcceptClick}
+                                disabled={tryCount <= 0} // Vô hiệu hóa nút Accept nếu phải chuyển hướng tự động
+                            >
+                                {translate('accept_button')}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     )
 };

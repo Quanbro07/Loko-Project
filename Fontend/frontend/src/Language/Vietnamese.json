@@ -202,5 +202,9 @@
     "input_prev_button": "Quay lại",
     "input_time_label": "Chọn thời gian cho chuyến đi",
     "travel_history_button": "Lịch sử chuyến đi",
-    "navbar_currentplan": "Chuyến đi hiện tại"
+    "navbar_currentplan": "Chuyến đi hiện tại",
+    "input_search_result_title": "Bạn có muốn sử dụng lịch trình này?",
+    "try_count_remaining": "Số lần thử lại ",
+    "try_again_button": "Tạo lịch trình mới",
+    "accept_button": "Sử dụng lịch trình này"
 }
