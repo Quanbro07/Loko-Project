@@ -224,3 +224,57 @@
     border: none;
     box-shadow: 4px 3px 2px #76767685;
 }
+
+class này vào file User.css của bạn */
+
+/* Căn chỉnh label và icon bút chì */
+.info-item .label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Đẩy icon qua phải */
+    width: 100%;
+}
+
+/* Kiểu cho icon bút chì */
+.edit-icon-button {
+    cursor: pointer;
+    stroke: #9ca3af;
+    /* Màu xám */
+    transition: stroke 0.2s;
+}
+
+.edit-icon-button:hover {
+    stroke: #1f2937;
+    /* Màu đen đậm hơn khi hover */
+}
+
+/* Kiểu cho ô input khi chỉnh sửa */
+.edit-input {
+    /* Sao chép style từ .value để nó trông giống nhất */
+    font-family: 'Montserrat', sans-serif;
+    /* Hoặc font bạn đang dùng */
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    /* Thêm style của input */
+    border: none;
+    border-bottom: 2px solid #004a99;
+    /* Thêm đường gạch dưới */
+    background-color: transparent;
+    /* Nền trong suốt */
+    width: 100%;
+    padding: 4px 0;
+    /* Thêm chút padding */
+    box-sizing: border-box;
+}
+
+.edit-input:focus {
+    outline: none;
+    /* Bỏ viền focus mặc định */
+    border-bottom: 2px solid #007bff;
+    /* Đổi màu khi focus */
+}
