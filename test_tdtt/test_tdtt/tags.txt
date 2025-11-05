@@ -23,7 +23,7 @@ Mạo hiểm
 Chụp hình sống ảo
 	- viewpoint
 	- hill/mountain/beach/island/waterfall/river/lake (nature)
-	- flower garden
+	- flower field/garden
 	- landmark/tower/bridge/historical building/palace/citadel/church/temple/pagoda (architecture)
 	- cafe/resort/homestay view dep => cai nay uu tien cuoi
 	- festival
@@ -40,17 +40,15 @@ Nghỉ dưỡng
 	- camping
 	- spa
 	=> nay thi de nen do uu tien nhu nhau
-Tuần trăng mật
+Tuần trăng mật		       couple, hotel, homestay, resort, beach, island, yacht / cruise, viewpoint, garden
 	- hotel/resort/homestay -> bat buoc phai co
 	- beach
 	- island
 	- yacht/cruise
 	- viewpoint
-Giải trí đêm
+Giải trí đêm		       night-spot, harbor, square, shopping (night market), trendy
 	- night market
 	- walking street
 	- bar
 	- camping
 Du lịch biển đảo	       beach, island, harbor, diving, watersport, yacht / cruise
-
-Tất cả tags: snack, specialties, cafe, night market, amusement park, water park, zoo, aquarium, nightlife, festival, cultural performance, mountain, cave, waterfall, camping, diving, dangerous, viewpoint, hill, beach, island, river, lake, flower garden, landmark, tower, bridge, historical building, palace, citadel, church, temple, pagoda, resort with nice view, homestay with nice view, festival, museum, citadel, palace, old battlefield, hotel, resort, homestay, spa, yacht / cruise, walking street, bar, harbor
