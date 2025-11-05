@@ -7,7 +7,8 @@
         "description": null,
         "rating": 4.9,
         "longitude": 105.8520873,
-        "latitude": 21.0345315
+        "latitude": 21.0345315,
+        "type": "hotel"
     },
     {
         "start": "08:03",
@@ -17,7 +18,8 @@
         "description": null,
         "rating": 4,
         "longitude": 105.8517878,
-        "latitude": 21.0228187
+        "latitude": 21.0228187,
+        "type": "snack"
     },
     {
         "start": "08:51",
@@ -27,7 +29,8 @@
         "description": null,
         "rating": 4.8,
         "longitude": 105.85454759999999,
-        "latitude": 21.0333014
+        "latitude": 21.0333014,
+        "type": "cafe"
     },
     {
         "start": "10:24",
@@ -37,7 +40,8 @@
         "description": null,
         "rating": 4.9,
         "longitude": 105.84474619999999,
-        "latitude": 21.033569399999998
+        "latitude": 21.033569399999998,
+        "type": "cafe"
     },
     {
         "start": "11:55",
@@ -47,7 +51,8 @@
         "description": null,
         "rating": 4.9,
         "longitude": 105.8466157,
-        "latitude": 21.031081
+        "latitude": 21.031081,
+        "type": "restaurant"
     },
     {
         "start": "13:56",
@@ -57,7 +62,8 @@
         "description": null,
         "rating": 4.7,
         "longitude": 105.845655,
-        "latitude": 21.032512699999998
+        "latitude": 21.032512699999998,
+        "type": "cafe"
     },
     {
         "start": "15:27",
@@ -67,7 +73,8 @@
         "description": null,
         "rating": 4.6,
         "longitude": 105.8485326,
-        "latitude": 21.0353033
+        "latitude": 21.0353033,
+        "type": "cafe"
     },
     {
         "start": "16:59",
@@ -77,7 +84,8 @@
         "description": null,
         "rating": 3.6,
         "longitude": 105.8500387,
-        "latitude": 21.0381434
+        "latitude": 21.0381434,
+        "type": "market"
     },
     {
         "start": "19:18",
@@ -87,7 +95,8 @@
         "description": null,
         "rating": 4.8,
         "longitude": 105.8506091,
-        "latitude": 21.0363616
+        "latitude": 21.0363616,
+        "type": "cafe"
     },
     {
         "start": "20:50",
@@ -97,7 +106,8 @@
         "description": null,
         "rating": 4.8,
         "longitude": 105.8551911,
-        "latitude": 21.0337446
+        "latitude": 21.0337446,
+        "type": "cafe"
     },
     {
         "start": "22:21",
@@ -107,16 +117,18 @@
         "description": null,
         "rating": 4.5,
         "longitude": 105.851312,
-        "latitude": 21.032947999999998
+        "latitude": 21.032947999999998,
+        "type": "night market"
     },
     {
-        "start": "24:53",
-        "end": "24:53",
-        "place_id": "ChIJvRjrg6arNTERTp-fhVwKIw8",
-        "title": "Quay về Khách sạn La Mejor và Sky Bar",
+        "start": "22:21",
+        "end": "24:51",
+        "place_id": "ChIJaRerdQCrNTERQelayRB7Upk",
+        "title": "Night market",
         "description": null,
-        "rating": 4.9,
-        "longitude": 105.8520873,
-        "latitude": 21.0345315
+        "rating": 4.5,
+        "longitude": 105.851312,
+        "latitude": 21.032947999999998,
+        "type": "night market"
     }
 ]
