@@ -15,7 +15,7 @@ public class TripDetailRequest {
 
     private Long tripSectionId;
 
-    private Long locationId; // có thể null
+    private Long locationId;
 
     private Integer sequenceOrder;
 

@@ -1,11 +1,13 @@
 package com.exproject.backend.trip.dto;
 
+import com.exproject.backend.trip_section.dto.TripSectionRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -28,4 +30,6 @@ public class TripRequest {
     private Integer numElder;
 
     private Integer status;
+
+    private List<TripSectionRequest> tripSections;
 }

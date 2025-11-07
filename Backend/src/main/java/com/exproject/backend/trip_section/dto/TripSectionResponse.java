@@ -1,5 +1,14 @@
 package com.exproject.backend.trip_section.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class TripSectionResponse {
 
     private Long id;
@@ -8,34 +17,4 @@ public class TripSectionResponse {
     private String title;
     private String description;
 
-    public TripSectionResponse() {
-    }
-
-    public TripSectionResponse(Long id, Long tripId, Integer dayNumber, String title, String description) {
-        this.id = id;
-        this.tripId = tripId;
-        this.dayNumber = dayNumber;
-        this.title = title;
-        this.description = description;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Long getTripId() {
-        return tripId;
-    }
-
-    public Integer getDayNumber() {
-        return dayNumber;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 }

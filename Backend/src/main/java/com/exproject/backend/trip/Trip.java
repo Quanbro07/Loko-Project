@@ -1,6 +1,7 @@
 package com.exproject.backend.trip;
 
 import com.exproject.backend.review_location.ReviewLocation;
+import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip_section.TripSection;
 import com.exproject.backend.user.info.User;
 import jakarta.persistence.*;
@@ -56,4 +57,28 @@ public class Trip {
 
     @Column(name = "create_at")
     private LocalDateTime createAt;
+
+    // Constructor
+    public Trip(TripRequest tripRequest, User user) {
+        this.user = user;
+
+        this.tripName = tripRequest.getTripName();
+
+        this.startDate = tripRequest.getStartDate();
+        this.endDate = tripRequest.getEndDate();
+
+        this.numAdult = tripRequest.getNumAdult();
+        this.numChild = tripRequest.getNumChild();
+        this.numElder = tripRequest.getNumElder();
+
+        this.status = tripRequest.getStatus();
+
+        this.createAt = LocalDateTime.now();
+    }
+
+    // Help Function
+    public void addTripSection(TripSection tripSection) {
+        tripSections.add(tripSection);
+        tripSection.setTrip(this);
+    }
 }

@@ -1,4 +1,4 @@
-package com.exproject.backend.province;
+package com.exproject.backend.province.info;
 
 import com.exproject.backend.location.Location;
 import jakarta.persistence.*;
@@ -29,4 +29,9 @@ public class Province {
 
     private String region;
 
+    // Constructor đặc biet
+    public Province(EProvince eprovince,String region) {
+        this.provinceName = eprovince.name();
+        this.region = region;
+    }
 }

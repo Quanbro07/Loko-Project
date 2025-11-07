@@ -2,7 +2,7 @@ package com.exproject.backend.location;
 
 import com.exproject.backend.location_category.LocationCategory;
 import com.exproject.backend.location_img.LocationImg;
-import com.exproject.backend.province.Province;
+import com.exproject.backend.province.info.Province;
 import com.exproject.backend.review_location.ReviewLocation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

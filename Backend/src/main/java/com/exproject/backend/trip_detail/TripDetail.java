@@ -1,6 +1,7 @@
 package com.exproject.backend.trip_detail;
 
 import com.exproject.backend.location.Location;
+import com.exproject.backend.trip_detail.dto.TripDetailRequest;
 import com.exproject.backend.trip_section.TripSection;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -41,4 +42,14 @@ public class TripDetail {
 
     @Column(name = "transport_note")
     private String transportNote;
+
+
+    public TripDetail(TripDetailRequest tripDetailRequest, Location location) {
+
+        this.location = location;
+        this.sequenceOrder = tripDetailRequest.getSequenceOrder();
+        this.startTime = tripDetailRequest.getStartTime();
+        this.endTime = tripDetailRequest.getEndTime();
+        this.transportNote = tripDetailRequest.getTransportNote();
+    }
 }

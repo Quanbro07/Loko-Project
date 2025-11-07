@@ -9,4 +9,8 @@ import java.util.List;
 public interface LocationRepository extends JpaRepository<Location, Long> {
 
     List<Location> findByProvince_Id(Long provinceId);
+
+    List<Location> findAllByProvince_ProvinceName(String ProvinceName);
+
+    Location findById(long id);
 }

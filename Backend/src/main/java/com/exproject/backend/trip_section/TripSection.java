@@ -2,6 +2,7 @@ package com.exproject.backend.trip_section;
 
 import com.exproject.backend.trip.Trip;
 import com.exproject.backend.trip_detail.TripDetail;
+import com.exproject.backend.trip_section.dto.TripSectionRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,4 +40,17 @@ public class TripSection {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    // Constructor
+    public TripSection(TripSectionRequest tripSectionRequest) {
+        this.dayNumber = tripSectionRequest.getDayNumber();
+        this.title = tripSectionRequest.getTitle();
+        this.description = tripSectionRequest.getDescription();
+    }
+
+    // Helper
+    public void addTripDetail(TripDetail tripDetail) {
+        this.tripDetails.add(tripDetail);
+
+        tripDetail.setTripSection(this);
+    }
 }
