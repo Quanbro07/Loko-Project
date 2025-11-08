@@ -11,11 +11,10 @@ class FoodSolver(BaseSolver):
     Kế thừa BaseSolver và thêm các ràng buộc đặc thù cho Ẩm thực.
     """
     def __init__(self, instance, profile):
-        # GIỮ NGUYÊN LOGIC CŨ (THEO YÊU CẦU)
         if instance["night_nodes"]:
-            instance["max_duration"] = (24 * 60) - DAY_START_TIME # 16 tiếng
+            instance["max_duration"] = (24 * 60) - DAY_START_TIME 
         else:
-            instance["max_duration"] = MAX_DAY_DURATION # 14 tiếng
+            instance["max_duration"] = MAX_DAY_DURATION 
 
         super().__init__(instance, profile)
 
@@ -30,58 +29,52 @@ class FoodSolver(BaseSolver):
             self.time_dim.SetCumulVarSoftLowerBound(idx, LUNCH_START_MINS, LUNCH_PENALTY)
             self.time_dim.SetCumulVarSoftUpperBound(idx, LUNCH_END_MINS, LUNCH_PENALTY)
 
-        night_start_min = (19 * 60) - DAY_START_TIME # 19:00
+        night_start_min = (19 * 60) - DAY_START_TIME
         for node in self.instance["night_nodes"]:
             idx = self.manager.NodeToIndex(node)
             self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_min, 300)
 
-    def run_solver_with_feedback(self, max_attempts=3, time_limit_seconds=30):
+    # --- SỬA ĐỔI: Tên hàm và xóa bỏ vòng lặp ---
+    def run_single_itinerary(self, attempt_num, time_limit_seconds=30):
         """
-        Hàm chính để chạy solver, có vòng lặp phản hồi của người dùng.
-        SẼ LƯU KẾT QUẢ RA JSON MỖI LẦN TẠO LỊCH TRÌNH.
+        Hàm này chỉ chạy MỘT lần, lưu file, hỏi y/n, và trả kết quả.
         """
-        for attempt in range(1, max_attempts + 1):
-            print(f"\n🚀 Bắt đầu sinh lịch trình Ẩm thực (lần {attempt})...")
-            
-            solution = self.solve(time_limit_seconds) 
-            
-            if not solution:
-                print("❌ Không thể tìm được lịch trình hợp lệ.")
-                return None
+        solution = self.solve(time_limit_seconds) 
+        
+        if not solution:
+            print("❌ Không thể tìm được lịch trình hợp lệ.")
+            # Trả về "no" và danh sách rỗng
+            return "n", [] 
 
-            print("\n🗓️  Lịch trình được tạo:")
-            print("=" * 70)
-            
-            visited_nodes, schedule_data = self.format_solution(solution)
-            
-            print("=" * 70)
-            
-            print(f"🔄 Đang lưu lịch trình (lần {attempt}) vào schedule.json...")
-            try:
-                with open("schedule.json", "w", encoding="utf-8") as f:
-                    json.dump(schedule_data, f, ensure_ascii=False, indent=4)
-                print("✅ Đã lưu file schedule.json.")
-            except Exception as e:
-                print(f"❌ Lỗi khi lưu file JSON: {e}")
+        print("\n🗓️  Lịch trình được tạo:")
+        print("=" * 70)
+        
+        # Lấy cả 2 kết quả từ format_solution
+        visited_nodes, schedule_data = self.format_solution(solution)
+        
+        print("=" * 70)
+        
+        # Ghi file JSON (ghi đè)
+        print(f"🔄 Đang lưu lịch trình (lần {attempt_num}) vào schedule.json...")
+        try:
+            with open("schedule.json", "w", encoding="utf-8") as f:
+                json.dump(schedule_data, f, ensure_ascii=False, indent=4)
+            print("✅ Đã lưu file schedule.json.")
+        except Exception as e:
+            print(f"❌ Lỗi khi lưu file JSON: {e}")
 
-            feedback = input("\nBạn có hài lòng với lịch trình này không? (y/n): ").strip().lower()
-            if feedback == "y":
-                print("🎉 Cảm ơn bạn! Chúc bạn có một chuyến đi vui vẻ. (Lịch trình cuối cùng đã được lưu)")
-                return visited_nodes
-            else:
-                for node in visited_nodes:
-                    if node != self.depot:
-                        current_penalty = self.instance["penalties"][node]
-                        new_penalty = int(max(5, current_penalty * 0.2)) 
-                        self.instance["penalties"][node] = new_penalty
-                
-                print(f"🔄 Đã giảm độ ưu tiên, tạo lại lịch trình khác (sẽ ghi đè file JSON)...\n")
-                
-                self._reset_solver()
+        feedback = input("\nBạn có hài lòng với lịch trình này không? (y/n): ").strip().lower()
+        
+        if feedback != "y":
+            feedback = "n" # Chuẩn hóa
+            
+        # Trả về phản hồi và danh sách các node (đã được sắp xếp lại)
+        return feedback, visited_nodes
+    # --- HẾT SỬA ĐỔI ---
 
 
     def _reset_solver(self):
-        """Tạo lại model với penalties đã được cập nhật."""
+        # (Hàm này không còn được dùng bởi vòng lặp, nhưng cứ để đó)
         self.manager = pywrapcp.RoutingIndexManager(self.num_places, 1, self.depot)
         self.routing = pywrapcp.RoutingModel(self.manager)
         self._add_cost_callbacks()
@@ -92,8 +85,9 @@ class FoodSolver(BaseSolver):
     def format_solution(self, solution):
         """
         In ra lịch trình chi tiết VÀ trả về dữ liệu (list) để lưu JSON.
+        (Hàm này giữ nguyên như phiên bản trước)
         """
-        visited_nodes = []
+        visited_nodes = [] # Sẽ chứa các index ĐÃ SẮP XẾP LẠI (reordered)
         schedule_data = [] 
         
         index = self.routing.Start(0)
@@ -106,7 +100,7 @@ class FoodSolver(BaseSolver):
         hotel_title = depot_place.get('title', 'Khách sạn')
         
         while not self.routing.IsEnd(index):
-            node = self.manager.IndexToNode(index)
+            node = self.manager.NodeToIndex(index) # node = index đã sắp xếp lại
                 
             place = self.locations[node]
             tags = [t.lower() for t in place.get("tags", [])]
@@ -120,14 +114,12 @@ class FoodSolver(BaseSolver):
             start_str = minutes_to_str(arrival_actual)
             end_str = minutes_to_str(arrival_actual + service_time)
 
-            # In ra Console
             if node == self.depot and index != self.routing.Start(0):
-                break # Đã quay về khách sạn
+                break 
             
             print(f"- [{start_str} → {end_str}] {name} (Dừng: {service_time}p)")
             print(f"    Tags: {tags} | Energy: {total_energy}%")
             
-            # Thêm vào JSON
             schedule_data.append({
                 "start": start_str, "end": end_str,
                 "place_id": place.get("place_id"), "title": name,
@@ -135,26 +127,21 @@ class FoodSolver(BaseSolver):
                 "longitude": place.get("longitude"), "latitude": place.get("latitude")
             })
 
-            # Logic Energy và Nghỉ ngơi (chỉ áp dụng cho các điểm không phải depot)
             if node != self.depot:
-                # 1. Tính toán Energy
                 if "hotel" in tags: energy_loss = -50
                 elif any(t in ["market", "night market"] for t in tags): energy_loss = 25
                 elif any(t in ["restaurant", "cafe", "speciality"] for t in tags): energy_loss = 10
                 else: energy_loss = 15
                 total_energy = max(0, min(100, total_energy - energy_loss))
                 
-                # 2. In Gợi ý
                 if last_tag == "restaurant" and "cafe" not in tags:
                     print("    👉 Gợi ý: Nên ghé một quán cafe để thư giãn sau khi ăn.")
 
-                # --- SỬA ĐỔI LOGIC NGHỈ NGƠI ---
                 if total_energy < 30:
                     next_index = solution.Value(self.routing.NextVar(index))
                     next_node = self.manager.IndexToNode(next_index)
                     
                     if not self.routing.IsEnd(next_index):
-                        # Tính toán thời gian cho chuyến đi "nghỉ"
                         travel_to_depot = time_matrix[node][self.depot]
                         rest_duration = 60
                         travel_from_depot = time_matrix[self.depot][next_node]
@@ -166,29 +153,23 @@ class FoodSolver(BaseSolver):
                         
                         extra_time_needed = max(0, detour_time - solved_travel_time)
                         
-                        # Hồi phục năng lượng và cộng dồn thời gian
                         total_energy = 100 
                         total_added_rest_time += extra_time_needed
 
-                        # --- Định nghĩa các mốc thời gian nghỉ ---
                         current_leave_actual = arrival_actual + service_time
                         
-                        # 1. (Di chuyển về KS)
                         rest_start_1_str = minutes_to_str(current_leave_actual)
                         arrive_at_hotel_time = current_leave_actual + travel_to_depot
                         rest_end_1_str = minutes_to_str(arrive_at_hotel_time)
                         
-                        # 2. (Nghỉ tại KS)
                         rest_start_2_str = rest_end_1_str
                         leave_hotel_time = arrive_at_hotel_time + rest_duration
                         rest_end_2_str = minutes_to_str(leave_hotel_time)
 
-                        # --- In ra Console ---
                         print(f"- [{rest_start_1_str} → {rest_end_1_str}] (Di chuyển về) {hotel_title} (Dừng: 0p)")
                         print(f"- [{rest_start_2_str} → {rest_end_2_str}] (Nghỉ ngơi tại) {hotel_title} (Dừng: {rest_duration}p)")
                         print(f"    💤 Năng lượng đã hồi phục!")
 
-                        # --- Thêm vào JSON ---
                         schedule_data.append({
                             "start": rest_start_1_str, "end": rest_end_1_str,
                             "place_id": depot_place.get("place_id"), "title": f"(Di chuyển về) {hotel_title}",
@@ -204,13 +185,11 @@ class FoodSolver(BaseSolver):
                         
                     else:
                         print(f"    💤 Năng lượng thấp! May mắn đây là điểm cuối.")
-                # --- HẾT SỬA ĐỔI ---
 
-            visited_nodes.append(node)
+            visited_nodes.append(node) # Thêm index đã sắp xếp lại
             last_tag = tags[0] if tags else "unknown"
             index = solution.Value(self.routing.NextVar(index))
 
-        # --- In và Thêm điểm cuối (Quay về) ---
         end_time_solved = solution.Value(self.time_dim.CumulVar(index))
         end_time_actual = end_time_solved + total_added_rest_time
         end_str_final = minutes_to_str(end_time_actual)
@@ -224,4 +203,5 @@ class FoodSolver(BaseSolver):
             "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
         })
         
+        # Trả về các index ĐÃ SẮP XẾP LẠI (reordered)
         return [n for n in visited_nodes if n != self.depot], schedule_data
