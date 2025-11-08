@@ -60,4 +60,5 @@ def minutes_to_str(mins):
     """Định dạng thời gian HH:MM từ số phút trong ngày du lịch."""
     total = DAY_START_TIME + mins
     h, m = divmod(total, 60)
+    h = h % 24
     return f"{int(h):02d}:{int(m):02d}"

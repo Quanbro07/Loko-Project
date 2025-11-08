@@ -1,5 +1,5 @@
 # solvers/food_solver.py
-import json # <-- THÊM VÀO: Cần thiết để ghi file JSON
+import json
 from .base_solver import BaseSolver
 from ortools.constraint_solver import pywrapcp
 from config import *
@@ -52,12 +52,10 @@ class FoodSolver(BaseSolver):
             print("\n🗓️  Lịch trình được tạo:")
             print("=" * 70)
             
-            # --- SỬA ĐỔI 1: Lấy cả 2 kết quả từ format_solution ---
             visited_nodes, schedule_data = self.format_solution(solution)
             
             print("=" * 70)
             
-            # --- SỬA ĐỔI 2: Ghi file JSON ngay lập tức (và ghi đè) ---
             print(f"🔄 Đang lưu lịch trình (lần {attempt}) vào schedule.json...")
             try:
                 with open("schedule.json", "w", encoding="utf-8") as f:
@@ -65,7 +63,6 @@ class FoodSolver(BaseSolver):
                 print("✅ Đã lưu file schedule.json.")
             except Exception as e:
                 print(f"❌ Lỗi khi lưu file JSON: {e}")
-            # --- HẾT SỬA ĐỔI 2 ---
 
             feedback = input("\nBạn có hài lòng với lịch trình này không? (y/n): ").strip().lower()
             if feedback == "y":
@@ -97,7 +94,7 @@ class FoodSolver(BaseSolver):
         In ra lịch trình chi tiết VÀ trả về dữ liệu (list) để lưu JSON.
         """
         visited_nodes = []
-        schedule_data = [] # <-- Dữ liệu JSON sẽ được lưu ở đây
+        schedule_data = [] 
         
         index = self.routing.Start(0)
         total_energy = 100 
@@ -105,10 +102,11 @@ class FoodSolver(BaseSolver):
         total_added_rest_time = 0 
         time_matrix = self.instance["time_matrix"] 
         
-        depot_place = self.locations[self.depot] # Lấy thông tin khách sạn
+        depot_place = self.locations[self.depot] 
+        hotel_title = depot_place.get('title', 'Khách sạn')
         
         while not self.routing.IsEnd(index):
-            node = self.manager.NodeToIndex(index)
+            node = self.manager.IndexToNode(index)
                 
             place = self.locations[node]
             tags = [t.lower() for t in place.get("tags", [])]
@@ -122,81 +120,108 @@ class FoodSolver(BaseSolver):
             start_str = minutes_to_str(arrival_actual)
             end_str = minutes_to_str(arrival_actual + service_time)
 
-            # --- In ra Console (Giữ nguyên) ---
+            # In ra Console
             if node == self.depot and index != self.routing.Start(0):
                 break # Đã quay về khách sạn
             
             print(f"- [{start_str} → {end_str}] {name} (Dừng: {service_time}p)")
             print(f"    Tags: {tags} | Energy: {total_energy}%")
             
+            # Thêm vào JSON
+            schedule_data.append({
+                "start": start_str, "end": end_str,
+                "place_id": place.get("place_id"), "title": name,
+                "description": place.get("description"), "rating": place.get("rating"),
+                "longitude": place.get("longitude"), "latitude": place.get("latitude")
+            })
+
+            # Logic Energy và Nghỉ ngơi (chỉ áp dụng cho các điểm không phải depot)
             if node != self.depot:
+                # 1. Tính toán Energy
                 if "hotel" in tags: energy_loss = -50
                 elif any(t in ["market", "night market"] for t in tags): energy_loss = 25
                 elif any(t in ["restaurant", "cafe", "speciality"] for t in tags): energy_loss = 10
                 else: energy_loss = 15
                 total_energy = max(0, min(100, total_energy - energy_loss))
                 
+                # 2. In Gợi ý
                 if last_tag == "restaurant" and "cafe" not in tags:
                     print("    👉 Gợi ý: Nên ghé một quán cafe để thư giãn sau khi ăn.")
 
-                if total_energy < 30 and "hotel" not in tags:
-                    # ... (logic mô phỏng nghỉ ngơi giữ nguyên) ...
+                # --- SỬA ĐỔI LOGIC NGHỈ NGƠI ---
+                if total_energy < 30:
                     next_index = solution.Value(self.routing.NextVar(index))
                     next_node = self.manager.IndexToNode(next_index)
+                    
                     if not self.routing.IsEnd(next_index):
+                        # Tính toán thời gian cho chuyến đi "nghỉ"
                         travel_to_depot = time_matrix[node][self.depot]
                         rest_duration = 60
                         travel_from_depot = time_matrix[self.depot][next_node]
                         detour_time = travel_to_depot + rest_duration + travel_from_depot
+                        
                         next_arrival_solved = solution.Value(self.time_dim.CumulVar(next_index))
                         current_leave_solved = arrival_solved + service_time
                         solved_travel_time = next_arrival_solved - current_leave_solved
+                        
                         extra_time_needed = max(0, detour_time - solved_travel_time)
-                        print(f"    💤 Năng lượng thấp! Quay về khách sạn nghỉ {rest_duration}p.")
-                        print(f"    (Hành trình này cộng thêm {extra_time_needed} phút vào lịch trình)")
-                        total_added_rest_time += extra_time_needed
+                        
+                        # Hồi phục năng lượng và cộng dồn thời gian
                         total_energy = 100 
+                        total_added_rest_time += extra_time_needed
+
+                        # --- Định nghĩa các mốc thời gian nghỉ ---
+                        current_leave_actual = arrival_actual + service_time
+                        
+                        # 1. (Di chuyển về KS)
+                        rest_start_1_str = minutes_to_str(current_leave_actual)
+                        arrive_at_hotel_time = current_leave_actual + travel_to_depot
+                        rest_end_1_str = minutes_to_str(arrive_at_hotel_time)
+                        
+                        # 2. (Nghỉ tại KS)
+                        rest_start_2_str = rest_end_1_str
+                        leave_hotel_time = arrive_at_hotel_time + rest_duration
+                        rest_end_2_str = minutes_to_str(leave_hotel_time)
+
+                        # --- In ra Console ---
+                        print(f"- [{rest_start_1_str} → {rest_end_1_str}] (Di chuyển về) {hotel_title} (Dừng: 0p)")
+                        print(f"- [{rest_start_2_str} → {rest_end_2_str}] (Nghỉ ngơi tại) {hotel_title} (Dừng: {rest_duration}p)")
+                        print(f"    💤 Năng lượng đã hồi phục!")
+
+                        # --- Thêm vào JSON ---
+                        schedule_data.append({
+                            "start": rest_start_1_str, "end": rest_end_1_str,
+                            "place_id": depot_place.get("place_id"), "title": f"(Di chuyển về) {hotel_title}",
+                            "description": "Di chuyển về khách sạn để nghỉ ngơi", "rating": depot_place.get("rating"),
+                            "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
+                        })
+                        schedule_data.append({
+                            "start": rest_start_2_str, "end": rest_end_2_str,
+                            "place_id": depot_place.get("place_id"), "title": f"(Nghỉ ngơi tại) {hotel_title}",
+                            "description": f"Nghỉ ngơi {rest_duration} phút", "rating": depot_place.get("rating"),
+                            "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
+                        })
+                        
                     else:
                         print(f"    💤 Năng lượng thấp! May mắn đây là điểm cuối.")
-
-            # --- Thêm dữ liệu vào list JSON ---
-            entry = {
-                "start": start_str,
-                "end": end_str,
-                "place_id": place.get("place_id"),
-                "title": name,
-                "description": place.get("description"),
-                "rating": place.get("rating"),
-                "longitude": place.get("longitude"),
-                "latitude": place.get("latitude"),
-                "type": place.get("type") or (tags[0] if tags else "unknown")
-            }
-            schedule_data.append(entry)
-            # --- Hết phần thêm JSON ---
+                # --- HẾT SỬA ĐỔI ---
 
             visited_nodes.append(node)
             last_tag = tags[0] if tags else "unknown"
             index = solution.Value(self.routing.NextVar(index))
 
-        # --- In điểm cuối (Quay về) ra Console ---
+        # --- In và Thêm điểm cuối (Quay về) ---
         end_time_solved = solution.Value(self.time_dim.CumulVar(index))
         end_time_actual = end_time_solved + total_added_rest_time
         end_str_final = minutes_to_str(end_time_actual)
-        print(f"- [{end_str_final}] Quay về {depot_place.get('title', 'Khách sạn')} 🏨")
         
-        # --- Thêm điểm cuối vào list JSON ---
-        entry = {
-            "start": start_str,
-            "end": end_str,
-            "place_id": place.get("place_id"),
-            "title": name,
-            "description": place.get("description"),
-            "rating": place.get("rating"),
-            "longitude": place.get("longitude"),
-            "latitude": place.get("latitude"),
-            "type": place.get("type") or (tags[0] if tags else "unknown")
-        }
-        schedule_data.append(entry)
+        print(f"- [{end_str_final}] Quay về {hotel_title} 🏨")
         
-        # --- SỬA ĐỔI 3: Trả về cả 2 ---
+        schedule_data.append({
+            "start": end_str_final, "end": end_str_final,
+            "place_id": depot_place.get("place_id"), "title": f"Quay về {hotel_title}",
+            "description": depot_place.get("description"), "rating": depot_place.get("rating"),
+            "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
+        })
+        
         return [n for n in visited_nodes if n != self.depot], schedule_data
