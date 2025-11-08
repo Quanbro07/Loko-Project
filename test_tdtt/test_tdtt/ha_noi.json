@@ -1,1365 +1,632 @@
 [
     {
-        "type_of_place": "snack",
-        "title": "Banh mi 17",
-        "place_id": "ChIJz3U_Re2rNTERdjIPaZ-VXl8",
-        "latitude": 21.035900599999998,
-        "longitude": 105.8523948,
+        "type_of_place": "amusement",
+        "title": "Tàu lượn siêu tốc vườn thú Hà Nội",
+        "place_id": "ChIJMRBjaTqrNTERQVQ-xzYNEPM",
+        "latitude": 21.0297,
+        "longitude": 105.8043429,
         "types": [
-            "Nhà hàng ăn nhanh"
-        ],
-        "operating_hours": {
-            "thứ năm": "10:30–04:00",
-            "thứ sáu": "10:30–04:00",
-            "thứ bảy": "10:30–04:00",
-            "chủ nhật": "10:30–04:00",
-            "thứ hai": "10:30–04:00",
-            "thứ ba": "10:30–04:00",
-            "thứ tư": "10:30–04:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy6awOdu_r13D1LGF-9xataVOp9np2QZDWZh8fILmRfzwCW93GMLPWyqYELyT3MMUWjMzMkgv9ottWtWHp4L1QJbNLAnmDfmu95Jd16Yjyco8mquFCyW6FTFpIjdd6Ky2KYug1tXJ6hbx3K=w122-h92-k-no",
-        "rating": 4.8,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Un-naked Potato",
-        "place_id": "ChIJqyKRCACrNTERFoFgqBjOY2s",
-        "latitude": 21.03398,
-        "longitude": 105.85257279999999,
-        "types": [
-            "Nhà hàng ăn nhanh"
-        ],
-        "operating_hours": {
-            "thứ năm": "18:00–03:00",
-            "thứ sáu": "18:00–03:00",
-            "thứ bảy": "18:00–03:00",
-            "chủ nhật": "18:00–03:00",
-            "thứ hai": "18:00–03:00",
-            "thứ ba": "18:00–03:00",
-            "thứ tư": "18:00–03:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx2Vl4gFHLQV0ZCp2IO1ZwFAx5ldkOi5_HvvBUnj-vkn1SA84x8y1ApveRVvNRIxTPUdnTmFO3JmdDV2fQgsdHPjLmOYIKwwZfh_ydhFZ9c5GQ2B3VWJVmjOF3Poe2qYpOqInNtGMv23Lc=w92-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Bánh mì Long Hội",
-        "place_id": "ChIJrwB9tr-rNTER6xgPK_KsePg",
-        "latitude": 21.0321033,
-        "longitude": 105.85396999999999,
-        "types": [
-            "Nhà hàng ăn nhanh",
-            "Cửa hàng bán đồ ăn nấu sẵn"
-        ],
-        "operating_hours": {
-            "thứ sáu": "06:30–22:30",
-            "thứ bảy": "06:30–22:30",
-            "chủ nhật": "06:30–22:30",
-            "thứ hai": "06:30–22:30",
-            "thứ ba": "06:30–22:30",
-            "thứ tư": "06:30–22:30",
-            "thứ năm": "06:30–22:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw2HQCXSFnHlA87JiaWfQAjytPCnPtIwnQQg96xoks6zDcX09oK7yIDan6a5dbpcXp4j6FrYRpkdlSfkLt62CAEG694_8ySgWdBWY0QtANmGkoWFcWHs5b1bRc_B8MHf_8z3iQK=w92-h92-k-no",
-        "rating": 4.5,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Banh Mi 25",
-        "place_id": "ChIJtRY3u3SrNTERs95UQ9jA--s",
-        "latitude": 21.036113,
-        "longitude": 105.84857699999999,
-        "types": [
-            "Cửa hàng sandwich"
-        ],
-        "operating_hours": {
-            "thứ sáu": "07:00–21:00",
-            "thứ bảy": "07:00–21:00",
-            "chủ nhật": "07:00–21:00",
-            "thứ hai": "07:00–21:00",
-            "thứ ba": "07:00–21:00",
-            "thứ tư": "07:00–21:00",
-            "thứ năm": "07:00–21:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyfYmU1mw-zRYHdsdP1FN5QWVch8dcyz4kGHBdEFczlUXSmwzI7uxQW73_EdpzETlsHbHzN3yOuvKsLPw4bIA6uqrXh-JrkoHhGaBp3LUAIox_Bb8TccUDANO10tGTssBJhqrEz5w=w163-h92-k-no",
-        "rating": 4.4,
-        "description": "Cửa hàng nổi tiếng bán bánh mì các loại. Cửa hàng nổi tiếng có khu vực ghế ngồi đơn giản nằm bên đường đối diện và thực đơn bánh mì phong phú."
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Cửa hàng bánh gối Lý Quốc Sư",
-        "place_id": "ChIJXxY5n5WrNTEROKX5OmqJO_I",
-        "latitude": 21.029340599999998,
-        "longitude": 105.8492227,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Nhà hàng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "09:00–21:00",
-            "thứ bảy": "09:00–21:00",
-            "chủ nhật": "09:00–21:00",
-            "thứ hai": "09:00–21:00",
-            "thứ ba": "09:00–21:00",
-            "thứ tư": "09:00–21:00",
-            "thứ năm": "09:00–21:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw8OkakdckLz9JBmC4tEN_izH-8A-uwyufvhxU59kH1CY0rox-6wAPuE8s-6K-trQxQkn9iUilXBhkndlHfzobq2bstX2S4PeqqcmK2uvkQX1c0_UEZdfgi-6JBDZNDeGFMfsVVUQ=w122-h92-k-no",
-        "rating": 4.3,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Little Bowl",
-        "place_id": "ChIJs73awr6rNTERMTwoJN2jGTU",
-        "latitude": 21.0354437,
-        "longitude": 105.8486507,
-        "types": [
-            "Cửa hàng bán đồ tráng miệng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "11:30–22:00",
-            "thứ bảy": "11:30–22:00",
-            "chủ nhật": "11:30–22:00",
-            "thứ hai": "11:30–22:00",
-            "thứ ba": "11:30–22:00",
-            "thứ tư": "11:30–22:00",
-            "thứ năm": "11:30–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzk17Oj3kqomGwhWziCiJiJx_PE4oC0fnFeSv3S5EWSnimVaqSgbWwHL7owHwIDTKrZGcLA2Oz9lr98eEkQ832ExIgAiGFDw5xBxR2Jo0JW12OQwLBgu6Z_w9yKs1RFvHtRHo1gTQ=w122-h92-k-no",
-        "rating": 4.8,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Bánh mì Don Don",
-        "place_id": "ChIJAQBVisSrNTERFtscOunwCu8",
-        "latitude": 21.0350085,
-        "longitude": 105.8520199,
-        "types": [
-            "Cửa hàng sandwich"
-        ],
-        "operating_hours": {
-            "thứ sáu": "09:00–00:00",
-            "thứ bảy": "09:00–00:00",
-            "chủ nhật": "09:00–00:00",
-            "thứ hai": "09:00–00:00",
-            "thứ ba": "09:00–00:00",
-            "thứ tư": "09:00–00:00",
-            "thứ năm": "09:00–00:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPxQOUvGbyZroSlmcd8yN9ZpPLa9gL4DSVoKZ_b=w138-h92-k-no",
-        "rating": 4.8,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Tào phớ Jelly Bean",
-        "place_id": "ChIJG5KEQJKrNTERl_l972pU2Kg",
-        "latitude": 21.0209199,
-        "longitude": 105.8481427,
-        "types": [
-            "Nhà hàng Việt Nam"
-        ],
-        "operating_hours": {
-            "thứ sáu": "07:15–22:00",
-            "thứ bảy": "07:15–22:00",
-            "chủ nhật": "07:15–22:00",
-            "thứ hai": "07:15–22:00",
-            "thứ ba": "07:15–22:00",
-            "thứ tư": "07:15–22:00",
-            "thứ năm": "07:15–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx33QSZsAtsGIMK-iEX2jRhrUu2mkgO7--1o795RqGMENmO8THBG8WcscZ0MZ0xuiuEkib3k-dWtyrI2yDbP95HyqaCQSn_9qr8qzfaOlqm2PfBy8Rzv1MXhbVZ973c_4GvcR-dsaDYSzP7=w122-h92-k-no",
-        "rating": 4.4,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Hương Việt",
-        "place_id": "ChIJF8qw0b6rNTERcOsXEyrUzpg",
-        "latitude": 21.0360597,
-        "longitude": 105.84883839999999,
-        "types": [
-            "Nhà hàng Việt Nam"
-        ],
-        "operating_hours": {
-            "thứ sáu": "08:00–21:00",
-            "thứ bảy": "08:00–21:00",
-            "chủ nhật": "08:00–21:00",
-            "thứ hai": "08:00–21:00",
-            "thứ ba": "08:00–21:00",
-            "thứ tư": "08:00–21:00",
-            "thứ năm": "08:00–21:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzZuTpSBiuLPPzito_jFSmn6FJs2dR8x7AoZN7ZFud2lIlDAZiyIYmRazDf1LzCmZFNTo7P6z4YhMud4KXzgjeau5Q1bJoA8LN3FOGInRl_dgbyEP1vKReuXVyGu-XhpS2r5nv1iA=w122-h92-k-no",
-        "rating": 4.8,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Bánh mì Bami",
-        "place_id": "ChIJi2-Icb-rNTEROu-_GUt4eQk",
-        "latitude": 21.034154299999997,
-        "longitude": 105.8514288,
-        "types": [
-            "Cửa hàng sandwich",
-            "Quầy bánh mì kẹp xúc xích",
-            "Nhà hàng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "07:00–22:00",
-            "thứ bảy": "07:00–22:00",
-            "chủ nhật": "07:00–22:00",
-            "thứ hai": "07:00–22:00",
-            "thứ ba": "07:00–22:00",
-            "thứ tư": "07:00–17:00",
-            "thứ năm": "07:00–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzHMGGC4D8UlM1wsHWEOdQv8IkWTqnoIKbGR91yu-EO9IYHNjWQQ9ZteHki3JFo3i8AOI0eSySh0u7hUJqnW1zy0g4vhlSWZkzSvkD4HlYrtQQ2MzoBsSCze1yy5bowxJeLUBFL=w122-h92-k-no",
-        "rating": 4.5,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Bánh Mì MOM's",
-        "place_id": "ChIJI_bilD6rNTERt0_Jls1MyaY",
-        "latitude": 21.033808699999998,
-        "longitude": 105.8465361,
-        "types": [
-            "Quán ăn nhỏ",
-            "Cửa hàng sandwich"
-        ],
-        "operating_hours": {
-            "thứ sáu": "06:00–00:00",
-            "thứ bảy": "06:00–00:00",
-            "chủ nhật": "06:00–00:00",
-            "thứ hai": "06:00–00:00",
-            "thứ ba": "06:00–00:00",
-            "thứ tư": "06:00–00:00",
-            "thứ năm": "06:00–00:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMTuePXa1oC3PcMfilFmDtd91Jyz-VdBDyi3rdu=w80-h106-k-no",
-        "rating": 4.8,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Xôi Yến",
-        "place_id": "ChIJr1GXTvWrNTERIJPx-PLlIJc",
-        "latitude": 21.0337304,
-        "longitude": 105.85452,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Nhà hàng ăn nhanh"
-        ],
-        "operating_hours": {
-            "thứ sáu": "06:00–00:00",
-            "thứ bảy": "06:00–00:00",
-            "chủ nhật": "06:00–00:00",
-            "thứ hai": "06:00–00:00",
-            "thứ ba": "06:00–00:00",
-            "thứ tư": "06:00–00:00",
-            "thứ năm": "06:00–00:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzqw_M4d9uuW4tkmk9sIJRUa39EGJeET2RQ8STMSGG8OvGs7KikANFTzfnH0LnfvC2nRJAIdhBvN_lTahIt7kM6mT7rGu7FuM680m7N04iC2a1kGDeCCQ7zTNB1x4Va7StQHt_v=w163-h92-k-no",
-        "rating": 4,
-        "description": "Cửa hàng bán các món ăn được làm từ xôi. Quán ăn bình dân, nổi tiếng và phục vụ những bát xôi cùng nhiều món ăn kèm giàu đạm và rau xanh."
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Bánh Bao Bình Mỗ",
-        "place_id": "ChIJQXRe2MSrNTERSukaIBum2ag",
-        "latitude": 21.0292747,
-        "longitude": 105.8462358,
-        "types": [
-            "Nhà hàng gia đình",
-            "Nhà hàng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "07:00–22:00",
-            "thứ bảy": "07:00–22:00",
-            "chủ nhật": "07:00–22:00",
-            "thứ hai": "07:00–22:00",
-            "thứ ba": "07:00–22:00",
-            "thứ tư": "07:00–22:00",
-            "thứ năm": "07:00–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOITTAgb9FoCiIk90OQbzZa3lNj2eSuPlzDagWA=w138-h92-k-no",
-        "rating": 4.8,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Panzerotti.hn",
-        "place_id": "ChIJx_2SUMyrNTERmftxJwxgVJw",
-        "latitude": 21.0457213,
-        "longitude": 105.8426563,
-        "types": [
-            "Nhà hàng ý",
-            "Quán ăn nhỏ"
-        ],
-        "operating_hours": {
-            "thứ sáu": "11:00–22:30",
-            "thứ bảy": "11:00–22:30",
-            "chủ nhật": "11:00–22:30",
-            "thứ hai": "12:30–22:30",
-            "thứ ba": "11:00–22:30",
-            "thứ tư": "11:00–22:30",
-            "thứ năm": "11:00–22:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxcpQA_oeOOyvU9plPnoBTZ1kQe4pVchzB-Xlo0WKs7GbU3wxY9aEt2pXl1w4QFg8MnD4k5mLcaouhEmL8o5cs1_RPfUjo5HOBVFzPE7gzRZOIgbEvBjIckZj_acxN54QRIzdp36A=w122-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Maison Marou Flagship Hanoi",
-        "place_id": "ChIJMd_X_ZKrNTERBmDflf5QgO4",
-        "latitude": 21.0220496,
-        "longitude": 105.8497974,
-        "types": [
-            "Quán cà phê sô cô la",
-            "Tiệm bán sô cô la nghệ thuật",
-            "Cửa hàng bán sô cô la"
-        ],
-        "operating_hours": {
-            "thứ sáu": "09:00–22:30",
-            "thứ bảy": "09:00–22:30",
-            "chủ nhật": "09:00–22:00",
-            "thứ hai": "09:00–22:00",
-            "thứ ba": "09:00–22:00",
-            "thứ tư": "09:00–22:00",
-            "thứ năm": "09:00–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz21yNEl28dPQMMgrSP83sY84fhmRYCJxfWuWu0Sa_7p729Ja8QteTkcY-m1QiH2aDeGU_dJDWtjbZixQpRIlf2De_eoQxXr1gsIhPeDJePGfRc9CNwu5OgAXpwKJi8v-tDgvSmWyF3rLF6=w122-h92-k-no",
-        "rating": 4.6,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Bánh Cuốn Nóng Kim Thoa",
-        "place_id": "ChIJW55Mj8GrNTERMgK8ko_brXE",
-        "latitude": 21.032069699999997,
-        "longitude": 105.85796619999999,
-        "types": [
-            "Nhà hàng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "17:00–23:30",
-            "thứ bảy": "17:00–23:30",
-            "chủ nhật": "17:00–23:30",
-            "thứ hai": "17:00–23:30",
-            "thứ ba": "17:00–23:30",
-            "thứ tư": "17:00–23:30",
-            "thứ năm": "17:00–23:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyGJzDclKxu9ELk4KXXHXIcPJy763_q-0FjhFbzyvU6eBh0mR0Mc79QMuevuzVKnZ9If6UdxgeyQig4VYzj66kSBg_M-A3jIf1_KmWJY-1fPbQ_jmuQLRFtAoE5DHxN4XkLLqDVqg=w122-h92-k-no",
-        "rating": 4.5,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Há cảo Hàng Bồ",
-        "place_id": "ChIJhZMA-b6rNTERqdi3k8FA2MQ",
-        "latitude": 21.0336946,
-        "longitude": 105.84911319999999,
-        "types": [
-            "Cửa hàng bán đồ ăn nấu sẵn"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–12:30, 14:00–18:30",
-            "thứ bảy": "10:00–12:30, 14:00–18:30",
-            "chủ nhật": "10:00–12:30, 14:00–18:30",
-            "thứ hai": "10:00–12:30, 14:00–18:30",
-            "thứ ba": "10:00–12:30, 14:00–18:30",
-            "thứ tư": "10:00–12:30, 14:00–18:30",
-            "thứ năm": "10:00–12:30, 14:00–18:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwDI081ihC8MWuIhMeCywoJb0-NsRH3I1R90lhDUl6PST4usqcbZUP3bQZgbtG-fIGMIs7Rle4CWEyHNkktYgULrjXKS2htPuQLu0ejJEbOuZsA6JPIahjau3lvHAkEfRtToy38=w92-h92-k-no",
-        "rating": 4.4,
-        "description": null
-    },
-    {
-        "type_of_place": "snack",
-        "title": "Madame Hương",
-        "place_id": "ChIJ_9UnOpOrNTERv34RuZXIxO0",
-        "latitude": 21.0228187,
-        "longitude": 105.8517878,
-        "types": [
-            "Tiệm bánh",
-            "Quán cà phê",
-            "Cửa hàng kem"
-        ],
-        "operating_hours": {
-            "thứ sáu": "07:30–22:30",
-            "thứ bảy": "07:30–22:30",
-            "chủ nhật": "07:30–22:30",
-            "thứ hai": "07:30–22:30",
-            "thứ ba": "07:30–22:30",
-            "thứ tư": "07:30–22:30",
-            "thứ năm": "07:30–22:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipO8f_u6crizUr4LW4dn74sJa01al1fp1A-l5BwQ=w138-h92-k-no",
-        "rating": 4,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Tung's Kitchen Vietnamese Cuisine & Vegetarian Food",
-        "place_id": "ChIJ4ySxJnKrNTERMwH1iZONipc",
-        "latitude": 21.0313361,
-        "longitude": 105.84897219999999,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Lớp học nấu ăn",
-            "Nhà hàng ăn chay",
-            "Nhà hàng món chay",
-            "Nhà hàng cho người ăn chay"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–23:00",
-            "thứ bảy": "10:00–23:00",
-            "chủ nhật": "10:00–23:00",
-            "thứ hai": "10:00–23:00",
-            "thứ ba": "10:00–23:00",
-            "thứ tư": "10:00–23:00",
-            "thứ năm": "10:00–23:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz9Vokq5_4enZRNTcmr6f6P6RuGDYV-7Og3soY3PFb63pXLt04BJumzCHTW9CYpLHFxq-RNctMIgNrzDTAzgAVrWoSzaJm-_geicDMh6N1HaHvx4Vl8Zv8ukMDFCpehZEMS85Y2aJnSzhsI=w122-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Nhà Hàng Hoàng",
-        "place_id": "ChIJGR8daRurNTERiP2FRKSdIgM",
-        "latitude": 21.0358922,
-        "longitude": 105.85153509999999,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Lớp học nấu ăn",
-            "Nhà hàng",
-            "Nhà hàng món chay",
-            "Nhà hàng cho người ăn chay"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–23:00",
-            "thứ bảy": "10:00–23:00",
-            "chủ nhật": "10:00–23:00",
-            "thứ hai": "10:00–23:00",
-            "thứ ba": "10:00–23:00",
-            "thứ tư": "10:00–23:00",
-            "thứ năm": "10:00–23:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMeAnG2cvfNc1M9s7b5EAK68tgi6vgh-JYonRU=w92-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Essence Restaurant Original (since 2011)",
-        "place_id": "ChIJ0WjcZr-rNTERV74gECnJzig",
-        "latitude": 21.0306414,
-        "longitude": 105.8418372,
-        "types": [
-            "Nhà hàng",
-            "Quán bar",
-            "Quán cà phê",
-            "Nhà cung cấp thực phẩm và đồ uống cho dịch vụ ăn uống",
-            "Nơi tổ chức sự kiện",
-            "Nhà tổ chức buổi tiệc",
-            "Địa điểm tổ chức lễ cưới"
-        ],
-        "operating_hours": {
-            "thứ sáu": "06:30–10:00, 11:30–22:00",
-            "thứ bảy": "06:30–10:00, 11:30–22:00",
-            "chủ nhật": "06:30–10:00, 11:30–22:00",
-            "thứ hai": "06:30–10:00, 11:30–22:00",
-            "thứ ba": "06:30–10:00, 11:30–22:00",
-            "thứ tư": "06:30–10:00, 11:30–22:00",
-            "thứ năm": "06:30–10:00, 11:30–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7Hra73gQXNKRyXdHOfxMvblcLNCCS4MkHBqXMheZez-jP2FU5Yl3d0aJj4uexmSm3DsL_opXb0DEbfOHrVkin-KhJDB26W7KqjtLwhwLMBPN6ivtEnZ9hAzIBeHOstV3F-ea8=w122-h92-k-no",
-        "rating": 4.8,
-        "description": "Nhà hàng cao cấp phục vụ ẩm thực Việt Nam. Nhà hàng khách sạn trang nhã phục vụ các món đặc sản địa phương truyền thống của Việt Nam và ẩm thực phương Tây."
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Bún chả CỘI phố cổ: Hanoi Specialty food & Vegetarian food",
-        "place_id": "ChIJgToqIoirNTERj77d_vHYmmY",
-        "latitude": 21.032974199999998,
-        "longitude": 105.8546148,
-        "types": [
-            "Nhà hàng Việt Nam"
-        ],
-        "operating_hours": {
-            "thứ sáu": "07:00–22:00",
-            "thứ bảy": "07:00–22:00",
-            "chủ nhật": "07:00–22:00",
-            "thứ hai": "07:00–22:00",
-            "thứ ba": "07:00–22:00",
-            "thứ tư": "07:00–22:00",
-            "thứ năm": "07:00–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxd_wF9JhW3ZNkLoziOlSTnav3YCMj3xTKuncSYyeYJuoMJCKZARiMrTHGBascdqoA_H-M-g_N1LPj-ZZeAmDFehv-ttmlQOmzAy4vvqlvD64Jb7Ez8cofq36WERhIr7FwV2IY2EPBRvVTJ=w122-h92-k-no",
-        "rating": 4.8,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Gánh Hà Nội",
-        "place_id": "ChIJi-Y8nu2rNTERnDyqLfFQqgs",
-        "latitude": 21.0353626,
-        "longitude": 105.85035359999999,
-        "types": [
-            "Nhà hàng",
-            "Nhà hàng phở",
-            "Nhà hàng cơm",
-            "Nhà hàng Việt Nam"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–23:00",
-            "thứ bảy": "10:00–23:00",
-            "chủ nhật": "10:00–23:00",
-            "thứ hai": "10:00–23:00",
-            "thứ ba": "10:00–23:00",
-            "thứ tư": "10:00–23:00",
-            "thứ năm": "10:00–23:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwn4qrR2-FdWYQ3Q6bj6rn7hqMuX5Nt8IrQSdaZeQCkRlIyk3UoFfXH8LKmIyoutbONXMYW0u784aiLob_iU0R6e0DQwKwRzrOxaiPT0we-6ca4kB59vO-jNeZOs5uW_U2i3ZM2mFvgYH-J=w163-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "MẸT Vietnamese restaurant & Vegetarian Food 3",
-        "place_id": "ChIJB1EGIX-rNTER9GVryLt_d3c",
-        "latitude": 21.0341351,
-        "longitude": 105.85128929999999,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Nhà hàng ăn chay",
-            "Nhà hàng",
-            "Nhà hàng món chay"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–22:30",
-            "thứ bảy": "10:00–22:30",
-            "chủ nhật": "10:00–22:30",
-            "thứ hai": "10:00–22:30",
-            "thứ ba": "10:00–22:30",
-            "thứ tư": "10:00–22:30",
-            "thứ năm": "10:00–22:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxVAE-Z69QIP4O1SAnyIu7Gcr2ZYF5sdGxrEy2Mgubjf8UmxDqSqR17idK1VhmYETixvCLmqq0ZrKWPXgMZGfcdRiouuWx9gq1riGatywyGDD4KcqYnjZdsmp7V1kyl7RrJYGGDXw=w122-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "MẸT Vietnamese Restaurant & Vegetarian Met 2",
-        "place_id": "ChIJrSnreyyrNTERerYhe3EwyaA",
-        "latitude": 21.032778399999998,
-        "longitude": 105.85036099999999,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Nhà hàng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–22:30",
-            "thứ bảy": "10:00–22:30",
-            "chủ nhật": "10:00–22:30",
-            "thứ hai": "10:00–22:30",
-            "thứ ba": "10:00–22:30",
-            "thứ tư": "10:00–22:30",
-            "thứ năm": "10:00–22:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOgeL-tSLnVvxJyklSah5e1Q8w7NAj80g2jYQUe=w138-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Hanoi Food Culture",
-        "place_id": "ChIJBc_8ksCrNTER7xjIdzUga9w",
-        "latitude": 21.0340925,
-        "longitude": 105.8538401,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Lớp học nấu ăn",
-            "Nhà hàng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–22:00",
-            "thứ bảy": "10:00–22:00",
-            "chủ nhật": "10:00–22:00",
-            "thứ hai": "10:00–22:00",
-            "thứ ba": "10:00–22:00",
-            "thứ tư": "10:00–22:00",
-            "thứ năm": "10:00–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxhGBZx80kT4OwDnvzm2N58xN9mTI-kX8sj9Wm8omsmyeMWi8shooUoeyk6EZcB5FxOWZlMJfEa8yiORAIWVTzzL6n-qbAw3CK1bk2fuJ0HU4KcTVDlPmbKyHdSrokU_kLHHR58=w163-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Duong's Restaurant - MICHELIN Guide",
-        "place_id": "ChIJecDzv5WrNTERyZe6bcGxMBA",
-        "latitude": 21.0294793,
-        "longitude": 105.8485846,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Lớp học nấu ăn",
-            "Nhà hàng hỗn hợp"
-        ],
-        "operating_hours": {
-            "thứ sáu": "11:00–22:00",
-            "thứ bảy": "11:00–22:00",
-            "chủ nhật": "11:00–22:00",
-            "thứ hai": "11:00–22:00",
-            "thứ ba": "11:00–22:00",
-            "thứ tư": "11:00–22:00",
-            "thứ năm": "11:00–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw-awZFTQmNDHJ83tA3NHdQJM-FB51tbemURJtYoGRoLvyKmVuT0NxHZAGE57J49jDBIBvKdFFFvqFoXkkCXOBgS_kO-CfJT8kKkRQFOaSXbyk6cLTYc2bol4m1sRyXOZ23xbCW=w122-h92-k-no",
-        "rating": 4.5,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Green Farm Restaurant",
-        "place_id": "ChIJE4EtqcCrNTER69iK-LnW4gs",
-        "latitude": 21.035778399999998,
-        "longitude": 105.85280619999999,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Lớp học nấu ăn",
-            "Nhà hàng tráng miệng",
-            "Nhà hàng cho người theo đạo Hồi",
-            "Nhà hàng ăn chay",
-            "Cửa hàng bán nước quả ép",
-            "Quán mì",
-            "Nhà hàng thực phẩm sống",
-            "Nhà hàng món chay",
-            "Nhà hàng cho người ăn chay"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–23:55",
-            "thứ bảy": "10:00–23:55",
-            "chủ nhật": "10:00–23:55",
-            "thứ hai": "10:00–23:55",
-            "thứ ba": "10:00–23:55",
-            "thứ tư": "10:00–23:55",
-            "thứ năm": "10:00–23:55"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy8F4u2Vituhv5hW3c-8RM3YpAfTgrQz41n1cyuMxn5X87GawWxFxSS4fZGYJaIlTiXONG2nUC_QKyGIX_0u2h8X6Wsa1C0Dn-wjnHsFj5CIFtR5R2Pu7_6MYALitDVeLcDv8mj=w163-h92-k-no",
-        "rating": 4.6,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Hanoi Cuisine 1925",
-        "place_id": "ChIJsQ165gSrNTERh04FEEYUnHI",
-        "latitude": 21.0326752,
-        "longitude": 105.8537368,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Nhà hàng không có gluten",
-            "Nhà hàng ăn chay",
-            "Nhà hàng",
-            "Nhà hàng hải sản",
-            "Nhà hàng món chay"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–23:00",
-            "thứ bảy": "10:00–23:00",
-            "chủ nhật": "10:00–23:00",
-            "thứ hai": "10:00–23:00",
-            "thứ ba": "10:00–23:00",
-            "thứ tư": "10:00–23:00",
-            "thứ năm": "10:00–23:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxc_XIRuusX6GnDEVAjQtv9FE7V9maavA6td8MdQffmURUg6g_VDeaim_2d8fphKWHnxRX3B0lm-7rnqC4T4cnlKvXqV7n-1KUlazI8Gion9HQqGsXvBGjvzu7flZnMRIi_Mzk=w122-h92-k-no",
-        "rating": 4.7,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "MẸT Vietnamese restaurant & Vegetarian Met 4",
-        "place_id": "ChIJ-1QLwSirNTERpOu0HJtJ40A",
-        "latitude": 21.033089399999998,
-        "longitude": 105.8523135,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Nhà hàng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:00–22:30",
-            "thứ bảy": "10:00–22:30",
-            "chủ nhật": "10:00–22:30",
-            "thứ hai": "10:00–22:30",
-            "thứ ba": "10:00–22:30",
-            "thứ tư": "10:00–22:30",
-            "thứ năm": "10:00–22:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwUPwnVZbs23JuUdLPp7xjzKfX29j1K2c25XytgbXBGLbPetQ_wVad_0So69mCUHuAPJIHMUJykD8pY-H290b6FBNpfGR0AcBnDA6UgNQ2_TTyNLf5x72pH2dpXxrCtd0DF0nFsBA=w163-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Vị Hà Nội Restaurant & Cafe",
-        "place_id": "ChIJvzgkauarNTERl4_Ck6zHWE4",
-        "latitude": 21.0420156,
-        "longitude": 105.84645959999999,
-        "types": [
-            "Nhà hàng",
-            "Nhà hàng gia đình",
-            "Nhà hàng cao cấp",
-            "Nhà hàng phở",
-            "Nhà hàng cho người ăn chay",
-            "Nhà hàng Việt Nam"
-        ],
-        "operating_hours": {
-            "thứ sáu": "10:30–22:00",
-            "thứ bảy": "10:30–22:00",
-            "chủ nhật": "10:30–22:00",
-            "thứ hai": "10:30–22:00",
-            "thứ ba": "10:30–22:00",
-            "thứ tư": "10:30–22:00",
-            "thứ năm": "10:30–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyyElYmqmjNV60p2baXs-OAQGAlJ-qyzCjNhvH6PRtZ5sSdvW32DjbIqCJV_exvr-nu3N1avDPUQO6ATR0EGkSnICOeNTmBmryFsRtMz3c-3iQtcL4YyFshuj6NqkE9G88JSIUNlyJ_B-cG=w122-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "VIET Restaurant Hanoi",
-        "place_id": "ChIJcXwY2LWrNTER7AK0zwv68A0",
-        "latitude": 21.031081,
-        "longitude": 105.8466157,
-        "types": [
-            "Nhà hàng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "14:30–22:00",
-            "thứ bảy": "14:30–22:00",
-            "chủ nhật": "14:30–22:00",
-            "thứ hai": "14:30–22:00",
-            "thứ ba": "14:30–22:00",
-            "thứ tư": "14:30–22:00",
-            "thứ năm": "14:30–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipO4SJEK5y9nCCobdRDJjSfXvspHFsa7T-rdZzz3=w138-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Bun Cha Ta Hanoi",
-        "place_id": "ChIJY89m6cCrNTERG-N0Fy4dWBw",
-        "latitude": 21.0343417,
-        "longitude": 105.854475,
-        "types": [
-            "Nhà hàng Việt Nam",
-            "Nhà hàng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "08:00–22:00",
-            "thứ bảy": "08:00–22:00",
-            "chủ nhật": "08:00–22:00",
-            "thứ hai": "08:00–22:00",
-            "thứ ba": "08:00–22:00",
-            "thứ tư": "08:00–22:00",
-            "thứ năm": "08:00–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzciKPfvG6C4N4APsCJoBoaxvMxEufU6mLmJBAAYeDZpeZ3pAxTvCvm3QyUVjg3vwtnQsfVGtPgD_ShS-IcUuw3GLlb64xiMerwLw4feuq5Nf0S86dJLX4Rf_hZIWfawYbWGS1J=w80-h106-k-no",
-        "rating": 4.4,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Muối Tiêu Quán",
-        "place_id": "ChIJG4XM2wOrNTERDe7UJMlCFws",
-        "latitude": 21.026884,
-        "longitude": 105.84394499999999,
-        "types": [
-            "Nhà hàng",
-            "Nhà hàng lai Á",
-            "Nhà hàng chuyên phục vụ bữa nửa buổi"
-        ],
-        "operating_hours": {
-            "thứ sáu": "09:00–15:30, 18:00–21:00",
-            "thứ bảy": "09:00–15:30, 18:00–21:00",
-            "chủ nhật": "09:00–15:30, 18:00–21:00",
-            "thứ hai": "Đóng cửa",
-            "thứ ba": "09:00–15:30, 18:00–21:00",
-            "thứ tư": "09:00–15:30, 18:00–21:00",
-            "thứ năm": "09:00–15:30, 18:00–21:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzo7P571qXpNTUfu_ERQ4kcQZYzQZNFg1gburtsW1WIIbjIUZ2Q-PY6lW3KCnZHlO6sbhqY-FnQSAnV52IMTnlxK-h5qzmCD_YwGyfrSUYFlWCQBwxo-Er2ZUXL5VU9iAxWTRgQyXQsaU2L=w80-h106-k-no",
-        "rating": 4.7,
-        "description": null
-    },
-    {
-        "type_of_place": "specialities",
-        "title": "Nhà Hàng Madame Hiền",
-        "place_id": "ChIJATcSjZWrNTER9O0rl3TSOqU",
-        "latitude": 21.032702399999998,
-        "longitude": 105.85376269999999,
-        "types": [
-            "Nhà hàng Việt Nam"
-        ],
-        "operating_hours": {
-            "thứ sáu": "11:00–22:30",
-            "thứ bảy": "11:00–22:30",
-            "chủ nhật": "11:00–22:30",
-            "thứ hai": "11:00–22:30",
-            "thứ ba": "11:00–22:30",
-            "thứ tư": "11:00–22:30",
-            "thứ năm": "11:00–22:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzS1hXIpZ6030jiv6wBravVN_zudjNvxXBBiHuzSpJycjOcOmd_uyAvIRosIUHfa-Y6FaXto8LubS9PKO2882ACQDd9SZE9mb54GSN5Q9JbhV1MKbefhVPDi7j5n0Zk5WxCYvFc=w163-h92-k-no",
-        "rating": 4.3,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Hidden Gem Coffee",
-        "place_id": "ChIJjcSe2iKrNTERdmx-UM8RZIw",
-        "latitude": 21.0337446,
-        "longitude": 105.8551911,
-        "types": [
-            "Quán cà phê",
-            "Quán bar cocktail",
-            "Nhà hàng"
+            "Công viên giải trí",
+            "Xe lượn"
         ],
         "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwi5b6NN5Xdc8cTWpyvEQyprWhRh6SL2E-k7QnIQ80JBOjzoFZS-mgSXDAjLuMZx2UKI7rTlj2YVRD-KlC36J4sS1mknuxpjNgMo3spoj-UcwHXxfCCZD6-gxt4A8DeWAfiNeJfx29L_UAF=w122-h92-k-no",
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzxluMSwXx6qGNVbmK5TM-PVvMgBCTYsYCYGmWpQj3xJA23T-bqIveCFGd8drA6P1JFZoGcntD_7koZmlR9ZZKy5SvRksoBxfpN426losNInMF_vRWbWm0dCRwmY9T5UY3Givqt=w122-h92-k-no",
+        "rating": 4.5,
+        "description": null
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Công viên Indira Gandhi",
+        "place_id": "ChIJxy3jWWSrNTERaa4h1H26Qis",
+        "latitude": 21.0180994,
+        "longitude": 105.8154581,
+        "types": [
+            "Công viên",
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzwhNFcoKQHQtriDV6-o7xrmIPk9YrGSv6l-8m7JJLQH7fTG5-d-KMehwbLvDUs-YLyn3paim9g0AUAsVeGAcOP3sZ8afy6aKTroW7sBsJ8jKUE--7HccPT5gHPuKevDEbBvfs=w122-h92-k-no",
+        "rating": 4.2,
+        "description": "Công viên có đường chạy bộ và vườn tạo hình. Công viên đô thị có tượng bán thân của Indira Gandhi, những con đường chạy bộ ven hồ và vườn hoa tạo hình."
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Công viên nước Hồ Tây",
+        "place_id": "ChIJ8yTc1xirNTER-6v9RI-w7jQ",
+        "latitude": 21.0729824,
+        "longitude": 105.81727319999999,
+        "types": [
+            "Công viên nước",
+            "Sân chơi",
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxJMxMJ_CGh129hysu7qsOoJAO01Sv3yPwGBhjPZVbFtCAF0BJGDVXyy2jX--z_u0leyqZ4P2-SZoaXhMRFcIJysy9-5CmIAlgVZXYDjvdW3EvbGjqEZYEaaKUrNw3cjeg9A-ETnQ=w80-h142-k-no",
+        "rating": 4.1,
+        "description": "Công viên nước có trò chơi và sông lười. Công viên nước có sông lười, bể bơi, cầu trượt, những trò chơi như vòng đu quay và tàu lượn siêu tốc."
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Top Thủ Thuật Hay",
+        "place_id": "ChIJ1eo0p-BVNDERHJmZk_Dk_o4",
+        "latitude": 21.0349188,
+        "longitude": 105.7643975,
+        "types": [
+            "Công viên giải trí"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=8UbI2iS-cnuppvRhi291kw&cb_client=search.gws-prod.gps&w=80&h=92&yaw=292.66544&pitch=0&thumbfov=100",
+        "rating": null,
+        "description": null
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Smart Kids Playground",
+        "place_id": "ChIJbznRW0-tNTERi6u0fNBlH3A",
+        "latitude": 20.9999014,
+        "longitude": 105.8047639,
+        "types": [
+            "Trung tâm vui chơi dành cho trẻ em",
+            "Trung tâm giáo dục"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxrQB_FUMQ_GGYfE6SFV7F4983KTudGS_62Pz5k90VlsyfujpCDtkgX7LN_6gJc10Ta9zefb0NNCwBiXM1aUdmttzwH3DiqzEx7OqC32rhlspD6FUnkm-a0kBWF6cd7VgO4Y7I=w122-h92-k-no",
+        "rating": 4.2,
+        "description": null
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Vườn Thú Hà Nội",
+        "place_id": "ChIJi3PpbWqrNTERcL7DLQFRKNw",
+        "latitude": 21.0310786,
+        "longitude": 105.8037432,
+        "types": [
+            "Vườn bách thú",
+            "Công viên",
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwzLccihK17arYdHuOc-HRkC72_cakhkU30jYEznzR23XVN8wK_ZiUjxTwPsMoPlvX8PmM40VZEBuY7bEbKc5oCC-HH7pLo46DEGl9TdsJfpYu5RF08h4X6hS3XAige7uv_AQLdLg=w122-h92-k-no",
+        "rating": 4.1,
+        "description": "Vườn thú thành phố có hồ và lối đi bộ. Vườn thú nhỏ trong thành phố có nhiều loài động vật, trò chơi giải trí, dịch vụ chèo thuyền và lối đi bộ."
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "VinWonders Water Park",
+        "place_id": "ChIJy4EsFKqlNTERIswjQ6lX6IQ",
+        "latitude": 20.956486299999998,
+        "longitude": 105.97710079999999,
+        "types": [
+            "Công viên nước"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxzAdppQjMWEbUfgi6RqteQjvPTboTGxkAYSbv6-0ybcsh2tpljDq23fw_pjwfbezfjTGyrU_qplfcLgWe7s-KY0jXWL6L7pqwqVyeuX8x65yGgvTd6-PVmkKJk82e-JTUNHUgfGUvXanQO=w122-h92-k-no",
         "rating": 4.8,
         "description": null
     },
     {
-        "type_of_place": "cafe",
-        "title": "Xofa Café & Bistro",
-        "place_id": "ChIJ32cXs5erNTERsqdVf0cP-mg",
-        "latitude": 21.0293721,
-        "longitude": 105.8435468,
+        "type_of_place": "amusement",
+        "title": "Công viên Thống Nhất",
+        "place_id": "ChIJfyTf5o6rNTER6dKWJmY9GOY",
+        "latitude": 21.0142709,
+        "longitude": 105.8439724,
         "types": [
-            "Quán cà phê",
-            "Vườn",
+            "Công viên thành phố",
+            "Công viên"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwaxsGeRd-dWyUGI7PTbXqEcD5ESxtf5WcO_yN9I3RvsT8zHBGe1Xr5t20sDgVG8XGEXNunaY0R5JeVUg0TVivhsSacfCyka7imnMR2sLP941fuOE0WTybV6CWe56t7fUExUbPgqw=w122-h92-k-no",
+        "rating": 4.3,
+        "description": "Nơi tập thể dục và công viên xanh mát, nhộn nhịp. Công viên thành phố thoáng mát, nhộn nhịp, rợp bóng cây cao, có hồ nước lớn, lối đi tập thể dục và quán cà phê."
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Rạp Xiếc Trung Ương",
+        "place_id": "ChIJyWO1VMarNTERJCGx8v99y5s",
+        "latitude": 21.016755,
+        "longitude": 105.842423,
+        "types": [
+            "Rạp xiếc"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIg_ZckW3D9zoBxBf89T9c8TCnvMy2N0w0_y1QD6v_iI8uDjwa-3I6I7lbUIBEsT5lTK6Y28SUImcXDLUULH-f9O7VWp9xNWil3spaRII2AIEsTE8uKHflrmsHLe6sGAJTw8dTOA=w122-h92-k-no",
+        "rating": 4.3,
+        "description": "Rạp xiếc thú kiểu cổ điển và lâu đời. Rạp xiếc truyền thống, lâu đời trong sân khấu hình tròn, nơi biểu diễn tiết mục xiếc thú và nhào lộn."
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Genesis Escape",
+        "place_id": "ChIJq9fW4FKrNTERAKbm4chgEs8",
+        "latitude": 21.0148948,
+        "longitude": 105.8202706,
+        "types": [
+            "Trung tâm trò chơi truy tìm lối thoát"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzXjOOgM_wXaCIkWxup4dC9AuFs9P9HAB-yaED_y5hNuRlsswYIjXjXE1m4tkDIkGqOLcq7jqgnPxARFO-3BbneP6taGVINCzERM3BPOwyLgbs37d6swUHIGbK6sKia_1XMZSwa=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Thiết bị sân chơi trẻ em - Hasake Co. Ltd.",
+        "place_id": "ChIJPyN37ayrNTERZ-VRxrioTt0",
+        "latitude": 21.0288285,
+        "longitude": 105.8394055,
+        "types": [
+            "Nhà cung cấp thiết bị sân chơi",
+            "Nhà bán buôn thiết bị tập thể dục",
+            "Sân chơi trong nhà",
+            "Sân chơi",
+            "Nhà cung cấp sản phẩm cao su",
+            "Công viên nước"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMSsFLGdcPwMHITVAK8sDE9zdMTk2-SQPDVsdw=w164-h92-k-no",
+        "rating": 4.7,
+        "description": null
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Miss Terry - Escape Rooms",
+        "place_id": "ChIJq6q6uROrNTERgDjYXsVAKgY",
+        "latitude": 21.038270999999998,
+        "longitude": 105.813481,
+        "types": [
+            "Trung tâm trò chơi truy tìm lối thoát",
+            "Trung tâm vui chơi giải trí"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzCbZGJhWboQB0w9BgZjEZTJ2te6Lmd-UB0M37hNj6adAHjMBepC9HseVvLftvqZZ3Yt_J61Eb3OLBlxcDbEIli0umQctAxn0solvwGe4SMExqCglo5J4lx1bZS82fu9_BubUs=w80-h106-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Hanoi Blues Bar _ Tạ Hiện",
+        "place_id": "ChIJKVnRvcCrNTERsZIbcOghUrE",
+        "latitude": 21.035320499999997,
+        "longitude": 105.85191449999999,
+        "types": [
+            "Quán bar cocktail"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNUblg55T8OAYMsl5tQ4ueKcuUnQLiPxZBC3MCi=w122-h92-k-no",
+        "rating": 4.8,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "HIDDEN Pub",
+        "place_id": "ChIJq9PnCrmrNTERRTV6soA7Vts",
+        "latitude": 21.0349647,
+        "longitude": 105.8520472,
+        "types": [
+            "Quán bar"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzx3wV_C3nynb-GHTO1igabP6zNW4c7ZgaKvgAPGeKeKKOZ3ewn0K3TDgINFjg1d0vPXh7-qbHrwAZc7Vo3d9g1hVTeMbeQqUaReme8dBH8v6AEIQpp7UUQti5eIOLftOvgMAvg=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Lux SkyBar",
+        "place_id": "ChIJbXBhMrqrNTER7KFL1HMDbS4",
+        "latitude": 21.031835599999997,
+        "longitude": 105.85398529999999,
+        "types": [
+            "Quán bar cocktail",
+            "Quán bar"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNuvH7S9D13RiAAXwR2-g0F-ZhhvWUhsqrPPKOc=w137-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Unmute hanoi",
+        "place_id": "ChIJJaqgiNGrNTERURE-P_YglZM",
+        "latitude": 21.0363112,
+        "longitude": 105.85508159999999,
+        "types": [
+            "Hộp đêm",
+            "Quán bar"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyI1DRxXi8vl4FF8gTw4fvRTzJkH0aDjdEQdR4FsJjKAdbqO1aA8TqCKJHDPTJoaLcTwdPDOz38nrF9138QHbi-aBYMWqbdluWGrgF8KU2WApFwmRrZilzB_z9GsXQRX4WTTxznkA=w80-h106-k-no",
+        "rating": 4.7,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Cloud Sky Bar Hanoi",
+        "place_id": "ChIJ3xVLRxWrNTERey_Y8VqLVUU",
+        "latitude": 21.0309925,
+        "longitude": 105.8466132,
+        "types": [
+            "Quán bar"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx34Q0YbwICZMWqpyAcRDhOPJZZ_ZgWDCvjcrokVtOUWXRDqM3AP6AHDu95xZ1erhUC_-g8bUa8924HhtbQCe8d1TDwGZequjYwR7SCiLsVWPu7-uc5_bkXE2bROIll9Koj1LbV=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Hanoi ơi Bar Bistro",
+        "place_id": "ChIJUcywwPirNTER8DTZNvrYBuM",
+        "latitude": 21.0353142,
+        "longitude": 105.8519091,
+        "types": [
+            "Quán bar cocktail",
+            "Quán bar"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwbtrnjwzg5nhnAJtBRfncNwE8Ghtzt0a3jR6hVMCEcd_NbrHOcLbQ-KMSTgFajULDVathfp87C_EHpdvdaAC09UMQiMeNJjDfaBhOQQdwdsPlE0yFYRNfsWQxX-UicUBvmF0Ge=w80-h106-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Lighthouse Sky Bar",
+        "place_id": "ChIJ7SLeZQirNTERS4Ibezb56Ho",
+        "latitude": 21.0331202,
+        "longitude": 105.8540981,
+        "types": [
+            "Quán bar cocktail"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPJGo2NQudxeWUxHvGdsKbGp2zab8V3061x-fOw=w137-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Le Ciel Sky Bar",
+        "place_id": "ChIJ-fgLlUCrNTERoIQkZPuhgNM",
+        "latitude": 21.0306598,
+        "longitude": 105.84964989999999,
+        "types": [
+            "Quán bar",
+            "Quán bar cocktail"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwJROYjppxHRSLHwFxZLut5cgyo8zSrZvIZC3ZvnXMO855KePGpWYnyDjwn4lrL-FSbKluAY1DFD-BYPZzOvGxk4b81Hqmv1JpVk0QoVdOTtLqL8KG8mT8IaceZ610QfPfeoQFF7MihTdU=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Secret Bar&Pub",
+        "place_id": "ChIJo6tzBF6rNTERARxjMnqmrP4",
+        "latitude": 21.035639,
+        "longitude": 105.8519347,
+        "types": [
+            "Quán bar"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx4L12KUoVxtG1ijZMdNYvobTJ0yUWhCFdMMVNPpmno1ykzLYLo8fNQ3_N0PNipam-YTPsBtm24K_unxRiiOGJMrZWu075700USYDaBOhVRINtJ3tmGJRZFiBzLnQ4KQB-LE_Iph8wHbkAH=w80-h106-k-no",
+        "rating": 5,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Skyline Hanoi",
+        "place_id": "ChIJa9vugL-rNTERlQW2fYX__Xk",
+        "latitude": 21.0330972,
+        "longitude": 105.8523287,
+        "types": [
+            "Quán bar",
             "Quầy giải khát",
             "Nhà hàng"
         ],
         "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzWHJFPkvYgZzp7y-ryg--79X28vnljzs7xusuHr3jTsqYOKA0F5BXgMYlLxwQWgAv0Bkv3rACE2UkOiqbx7kKmhpNQIvTFLnbjeeho_SCkiUvpPCiHSZ6Mfs5z-EpIh6_Di648QSwQSMwC=w122-h92-k-no",
-        "rating": 4.4,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Ta Cà Phê 4(Roastery- HaNoi Old Quarter Specialty Coffee)",
-        "place_id": "ChIJF3wYgcKrNTERL6YW28aNKYk",
-        "latitude": 21.0363616,
-        "longitude": 105.8506091,
-        "types": [
-            "Quán cà phê"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwjqtZUixlcCQuZe9zfIrkOU6P2LtDuLJL7HZBVHPylhFzSxWB7FxTG4ib1z6iUaTS67glBoI0gzKnyhgnzTPGxCZUp9efZzO0FoD-q5ihB3YHqp7pDUiGzGtoJP7nHuinLGdbsWA=w80-h106-k-no",
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxVgSfssHSPUPvehephOsxPQvtE7v9ZPAZxdVOizlADwarjoU3cO5hz1GfLIeM2sD1j0TgnWgsVrpf7GzLjLZRGcFNfmxJnY8akCmYYVi1-zRHY63TRq_43NCJU5L-tVUxWAyYszw=w163-h92-k-no",
         "rating": 4.8,
         "description": null
     },
     {
-        "type_of_place": "cafe",
-        "title": "Blackbird Coffee",
-        "place_id": "ChIJuzz_7kyrNTER3Adc3tIMT8o",
-        "latitude": 21.0303182,
-        "longitude": 105.84851259999999,
+        "type_of_place": "night life",
+        "title": "Nê Cocktail bar",
+        "place_id": "ChIJV8I2SparNTER3CbG10ep4QA",
+        "latitude": 21.0295943,
+        "longitude": 105.84405389999999,
         "types": [
-            "Quán cà phê",
-            "Cơ sở rang cà phê"
+            "Quán bar cocktail",
+            "Quán rượu"
         ],
         "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMKw8X07gE2R0CIftlU8y9uGDG_ITTCXp8slQAx=w122-h92-k-no",
-        "rating": 4.6,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Hanoi Coffee Culture",
-        "place_id": "ChIJ8UQioZWrNTERJWvlrHkLfjc",
-        "latitude": 21.0333014,
-        "longitude": 105.85454759999999,
-        "types": [
-            "Quán cà phê",
-            "Nhà hàng chuyên phục vụ bữa nửa buổi"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw5mlL0lb9B9NB7W09-18K5OoPDPjvER4DRWRq0nxKdhGcOFChAjb27X9jBgh4sQt7YPgKMc6ejfQ7YdvYXA2SHcNU-Z3PhXIucxdlATi31mM1maKzbSICNFCRuKrXBSPY2vTcQ6fPEoUS8=w80-h142-k-no",
-        "rating": 4.8,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Tranquil Books & Coffee",
-        "place_id": "ChIJaTMG6b2rNTER8iBBB4Ctlr8",
-        "latitude": 21.032512699999998,
-        "longitude": 105.845655,
-        "types": [
-            "Quán cà phê"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxK_t7NMIzHkUdcIgPImdZkiug6FUiyZeb-1nCrVmUd0qiLQ1fg9r0UXPvI3eGR-iZ1R_V5tRGTaf179BcER38njst-Wqi9N4gmZblElWVC0uArlkpxIo-MgkgT9ZiIK_pY_VY=w80-h106-k-no",
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz_GQltji6ZsCTfu799eAp9h0qQ_lHZ5k0ZSpmwXwxeOEbHz7RjMcPzKbNmIlXAKESm7Z07iBZKQXgcrKX7xxgV2AIy4OtctvQkgToPXvE0AcxFzYHySuliJIaALp_fH3-rRd1M=w122-h92-k-no",
         "rating": 4.7,
         "description": null
     },
     {
-        "type_of_place": "cafe",
-        "title": "Cafe Nola",
-        "place_id": "ChIJDy3nVj2rNTERQzd4wciDd9o",
-        "latitude": 21.0343596,
-        "longitude": 105.85348119999999,
+        "type_of_place": "night life",
+        "title": "1900 Le Théâtre",
+        "place_id": "ChIJ43xuXL-rNTERPJkjFmEXoM8",
+        "latitude": 21.035082,
+        "longitude": 105.8519772,
         "types": [
-            "Quán cà phê",
-            "Trung tâm nghệ thuật",
             "Quán bar"
         ],
         "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz9-Ev-TVGEEqcZNUEfUCRMM2KebAoWq1Eje9XH8rTRjJDLrxcABCJdftOvbkasfgMSKu4TrTMCbzU_94SGaJNCzZPqhc9nrvM0d-6EAFekqibklqbL4RXyZM6kfIeY29iFUAILXg=w80-h106-k-no",
-        "rating": 4.7,
-        "description": null
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzlvCONevUFVCFnxGt3Vbkrl0n9Q8RqraXuqRrmD9HUJeSIPpwgj0LwFzCO1CyA3dwUJoZOPW7pTjTT1n7LsfWM8eJgNur0jBNCl4G6XOqu05y-s13jcXhf2Elck2mv5RfvUtM=w163-h92-k-no",
+        "rating": 4.2,
+        "description": "Câu lạc bộ đêm có nhạc sống và giờ vàng. Quán bar sôi động trong thành phố, có chương trình nhạc sống, các món cocktail thủ công và khung giờ ưu đãi."
     },
     {
-        "type_of_place": "cafe",
-        "title": "Lifted Coffee & Brunch",
-        "place_id": "ChIJbZ7wfb6rNTERcmDyh_FXtzs",
-        "latitude": 21.033991699999998,
-        "longitude": 105.8470682,
+        "type_of_place": "night life",
+        "title": "Purple Blues Bar - 07 Hàng Muối",
+        "place_id": "ChIJQfxtZ9WrNTERSUgUJKiQcH8",
+        "latitude": 21.0344925,
+        "longitude": 105.8547428,
         "types": [
-            "Quán cà phê"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyEUmQgDxsqCDrRH-8Vy4E8JRkVGBzA6MxE5_xwkZYqE_QVaYujrYaK9HBCwyMjPd8ZI30G6VPHESlLAGZ7kDuWYtmG_k46cJTAJ7opSsFJhEq7gZAzQ-lyIi4VDaVEgK0MK-yQlA=w80-h106-k-no",
-        "rating": 4.3,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Dream Beans Coffee Roastery",
-        "place_id": "ChIJBeloCkqrNTERrfBae7CENgE",
-        "latitude": 21.033569399999998,
-        "longitude": 105.84474619999999,
-        "types": [
-            "Quán cà phê",
-            "Cơ sở rang cà phê",
-            "Quầy cà phê",
-            "Nhà bán buôn cà phê",
-            "Quán cà phê espresso",
-            "Tiệm cà phê phục vụ các món trái cây"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOOiY5KiShLW3ch6p7AxFr14M5Opp4QuThRnIHP=w138-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "The Hanoi Cafe & Restaurant",
-        "place_id": "ChIJV06GoO6rNTERGV2w-iXlvCk",
-        "latitude": 21.032039599999997,
-        "longitude": 105.8479627,
-        "types": [
-            "Quán cà phê",
-            "Nhà hàng chuyên phục vụ bữa sáng",
-            "Nhà hàng chuyên phục vụ bữa nửa buổi",
-            "Nhà hàng",
-            "Nhà hàng Việt Nam"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipM8JfINtr4etSXFwdm1Sw9YH-aOYjcdYJyWyajN=w92-h92-k-no",
-        "rating": 4.7,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Blackbird Coffee",
-        "place_id": "ChIJz2si4UCrNTERC-e4IsME46Y",
-        "latitude": 21.0353033,
-        "longitude": 105.8485326,
-        "types": [
-            "Quán cà phê"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxIETEKXazHuaG2n3XUGHaFNfzWsDdTZJGujEaQ9o32cRWXqKKI79HSHrutngAPnZcIjPZOD1uitNBD1mEVxz1jSididi8eUobdtzYZmvjhITuZYl6MF2H9N-ovYgmT1v0QiToRgw=w80-h106-k-no",
-        "rating": 4.6,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Ga Hanoi Cafe",
-        "place_id": "ChIJ3U9lCQCrNTERliAYNaau-ms",
-        "latitude": 21.030112499999998,
-        "longitude": 105.8446261,
-        "types": [
-            "Quán cà phê"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw_bfGyYdNFUeh57xNuTu9GvCi2-sPG6OO8xY7FkhQM7TUc6m4JqUQkfj9mmxKNgi1BsUZWadKxJy11TtxMGLMKEz8vpz8L6PGOwu8qAexp4aqWJtX1gA2l1jOznNZgsr-y7kjC2Fw5Z9I=w92-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Hanoi Coffee Station & Restaurant",
-        "place_id": "ChIJO-nduWGrNTERX6DlL5BTaMM",
-        "latitude": 21.0327955,
-        "longitude": 105.8537521,
-        "types": [
-            "Quán cà phê",
-            "Nhà hàng"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwv8QOHElN8Np34hfRgt_CVQTlQgGv2T9Cp7yHQcXqXH410J5iXeoiEBLkiB5ByxbAQVbfcEU_5qFk2k9O8vtoN-aynLMKcpX3xzuTgZDTb-lE4pS5JWJXsoWQm45UDak7_t3aZ=w122-h92-k-no",
-        "rating": 4.7,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "The Running Bean Nhà Thờ - Coffee and Brunch",
-        "place_id": "ChIJ_QROdYirNTERzwTj2OD1bYE",
-        "latitude": 21.0290723,
-        "longitude": 105.8496485,
-        "types": [
-            "Quán cà phê",
-            "Nhà hàng chuyên phục vụ bữa nửa buổi"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxZBZd3U5p78TVX0LjMz8iNXGN2vWp58NOvUuC50FbyRIMw-xCX3UPe70kRCMJmTu7aeC_iv9GtfGoc2db3BVj9GiW3tq71YNSzzaJL4ziWdzxROzx2K_zbg1xF9AM_MpgdEWjjHUEuIlsz=w80-h128-k-no",
-        "rating": 4.7,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Cafe Đinh",
-        "place_id": "ChIJwYgVi7-rNTERLWjR63qaaFg",
-        "latitude": 21.0320036,
-        "longitude": 105.8521694,
-        "types": [
-            "Quán cà phê"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyvmMh5e9WkqmU6oIzy7HwqwF2Tz7DnrqcGkh6G7wrVxc9jUnAyn3vrHmdrJaRPi3SxX6VO0xUTwUtdHn0M8A_V-5JZD41B3pItCfCdQ1mA9KT5x3GVF3La__jyoTIFN7DBQaxpiQ=w122-h92-k-no",
-        "rating": 4.6,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Always’",
-        "place_id": "ChIJdwHX0marNTERNlL5SJi6ZbA",
-        "latitude": 21.033535699999998,
-        "longitude": 105.8548009,
-        "types": [
-            "Quán cà phê",
-            "Cửa hàng lưu niệm"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyCx5w5SxGe90nhl0_aQdrvT8Ye6UW_WhZ8piE1u1rdQe2JtSkXURtBGm9u4Z56S4W5t-gLPhW5P2oPU1sBeT6bx3uaqpYUhJGPgLlBvQGL2K3qEWfYN7o94zJLkIx4epXzAxicBw=w80-h106-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "cafe",
-        "title": "Circle Coffee - Bar",
-        "place_id": "ChIJszvBS76rNTER6Yxxo6Td7cU",
-        "latitude": 21.0324502,
-        "longitude": 105.8489491,
-        "types": [
-            "Quán cà phê",
             "Quán bar ca nhạc trực tiếp"
         ],
         "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwkPlb4PGkl2rXE88ZP1JGd_Zfoz1yG_beudexYpanpCUg_5OCy4b2mNgg0BYJ4_Iveo92V8kJ3Y3iODDE6dQLDAJ7QjLZyqDCDAr6xfZfk1OvUcx9dfnn320DPivQS2iVan6P1=w122-h92-k-no",
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOydPuA9FXOKbK5kWd5Il-JnNpHM5ozSCXewNw4=w80-h106-k-no",
         "rating": 4.8,
         "description": null
     },
     {
-        "type_of_place": "night market",
-        "title": "Chợ Hàng Mã",
-        "place_id": "ChIJPQYgaGyrNTER8Yc8kNje40c",
-        "latitude": 21.036441999999997,
-        "longitude": 105.84849799999999,
+        "type_of_place": "night life",
+        "title": "Moonlight Sky Bar",
+        "place_id": "ChIJb7jlt2urNTER9hGnK_diOfk",
+        "latitude": 21.034225499999998,
+        "longitude": 105.85320349999999,
         "types": [
-            "Chợ đêm"
-        ],
-        "operating_hours": {
-            "thứ sáu": "18:00–23:30",
-            "thứ bảy": "18:00–23:30",
-            "chủ nhật": "18:00–23:30",
-            "thứ hai": "18:00–23:30",
-            "thứ ba": "18:00–23:30",
-            "thứ tư": "18:00–23:30",
-            "thứ năm": "18:00–23:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy4sj_HZBk4QL74rgOb3xZSe2TbcgQzhdnUI7rmlkkUwFb7loORG1HNl1VEaZsU66uCLIzXrEAm7Fzeu_e57hSpDrDM5vFkAEpo4RvsqgWe5yqEq_Ix_jYsh2Wxyz4t8_2JpQmi=w122-h92-k-no",
-        "rating": 4.5,
-        "description": null
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Night market start ( Friday to Sunday)",
-        "place_id": "ChIJIa5NbACrNTERQXWu5etnRv4",
-        "latitude": 21.0382273,
-        "longitude": 105.84843359999999,
-        "types": [
-            "Cửa hàng"
-        ],
-        "operating_hours": {
-            "thứ sáu": "19:00–00:00",
-            "thứ bảy": "19:00–00:00",
-            "chủ nhật": "19:00–00:00",
-            "thứ hai": "Đóng cửa",
-            "thứ ba": "Đóng cửa",
-            "thứ tư": "Đóng cửa",
-            "thứ năm": "Đóng cửa"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyGJ-Mye3LqKjY3cB4tL_ALEszQg5VVB-i75C80-M7DiIRf7A2cwVr1cAgt9idTrYwobJS3lCiYS6aTYZ_Zrh95VG9BQVd3c7-PP9Cx9kcsj8IRwpUYXMIjtTXfTE8_o9ovmoRDXmh78wU=w80-h106-k-no",
-        "rating": 4.3,
-        "description": null
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Outdoor store",
-        "place_id": "ChIJRV0ewlurNTERMBh2Q6aUp7Y",
-        "latitude": 21.0352011,
-        "longitude": 105.85012739999999,
-        "types": [
-            "Trung tâm mua sắm"
-        ],
-        "operating_hours": {
-            "thứ sáu": "18:00–22:00",
-            "thứ bảy": "18:00–22:00",
-            "chủ nhật": "18:00–22:00",
-            "thứ hai": "Đóng cửa",
-            "thứ ba": "Đóng cửa",
-            "thứ tư": "Đóng cửa",
-            "thứ năm": "Đóng cửa"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxPb4c7tAk3ge6vMTA7T2YeqXEg4x0CROw5tM1omIp82lqq3-EeKzY64Lz7WbS9wUiDkaO46aatH0tz0h1uxsixC1bC0x1079RSv4_Jq7ZPYLhlZ3u3FjbdnoTn-pp5Yb5yxMFcXQ=w122-h92-k-no",
-        "rating": 4.3,
-        "description": null
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Chợ Long Biên",
-        "place_id": "ChIJY0TyAV-rNTERkX5qjb45eBY",
-        "latitude": 21.041267899999998,
-        "longitude": 105.8504815,
-        "types": [
-            "Chợ"
-        ],
-        "operating_hours": {
-            "thứ sáu": "06:00–23:00",
-            "thứ bảy": "06:00–23:00",
-            "chủ nhật": "06:00–23:00",
-            "thứ hai": "06:00–23:00",
-            "thứ ba": "06:00–23:00",
-            "thứ tư": "06:00–23:00",
-            "thứ năm": "06:00–23:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwQ4ByIDIwRs3_tBYxdGV2F8aV7s47uSbRb2Rcf_ofxNx8vs5QpWGLNsjxuUqGfB1xdyQ2vpqcLvFLtSRXA15MDLMI18pjT9SieKVUSb3Wuv_k_Lu_JHYH4o_HdqEUB7p9imZh6ww=w122-h92-k-no",
-        "rating": 4.2,
-        "description": "Khu chợ hoa và nông sản nhộn nhịp. Khu chợ nông sản nhộn nhịp có các quầy hoa, trái cây, rau củ quả và hải sản."
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Night market",
-        "place_id": "ChIJaRerdQCrNTERQelayRB7Upk",
-        "latitude": 21.032947999999998,
-        "longitude": 105.851312,
-        "types": [
-            "Cửa hàng"
+            "Quán bar",
+            "Quán rượu",
+            "Nhà hàng"
         ],
         "operating_hours": null,
-        "thumbnail": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=p8wQqv3dxs6BU-gmT1Ep4w&cb_client=search.gws-prod.gps&w=80&h=92&yaw=78.588295&pitch=0&thumbfov=100",
-        "rating": 4.5,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMfAmEgA1l9I0-THthvQbNLJdyzmTpUvfGhysTJ=w138-h92-k-no",
+        "rating": 4.9,
         "description": null
     },
     {
-        "type_of_place": "night market",
-        "title": "Hanoi Night weekend market",
-        "place_id": "ChIJkQnsTAGrNTERSfl6xWJ8ZbY",
-        "latitude": 21.0351794,
-        "longitude": 105.849958,
+        "type_of_place": "night life",
+        "title": "Polite & Co",
+        "place_id": "ChIJSRUc2L-rNTER9UHl6O_Tevc",
+        "latitude": 21.030711099999998,
+        "longitude": 105.850432,
         "types": [
-            "Cửa hàng"
+            "Quán bar cocktail",
+            "Quán bar"
         ],
-        "operating_hours": {
-            "thứ sáu": "18:00–23:00",
-            "thứ bảy": "18:00–23:00",
-            "chủ nhật": "18:00–23:00",
-            "thứ hai": "Đóng cửa",
-            "thứ ba": "Đóng cửa",
-            "thứ tư": "Đóng cửa",
-            "thứ năm": "Đóng cửa"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxknLdNs8zcyXPNCiyzlZkhUCKJ6s_rhsZpBhB0zQ8wGve9xNtcbu42BUaD-pYnrudetAktnNZhXYJeHvCVIPPcnPBi1JcAIfe4_3rV2OJ4PrJnk0UVOdoISW4QX-TjpanOspJ0Hw=w163-h92-k-no",
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPWRtSy_qiarMT4IUX_vzHXbPHH-bSFaRbv2yOZ=w122-h92-k-no",
         "rating": 4.4,
         "description": null
     },
     {
-        "type_of_place": "night market",
-        "title": "Khu Phố Cổ Hà Nội",
-        "place_id": "ChIJp0o4Er6rNTERjlTif_IXU1k",
-        "latitude": 21.034059,
-        "longitude": 105.85063679999999,
+        "type_of_place": "night life",
+        "title": "MOA",
+        "place_id": "ChIJt0QZLl-rNTERFQo4PhJppME",
+        "latitude": 21.0355462,
+        "longitude": 105.8505227,
         "types": [
-            "Điểm thu hút khách du lịch",
-            "Điểm mốc lịch sử"
-        ],
-        "operating_hours": {
-            "thứ sáu": "Mở cửa cả ngày",
-            "thứ bảy": "Mở cửa cả ngày",
-            "chủ nhật": "Mở cửa cả ngày",
-            "thứ hai": "Mở cửa cả ngày",
-            "thứ ba": "Mở cửa cả ngày",
-            "thứ tư": "Mở cửa cả ngày",
-            "thứ năm": "Mở cửa cả ngày"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw6oVnCoiojBvM63A4Y1jHWiy7E5EZK5CXQMAB9wqnQvKg4uGk6B4HQTIjkgz92R_4QSaxEXyJiXYiGwwvandaz7YhJedwWdMfQeyV98oJti-VeCHd3Epfhiq7Omdoo2T60JQ=w122-h92-k-no",
-        "rating": 4.6,
-        "description": "Khu vực bán thức ăn, có chợ và nhà ống. Khu giao thương lâu đời, có chợ đêm, những con ngõ nhỏ, quầy hàng rong và nhà cửa xây hình ống."
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Chợ Phùng Khoang",
-        "place_id": "ChIJu73oKMasNTER7vEqWnRc2Xc",
-        "latitude": 20.9861757,
-        "longitude": 105.793617,
-        "types": [
-            "Chợ"
-        ],
-        "operating_hours": {
-            "thứ sáu": "03:00–23:30",
-            "thứ bảy": "03:00–23:30",
-            "chủ nhật": "03:00–23:30",
-            "thứ hai": "03:00–23:30",
-            "thứ ba": "03:00–23:30",
-            "thứ tư": "03:00–23:30",
-            "thứ năm": "03:00–23:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwfPUfsbeQC6AurDmct5Sz_XR5rog6OokwkUWafNbHWdIKfaarHfftqSfq3zKDOY-0Y4OxjGFihMPXy4UDSNCc7B5Azm7GR1B3AjS2KMaiKX0Ruq9C8PP_yRLQ-yYyKbOYwE_K3=w133-h92-k-no",
-        "rating": 4.1,
-        "description": "Khu chợ sầm uất bán hàng hóa và thức ăn. Khu trung tâm bán lẻ sầm uất với các quầy hàng bán hoa, thực phẩm, quần áo và phụ kiện."
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Night Market",
-        "place_id": "ChIJN-aOeBesNTERbWVbl0u--M4",
-        "latitude": 20.9859752,
-        "longitude": 105.86373839999999,
-        "types": [
-            "Chợ"
-        ],
-        "operating_hours": {
-            "thứ sáu": "04:00–22:30",
-            "thứ bảy": "04:30–22:00",
-            "chủ nhật": "04:30–23:30",
-            "thứ hai": "04:00–22:30",
-            "thứ ba": "04:30–22:00",
-            "thứ tư": "04:30–22:00",
-            "thứ năm": "04:30–22:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSze5Lbs2TRCRTBAeXwnvbpAyTyniu24rhMZicg3WwGjQCMpfYWLBStFETSPNTJ9NgSxcoiUNTT9a4X26j0JJQg9dYwhi0jicFF-T6uIlfYy2NmcIN2Rd94JPNWkd94u_KcAAW6z=w80-h106-k-no",
-        "rating": 4.2,
-        "description": null
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Chợ Cống Vị",
-        "place_id": "ChIJr6gTqxOrNTERTTAwRgvQk9Y",
-        "latitude": 21.0373758,
-        "longitude": 105.8142695,
-        "types": [
-            "Chợ"
-        ],
-        "operating_hours": {
-            "thứ sáu": "05:30–20:00",
-            "thứ bảy": "05:30–20:00",
-            "chủ nhật": "05:30–20:00",
-            "thứ hai": "05:30–20:00",
-            "thứ ba": "05:30–20:00",
-            "thứ tư": "05:30–20:00",
-            "thứ năm": "05:30–20:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSydsTtEQPIF3BFAfLOA4AWtV83IqUsYWV4Cu2V_TFpTdgSLy-xHdxPfcqPeWIVg-dP3E7cKYGSNzNRFmzExiuqUmfjFGau_GkEgns631l2YB0qHZWVW2AcTGUfQ6BJ6KX1Y_wy7=w122-h92-k-no",
-        "rating": 3.8,
-        "description": null
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Chợ đêm Lĩnh Nam",
-        "place_id": "ChIJzxoUuR-sNTER7LqJfFg2QC0",
-        "latitude": 20.983876,
-        "longitude": 105.8742896,
-        "types": [
-            "Chợ đêm",
-            "Chợ trời",
-            "Chợ"
-        ],
-        "operating_hours": {
-            "thứ sáu": "19:00–23:30",
-            "thứ bảy": "19:00–23:30",
-            "chủ nhật": "19:00–23:30",
-            "thứ hai": "19:00–23:30",
-            "thứ ba": "19:00–23:30",
-            "thứ tư": "19:00–23:30",
-            "thứ năm": "19:00–23:30"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxDw18d4O2MQYC0sfNVdRzezxJ3MTPBrNBjSVlW_VQUxoECWwg416BRzRy845sLWDI4mXzhtLlLEJiZ9PVydjnGQrp0_plopFtDnyBe4fryYTBAGlSdxSyXKlWFWInQDIpKRDOw=w122-h92-k-no",
-        "rating": 4,
-        "description": null
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Chợ Đồng Xuân",
-        "place_id": "ChIJ_8OSWgCrNTERUjH5ICI4pW8",
-        "latitude": 21.0381434,
-        "longitude": 105.8500387,
-        "types": [
-            "Chợ"
-        ],
-        "operating_hours": {
-            "thứ sáu": "06:00–18:00",
-            "thứ bảy": "06:00–18:00",
-            "chủ nhật": "06:00–18:00",
-            "thứ hai": "06:00–18:00",
-            "thứ ba": "06:00–18:00",
-            "thứ tư": "06:00–18:00",
-            "thứ năm": "06:00–18:00"
-        },
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx53uNHPxvPwY8hPUOkaAtC_umfGrM0dR3XZZp1evKA77Aau2qghaL2A0g4UykOcR6yg0Fj3zVMnPcjuiEashg0o3RcuNqsphlkDv_A-8_Gk157xO8OpQBqXbb3MHD0p3bRhvpbdETszM83=w122-h92-k-no",
-        "rating": 3.6,
-        "description": null
-    },
-    {
-        "type_of_place": "night market",
-        "title": "Chợ Châu Long",
-        "place_id": "ChIJLZTIDQCrNTERhSaB3pNqoC4",
-        "latitude": 21.0440397,
-        "longitude": 105.8421254,
-        "types": [
-            "Chợ"
+            "Hộp đêm",
+            "Nhà cung cấp tổ hợp giải trí",
+            "Câu lạc bộ phục vụ ăn uống kèm biểu diễn",
+            "Quán bar cocktail"
         ],
         "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxM_s_i2TKU0d_3iZI04cHIwezIaJdhVMt8Gp7EK4i_jQ68iOoqYKmVL9rUTyP2Sv5vMv754a-AQ0IMiPNp7gXW3F5KcPNIFD_pYGJdbyRryZG2frcjcjWT_9oob5STl9DiOfI=w163-h92-k-no",
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwzpQtg1DQve3SgSwRfxh84zlsEciTXStXZOM-LNIlQefA86x_3ka3oh3_eNfSrYe9VJIDMSmDvVZOB_NAKNNxaI5TzlTZHUKDuSivEwCeavdJO1K7IGDc34AyBcrnYkmraaq08=w80-h106-k-no",
+        "rating": 4.6,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Moon Men Cocktail Bar",
+        "place_id": "ChIJN7MMSwCrNTERlBGuagK57jw",
+        "latitude": 21.028531299999997,
+        "longitude": 105.84838909999999,
+        "types": [
+            "Quán bar cocktail"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7ASkYYEVPXS_m067foQiqN6NpoLAO-hZqltgjOUWVu_m344JW-tZjSK--xdRuHcqInosTAIpbmPlTPDrSKQKIBVGgg30QFK60DeQMRoUKDrxRRvWliJSZ9gEOUa4jN6WPG_ub=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Upper Haven Sky Bar",
+        "place_id": "ChIJ_zpboOqrNTERHl5FFqctDVs",
+        "latitude": 21.034589099999998,
+        "longitude": 105.85295119999999,
+        "types": [
+            "Quán bar",
+            "Quầy giải khát",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw-V8BhxjE5x7U4f_7lZbBaFl1vXqOS2kdL9k-fkRzrTuEovkfGkYZHDd6dCcQ2Mkqbar97vAN8vbGjqmONjUImpjaaWJsEhFggizeynic7Ldl1WH9LMDlLspNcj3vxujFkMyxQXQ=w122-h92-k-no",
+        "rating": 5,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "The Balcony Beer",
+        "place_id": "ChIJN6b363WrNTERf_Jf_OrlZ8c",
+        "latitude": 21.0329884,
+        "longitude": 105.8519491,
+        "types": [
+            "Quán bar"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxjCP8_vV_ovjdD5DDwUnHE4lx1fV8ABRYA-F20TXmkKPOFYvVDSTUcmmVoZ4ZJ21j0O0TTctMEcbazl4tA8PWZHSj_bMtF3Bsb0PsL4vzkShqstdagsqFo4cvp_s6V4_ggLKbVmQ=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "night life",
+        "title": "Aura - The Orange Cocktail Bar",
+        "place_id": "ChIJbXV1YJarNTERIAJaNV92gSU",
+        "latitude": 21.0284627,
+        "longitude": 105.8495985,
+        "types": [
+            "Quán bar",
+            "Xưởng nghệ thuật",
+            "Quán bar cocktail"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw4VDqyv71C-bdaaWabB5EokWOnRoCT8RSqbvgLtL9SRSiEQW5vI4-q-cv7AVDOBu9zJWMZrTKNcdvg3JQy7mYigV0-NwTU2eeoUSIBFziCJztOV-q78N3FilbGH732bVwEuRUJDA=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "cultural performance",
+        "title": "Vietnam Tuong Theatre and Cultural Exhibition",
+        "place_id": "ChIJ5W88Bb6rNTERS1bmOSwQuwQ",
+        "latitude": 21.031491799999998,
+        "longitude": 105.84707019999999,
+        "types": [
+            "Nhà hát nghệ thuật biểu diễn",
+            "Trung tâm văn hoá"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzzRqw7lgLkqwcknqZT7sRfei_ATbH3cI5W_8E8Rv3LEKUvmm2MzUPkQkLfwaqOtcvngojntmLLXueXXlDJEPnJgs3rMHN5ZDZ5ts0KcfrCfZLxENrYU1uYfse15s5V-k_dIR0=w122-h92-k-no",
+        "rating": 4.5,
+        "description": null
+    },
+    {
+        "type_of_place": "cultural performance",
+        "title": "Nhà hát Lớn Hà Nội",
+        "place_id": "ChIJEQB--OurNTERK41Q2gDyemQ",
+        "latitude": 21.0242438,
+        "longitude": 105.85762539999999,
+        "types": [
+            "Nhà hát Opera",
+            "Nhà hát nghệ thuật biểu diễn",
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy9E9jU6sYQSxHjvYZzXbENMzXLMdLoveXlhglUOKxalw-jlfziTcWhp_MIuuffd8NNQizPZ1GTq_jWfQ2F8IyKI7iEu4_jI9MAGo36F1SqcZ3WHDtfyArgP9B5jhSfbQu8CPTeWA=w138-h92-k-no",
+        "rating": 4.6,
+        "description": "Nhà hát lớn biểu diễn nhạc cổ điển xây năm 1911. Nhà hát lộng lẫy này khánh thành từ năm 1911 và là nơi tổ chức biểu diễn nghệ thuật, trình diễn nhạc cổ điển, khiêu vũ và opera."
+    },
+    {
+        "type_of_place": "cultural performance",
+        "title": "Trung tâm Giao lưu Văn hóa Phố cổ Hà Nội",
+        "place_id": "ChIJfy-VVMerNTERfzjQOJoipXk",
+        "latitude": 21.035588,
+        "longitude": 105.85279,
+        "types": [
+            "Trung tâm văn hoá",
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxdIsVzwDW3kotvbffhi9qRx_kVKxy4HLNiESep-3BGeadGb9Jf79gV2KdGwRJfxtSG2McqzffUeQuFKjmz0skG1AfGG4hMs-GCXMRQtKSNOg5YZ0Fo2PYOh0aaLS-rWR-UynUY=w80-h106-k-no",
+        "rating": 4.4,
+        "description": "Khu triển lãm & sự kiện văn hóa Việt Nam. Bảo tàng có tranh nghệ thuật và khu trưng bày về văn hóa Việt Nam và thường tổ chức sự kiện."
+    },
+    {
+        "type_of_place": "cultural performance",
+        "title": "Nhà hát Nhạc Vũ Kịch Việt Nam",
+        "place_id": "ChIJQ3xpgHOrNTERuviMCLIllp4",
+        "latitude": 21.0304164,
+        "longitude": 105.8231692,
+        "types": [
+            "Nhà hát nghệ thuật biểu diễn",
+            "Nghệ thuật"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwH0FHcYwDYXUrByT-6GKv0VVJnKmfEQkpFtH4DIiBgJz_Qcrlkfkgkx5Uqca3v-qrx57Hk-AFFg98u64K1-sTC-d8R3nF4g_0hCncUlLW87xe_JxmYJ-Y-iw8RGLfVz_7RqIPC7g=w80-h106-k-no",
         "rating": 4.3,
+        "description": null
+    },
+    {
+        "type_of_place": "cultural performance",
+        "title": "Nhà hát Hồ Gươm",
+        "place_id": "ChIJF-yM0qarNTERlTO4a0cZWtk",
+        "latitude": 21.022074,
+        "longitude": 105.85217279999999,
+        "types": [
+            "Nhà hát Opera",
+            "Nhà hát nghệ thuật biểu diễn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzDQZpq_BYBeYSpn3jQEzh5GTEsXRpGWqed304QPvNncOVZs5bSVv2BYQGQ5KTYgWX4xmqSFSBAI62rdXGloE-HKWF4tpozocJNxy9xxIq-iRWDYmJC_xEd6FTIzgF7nrAwbhs=w122-h92-k-no",
+        "rating": 4.7,
+        "description": null
+    },
+    {
+        "type_of_place": "cultural performance",
+        "title": "Nhà Hát Múa Rối Thăng Long",
+        "place_id": "ChIJiUJFE8CrNTERHK060qWnXk4",
+        "latitude": 21.0316826,
+        "longitude": 105.8533466,
+        "types": [
+            "Nhà hát múa rối",
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyPuATQ2AsOxuS18ht8pohXGVepokhNtHcy5bapwvgnywvNGY1mdp6OoqaxVa9dF0IPUZn-BAdozd758UhsIzYTV06PfD9EPKzIm8rmoPjdzLA98xWEP2dCdDvqj3lC0OrfmD-gow=w122-h92-k-no",
+        "rating": 4.3,
+        "description": "Nhà hát múa rối nước truyền thống. Địa điểm biểu diễn nghệ thuật có tổ chức các tiết mục múa rối nước trên sân khấu cùng nhạc nền."
+    },
+    {
+        "type_of_place": "cultural performance",
+        "title": "Văn Miếu – Quốc Tử Giám",
+        "place_id": "ChIJZ73nJpmrNTERHt_VdIgHDlg",
+        "latitude": 21.0281175,
+        "longitude": 105.8356692,
+        "types": [
+            "Nơi thờ cúng",
+            "Địa điểm lịch sử"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSybRiYV1HjDfIhGSO7D08_0txJdNOqy7PHg3Bmb3D1FiK9voj3eQMsqBMdWlk1X5R31BFDP-oh0L8n_hWl8bT9JOPP7FmZNTMX6SahHGk26qXx5GGt81Gjo51YvSh8KNVQbzoCb6w=w138-h92-k-no",
+        "rating": 4.6,
+        "description": "Ngôi đền lớn giữa khung cảnh thôn quê. Ngôi đền Nho giáo có khoảng sân tươi đẹp, bàn thờ và đền thờ lớn, và cổng chính đồ sộ."
+    },
+    {
+        "type_of_place": "cultural performance",
+        "title": "Bảo tàng Dân tộc học Việt Nam",
+        "place_id": "ChIJIbhTQzmrNTERHBoID7tQyUc",
+        "latitude": 21.040342199999998,
+        "longitude": 105.7987354,
+        "types": [
+            "Bảo tàng dân tộc học",
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzezFljauqdHh1KIcd_CzUTwwf7a71ADL7-lmSctbRqQi0AczoF30zuGlU7-H58I2-CayxLxdmFc8Gb9vN3bry9Zr3wt6jda4BXQCmdgxIrjjoxr3lt2Wz97h5Tcjo9z-v_fdT6=w122-h92-k-no",
+        "rating": 4.6,
+        "description": "Bảo tàng trưng bày các hiện vật văn hóa. Bảo tàng dân tộc học trưng bày về các nền văn hóa đa dạng của Việt Nam với vườn cây và nhà hàng."
+    },
+    {
+        "type_of_place": "cultural performance",
+        "title": "Di tích Nhà tù Hỏa Lò",
+        "place_id": "ChIJld5RqparNTERVK8x7gvhAZc",
+        "latitude": 21.0253297,
+        "longitude": 105.8464781,
+        "types": [
+            "Bảo tàng lịch sử",
+            "Bảo tồn di sản",
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxKxkd5xlhsdboY21N0fyVvl58rzLRVIkTiyO1tn0NfzJVnXBh2SYRNKSgZ3pZUt68eCjzQLkV1UWC3RvYyLoMbWsJZy404oGrpRCoZFjG0N5MCweB0e3V-ppklLmrR-a0CObvi=w138-h92-k-no",
+        "rating": 4.5,
+        "description": "Bảo tàng tôn tạo từ nhà tù cũ. Tàn tích của nhà tù nhiều tầng dành cho tù binh ch.tranh Việt Nam chỉ còn lại khu canh gác, nay là bảo tàng."
+    },
+    {
+        "type_of_place": "cultural performance",
+        "title": "Trung tâm Múa rối nước Bông Sen",
+        "place_id": "ChIJZS5DPZWrNTERIzdg3NAMqfY",
+        "latitude": 21.028565699999998,
+        "longitude": 105.8510704,
+        "types": [
+            "Nhà hát múa rối"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxaWNwyKQliSiADmNSbNGCAhUOBTVrNLizSQR3NuIIzXIashzYqqdG2z5A4def9a4pYlFwzcYX9vSz35dRJvfCqwZLNNMmyyJQCEtwKBV31Z9eQEp_-b-Wiqh4o2k2JL_16X4hn=w163-h92-k-no",
+        "rating": 4.2,
         "description": null
     },
     {
@@ -1378,20 +645,6 @@
     },
     {
         "type_of_place": "hotel",
-        "title": "Khách sạn La Mejor và Sky Bar",
-        "place_id": "ChIJvRjrg6arNTERTp-fhVwKIw8",
-        "latitude": 21.0345315,
-        "longitude": 105.8520873,
-        "types": [
-            "Khách sạn"
-        ],
-        "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNXCBgIfpo6BimghgpDopkv9i99CSDbwTqcSnCW=w137-h92-k-no",
-        "rating": 4.9,
-        "description": null
-    },
-    {
-        "type_of_place": "hotel",
         "title": "Hotel de l'Opera Hanoi - MGallery",
         "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
         "latitude": 21.024400699999997,
@@ -1403,6 +656,20 @@
         "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPNlDm_nmiP_Wuwa4L-WpXNT3BGihZpzkAO_QCc=w138-h92-k-no",
         "rating": 4.5,
         "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên."
+    },
+    {
+        "type_of_place": "hotel",
+        "title": "Lotte Hotel Hanoi",
+        "place_id": "ChIJne3U7GyrNTERehxJ0VO9C6o",
+        "latitude": 21.031876099999998,
+        "longitude": 105.81230319999999,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNtduaERO0DR6yFcC0lRHJq0S5aRlHIn69Dvkiw=w80-h126-k-no",
+        "rating": 4.7,
+        "description": "Khách sạn sang trọng, spa, nhìn ra phố. Khách sạn cao tầng và sang trọng, khu spa, 4 nhà hàng, 2 quầy bar và phòng ở cao cấp nhìn ra thành phố."
     },
     {
         "type_of_place": "hotel",
@@ -1420,16 +687,354 @@
     },
     {
         "type_of_place": "hotel",
-        "title": "Lotte Hotel Hanoi",
-        "place_id": "ChIJne3U7GyrNTERehxJ0VO9C6o",
-        "latitude": 21.031876099999998,
-        "longitude": 105.81230319999999,
+        "title": "Khách sạn La Mejor và Sky Bar",
+        "place_id": "ChIJvRjrg6arNTERTp-fhVwKIw8",
+        "latitude": 21.0345315,
+        "longitude": 105.8520873,
         "types": [
             "Khách sạn"
         ],
         "operating_hours": null,
-        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNtduaERO0DR6yFcC0lRHJq0S5aRlHIn69Dvkiw=w80-h126-k-no",
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNXCBgIfpo6BimghgpDopkv9i99CSDbwTqcSnCW=w137-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Nhà Hàng Hoàng",
+        "place_id": "ChIJGR8daRurNTERiP2FRKSdIgM",
+        "latitude": 21.0358922,
+        "longitude": 105.85153509999999,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Lớp học nấu ăn",
+            "Nhà hàng",
+            "Nhà hàng món chay",
+            "Nhà hàng cho người ăn chay"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwyetMvOxQHzygm4tOnIo1QHfkV-5_CdjjTwlYGSz4T_9Ag64aHJGPmqjVAIvohS3-JI2_SOhXgyj6aT7YY97W3SXQALTxThWSRFL98ZNQMQ9TYfl6hgKdPSqE_aOxmbPU0M9NCEMlUJDIg=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "VIET Restaurant Hanoi",
+        "place_id": "ChIJcXwY2LWrNTER7AK0zwv68A0",
+        "latitude": 21.031081,
+        "longitude": 105.8466157,
+        "types": [
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipN7f-U7fQdYZ0SDAjbaEhrnkC3O1Qfum3GLZdaM=w138-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Hong Hoai's Restaurant",
+        "place_id": "ChIJXROtYr6rNTERRKeVXUeNGUY",
+        "latitude": 21.0338439,
+        "longitude": 105.8474725,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Lớp học nấu ăn",
+            "Nhà hàng món chay",
+            "Nhà hàng cho người ăn chay"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxLfA4GRwjJawCcMsuxt3TGIv33lLwRzVYn8R_kvbLagRaIDWmUlcsUYUS2n7dcnn6NVqqlJ6MrXycXp7nzH6T6ijza_E6AGq_WNR9dyUGb2ab4XC6g-xQnYvkaH4QYJEY8YCy7j6ceq4Hg=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "MẸT Vietnamese restaurant & Vegetarian Food 3",
+        "place_id": "ChIJB1EGIX-rNTER9GVryLt_d3c",
+        "latitude": 21.0341351,
+        "longitude": 105.85128929999999,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng ăn chay",
+            "Nhà hàng",
+            "Nhà hàng món chay"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPWCqnjrA7GhYYlNANyvUvIeebUbIo0nnttbj7d=w92-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Tung's Kitchen Vietnamese Cuisine & Vegetarian Food",
+        "place_id": "ChIJ4ySxJnKrNTERMwH1iZONipc",
+        "latitude": 21.0313361,
+        "longitude": 105.84897219999999,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Lớp học nấu ăn",
+            "Nhà hàng ăn chay",
+            "Nhà hàng món chay",
+            "Nhà hàng cho người ăn chay"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwsOE9E5mNZA4DGuqi3GVDHyLRHZkmUD8zwIei4eOTtFAln6EvVk3HFRW4rf38Zi3_GitwYQ4mzabwqzD1iE2rXE_f8ahXi91rxE1xL9_8n94hc5tHSUuh1gflUj3Gcr6OVIUZxdRbGe8R6=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "MẸT Vietnamese restaurant & Vegetarian Food 1",
+        "place_id": "ChIJhTP76EmrNTEROXzNX7wJjOw",
+        "latitude": 21.030751,
+        "longitude": 105.8495942,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng",
+            "Nhà hàng món chay"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzwlpnIPmqo5pPR2Dgbhf8ygzHPwhYkVrp1al8CuK6dNAS3nTyw1wPH5ZnRqb7jCEJsw0G61awlF94WiWnqiNwgHpCipL5pK-MIJDHXMqjP0wUh-NE3kAdUDMoGOfYeOCCgDxZk8RvfKdG5=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Hanoi Food Culture",
+        "place_id": "ChIJBc_8ksCrNTER7xjIdzUga9w",
+        "latitude": 21.0340925,
+        "longitude": 105.8538401,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Lớp học nấu ăn",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipN5h_kgfa6zwqAIdqO-U1H-2SXpVWpUdPyLOXoJ=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Essence Restaurant Original (since 2011)",
+        "place_id": "ChIJ0WjcZr-rNTERV74gECnJzig",
+        "latitude": 21.0306414,
+        "longitude": 105.8418372,
+        "types": [
+            "Nhà hàng",
+            "Quán bar",
+            "Quán cà phê",
+            "Nhà cung cấp thực phẩm và đồ uống cho dịch vụ ăn uống",
+            "Nơi tổ chức sự kiện",
+            "Nhà tổ chức buổi tiệc",
+            "Địa điểm tổ chức lễ cưới"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipORA9I2QeuAmSJfxF7lcBNClwAcryJOXWf64OMr=w122-h92-k-no",
+        "rating": 4.8,
+        "description": "Nhà hàng cao cấp phục vụ ẩm thực Việt Nam. Nhà hàng khách sạn trang nhã phục vụ các món đặc sản địa phương truyền thống của Việt Nam và ẩm thực phương Tây."
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Vị Hà Nội Restaurant & Cafe",
+        "place_id": "ChIJvzgkauarNTERl4_Ck6zHWE4",
+        "latitude": 21.0420156,
+        "longitude": 105.84645959999999,
+        "types": [
+            "Nhà hàng",
+            "Nhà hàng gia đình",
+            "Nhà hàng cao cấp",
+            "Nhà hàng phở",
+            "Nhà hàng cho người ăn chay",
+            "Nhà hàng Việt Nam"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzeeXyv6clMCx35WgQ1fEee7izDiI2F2bHCz6jSH1Lj3x8SnBnIWD47KyRCrfqZNG-EKIjsjSJawz1YsBxwUicoGG7HZdeaD6tBPB2yhmBTQ16GwuprL5hDMG2bt2lG376i_HzQ=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Madam Tran Restaurant - Vietnamese Restaurant & Vegan Foods",
+        "place_id": "ChIJlw4afL2rNTERjgzA6BrDoFU",
+        "latitude": 21.0359051,
+        "longitude": 105.8526723,
+        "types": [
+            "Nhà hàng",
+            "Nhà hàng châu Á",
+            "Quán cà phê",
+            "Lớp học nấu ăn",
+            "Nhà hàng ăn chay",
+            "Quán mì",
+            "Nhà hàng món chay",
+            "Nhà hàng Việt Nam",
+            "Quán rượu"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPR4LrhE2Z7ehsXb613KKanvsQV_yM9jGbQRRYJ=w138-h92-k-no",
         "rating": 4.7,
-        "description": "Khách sạn sang trọng, spa, nhìn ra phố. Khách sạn cao tầng và sang trọng, khu spa, 4 nhà hàng, 2 quầy bar và phòng ở cao cấp nhìn ra thành phố."
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Old Viet's Restaurant",
+        "place_id": "ChIJRR9YYMCrNTERSiwufdEY40g",
+        "latitude": 21.0326752,
+        "longitude": 105.8537368,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng châu Á",
+            "Quán cà phê",
+            "Nhà hàng Châu Âu",
+            "Nhà tư vấn ẩm thực",
+            "Nhà hàng không có gluten",
+            "Nhà hàng ăn chay",
+            "Quán mì",
+            "Quán rượu"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwVXuZF5-d36tVHarfTn-4x95n6ywwIQuEby5R8zMm8M-aZGZVgYAsdpfKc0TZTefUiIrKE6RnZmVEV0-qbWjAa1qDL_ztpP-sqhhIOLgF6bIu014AiZMVymiwoSHrqNX1K4yibn76Y5vxp=w122-h92-k-no",
+        "rating": 4.6,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Khuê Restaurant",
+        "place_id": "ChIJpTR8LB2rNTERaM6Aqju5iIo",
+        "latitude": 21.0431006,
+        "longitude": 105.84378819999999,
+        "types": [
+            "Nhà hàng cao cấp",
+            "Nhà hàng Châu Âu",
+            "Nhà hàng Việt Nam"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNSi1seoMa-nk_vnLnG_KNjBLFc7ojsT3W_XV1i=w138-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "MẸT Vietnamese Restaurant & Vegetarian Met 2",
+        "place_id": "ChIJrSnreyyrNTERerYhe3EwyaA",
+        "latitude": 21.032778399999998,
+        "longitude": 105.85036099999999,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz1V2iPfB9OpYrhcZ2O60cliVFdHXJdMqkcEUidyb_OxeMeYdcU0ez_W6ryVqY7SsHfXKl9Ccv7zk6hAM47chfWKesvEEpAxAk7DdrhD_BmWtpsIOcBq6Oft9WnKKKD2Pv0nXTLPbLyaD8=w136-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Era Vietnamese Restaurant",
+        "place_id": "ChIJS_M4qgCrNTERGc0FxMJCqC4",
+        "latitude": 21.0353258,
+        "longitude": 105.85331989999999,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng món nướng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPAXwrkYZEUhPx5rAqFpdLEljyV8U5fb3qTFR6T=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Au Lac Family Restaurant",
+        "place_id": "ChIJTzli5ASrNTERA2ZZQBxvxRA",
+        "latitude": 21.029532099999997,
+        "longitude": 105.8487519,
+        "types": [
+            "Nhà hàng",
+            "Nhà hàng Châu Âu",
+            "Nhà hàng Việt Nam"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxAgXhvK8tz4DwK6dNuFmmy0UV9lrU6DKPw818jpuCfgto-96scDlo0UDwtvFOIIrRLI2mTk_sAmJCJ5EbYTcIdjDW-xw5XwcCoDhs8_JbJqhw4smsl7Q0xhl5EnPfeGFO0dPKO=w80-h106-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Cloud Nine Restaurant Hanoi",
+        "place_id": "ChIJbSGKsL6rNTERkLxVt_NbmU4",
+        "latitude": 21.0330823,
+        "longitude": 105.8538995,
+        "types": [
+            "Nhà hàng",
+            "Nhà hàng cao cấp",
+            "Nhà hàng Việt Nam"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPuztBRmf_TD42tRBj2FjO3hHkCYSIdzYNLG1Nz=w138-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "MẸT Vietnamese restaurant & Vegetarian Food 5",
+        "place_id": "ChIJo30SQy-rNTER4esp9YxAGpc",
+        "latitude": 21.031441599999997,
+        "longitude": 105.8491895,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng ăn chay",
+            "Nhà hàng",
+            "Nhà hàng món chay"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwJ81rabNmQeVJKT2_ljNgPYiWLldvnXleplYcVmNEaSYUzd98iGJhBwJIZzpTd85GzTUe73VlRcBldX8HPnQuY7rtw5vuwupPJc58yqMjeRJiDyXtcjnjtMZaPRmugfkuI2qAcdgA6WopW=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "MẸT Vietnamese restaurant & Vegetarian Met 4",
+        "place_id": "ChIJ-1QLwSirNTERpOu0HJtJ40A",
+        "latitude": 21.033089399999998,
+        "longitude": 105.8523135,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipN3suwQHH0cy45Y4vPxvqxe1Y7K15usaev0mrEB=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "T.U.N.G Dining",
+        "place_id": "ChIJvYgNzb2rNTERtAKcAGpD86s",
+        "latitude": 21.0269004,
+        "longitude": 105.8500153,
+        "types": [
+            "Nhà hàng cao cấp"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipP5ooJ4XCQ1f4r0hBbcPV8CQGKUKKnwA1GGSWgn=w125-h92-k-no",
+        "rating": 4.7,
+        "description": null
+    },
+    {
+        "type_of_place": "restaurant",
+        "title": "Nhà Hàng Little Hanoi",
+        "place_id": "ChIJs1WPXL-rNTER5yFT1nC5oxY",
+        "latitude": 21.033067,
+        "longitude": 105.85403319999999,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxdaxcYUA5RVd16GLybzhthepyivkcM4jW-kfw773x3jPYeaVCfWYgoRqS0O3ne1K4DLG3A1_1sQLvR6N00hqhMdRT37tIaaMDtz3rufU-zYK5rMU_izzBerezleT9xVGv6f4mr=w163-h92-k-no",
+        "rating": 4.7,
+        "description": null
     }
 ]
