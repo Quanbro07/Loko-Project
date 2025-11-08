@@ -2,6 +2,7 @@ package com.exproject.backend.trip;
 
 import com.exproject.backend.review_location.ReviewLocation;
 import com.exproject.backend.trip.dto.TripRequest;
+import com.exproject.backend.trip_history.TripHistory;
 import com.exproject.backend.trip_section.TripSection;
 import com.exproject.backend.user.info.User;
 import jakarta.persistence.*;
@@ -33,6 +34,9 @@ public class Trip {
 
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReviewLocation> reviews = new ArrayList<>();
+
+    @OneToOne(mappedBy = "trip",cascade = CascadeType.ALL, orphanRemoval = true)
+    private TripHistory tripHistory;
 
     @Column(name = "trip_name", nullable = false)
     private String tripName;
@@ -78,7 +82,16 @@ public class Trip {
 
     // Help Function
     public void addTripSection(TripSection tripSection) {
+        // Add trip section vào List của trip
         tripSections.add(tripSection);
+
+        // Set khóa ngoại cho chủ(Section)
         tripSection.setTrip(this);
+    }
+
+    public void addTripHistory(TripHistory tripHistory) {
+        this.tripHistory = tripHistory;
+
+        tripHistory.setTrip(this);
     }
 }
