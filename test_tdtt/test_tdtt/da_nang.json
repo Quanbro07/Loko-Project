@@ -1,0 +1,59 @@
+[
+    {
+        "type_of_place": "amusement",
+        "title": "DA NANG DOWNTOWN",
+        "place_id": "ChIJF8yRoecZQjERdDBeBdSRD-Y",
+        "latitude": 16.0412139,
+        "longitude": 108.22563319999999,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwq1q5rf1PNGp_elGRbn9B6UoM4FB-XPpx3Eq8DALu9JY0zoMcfYl1hJFRol2InhnogvIoTwUfqF26hwvgCu8lZRdiGSt6GjVGfF2SEIFFdk_e__9SRAxS7lDDATmGzOwBcdQk=w138-h92-k-no",
+        "rating": 4.4,
+        "description": "CV có tàu lượn & khu vực theo chủ đề. Công viên giải trí có vòng đu quay khổng lồ & trò tàu lượn khác và khu vực vui chơi theo chủ đề các nước Châu Á."
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Sun World Bà Nà Hills",
+        "place_id": "ChIJyUQ4aw72QTERCXl5YV-4U1w",
+        "latitude": 16.0265144,
+        "longitude": 108.03279719999999,
+        "types": [
+            "Công viên giải trí"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyqUBLTBHAoYRdSPchv7sWqc80on95AUWdCNFMnu28D9bmu4AVMqzco5TpYsTxqK5Jp_8BwKYbP3yLxadcwbe-Y8cIdfx-Pq_vEItiSVTi-S-txYIvv9rwPvtub1sDMn59LAXE3=w114-h92-k-no",
+        "rating": 4.5,
+        "description": "Công viên giải trí có cáp treo trên đỉnh đồi. Công viên giải trí có các trò chơi cảm giác mạnh, cáp treo và Cầu Vàng nhìn ra toàn cảnh núi non."
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Quầy lễ tân Ga thác Tóc Tiên",
+        "place_id": "ChIJ2dQQiA72QTERnSn0QjUDJiw",
+        "latitude": 16.02693,
+        "longitude": 108.03103829999999,
+        "types": [
+            "Công viên giải trí"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw7O3ASHyfpAwyQWNgtlakQpDERW76ZzYnZEyraY15rfWoIQ5O6SrhTuXoFIFXJb59prmnpYGwPiP6C63ZGP9GO0qm1PzE5RKwKKhkwoDfHK_iqeln_nvsDYsyhILCwEHoDiVdw=w162-h92-k-no",
+        "rating": 4.4,
+        "description": null
+    },
+    {
+        "type_of_place": "amusement",
+        "title": "Ticket Ba Na Hills - Đường Lên Tiên Cảnh",
+        "place_id": "ChIJ6R3K0vz2QTERRGpzbkKvt4o",
+        "latitude": 15.9972041,
+        "longitude": 107.98876299999999,
+        "types": [
+            "Công viên giải trí",
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzu_eIN9bdZ98vfpWL_DU3RqFmcKO8RimbE_RL7SlhqHYr8Ur9cr3rXf18NtKnWD_tRO9dtw0FGa3ogi3n3ODWjEHArPuIGZBWlpGYbi79tfZOXVbACV1h6tTV_KSS7w50v8ijmeg=w150-h92-k-no",
+        "rating": 4.4,
+        "description": null
+    }
+]

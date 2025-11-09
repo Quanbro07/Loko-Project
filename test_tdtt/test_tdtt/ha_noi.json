@@ -1036,5 +1036,296 @@
         "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxdaxcYUA5RVd16GLybzhthepyivkcM4jW-kfw773x3jPYeaVCfWYgoRqS0O3ne1K4DLG3A1_1sQLvR6N00hqhMdRT37tIaaMDtz3rufU-zYK5rMU_izzBerezleT9xVGv6f4mr=w163-h92-k-no",
         "rating": 4.7,
         "description": null
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "InterContinental Hà Nội Westlake",
+        "place_id": "ChIJjU_PBFWqNTERbWlO_rdeNTg",
+        "latitude": 21.058365,
+        "longitude": 105.8315408,
+        "types": [
+            "Khách sạn",
+            "Trung tâm hội thảo",
+            "Địa điểm tổ chức lễ cưới"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMTZjnBp0XCkd7xCj5h5RSvMEuDsw4WatlWZ38-=w138-h92-k-no",
+        "rating": 4.7,
+        "description": "Khách sạn cao cấp có nhà hàng và khu spa. Khách sạn sang trọng nằm ven hồ, có 3 nhà hàng, 2 quầy bar, phòng tập thể dục, bể bơi ngoài trời và khu spa."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Peridot Grand Luxury Boutique Hotel",
+        "place_id": "ChIJVQa1tWCrNTERp1ZgsDNLVPA",
+        "latitude": 21.032987499999997,
+        "longitude": 105.8463034,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipO3KwhPWvPz6kumbzQbrGcYsQ815eKECWQjRUiN=w138-h92-k-no",
+        "rating": 4.8,
+        "description": "Khách sạn cao cấp có hồ bơi và quầy bar trên sân thượng. Phòng nghỉ và phòng suite sang trọng trong khách sạn cao cấp có hồ bơi vô cực trên tầng thượng và quầy bar cocktail."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Sofitel Legend Metropole Hanoi",
+        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+        "latitude": 21.025412499999998,
+        "longitude": 105.856375,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPTEfG79GUA40UwgmWFz9z0wMbkY5cUqZUMh9id=w184-h92-k-no",
+        "rating": 4.7,
+        "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Khách sạn Capella Hà Nội",
+        "place_id": "ChIJeysLiz2rNTER3KKgUoOxxUQ",
+        "latitude": 21.0257164,
+        "longitude": 105.8566886,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMHw3eGpuKOXmgCPAAPwYqFDPx9vl1UpFTnP2Kl=w138-h92-k-no",
+        "rating": 4.8,
+        "description": "Khách sạn sang trọng có spa và 2 nhà hàng. Khách sạn theo phong cách nguy nga những năm 1920 có 2 nhà hàng và 2 quầy bar, cùng với spa và hồ bơi trong nhà."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "The Oriental Jade Hotel",
+        "place_id": "ChIJgZwVyZerNTERM_WVqGakOiI",
+        "latitude": 21.0296357,
+        "longitude": 105.8501373,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPBEDzqpZafyaCYKpgvEdGsXuZku3xbelzedeed=w142-h92-k-no",
+        "rating": 4.8,
+        "description": "Khách sạn trang nhã có nhà hàng và spa. Khách sạn sang trọng có phòng ở bình dân, nhà hàng, bể bơi tầng thượng và spa."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Hanoi Pearl Hotel",
+        "place_id": "ChIJgzIQXpWrNTEReyRCNrI39mE",
+        "latitude": 21.0305322,
+        "longitude": 105.8503324,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPysLvv-NYqU28cIqDbpiyGlU0czND8NvCE4ALc=w131-h92-k-no",
+        "rating": 4.5,
+        "description": "Khách sạn sang trọng có bar tầng thượng. Khách sạn cao cấp, có phòng ốc tinh tế, bữa sáng, nhà hàng sang trọng và quầy bar tầng thượng."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "GRAND HOTEL du LAC Hanoi",
+        "place_id": "ChIJZ0PeHIyrNTERWyxL4UUBlJk",
+        "latitude": 21.0283655,
+        "longitude": 105.84965299999999,
+        "types": [
+            "Khách sạn",
+            "Khách sạn nghỉ dưỡng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipO5NPGVCRz8mtUOoQIIZZWEuVwPo4KgcdSGosGA=w122-h92-k-no",
+        "rating": 4.8,
+        "description": null
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Lotte Hotel Hanoi",
+        "place_id": "ChIJne3U7GyrNTERehxJ0VO9C6o",
+        "latitude": 21.031876099999998,
+        "longitude": 105.81230319999999,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNtduaERO0DR6yFcC0lRHJq0S5aRlHIn69Dvkiw=w80-h126-k-no",
+        "rating": 4.7,
+        "description": "Khách sạn sang trọng, spa, nhìn ra phố. Khách sạn cao tầng và sang trọng, khu spa, 4 nhà hàng, 2 quầy bar và phòng ở cao cấp nhìn ra thành phố."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "JM Marvel Hotel & Spa",
+        "place_id": "ChIJrQf2_5WrNTER5F9kUXZbmVo",
+        "latitude": 21.03108,
+        "longitude": 105.8466196,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOVB912RiBdNq2xkdFOKRowrcILwtdBR44FL641=w137-h92-k-no",
+        "rating": 4.8,
+        "description": "KS tinh tế có nhà hàng & bar tầng thượng. Khách sạn lịch sự, phục vụ bữa sáng miễn phí, có phòng ốc sang trọng cùng khu spa và quầy bar tầng thượng."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Meritel Hanoi",
+        "place_id": "ChIJh02B9hirNTERAjicr32Drng",
+        "latitude": 21.0293134,
+        "longitude": 105.8454768,
+        "types": [
+            "Khách sạn",
+            "Quán bar",
+            "Nhà hàng",
+            "Chỗ ở được phục vụ",
+            "Spa"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNFAd7Rttjjf16eWmIMq5q2KEYObLWJ0XCmyNZ2=w155-h92-k-no",
+        "rating": 4.9,
+        "description": "Khách sạn sang trọng có spa và hồ bơi trên sân thượng. Phòng cao cấp trong khách sạn sang trọng có nhà hàng sang trọng, quầy bar trên sân thượng và hồ bơi vô cực ngoài trời."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "La Siesta Premium Hang Be Hotel",
+        "place_id": "ChIJBXy4sa6rNTERDF1sCVavi98",
+        "latitude": 21.0331202,
+        "longitude": 105.8540981,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOLBxJYp-2Uxu0BMtxDc_NufR40bEEcnDGg6n9X=w137-h92-k-no",
+        "rating": 4.9,
+        "description": "Khách sạn sang trọng với nhà hàng và tầm nhìn ra hồ. Phòng nghỉ và suite sang trọng trong khách sạn cao cấp có nhà hàng, spa và quầy bar trên tầng thượng nhìn ra hồ."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Grand Mercure Hanoi",
+        "place_id": "ChIJ1_gDtTCrNTERVmUj8TAT9Z0",
+        "latitude": 21.0276589,
+        "longitude": 105.8334725,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMKCl7l7CYEGjAP9kQFooBOEToyx6KLSM48sKzr=w118-h92-k-no",
+        "rating": 4.7,
+        "description": null
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "La Sinfonía del Rey Hotel & Spa",
+        "place_id": "ChIJsR8BPsCrNTERj3_eOHJPYwA",
+        "latitude": 21.0311164,
+        "longitude": 105.8540457,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipO7L3f6T2nYlBoMoC5o8lAZcOBq_f9h2r7QPops=w148-h92-k-no",
+        "rating": 4.8,
+        "description": "Khách sạn cao cấp có spa và quầy bar trên sân thượng. Khách sạn cao cấp có phòng ốc sang trọng, nhà hàng, quầy bar cocktail trên tầng thượng và spa."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Dolce By Wyndham Hanoi Golden Lake",
+        "place_id": "ChIJvT9p1umrNTER4yHEEhYi6ks",
+        "latitude": 21.0294804,
+        "longitude": 105.8212561,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOSgpeOQ60y1aVYNSXoJqvLF5aXC1xMgBuDDO_5=w80-h120-k-no",
+        "rating": 4.4,
+        "description": "KS tinh tế có bể bơi vô cực tầng thượng. Khách sạn sang trọng nhìn ra hồ, có bể bơi vô cực trên sân thượng, khu spa và 3 nhà hàng."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "L'HÔTEL du LAC Hanoi",
+        "place_id": "ChIJ6-VnlS-rNTER0CQkyyXwqtY",
+        "latitude": 21.030672199999998,
+        "longitude": 105.84966569999999,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNmUS4nMzsOj4TNI90xXWiTLNZ0_oSJeBnvXvDn=w138-h92-k-no",
+        "rating": 4.9,
+        "description": "Khách sạn cao cấp có quầy bar trên sân thượng. Phòng nghỉ và phòng suite sang trọng trong khách sạn cao cấp có nhà hàng theo phong cách nghệ thuật trang trí và quầy bar trên tầng thượng."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Pullman Hanoi Hotel",
+        "place_id": "ChIJ__8jvJWrNTER9H4bXX-RqFI",
+        "latitude": 21.030044699999998,
+        "longitude": 105.8289077,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMoTKbcojynzIxISfrRFuX5sprs-bowHUvglKMA=w122-h92-k-no",
+        "rating": 4.4,
+        "description": "Khách sạn cao cấp có spa và nhà hàng. Khách sạn cao cấp, phòng ở hiện đại, bể bơi, nhà hàng sang trọng, quầy bar tapas và khu spa."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Aurora Premium Hotel & Spa",
+        "place_id": "ChIJ4xhraMCrNTERRNyiI3eRrdM",
+        "latitude": 21.032418699999997,
+        "longitude": 105.8538952,
+        "types": [
+            "Khách sạn",
+            "Quán bar",
+            "Nhà hàng",
+            "Spa"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOfibcwbP1VOzxGtLlXd_uUmO-l4fJj2bniw9On=w80-h110-k-no",
+        "rating": 4.7,
+        "description": "Khách sạn trang nhã có nhà hàng và cảnh hồ. Khách sạn tinh tế có nhà hàng, khu spa và phòng ốc sang trọng. Một số phòng nhìn ra hồ."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "La Siesta Classic Hang Thung",
+        "place_id": "ChIJjUh7TsCrNTERSB9z6q1vAqQ",
+        "latitude": 21.0320261,
+        "longitude": 105.85502699999999,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPmuH7OX2_8zDkmHYOu2mdXxBpG_zTL5r0V78LL=w80-h106-k-no",
+        "rating": 4.8,
+        "description": "Khách sạn sang trọng có nhà hàng và hồ bơi. Khách sạn thanh lịch có các phòng và suite sang trọng, cùng hồ bơi ngoài trời, nhà hàng và phòng tập thể dục."
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Hanoi Le Chateau Hotel & Spa",
+        "place_id": "ChIJka4W_tCrNTERjEYlf2K4oT4",
+        "latitude": 21.0334227,
+        "longitude": 105.8479309,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipOmzFBb22ztS3N8OC2M6qHn_DNanP4VS2uy_6am=w137-h92-k-no",
+        "rating": 4.8,
+        "description": null
+    },
+    {
+        "type_of_place": "hotels",
+        "title": "Grand Plaza Hotel Hanoi",
+        "place_id": "ChIJH8Y3vZWrNTERUHPieqVTxW4",
+        "latitude": 21.007430199999998,
+        "longitude": 105.7968181,
+        "types": [
+            "Khách sạn",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNrBQ4qmexj4VrfJccvT_a-0lB0C4LZTkMcVQoe=w124-h92-k-no",
+        "rating": 4.2,
+        "description": "Khách sạn cao cấp có 5 nhà hàng. Khách sạn cao tầng và hiện đại, có phòng ốc trang nhã cùng nhà hàng, spa và khu mua sắm."
     }
 ]

@@ -9,15 +9,15 @@ import google.generativeai as genai
 API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
 # ==============================================================================
 
-INPUT_FILE = "ha_noi.json"
+INPUT_FILE = "nha_trang_amusement.json"
 OUTPUT_FILE = "attractions_with_tags.json"
 
 genai.configure(api_key=API_KEY)
 MODEL = genai.GenerativeModel("models/gemini-2.5-flash") # Đã cập nhật lên 1.5-flash mới hơn
 
-BATCH_SIZE = 50
+BATCH_SIZE = 30
 
-PROMPT_TEMPLATE = """
+PROMPT_TEMPLATE_FOOD = """
 You are a Professional Place Classification System.
 
 Task:
@@ -73,6 +73,60 @@ Classify these places:
 {locations}
 """
 
+PROMPT_TEMPLATE_AMUSEMENT = """
+You are a Professional Place Classification System.
+
+Task:
+Given a single place name (short, e.g., "Ha Long Bay" or "Ben Thanh Market, HCMC"), assign **2 to 5** tags that most accurately describe the place's PRIMARY and important SECONDARY characteristics, chosen ONLY from the allowed list below.
+
+━━━━━━━━━━━━━━
+✅ ALLOWED TAG LIST (USE EXACT LABELS ONLY):
+
+amusement/water park, zoo, aquarium, nightlife, festival, cultural performance
+
+━━━━━━━━━━━━━━
+STRICT RULES (READ CAREFULLY — THEY ARE ENFORCED):
+
+1) **OUTPUT SIZE** — For every valid place, return **between 2 and 5 tags**.  
+   - The first tag must represent the place's **primary function or natural category** (e.g., "beach", "museum", "market").  
+   - The remaining 1–4 tags should represent **secondary but factual** attributes (e.g., "viewpoint", "family", "street-food").
+   - Each place must have at least one tag
+
+2) **NO GUESSING** — Only tag attributes that are:
+   - Widely known facts about the place, or
+   - Directly implied by the place type or common, reliable sources.
+
+3) **NO ASSUMPTIONS / NO INFERENCE FROM NAME ONLY** — Do NOT infer commercial or demographic attributes from a name unless they are strongly associated (e.g., "Ben Thanh Market" → "market", "street-food"). Do NOT assign "restaurant" for a market unless the entity is primarily a restaurant.
+
+4) **NO EXTRA TAGS** — Use ONLY tags from the allowed list. Do not invent new labels or synonyms.
+
+5) **SPECIAL TAG RULES**:
+    - "amusement park" → for amusement parks, theme parks, and entertainment complexes featuring mechanical rides, thrill attractions, and themed entertainment zones. Includes outdoor or indoor amusement centers, family entertainment centers (FECs), and theme-based recreational parks. Focus is on rides, games, and large-scale attractions designed for fun and excitement. Excludes simple playgrounds, botanical gardens, or resorts without amusement features.
+    - "water park" → for parks and complexes primarily offering water-based attractions such as slides, wave pools, lazy rivers, and aquatic playgrounds. Includes indoor and outdoor water parks, aqua complexes, and large resort water zones where water recreation is the main activity. Excludes regular swimming pools, beaches, or resorts without specialized water attractions.
+    - "zoo" → only for zoological parks, wildlife sanctuaries, or animal exhibits where viewing, studying, and conserving animals are the primary purposes. Includes safari parks, animal conservation centers, and wildlife breeding areas open to the public.
+    - "aquarium" → for aquariums, oceanariums, or marine life exhibits dedicated to displaying aquatic animals and marine ecosystems. Includes underwater tunnels, marine museums, and large-scale marine observation centers.
+    - "nightlife" → for venues primarily active during evening or night hours, including bars, pubs, clubs, lounges, and entertainment venues focusing on night-time social activities, live music, or dance.
+    - "festival" → for places or venues primarily known for hosting festivals, cultural celebrations, or periodic major events. Use only if the site is recognized as a regular festival location or is central to cultural festivities.
+    - "cultural performance" → for theaters, performance halls, cultural centers, or venues dedicated to traditional and contemporary performing arts. Includes opera houses, concert halls, puppet theaters, folk performance centers, and cultural exhibition stages.
+
+6) **NO EXPLANATION** — Output must be exactly and only the JSON (see format). No extra text, no commentary.
+
+━━━━━━━━━━━━━━
+OUTPUT FORMAT (STRICT):
+
+{{
+  "results": [
+    {{ "place": "<place1>", "tags": ["t1","t2"] }},
+    {{ "place": "<place2>", "tags": [] }}
+  ]
+}}
+
+━━━━━━━━━━━━━━
+Classify these places:
+
+{locations}
+"""
+
 def extract_json(text):
     """Trích xuất khối JSON từ phản hồi văn bản của AI."""
     try:
@@ -88,14 +142,35 @@ def extract_json(text):
                 return None
     return None
 
-def classify_batch(batch_titles):
+def detect_template_type(filename):
+    """
+    Phát hiện loại template dựa trên đuôi file.
+    Ví dụ: quang_ngai_amusement.json -> "amusement"
+    """
+    filename_lower = filename.lower()
+    if "amusement" in filename_lower:
+        return "amusement"
+    else:
+        return "food"  # Mặc định là food
+
+def classify_batch(batch_titles, template_type="food"):
     """
     Gửi một lô (batch) các *tên địa điểm* (strings) đến API
     và trả về kết quả phân loại.
+    
+    Args:
+        batch_titles: Danh sách tên địa điểm
+        template_type: "food" hoặc "amusement"
     """
+    # Chọn template phù hợp
+    if template_type == "amusement":
+        template = PROMPT_TEMPLATE_AMUSEMENT
+    else:
+        template = PROMPT_TEMPLATE_FOOD
+    
     # Tạo chuỗi prompt từ danh sách các tên địa điểm
     prompt_locations = "\n".join(f"- {title}" for title in batch_titles)
-    prompt = PROMPT_TEMPLATE.format(locations=prompt_locations)
+    prompt = template.format(locations=prompt_locations)
     
     # Thử gọi API tối đa 3 lần
     for _ in range(3):
@@ -129,6 +204,10 @@ def main():
         print(f"Lỗi: File '{INPUT_FILE}' không phải là JSON hợp lệ.")
         return
 
+    # Phát hiện loại template dựa trên tên file
+    template_type = detect_template_type(INPUT_FILE)
+    print(f"📋 Detected template type: {template_type} (from filename: {INPUT_FILE})")
+
     # *** THAY ĐỔI QUAN TRỌNG ***
     # all_locations_with_tags sẽ lưu các ĐỐI TƯỢNG GỐC đã được cập nhật
     all_locations_with_tags = []
@@ -144,9 +223,9 @@ def main():
         # Giả sử trường chứa tên là "title" (từ script SerpApi trước)
         batch_titles = [loc.get("title", "") for loc in batch_objects]
 
-        # 3. Gửi các tên này đi phân loại
+        # 3. Gửi các tên này đi phân loại với template phù hợp
         # classified_tags là danh sách: [{"place": "Tên 1", "tags": [...]}, ...]
-        classified_tags = classify_batch(batch_titles)
+        classified_tags = classify_batch(batch_titles, template_type)
 
         # 4. Tạo một "map" (dictionary) để tra cứu tag bằng tên
         # Ví dụ: {"Hồ Xuân Hương": ["lake", "park"], "Chợ Đà Lạt": ["market"]}
