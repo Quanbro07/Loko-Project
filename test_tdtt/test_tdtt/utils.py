@@ -1,6 +1,6 @@
 # utils.py
 import re
-from config import DAY_START_TIME, DAY_END_TIME, MAX_DAY_DURATION
+from config import DAY_START_TIME, DAY_END_TIME_BASE, MAX_DAY_DURATION
 
 def time_to_minutes(t):
     """Helper chuyển chuỗi giờ 'HH:MM' thành phút trong ngày."""
@@ -39,9 +39,10 @@ def parse_operating_hours(hours_data, service_time):
     if open_t is None:
         open_t = DAY_START_TIME
     if close_t is None:
-        close_t = DAY_END_TIME
+        close_t = DAY_END_TIME_BASE  # Sử dụng DAY_END_TIME_BASE làm fallback
 
     # --- Giới hạn hợp lệ (quy đổi về phút bắt đầu từ 0 của ngày du lịch) ---
+    # Sử dụng MAX_DAY_DURATION (có biên độ 20 phút) để cho phép các địa điểm có thể hoạt động đến giờ kết thúc + biên độ
     start = max(0, open_t - DAY_START_TIME)
     end = min(close_t - DAY_START_TIME, MAX_DAY_DURATION)
 
@@ -49,7 +50,7 @@ def parse_operating_hours(hours_data, service_time):
     if end - start < service_time:
         end = start + service_time
     
-    # Đảm bảo end không vượt quá giới hạn ngày
+    # Đảm bảo end không vượt quá giới hạn ngày (có biên độ 20 phút)
     if end > MAX_DAY_DURATION:
         end = MAX_DAY_DURATION
 

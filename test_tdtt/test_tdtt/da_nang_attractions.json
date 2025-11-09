@@ -1,0 +1,600 @@
+[
+    {
+        "title": "Ngũ Hành Sơn",
+        "place_id": "ChIJ2y5L4dQNQjERxeSLc68fbrw",
+        "latitude": 16.0037104,
+        "longitude": 108.2631605,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Thắng cảnh"
+        ],
+        "operating_hours": null,
+        "description": "Núi hùng vĩ có hang động & chùa chiền. Thắng cảnh Ngũ Hành Sơn có nhiều hang động và chùa chiền được xây cất công phu với cảnh sắc hữu tình."
+    },
+    {
+        "title": "Cầu Rồng",
+        "place_id": "ChIJL1GKWJYZQjERLrEGqlK2kwQ",
+        "latitude": 16.0611042,
+        "longitude": 108.2276926,
+        "types": [
+            "Cầu",
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "DA NANG DOWNTOWN",
+        "place_id": "ChIJF8yRoecZQjERdDBeBdSRD-Y",
+        "latitude": 16.0412139,
+        "longitude": 108.22563319999999,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": "CV có tàu lượn & khu vực theo chủ đề. Công viên giải trí có vòng đu quay khổng lồ & trò tàu lượn khác và khu vực vui chơi theo chủ đề các nước Châu Á."
+    },
+    {
+        "title": "Bảo tàng Điêu khắc Chăm Đà Nẵng",
+        "place_id": "ChIJLWoAs80ZQjERLKHDYD-ZymI",
+        "latitude": 16.0603007,
+        "longitude": 108.2232677,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Bảo tàng di sản",
+            "Bảo tàng điêu khắc"
+        ],
+        "operating_hours": null,
+        "description": "Bảo tàng nhỏ có các tác phẩm điêu khắc. Bảo tàng nhỏ gọn trưng bày một bộ sưu tập các tác phẩm điêu khắc và văn hóa như trang phục và dụng cụ."
+    },
+    {
+        "title": "Bảo tàng 3D Art In Paradise",
+        "place_id": "ChIJcVJkUPcXQjERsA8_dfySw5E",
+        "latitude": 16.0954282,
+        "longitude": 108.2431088,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Bảo tàng nghệ thuật"
+        ],
+        "operating_hours": null,
+        "description": "Bảo tàng tương tác để chụp ảnh 3D kỳ ảo. Bảo tàng tương tác cho du khách tạo dáng chụp ảnh vui nhộn trước những bức tranh 3D theo chủ đề."
+    },
+    {
+        "title": "Đỉnh Bàn Cờ",
+        "place_id": "ChIJBQHuNG49QjER7Mb_Y2I64mk",
+        "latitude": 16.1189365,
+        "longitude": 108.2719826,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": "Đỉnh đồi trên cao nhìn ra thành phố và vịnh. Đài quan sát trên đỉnh đồi có tầm nhìn ra thành phố Đà Nẵng và biển cùng bức tượng đang trầm ngâm đánh cờ."
+    },
+    {
+        "title": "Vòng quay Mặt Trời (Sun Wheel)",
+        "place_id": "ChIJ9fqsdOcZQjERZcIMEHw3HtY",
+        "latitude": 16.0401624,
+        "longitude": 108.22851709999999,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": "Công viên giải trí chú trọng văn hóa Châu Á. Công viên giải trí có đường đi bộ, bên cạnh các hoạt động, thực phẩm & kiến trúc của nhiều quốc gia Châu Á."
+    },
+    {
+        "title": "Làng Bích họa Đà Nẵng",
+        "place_id": "ChIJkatEeMwZQjERnAUKgmrbNgQ",
+        "latitude": 16.0607296,
+        "longitude": 108.2200532,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Bảo Tàng Đà Nẵng",
+        "place_id": "ChIJEymIkTYYQjERWO-pgjkKGMk",
+        "latitude": 16.074554199999998,
+        "longitude": 108.2239668,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Bảo tàng lịch sử"
+        ],
+        "operating_hours": null,
+        "description": "Bảo tàng lịch sử văn hóa ở tòa nhà hiện đại. Bảo tàng về lịch sử Đà Nẵng, nơi trưng bày hiện vật văn hóa và quân sự trong một không gian hiện đại."
+    },
+    {
+        "title": "Cầu Vàng",
+        "place_id": "ChIJj9PFGT33QTERDbUKRxFsdmM",
+        "latitude": 15.994937499999999,
+        "longitude": 107.9965625,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Ba Na Hills",
+        "place_id": "ChIJyWFmArX3QTERon6tUT6re4Q",
+        "latitude": 15.9951364,
+        "longitude": 107.9961392,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Thắng cảnh"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Nhà Vọng Cảnh",
+        "place_id": "ChIJ08DIzjY9QjER4ldy4JXZBLA",
+        "latitude": 16.1351089,
+        "longitude": 108.24537579999999,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Ticket Ba Na Hills - Đường Lên Tiên Cảnh",
+        "place_id": "ChIJ6R3K0vz2QTERRGpzbkKvt4o",
+        "latitude": 15.9972041,
+        "longitude": 107.98876299999999,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Công viên giải trí"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Sun World Bà Nà Hills",
+        "place_id": "ChIJyUQ4aw72QTERCXl5YV-4U1w",
+        "latitude": 16.0265144,
+        "longitude": 108.03279719999999,
+        "types": [
+            "Công viên giải trí"
+        ],
+        "operating_hours": null,
+        "description": "Công viên giải trí có cáp treo trên đỉnh đồi. Công viên giải trí có các trò chơi cảm giác mạnh, cáp treo và Cầu Vàng nhìn ra toàn cảnh núi non."
+    },
+    {
+        "title": "Bảo tàng Hồ Chí Minh",
+        "place_id": "ChIJo8fznMYZQjERNtNTUT-ZJyk",
+        "latitude": 16.0486814,
+        "longitude": 108.217581,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Bảo tàng",
+            "Bảo tàng lịch sử"
+        ],
+        "operating_hours": null,
+        "description": "Bảo tàng về Chủ tịch Hồ Chí Minh. Bảo tàng về cuộc đời của Chủ tịch Hồ Chí Minh, từ thuở nhỏ đến khi trở thành một vị anh hùng dân tộc."
+    },
+    {
+        "title": "Hòn Thủy Sơn",
+        "place_id": "ChIJKytgDsgQQjER6al50BDd7vc",
+        "latitude": 16.0034752,
+        "longitude": 108.26254829999999,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Thắng cảnh"
+        ],
+        "operating_hours": null,
+        "description": "Ngọn núi có chùa và hang động. Ngọn núi có chùa nằm trong hang động cùng 156 bậc đá tự nhiên dẫn lên núi. Có khu vực nghỉ ngơi."
+    },
+    {
+        "title": "Bảo tàng Đồng Đình",
+        "place_id": "ChIJaa7lANcXQjERmT3kgV5U7uA",
+        "latitude": 16.1011538,
+        "longitude": 108.2753793,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Bảo tàng nghệ thuật"
+        ],
+        "operating_hours": null,
+        "description": "Bảo tàng cổ kính & hiện vật truyền thống. Bảo tàng cổ kính giữa khung cảnh núi non trưng bày gốm sứ trong vùng và một ngôi nhà truyền thống."
+    },
+    {
+        "title": "Hot Springs Park - Công viên Suối khoáng nóng Núi Thần Tài Đà Nẵng",
+        "place_id": "ChIJwbfPdZX3QTERj8sw7f5uZPA",
+        "latitude": 15.9678512,
+        "longitude": 108.0198053,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Điểm tắm suối khoáng nóng kiểu Nhật",
+            "Onsen ban ngày",
+            "Công viên nước"
+        ],
+        "operating_hours": null,
+        "description": "Hồ tạo sóng, đường trượt và suối nước nóng. Công viên nổi tiếng này nằm giữa không gian xanh, có hồ tạo sóng, sông lười, đường trượt nước và suối nước nóng."
+    },
+    {
+        "title": "Hòa Phú Thành Tourist - Trượt thác Đà Nẵng",
+        "place_id": "ChIJK7np93r3QTER83RICZfg9Po",
+        "latitude": 15.9577622,
+        "longitude": 107.99169769999999,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Câu lạc bộ bắn cung",
+            "Trại thiếu nhi",
+            "Khu cắm trại",
+            "Quán cà phê",
+            "Nhà nghỉ dưỡng cho thuê",
+            "Nhà hàng",
+            "Hồ bơi"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Tượng Cá Chép Hóa Rồng",
+        "place_id": "ChIJ4QBQgowZQjERs200POAfAZs",
+        "latitude": 16.06291,
+        "longitude": 108.229815,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Nhà Vọng Cảnh",
+        "place_id": "ChIJ08DIzjY9QjER4ldy4JXZBLA",
+        "latitude": 16.1351089,
+        "longitude": 108.24537579999999,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Công Viên APEC",
+        "place_id": "ChIJzX1dFjAZQjERswowf61V1fk",
+        "latitude": 16.0581055,
+        "longitude": 108.2232435,
+        "types": [
+            "Công viên"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "박당 거리",
+        "place_id": "ChIJgTlTTKgZQjERt6wFqd6Epus",
+        "latitude": 16.0733818,
+        "longitude": 108.22474729999999,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Bảo tàng Mỹ thuật Đà Nẵng",
+        "place_id": "ChIJ78thjjYYQjERkiy-c9ebVPE",
+        "latitude": 16.0711877,
+        "longitude": 108.21794109999999,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Bảo tàng nghệ thuật"
+        ],
+        "operating_hours": null,
+        "description": "Bảo tàng nghệ thuật có triển lãm đa dạng. Bảo tàng mỹ thuật trưng bày tranh, tượng, đồ gốm và tác phẩm khác trong không gian hiện đại có quán cà phê."
+    },
+    {
+        "title": "Bãi Tắm Non Nước",
+        "place_id": "ChIJu59e1rsRQjERB-49hSxMnXo",
+        "latitude": 16.0027923,
+        "longitude": 108.2699727,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Hải đăng Tiên Sa",
+        "place_id": "ChIJI4oSjdE9QjERlXMiA630YKs",
+        "latitude": 16.1396875,
+        "longitude": 108.3220625,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "POSEIDON Cruise",
+        "place_id": "ChIJz8e7PgcZQjERS15w1Fmq7bM",
+        "latitude": 16.0778496,
+        "longitude": 108.22440119999999,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Tháp Xá Lợi",
+        "place_id": "ChIJ8ar-PNQXQjERFGGdrbCAQbg",
+        "latitude": 16.099915199999998,
+        "longitude": 108.28000709999999,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Chùa phật giáo"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Bảo tàng Hồ Chí Minh",
+        "place_id": "ChIJo8fznMYZQjERNtNTUT-ZJyk",
+        "latitude": 16.0486814,
+        "longitude": 108.217581,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Bảo tàng",
+            "Bảo tàng lịch sử"
+        ],
+        "operating_hours": null,
+        "description": "Bảo tàng về Chủ tịch Hồ Chí Minh. Bảo tàng về cuộc đời của Chủ tịch Hồ Chí Minh, từ thuở nhỏ đến khi trở thành một vị anh hùng dân tộc."
+    },
+    {
+        "title": "ベトナムダナン観光",
+        "place_id": "ChIJDdJJUAAZQjERz6Q7tEV6YeM",
+        "latitude": 16.0544068,
+        "longitude": 108.20216669999999,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Ghềnh Bàng",
+        "place_id": "ChIJW0KcgfI9QjERJpkPfjssyfo",
+        "latitude": 16.1124336,
+        "longitude": 108.31163219999999,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Thắng cảnh"
+        ],
+        "operating_hours": null,
+        "description": "Bãi biển nhỏ, gồ ghề nổi tiếng có khỉ. Khu vực ven biển nổi tiếng có khỉ, một khu vực nhỏ đầy cát, các phiến đá gồ ghề và vách đá phủ đầy cây xanh."
+    },
+    {
+        "title": "Đá Mỹ Nghệ Non Nước",
+        "place_id": "ChIJ6wwN-cAQQjERe_E9rPt4QQ4",
+        "latitude": 15.995600999999999,
+        "longitude": 108.26374299999999,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Cửa hàng bức tượng nhỏ",
+            "Tác phẩm điêu khắc"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Bảo tàng Đồng Đình",
+        "place_id": "ChIJaa7lANcXQjERmT3kgV5U7uA",
+        "latitude": 16.1011538,
+        "longitude": 108.2753793,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Bảo tàng nghệ thuật"
+        ],
+        "operating_hours": null,
+        "description": "Bảo tàng cổ kính & hiện vật truyền thống. Bảo tàng cổ kính giữa khung cảnh núi non trưng bày gốm sứ trong vùng và một ngôi nhà truyền thống."
+    },
+    {
+        "title": "The Monkey Mountain",
+        "place_id": "ChIJWw3ooPk9QjERThRNgePJk8I",
+        "latitude": 16.1159837,
+        "longitude": 108.273341,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Radar Sơn Trà 1",
+        "place_id": "ChIJPbgJ4DY9QjER7OSjP2_jSC8",
+        "latitude": 16.133827999999998,
+        "longitude": 108.2464926,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Go Surfing Son Tra",
+        "place_id": "ChIJbdSsCnEXQjERLfPYWxi0OPQ",
+        "latitude": 16.073895,
+        "longitude": 108.2459927,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Quốc Tự Tam Thai",
+        "place_id": "ChIJ9_dffMQQQjERuJbqVGdSysY",
+        "latitude": 16.003842499999998,
+        "longitude": 108.2624426,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Chùa phật giáo"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Vịnh Sơn Trà",
+        "place_id": "ChIJpYNhNwAXQjERflfHrn1lop4",
+        "latitude": 16.0992375,
+        "longitude": 108.26492189999999,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Hot Springs Park - Công viên Suối khoáng nóng Núi Thần Tài Đà Nẵng",
+        "place_id": "ChIJwbfPdZX3QTERj8sw7f5uZPA",
+        "latitude": 15.9678512,
+        "longitude": 108.0198053,
+        "types": [
+            "Điểm thu hút khách du lịch",
+            "Điểm tắm suối khoáng nóng kiểu Nhật",
+            "Onsen ban ngày",
+            "Công viên nước"
+        ],
+        "operating_hours": null,
+        "description": "Hồ tạo sóng, đường trượt và suối nước nóng. Công viên nổi tiếng này nằm giữa không gian xanh, có hồ tạo sóng, sông lười, đường trượt nước và suối nước nóng."
+    },
+    {
+        "title": "Bãi Yên Ngựa",
+        "place_id": "ChIJm_FG-i4jQjERPKlZlox3Tl8",
+        "latitude": 16.1478869,
+        "longitude": 108.2352196,
+        "types": [
+            "Điểm thu hút khách du lịch"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Bếp Cuốn Đà Nẵng",
+        "place_id": "ChIJ-UgnY_QXQjERJTTHpNvcFNw",
+        "latitude": 16.0579628,
+        "longitude": 108.2451505,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Thìa Gỗ Đà Nẵng",
+        "place_id": "ChIJ1xhMtcMZQjER9bUa3xuUKFA",
+        "latitude": 16.052986699999998,
+        "longitude": 108.2415777,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng cao cấp",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "description": "Nhà hàng món Việt thư thái. Nhà hàng bình dân phục vụ chả giò, phở, bánh mì và các món ăn đặc trưng khác của Việt Nam cùng với bia."
+    },
+    {
+        "title": "Bistecca Italian Restaurant in Da Nang",
+        "place_id": "ChIJL7rM6W0ZQjERU-TJeBfMM3I",
+        "latitude": 16.0827532,
+        "longitude": 108.2212419,
+        "types": [
+            "Nhà hàng",
+            "Nhà hàng ý"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Gypsy Rooftop Restaurant & Bar",
+        "place_id": "ChIJ76XtSwwZQjERJapWgs-OVhQ",
+        "latitude": 16.0826849,
+        "longitude": 108.22125869999999,
+        "types": [
+            "Nhà hàng",
+            "Quán bar cocktail",
+            "Nhà hàng Pháp"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Sky View Restaurant",
+        "place_id": "ChIJiTQv4ZwXQjERbqeN4rEe0uk",
+        "latitude": 16.0676095,
+        "longitude": 108.24477979999999,
+        "types": [
+            "Nhà hàng cao cấp",
+            "Nhà hàng hỗn hợp"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Hilton Đà Nẵng",
+        "place_id": "ChIJUw_MMDAYQjER9yNhlCd5fZ8",
+        "latitude": 16.0726665,
+        "longitude": 108.22428599999999,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Peninsula Hotel Danang",
+        "place_id": "ChIJfbl-2sMXQjERKLfkuhtH-BE",
+        "latitude": 16.0815511,
+        "longitude": 108.2471399,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "description": null
+    },
+    {
+        "title": "Premier Village Đà Nẵng Resort",
+        "place_id": "ChIJg9GXf2gXQjERMCQm7jjvSe4",
+        "latitude": 16.0420899,
+        "longitude": 108.2507504,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "description": "Biệt thự xa hoa có bồn ngâm riêng. Resort cao cấp ven biển có nhà hàng, bể bơi, biệt thự sang trọng, bồn ngâm và phòng bếp."
+    },
+    {
+        "title": "Pullman Danang Beach Resort",
+        "place_id": "ChIJKfL8bWgXQjERWPZKseMae6E",
+        "latitude": 16.0405647,
+        "longitude": 108.2500872,
+        "types": [
+            "Khách sạn nghỉ dưỡng",
+            "Câu lạc bộ bãi biển",
+            "Nơi tổ chức sự kiện",
+            "Câu lạc bộ thể dục",
+            "Khách sạn",
+            "Nhà hàng",
+            "Spa",
+            "Địa điểm tổ chức lễ cưới"
+        ],
+        "operating_hours": null,
+        "description": "Resort sang trọng có bãi tắm riêng. Khu nghỉ dưỡng ven biển có nhà hàng quốc tế, bể bơi vô cực ngoài trời và bãi tắm riêng."
+    },
+    {
+        "title": "Khách sạn Radisson Đà Nẵng",
+        "place_id": "ChIJS0p9LgcXQjERRnDVDqhYvX4",
+        "latitude": 16.0739298,
+        "longitude": 108.24474,
+        "types": [
+            "Khách sạn"
+        ],
+        "operating_hours": null,
+        "description": "Khách sạn cao cấp có spa và nhà hàng. Khách sạn sang trọng có bể bơi tầng thượng, spa, nhà hàng và phòng ở hiện đại. Một số phòng nhìn ra biển."
+    }
+]

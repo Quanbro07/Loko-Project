@@ -68,6 +68,7 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         op = loc.get("operating_hours", None)
         tw = parse_operating_hours(op, st)
         if i == 0:  # hotel (depot)
+            # Sử dụng MAX_DAY_DURATION (có biên độ 20 phút) để cho solver không gian linh hoạt
             tw = [0, MAX_DAY_DURATION]
 
         # --- SỬA LỖI TẠI ĐÂY ---

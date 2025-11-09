@@ -11,10 +11,9 @@ class FoodSolver(BaseSolver):
     Kế thừa BaseSolver và thêm các ràng buộc đặc thù cho Ẩm thực.
     """
     def __init__(self, instance, profile):
-        if instance["night_nodes"]:
-            instance["max_duration"] = (24 * 60) - DAY_START_TIME 
-        else:
-            instance["max_duration"] = MAX_DAY_DURATION 
+        # Sử dụng MAX_DAY_DURATION (có biên độ 20 phút) để solver có không gian linh hoạt hơn
+        # Biên độ 20 phút cho phép solver tìm giải pháp tốt hơn, nhưng vẫn trong giới hạn hợp lý
+        instance["max_duration"] = MAX_DAY_DURATION
 
         super().__init__(instance, profile)
 
@@ -85,7 +84,7 @@ class FoodSolver(BaseSolver):
     def format_solution(self, solution):
         """
         In ra lịch trình chi tiết VÀ trả về dữ liệu (list) để lưu JSON.
-        (Hàm này giữ nguyên như phiên bản trước)
+        Đảm bảo không vượt quá MAX_DAY_DURATION (giờ kết thúc người dùng nhập).
         """
         visited_nodes = [] # Sẽ chứa các index ĐÃ SẮP XẾP LẠI (reordered)
         schedule_data = [] 
@@ -99,6 +98,11 @@ class FoodSolver(BaseSolver):
         depot_place = self.locations[self.depot] 
         hotel_title = depot_place.get('title', 'Khách sạn')
         
+        # Lấy giờ kết thúc tối đa (tính từ DAY_START_TIME, có bao gồm biên độ 20 phút)
+        # Biên độ 20 phút cho phép lịch trình có thể kết thúc muộn hơn một chút nếu cần
+        from config import DAY_START_TIME, DAY_END_TIME
+        max_end_time_mins = DAY_END_TIME - DAY_START_TIME  # Thời gian tối đa tính từ 0 (có biên độ)
+        
         while not self.routing.IsEnd(index):
             node = self.manager.NodeToIndex(index) # node = index đã sắp xếp lại
                 
@@ -111,8 +115,18 @@ class FoodSolver(BaseSolver):
             arrival_solved = solution.Value(time_var) 
             arrival_actual = arrival_solved + total_added_rest_time
             
+            # Kiểm tra: nếu đã vượt quá giờ kết thúc, dừng lại
+            if arrival_actual > max_end_time_mins:
+                print(f"⚠️ Đã đạt giới hạn thời gian ({minutes_to_str(max_end_time_mins)}), dừng lịch trình.")
+                break
+            
+            # Đảm bảo thời gian kết thúc của hoạt động này không vượt quá giờ kết thúc
+            end_time_actual = min(arrival_actual + service_time, max_end_time_mins)
+            if end_time_actual < arrival_actual:
+                break  # Không đủ thời gian cho hoạt động này
+            
             start_str = minutes_to_str(arrival_actual)
-            end_str = minutes_to_str(arrival_actual + service_time)
+            end_str = minutes_to_str(end_time_actual)
 
             if node == self.depot and index != self.routing.Start(0):
                 break 
@@ -142,46 +156,62 @@ class FoodSolver(BaseSolver):
                     next_node = self.manager.IndexToNode(next_index)
                     
                     if not self.routing.IsEnd(next_index):
+                        # Kiểm tra: nếu thêm thời gian nghỉ ngơi sẽ vượt quá giờ kết thúc, bỏ qua
                         travel_to_depot = time_matrix[node][self.depot]
                         rest_duration = 60
                         travel_from_depot = time_matrix[self.depot][next_node]
                         detour_time = travel_to_depot + rest_duration + travel_from_depot
                         
-                        next_arrival_solved = solution.Value(self.time_dim.CumulVar(next_index))
-                        current_leave_solved = arrival_solved + service_time
-                        solved_travel_time = next_arrival_solved - current_leave_solved
+                        current_leave_actual = end_time_actual
+                        estimated_end_after_rest = current_leave_actual + travel_to_depot + rest_duration + travel_from_depot
                         
-                        extra_time_needed = max(0, detour_time - solved_travel_time)
-                        
-                        total_energy = 100 
-                        total_added_rest_time += extra_time_needed
+                        # Nếu thêm thời gian nghỉ ngơi sẽ vượt quá giờ kết thúc, bỏ qua
+                        if estimated_end_after_rest > max_end_time_mins:
+                            print(f"    ⚠️ Không đủ thời gian để nghỉ ngơi (sẽ vượt quá {minutes_to_str(max_end_time_mins)}), tiếp tục lịch trình.")
+                        else:
+                            next_arrival_solved = solution.Value(self.time_dim.CumulVar(next_index))
+                            current_leave_solved = arrival_solved + service_time
+                            solved_travel_time = next_arrival_solved - current_leave_solved
+                            
+                            extra_time_needed = max(0, detour_time - solved_travel_time)
+                            
+                            # Kiểm tra lại: nếu thêm extra_time sẽ vượt quá, giới hạn lại
+                            if end_time_actual + extra_time_needed > max_end_time_mins:
+                                extra_time_needed = max(0, max_end_time_mins - end_time_actual)
+                                if extra_time_needed == 0:
+                                    print(f"    ⚠️ Không đủ thời gian để nghỉ ngơi, tiếp tục lịch trình.")
+                                    visited_nodes.append(node)
+                                    last_tag = tags[0] if tags else "unknown"
+                                    index = solution.Value(self.routing.NextVar(index))
+                                    continue
+                            
+                            total_energy = 100 
+                            total_added_rest_time += extra_time_needed
 
-                        current_leave_actual = arrival_actual + service_time
-                        
-                        rest_start_1_str = minutes_to_str(current_leave_actual)
-                        arrive_at_hotel_time = current_leave_actual + travel_to_depot
-                        rest_end_1_str = minutes_to_str(arrive_at_hotel_time)
-                        
-                        rest_start_2_str = rest_end_1_str
-                        leave_hotel_time = arrive_at_hotel_time + rest_duration
-                        rest_end_2_str = minutes_to_str(leave_hotel_time)
+                            rest_start_1_str = minutes_to_str(current_leave_actual)
+                            arrive_at_hotel_time = current_leave_actual + travel_to_depot
+                            rest_end_1_str = minutes_to_str(arrive_at_hotel_time)
+                            
+                            rest_start_2_str = rest_end_1_str
+                            leave_hotel_time = arrive_at_hotel_time + rest_duration
+                            rest_end_2_str = minutes_to_str(leave_hotel_time)
 
-                        print(f"- [{rest_start_1_str} → {rest_end_1_str}] (Di chuyển về) {hotel_title} (Dừng: 0p)")
-                        print(f"- [{rest_start_2_str} → {rest_end_2_str}] (Nghỉ ngơi tại) {hotel_title} (Dừng: {rest_duration}p)")
-                        print(f"    💤 Năng lượng đã hồi phục!")
+                            print(f"- [{rest_start_1_str} → {rest_end_1_str}] (Di chuyển về) {hotel_title} (Dừng: 0p)")
+                            print(f"- [{rest_start_2_str} → {rest_end_2_str}] (Nghỉ ngơi tại) {hotel_title} (Dừng: {rest_duration}p)")
+                            print(f"    💤 Năng lượng đã hồi phục!")
 
-                        schedule_data.append({
-                            "start": rest_start_1_str, "end": rest_end_1_str,
-                            "place_id": depot_place.get("place_id"), "title": f"(Di chuyển về) {hotel_title}",
-                            "description": "Di chuyển về khách sạn để nghỉ ngơi", "rating": depot_place.get("rating"),
-                            "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
-                        })
-                        schedule_data.append({
-                            "start": rest_start_2_str, "end": rest_end_2_str,
-                            "place_id": depot_place.get("place_id"), "title": f"(Nghỉ ngơi tại) {hotel_title}",
-                            "description": f"Nghỉ ngơi {rest_duration} phút", "rating": depot_place.get("rating"),
-                            "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
-                        })
+                            schedule_data.append({
+                                "start": rest_start_1_str, "end": rest_end_1_str,
+                                "place_id": depot_place.get("place_id"), "title": f"(Di chuyển về) {hotel_title}",
+                                "description": "Di chuyển về khách sạn để nghỉ ngơi", "rating": depot_place.get("rating"),
+                                "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
+                            })
+                            schedule_data.append({
+                                "start": rest_start_2_str, "end": rest_end_2_str,
+                                "place_id": depot_place.get("place_id"), "title": f"(Nghỉ ngơi tại) {hotel_title}",
+                                "description": f"Nghỉ ngơi {rest_duration} phút", "rating": depot_place.get("rating"),
+                                "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
+                            })
                         
                     else:
                         print(f"    💤 Năng lượng thấp! May mắn đây là điểm cuối.")
@@ -190,8 +220,9 @@ class FoodSolver(BaseSolver):
             last_tag = tags[0] if tags else "unknown"
             index = solution.Value(self.routing.NextVar(index))
 
+        # Đảm bảo thời gian kết thúc không vượt quá giờ kết thúc người dùng nhập
         end_time_solved = solution.Value(self.time_dim.CumulVar(index))
-        end_time_actual = end_time_solved + total_added_rest_time
+        end_time_actual = min(end_time_solved + total_added_rest_time, max_end_time_mins)
         end_str_final = minutes_to_str(end_time_actual)
         
         print(f"- [{end_str_final}] Quay về {hotel_title} 🏨")
