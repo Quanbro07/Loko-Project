@@ -92,8 +92,8 @@ def _calculate_derived_values():
     DAY_END_TIME_BASE = _DAY_END_TIME_BASE  # Giờ kết thúc base (không có biên độ)
     DAY_END_TIME = _DAY_END_TIME_BASE + END_TIME_FLEX_MINS  # Giờ kết thúc với biên độ
     MAX_DAY_DURATION = DAY_END_TIME - DAY_START_TIME  # Thời lượng tối đa (có biên độ, cho solver)
-    LUNCH_START_MINS = (11 * 60 + 30) - DAY_START_TIME
-    LUNCH_END_MINS = (13 * 60 + 30) - DAY_START_TIME
+LUNCH_START_MINS = (11 * 60 + 30) - DAY_START_TIME
+LUNCH_END_MINS = (13 * 60 + 30) - DAY_START_TIME
 
 # Tính toán các giá trị công khai (sau khi đã setup)
 _calculate_derived_values()

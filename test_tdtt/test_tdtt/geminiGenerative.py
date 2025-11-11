@@ -9,7 +9,7 @@ import google.generativeai as genai
 API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
 # ==============================================================================
 
-INPUT_FILE = "nha_trang_amusement.json"
+INPUT_FILE = "da_nang.json"
 OUTPUT_FILE = "attractions_with_tags.json"
 
 genai.configure(api_key=API_KEY)
@@ -132,7 +132,6 @@ def extract_json(text):
     try:
         return json.loads(text)
     except json.JSONDecodeError:
-        # Thử tìm khối JSON lồng trong markdown (```json ... ```) hoặc văn bản
         match = re.search(r'\{.*\}', text, re.S)
         if match:
             try:
@@ -144,58 +143,49 @@ def extract_json(text):
 
 def detect_template_type(filename):
     """
-    Phát hiện loại template dựa trên đuôi file.
-    Ví dụ: quang_ngai_amusement.json -> "amusement"
+    CHỈ SỬA PHẦN NÀY:
+    Chọn template theo con số người dùng nhập (1 = food, 2 = amusement)
     """
-    filename_lower = filename.lower()
-    if "amusement" in filename_lower:
-        return "amusement"
-    else:
-        return "food"  # Mặc định là food
+    while True:
+        try:
+            choice = int(input("Chọn loại template (1 = food, 2 = amusement): "))
+            if choice == 1:
+                return "food"
+            elif choice == 2:
+                return "amusement"
+            else:
+                print("Vui lòng nhập 1 hoặc 2.")
+        except ValueError:
+            print("Vui lòng nhập số hợp lệ (1 hoặc 2).")
 
 def classify_batch(batch_titles, template_type="food"):
-    """
-    Gửi một lô (batch) các *tên địa điểm* (strings) đến API
-    và trả về kết quả phân loại.
-    
-    Args:
-        batch_titles: Danh sách tên địa điểm
-        template_type: "food" hoặc "amusement"
-    """
-    # Chọn template phù hợp
     if template_type == "amusement":
         template = PROMPT_TEMPLATE_AMUSEMENT
     else:
         template = PROMPT_TEMPLATE_FOOD
     
-    # Tạo chuỗi prompt từ danh sách các tên địa điểm
     prompt_locations = "\n".join(f"- {title}" for title in batch_titles)
     prompt = template.format(locations=prompt_locations)
     
-    # Thử gọi API tối đa 3 lần
     for _ in range(3):
         try:
             resp = MODEL.generate_content(prompt)
             data = extract_json(resp.text)
-            
             if data and "results" in data:
                 return data["results"]
             else:
                 print("Lỗi: Phản hồi API không hợp lệ hoặc thiếu 'results'. Đang thử lại...")
                 time.sleep(1)
-
         except Exception as e:
             print(f"Lỗi API: {e}. Đang thử lại sau 2 giây...")
             time.sleep(2)
             
-    # Nếu thất bại, trả về một danh sách rỗng cho mỗi địa điểm
     print("Lỗi: Thất bại sau 3 lần thử. Gán tag rỗng cho lô này.")
     return [{"place": title, "tags": []} for title in batch_titles]
 
 def main():
     try:
         with open(INPUT_FILE, "r", encoding="utf-8") as f:
-            # locations là một danh sách các ĐỐI TƯỢNG (dictionary)
             locations = json.load(f)
     except FileNotFoundError:
         print(f"Lỗi: Không tìm thấy file '{INPUT_FILE}'.")
@@ -204,54 +194,27 @@ def main():
         print(f"Lỗi: File '{INPUT_FILE}' không phải là JSON hợp lệ.")
         return
 
-    # Phát hiện loại template dựa trên tên file
     template_type = detect_template_type(INPUT_FILE)
-    print(f"📋 Detected template type: {template_type} (from filename: {INPUT_FILE})")
+    print(f"📋 Detected template type: {template_type} (user selected)")
 
-    # *** THAY ĐỔI QUAN TRỌNG ***
-    # all_locations_with_tags sẽ lưu các ĐỐI TƯỢNG GỐC đã được cập nhật
     all_locations_with_tags = []
     total = len(locations)
-
     print(f"Processing {total} locations in batches of {BATCH_SIZE}…")
 
     for i in range(0, total, BATCH_SIZE):
-        # 1. Lấy lô các ĐỐI TƯỢNG GỐC
         batch_objects = locations[i:i+BATCH_SIZE]
-        
-        # 2. Tạo một danh sách chỉ chứa CÁC TÊN (title) để gửi cho AI
-        # Giả sử trường chứa tên là "title" (từ script SerpApi trước)
         batch_titles = [loc.get("title", "") for loc in batch_objects]
-
-        # 3. Gửi các tên này đi phân loại với template phù hợp
-        # classified_tags là danh sách: [{"place": "Tên 1", "tags": [...]}, ...]
         classified_tags = classify_batch(batch_titles, template_type)
-
-        # 4. Tạo một "map" (dictionary) để tra cứu tag bằng tên
-        # Ví dụ: {"Hồ Xuân Hương": ["lake", "park"], "Chợ Đà Lạt": ["market"]}
         tag_map = {res.get("place"): res.get("tags", []) for res in classified_tags}
-
-        # 5. Lặp lại qua các ĐỐI TƯỢNG GỐC trong lô
         for obj in batch_objects:
-            # Lấy title của đối tượng gốc
             title = obj.get("title", "")
-            
-            # Tra cứu tag từ map, nếu không thấy thì dùng list rỗng
             tags = tag_map.get(title, [])
-            
-            # Thêm trường "tags" mới vào ĐỐI TƯỢNG GỐC
             obj["tags"] = tags
-        
-        # 6. Thêm các đối tượng đã cập nhật vào danh sách kết quả cuối cùng
         all_locations_with_tags.extend(batch_objects)
-        
         print(f"[{len(all_locations_with_tags)}/{total}] ✅ Done batch")
-        
-        time.sleep(1) # Tránh rate limit
+        time.sleep(1)
 
-    # 7. Lưu danh sách các ĐỐI TƯỢNG ĐÃ CẬP NHẬT
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        # all_locations_with_tags giờ chứa các đối tượng gốc + trường "tags"
         json.dump(all_locations_with_tags, f, ensure_ascii=False, indent=2)
 
     print(f"\n✅ All done! Dữ liệu đầy đủ (kèm tags) đã được lưu vào: {OUTPUT_FILE}")

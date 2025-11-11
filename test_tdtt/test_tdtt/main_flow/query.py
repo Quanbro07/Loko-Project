@@ -144,10 +144,10 @@ if __name__ == "__main__":
 
         top_places = fetch_top_places(city_input, ll_string, type_of_place)
 
-        # === File sẽ mang tên thành phố và loại địa điểm ===
+        # === ChỈ SỬA PHẦN TÊN FILE ===
+        # Dù loại địa điểm gì, vẫn chỉ dùng tên tỉnh/thành phố
         city_safe = city_input.lower().replace(' ', '_')
-        type_safe = type_of_place.lower().replace(' ', '_')
-        output_filename = f"{city_safe}_{type_safe}.json"
+        output_filename = f"{city_safe}.json"   # <-- sửa ở đây, bỏ type_of_place
         append_to_json(top_places, output_filename)
 
         print("\n--- Hoàn tất tìm kiếm ---")
