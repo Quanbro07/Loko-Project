@@ -29,7 +29,5 @@ public class TripRequest {
 
     private Integer numElder;
 
-    private Integer status;
-
     private List<TripSectionRequest> tripSections;
 }

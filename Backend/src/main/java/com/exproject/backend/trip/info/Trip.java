@@ -1,4 +1,4 @@
-package com.exproject.backend.trip;
+package com.exproject.backend.trip.info;
 
 import com.exproject.backend.review_location.ReviewLocation;
 import com.exproject.backend.trip.dto.TripRequest;
@@ -57,7 +57,8 @@ public class Trip {
     private Integer numElder;
 
     @Column(name = "status")
-    private Integer status;
+    @Enumerated(EnumType.STRING)
+    private TripStatus status;
 
     @Column(name = "create_at")
     private LocalDateTime createAt;
@@ -75,7 +76,7 @@ public class Trip {
         this.numChild = tripRequest.getNumChild();
         this.numElder = tripRequest.getNumElder();
 
-        this.status = tripRequest.getStatus();
+        this.status = TripStatus.IN_PROGRESS;
 
         this.createAt = LocalDateTime.now();
     }

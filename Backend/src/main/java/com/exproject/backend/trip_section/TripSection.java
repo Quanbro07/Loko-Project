@@ -1,6 +1,6 @@
 package com.exproject.backend.trip_section;
 
-import com.exproject.backend.trip.Trip;
+import com.exproject.backend.trip.info.Trip;
 import com.exproject.backend.trip_detail.TripDetail;
 import com.exproject.backend.trip_section.dto.TripSectionRequest;
 import jakarta.persistence.*;

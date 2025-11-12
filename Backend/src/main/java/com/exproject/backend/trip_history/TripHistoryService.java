@@ -1,7 +1,6 @@
 package com.exproject.backend.trip_history;
 
-import com.exproject.backend.location.LocationRepository;
-import com.exproject.backend.trip.Trip;
+import com.exproject.backend.trip.info.Trip;
 import com.exproject.backend.trip.TripRepository;
 import com.exproject.backend.trip_history.dto.TripHistoryRequest;
 import com.exproject.backend.trip_history.dto.TripHistoryResponse;
@@ -10,9 +9,6 @@ import com.exproject.backend.user.info.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

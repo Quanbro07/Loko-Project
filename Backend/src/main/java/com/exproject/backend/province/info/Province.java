@@ -1,13 +1,14 @@
 package com.exproject.backend.province.info;
 
 import com.exproject.backend.location.Location;
+import com.exproject.backend.user.info.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -26,6 +27,12 @@ public class Province {
 
     @OneToMany(mappedBy = "province",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Location> locations;
+
+    @ManyToMany(mappedBy = "visitedProvinces")
+    @JsonBackReference
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<User> visitedUsers = new HashSet<>();
 
     private String region;
 

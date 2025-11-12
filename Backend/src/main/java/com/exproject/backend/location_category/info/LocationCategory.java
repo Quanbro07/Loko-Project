@@ -1,4 +1,4 @@
-package com.exproject.backend.location_category;
+package com.exproject.backend.location_category.info;
 
 import com.exproject.backend.location.Location;
 import jakarta.persistence.*;
@@ -24,4 +24,8 @@ public class LocationCategory {
 
     @ManyToMany(mappedBy = "locationCategories",fetch = FetchType.LAZY)
     private List<Location> locations;
+
+    public LocationCategory(ELocationCategory category) {
+        this.categoryName = category.name();
+    }
 }

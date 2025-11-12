@@ -1,14 +1,12 @@
-package com.exproject.backend.hobby;
+package com.exproject.backend.hobby.info;
 
 import com.exproject.backend.user.info.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -27,5 +25,11 @@ public class Hobby {
     private String hobbyName;
 
     @ManyToMany(mappedBy = "hobbies")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Set<User> users = new HashSet<>();
+
+    public Hobby(EHobby eHobby) {
+        this.hobbyName = eHobby.name();
+    }
 }

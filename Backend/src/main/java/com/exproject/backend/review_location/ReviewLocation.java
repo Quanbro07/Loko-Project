@@ -1,7 +1,7 @@
 package com.exproject.backend.review_location;
 
 import com.exproject.backend.location.Location;
-import com.exproject.backend.trip.Trip;
+import com.exproject.backend.trip.info.Trip;
 import com.exproject.backend.user.info.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
