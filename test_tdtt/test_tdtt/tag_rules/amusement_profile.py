@@ -25,7 +25,7 @@ class AmusementProfile(BaseProfile):
         # --- Penalty cơ bản (giá trị càng LỚN = càng QUAN TRỌNG) ---
         self.penalty_map = {
             "hotel": 99999,
-            "restaurant": 150, # Chỉ là nơi ăn, ít quan trọng hơn
+            "restaurant": 250, # Chỉ là nơi ăn, ít quan trọng hơn
             "nightlife": 250,
             "zoo": 300,
             "amusement/water park": 300,

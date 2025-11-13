@@ -8,12 +8,8 @@ from utils import minutes_to_str
 class AmusementSolver(BaseSolver):
     """
     Solver cho du lịch Giải trí (Amusement).
-    Kế thừa BaseSolver và thêm ràng buộc (ăn trưa, nightlife)
-    và logic năng lượng (tiêu hao cao).
     """
     def __init__(self, instance, profile):
-        # Giữ nguyên logic __init__ của FoodSolver
-        # Nó sẽ tự động dùng MAX_DAY_DURATION (ví dụ: 22:20) từ config
         instance["max_duration"] = MAX_DAY_DURATION
         super().__init__(instance, profile)
 
@@ -23,25 +19,32 @@ class AmusementSolver(BaseSolver):
         """
         print("... Thêm ràng buộc Giải trí (Bữa trưa, Nightlife)...")
         
-        # Yêu cầu: Ăn trưa/tối ở nhà hàng (giống FoodSolver)
-        for node in self.instance["lunch_nodes"]: # "lunch_nodes" chứa TẤT CẢ nhà hàng
+        # --- SỬA Ở ĐÂY: Giảm hình phạt ăn sai giờ ---
+        # (Chi phí bỏ qua nhà hàng là ~375)
+        # Đặt hình phạt sai giờ < 375 (ví dụ: 150)
+        CUSTOM_LUNCH_PENALTY = 150 # Thay vì LUNCH_PENALTY (500)
+        # --- HẾT SỬA ---
+
+        for node in self.instance["lunch_nodes"]:
             idx = self.manager.NodeToIndex(node)
             # Ràng buộc mềm cho bữa trưa
-            self.time_dim.SetCumulVarSoftLowerBound(idx, LUNCH_START_MINS, LUNCH_PENALTY)
-            self.time_dim.SetCumulVarSoftUpperBound(idx, LUNCH_END_MINS, LUNCH_PENALTY)
+            self.time_dim.SetCumulVarSoftLowerBound(idx, LUNCH_START_MINS, CUSTOM_LUNCH_PENALTY)
+            self.time_dim.SetCumulVarSoftUpperBound(idx, LUNCH_END_MINS, CUSTOM_LUNCH_PENALTY)
             
-            # Ràng buộc mềm cho bữa tối (ví dụ: 18:00 - 20:00)
+            # Ràng buộc mềm cho bữa tối
             dinner_start = (18 * 60) - DAY_START_TIME
             dinner_end = (20 * 60) - DAY_START_TIME
-            self.time_dim.SetCumulVarSoftLowerBound(idx, dinner_start, LUNCH_PENALTY)
-            self.time_dim.SetCumulVarSoftUpperBound(idx, dinner_end, LUNCH_PENALTY)
+            self.time_dim.SetCumulVarSoftLowerBound(idx, dinner_start, CUSTOM_LUNCH_PENALTY)
+            self.time_dim.SetCumulVarSoftUpperBound(idx, dinner_end, CUSTOM_LUNCH_PENALTY)
 
         # Yêu cầu: Night life chỉ đi sau 9g đêm (21:00)
         night_start_min = (21 * 60) - DAY_START_TIME
-        for node in self.instance["night_nodes"]: # "night_nodes" chứa TẤT CẢ nightlife/bar
+        for node in self.instance["night_nodes"]:
             idx = self.manager.NodeToIndex(node)
-            # Phạt 300 nếu ghé TRƯỚC 21:00
             self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_min, 300)
+
+    # (Các hàm run_single_itinerary, _reset_solver, format_solution 
+    # giữ nguyên, không cần thay đổi)
 
     # --- HÀM NÀY GIỐNG HỆT FOOD_SOLVER ---
     def run_single_itinerary(self, attempt_num, time_limit_seconds=30):
@@ -100,7 +103,6 @@ class AmusementSolver(BaseSolver):
         depot_place = self.locations[self.depot] 
         hotel_title = depot_place.get('title', 'Khách sạn')
         
-        # Lấy giờ kết thúc từ config
         from config import DAY_START_TIME, DAY_END_TIME
         max_end_time_mins = DAY_END_TIME - DAY_START_TIME
         
@@ -119,8 +121,6 @@ class AmusementSolver(BaseSolver):
                 print(f"⚠️ Đã đạt giới hạn thời gian ({minutes_to_str(max_end_time_mins)}), dừng lịch trình.")
                 break
             
-            # Yêu cầu: "Nếu thời gian về còn ít thì đi trong khoảng thời gian đó thôi"
-            # Logic này tự động cắt ngắn hoạt động cuối nếu vượt quá giờ
             end_time_actual = min(arrival_actual + service_time, max_end_time_mins)
             if end_time_actual < arrival_actual:
                 break
@@ -142,22 +142,19 @@ class AmusementSolver(BaseSolver):
             })
 
             if node != self.depot:
-                # --- SỬA LOGIC ENERGY (TIÊU HAO CAO) ---
                 if "hotel" in tags: 
-                    energy_loss = -50 # Hồi phục
+                    energy_loss = -50
                 elif any(t in ["zoo", "amusement/water park"] for t in tags): 
-                    energy_loss = 35 # Rất cao
+                    energy_loss = 35
                 elif any(t in ["cultural performance", "nightlife", "market"] for t in tags):
-                    energy_loss = 25 # Cao
+                    energy_loss = 25
                 elif any(t in ["restaurant", "cafe"] for t in tags):
-                    energy_loss = 10 # Thấp (ăn uống)
+                    energy_loss = 10
                 else: 
-                    energy_loss = 20 # Mặc định
-                # --- HẾT SỬA LOGIC ENERGY ---
+                    energy_loss = 20
                 
                 total_energy = max(0, min(100, total_energy - energy_loss))
                 
-                # Logic nghỉ ngơi (giống hệt FoodSolver)
                 if total_energy < 30:
                     next_index = solution.Value(self.routing.NextVar(index))
                     next_node = self.manager.NodeToIndex(next_index)

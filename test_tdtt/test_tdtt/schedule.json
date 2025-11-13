@@ -1,82 +1,101 @@
 [
-    {
-        "start": "08:00",
-        "end": "08:00",
-        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
-        "title": "Sofitel Legend Metropole Hanoi",
-        "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
-        "rating": 4.7,
-        "longitude": 105.856375,
-        "latitude": 21.025412499999998
-    },
-    {
-        "start": "08:07",
-        "end": "11:37",
-        "place_id": "ChIJxy3jWWSrNTERaa4h1H26Qis",
-        "title": "Công viên Indira Gandhi",
-        "description": "Công viên có đường chạy bộ và vườn tạo hình. Công viên đô thị có tượng bán thân của Indira Gandhi, những con đường chạy bộ ven hồ và vườn hoa tạo hình.",
-        "rating": 4.2,
-        "longitude": 105.8154581,
-        "latitude": 21.0180994
-    },
-    {
-        "start": "11:39",
-        "end": "15:09",
-        "place_id": "ChIJq9fW4FKrNTERAKbm4chgEs8",
-        "title": "Genesis Escape",
-        "description": null,
-        "rating": 4.9,
-        "longitude": 105.8202706,
-        "latitude": 21.0148948
-    },
-    {
-        "start": "15:15",
-        "end": "18:45",
-        "place_id": "ChIJfyTf5o6rNTER6dKWJmY9GOY",
-        "title": "Công viên Thống Nhất",
-        "description": "Nơi tập thể dục và công viên xanh mát, nhộn nhịp. Công viên thành phố thoáng mát, nhộn nhịp, rợp bóng cây cao, có hồ nước lớn, lối đi tập thể dục và quán cà phê.",
-        "rating": 4.3,
-        "longitude": 105.8439724,
-        "latitude": 21.0142709
-    },
-    {
-        "start": "18:45",
-        "end": "18:51",
-        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
-        "title": "(Di chuyển về) Sofitel Legend Metropole Hanoi",
-        "description": "Di chuyển về khách sạn để nghỉ ngơi",
-        "rating": 4.7,
-        "longitude": 105.856375,
-        "latitude": 21.025412499999998
-    },
-    {
-        "start": "18:51",
-        "end": "19:51",
-        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
-        "title": "(Nghỉ ngơi tại) Sofitel Legend Metropole Hanoi",
-        "description": "Nghỉ ngơi 60 phút",
-        "rating": 4.7,
-        "longitude": 105.856375,
-        "latitude": 21.025412499999998
-    },
-    {
-        "start": "19:53",
-        "end": "22:20",
-        "place_id": "ChIJF-yM0qarNTERlTO4a0cZWtk",
-        "title": "Nhà hát Hồ Gươm",
-        "description": null,
-        "rating": 4.7,
-        "longitude": 105.85217279999999,
-        "latitude": 21.022074
-    },
-    {
-        "start": "22:20",
-        "end": "22:20",
-        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
-        "title": "Quay về Sofitel Legend Metropole Hanoi",
-        "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
-        "rating": 4.7,
-        "longitude": 105.856375,
-        "latitude": 21.025412499999998
-    }
+  {
+    "start": "05:00",
+    "end": "05:00",
+    "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
+    "title": "Hotel de l'Opera Hanoi - MGallery",
+    "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên.",
+    "rating": 4.5,
+    "longitude": 105.8555913,
+    "latitude": 21.024400699999997,
+    "activity": "nhận phòng và nghỉ ngơi tại khách sạn sang trọng"
+  },
+  {
+    "start": "05:16",
+    "end": "08:46",
+    "place_id": "ChIJy4EsFKqlNTERIswjQ6lX6IQ",
+    "title": "VinWonders Water Park",
+    "description": null,
+    "rating": 4.8,
+    "longitude": 105.97710079999999,
+    "latitude": 20.956486299999998,
+    "activity": "vui chơi giải trí dưới nước sảng khoái"
+  },
+  {
+    "start": "09:07",
+    "end": "12:37",
+    "place_id": "ChIJbznRW0-tNTERi6u0fNBlH3A",
+    "title": "Smart Kids Playground",
+    "description": null,
+    "rating": 4.2,
+    "longitude": 105.8047639,
+    "latitude": 20.9999014,
+    "activity": "cho trẻ em vui chơi thỏa thích"
+  },
+  {
+    "start": "12:43",
+    "end": "16:13",
+    "place_id": "ChIJi3PpbWqrNTERcL7DLQFRKNw",
+    "title": "Vườn Thú Hà Nội",
+    "description": "Vườn thú thành phố có hồ và lối đi bộ. Vườn thú nhỏ trong thành phố có nhiều loài động vật, trò chơi giải trí, dịch vụ chèo thuyền và lối đi bộ.",
+    "rating": 4.1,
+    "longitude": 105.8037432,
+    "latitude": 21.0310786,
+    "activity": "tham quan và khám phá thế giới động vật đa dạng"
+  },
+  {
+    "start": "16:13",
+    "end": "16:23",
+    "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
+    "title": "(Di chuyển về) Hotel de l'Opera Hanoi - MGallery",
+    "description": "Di chuyển về khách sạn để nghỉ ngơi",
+    "rating": 4.5,
+    "longitude": 105.8555913,
+    "latitude": 21.024400699999997,
+    "activity": "di chuyển về khách sạn để thư giãn"
+  },
+  {
+    "start": "16:23",
+    "end": "17:23",
+    "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
+    "title": "(Nghỉ ngơi tại) Hotel de l'Opera Hanoi - MGallery",
+    "description": "Nghỉ ngơi 60 phút",
+    "rating": 4.5,
+    "longitude": 105.8555913,
+    "latitude": 21.024400699999997,
+    "activity": "nghỉ ngơi và hồi phục năng lượng tại khách sạn"
+  },
+  {
+    "start": "17:31",
+    "end": "21:01",
+    "place_id": "ChIJMRBjaTqrNTERQVQ-xzYNEPM",
+    "title": "Tàu lượn siêu tốc vườn thú Hà Nội",
+    "description": null,
+    "rating": 4.5,
+    "longitude": 105.8043429,
+    "latitude": 21.0297,
+    "activity": "trải nghiệm cảm giác mạnh với tàu lượn siêu tốc"
+  },
+  {
+    "start": "21:07",
+    "end": "00:19",
+    "place_id": "ChIJ8yTc1xirNTER-6v9RI-w7jQ",
+    "title": "Công viên nước Hồ Tây",
+    "description": "Công viên nước có trò chơi và sông lười. Công viên nước có sông lười, bể bơi, cầu trượt, những trò chơi như vòng đu quay và tàu lượn siêu tốc.",
+    "rating": 4.1,
+    "longitude": 105.81727319999999,
+    "latitude": 21.0729824,
+    "activity": "thỏa sức vui đùa với các trò chơi dưới nước"
+  },
+  {
+    "start": "00:19",
+    "end": "00:19",
+    "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
+    "title": "Quay về Hotel de l'Opera Hanoi - MGallery",
+    "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên.",
+    "rating": 4.5,
+    "longitude": 105.8555913,
+    "latitude": 21.024400699999997,
+    "activity": "trở về khách sạn sau một ngày dài khám phá"
+  }
 ]
