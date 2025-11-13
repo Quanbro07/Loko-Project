@@ -1,156 +1,82 @@
 [
-  {
-    "start": "11:00",
-    "end": "11:00",
-    "place_id": "ChIJvRjrg6arNTERTp-fhVwKIw8",
-    "title": "Khách sạn La Mejor và Sky Bar",
-    "description": null,
-    "rating": 4.9,
-    "longitude": 105.8520873,
-    "latitude": 21.0345315,
-    "activity": "Nghỉ ngơi và ngắm cảnh đêm Hà Nội từ Sky Bar."
-  },
-  {
-    "start": "11:02",
-    "end": "12:32",
-    "place_id": "ChIJBeloCkqrNTERrfBae7CENgE",
-    "title": "Dream Beans Coffee Roastery",
-    "description": null,
-    "rating": 4.9,
-    "longitude": 105.84474619999999,
-    "latitude": 21.033569399999998,
-    "activity": "Thưởng thức cà phê rang xay đặc trưng."
-  },
-  {
-    "start": "12:33",
-    "end": "14:33",
-    "place_id": "ChIJcXwY2LWrNTER7AK0zwv68A0",
-    "title": "VIET Restaurant Hanoi",
-    "description": null,
-    "rating": 4.9,
-    "longitude": 105.8466157,
-    "latitude": 21.031081,
-    "activity": "Khám phá ẩm thực Việt Nam tinh túy."
-  },
-  {
-    "start": "14:36",
-    "end": "15:21",
-    "place_id": "ChIJ_9UnOpOrNTERv34RuZXIxO0",
-    "title": "Madame Hương",
-    "description": null,
-    "rating": 4,
-    "longitude": 105.8517878,
-    "latitude": 21.0228187,
-    "activity": "Mua sắm bánh kẹo truyền thống nổi tiếng."
-  },
-  {
-    "start": "15:23",
-    "end": "16:08",
-    "place_id": "ChIJG5KEQJKrNTERl_l972pU2Kg",
-    "title": "Tào phớ Jelly Bean",
-    "description": null,
-    "rating": 4.4,
-    "longitude": 105.8481427,
-    "latitude": 21.0209199,
-    "activity": "Thưởng thức tào phớ giải nhiệt."
-  },
-  {
-    "start": "16:10",
-    "end": "16:55",
-    "place_id": "ChIJXxY5n5WrNTEROKX5OmqJO_I",
-    "title": "Cửa hàng bánh gối Lý Quốc Sư",
-    "description": null,
-    "rating": 4.3,
-    "longitude": 105.8492227,
-    "latitude": 21.029340599999998,
-    "activity": "Thưởng thức món bánh gối nóng hổi."
-  },
-  {
-    "start": "16:57",
-    "end": "18:27",
-    "place_id": "ChIJ3U9lCQCrNTERliAYNaau-ms",
-    "title": "Ga Hanoi Cafe",
-    "description": null,
-    "rating": 4.9,
-    "longitude": 105.8446261,
-    "latitude": 21.030112499999998,
-    "activity": "Nghỉ chân và thưởng thức cà phê đậm đà."
-  },
-  {
-    "start": "18:29",
-    "end": "19:14",
-    "place_id": "ChIJz3U_Re2rNTERdjIPaZ-VXl8",
-    "title": "Banh mi 17",
-    "description": null,
-    "rating": 4.8,
-    "longitude": 105.8523948,
-    "latitude": 21.035900599999998,
-    "activity": "Thưởng thức bánh mì chuẩn vị."
-  },
-  {
-    "start": "19:15",
-    "end": "20:00",
-    "place_id": "ChIJqyKRCACrNTERFoFgqBjOY2s",
-    "title": "Un-naked Potato",
-    "description": null,
-    "rating": 4.9,
-    "longitude": 105.85257279999999,
-    "latitude": 21.03398,
-    "activity": "Khám phá món ăn độc đáo từ khoai tây."
-  },
-  {
-    "start": "20:00",
-    "end": "20:01",
-    "place_id": "ChIJvRjrg6arNTERTp-fhVwKIw8",
-    "title": "(Di chuyển về) Khách sạn La Mejor và Sky Bar",
-    "description": "Di chuyển về khách sạn để nghỉ ngơi",
-    "rating": 4.9,
-    "longitude": 105.8520873,
-    "latitude": 21.0345315,
-    "activity": "Trở về khách sạn để nghỉ ngơi và thư giãn."
-  },
-  {
-    "start": "20:01",
-    "end": "21:01",
-    "place_id": "ChIJvRjrg6arNTERTp-fhVwKIw8",
-    "title": "(Nghỉ ngơi tại) Khách sạn La Mejor và Sky Bar",
-    "description": "Nghỉ ngơi 60 phút",
-    "rating": 4.9,
-    "longitude": 105.8520873,
-    "latitude": 21.0345315,
-    "activity": "nghỉ ngơi và thưởng thức đồ uống tại sky bar với tầm nhìn đẹp"
-  },
-  {
-    "start": "21:03",
-    "end": "21:48",
-    "place_id": "ChIJr1GXTvWrNTERIJPx-PLlIJc",
-    "title": "Xôi Yến",
-    "description": "Cửa hàng bán các món ăn được làm từ xôi. Quán ăn bình dân, nổi tiếng và phục vụ những bát xôi cùng nhiều món ăn kèm giàu đạm và rau xanh.",
-    "rating": 4,
-    "longitude": 105.85452,
-    "latitude": 21.0337304,
-    "activity": "thưởng thức món xôi truyền thống nổi tiếng"
-  },
-  {
-    "start": "21:49",
-    "end": "23:20",
-    "place_id": "ChIJaRerdQCrNTERQelayRB7Upk",
-    "title": "Night market",
-    "description": null,
-    "rating": 4.5,
-    "longitude": 105.851312,
-    "latitude": 21.032947999999998,
-    "activity": "dạo chợ đêm, mua sắm và thưởng thức ẩm thực đường phố"
-  },
-  {
-    "start": "23:20",
-    "end": "23:20",
-    "place_id": "ChIJvRjrg6arNTERTp-fhVwKIw8",
-    "title": "Quay về Khách sạn La Mejor và Sky Bar",
-    "description": null,
-    "rating": 4.9,
-    "longitude": 105.8520873,
-    "latitude": 21.0345315,
-    "activity": "trở về để nghỉ ngơi, thư giãn và tận hưởng đồ uống tại sky bar"
-  }
+    {
+        "start": "08:00",
+        "end": "08:00",
+        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+        "title": "Sofitel Legend Metropole Hanoi",
+        "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
+        "rating": 4.7,
+        "longitude": 105.856375,
+        "latitude": 21.025412499999998
+    },
+    {
+        "start": "08:07",
+        "end": "11:37",
+        "place_id": "ChIJxy3jWWSrNTERaa4h1H26Qis",
+        "title": "Công viên Indira Gandhi",
+        "description": "Công viên có đường chạy bộ và vườn tạo hình. Công viên đô thị có tượng bán thân của Indira Gandhi, những con đường chạy bộ ven hồ và vườn hoa tạo hình.",
+        "rating": 4.2,
+        "longitude": 105.8154581,
+        "latitude": 21.0180994
+    },
+    {
+        "start": "11:39",
+        "end": "15:09",
+        "place_id": "ChIJq9fW4FKrNTERAKbm4chgEs8",
+        "title": "Genesis Escape",
+        "description": null,
+        "rating": 4.9,
+        "longitude": 105.8202706,
+        "latitude": 21.0148948
+    },
+    {
+        "start": "15:15",
+        "end": "18:45",
+        "place_id": "ChIJfyTf5o6rNTER6dKWJmY9GOY",
+        "title": "Công viên Thống Nhất",
+        "description": "Nơi tập thể dục và công viên xanh mát, nhộn nhịp. Công viên thành phố thoáng mát, nhộn nhịp, rợp bóng cây cao, có hồ nước lớn, lối đi tập thể dục và quán cà phê.",
+        "rating": 4.3,
+        "longitude": 105.8439724,
+        "latitude": 21.0142709
+    },
+    {
+        "start": "18:45",
+        "end": "18:51",
+        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+        "title": "(Di chuyển về) Sofitel Legend Metropole Hanoi",
+        "description": "Di chuyển về khách sạn để nghỉ ngơi",
+        "rating": 4.7,
+        "longitude": 105.856375,
+        "latitude": 21.025412499999998
+    },
+    {
+        "start": "18:51",
+        "end": "19:51",
+        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+        "title": "(Nghỉ ngơi tại) Sofitel Legend Metropole Hanoi",
+        "description": "Nghỉ ngơi 60 phút",
+        "rating": 4.7,
+        "longitude": 105.856375,
+        "latitude": 21.025412499999998
+    },
+    {
+        "start": "19:53",
+        "end": "22:20",
+        "place_id": "ChIJF-yM0qarNTERlTO4a0cZWtk",
+        "title": "Nhà hát Hồ Gươm",
+        "description": null,
+        "rating": 4.7,
+        "longitude": 105.85217279999999,
+        "latitude": 21.022074
+    },
+    {
+        "start": "22:20",
+        "end": "22:20",
+        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+        "title": "Quay về Sofitel Legend Metropole Hanoi",
+        "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
+        "rating": 4.7,
+        "longitude": 105.856375,
+        "latitude": 21.025412499999998
+    }
 ]
