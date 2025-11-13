@@ -9,7 +9,7 @@ import google.generativeai as genai
 API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
 # ==============================================================================
 
-INPUT_FILE = "da_nang.json"
+INPUT_FILE = "ha_noi.json"
 OUTPUT_FILE = "attractions_with_tags.json"
 
 genai.configure(api_key=API_KEY)
@@ -82,7 +82,7 @@ Given a single place name (short, e.g., "Ha Long Bay" or "Ben Thanh Market, HCMC
 ━━━━━━━━━━━━━━
 ✅ ALLOWED TAG LIST (USE EXACT LABELS ONLY):
 
-amusement/water park, zoo, aquarium, nightlife, festival, cultural performance
+amusement/water park, zoo, aquarium, nightlife, festival, cultural performance, hotel, restaurant
 
 ━━━━━━━━━━━━━━
 STRICT RULES (READ CAREFULLY — THEY ARE ENFORCED):
@@ -108,6 +108,8 @@ STRICT RULES (READ CAREFULLY — THEY ARE ENFORCED):
     - "nightlife" → for venues primarily active during evening or night hours, including bars, pubs, clubs, lounges, and entertainment venues focusing on night-time social activities, live music, or dance.
     - "festival" → for places or venues primarily known for hosting festivals, cultural celebrations, or periodic major events. Use only if the site is recognized as a regular festival location or is central to cultural festivities.
     - "cultural performance" → for theaters, performance halls, cultural centers, or venues dedicated to traditional and contemporary performing arts. Includes opera houses, concert halls, puppet theaters, folk performance centers, and cultural exhibition stages.
+    - "hotel" → only for hotel. Also, the places with tag hotel cannot have any other tags
+    - "restaurant" → only for venues primarily offering full meals (lunch, dinner) with table service or substantial dining menus. Excludes casual snack stalls or cafés.
 
 6) **NO EXPLANATION** — Output must be exactly and only the JSON (see format). No extra text, no commentary.
 
