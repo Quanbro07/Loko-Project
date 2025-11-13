@@ -13,6 +13,7 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
     penalty_overrides = penalty_overrides or {} 
     
     try:
+        # SỬA ĐỔI: Đảm bảo file attractions được load đúng
         with open(ATTRACTIONS_FILE, 'r', encoding='utf-8') as f:
             locations = json.load(f)
     except Exception as e:
@@ -35,7 +36,6 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         print(f"⚠️ Dữ liệu không khớp: {len(locations)} điểm nhưng {len(matrix)} hàng ma trận.")
         sys.exit(1)
 
-    # --- Logic chọn Depot (Phần này đã đúng) ---
     hotel_penalties = {}
     for i, loc in enumerate(locations):
         if "hotel" in loc.get("tags", []):
@@ -49,7 +49,6 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         return None, None, None
 
     hotel_index = min(hotel_penalties, key=hotel_penalties.get)
-    # --- Hết logic chọn Depot ---
 
     reorder = [hotel_index] + [i for i in range(len(locations)) if i != hotel_index]
     locs = [locations[i] for i in reorder]
@@ -66,42 +65,37 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         rating = loc.get("rating", None)
         st = profile.get_service_time(tags)
         op = loc.get("operating_hours", None)
-        tw = parse_operating_hours(op, st)
-        if i == 0:  # hotel (depot)
-            # Sử dụng MAX_DAY_DURATION (có biên độ 20 phút) để cho solver không gian linh hoạt
-            tw = [0, MAX_DAY_DURATION]
-
-        # --- SỬA LỖI TẠI ĐÂY ---
         
-        # 1. Xử lý các địa điểm (KHÔNG PHẢI KHÁCH SẠN)
+        # SỬA ĐỔI: Truyền MAX_DAY_DURATION (có biên độ 20 phút) vào parse_operating_hours
+        tw = parse_operating_hours(op, st) 
+        if i == 0:
+            tw = [0, MAX_DAY_DURATION] # Depot luôn mở
+
         if "hotel" not in tags:
             if original_idx in penalty_overrides:
                 base_penalty = penalty_overrides[original_idx]
             else:
-                # Tính penalty bình thường
                 base_penalty = profile.get_penalty(tags, rating)
                 base_penalty = profile.adjust_by_preference(base_penalty, preferred_tags, tags)
                 base_penalty = int(base_penalty * profile.boost_priority(tags))
-        
-        # 2. Xử lý KHÁCH SẠN
         else:
-            if i == 0: # Đây là Depot (khách sạn được chọn)
+            if i == 0: 
                 base_penalty = 0   
-            else: # Đây là MỌI khách sạn khác
-                # Chi phí BỎ QUA (penalty) phải là 0
-                # để solver luôn thấy rẻ hơn là ghé thăm.
+            else: 
                 base_penalty = 0 
         
-        # --- KẾT THÚC SỬA LỖI ---
-
         service_times.append(st)
         time_windows.append(tw)
         penalties.append(base_penalty)
 
+        # Thu thập các node đặc biệt cho BẤT KỲ solver nào
         if "restaurant" in tags:
             lunch_nodes.append(i)
-        if any(nt in tags for nt in ["night market", "night-market", "nightmarket"]):
+        
+        # --- SỬA ĐỔI: Mở rộng logic tìm "night_nodes" ---
+        if any(nt in tags for nt in ["night market", "night-market", "nightmarket", "nightlife", "bar"]):
             night_nodes.append(i)
+        # --- KẾT THÚC SỬA ĐỔI ---
 
     instance = {
         "locations_data": locs,

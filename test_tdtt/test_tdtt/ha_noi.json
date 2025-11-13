@@ -1327,5 +1327,302 @@
         "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipNrBQ4qmexj4VrfJccvT_a-0lB0C4LZTkMcVQoe=w124-h92-k-no",
         "rating": 4.2,
         "description": "Khách sạn cao cấp có 5 nhà hàng. Khách sạn cao tầng và hiện đại, có phòng ốc trang nhã cùng nhà hàng, spa và khu mua sắm."
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Un-naked Potato",
+        "place_id": "ChIJqyKRCACrNTERFoFgqBjOY2s",
+        "latitude": 21.03398,
+        "longitude": 105.85257279999999,
+        "types": [
+            "Nhà hàng ăn nhanh"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx4bwDJ9LyiiIxLAYOaVCkGOmgRYf7Ilj1ruqjPnGyj4xfNlFFJI82kHtwUEO-1j1UQ7ILuLprIElKguZPTDikQiPaxITwxOZCHces0kvI2yeFHg7h-bwCeRWH4dJNtmKXt0MB2IV8C6PQ=w92-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Banh mi 17",
+        "place_id": "ChIJz3U_Re2rNTERdjIPaZ-VXl8",
+        "latitude": 21.035900599999998,
+        "longitude": 105.8523948,
+        "types": [
+            "Nhà hàng ăn nhanh"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw0Fp3lsF0N6XItr8IcUhBrj6a2TfkdXLCy070dIvjPUTGlLX2CRt2ez_Ii8L-fADmNpVLVFYz8OirTwv9LVnThuynnnsWrlTzYL4F83Z7IJia59kLwIQ4V-nQREvKgfVFOYw-Ukx8N8qMP=w80-h106-k-no",
+        "rating": 4.7,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Bánh mì Long Hội",
+        "place_id": "ChIJrwB9tr-rNTER6xgPK_KsePg",
+        "latitude": 21.0321033,
+        "longitude": 105.85396999999999,
+        "types": [
+            "Nhà hàng ăn nhanh",
+            "Cửa hàng bán đồ ăn nấu sẵn"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxiis1EeKOtrTIUeoZdlSV2q4nVEzyHqLvR5UdahmAnM2jWHYxG0GknJi9RmLHu_KRvN405cHcz5HZ3zCjZfwZGh3U5Z7QNNABUFK8dr6CZ17Pu_sTHmZBnToNhIh1oBCG8G9Gd=w92-h92-k-no",
+        "rating": 4.5,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Banh Mi 25",
+        "place_id": "ChIJtRY3u3SrNTERs95UQ9jA--s",
+        "latitude": 21.036113,
+        "longitude": 105.84857699999999,
+        "types": [
+            "Cửa hàng sandwich"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzCqv5y19AOFUVGIvcjyyGPrrxAcZpUvRZKXR4Mb88FpCUiRFPVJSCjNmqnILxBaKracBSoXgeG4bN7nUthBibv0l3O-sj8lxbCALpmRA-aypt3ZtdXGzsTBG7TSQPPsEw5xrw=w122-h92-k-no",
+        "rating": 4.4,
+        "description": "Cửa hàng nổi tiếng bán bánh mì các loại. Cửa hàng nổi tiếng có khu vực ghế ngồi đơn giản nằm bên đường đối diện và thực đơn bánh mì phong phú."
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Tào phớ Jelly Bean",
+        "place_id": "ChIJG5KEQJKrNTERl_l972pU2Kg",
+        "latitude": 21.0209199,
+        "longitude": 105.8481427,
+        "types": [
+            "Nhà hàng Việt Nam"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyn9Bl_k4cKXuPxPsVy5ix-NscqJS8Mg2Kn2Ny2BIHBpnyjN1hBBV-bo1pKqJUkKC4Mm2WCkVWABlj6i7r5XVu5NHueqehZRNnBDTEjl_QWH2JvMXqolRHDz7yNVGFomulEeDB4Tw=w122-h92-k-no",
+        "rating": 4.4,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Xôi Yến",
+        "place_id": "ChIJr1GXTvWrNTERIJPx-PLlIJc",
+        "latitude": 21.0337304,
+        "longitude": 105.85452,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng ăn nhanh"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwfO-MKd2ZUSh6zimaejjlwlZQIr0nKovrh_LUbH8DZIbS6jF-QWRuxgcQZYLlKw-UBzefPQ9Ac1A79ptbTtG3cW6qis2f6hrjNoosn5z3lAxOi0Ph2emhLWBPBeBnPEo3I0x7H=w122-h92-k-no",
+        "rating": 4,
+        "description": "Cửa hàng bán các món ăn được làm từ xôi. Quán ăn bình dân, nổi tiếng và phục vụ những bát xôi cùng nhiều món ăn kèm giàu đạm và rau xanh."
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Cửa hàng bánh gối Lý Quốc Sư",
+        "place_id": "ChIJXxY5n5WrNTEROKX5OmqJO_I",
+        "latitude": 21.029340599999998,
+        "longitude": 105.8492227,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSycjmZfjUkx_sleNSIF88ddiVPAh4ovK0bTlryzpyibkwKgklVskFVgNU-Oe707z5PZtWaO-N9af4RaFrDkAhEWSNFdXGdV_flb9zhLIFfbVx9VhW7AoBfgS18lq6JZGbJCcGWFFQ=w122-h92-k-no",
+        "rating": 4.3,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Bánh mì Don Don",
+        "place_id": "ChIJAQBVisSrNTERFtscOunwCu8",
+        "latitude": 21.0350085,
+        "longitude": 105.8520199,
+        "types": [
+            "Cửa hàng sandwich"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipPxQOUvGbyZroSlmcd8yN9ZpPLa9gL4DSVoKZ_b=w138-h92-k-no",
+        "rating": 4.8,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Bánh mì Bami",
+        "place_id": "ChIJi2-Icb-rNTEROu-_GUt4eQk",
+        "latitude": 21.034154299999997,
+        "longitude": 105.8514288,
+        "types": [
+            "Cửa hàng sandwich",
+            "Quầy bánh mì kẹp xúc xích",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyATzJ_UD3cB5yO12oaximqMnwdetoNLFXVhFzwyFrk0ghiGouBSLIwUmOH5TbmlTenezs_H8uEP2kDo-QYyRY01sD86PzbQQBPio7NA-Lp0tO7836KnY1nTNPxNXjzz46rvr6p=w163-h92-k-no",
+        "rating": 4.5,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Panzerotti.hn",
+        "place_id": "ChIJx_2SUMyrNTERmftxJwxgVJw",
+        "latitude": 21.0457213,
+        "longitude": 105.8426563,
+        "types": [
+            "Nhà hàng ý",
+            "Quán ăn nhỏ"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSztZ_MVseD2qio-0P_-A_x-BbSTQ5Uhe_zxOfivYbrx4V4JXQFHsWQJPwM2oHzKY2kWXCzNGdg1yQYF9XDBesxOVELl7zCLOw01pdmBzAy7nr5Vw7E5o6j4ZNq_Sjbodl8eeZ_AbQ=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Bánh Mì MOM's",
+        "place_id": "ChIJI_bilD6rNTERt0_Jls1MyaY",
+        "latitude": 21.033808699999998,
+        "longitude": 105.8465361,
+        "types": [
+            "Quán ăn nhỏ",
+            "Cửa hàng sandwich"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipMTuePXa1oC3PcMfilFmDtd91Jyz-VdBDyi3rdu=w80-h106-k-no",
+        "rating": 4.8,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Bao An Vegan street food",
+        "place_id": "ChIJ_4KkypOrNTERConxQCyztMs",
+        "latitude": 21.0225272,
+        "longitude": 105.84818969999999,
+        "types": [
+            "Nhà hàng món chay",
+            "Nhà hàng Việt Nam"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwnybUefuGHCnqnOI1di0v6wwz3a8gtZetPNUbuWJeQUgJ2UXdcDFllih7Y-NgyIJgHaiGX-LSHcWyllKy3qFIzpegPKKl1lp0oiHwNdeG22Bp3IbuX66qQuxr4QZ6McNr8MJMRFEDwqXQP=w122-h92-k-no",
+        "rating": 4.8,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Bánh Bao Bình Mỗ",
+        "place_id": "ChIJQXRe2MSrNTERSukaIBum2ag",
+        "latitude": 21.0292747,
+        "longitude": 105.8462358,
+        "types": [
+            "Nhà hàng gia đình",
+            "Nhà hàng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxbmIchph2B266nt8bckgTVUnHYQBLJ-oJBuqIdJGPdCui8ywdiNWli0SZavi-H189zzA53CE5zmpLJpTOiHRdss-cjy0YFfK4KKqUbeNFdaKrWnAzlAeaGmdn_L8UmqOpSqRLRRZarkctA=w80-h106-k-no",
+        "rating": 4.8,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Ô Mai Gia Lợi - Ô mai Gia Truyền Hà Nội",
+        "place_id": "ChIJV2GcKrmrNTER_tQbbwFg3-I",
+        "latitude": 21.036624699999997,
+        "longitude": 105.8495825,
+        "types": [
+            "Cửa hàng thực phẩm hữu cơ"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw2P9hJrgG60P8slTxi01jw4wgiYnUgYSsc6nkgQrfWpDjdB2W3d8RNeYWIBXZZhSCUCPOqoqM-6_d-i3oAGu4IqhGxxrpptOT1kr_yekG99-RHAnS4lTujHljLwqJf59VTs0O5=w122-h92-k-no",
+        "rating": 4.8,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Gánh Hà Nội",
+        "place_id": "ChIJi-Y8nu2rNTERnDyqLfFQqgs",
+        "latitude": 21.0353626,
+        "longitude": 105.85035359999999,
+        "types": [
+            "Nhà hàng",
+            "Nhà hàng phở",
+            "Nhà hàng cơm",
+            "Nhà hàng Việt Nam"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwIFWsmPyOIvpDtFMqZUYDJwbJSGaLkK6kAlXD51ZD-0kSeqNgL5fqbLla3aWWx8Rn8eVY_yLHvvZldMN36O98dr0Ua64HqjpYxIGU0EUwWXFsDVl0UrFz4SfoQPqDKPHosYkuw-w=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Little Bowl",
+        "place_id": "ChIJs73awr6rNTERMTwoJN2jGTU",
+        "latitude": 21.0354437,
+        "longitude": 105.8486507,
+        "types": [
+            "Cửa hàng bán đồ tráng miệng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx6KDjTaimtrru_cLHMTWqwlqIoEUbiBmYlek0-KQhvkC0v8zeCL_erFAdNtIflQqJ5m5WOZUrP28i0lIh5TvkGshput-5ctIkf1igeJjONR7U3ZLCluc-TgCOkte2sasfFzXAajQ=w122-h92-k-no",
+        "rating": 4.8,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Maison Marou Flagship Hanoi",
+        "place_id": "ChIJMd_X_ZKrNTERBmDflf5QgO4",
+        "latitude": 21.0220496,
+        "longitude": 105.8497974,
+        "types": [
+            "Quán cà phê sô cô la",
+            "Tiệm bán sô cô la nghệ thuật",
+            "Cửa hàng bán sô cô la"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/p/AF1QipP0eviKENQcflCP-1LiWHEZnOkwsNi3WZaLhO-7=w80-h105-k-no",
+        "rating": 4.6,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Hương Việt",
+        "place_id": "ChIJF8qw0b6rNTERcOsXEyrUzpg",
+        "latitude": 21.0360597,
+        "longitude": 105.84883839999999,
+        "types": [
+            "Nhà hàng Việt Nam"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzUk3DVka3Id38XLy6B4LEdQsXabLBzZOfpoZvEekuV-sDCo0BBWWoA8S9R5XrBYdUvSdOl-28hztnbnlIiHCA1nvcjGG0MIw_V5plOrhOgPNIIVIPIQ3XM6lidEEzcYscibXJPbg=w122-h92-k-no",
+        "rating": 4.8,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "MẸT Vietnamese restaurant & Vegetarian Food 3",
+        "place_id": "ChIJB1EGIX-rNTER9GVryLt_d3c",
+        "latitude": 21.0341351,
+        "longitude": 105.85128929999999,
+        "types": [
+            "Nhà hàng Việt Nam",
+            "Nhà hàng ăn chay",
+            "Nhà hàng",
+            "Nhà hàng món chay"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw3PizKPxTkF8uyQEQ5eI2BrqKsDtfs1G0PlVVeHrxwPIchQtkxGET11xWY3kZVyUARlOB9US4-bi8pSGv4rT31IMHPy0mIBVOfzFQeRe5X-Zr0lIPMmu9s9MnUW8FWRjiwGrE28btKGVaa=w122-h92-k-no",
+        "rating": 4.9,
+        "description": null
+    },
+    {
+        "type_of_place": "snack",
+        "title": "Cheap Corner (Phó) dessert",
+        "place_id": "ChIJn-V8ir6rNTERnqJxsqMg9jA",
+        "latitude": 21.0339292,
+        "longitude": 105.8478792,
+        "types": [
+            "Cửa hàng bán đồ tráng miệng"
+        ],
+        "operating_hours": null,
+        "thumbnail": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw7dYy47eJ3shfBWkqdxf8pQUnvN9xB-SdE3CpsuuUtqw6LfWdrhy4-CxEf5_QxIGlpT1zpWkbQMWeG1Ag48_Y7O4ivzxiDfg-QeN3Hi1ugVrgPFOQnpt_sgkppjVRD6vDHCghX=w80-h106-k-no",
+        "rating": 4.8,
+        "description": null
     }
 ]
