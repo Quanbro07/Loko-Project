@@ -9,7 +9,7 @@ import google.generativeai as genai
 API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
 # ==============================================================================
 
-INPUT_FILE = "da_nang.json"
+INPUT_FILE = "ha_noi.json"
 OUTPUT_FILE = "attractions_with_tags.json"
 
 genai.configure(api_key=API_KEY)
