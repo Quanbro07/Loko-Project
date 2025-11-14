@@ -1,6 +1,7 @@
 # solvers/base_solver.py
 from ortools.constraint_solver import pywrapcp, routing_enums_pb2
-from config import MAX_DAY_DURATION  # <--- DÒNG THÊM VÀO
+# SỬA LỖI: Import các biến mới từ config
+from config import MAX_DAY_DURATION, LUNCH_START_MINS, LUNCH_END_MINS, DINNER_START_MINS, DINNER_END_MINS, LUNCH_PENALTY
 
 class BaseSolver:
     """
@@ -18,15 +19,12 @@ class BaseSolver:
         self.routing = pywrapcp.RoutingModel(self.manager)
         self.time_dim = None
         
-        # Thực hiện các bước setup cơ bản
         self._add_cost_callbacks()
         self._add_time_dimension()
         self._add_base_constraints()
 
     def _add_cost_callbacks(self):
-        """
-        FIX QUAN TRỌNG (1/2): Định nghĩa CHI PHÍ (Cost).
-        """
+        """Định nghĩa CHI PHÍ (Cost) = Thời gian di chuyển."""
         time_matrix = self.instance["time_matrix"]
 
         def transit_callback(from_index, to_index):
@@ -38,9 +36,7 @@ class BaseSolver:
         self.routing.SetArcCostEvaluatorOfAllVehicles(transit_callback_index)
 
     def _add_time_dimension(self):
-        """
-        FIX QUAN TRỌNG (2/2): Định nghĩa RÀNG BUỘC THỜI GIAN (Time Dimension).
-        """
+        """Định nghĩa RÀNG BUỘC THỜI GIAN = Di chuyển + Dịch vụ."""
         time_matrix = self.instance["time_matrix"]
         service_time = self.instance["service_time"]
 
@@ -55,9 +51,9 @@ class BaseSolver:
 
         self.routing.AddDimension(
             time_dim_callback_index,
-            60,  # 60 phút chờ tối đa (slack)
-            self.instance.get("max_duration", MAX_DAY_DURATION), # Thời gian tối đa 1 ngày
-            True, # Bắt đầu từ 0
+            60,
+            self.instance.get("max_duration", MAX_DAY_DURATION), 
+            True,
             "Time"
         )
         self.time_dim = self.routing.GetDimensionOrDie("Time")
@@ -73,24 +69,35 @@ class BaseSolver:
             
             index = self.manager.NodeToIndex(node)
             
-            # 1. Ràng buộc cứng: Time Windows
             start, end = time_windows[node]
             self.time_dim.CumulVar(index).SetRange(start, end)
             
-            # 2. Ràng buộc mềm: Penalty (Disjunction)
             penalty = penalties[node]
-           
             self.routing.AddDisjunction([index], penalty)
 
     def _add_profile_specific_constraints(self):
         """
-        (Abstract) Lớp con sẽ override hàm này.
+        (SỬA ĐỔI) Thêm các ràng buộc chung mà TẤT CẢ các solver con nên có.
+        Lớp con sẽ gọi super() và thêm các ràng buộc riêng.
         """
-        pass
+        print("... Thêm ràng buộc chung (Ăn trưa/Ăn tối)...")
+        
+        # Ràng buộc mềm cho TẤT CẢ các nhà hàng
+        for node in self.instance["lunch_nodes"]:
+            idx = self.manager.NodeToIndex(node)
+            
+            # Ràng buộc mềm cho bữa trưa (11:00 - 14:00)
+            self.time_dim.SetCumulVarSoftLowerBound(idx, LUNCH_START_MINS, LUNCH_PENALTY)
+            self.time_dim.SetCumulVarSoftUpperBound(idx, LUNCH_END_MINS, LUNCH_PENALTY)
+            
+            # Ràng buộc mềm cho bữa tối (18:00 - 21:00)
+            self.time_dim.SetCumulVarSoftLowerBound(idx, DINNER_START_MINS, LUNCH_PENALTY)
+            self.time_dim.SetCumulVarSoftUpperBound(idx, DINNER_END_MINS, LUNCH_PENALTY)
 
     def solve(self, time_limit_seconds=15):
         """Chạy solver và trả về solution."""
         
+        # Gọi hàm (giờ đã có logic ăn uống)
         self._add_profile_specific_constraints()
 
         search_parameters = pywrapcp.DefaultRoutingSearchParameters()

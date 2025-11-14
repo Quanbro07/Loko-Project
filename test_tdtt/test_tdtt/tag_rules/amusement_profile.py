@@ -10,7 +10,6 @@ class AmusementProfile(BaseProfile):
         super().__init__()
 
         # --- Service time (phút) ---
-        # Yêu cầu: Nhà hàng 2h, còn lại 3-4h, nightlife 3h
         self.service_time_map = {
             "restaurant": 120,      # 2 tiếng
             "nightlife": 180,       # 3 tiếng (sẽ bị cắt ngắn nếu hết giờ)
@@ -25,7 +24,13 @@ class AmusementProfile(BaseProfile):
         # --- Penalty cơ bản (giá trị càng LỚN = càng QUAN TRỌNG) ---
         self.penalty_map = {
             "hotel": 99999,
-            "restaurant": 250, # Chỉ là nơi ăn, ít quan trọng hơn
+            
+            # --- SỬA Ở ĐÂY ---
+            # Tăng mạnh penalty của nhà hàng (từ 250 lên 400)
+            # để nó quan trọng hơn cả Zoo/Công viên (300)
+            "restaurant": 400, 
+            # --- HẾT SỬA ---
+            
             "nightlife": 250,
             "zoo": 300,
             "amusement/water park": 300,
@@ -37,11 +42,8 @@ class AmusementProfile(BaseProfile):
         """
         Override hàm base để thêm logic "ưu tiên sự đa dạng".
         """
-        # 1. Lấy penalty cơ bản (đã bao gồm điều chỉnh theo rating)
         base = super().get_penalty(tags, rating)
         
-        # 2. Yêu cầu: Ưu tiên địa điểm có nhiều tag đa dạng
-        # Tăng 20% penalty (độ quan trọng) nếu có nhiều hơn 2 tag
         if tags and len(tags) > 2:
             base = int(base * 1.2)
             

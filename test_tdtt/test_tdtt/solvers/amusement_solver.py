@@ -10,43 +10,36 @@ class AmusementSolver(BaseSolver):
     Solver cho du lịch Giải trí (Amusement).
     """
     def __init__(self, instance, profile):
+        # --- SỬA LỖI TẠI ĐÂY ---
+        # Xóa logic "if night_nodes" cũ.
+        # Luôn sử dụng thời lượng tối đa đã được tính toán trong config.py
+        # (config.py đã xử lý việc nhập 3:00 sáng hôm sau)
         instance["max_duration"] = MAX_DAY_DURATION
+        # --- KẾT THÚC SỬA LỖI ---
+        
         super().__init__(instance, profile)
 
     def _add_profile_specific_constraints(self):
         """
-        Triển khai hàm abstract: Thêm ràng buộc mềm cho bữa trưa và nightlife.
+        Triển khai hàm abstract:
+        1. Gọi logic ăn uống TỪ LỚP CHA.
+        2. Thêm logic riêng của Amusement (Nightlife).
         """
-        print("... Thêm ràng buộc Giải trí (Bữa trưa, Nightlife)...")
-        
-        # --- SỬA Ở ĐÂY: Giảm hình phạt ăn sai giờ ---
-        # (Chi phí bỏ qua nhà hàng là ~375)
-        # Đặt hình phạt sai giờ < 375 (ví dụ: 150)
-        CUSTOM_LUNCH_PENALTY = 150 # Thay vì LUNCH_PENALTY (500)
-        # --- HẾT SỬA ---
+        # 1. Gọi logic ăn trưa/tối chung từ BaseSolver
+        super()._add_profile_specific_constraints()
 
-        for node in self.instance["lunch_nodes"]:
-            idx = self.manager.NodeToIndex(node)
-            # Ràng buộc mềm cho bữa trưa
-            self.time_dim.SetCumulVarSoftLowerBound(idx, LUNCH_START_MINS, CUSTOM_LUNCH_PENALTY)
-            self.time_dim.SetCumulVarSoftUpperBound(idx, LUNCH_END_MINS, CUSTOM_LUNCH_PENALTY)
-            
-            # Ràng buộc mềm cho bữa tối
-            dinner_start = (18 * 60) - DAY_START_TIME
-            dinner_end = (20 * 60) - DAY_START_TIME
-            self.time_dim.SetCumulVarSoftLowerBound(idx, dinner_start, CUSTOM_LUNCH_PENALTY)
-            self.time_dim.SetCumulVarSoftUpperBound(idx, dinner_end, CUSTOM_LUNCH_PENALTY)
-
-        # Yêu cầu: Night life chỉ đi sau 9g đêm (21:00)
-        night_start_min = (21 * 60) - DAY_START_TIME
+        # 2. Thêm ràng buộc riêng của Amusement
+        print("... Thêm ràng buộc Giải trí (Nightlife)...")
+        night_start_min = (21 * 60) - DAY_START_TIME # Bắt đầu từ 21:00
         for node in self.instance["night_nodes"]:
-            idx = self.manager.NodeToIndex(node)
-            self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_min, 300)
+            tags = self.instance["locations_data"][node].get("tags", [])
+            if "nightlife" in tags or "bar" in tags:
+                idx = self.manager.NodeToIndex(node)
+                self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_min, 300)
 
-    # (Các hàm run_single_itinerary, _reset_solver, format_solution 
-    # giữ nguyên, không cần thay đổi)
-
-    # --- HÀM NÀY GIỐNG HỆT FOOD_SOLVER ---
+    # --- CÁC HÀM CÒN LẠI GIỮ NGUYÊN ---
+    # (run_single_itinerary, _reset_solver, format_solution)
+    
     def run_single_itinerary(self, attempt_num, time_limit_seconds=30):
         """
         Hàm này chỉ chạy MỘT lần, lưu file, hỏi y/n, và trả kết quả.
@@ -79,7 +72,6 @@ class AmusementSolver(BaseSolver):
             
         return feedback, visited_nodes
 
-    # --- HÀM NÀY GIỐNG HỆT FOOD_SOLVER ---
     def _reset_solver(self):
         self.manager = pywrapcp.RoutingIndexManager(self.num_places, 1, self.depot)
         self.routing = pywrapcp.RoutingModel(self.manager)
@@ -87,7 +79,6 @@ class AmusementSolver(BaseSolver):
         self._add_time_dimension()
         self._add_base_constraints()
 
-    # --- HÀM NÀY ĐÃ SỬA LOGIC ENERGY ---
     def format_solution(self, solution):
         """
         In ra lịch trình chi tiết VÀ trả về dữ liệu (list) để lưu JSON.
@@ -103,8 +94,7 @@ class AmusementSolver(BaseSolver):
         depot_place = self.locations[self.depot] 
         hotel_title = depot_place.get('title', 'Khách sạn')
         
-        from config import DAY_START_TIME, DAY_END_TIME
-        max_end_time_mins = DAY_END_TIME - DAY_START_TIME
+        max_end_time_mins = self.instance["max_duration"]
         
         while not self.routing.IsEnd(index):
             node = self.manager.NodeToIndex(index)
