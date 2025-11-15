@@ -1,16 +1,11 @@
 package com.exproject.backend.authenticate;
 
-import com.exproject.backend.authenticate.dto.AuthenticationRequest;
-import com.exproject.backend.authenticate.dto.AuthenticationResponse;
-import com.exproject.backend.authenticate.dto.RefreshTokenRequest;
-import com.exproject.backend.authenticate.dto.RegisterRequest;
+import com.exproject.backend.authenticate.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -21,15 +16,15 @@ public class AuthenticationController {
 
     // Sign up
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
+    public ResponseEntity<PendingVerificationResponse> register(
             @RequestBody RegisterRequest registerRequest) {
 
-        AuthenticationResponse authResponse =
+        PendingVerificationResponse pendingResponse =
                 authenticationService.register(registerRequest);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(authResponse);
+                .body(pendingResponse);
     }
 
     // Sign in
@@ -58,4 +53,53 @@ public class AuthenticationController {
                 .body(authResponse);
 
     }
+
+    // Verify Email
+    @PostMapping("/verify")
+    public ResponseEntity<VerifyResponse> verify(
+        @RequestBody VerifyRequest verifyRequest) {
+
+         VerifyResponse verifyResponse = authenticationService.verifyUser(verifyRequest);
+
+        return ResponseEntity.ok(verifyResponse);
+    }
+
+    // Resend Code verify Email
+    @PostMapping("/resend")
+    public ResponseEntity<VerifyResponse> resend(
+            @RequestParam String email) {
+        VerifyResponse verifyResponse = authenticationService.resendVerificationEmail(email);
+
+        return ResponseEntity.ok(verifyResponse);
+    }
+
+    @PostMapping("/forget-password")
+    public ResponseEntity<PendingVerificationResponse> forgetPassword(
+            @RequestParam String email) {
+        PendingVerificationResponse passwordVerifyResponse =
+                authenticationService.forgetPassword(email);
+
+        return ResponseEntity.ok(passwordVerifyResponse);
+    }
+
+    @PostMapping("/verify-password")
+    public ResponseEntity<VerifyPasswordResponse> verifyPassword(
+            @RequestBody VerifyRequest request) {
+
+        VerifyPasswordResponse verifyPasswordResponse =
+                authenticationService.verifyPassword(request);
+
+        return ResponseEntity.ok(verifyPasswordResponse);
+    }
+    
+    @PostMapping("/change-password")
+    public ResponseEntity<VerifyResponse> changePassword(
+            @RequestBody PasswordRequest request) {
+
+        VerifyResponse verifyResponse = authenticationService.changePassword(request);
+
+        return ResponseEntity.ok(verifyResponse);
+    }
+
+
 }
