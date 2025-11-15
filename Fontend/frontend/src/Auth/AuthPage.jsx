@@ -71,13 +71,14 @@ const AuthPage = () => {
         if (authMode === 'login') {
           navigate('/homepage');
         } else {
-          // After register, redirect to login page and clear session so user can login
+          // After register, clear any session and redirect to verify page so user can enter email code
           try {
             await logout();
           } catch (e) {
             // ignore logout errors
           }
-          navigate('/login');
+          // Pass the registered email to the verify page
+          navigate(`/auth/verify?email=${encodeURIComponent(formData.email)}`);
         }
       }
     } catch (err) {
