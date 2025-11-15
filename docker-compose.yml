@@ -1,15 +1,13 @@
 services:
   db:
     container_name: postgres
-    image: postgres:latest
+    image: postgres:17
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: quanbro7
       POSTGRES_DB: loko_project
-      PG_DATA: /data/postgres
-    
-    profiles: ["prod"]
 
+    profiles: ["prod"]
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
@@ -25,15 +23,14 @@ services:
       - '6379:6379'
     networks:
       - app-network
-
+    volumes:
+      - redis_data:/data
 
   backend:
     build:
       context: ./Backend
       dockerfile: Dockerfile
-
     profiles: ["prod"]
-
     container_name: loko-project-app
     depends_on:
       - db
@@ -45,6 +42,9 @@ services:
 
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
+
+    env_file:
+      - Backend/.env
     ports:
       - "8080:8080"
     networks:
@@ -56,3 +56,4 @@ networks:
 
 volumes:
   db_data:
+  redis_data:
