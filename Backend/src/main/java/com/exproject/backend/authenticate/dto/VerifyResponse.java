@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class VerifyResponse {
     private String status;
+
     private String message;
+
     private String email;
 }

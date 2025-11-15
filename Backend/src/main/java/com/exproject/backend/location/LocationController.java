@@ -24,6 +24,7 @@ public class LocationController {
 
         return ResponseEntity.ok().body(locationResponseList);
 
+
     }
 
 }

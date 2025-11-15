@@ -1,8 +1,10 @@
 package com.exproject.backend.province.info;
 
+import com.exproject.backend.categorySyncStat.CategorySyncStat;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.user.info.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,13 +28,21 @@ public class Province {
     private String provinceName;
 
     @OneToMany(mappedBy = "province",cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Location> locations;
 
     @ManyToMany(mappedBy = "visitedProvinces")
-    @JsonBackReference
+    @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<User> visitedUsers = new HashSet<>();
+
+    @OneToMany(mappedBy = "province",fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @JsonIgnore
+    private List<CategorySyncStat> locationCategorySyncStats;
 
     private String region;
 

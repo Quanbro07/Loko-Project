@@ -1,5 +1,3 @@
-
-
 spring:
   application:
     name: Backend
@@ -13,13 +11,19 @@ spring:
   jpa:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-
     hibernate:
       ddl-auto: create-drop
-
-    show-sql: true
-
     properties:
       hibernate:
         format_sql: true
 
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      type: redis
+
+  docker:
+    compose:
+      file: ../docker-compose.yml
+      lifecycle-management: start-and-stop

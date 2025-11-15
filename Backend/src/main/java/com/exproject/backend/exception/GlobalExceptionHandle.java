@@ -171,6 +171,22 @@ public class GlobalExceptionHandle {
 
     }
 
+    // Invalid Email or Password
+    @ExceptionHandler(InvalidEmailOrPasswordException.class)
+    public ResponseEntity<?> handleUserAlreadyVerfied(InvalidEmailOrPasswordException ex) {
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(
+                        Map.of(
+                                "timestamp", LocalDateTime.now().toString(),
+                                "status", HttpStatus.UNAUTHORIZED.value(),
+                                "error", "Invalid Email or Password",
+                                "message", ex.getMessage()
+                        )
+                );
+
+    }
+
     // Bắt Exception Còn lại
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleGenericException(Exception ex) {

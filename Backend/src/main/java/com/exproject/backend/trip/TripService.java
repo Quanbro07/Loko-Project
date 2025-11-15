@@ -1,5 +1,6 @@
 package com.exproject.backend.trip;
 
+import com.exproject.backend.categorySyncStat.CategorySyncStatService;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location.LocationRepository;
 import com.exproject.backend.province.info.Province;
@@ -30,6 +31,8 @@ public class TripService {
 
     private final LocationRepository locationRepository;
 
+    private final CategorySyncStatService categorySyncStatService;
+
     // * Tạo Full Trip
     public TripResponse createFullTrip(TripRequest tripRequest) {
         User user = userRepository.findById(tripRequest.getUserId())
@@ -45,6 +48,9 @@ public class TripService {
 
                 Location location = locationRepository.findById(tripDetailRequest.getLocationId())
                         .orElseThrow(() -> new RuntimeException("Location not found"));
+
+                // Logic: User chọn địa điểm này -> Hệ thống hiểu User đang quan tâm Tỉnh/Loại này
+                categorySyncStatService.increaseCategorySyncStat(location);
 
                 TripDetail newTripDetail = new TripDetail(tripDetailRequest,location);
 

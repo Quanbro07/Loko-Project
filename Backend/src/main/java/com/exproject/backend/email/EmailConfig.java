@@ -1,4 +1,4 @@
-package com.exproject.backend.authenticate.email;
+package com.exproject.backend.email;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
