@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Order(1)
 public class UserInitializer implements CommandLineRunner {
 
     private final UserRepository userRepository;
@@ -24,9 +25,13 @@ public class UserInitializer implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     @Override
     public void run(String... args) throws Exception {
+        if(userRepository.count() > 0) {
+            return;
+        }
+
         User user1 = User.builder()
                 .username("Quanbro7")
-                .email("ngocquan612006@gmail.com")
+                .email("Quanbroisdead@gmail.com")
                 .password(passwordEncoder.encode("Quanbroisdead"))
                 .age(19)
                 .role(Role.USER)
@@ -37,7 +42,7 @@ public class UserInitializer implements CommandLineRunner {
         userRepository.save(user1);
 
         AuthenticationRequest authenticationRequest = AuthenticationRequest.builder()
-                .email("ngocquan612006@gmail.com")
+                .email("Quanbroisdead@gmail.com")
                 .password("Quanbroisdead")
                 .build();
 

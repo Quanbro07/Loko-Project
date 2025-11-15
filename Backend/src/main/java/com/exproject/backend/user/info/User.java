@@ -66,7 +66,6 @@ public class User implements UserDetails {
     private Set<Hobby> hobbies = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JsonManagedReference
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JoinTable(
@@ -77,12 +76,18 @@ public class User implements UserDetails {
     private Set<Province> visitedProvinces = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<TripHistory> tripHistories = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Trip> trips = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<ReviewLocation> reviews = new ArrayList<>();
 
     @Override

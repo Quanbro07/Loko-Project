@@ -1,7 +1,7 @@
 package com.exproject.backend.authenticate;
 
 import com.exproject.backend.authenticate.dto.*;
-import com.exproject.backend.authenticate.email.EmailService;
+import com.exproject.backend.email.EmailService;
 import com.exproject.backend.config.JwtService;
 import com.exproject.backend.exception.customException.*;
 import com.exproject.backend.user.UserRepository;
@@ -10,6 +10,7 @@ import com.exproject.backend.user.info.User;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
@@ -93,24 +95,30 @@ public class AuthenticationService {
 
     // Authenticate
     public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        authenticationRequest.getEmail(),
-                        authenticationRequest.getPassword()
-                )
-        );
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            authenticationRequest.getEmail(),
+                            authenticationRequest.getPassword()
+                    )
+            );
 
-        User user = userRepository.findByEmail(authenticationRequest.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            User user = userRepository.findByEmail(authenticationRequest.getEmail())
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        if(!user.isEnabled()) {
-            throw new UserNotVerifyException("Your email is not verified");
+            if(!user.isEnabled()) {
+                throw new UserNotVerifyException("Your email is not verified");
+            }
+
+            String jwtAccessToken = jwtService.generateAccessToken(user);
+            String jwtRefreshToken = jwtService.generateRefreshToken(user);
+
+            return buildAuthenticationResponse(user,jwtAccessToken,jwtRefreshToken);
+
         }
-
-        String jwtAccessToken = jwtService.generateAccessToken(user);
-        String jwtRefreshToken = jwtService.generateRefreshToken(user);
-
-        return buildAuthenticationResponse(user,jwtAccessToken,jwtRefreshToken);
+        catch (BadCredentialsException e) {
+            throw new EmailSendFailedException("Email or Password is incorrect");
+        }
     }
 
     // Refresh Token
@@ -264,9 +272,9 @@ public class AuthenticationService {
         existUser.setResetPasswordExpiryAt(LocalDateTime.now().plusMinutes(15));
 
         try {
-            sendVerificationPassword(existUser);
-
             userRepository.save(existUser);
+
+            sendVerificationPassword(existUser);
 
             return PendingVerificationResponse.builder()
                     .status("RESET_CODE_SENT")

@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,9 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "gg_place_id", unique = true, nullable = false)
+    private String ggPlaceId;
 
     // FK tới province
     @ManyToOne(fetch = FetchType.LAZY)
@@ -62,6 +66,12 @@ public class Location {
     @Column(name = "ticket_price")
     private Double ticketPrice;
 
-    @Column(name = "gg_place_id")
-    private String ggPlaceId;
+    @Column(name = "average_rating")
+    private Double averageRating = 0.0;
+
+    @Column(name = "review_count")
+    private Integer reviewCount = 0;
+
+    @Column(name = "update_at")
+    private LocalDateTime updateAt;
 }

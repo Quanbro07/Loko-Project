@@ -1,11 +1,10 @@
 package com.exproject.backend.location_category.info;
 
+import com.exproject.backend.categorySyncStat.CategorySyncStat;
 import com.exproject.backend.location.Location;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -20,12 +19,22 @@ public class LocationCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String categoryName;
+    private String locationCategoryName;
 
     @ManyToMany(mappedBy = "locationCategories",fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private List<Location> locations;
 
+    @OneToMany(mappedBy = "locationCategory",fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @JsonIgnore
+    private List<CategorySyncStat> locationCategorySyncStats;
+
+
     public LocationCategory(ELocationCategory category) {
-        this.categoryName = category.name();
+        this.locationCategoryName = category.name();
     }
 }

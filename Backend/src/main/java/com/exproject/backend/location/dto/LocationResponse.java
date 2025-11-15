@@ -12,7 +12,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class LocationResponse {
 
-    private Long locationId;
+    private Long id;
+
+    private String ggPlaceId;
 
     private String provinceName;
 
@@ -28,11 +30,10 @@ public class LocationResponse {
 
     private Double ticketPrice;
 
-    private String ggPlaceId;
 
     // Constructor
     public LocationResponse(Location location) {
-        this.locationId = location.getId();
+        this.id = location.getId();
         this.provinceName = location.getProvince().getProvinceName();
         this.locationName = location.getLocationName();
         this.latitude = location.getLatitude();

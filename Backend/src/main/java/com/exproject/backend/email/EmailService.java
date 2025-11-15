@@ -1,4 +1,4 @@
-package com.exproject.backend.authenticate.email;
+package com.exproject.backend.email;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;

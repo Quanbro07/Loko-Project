@@ -13,7 +13,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class PendingVerificationResponse {
     private String status;
+
     private String message;
+
     private String email;
+
     private LocalDateTime expireAt;
 }
