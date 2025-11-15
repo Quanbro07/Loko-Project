@@ -188,12 +188,6 @@ class FoodSolver(BaseSolver):
                             print(f"    💤 Năng lượng đã hồi phục!")
 
                             schedule_data.append({
-                                "start": rest_start_1_str, "end": rest_end_1_str,
-                                "place_id": depot_place.get("place_id"), "title": f"(Di chuyển về) {hotel_title}",
-                                "description": "Di chuyển về khách sạn để nghỉ ngơi", "rating": depot_place.get("rating"),
-                                "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
-                            })
-                            schedule_data.append({
                                 "start": rest_start_2_str, "end": rest_end_2_str,
                                 "place_id": depot_place.get("place_id"), "title": f"(Nghỉ ngơi tại) {hotel_title}",
                                 "description": f"Nghỉ ngơi {rest_duration} phút", "rating": depot_place.get("rating"),

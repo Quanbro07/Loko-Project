@@ -1,0 +1,3281 @@
+{
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "mode": "drive",
+                "waypoints": [
+                    {
+                        "location": [
+                            105.856375,
+                            21.025412
+                        ],
+                        "original_index": 0
+                    },
+                    {
+                        "location": [
+                            105.815458,
+                            21.018099
+                        ],
+                        "original_index": 1
+                    },
+                    {
+                        "location": [
+                            105.82027,
+                            21.014894
+                        ],
+                        "original_index": 2
+                    },
+                    {
+                        "location": [
+                            105.843972,
+                            21.01427
+                        ],
+                        "original_index": 3
+                    },
+                    {
+                        "location": [
+                            105.856375,
+                            21.025412
+                        ],
+                        "original_index": 4
+                    },
+                    {
+                        "location": [
+                            105.848751,
+                            21.029532
+                        ],
+                        "original_index": 5
+                    },
+                    {
+                        "location": [
+                            105.849594,
+                            21.030751
+                        ],
+                        "original_index": 6
+                    },
+                    {
+                        "location": [
+                            105.856375,
+                            21.025412
+                        ],
+                        "original_index": 7
+                    }
+                ],
+                "units": "metric",
+                "distance": 19136,
+                "distance_units": "meters",
+                "time": 1519.672,
+                "legs": [
+                    {
+                        "distance": 5536,
+                        "time": 374.969,
+                        "steps": [
+                            {
+                                "from_index": 0,
+                                "to_index": 3,
+                                "distance": 9,
+                                "time": 1.382,
+                                "instruction": {
+                                    "text": "Drive north."
+                                }
+                            },
+                            {
+                                "from_index": 3,
+                                "to_index": 7,
+                                "distance": 10,
+                                "time": 1.599,
+                                "instruction": {
+                                    "text": "Bear right."
+                                }
+                            },
+                            {
+                                "from_index": 7,
+                                "to_index": 9,
+                                "distance": 30,
+                                "time": 2.672,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Lý Thái Tổ."
+                                }
+                            },
+                            {
+                                "from_index": 9,
+                                "to_index": 12,
+                                "distance": 98,
+                                "time": 11.786,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Lê Phụng Hiểu."
+                                }
+                            },
+                            {
+                                "from_index": 12,
+                                "to_index": 18,
+                                "distance": 144,
+                                "time": 17.809,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Ngô Quyền."
+                                }
+                            },
+                            {
+                                "from_index": 18,
+                                "to_index": 47,
+                                "distance": 1185,
+                                "time": 83.35,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Tràng Tiền."
+                                }
+                            },
+                            {
+                                "from_index": 47,
+                                "to_index": 49,
+                                "distance": 68,
+                                "time": 7.23,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Thợ Nhuộm."
+                                }
+                            },
+                            {
+                                "from_index": 49,
+                                "to_index": 51,
+                                "distance": 5,
+                                "time": 6.581,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Hàng Bông."
+                                }
+                            },
+                            {
+                                "from_index": 51,
+                                "to_index": 72,
+                                "distance": 419,
+                                "time": 27.327,
+                                "instruction": {
+                                    "text": "Turn right onto Đường Điện Biên Phủ."
+                                }
+                            },
+                            {
+                                "from_index": 72,
+                                "to_index": 105,
+                                "distance": 1166,
+                                "time": 76.493,
+                                "instruction": {
+                                    "text": "Bear left onto Phố Trần Phú."
+                                }
+                            },
+                            {
+                                "from_index": 105,
+                                "to_index": 109,
+                                "distance": 85,
+                                "time": 5.277,
+                                "instruction": {
+                                    "text": "Bear left onto Phố Sơn Tây."
+                                }
+                            },
+                            {
+                                "from_index": 109,
+                                "to_index": 117,
+                                "distance": 112,
+                                "time": 9.829,
+                                "instruction": {
+                                    "text": "Make a sharp left onto Phố Nguyễn Thái Học."
+                                }
+                            },
+                            {
+                                "from_index": 117,
+                                "to_index": 182,
+                                "distance": 2204,
+                                "time": 123.628,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Giảng Võ."
+                                }
+                            },
+                            {
+                                "from_index": 182,
+                                "to_index": 182,
+                                "distance": 0,
+                                "time": 0,
+                                "instruction": {
+                                    "text": "Your destination is on the right."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "distance": 2357,
+                        "time": 155.706,
+                        "steps": [
+                            {
+                                "from_index": 0,
+                                "to_index": 2,
+                                "distance": 26,
+                                "time": 1.252,
+                                "instruction": {
+                                    "text": "Drive southwest on Phố Láng Hạ."
+                                }
+                            },
+                            {
+                                "from_index": 2,
+                                "to_index": 9,
+                                "distance": 314,
+                                "time": 15.169,
+                                "instruction": {
+                                    "text": "Keep left to take Cầu Vượt Láng Hạ - Huỳnh Thúc Kháng."
+                                }
+                            },
+                            {
+                                "from_index": 9,
+                                "to_index": 17,
+                                "distance": 365,
+                                "time": 26.954,
+                                "instruction": {
+                                    "text": "Bear left onto Phố Láng Hạ."
+                                }
+                            },
+                            {
+                                "from_index": 17,
+                                "to_index": 26,
+                                "distance": 229,
+                                "time": 13.069,
+                                "instruction": {
+                                    "text": "Keep right to stay on Phố Láng Hạ."
+                                }
+                            },
+                            {
+                                "from_index": 26,
+                                "to_index": 35,
+                                "distance": 439,
+                                "time": 28.317,
+                                "instruction": {
+                                    "text": "Turn left onto Đường Láng."
+                                }
+                            },
+                            {
+                                "from_index": 35,
+                                "to_index": 67,
+                                "distance": 955,
+                                "time": 67.324,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Yên Lãng."
+                                }
+                            },
+                            {
+                                "from_index": 67,
+                                "to_index": 69,
+                                "distance": 27,
+                                "time": 3.617,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Đặng Tiến Đông."
+                                }
+                            },
+                            {
+                                "from_index": 69,
+                                "to_index": 69,
+                                "distance": 0,
+                                "time": 0,
+                                "instruction": {
+                                    "text": "Your destination is on the right."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "distance": 4601,
+                        "time": 331.803,
+                        "steps": [
+                            {
+                                "from_index": 0,
+                                "to_index": 20,
+                                "distance": 699,
+                                "time": 50.687,
+                                "instruction": {
+                                    "text": "Drive southeast on Phố Đặng Tiến Đông."
+                                }
+                            },
+                            {
+                                "from_index": 20,
+                                "to_index": 21,
+                                "distance": 25,
+                                "time": 1.505,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Tây Sơn."
+                                }
+                            },
+                            {
+                                "from_index": 21,
+                                "to_index": 25,
+                                "distance": 107,
+                                "time": 5.2,
+                                "instruction": {
+                                    "text": "Keep right to stay on Phố Tây Sơn."
+                                }
+                            },
+                            {
+                                "from_index": 25,
+                                "to_index": 65,
+                                "distance": 1074,
+                                "time": 64.711,
+                                "instruction": {
+                                    "text": "Make a left U-turn to stay on Phố Tây Sơn."
+                                }
+                            },
+                            {
+                                "from_index": 65,
+                                "to_index": 103,
+                                "distance": 1292,
+                                "time": 85.084,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Xã Đàn."
+                                }
+                            },
+                            {
+                                "from_index": 103,
+                                "to_index": 118,
+                                "distance": 437,
+                                "time": 27.487,
+                                "instruction": {
+                                    "text": "Keep right to stay on Phố Xã Đàn."
+                                }
+                            },
+                            {
+                                "from_index": 118,
+                                "to_index": 133,
+                                "distance": 839,
+                                "time": 46.771,
+                                "instruction": {
+                                    "text": "Turn left onto Đường Lê Duẩn."
+                                }
+                            },
+                            {
+                                "from_index": 133,
+                                "to_index": 138,
+                                "distance": 126,
+                                "time": 50.354,
+                                "instruction": {
+                                    "text": "Turn right onto Ngõ Hoàng An."
+                                }
+                            },
+                            {
+                                "from_index": 138,
+                                "to_index": 138,
+                                "distance": 0,
+                                "time": 0,
+                                "instruction": {
+                                    "text": "Your destination is on the right."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "distance": 3187,
+                        "time": 317.522,
+                        "steps": [
+                            {
+                                "from_index": 0,
+                                "to_index": 5,
+                                "distance": 126,
+                                "time": 48.291,
+                                "instruction": {
+                                    "text": "Drive southwest on Ngõ Hoàng An."
+                                }
+                            },
+                            {
+                                "from_index": 5,
+                                "to_index": 17,
+                                "distance": 356,
+                                "time": 23.35,
+                                "instruction": {
+                                    "text": "Turn right onto Đường Lê Duẩn."
+                                }
+                            },
+                            {
+                                "from_index": 17,
+                                "to_index": 21,
+                                "distance": 251,
+                                "time": 29.099,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Nguyễn Quyền."
+                                }
+                            },
+                            {
+                                "from_index": 21,
+                                "to_index": 34,
+                                "distance": 562,
+                                "time": 50.501,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Trần Bình Trọng."
+                                }
+                            },
+                            {
+                                "from_index": 34,
+                                "to_index": 57,
+                                "distance": 743,
+                                "time": 58.94,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Trần Hưng Đạo."
+                                }
+                            },
+                            {
+                                "from_index": 57,
+                                "to_index": 72,
+                                "distance": 511,
+                                "time": 42.658,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Hàng Bài."
+                                }
+                            },
+                            {
+                                "from_index": 72,
+                                "to_index": 82,
+                                "distance": 405,
+                                "time": 33.429,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Tràng Tiền."
+                                }
+                            },
+                            {
+                                "from_index": 82,
+                                "to_index": 106,
+                                "distance": 105,
+                                "time": 19.101,
+                                "instruction": {
+                                    "text": "Enter Quảng trường Cách mạng Tháng Tám and take the 5th exit onto Phố Lý Thái Tổ."
+                                }
+                            },
+                            {
+                                "from_index": 106,
+                                "to_index": 109,
+                                "distance": 112,
+                                "time": 9.268,
+                                "instruction": {
+                                    "text": "Exit the roundabout onto Phố Lý Thái Tổ."
+                                }
+                            },
+                            {
+                                "from_index": 109,
+                                "to_index": 112,
+                                "distance": 12,
+                                "time": 2.879,
+                                "instruction": {
+                                    "text": "Turn left."
+                                }
+                            },
+                            {
+                                "from_index": 112,
+                                "to_index": 112,
+                                "distance": 0,
+                                "time": 0,
+                                "instruction": {
+                                    "text": "Your destination is on the left."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "distance": 1433,
+                        "time": 132.281,
+                        "steps": [
+                            {
+                                "from_index": 0,
+                                "to_index": 3,
+                                "distance": 9,
+                                "time": 1.382,
+                                "instruction": {
+                                    "text": "Drive north."
+                                }
+                            },
+                            {
+                                "from_index": 3,
+                                "to_index": 7,
+                                "distance": 10,
+                                "time": 1.599,
+                                "instruction": {
+                                    "text": "Bear right."
+                                }
+                            },
+                            {
+                                "from_index": 7,
+                                "to_index": 9,
+                                "distance": 30,
+                                "time": 2.672,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Lý Thái Tổ."
+                                }
+                            },
+                            {
+                                "from_index": 9,
+                                "to_index": 12,
+                                "distance": 98,
+                                "time": 11.786,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Lê Phụng Hiểu."
+                                }
+                            },
+                            {
+                                "from_index": 12,
+                                "to_index": 18,
+                                "distance": 144,
+                                "time": 17.809,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Ngô Quyền."
+                                }
+                            },
+                            {
+                                "from_index": 18,
+                                "to_index": 39,
+                                "distance": 800,
+                                "time": 60.202,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Tràng Tiền."
+                                }
+                            },
+                            {
+                                "from_index": 39,
+                                "to_index": 45,
+                                "distance": 235,
+                                "time": 25.328,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Phủ Doãn."
+                                }
+                            },
+                            {
+                                "from_index": 45,
+                                "to_index": 49,
+                                "distance": 107,
+                                "time": 11.5,
+                                "instruction": {
+                                    "text": "Turn right onto Ngõ Huyện."
+                                }
+                            },
+                            {
+                                "from_index": 49,
+                                "to_index": 49,
+                                "distance": 0,
+                                "time": 0,
+                                "instruction": {
+                                    "text": "You have arrived at your destination."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "distance": 631,
+                        "time": 75.727,
+                        "steps": [
+                            {
+                                "from_index": 0,
+                                "to_index": 2,
+                                "distance": 51,
+                                "time": 5.336,
+                                "instruction": {
+                                    "text": "Drive northeast on Ngõ Huyện."
+                                }
+                            },
+                            {
+                                "from_index": 2,
+                                "to_index": 9,
+                                "distance": 319,
+                                "time": 37.743,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Lý Quốc Sư."
+                                }
+                            },
+                            {
+                                "from_index": 9,
+                                "to_index": 11,
+                                "distance": 48,
+                                "time": 10.43,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Hàng Nón."
+                                }
+                            },
+                            {
+                                "from_index": 11,
+                                "to_index": 17,
+                                "distance": 212,
+                                "time": 22.217,
+                                "instruction": {
+                                    "text": "Turn right onto Phố Hàng Hòm."
+                                }
+                            },
+                            {
+                                "from_index": 17,
+                                "to_index": 17,
+                                "distance": 0,
+                                "time": 0,
+                                "instruction": {
+                                    "text": "You have arrived at your destination."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "distance": 1387,
+                        "time": 131.661,
+                        "steps": [
+                            {
+                                "from_index": 0,
+                                "to_index": 13,
+                                "distance": 347,
+                                "time": 35.751,
+                                "instruction": {
+                                    "text": "Drive southeast on Phố Hàng Trống."
+                                }
+                            },
+                            {
+                                "from_index": 13,
+                                "to_index": 17,
+                                "distance": 234,
+                                "time": 18.914,
+                                "instruction": {
+                                    "text": "Bear right onto Phố Lê Thái Tổ."
+                                }
+                            },
+                            {
+                                "from_index": 17,
+                                "to_index": 31,
+                                "distance": 576,
+                                "time": 45.744,
+                                "instruction": {
+                                    "text": "Turn left onto Phố Hàng Khay."
+                                }
+                            },
+                            {
+                                "from_index": 31,
+                                "to_index": 55,
+                                "distance": 105,
+                                "time": 19.101,
+                                "instruction": {
+                                    "text": "Enter Quảng trường Cách mạng Tháng Tám and take the 5th exit onto Phố Lý Thái Tổ."
+                                }
+                            },
+                            {
+                                "from_index": 55,
+                                "to_index": 58,
+                                "distance": 112,
+                                "time": 9.268,
+                                "instruction": {
+                                    "text": "Exit the roundabout onto Phố Lý Thái Tổ."
+                                }
+                            },
+                            {
+                                "from_index": 58,
+                                "to_index": 61,
+                                "distance": 12,
+                                "time": 2.879,
+                                "instruction": {
+                                    "text": "Turn left."
+                                }
+                            },
+                            {
+                                "from_index": 61,
+                                "to_index": 61,
+                                "distance": 0,
+                                "time": 0,
+                                "instruction": {
+                                    "text": "Your destination is on the left."
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "geometry": {
+                "type": "MultiLineString",
+                "coordinates": [
+                    [
+                        [
+                            105.856516,
+                            21.025476
+                        ],
+                        [
+                            105.856506,
+                            21.025495
+                        ],
+                        [
+                            105.856495,
+                            21.025527
+                        ],
+                        [
+                            105.856495,
+                            21.025558
+                        ],
+                        [
+                            105.856494,
+                            21.025569
+                        ],
+                        [
+                            105.856508,
+                            21.025597
+                        ],
+                        [
+                            105.856522,
+                            21.025618
+                        ],
+                        [
+                            105.856542,
+                            21.025638
+                        ],
+                        [
+                            105.856486,
+                            21.025813
+                        ],
+                        [
+                            105.856462,
+                            21.025904
+                        ],
+                        [
+                            105.856366,
+                            21.025928
+                        ],
+                        [
+                            105.855699,
+                            21.02611
+                        ],
+                        [
+                            105.855551,
+                            21.026152
+                        ],
+                        [
+                            105.85552,
+                            21.026056
+                        ],
+                        [
+                            105.855338,
+                            21.02549
+                        ],
+                        [
+                            105.855312,
+                            21.025409
+                        ],
+                        [
+                            105.85528,
+                            21.025313
+                        ],
+                        [
+                            105.855192,
+                            21.025048
+                        ],
+                        [
+                            105.855151,
+                            21.024916
+                        ],
+                        [
+                            105.855005,
+                            21.024953
+                        ],
+                        [
+                            105.854401,
+                            21.025119
+                        ],
+                        [
+                            105.854311,
+                            21.025144
+                        ],
+                        [
+                            105.853413,
+                            21.025404
+                        ],
+                        [
+                            105.853231,
+                            21.025479
+                        ],
+                        [
+                            105.853042,
+                            21.025554
+                        ],
+                        [
+                            105.852309,
+                            21.025771
+                        ],
+                        [
+                            105.851875,
+                            21.0259
+                        ],
+                        [
+                            105.851667,
+                            21.02596
+                        ],
+                        [
+                            105.85147,
+                            21.026006
+                        ],
+                        [
+                            105.850662,
+                            21.026236
+                        ],
+                        [
+                            105.850573,
+                            21.026261
+                        ],
+                        [
+                            105.850203,
+                            21.026367
+                        ],
+                        [
+                            105.850099,
+                            21.026396
+                        ],
+                        [
+                            105.849967,
+                            21.026433
+                        ],
+                        [
+                            105.84942,
+                            21.026586
+                        ],
+                        [
+                            105.848671,
+                            21.026797
+                        ],
+                        [
+                            105.848385,
+                            21.026869
+                        ],
+                        [
+                            105.848053,
+                            21.026966
+                        ],
+                        [
+                            105.847959,
+                            21.026994
+                        ],
+                        [
+                            105.84779,
+                            21.027044
+                        ],
+                        [
+                            105.847668,
+                            21.027079
+                        ],
+                        [
+                            105.847031,
+                            21.027264
+                        ],
+                        [
+                            105.846125,
+                            21.027507
+                        ],
+                        [
+                            105.845987,
+                            21.027544
+                        ],
+                        [
+                            105.845865,
+                            21.027575
+                        ],
+                        [
+                            105.8447,
+                            21.027906
+                        ],
+                        [
+                            105.844363,
+                            21.027992
+                        ],
+                        [
+                            105.844232,
+                            21.028017
+                        ],
+                        [
+                            105.844022,
+                            21.028416
+                        ],
+                        [
+                            105.843945,
+                            21.028565
+                        ],
+                        [
+                            105.843921,
+                            21.028549
+                        ],
+                        [
+                            105.843903,
+                            21.028537
+                        ],
+                        [
+                            105.843867,
+                            21.028535
+                        ],
+                        [
+                            105.843828,
+                            21.028529
+                        ],
+                        [
+                            105.843792,
+                            21.028521
+                        ],
+                        [
+                            105.843763,
+                            21.028511
+                        ],
+                        [
+                            105.843616,
+                            21.028427
+                        ],
+                        [
+                            105.843468,
+                            21.028342
+                        ],
+                        [
+                            105.843372,
+                            21.028387
+                        ],
+                        [
+                            105.843308,
+                            21.028449
+                        ],
+                        [
+                            105.843,
+                            21.028746
+                        ],
+                        [
+                            105.842955,
+                            21.02882
+                        ],
+                        [
+                            105.842677,
+                            21.029112
+                        ],
+                        [
+                            105.842593,
+                            21.029201
+                        ],
+                        [
+                            105.842312,
+                            21.029489
+                        ],
+                        [
+                            105.842227,
+                            21.029546
+                        ],
+                        [
+                            105.842063,
+                            21.029716
+                        ],
+                        [
+                            105.841889,
+                            21.029895
+                        ],
+                        [
+                            105.841805,
+                            21.029932
+                        ],
+                        [
+                            105.841597,
+                            21.03015
+                        ],
+                        [
+                            105.841384,
+                            21.030366
+                        ],
+                        [
+                            105.841257,
+                            21.030495
+                        ],
+                        [
+                            105.841049,
+                            21.030708
+                        ],
+                        [
+                            105.840795,
+                            21.030757
+                        ],
+                        [
+                            105.840625,
+                            21.030789
+                        ],
+                        [
+                            105.840374,
+                            21.030837
+                        ],
+                        [
+                            105.838839,
+                            21.031133
+                        ],
+                        [
+                            105.838722,
+                            21.031155
+                        ],
+                        [
+                            105.838622,
+                            21.031174
+                        ],
+                        [
+                            105.838502,
+                            21.031197
+                        ],
+                        [
+                            105.837677,
+                            21.031356
+                        ],
+                        [
+                            105.837117,
+                            21.031464
+                        ],
+                        [
+                            105.836384,
+                            21.031604
+                        ],
+                        [
+                            105.836265,
+                            21.031627
+                        ],
+                        [
+                            105.836146,
+                            21.03165
+                        ],
+                        [
+                            105.835841,
+                            21.031709
+                        ],
+                        [
+                            105.835543,
+                            21.031766
+                        ],
+                        [
+                            105.835496,
+                            21.031775
+                        ],
+                        [
+                            105.835242,
+                            21.031824
+                        ],
+                        [
+                            105.835008,
+                            21.031869
+                        ],
+                        [
+                            105.834962,
+                            21.031878
+                        ],
+                        [
+                            105.834397,
+                            21.031986
+                        ],
+                        [
+                            105.834216,
+                            21.032021
+                        ],
+                        [
+                            105.834032,
+                            21.032046
+                        ],
+                        [
+                            105.833795,
+                            21.032088
+                        ],
+                        [
+                            105.833359,
+                            21.032176
+                        ],
+                        [
+                            105.833286,
+                            21.032192
+                        ],
+                        [
+                            105.833105,
+                            21.032225
+                        ],
+                        [
+                            105.833017,
+                            21.032243
+                        ],
+                        [
+                            105.832915,
+                            21.032267
+                        ],
+                        [
+                            105.831963,
+                            21.032448
+                        ],
+                        [
+                            105.831556,
+                            21.032522
+                        ],
+                        [
+                            105.831446,
+                            21.032541
+                        ],
+                        [
+                            105.831302,
+                            21.032566
+                        ],
+                        [
+                            105.83117,
+                            21.032589
+                        ],
+                        [
+                            105.830069,
+                            21.032789
+                        ],
+                        [
+                            105.829816,
+                            21.032732
+                        ],
+                        [
+                            105.829511,
+                            21.032676
+                        ],
+                        [
+                            105.829307,
+                            21.032635
+                        ],
+                        [
+                            105.829273,
+                            21.032624
+                        ],
+                        [
+                            105.829215,
+                            21.032561
+                        ],
+                        [
+                            105.829204,
+                            21.032515
+                        ],
+                        [
+                            105.829209,
+                            21.032467
+                        ],
+                        [
+                            105.829223,
+                            21.032422
+                        ],
+                        [
+                            105.829247,
+                            21.032377
+                        ],
+                        [
+                            105.829274,
+                            21.032372
+                        ],
+                        [
+                            105.829856,
+                            21.032209
+                        ],
+                        [
+                            105.829996,
+                            21.03217
+                        ],
+                        [
+                            105.829899,
+                            21.031866
+                        ],
+                        [
+                            105.829888,
+                            21.031828
+                        ],
+                        [
+                            105.829876,
+                            21.031784
+                        ],
+                        [
+                            105.82984,
+                            21.031659
+                        ],
+                        [
+                            105.829811,
+                            21.031558
+                        ],
+                        [
+                            105.829765,
+                            21.031406
+                        ],
+                        [
+                            105.829751,
+                            21.031382
+                        ],
+                        [
+                            105.829731,
+                            21.03136
+                        ],
+                        [
+                            105.829683,
+                            21.031321
+                        ],
+                        [
+                            105.829474,
+                            21.031154
+                        ],
+                        [
+                            105.828928,
+                            21.030725
+                        ],
+                        [
+                            105.828727,
+                            21.030582
+                        ],
+                        [
+                            105.828548,
+                            21.030453
+                        ],
+                        [
+                            105.828314,
+                            21.03029
+                        ],
+                        [
+                            105.828297,
+                            21.030279
+                        ],
+                        [
+                            105.828068,
+                            21.030113
+                        ],
+                        [
+                            105.828021,
+                            21.030079
+                        ],
+                        [
+                            105.827481,
+                            21.029646
+                        ],
+                        [
+                            105.827351,
+                            21.029569
+                        ],
+                        [
+                            105.827297,
+                            21.029564
+                        ],
+                        [
+                            105.827282,
+                            21.029563
+                        ],
+                        [
+                            105.827235,
+                            21.029554
+                        ],
+                        [
+                            105.827157,
+                            21.029531
+                        ],
+                        [
+                            105.827064,
+                            21.029484
+                        ],
+                        [
+                            105.826982,
+                            21.029432
+                        ],
+                        [
+                            105.826686,
+                            21.029219
+                        ],
+                        [
+                            105.826136,
+                            21.028833
+                        ],
+                        [
+                            105.82602,
+                            21.028754
+                        ],
+                        [
+                            105.825992,
+                            21.028736
+                        ],
+                        [
+                            105.825924,
+                            21.028692
+                        ],
+                        [
+                            105.825511,
+                            21.028413
+                        ],
+                        [
+                            105.82528,
+                            21.028245
+                        ],
+                        [
+                            105.825033,
+                            21.028045
+                        ],
+                        [
+                            105.824737,
+                            21.027802
+                        ],
+                        [
+                            105.824225,
+                            21.027381
+                        ],
+                        [
+                            105.823118,
+                            21.026446
+                        ],
+                        [
+                            105.823059,
+                            21.026394
+                        ],
+                        [
+                            105.822999,
+                            21.026341
+                        ],
+                        [
+                            105.821868,
+                            21.02541
+                        ],
+                        [
+                            105.821747,
+                            21.025317
+                        ],
+                        [
+                            105.821323,
+                            21.02495
+                        ],
+                        [
+                            105.820972,
+                            21.024636
+                        ],
+                        [
+                            105.820521,
+                            21.024257
+                        ],
+                        [
+                            105.82028,
+                            21.024046
+                        ],
+                        [
+                            105.820092,
+                            21.023869
+                        ],
+                        [
+                            105.819787,
+                            21.023569
+                        ],
+                        [
+                            105.819784,
+                            21.023565
+                        ],
+                        [
+                            105.819747,
+                            21.023438
+                        ],
+                        [
+                            105.819702,
+                            21.023306
+                        ],
+                        [
+                            105.819672,
+                            21.023266
+                        ],
+                        [
+                            105.819577,
+                            21.023134
+                        ],
+                        [
+                            105.819391,
+                            21.022877
+                        ],
+                        [
+                            105.81908,
+                            21.022451
+                        ],
+                        [
+                            105.818607,
+                            21.021818
+                        ],
+                        [
+                            105.818401,
+                            21.021525
+                        ],
+                        [
+                            105.818329,
+                            21.021423
+                        ],
+                        [
+                            105.818289,
+                            21.021367
+                        ],
+                        [
+                            105.818026,
+                            21.021011
+                        ],
+                        [
+                            105.817458,
+                            21.020223
+                        ],
+                        [
+                            105.817424,
+                            21.020177
+                        ],
+                        [
+                            105.816969,
+                            21.019574
+                        ],
+                        [
+                            105.816652,
+                            21.019123
+                        ],
+                        [
+                            105.816577,
+                            21.019021
+                        ],
+                        [
+                            105.816524,
+                            21.018946
+                        ],
+                        [
+                            105.815776,
+                            21.017901
+                        ]
+                    ],
+                    [
+                        [
+                            105.815776,
+                            21.017901
+                        ],
+                        [
+                            105.815732,
+                            21.01784
+                        ],
+                        [
+                            105.815641,
+                            21.017701
+                        ],
+                        [
+                            105.815593,
+                            21.017598
+                        ],
+                        [
+                            105.81551,
+                            21.017472
+                        ],
+                        [
+                            105.815483,
+                            21.017402
+                        ],
+                        [
+                            105.814261,
+                            21.015546
+                        ],
+                        [
+                            105.81424,
+                            21.015515
+                        ],
+                        [
+                            105.814119,
+                            21.015388
+                        ],
+                        [
+                            105.814023,
+                            21.015329
+                        ],
+                        [
+                            105.813691,
+                            21.014828
+                        ],
+                        [
+                            105.813414,
+                            21.014409
+                        ],
+                        [
+                            105.813387,
+                            21.014368
+                        ],
+                        [
+                            105.813062,
+                            21.013858
+                        ],
+                        [
+                            105.812987,
+                            21.01374
+                        ],
+                        [
+                            105.812669,
+                            21.013225
+                        ],
+                        [
+                            105.812608,
+                            21.013128
+                        ],
+                        [
+                            105.812203,
+                            21.012515
+                        ],
+                        [
+                            105.812078,
+                            21.012392
+                        ],
+                        [
+                            105.811876,
+                            21.012128
+                        ],
+                        [
+                            105.811693,
+                            21.011883
+                        ],
+                        [
+                            105.811579,
+                            21.011721
+                        ],
+                        [
+                            105.811408,
+                            21.011495
+                        ],
+                        [
+                            105.811292,
+                            21.011346
+                        ],
+                        [
+                            105.811057,
+                            21.011052
+                        ],
+                        [
+                            105.810992,
+                            21.010972
+                        ],
+                        [
+                            105.810905,
+                            21.010854
+                        ],
+                        [
+                            105.81107,
+                            21.01074
+                        ],
+                        [
+                            105.811134,
+                            21.010699
+                        ],
+                        [
+                            105.812019,
+                            21.010149
+                        ],
+                        [
+                            105.81308,
+                            21.009515
+                        ],
+                        [
+                            105.813759,
+                            21.009105
+                        ],
+                        [
+                            105.813823,
+                            21.009067
+                        ],
+                        [
+                            105.814249,
+                            21.008782
+                        ],
+                        [
+                            105.814282,
+                            21.008755
+                        ],
+                        [
+                            105.814407,
+                            21.008639
+                        ],
+                        [
+                            105.814491,
+                            21.008725
+                        ],
+                        [
+                            105.814578,
+                            21.008818
+                        ],
+                        [
+                            105.814724,
+                            21.008974
+                        ],
+                        [
+                            105.81481,
+                            21.009067
+                        ],
+                        [
+                            105.815111,
+                            21.009415
+                        ],
+                        [
+                            105.815295,
+                            21.009581
+                        ],
+                        [
+                            105.815417,
+                            21.00969
+                        ],
+                        [
+                            105.815631,
+                            21.009898
+                        ],
+                        [
+                            105.815792,
+                            21.010097
+                        ],
+                        [
+                            105.816026,
+                            21.010392
+                        ],
+                        [
+                            105.816071,
+                            21.010447
+                        ],
+                        [
+                            105.816261,
+                            21.010698
+                        ],
+                        [
+                            105.816711,
+                            21.011237
+                        ],
+                        [
+                            105.817033,
+                            21.011658
+                        ],
+                        [
+                            105.817187,
+                            21.011849
+                        ],
+                        [
+                            105.817251,
+                            21.011934
+                        ],
+                        [
+                            105.817333,
+                            21.012036
+                        ],
+                        [
+                            105.817571,
+                            21.012314
+                        ],
+                        [
+                            105.817672,
+                            21.01243
+                        ],
+                        [
+                            105.817837,
+                            21.012623
+                        ],
+                        [
+                            105.81817,
+                            21.012994
+                        ],
+                        [
+                            105.818214,
+                            21.013042
+                        ],
+                        [
+                            105.818543,
+                            21.013393
+                        ],
+                        [
+                            105.818816,
+                            21.013689
+                        ],
+                        [
+                            105.818889,
+                            21.013778
+                        ],
+                        [
+                            105.818958,
+                            21.013853
+                        ],
+                        [
+                            105.819164,
+                            21.014096
+                        ],
+                        [
+                            105.819929,
+                            21.014937
+                        ],
+                        [
+                            105.82,
+                            21.015008
+                        ],
+                        [
+                            105.820127,
+                            21.015125
+                        ],
+                        [
+                            105.820203,
+                            21.015191
+                        ],
+                        [
+                            105.820258,
+                            21.015239
+                        ],
+                        [
+                            105.820306,
+                            21.015199
+                        ],
+                        [
+                            105.820448,
+                            21.01508
+                        ]
+                    ],
+                    [
+                        [
+                            105.820448,
+                            21.01508
+                        ],
+                        [
+                            105.82064,
+                            21.01492
+                        ],
+                        [
+                            105.821006,
+                            21.014634
+                        ],
+                        [
+                            105.821063,
+                            21.014594
+                        ],
+                        [
+                            105.821134,
+                            21.014568
+                        ],
+                        [
+                            105.821207,
+                            21.014553
+                        ],
+                        [
+                            105.821407,
+                            21.014548
+                        ],
+                        [
+                            105.821469,
+                            21.014545
+                        ],
+                        [
+                            105.82153,
+                            21.014529
+                        ],
+                        [
+                            105.821586,
+                            21.014499
+                        ],
+                        [
+                            105.821819,
+                            21.014268
+                        ],
+                        [
+                            105.822395,
+                            21.013669
+                        ],
+                        [
+                            105.822524,
+                            21.013534
+                        ],
+                        [
+                            105.822626,
+                            21.013391
+                        ],
+                        [
+                            105.822827,
+                            21.013154
+                        ],
+                        [
+                            105.823311,
+                            21.012603
+                        ],
+                        [
+                            105.823437,
+                            21.012468
+                        ],
+                        [
+                            105.823918,
+                            21.011957
+                        ],
+                        [
+                            105.824484,
+                            21.011373
+                        ],
+                        [
+                            105.825013,
+                            21.010763
+                        ],
+                        [
+                            105.825073,
+                            21.010668
+                        ],
+                        [
+                            105.824969,
+                            21.01047
+                        ],
+                        [
+                            105.824851,
+                            21.010326
+                        ],
+                        [
+                            105.824642,
+                            21.009928
+                        ],
+                        [
+                            105.824542,
+                            21.009748
+                        ],
+                        [
+                            105.824472,
+                            21.009628
+                        ],
+                        [
+                            105.824475,
+                            21.009587
+                        ],
+                        [
+                            105.824485,
+                            21.009549
+                        ],
+                        [
+                            105.824514,
+                            21.00952
+                        ],
+                        [
+                            105.824563,
+                            21.00951
+                        ],
+                        [
+                            105.824586,
+                            21.009509
+                        ],
+                        [
+                            105.824614,
+                            21.009516
+                        ],
+                        [
+                            105.824699,
+                            21.009681
+                        ],
+                        [
+                            105.824758,
+                            21.00979
+                        ],
+                        [
+                            105.82482,
+                            21.00991
+                        ],
+                        [
+                            105.824841,
+                            21.00995
+                        ],
+                        [
+                            105.824949,
+                            21.010156
+                        ],
+                        [
+                            105.825001,
+                            21.010269
+                        ],
+                        [
+                            105.825048,
+                            21.010421
+                        ],
+                        [
+                            105.825152,
+                            21.010617
+                        ],
+                        [
+                            105.825231,
+                            21.010765
+                        ],
+                        [
+                            105.825298,
+                            21.010883
+                        ],
+                        [
+                            105.825389,
+                            21.011028
+                        ],
+                        [
+                            105.825529,
+                            21.01124
+                        ],
+                        [
+                            105.825602,
+                            21.011345
+                        ],
+                        [
+                            105.82611,
+                            21.012108
+                        ],
+                        [
+                            105.826345,
+                            21.012496
+                        ],
+                        [
+                            105.826471,
+                            21.012707
+                        ],
+                        [
+                            105.826551,
+                            21.012836
+                        ],
+                        [
+                            105.826695,
+                            21.013065
+                        ],
+                        [
+                            105.826875,
+                            21.013363
+                        ],
+                        [
+                            105.826931,
+                            21.013459
+                        ],
+                        [
+                            105.82717,
+                            21.013855
+                        ],
+                        [
+                            105.827225,
+                            21.013947
+                        ],
+                        [
+                            105.827392,
+                            21.014218
+                        ],
+                        [
+                            105.827837,
+                            21.014955
+                        ],
+                        [
+                            105.82788,
+                            21.015027
+                        ],
+                        [
+                            105.827926,
+                            21.015104
+                        ],
+                        [
+                            105.82813,
+                            21.015444
+                        ],
+                        [
+                            105.828409,
+                            21.015909
+                        ],
+                        [
+                            105.828514,
+                            21.016081
+                        ],
+                        [
+                            105.829011,
+                            21.016909
+                        ],
+                        [
+                            105.82904,
+                            21.016959
+                        ],
+                        [
+                            105.8292,
+                            21.017237
+                        ],
+                        [
+                            105.829364,
+                            21.017511
+                        ],
+                        [
+                            105.829522,
+                            21.017747
+                        ],
+                        [
+                            105.829797,
+                            21.017768
+                        ],
+                        [
+                            105.829875,
+                            21.017771
+                        ],
+                        [
+                            105.830067,
+                            21.017723
+                        ],
+                        [
+                            105.830241,
+                            21.017631
+                        ],
+                        [
+                            105.830533,
+                            21.017417
+                        ],
+                        [
+                            105.83076,
+                            21.017233
+                        ],
+                        [
+                            105.830778,
+                            21.017219
+                        ],
+                        [
+                            105.830946,
+                            21.017099
+                        ],
+                        [
+                            105.831479,
+                            21.016658
+                        ],
+                        [
+                            105.83183,
+                            21.016388
+                        ],
+                        [
+                            105.832018,
+                            21.01623
+                        ],
+                        [
+                            105.832138,
+                            21.016128
+                        ],
+                        [
+                            105.8322,
+                            21.01608
+                        ],
+                        [
+                            105.832419,
+                            21.015867
+                        ],
+                        [
+                            105.833262,
+                            21.015008
+                        ],
+                        [
+                            105.833376,
+                            21.014891
+                        ],
+                        [
+                            105.833781,
+                            21.014461
+                        ],
+                        [
+                            105.833905,
+                            21.014334
+                        ],
+                        [
+                            105.834042,
+                            21.014199
+                        ],
+                        [
+                            105.834118,
+                            21.014117
+                        ],
+                        [
+                            105.834195,
+                            21.014026
+                        ],
+                        [
+                            105.835217,
+                            21.012941
+                        ],
+                        [
+                            105.835348,
+                            21.012799
+                        ],
+                        [
+                            105.835508,
+                            21.012629
+                        ],
+                        [
+                            105.835622,
+                            21.012515
+                        ],
+                        [
+                            105.836207,
+                            21.011906
+                        ],
+                        [
+                            105.836338,
+                            21.011775
+                        ],
+                        [
+                            105.836533,
+                            21.011561
+                        ],
+                        [
+                            105.83665,
+                            21.011434
+                        ],
+                        [
+                            105.836772,
+                            21.011303
+                        ],
+                        [
+                            105.836897,
+                            21.01118
+                        ],
+                        [
+                            105.836966,
+                            21.011103
+                        ],
+                        [
+                            105.837065,
+                            21.010978
+                        ],
+                        [
+                            105.837207,
+                            21.010782
+                        ],
+                        [
+                            105.837516,
+                            21.010338
+                        ],
+                        [
+                            105.837868,
+                            21.009871
+                        ],
+                        [
+                            105.837943,
+                            21.009784
+                        ],
+                        [
+                            105.838091,
+                            21.009614
+                        ],
+                        [
+                            105.838159,
+                            21.009466
+                        ],
+                        [
+                            105.838642,
+                            21.008945
+                        ],
+                        [
+                            105.839002,
+                            21.008619
+                        ],
+                        [
+                            105.839255,
+                            21.008391
+                        ],
+                        [
+                            105.839558,
+                            21.00818
+                        ],
+                        [
+                            105.839911,
+                            21.007969
+                        ],
+                        [
+                            105.840227,
+                            21.007824
+                        ],
+                        [
+                            105.840298,
+                            21.007797
+                        ],
+                        [
+                            105.84059,
+                            21.007702
+                        ],
+                        [
+                            105.840705,
+                            21.007669
+                        ],
+                        [
+                            105.841039,
+                            21.0076
+                        ],
+                        [
+                            105.841096,
+                            21.007593
+                        ],
+                        [
+                            105.84121,
+                            21.007575
+                        ],
+                        [
+                            105.841301,
+                            21.00756
+                        ],
+                        [
+                            105.841482,
+                            21.007535
+                        ],
+                        [
+                            105.841469,
+                            21.007812
+                        ],
+                        [
+                            105.841453,
+                            21.00796
+                        ],
+                        [
+                            105.841418,
+                            21.008283
+                        ],
+                        [
+                            105.841423,
+                            21.008635
+                        ],
+                        [
+                            105.841336,
+                            21.008794
+                        ],
+                        [
+                            105.841334,
+                            21.009765
+                        ],
+                        [
+                            105.841327,
+                            21.01007
+                        ],
+                        [
+                            105.841326,
+                            21.010255
+                        ],
+                        [
+                            105.841345,
+                            21.010589
+                        ],
+                        [
+                            105.841348,
+                            21.010746
+                        ],
+                        [
+                            105.841351,
+                            21.011084
+                        ],
+                        [
+                            105.841379,
+                            21.013417
+                        ],
+                        [
+                            105.841388,
+                            21.014235
+                        ],
+                        [
+                            105.841394,
+                            21.014583
+                        ],
+                        [
+                            105.841402,
+                            21.015032
+                        ],
+                        [
+                            105.841472,
+                            21.01503
+                        ],
+                        [
+                            105.841519,
+                            21.015027
+                        ],
+                        [
+                            105.841934,
+                            21.015086
+                        ],
+                        [
+                            105.842564,
+                            21.015078
+                        ],
+                        [
+                            105.842594,
+                            21.015113
+                        ]
+                    ],
+                    [
+                        [
+                            105.842594,
+                            21.015113
+                        ],
+                        [
+                            105.842564,
+                            21.015078
+                        ],
+                        [
+                            105.841934,
+                            21.015086
+                        ],
+                        [
+                            105.841519,
+                            21.015027
+                        ],
+                        [
+                            105.841472,
+                            21.01503
+                        ],
+                        [
+                            105.841402,
+                            21.015032
+                        ],
+                        [
+                            105.841406,
+                            21.015274
+                        ],
+                        [
+                            105.841407,
+                            21.015315
+                        ],
+                        [
+                            105.841416,
+                            21.016097
+                        ],
+                        [
+                            105.841416,
+                            21.016219
+                        ],
+                        [
+                            105.841399,
+                            21.016709
+                        ],
+                        [
+                            105.841407,
+                            21.017307
+                        ],
+                        [
+                            105.84141,
+                            21.017464
+                        ],
+                        [
+                            105.841411,
+                            21.017627
+                        ],
+                        [
+                            105.841414,
+                            21.017829
+                        ],
+                        [
+                            105.841416,
+                            21.017982
+                        ],
+                        [
+                            105.841418,
+                            21.018106
+                        ],
+                        [
+                            105.841403,
+                            21.018223
+                        ],
+                        [
+                            105.84158,
+                            21.018214
+                        ],
+                        [
+                            105.842248,
+                            21.018199
+                        ],
+                        [
+                            105.843517,
+                            21.018154
+                        ],
+                        [
+                            105.843821,
+                            21.018143
+                        ],
+                        [
+                            105.843858,
+                            21.018285
+                        ],
+                        [
+                            105.844023,
+                            21.018876
+                        ],
+                        [
+                            105.844167,
+                            21.019356
+                        ],
+                        [
+                            105.844236,
+                            21.019588
+                        ],
+                        [
+                            105.844316,
+                            21.019819
+                        ],
+                        [
+                            105.844366,
+                            21.019962
+                        ],
+                        [
+                            105.844528,
+                            21.020425
+                        ],
+                        [
+                            105.844581,
+                            21.020584
+                        ],
+                        [
+                            105.844752,
+                            21.021068
+                        ],
+                        [
+                            105.844914,
+                            21.021536
+                        ],
+                        [
+                            105.84498,
+                            21.02173
+                        ],
+                        [
+                            105.845375,
+                            21.022861
+                        ],
+                        [
+                            105.845412,
+                            21.022974
+                        ],
+                        [
+                            105.845567,
+                            21.02293
+                        ],
+                        [
+                            105.845819,
+                            21.022858
+                        ],
+                        [
+                            105.846008,
+                            21.022804
+                        ],
+                        [
+                            105.846226,
+                            21.022741
+                        ],
+                        [
+                            105.846328,
+                            21.022712
+                        ],
+                        [
+                            105.846443,
+                            21.022678
+                        ],
+                        [
+                            105.846598,
+                            21.022632
+                        ],
+                        [
+                            105.846766,
+                            21.022582
+                        ],
+                        [
+                            105.846824,
+                            21.022565
+                        ],
+                        [
+                            105.846995,
+                            21.022514
+                        ],
+                        [
+                            105.84777,
+                            21.022287
+                        ],
+                        [
+                            105.848504,
+                            21.022073
+                        ],
+                        [
+                            105.848624,
+                            21.022039
+                        ],
+                        [
+                            105.848764,
+                            21.021999
+                        ],
+                        [
+                            105.849762,
+                            21.021722
+                        ],
+                        [
+                            105.84996,
+                            21.021663
+                        ],
+                        [
+                            105.85016,
+                            21.021602
+                        ],
+                        [
+                            105.85028,
+                            21.021561
+                        ],
+                        [
+                            105.850378,
+                            21.021526
+                        ],
+                        [
+                            105.851436,
+                            21.021216
+                        ],
+                        [
+                            105.851496,
+                            21.0212
+                        ],
+                        [
+                            105.852074,
+                            21.021028
+                        ],
+                        [
+                            105.852233,
+                            21.020983
+                        ],
+                        [
+                            105.85225,
+                            21.021051
+                        ],
+                        [
+                            105.852255,
+                            21.021073
+                        ],
+                        [
+                            105.852324,
+                            21.021383
+                        ],
+                        [
+                            105.85236,
+                            21.021549
+                        ],
+                        [
+                            105.852405,
+                            21.021757
+                        ],
+                        [
+                            105.852502,
+                            21.022206
+                        ],
+                        [
+                            105.852581,
+                            21.022581
+                        ],
+                        [
+                            105.852593,
+                            21.022715
+                        ],
+                        [
+                            105.852613,
+                            21.022805
+                        ],
+                        [
+                            105.852801,
+                            21.023655
+                        ],
+                        [
+                            105.852895,
+                            21.024085
+                        ],
+                        [
+                            105.852933,
+                            21.024251
+                        ],
+                        [
+                            105.852969,
+                            21.024401
+                        ],
+                        [
+                            105.853189,
+                            21.025329
+                        ],
+                        [
+                            105.853231,
+                            21.025479
+                        ],
+                        [
+                            105.853413,
+                            21.025404
+                        ],
+                        [
+                            105.854311,
+                            21.025144
+                        ],
+                        [
+                            105.854401,
+                            21.025119
+                        ],
+                        [
+                            105.855005,
+                            21.024953
+                        ],
+                        [
+                            105.855151,
+                            21.024916
+                        ],
+                        [
+                            105.85529,
+                            21.024881
+                        ],
+                        [
+                            105.855857,
+                            21.024722
+                        ],
+                        [
+                            105.855949,
+                            21.024696
+                        ],
+                        [
+                            105.856695,
+                            21.024482
+                        ],
+                        [
+                            105.856965,
+                            21.02444
+                        ],
+                        [
+                            105.856953,
+                            21.024412
+                        ],
+                        [
+                            105.856946,
+                            21.024377
+                        ],
+                        [
+                            105.856948,
+                            21.024338
+                        ],
+                        [
+                            105.85696,
+                            21.024301
+                        ],
+                        [
+                            105.856981,
+                            21.024268
+                        ],
+                        [
+                            105.85701,
+                            21.02424
+                        ],
+                        [
+                            105.857043,
+                            21.024221
+                        ],
+                        [
+                            105.857079,
+                            21.024209
+                        ],
+                        [
+                            105.857117,
+                            21.024205
+                        ],
+                        [
+                            105.857156,
+                            21.02421
+                        ],
+                        [
+                            105.857192,
+                            21.024222
+                        ],
+                        [
+                            105.857239,
+                            21.024253
+                        ],
+                        [
+                            105.857272,
+                            21.024298
+                        ],
+                        [
+                            105.857287,
+                            21.02435
+                        ],
+                        [
+                            105.857291,
+                            21.024389
+                        ],
+                        [
+                            105.857274,
+                            21.024442
+                        ],
+                        [
+                            105.857248,
+                            21.024478
+                        ],
+                        [
+                            105.857225,
+                            21.024497
+                        ],
+                        [
+                            105.857191,
+                            21.024514
+                        ],
+                        [
+                            105.85717,
+                            21.024518
+                        ],
+                        [
+                            105.857131,
+                            21.024526
+                        ],
+                        [
+                            105.857089,
+                            21.024523
+                        ],
+                        [
+                            105.857039,
+                            21.024508
+                        ],
+                        [
+                            105.856997,
+                            21.02448
+                        ],
+                        [
+                            105.856841,
+                            21.024718
+                        ],
+                        [
+                            105.856692,
+                            21.025167
+                        ],
+                        [
+                            105.856611,
+                            21.025419
+                        ],
+                        [
+                            105.856554,
+                            21.025428
+                        ],
+                        [
+                            105.85653,
+                            21.025449
+                        ],
+                        [
+                            105.856516,
+                            21.025476
+                        ]
+                    ],
+                    [
+                        [
+                            105.856516,
+                            21.025476
+                        ],
+                        [
+                            105.856506,
+                            21.025495
+                        ],
+                        [
+                            105.856495,
+                            21.025527
+                        ],
+                        [
+                            105.856495,
+                            21.025558
+                        ],
+                        [
+                            105.856494,
+                            21.025569
+                        ],
+                        [
+                            105.856508,
+                            21.025597
+                        ],
+                        [
+                            105.856522,
+                            21.025618
+                        ],
+                        [
+                            105.856542,
+                            21.025638
+                        ],
+                        [
+                            105.856486,
+                            21.025813
+                        ],
+                        [
+                            105.856462,
+                            21.025904
+                        ],
+                        [
+                            105.856366,
+                            21.025928
+                        ],
+                        [
+                            105.855699,
+                            21.02611
+                        ],
+                        [
+                            105.855551,
+                            21.026152
+                        ],
+                        [
+                            105.85552,
+                            21.026056
+                        ],
+                        [
+                            105.855338,
+                            21.02549
+                        ],
+                        [
+                            105.855312,
+                            21.025409
+                        ],
+                        [
+                            105.85528,
+                            21.025313
+                        ],
+                        [
+                            105.855192,
+                            21.025048
+                        ],
+                        [
+                            105.855151,
+                            21.024916
+                        ],
+                        [
+                            105.855005,
+                            21.024953
+                        ],
+                        [
+                            105.854401,
+                            21.025119
+                        ],
+                        [
+                            105.854311,
+                            21.025144
+                        ],
+                        [
+                            105.853413,
+                            21.025404
+                        ],
+                        [
+                            105.853231,
+                            21.025479
+                        ],
+                        [
+                            105.853042,
+                            21.025554
+                        ],
+                        [
+                            105.852309,
+                            21.025771
+                        ],
+                        [
+                            105.851875,
+                            21.0259
+                        ],
+                        [
+                            105.851667,
+                            21.02596
+                        ],
+                        [
+                            105.85147,
+                            21.026006
+                        ],
+                        [
+                            105.850662,
+                            21.026236
+                        ],
+                        [
+                            105.850573,
+                            21.026261
+                        ],
+                        [
+                            105.850203,
+                            21.026367
+                        ],
+                        [
+                            105.850099,
+                            21.026396
+                        ],
+                        [
+                            105.849967,
+                            21.026433
+                        ],
+                        [
+                            105.84942,
+                            21.026586
+                        ],
+                        [
+                            105.848671,
+                            21.026797
+                        ],
+                        [
+                            105.848385,
+                            21.026869
+                        ],
+                        [
+                            105.848053,
+                            21.026966
+                        ],
+                        [
+                            105.847959,
+                            21.026994
+                        ],
+                        [
+                            105.84779,
+                            21.027044
+                        ],
+                        [
+                            105.847807,
+                            21.027223
+                        ],
+                        [
+                            105.84781,
+                            21.027793
+                        ],
+                        [
+                            105.847807,
+                            21.027864
+                        ],
+                        [
+                            105.847791,
+                            21.02812
+                        ],
+                        [
+                            105.847787,
+                            21.028594
+                        ],
+                        [
+                            105.847796,
+                            21.029148
+                        ],
+                        [
+                            105.848278,
+                            21.02936
+                        ],
+                        [
+                            105.848354,
+                            21.029392
+                        ],
+                        [
+                            105.848621,
+                            21.029511
+                        ],
+                        [
+                            105.848734,
+                            21.029565
+                        ]
+                    ],
+                    [
+                        [
+                            105.848734,
+                            21.029565
+                        ],
+                        [
+                            105.848792,
+                            21.029592
+                        ],
+                        [
+                            105.849188,
+                            21.029763
+                        ],
+                        [
+                            105.848856,
+                            21.030568
+                        ],
+                        [
+                            105.848687,
+                            21.030981
+                        ],
+                        [
+                            105.848654,
+                            21.031059
+                        ],
+                        [
+                            105.848611,
+                            21.031156
+                        ],
+                        [
+                            105.848164,
+                            21.032142
+                        ],
+                        [
+                            105.8481,
+                            21.032306
+                        ],
+                        [
+                            105.848056,
+                            21.032422
+                        ],
+                        [
+                            105.848194,
+                            21.032404
+                        ],
+                        [
+                            105.848519,
+                            21.032372
+                        ],
+                        [
+                            105.84859,
+                            21.032238
+                        ],
+                        [
+                            105.848874,
+                            21.031777
+                        ],
+                        [
+                            105.849079,
+                            21.031422
+                        ],
+                        [
+                            105.849138,
+                            21.031316
+                        ],
+                        [
+                            105.849199,
+                            21.031221
+                        ],
+                        [
+                            105.849561,
+                            21.03073
+                        ]
+                    ],
+                    [
+                        [
+                            105.849561,
+                            21.03073
+                        ],
+                        [
+                            105.849729,
+                            21.030503
+                        ],
+                        [
+                            105.850135,
+                            21.029978
+                        ],
+                        [
+                            105.850197,
+                            21.029898
+                        ],
+                        [
+                            105.850273,
+                            21.029797
+                        ],
+                        [
+                            105.850302,
+                            21.029746
+                        ],
+                        [
+                            105.850406,
+                            21.029587
+                        ],
+                        [
+                            105.850593,
+                            21.029196
+                        ],
+                        [
+                            105.850644,
+                            21.029084
+                        ],
+                        [
+                            105.850682,
+                            21.029001
+                        ],
+                        [
+                            105.850703,
+                            21.028956
+                        ],
+                        [
+                            105.850725,
+                            21.028909
+                        ],
+                        [
+                            105.851014,
+                            21.028251
+                        ],
+                        [
+                            105.851117,
+                            21.02799
+                        ],
+                        [
+                            105.851174,
+                            21.027738
+                        ],
+                        [
+                            105.85144,
+                            21.026736
+                        ],
+                        [
+                            105.851598,
+                            21.026139
+                        ],
+                        [
+                            105.851667,
+                            21.02596
+                        ],
+                        [
+                            105.851875,
+                            21.0259
+                        ],
+                        [
+                            105.852309,
+                            21.025771
+                        ],
+                        [
+                            105.853042,
+                            21.025554
+                        ],
+                        [
+                            105.853231,
+                            21.025479
+                        ],
+                        [
+                            105.853413,
+                            21.025404
+                        ],
+                        [
+                            105.854311,
+                            21.025144
+                        ],
+                        [
+                            105.854401,
+                            21.025119
+                        ],
+                        [
+                            105.855005,
+                            21.024953
+                        ],
+                        [
+                            105.855151,
+                            21.024916
+                        ],
+                        [
+                            105.85529,
+                            21.024881
+                        ],
+                        [
+                            105.855857,
+                            21.024722
+                        ],
+                        [
+                            105.855949,
+                            21.024696
+                        ],
+                        [
+                            105.856695,
+                            21.024482
+                        ],
+                        [
+                            105.856965,
+                            21.02444
+                        ],
+                        [
+                            105.856953,
+                            21.024412
+                        ],
+                        [
+                            105.856946,
+                            21.024377
+                        ],
+                        [
+                            105.856948,
+                            21.024338
+                        ],
+                        [
+                            105.85696,
+                            21.024301
+                        ],
+                        [
+                            105.856981,
+                            21.024268
+                        ],
+                        [
+                            105.85701,
+                            21.02424
+                        ],
+                        [
+                            105.857043,
+                            21.024221
+                        ],
+                        [
+                            105.857079,
+                            21.024209
+                        ],
+                        [
+                            105.857117,
+                            21.024205
+                        ],
+                        [
+                            105.857156,
+                            21.02421
+                        ],
+                        [
+                            105.857192,
+                            21.024222
+                        ],
+                        [
+                            105.857239,
+                            21.024253
+                        ],
+                        [
+                            105.857272,
+                            21.024298
+                        ],
+                        [
+                            105.857287,
+                            21.02435
+                        ],
+                        [
+                            105.857291,
+                            21.024389
+                        ],
+                        [
+                            105.857274,
+                            21.024442
+                        ],
+                        [
+                            105.857248,
+                            21.024478
+                        ],
+                        [
+                            105.857225,
+                            21.024497
+                        ],
+                        [
+                            105.857191,
+                            21.024514
+                        ],
+                        [
+                            105.85717,
+                            21.024518
+                        ],
+                        [
+                            105.857131,
+                            21.024526
+                        ],
+                        [
+                            105.857089,
+                            21.024523
+                        ],
+                        [
+                            105.857039,
+                            21.024508
+                        ],
+                        [
+                            105.856997,
+                            21.02448
+                        ],
+                        [
+                            105.856841,
+                            21.024718
+                        ],
+                        [
+                            105.856692,
+                            21.025167
+                        ],
+                        [
+                            105.856611,
+                            21.025419
+                        ],
+                        [
+                            105.856554,
+                            21.025428
+                        ],
+                        [
+                            105.85653,
+                            21.025449
+                        ],
+                        [
+                            105.856516,
+                            21.025476
+                        ]
+                    ]
+                ]
+            }
+        }
+    ],
+    "properties": {
+        "mode": "drive",
+        "waypoints": [
+            {
+                "lat": 21.025412499999998,
+                "lon": 105.856375
+            },
+            {
+                "lat": 21.0180994,
+                "lon": 105.8154581
+            },
+            {
+                "lat": 21.0148948,
+                "lon": 105.8202706
+            },
+            {
+                "lat": 21.0142709,
+                "lon": 105.8439724
+            },
+            {
+                "lat": 21.025412499999998,
+                "lon": 105.856375
+            },
+            {
+                "lat": 21.029532099999997,
+                "lon": 105.8487519
+            },
+            {
+                "lat": 21.030751,
+                "lon": 105.8495942
+            },
+            {
+                "lat": 21.025412499999998,
+                "lon": 105.856375
+            }
+        ],
+        "units": "metric"
+    },
+    "type": "FeatureCollection"
+}
