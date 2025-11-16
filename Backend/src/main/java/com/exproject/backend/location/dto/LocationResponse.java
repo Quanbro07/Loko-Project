@@ -1,6 +1,7 @@
 package com.exproject.backend.location.dto;
 
 import com.exproject.backend.location.Location;
+import com.exproject.backend.province.info.Province;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,8 @@ public class LocationResponse {
     private Long id;
 
     private String ggPlaceId;
+
+    private Long provinceId;
 
     private String provinceName;
 
@@ -33,8 +36,11 @@ public class LocationResponse {
 
     // Constructor
     public LocationResponse(Location location) {
+        Province province = location.getProvince();
+
         this.id = location.getId();
-        this.provinceName = location.getProvince().getProvinceName();
+        this.provinceId = province.getId();
+        this.provinceName = province.getProvinceName();
         this.locationName = location.getLocationName();
         this.latitude = location.getLatitude();
         this.longitude = location.getLongitude();

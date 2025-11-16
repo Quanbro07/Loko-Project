@@ -74,4 +74,11 @@ public class Location {
 
     @Column(name = "update_at")
     private LocalDateTime updateAt;
+
+    public void addLocationImg(LocationImg locationImg) {
+        this.locationImgs.add(locationImg);
+
+        locationImg.setLocation(this);
+    }
+
 }
