@@ -20,21 +20,6 @@ public class LocationService {
 
     private final Integer FRESH_TIME = 30;
 
-    // Lấy tất cả Location từ province_Name
-    public List<LocationResponse> getLocations(String provinceName) {
-        List<Location> locationsList = locationRepository.findAllByProvince_ProvinceName(provinceName);
-
-        List<LocationResponse> locationResponseList = new ArrayList<>();
-
-        for (Location location : locationsList) {
-            LocationResponse locationResponse = new LocationResponse(location);
-
-            locationResponseList.add(locationResponse);
-        }
-
-        return locationResponseList;
-    }
-
     // Lấy Top Location dựa trên Province và thể loại
     @Cacheable(value = "top_locations", key = "#provinceId + '_' + #categoryId")
     public List<Location> getTopLocations(Long provinceId,Long categoryId) {

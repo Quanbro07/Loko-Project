@@ -37,14 +37,11 @@ public class TripSection {
     @Column(nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT")
-    private String description;
 
     // Constructor
     public TripSection(TripSectionRequest tripSectionRequest) {
         this.dayNumber = tripSectionRequest.getDayNumber();
         this.title = tripSectionRequest.getTitle();
-        this.description = tripSectionRequest.getDescription();
     }
 
     // Helper

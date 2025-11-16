@@ -1,5 +1,6 @@
 package com.exproject.backend.trip_detail.dto;
 
+import com.exproject.backend.location.dto.LocationResponse;
 import com.exproject.backend.trip_detail.TripDetail;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,12 +8,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class TripDetailResponse {
+    private Long id;
 
     private Long tripSectionId;
 
@@ -26,13 +29,8 @@ public class TripDetailResponse {
 
     private String transportNote;
 
+    private String description;
 
-    public TripDetailResponse(TripDetail newTripDetail) {
-        this.tripSectionId = newTripDetail.getTripSection().getId();
-        this.locationId = newTripDetail.getLocation().getId();
-        this.sequenceOrder = newTripDetail.getSequenceOrder();
-        this.startTime = newTripDetail.getStartTime();
-        this.endTime = newTripDetail.getEndTime();
-        this.transportNote = newTripDetail.getTransportNote();
-    }
+    private LocationResponse location;
+
 }

@@ -1,11 +1,15 @@
 package com.exproject.backend.location.dto;
 
 import com.exproject.backend.location.Location;
+import com.exproject.backend.location_category.dto.LocationCategoryResponse;
+import com.exproject.backend.location_img.dto.LocationImgResponse;
 import com.exproject.backend.province.info.Province;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -32,6 +36,10 @@ public class LocationResponse {
     private String avgVisitTime;
 
     private Double ticketPrice;
+
+    private List<LocationImgResponse> locationImgs;
+
+    private List<LocationCategoryResponse> locationCategories;
 
 
     // Constructor

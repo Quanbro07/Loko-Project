@@ -63,6 +63,12 @@ public class Trip {
     @Column(name = "create_at")
     private LocalDateTime createAt;
 
+    @Column(name = "current_trip_section_id")
+    private Long currentTripSectionId;
+    
+    @Column(name = "current_trip_detail_id")
+    private Long currentTripDetailId;
+
     // Constructor
     public Trip(TripRequest tripRequest, User user) {
         this.user = user;

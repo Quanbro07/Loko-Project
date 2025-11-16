@@ -1,5 +1,6 @@
 package com.exproject.backend.trip;
 
+import com.exproject.backend.trip.dto.ProgressUpdateDTO;
 import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip.dto.TripResponse;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +18,23 @@ public class TripController {
     private final TripService tripService;
 
     @PostMapping("/create")
-    public ResponseEntity<TripResponse> createTrip(@RequestBody TripRequest tripRequest) {
-        TripResponse tripResponse = tripService.createFullTrip(tripRequest);
+    public ResponseEntity<String> createTrip(@RequestBody TripRequest tripRequest) {
+        tripService.createFullTrip(tripRequest);
 
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(tripResponse);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Create Trip successful");
     }
 
+
+
+
+    // Gọi Hàm Update Progress
+    @PostMapping("/update-progress")
+    public ResponseEntity<Void> upodateTripProgress(
+            @RequestBody ProgressUpdateDTO progressUpdateDTO) {
+
+        tripService.updateTripProgress(progressUpdateDTO);
+
+        return ResponseEntity.noContent().build();
+    }
 }

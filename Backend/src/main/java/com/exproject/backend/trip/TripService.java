@@ -4,6 +4,7 @@ import com.exproject.backend.categorySyncStat.CategorySyncStatService;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location.LocationRepository;
 import com.exproject.backend.province.info.Province;
+import com.exproject.backend.trip.dto.ProgressUpdateDTO;
 import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip.dto.TripResponse;
 import com.exproject.backend.trip.info.Trip;
@@ -16,8 +17,10 @@ import com.exproject.backend.user.info.User;
 import com.exproject.backend.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -33,8 +36,10 @@ public class TripService {
 
     private final CategorySyncStatService categorySyncStatService;
 
+    private final TripMapper tripMapper;
+
     // * Tạo Full Trip
-    public TripResponse createFullTrip(TripRequest tripRequest) {
+    public void createFullTrip(TripRequest tripRequest) {
         User user = userRepository.findById(tripRequest.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -62,9 +67,6 @@ public class TripService {
 
         tripRepository.save(newTrip);
 
-        TripResponse tripResponse = new TripResponse(newTrip);
-
-        return tripResponse;
     }
 
     // Khi Trip đã hoàn thành
@@ -88,4 +90,37 @@ public class TripService {
 
         userRepository.save(user);
     }
+
+    public TripResponse getFullTrip(Long tripId) {
+        Trip tripEntity = tripRepository.findTripCoreById(tripId)
+                .orElseThrow(() -> new RuntimeException("Trip not found"));
+
+        List<Location> locationsToFetch = tripEntity.getTripSections().stream()
+                .flatMap(sections->sections.getTripDetails().stream())
+                .map(details -> details.getLocation())
+                .filter(Objects::nonNull)
+                .distinct()
+                .collect(Collectors.toList());
+
+        // Ko Empty
+        if(!locationsToFetch.isEmpty()) {
+            locationRepository.fetchLocationImages(locationsToFetch);
+            locationRepository.fetchLocationCategories(locationsToFetch);
+        }
+
+        return tripMapper.toTripResponse(tripEntity);
+    }
+
+    // Hàm Update Progress
+    @Transactional
+    public void updateTripProgress(ProgressUpdateDTO progressUpdateDTO) {
+        Trip trip = tripRepository.findById(progressUpdateDTO.getTripId())
+                .orElseThrow(() -> new RuntimeException("Trip not found"));
+
+        trip.setCurrentTripSectionId(progressUpdateDTO.getCurrentTripSectionId());
+
+        trip.setCurrentTripDetailId(progressUpdateDTO.getCurrentTripDetailId());
+    }
+
+    // Helper Function
 }

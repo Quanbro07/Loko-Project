@@ -49,4 +49,16 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
     """, nativeQuery = true)
     void insertIgnoreDuplicates(@Param("loc") Location location);
 
+    // Query 2: Lấy Imgs
+    @Query("SELECT DISTINCT loc FROM Location loc " +
+            "LEFT JOIN FETCH loc.locationImgs " +
+            "WHERE loc IN :locations")
+    void fetchLocationImages(@Param("locations") List<Location> locations);
+
+    // Query 3: Lấy Categories
+    @Query("SELECT DISTINCT loc FROM Location loc " +
+            "LEFT JOIN FETCH loc.locationCategories " +
+            "WHERE loc IN :locations")
+    void fetchLocationCategories(@Param("locations") List<Location> locations);
+
 }

@@ -25,4 +25,5 @@ public class TripDetailRequest {
 
     private String transportNote;
 
+    private String description;
 }

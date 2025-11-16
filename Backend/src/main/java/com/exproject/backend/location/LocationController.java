@@ -15,16 +15,5 @@ public class LocationController {
 
     private final LocationService locationService;
 
-    @GetMapping("/get-locations")
-    public ResponseEntity<List<LocationResponse>> getLocations(
-            @RequestParam String provinceName) {
-
-        List<LocationResponse> locationResponseList =
-                locationService.getLocations(provinceName);
-
-        return ResponseEntity.ok().body(locationResponseList);
-
-
-    }
 
 }
