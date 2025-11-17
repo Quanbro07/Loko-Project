@@ -3,10 +3,11 @@ import json, math, sys
 from config import *
 from utils import parse_operating_hours
 
-def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=None):
+# SỬA ĐỔI: Thêm `force_hotel_idx`
+def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=None, force_hotel_idx=None):
     """
     Load data, áp dụng penalty_overrides, 
-    chọn khách sạn tốt nhất (depot) dựa trên penalty đã cập nhật.
+    chọn khách sạn tốt nhất (depot) hoặc "khóa" khách sạn đã chọn.
     """
     print("Đang tải dữ liệu...")
     preferred_tags = preferred_tags or []
@@ -35,50 +36,54 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         print(f"⚠️ Dữ liệu không khớp: {len(locations)} điểm nhưng {len(matrix)} hàng ma trận.")
         sys.exit(1)
 
-    # --- Logic chọn Depot (Phần này đã đúng) ---
-    hotel_penalties = {}
-    for i, loc in enumerate(locations):
-        if "hotel" in loc.get("tags", []):
-            if i in penalty_overrides:
-                hotel_penalties[i] = penalty_overrides[i]
-            else:
-                hotel_penalties[i] = 10 
+    # --- SỬA ĐỔI: Logic chọn Depot (Khách sạn) ---
     
-    if not hotel_penalties:
-        print("⚠️ Không tìm thấy khách sạn nào.")
-        return None, None, None
+    hotel_index = None
+    
+    # 1. Nếu đã "khóa" khách sạn, sử dụng nó
+    if force_hotel_idx is not None:
+        if 0 <= force_hotel_idx < len(locations):
+            hotel_index = force_hotel_idx
+        else:
+            print(f"⚠️ Lỗi: force_hotel_idx ({force_hotel_idx}) không hợp lệ.")
+            
+    # 2. Nếu chưa "khóa" (lần chạy đầu tiên), tìm KS tốt nhất
+    if hotel_index is None:
+        hotel_penalties = {}
+        for i, loc in enumerate(locations):
+            tags = [t.lower() for t in loc.get("tags", [])]
+            if "hotel" in tags or "hotels" in tags:
+                if i in penalty_overrides:
+                    hotel_penalties[i] = penalty_overrides[i]
+                else:
+                    hotel_penalties[i] = 10 
+        
+        if not hotel_penalties:
+            print("⚠️ Không tìm thấy khách sạn nào.")
+            return None, None, None
 
-    hotel_index = min(hotel_penalties, key=hotel_penalties.get)
-    # --- Hết logic chọn Depot ---
+        hotel_index = min(hotel_penalties, key=hotel_penalties.get)
+    # --- KẾT THÚC SỬA ĐỔI ---
 
-    # --- SỬA LỖI LỚN: Lọc bỏ tất cả các khách sạn khác ---
-    # 1. Lấy index gốc của tất cả khách sạn
+    # --- Logic lọc bỏ các KS khác (Đã đúng) ---
     all_hotel_indices = {
         i for i, loc in enumerate(locations) 
-        if "hotel" in loc.get("tags", [])
+        if "hotel" in [t.lower() for t in loc.get("tags", [])] or 
+           "hotels" in [t.lower() for t in loc.get("tags", [])]
     }
-
-    # 2. reorder sẽ chỉ chứa depot (hotel_index) 
-    #    VÀ các địa điểm KHÔNG PHẢI là "hotel"
     reorder = [hotel_index] + [
         i for i in range(len(locations)) 
-        if i not in all_hotel_indices # <-- Lọc bỏ TẤT CẢ các khách sạn khác
+        if i not in all_hotel_indices
     ]
-    # --- KẾT THÚC SỬA LỖI ---
+    # ---
     
-    # locs (danh sách địa điểm mới) sẽ không còn chứa khách sạn nào khác
     locs = [locations[i] for i in reorder]
-    
-    # Tạo ma trận thời gian mới dựa trên các index đã lọc
     mat = [[matrix[i][j] for j in reorder] for i in reorder]
-    
-    # Map (index mới -> index gốc)
     node_map = {new_idx: original_idx for new_idx, original_idx in enumerate(reorder)}
 
     service_times, time_windows, penalties = [], [], []
     lunch_nodes, night_nodes = [], []
 
-    # --- SỬA LỖI: Đơn giản hóa logic gán penalty ---
     for i, loc in enumerate(locs): # i = index MỚI (0 đến N)
         original_idx = node_map[i] # Lấy index GỐC
         
@@ -89,24 +94,21 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         
         tw = parse_operating_hours(op, st) 
         
-        if i == 0: # Đây là Depot (khách sạn được chọn)
-            tw = [0, MAX_DAY_DURATION] # Depot luôn mở
-            base_penalty = 0 # Depot không có penalty
-        else:
-            # Đây là địa điểm (chắc chắn KHÔNG phải khách sạn khác)
+        if i == 0: # Depot
+            tw = [0, MAX_DAY_DURATION] 
+            base_penalty = 0
+        else: # Địa điểm
             if original_idx in penalty_overrides:
                 base_penalty = penalty_overrides[original_idx]
             else:
                 base_penalty = profile.get_penalty(tags, rating)
                 base_penalty = profile.adjust_by_preference(base_penalty, preferred_tags, tags)
                 base_penalty = int(base_penalty * profile.boost_priority(tags))
-        # --- KẾT THÚC SỬA LỖI ---
         
         service_times.append(st)
         time_windows.append(tw)
         penalties.append(base_penalty)
 
-        # Thu thập các node đặc biệt cho BẤT KỲ solver nào
         if "restaurant" in tags:
             lunch_nodes.append(i)
         
@@ -121,7 +123,7 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         "penalties": penalties,
         "lunch_nodes": lunch_nodes,
         "night_nodes": night_nodes,
-        "num_places": len(locs), # <-- Số lượng địa điểm đã giảm
+        "num_places": len(locs), 
         "depot": 0
     }
     print(f"✅ Instance ready: {len(locs)} địa điểm (đã lọc bỏ các KS khác), depot = '{locs[0].get('title', 'Khách sạn')}' (Gốc: {hotel_index})")

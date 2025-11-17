@@ -1,90 +1,268 @@
-[
-  {
-    "start": "08:00",
-    "end": "08:00",
-    "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-    "title": "Hotel de l'Opera Hanoi - MGallery",
-    "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên.",
-    "rating": 4.5,
-    "longitude": 105.8555913,
-    "latitude": 21.024400699999997,
-    "activity": "Nghỉ ngơi tại khách sạn sang trọng với kiến trúc độc đáo, hoặc xuất phát cho hành trình khám phá Hà Nội sôi động."
-  },
-  {
-    "start": "08:04",
-    "end": "11:04",
-    "place_id": "ChIJZ73nJpmrNTERHt_VdIgHDlg",
-    "title": "Văn Miếu – Quốc Tử Giám",
-    "description": "Ngôi đền lớn giữa khung cảnh thôn quê. Ngôi đền Nho giáo có khoảng sân tươi đẹp, bàn thờ và đền thờ lớn, và cổng chính đồ sộ.",
-    "rating": 4.6,
-    "longitude": 105.8356692,
-    "latitude": 21.0281175,
-    "activity": "Tham quan Văn Miếu – Quốc Tử Giám, tìm hiểu lịch sử giáo dục và văn hóa Việt Nam qua các triều đại, chiêm ngưỡng kiến trúc truyền thống và chụp ảnh lưu niệm."
-  },
-  {
-    "start": "11:08",
-    "end": "14:38",
-    "place_id": "ChIJq9fW4FKrNTERAKbm4chgEs8",
-    "title": "Genesis Escape",
-    "description": null,
-    "rating": 4.9,
-    "longitude": 105.8202706,
-    "latitude": 21.0148948,
-    "activity": "Thử thách trí tuệ và kỹ năng làm việc nhóm tại Genesis Escape, trải nghiệm các trò chơi giải đố kịch tính và hấp dẫn với cốt truyện độc đáo."
-  },
-  {
-    "start": "14:40",
-    "end": "18:10",
-    "place_id": "ChIJxy3jWWSrNTERaa4h1H26Qis",
-    "title": "Công viên Indira Gandhi",
-    "description": "Công viên có đường chạy bộ và vườn tạo hình. Công viên đô thị có tượng bán thân của Indira Gandhi, những con đường chạy bộ ven hồ và vườn hoa tạo hình.",
-    "rating": 4.2,
-    "longitude": 105.8154581,
-    "latitude": 21.0180994,
-    "activity": "Tản bộ thư giãn, tập thể dục hoặc tận hưởng không khí trong lành tại Công viên Indira Gandhi, một không gian xanh yên bình lý tưởng để nghỉ ngơi giữa lòng thành phố."
-  },
-  {
-    "start": "18:17",
-    "end": "19:17",
-    "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-    "title": "(Nghỉ ngơi tại) Hotel de l'Opera Hanoi - MGallery",
-    "description": "Nghỉ ngơi 60 phút",
-    "rating": 4.5,
-    "longitude": 105.8555913,
-    "latitude": 21.024400699999997,
-    "activity": "Nghỉ ngơi và thư giãn tại khách sạn Hotel de l'Opera Hanoi - MGallery, tận hưởng tiện nghi sang trọng để lấy lại năng lượng."
-  },
-  {
-    "start": "19:19",
-    "end": "21:19",
-    "place_id": "ChIJvYgNzb2rNTERtAKcAGpD86s",
-    "title": "T.U.N.G Dining",
-    "description": null,
-    "rating": 4.7,
-    "longitude": 105.8500153,
-    "latitude": 21.0269004,
-    "activity": "Trải nghiệm ẩm thực sáng tạo và độc đáo tại T.U.N.G Dining, thưởng thức các món ăn được chế biến tinh tế theo phong cách fine dining hiện đại."
-  },
-  {
-    "start": "21:20",
-    "end": "22:20",
-    "place_id": "ChIJTzli5ASrNTERA2ZZQBxvxRA",
-    "title": "Au Lac Family Restaurant",
-    "description": null,
-    "rating": 4.9,
-    "longitude": 105.8487519,
-    "latitude": 21.029532099999997,
-    "activity": "Thưởng thức các món ăn Việt Nam truyền thống trong không gian ấm cúng, thân thiện tại Au Lac Family Restaurant, phù hợp cho bữa ăn gia đình."
-  },
-  {
-    "start": "22:20",
-    "end": "22:20",
-    "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-    "title": "Quay về Hotel de l'Opera Hanoi - MGallery",
-    "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên.",
-    "rating": 4.5,
-    "longitude": 105.8555913,
-    "latitude": 21.024400699999997,
-    "activity": "Quay về Hotel de l'Opera Hanoi - MGallery để nghỉ ngơi, thư giãn sau một ngày dài khám phá và chuẩn bị cho những hoạt động tiếp theo."
-  }
-]
+{
+    "Day 1": [
+        {
+            "start": "09:00",
+            "end": "09:00",
+            "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+            "title": "Sofitel Legend Metropole Hanoi",
+            "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
+            "rating": 4.7,
+            "longitude": 105.856375,
+            "latitude": 21.025412499999998
+        },
+        {
+            "start": "09:07",
+            "end": "12:37",
+            "place_id": "ChIJxy3jWWSrNTERaa4h1H26Qis",
+            "title": "Công viên Indira Gandhi",
+            "description": "Công viên có đường chạy bộ và vườn tạo hình. Công viên đô thị có tượng bán thân của Indira Gandhi, những con đường chạy bộ ven hồ và vườn hoa tạo hình.",
+            "rating": 4.2,
+            "longitude": 105.8154581,
+            "latitude": 21.0180994
+        },
+        {
+            "start": "13:39",
+            "end": "17:09",
+            "place_id": "ChIJq9fW4FKrNTERAKbm4chgEs8",
+            "title": "Genesis Escape",
+            "description": null,
+            "rating": 4.9,
+            "longitude": 105.8202706,
+            "latitude": 21.0148948
+        },
+        {
+            "start": "18:16",
+            "end": "20:16",
+            "place_id": "ChIJTzli5ASrNTERA2ZZQBxvxRA",
+            "title": "Au Lac Family Restaurant",
+            "description": null,
+            "rating": 4.9,
+            "longitude": 105.8487519,
+            "latitude": 21.029532099999997
+        },
+        {
+            "start": "20:20",
+            "end": "21:20",
+            "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+            "title": "(Nghỉ ngơi tại) Sofitel Legend Metropole Hanoi",
+            "description": "Nghỉ ngơi 60 phút",
+            "rating": 4.7,
+            "longitude": 105.856375,
+            "latitude": 21.025412499999998
+        },
+        {
+            "start": "21:23",
+            "end": "23:23",
+            "place_id": "ChIJ4ySxJnKrNTERMwH1iZONipc",
+            "title": "Tung's Kitchen Vietnamese Cuisine & Vegetarian Food",
+            "description": null,
+            "rating": 4.9,
+            "longitude": 105.84897219999999,
+            "latitude": 21.0313361
+        },
+        {
+            "start": "23:27",
+            "end": "02:57",
+            "place_id": "ChIJfyTf5o6rNTER6dKWJmY9GOY",
+            "title": "Công viên Thống Nhất",
+            "description": "Nơi tập thể dục và công viên xanh mát, nhộn nhịp. Công viên thành phố thoáng mát, nhộn nhịp, rợp bóng cây cao, có hồ nước lớn, lối đi tập thể dục và quán cà phê.",
+            "rating": 4.3,
+            "longitude": 105.8439724,
+            "latitude": 21.0142709
+        },
+        {
+            "start": "03:03",
+            "end": "03:03",
+            "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+            "title": "Quay về Sofitel Legend Metropole Hanoi",
+            "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
+            "rating": 4.7,
+            "longitude": 105.856375,
+            "latitude": 21.025412499999998
+        }
+    ],
+    "Day 2": [
+        {
+            "start": "09:00",
+            "end": "09:00",
+            "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+            "title": "Sofitel Legend Metropole Hanoi",
+            "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
+            "rating": 4.7,
+            "longitude": 105.856375,
+            "latitude": 21.025412499999998
+        },
+        {
+            "start": "09:02",
+            "end": "12:02",
+            "place_id": "ChIJF-yM0qarNTERlTO4a0cZWtk",
+            "title": "Nhà hát Hồ Gươm",
+            "description": null,
+            "rating": 4.7,
+            "longitude": 105.85217279999999,
+            "latitude": 21.022074
+        },
+        {
+            "start": "12:17",
+            "end": "15:17",
+            "place_id": "ChIJZ73nJpmrNTERHt_VdIgHDlg",
+            "title": "Văn Miếu – Quốc Tử Giám",
+            "description": "Ngôi đền lớn giữa khung cảnh thôn quê. Ngôi đền Nho giáo có khoảng sân tươi đẹp, bàn thờ và đền thờ lớn, và cổng chính đồ sộ.",
+            "rating": 4.6,
+            "longitude": 105.8356692,
+            "latitude": 21.0281175
+        },
+        {
+            "start": "15:22",
+            "end": "18:52",
+            "place_id": "ChIJq6q6uROrNTERgDjYXsVAKgY",
+            "title": "Miss Terry - Escape Rooms",
+            "description": null,
+            "rating": 4.9,
+            "longitude": 105.813481,
+            "latitude": 21.038270999999998
+        },
+        {
+            "start": "19:00",
+            "end": "20:00",
+            "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+            "title": "(Nghỉ ngơi tại) Sofitel Legend Metropole Hanoi",
+            "description": "Nghỉ ngơi 60 phút",
+            "rating": 4.7,
+            "longitude": 105.856375,
+            "latitude": 21.025412499999998
+        },
+        {
+            "start": "20:03",
+            "end": "22:03",
+            "place_id": "ChIJo30SQy-rNTER4esp9YxAGpc",
+            "title": "MẸT Vietnamese restaurant & Vegetarian Food 5",
+            "description": null,
+            "rating": 4.9,
+            "longitude": 105.8491895,
+            "latitude": 21.031441599999997
+        },
+        {
+            "start": "22:04",
+            "end": "00:04",
+            "place_id": "ChIJXROtYr6rNTERRKeVXUeNGUY",
+            "title": "Hong Hoai's Restaurant",
+            "description": null,
+            "rating": 4.9,
+            "longitude": 105.8474725,
+            "latitude": 21.0338439
+        },
+        {
+            "start": "00:07",
+            "end": "03:20",
+            "place_id": "ChIJPyN37ayrNTERZ-VRxrioTt0",
+            "title": "Thiết bị sân chơi trẻ em - Hasake Co. Ltd.",
+            "description": null,
+            "rating": 4.7,
+            "longitude": 105.8394055,
+            "latitude": 21.0288285
+        },
+        {
+            "start": "03:20",
+            "end": "03:20",
+            "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+            "title": "Quay về Sofitel Legend Metropole Hanoi",
+            "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
+            "rating": 4.7,
+            "longitude": 105.856375,
+            "latitude": 21.025412499999998
+        }
+    ],
+    "Day 3": [
+        {
+            "start": "09:00",
+            "end": "09:00",
+            "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+            "title": "Sofitel Legend Metropole Hanoi",
+            "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
+            "rating": 4.7,
+            "longitude": 105.856375,
+            "latitude": 21.025412499999998
+        },
+        {
+            "start": "09:02",
+            "end": "12:02",
+            "place_id": "ChIJEQB--OurNTERK41Q2gDyemQ",
+            "title": "Nhà hát Lớn Hà Nội",
+            "description": "Nhà hát lớn biểu diễn nhạc cổ điển xây năm 1911. Nhà hát lộng lẫy này khánh thành từ năm 1911 và là nơi tổ chức biểu diễn nghệ thuật, trình diễn nhạc cổ điển, khiêu vũ và opera.",
+            "rating": 4.6,
+            "longitude": 105.85762539999999,
+            "latitude": 21.0242438
+        },
+        {
+            "start": "12:19",
+            "end": "15:49",
+            "place_id": "ChIJMRBjaTqrNTERQVQ-xzYNEPM",
+            "title": "Tàu lượn siêu tốc vườn thú Hà Nội",
+            "description": null,
+            "rating": 4.5,
+            "longitude": 105.8043429,
+            "latitude": 21.0297
+        },
+        {
+            "start": "15:51",
+            "end": "18:51",
+            "place_id": "ChIJIbhTQzmrNTERHBoID7tQyUc",
+            "title": "Bảo tàng Dân tộc học Việt Nam",
+            "description": "Bảo tàng trưng bày các hiện vật văn hóa. Bảo tàng dân tộc học trưng bày về các nền văn hóa đa dạng của Việt Nam với vườn cây và nhà hàng.",
+            "rating": 4.6,
+            "longitude": 105.7987354,
+            "latitude": 21.040342199999998
+        },
+        {
+            "start": "19:00",
+            "end": "20:00",
+            "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+            "title": "(Nghỉ ngơi tại) Sofitel Legend Metropole Hanoi",
+            "description": "Nghỉ ngơi 60 phút",
+            "rating": 4.7,
+            "longitude": 105.856375,
+            "latitude": 21.025412499999998
+        },
+        {
+            "start": "20:03",
+            "end": "22:03",
+            "place_id": "ChIJS_M4qgCrNTERGc0FxMJCqC4",
+            "title": "Era Vietnamese Restaurant",
+            "description": null,
+            "rating": 4.9,
+            "longitude": 105.85331989999999,
+            "latitude": 21.0353258
+        },
+        {
+            "start": "22:04",
+            "end": "00:04",
+            "place_id": "ChIJBc_8ksCrNTER7xjIdzUga9w",
+            "title": "Hanoi Food Culture",
+            "description": null,
+            "rating": 4.9,
+            "longitude": 105.8538401,
+            "latitude": 21.0340925
+        },
+        {
+            "start": "00:20",
+            "end": "03:20",
+            "place_id": "ChIJy4EsFKqlNTERIswjQ6lX6IQ",
+            "title": "VinWonders Water Park",
+            "description": null,
+            "rating": 4.8,
+            "longitude": 105.97710079999999,
+            "latitude": 20.956486299999998
+        },
+        {
+            "start": "03:20",
+            "end": "03:20",
+            "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+            "title": "Quay về Sofitel Legend Metropole Hanoi",
+            "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
+            "rating": 4.7,
+            "longitude": 105.856375,
+            "latitude": 21.025412499999998
+        }
+    ]
+}

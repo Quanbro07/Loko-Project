@@ -10,45 +10,34 @@ class AmusementSolver(BaseSolver):
     Solver cho du lịch Giải trí (Amusement).
     """
     def __init__(self, instance, profile):
-        # --- SỬA LỖI TẠI ĐÂY ---
-        # Xóa logic "if night_nodes" cũ.
-        # Luôn sử dụng thời lượng tối đa đã được tính toán trong config.py
-        # (config.py đã xử lý việc nhập 3:00 sáng hôm sau)
         instance["max_duration"] = MAX_DAY_DURATION
-        # --- KẾT THÚC SỬA LỖI ---
-        
         super().__init__(instance, profile)
 
     def _add_profile_specific_constraints(self):
         """
-        Triển khai hàm abstract:
-        1. Gọi logic ăn uống TỪ LỚP CHA.
-        2. Thêm logic riêng của Amusement (Nightlife).
+        Kế thừa logic ăn uống chung và thêm logic nightlife.
         """
-        # 1. Gọi logic ăn trưa/tối chung từ BaseSolver
         super()._add_profile_specific_constraints()
 
-        # 2. Thêm ràng buộc riêng của Amusement
         print("... Thêm ràng buộc Giải trí (Nightlife)...")
-        night_start_min = (21 * 60) - DAY_START_TIME # Bắt đầu từ 21:00
+        night_start_min = (21 * 60) - DAY_START_TIME 
         for node in self.instance["night_nodes"]:
             tags = self.instance["locations_data"][node].get("tags", [])
             if "nightlife" in tags or "bar" in tags:
                 idx = self.manager.NodeToIndex(node)
                 self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_min, 300)
 
-    # --- CÁC HÀM CÒN LẠI GIỮ NGUYÊN ---
-    # (run_single_itinerary, _reset_solver, format_solution)
-    
+    # --- SỬA ĐỔI: Xóa logic ghi file, trả về schedule_data ---
     def run_single_itinerary(self, attempt_num, time_limit_seconds=30):
         """
-        Hàm này chỉ chạy MỘT lần, lưu file, hỏi y/n, và trả kết quả.
+        Hàm này chạy MỘT lần, hỏi y/n, và trả kết quả về cho main.py
         """
         solution = self.solve(time_limit_seconds) 
         
         if not solution:
             print("❌ Không thể tìm được lịch trình hợp lệ.")
-            return "n", [] 
+            # Trả về "no", danh sách rỗng, và data rỗng
+            return "n", [], []
 
         print("\n🗓️  Lịch trình được tạo:")
         print("=" * 70)
@@ -57,20 +46,16 @@ class AmusementSolver(BaseSolver):
         
         print("=" * 70)
         
-        print(f"🔄 Đang lưu lịch trình (lần {attempt_num}) vào schedule.json...")
-        try:
-            with open("schedule.json", "w", encoding="utf-8") as f:
-                json.dump(schedule_data, f, ensure_ascii=False, indent=4)
-            print("✅ Đã lưu file schedule.json.")
-        except Exception as e:
-            print(f"❌ Lỗi khi lưu file JSON: {e}")
+        # --- ĐÃ XÓA LOGIC GHI FILE JSON ---
 
         feedback = input("\nBạn có hài lòng với lịch trình này không? (y/n): ").strip().lower()
         
         if feedback != "y":
             feedback = "n"
             
-        return feedback, visited_nodes
+        # Trả về 3 giá trị
+        return feedback, visited_nodes, schedule_data
+    # --- KẾT THÚC SỬA ĐỔI ---
 
     def _reset_solver(self):
         self.manager = pywrapcp.RoutingIndexManager(self.num_places, 1, self.depot)
@@ -82,7 +67,6 @@ class AmusementSolver(BaseSolver):
     def format_solution(self, solution):
         """
         In ra lịch trình chi tiết VÀ trả về dữ liệu (list) để lưu JSON.
-        Logic energy tiêu hao cao hơn.
         """
         visited_nodes = []
         schedule_data = [] 
@@ -132,6 +116,7 @@ class AmusementSolver(BaseSolver):
             })
 
             if node != self.depot:
+                # Logic Energy (Amusement)
                 if "hotel" in tags: 
                     energy_loss = -50
                 elif any(t in ["zoo", "amusement/water park"] for t in tags): 
@@ -177,19 +162,20 @@ class AmusementSolver(BaseSolver):
                             total_added_rest_time += extra_time_needed
 
                             current_leave_actual = end_time_actual
-                            rest_start_1_str = minutes_to_str(current_leave_actual)
                             arrive_at_hotel_time = current_leave_actual + travel_to_depot
-                            rest_end_1_str = minutes_to_str(arrive_at_hotel_time)
-                            rest_start_2_str = rest_end_1_str
+                            rest_start_str = minutes_to_str(arrive_at_hotel_time)
                             leave_hotel_time = arrive_at_hotel_time + rest_duration
-                            rest_end_2_str = minutes_to_str(leave_hotel_time)
+                            rest_end_str = minutes_to_str(leave_hotel_time)
+
+                            rest_start_1_str = minutes_to_str(current_leave_actual)
+                            rest_end_1_str = minutes_to_str(arrive_at_hotel_time)
 
                             print(f"- [{rest_start_1_str} → {rest_end_1_str}] (Di chuyển về) {hotel_title} (Dừng: 0p)")
-                            print(f"- [{rest_start_2_str} → {rest_end_2_str}] (Nghỉ ngơi tại) {hotel_title} (Dừng: {rest_duration}p)")
+                            print(f"- [{rest_start_str} → {rest_end_str}] (Nghỉ ngơi tại) {hotel_title} (Dừng: {rest_duration}p)")
                             print(f"    💤 Năng lượng đã hồi phục!")
 
                             schedule_data.append({
-                                "start": rest_start_2_str, "end": rest_end_2_str,
+                                "start": rest_start_str, "end": rest_end_str,
                                 "place_id": depot_place.get("place_id"), "title": f"(Nghỉ ngơi tại) {hotel_title}",
                                 "description": f"Nghỉ ngơi {rest_duration} phút", "rating": depot_place.get("rating"),
                                 "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
