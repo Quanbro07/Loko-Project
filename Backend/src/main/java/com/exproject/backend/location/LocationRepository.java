@@ -53,12 +53,12 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
     @Query("SELECT DISTINCT loc FROM Location loc " +
             "LEFT JOIN FETCH loc.locationImgs " +
             "WHERE loc IN :locations")
-    void fetchLocationImages(@Param("locations") List<Location> locations);
+    List<Location> fetchLocationImages(@Param("locations") List<Location> locations);
 
     // Query 3: Lấy Categories
     @Query("SELECT DISTINCT loc FROM Location loc " +
             "LEFT JOIN FETCH loc.locationCategories " +
             "WHERE loc IN :locations")
-    void fetchLocationCategories(@Param("locations") List<Location> locations);
+    List<Location> fetchLocationCategories(@Param("locations") List<Location> locations);
 
 }

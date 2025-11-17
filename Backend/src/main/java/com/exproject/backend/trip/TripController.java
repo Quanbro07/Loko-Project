@@ -25,8 +25,21 @@ public class TripController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Create Trip successful");
     }
 
+    // Get Trip cùng với Trip Section, Trip Detail, Location, Location Img, Location Categories
+    @GetMapping("/get")
+    public ResponseEntity<TripResponse> getTrip(@RequestParam Long tripId) {
 
+        TripResponse response = tripService.getFullTrip(tripId);
 
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @PostMapping("/complete")
+    public ResponseEntity<Void> completeTrip(@RequestParam Long tripId) {
+        tripService.completeTrip(tripId);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
     // Gọi Hàm Update Progress
     @PostMapping("/update-progress")

@@ -88,7 +88,7 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<ReviewLocation> reviews = new ArrayList<>();
+    private List<ReviewLocation> reviewLocations = new ArrayList<>();
 
     @Override
     public String getUsername() {
@@ -140,5 +140,11 @@ public class User implements UserDetails {
     public void addVisitedProvince(Province province) {
         this.visitedProvinces.add(province);
         province.getVisitedUsers().add(this);
+    }
+
+    public void addReviewLocation(ReviewLocation reviewLocation) {
+        this.reviewLocations.add(reviewLocation);
+
+        reviewLocation.setUser(this);
     }
 }

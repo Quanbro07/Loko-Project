@@ -13,8 +13,6 @@ import java.time.LocalTime;
 @Builder
 public class TripDetailRequest {
 
-    private Long tripSectionId;
-
     private Long locationId;
 
     private Integer sequenceOrder;

@@ -94,7 +94,7 @@ public class AIAPIService {
                     .updateAt(LocalDateTime.now()) // Set thời gian cập nhật
                     .province(province) // <-- Gán object Province đã tra cứu
                     .locationCategories(new ArrayList<>(categories)) // <-- Gán List object Category đã tra cứu
-                    .reviews(new ArrayList<>()) // Khởi tạo rỗng
+                     //reviews Khởi tạo rỗng
                     .locationImgs(new ArrayList<>()) // ** Quan trọng chưa Set img
                     .build();
 

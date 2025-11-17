@@ -35,7 +35,7 @@ public class Location {
     private Province province;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ReviewLocation> reviews = new ArrayList<>();
+    private List<ReviewLocation> reviewLocations = new ArrayList<>();
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LocationImg> locationImgs = new ArrayList<>();
@@ -81,4 +81,9 @@ public class Location {
         locationImg.setLocation(this);
     }
 
+    public void addReviewLocation(ReviewLocation reviewLocation) {
+        this.reviewLocations.add(reviewLocation);
+
+        reviewLocation.setLocation(this);
+    }
 }
