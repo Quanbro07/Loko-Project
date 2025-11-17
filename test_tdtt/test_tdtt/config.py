@@ -7,6 +7,7 @@ TIME_MATRIX_FILE = 'time_matrix.txt'
 END_TIME_FLEX_MINS = 20  # Biên độ linh hoạt cố định 20 phút
 _SETUP_DONE = False
 
+# Khởi tạo biến
 _DAY_START_TIME = None
 _DAY_END_TIME_BASE = None
 
@@ -17,18 +18,18 @@ DAY_END_TIME = None
 MAX_DAY_DURATION = None  
 LUNCH_START_MINS = None
 LUNCH_END_MINS = None
-DINNER_START_MINS = None # <-- THÊM MỚI
-DINNER_END_MINS = None   # <-- THÊM MỚI
+DINNER_START_MINS = None # <-- BIẾN CÒN THIẾU
+DINNER_END_MINS = None   # <-- BIẾN CÒN THIẾU
 
-# --- SỬA LỖI: Giảm hình phạt ăn sai giờ ---
-# Điều này làm cho việc "ăn sai giờ" (phạt 150)
-# luôn RẺ HƠN việc "bỏ bữa" (phạt ~375)
+# Giảm hình phạt ăn sai giờ (để ưu tiên ăn hơn là bỏ bữa)
 LUNCH_PENALTY = 150 
-# --- KẾT THÚC SỬA LỖI ---
 # ---
 
 def _time_str_to_minutes(time_str):
-    """Chuyển chuỗi giờ 'HH:MM' hoặc 'HH' thành phút trong ngày."""
+    """
+    Chuyển chuỗi giờ 'HH:MM' hoặc 'HH' thành phút trong ngày.
+    Chấp nhận '24' hoặc '0' (cho 00:00).
+    """
     if not time_str or not time_str.strip():
         return None
     try:
@@ -102,6 +103,7 @@ def _setup_day_time():
             if _DAY_END_TIME_BASE == 0:
                 _DAY_END_TIME_BASE = 1440
                 print("ℹ️  Đã hiểu là 24:00 (00:00 hôm sau).")
+            # Xử lý logic qua ngày hôm sau (ví dụ: 8:00 -> 3:00)
             elif _DAY_END_TIME_BASE <= _DAY_START_TIME:
                 print(f"ℹ️  Đã hiểu là {end_input} sáng hôm sau.")
                 _DAY_END_TIME_BASE += 1440
@@ -115,23 +117,21 @@ def _setup_day_time():
 
 def _calculate_derived_values():
     """Tính toán các giá trị phụ thuộc (được gọi sau khi _setup_day_time)."""
+    # Khai báo các biến global MÀ HÀM NÀY SẼ GÁN GIÁ TRỊ
     global DAY_START_TIME, DAY_END_TIME_BASE, DAY_END_TIME, MAX_DAY_DURATION, LUNCH_START_MINS, LUNCH_END_MINS, DINNER_START_MINS, DINNER_END_MINS
+    
+    # (Đã xóa khối 'if' block gây lỗi UnboundLocalError)
 
     DAY_START_TIME = _DAY_START_TIME
     DAY_END_TIME_BASE = _DAY_END_TIME_BASE
     DAY_END_TIME = DAY_END_TIME_BASE + END_TIME_FLEX_MINS
     MAX_DAY_DURATION = DAY_END_TIME - DAY_START_TIME
     
-    # --- SỬA LỖI: Mở rộng khung giờ ăn ---
-    # (Khung giờ "bắt đầu" ăn)
-    # Ăn trưa: 11:00 - 14:00 (3 tiếng, thay vì 2)
+    # Mở rộng khung giờ ăn (11:00-14:00 và 18:00-21:00)
     LUNCH_START_MINS = (11 * 60 + 0) - DAY_START_TIME
     LUNCH_END_MINS = (14 * 60 + 0) - DAY_START_TIME
-
-    # Ăn tối: 18:00 - 21:00 (3 tiếng, thay vì 2)
     DINNER_START_MINS = (18 * 60 + 0) - DAY_START_TIME
     DINNER_END_MINS = (21 * 60 + 0) - DAY_START_TIME
-    # --- KẾT THÚC SỬA LỖI ---
 
 # Tự động gọi setup khi import (chỉ chạy 1 lần)
 _setup_day_time()
