@@ -1,0 +1,82 @@
+[
+    {
+        "start": "06:00",
+        "end": "06:00",
+        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+        "title": "Sofitel Legend Metropole Hanoi",
+        "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
+        "rating": 4.7,
+        "longitude": 105.856375,
+        "latitude": 21.025412499999998
+    },
+    {
+        "start": "06:07",
+        "end": "09:37",
+        "place_id": "ChIJxy3jWWSrNTERaa4h1H26Qis",
+        "title": "Công viên Indira Gandhi",
+        "description": "Công viên có đường chạy bộ và vườn tạo hình. Công viên đô thị có tượng bán thân của Indira Gandhi, những con đường chạy bộ ven hồ và vườn hoa tạo hình.",
+        "rating": 4.2,
+        "longitude": 105.8154581,
+        "latitude": 21.0180994
+    },
+    {
+        "start": "09:39",
+        "end": "13:09",
+        "place_id": "ChIJq9fW4FKrNTERAKbm4chgEs8",
+        "title": "Genesis Escape",
+        "description": null,
+        "rating": 4.9,
+        "longitude": 105.8202706,
+        "latitude": 21.0148948
+    },
+    {
+        "start": "13:25",
+        "end": "16:55",
+        "place_id": "ChIJfyTf5o6rNTER6dKWJmY9GOY",
+        "title": "Công viên Thống Nhất",
+        "description": "Nơi tập thể dục và công viên xanh mát, nhộn nhịp. Công viên thành phố thoáng mát, nhộn nhịp, rợp bóng cây cao, có hồ nước lớn, lối đi tập thể dục và quán cà phê.",
+        "rating": 4.3,
+        "longitude": 105.8439724,
+        "latitude": 21.0142709
+    },
+    {
+        "start": "17:01",
+        "end": "18:01",
+        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+        "title": "(Nghỉ ngơi tại) Sofitel Legend Metropole Hanoi",
+        "description": "Nghỉ ngơi 60 phút",
+        "rating": 4.7,
+        "longitude": 105.856375,
+        "latitude": 21.025412499999998
+    },
+    {
+        "start": "18:04",
+        "end": "20:04",
+        "place_id": "ChIJTzli5ASrNTERA2ZZQBxvxRA",
+        "title": "Au Lac Family Restaurant",
+        "description": null,
+        "rating": 4.9,
+        "longitude": 105.8487519,
+        "latitude": 21.029532099999997
+    },
+    {
+        "start": "21:04",
+        "end": "23:04",
+        "place_id": "ChIJhTP76EmrNTEROXzNX7wJjOw",
+        "title": "MẸT Vietnamese restaurant & Vegetarian Food 1",
+        "description": null,
+        "rating": 4.9,
+        "longitude": 105.8495942,
+        "latitude": 21.030751
+    },
+    {
+        "start": "23:07",
+        "end": "23:07",
+        "place_id": "ChIJTbX4mOurNTERJV-mNCKY1pA",
+        "title": "Quay về Sofitel Legend Metropole Hanoi",
+        "description": "KS sang trọng có spa, nhà hàng trang nhã. Khách sạn cao cấp có kiến trúc tân cổ, phòng ốc thanh lịch, khu spa, bể bơi ngoài trời và nhà hàng sang trọng.",
+        "rating": 4.7,
+        "longitude": 105.856375,
+        "latitude": 21.025412499999998
+    }
+]

@@ -1,0 +1,12 @@
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+    margin: 0 !important; 
+    /* Có thể cần đặt lại padding nếu bị mất */
+    padding: 10px 15px; 
+}
+
+/* Căn giữa văn bản trong Popup (class bạn đã thêm vào) */
+.location-name-content {
+    text-align: center;
+    white-space: nowrap; 
+    font-weight: bold;
+}

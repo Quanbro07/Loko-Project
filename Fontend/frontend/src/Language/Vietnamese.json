@@ -206,5 +206,11 @@
     "input_search_result_title": "Bạn có muốn sử dụng lịch trình này?",
     "try_count_remaining": "Số lần thử lại ",
     "try_again_button": "Tạo lịch trình mới",
-    "accept_button": "Sử dụng lịch trình này"
+    "accept_button": "Sử dụng lịch trình này",
+    "output_retry_button": "Tạo lại",
+    "output_accept_button": "Chấp nhận",
+    "output_remaining_tries":"Lượt thử lại còn",
+    "currentplace_your_current_plan": "KẾ HOẠCH HIỆN TẠI CỦA BẠN",
+    "currplace_next_button": "Địa điểm tiếp theo",
+    "currentplace_rate_this_place": "Đánh giá địa điểm này"
 }

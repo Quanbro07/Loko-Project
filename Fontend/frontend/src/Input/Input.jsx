@@ -106,7 +106,7 @@ const Input = ({ onSearch, onTryAgain, onAccept, isResultShown }) => { // Accept
     const handleTryAgainClick = () => {
         const newTryCount = tryCount - 1;
         setTryCount(newTryCount);
-        if (newTryCount < 0) {
+        if (newTryCount <= 0) {
             console.log("Try count reached 0. Navigating to /currentplan")
             setIsModalOpen(false);
             navigate('/currentplan');
@@ -359,6 +359,8 @@ const Input = ({ onSearch, onTryAgain, onAccept, isResultShown }) => { // Accept
                     </div>
                 </div>
             </div>
+            <div className='input-footer'>
+            <div className='counting-item'>-------{currentStep+1}/{totalSteps}-------</div>
             <div className='button-list'>
                 {/* Nút PREV: Luôn hiển thị, nhưng bị vô hiệu hóa khi ở bước 0 */}
                 <button
@@ -383,10 +385,10 @@ const Input = ({ onSearch, onTryAgain, onAccept, isResultShown }) => { // Accept
                     {translate('input_next_button')}
                 </button>
             </div>
-            {isModalOpen && (
+            </div>
+            {/* {isModalOpen && (
                 <div className='modal-overlay'>
                     <div className='result-modal-content'>
-                        {/* HIỂN THỊ SỐ LẦN THỬ LẠI CÒN LẠI */}
                         <h3 className='modal-title'>
                             {translate('input_search_result_title')}
                         </h3>
@@ -403,28 +405,25 @@ const Input = ({ onSearch, onTryAgain, onAccept, isResultShown }) => { // Accept
 
 
                         <div className='result-button-list'>
-                            {/* NÚT THỬ LẠI */}
-                            <button
+=                            <button
                                 className='try-again-button'
                                 onClick={handleTryAgainClick}
-                            // Vô hiệu hóa nút Try Again nếu số lần đếm đã hết (nếu bạn muốn người dùng chỉ được Accept)
-                            // disabled={tryCount <= 0} 
+             
                             >
                                 {translate('try_again_button')}
                             </button>
 
-                            {/* NÚT ACCEPT */}
                             <button
                                 className='accept-button'
                                 onClick={handleAcceptClick}
-                                disabled={tryCount <= 0} // Vô hiệu hóa nút Accept nếu phải chuyển hướng tự động
+                                disabled={tryCount <= 0} 
                             >
                                 {translate('accept_button')}
                             </button>
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     )
 };

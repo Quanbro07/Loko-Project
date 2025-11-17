@@ -206,5 +206,11 @@
     "input_search_result_title": "Wanna use this plan?",
     "try_count_remaining": "Remaining search: ",
     "try_again_button": "Generate new plan",
-    "accept_button": "Accept this plan"
+    "accept_button": "Accept this plan",
+    "output_retry_button": "Regenerate plan",
+    "output_accept_button": "Accept plan",
+    "output_remaining_tries":"Remaining tries",
+    "currentplace_your_current_plan": "YOUR CURRENT PLAN",
+    "currentplace_rate_this_place": "Rate this place",
+    "currplace_next_button": "Next"
 }

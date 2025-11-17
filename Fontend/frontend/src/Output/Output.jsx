@@ -1,35 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import './Output.css';
-import { useLanguage } from '../Language/LanguageContext'; // Import useLanguage
+import { useLanguage } from '../Language/LanguageContext';
 
-const Output = () => {
+import scheduleData from './schedule.json';
+
+// 🌟 THÊM PROPS CHO HÀM XỬ LÝ NÚT VÀ SỐ LẦN THỬ LẠI 🌟
+const Output = ({ onTryAgainClick, onAcceptClick, tryCount }) => {
     console.log("Output component is rendering.");
+    
+    const { translate } = useLanguage();
     const [itineraryData, setItineraryData] = useState([]);
-    const { translate } = useLanguage(); // Use the hook
+    const [deletingIndex, setDeletingIndex] = useState(null);
 
     useEffect(() => {
-        // Simulate data fetching
+        const processedData = scheduleData.map(item => ({
+            diadiem: item.title,
+            thoigian: `${item.start} - ${item.end}`,
+            mota: item.description || translate('output_no_description') 
+        }));
+
         setTimeout(() => {
-            const dummyData = [
-                {
-                    diadiem: translate('output_ho_guom'),
-                    thoigian: translate('output_time_0800_1000'),
-                    mota: translate('output_ho_guom_description')
-                },
-                {
-                    diadiem: translate('output_van_mieu'),
-                    thoigian: translate('output_time_1030_1200'),
-                    mota: translate('output_van_mieu_description')
-                },
-                {
-                    diadiem: translate('output_old_quarter'),
-                    thoigian: translate('output_time_1400_1700'),
-                    mota: translate('output_old_quarter_description')
-                },
-            ];
-            setItineraryData(dummyData);
+            setItineraryData(processedData);
         }, 500);
-    }, []);
+
+    }, [translate]); 
+
+    const handleDelete = (indexToDelete) => {
+        const transitionDuration = 300; 
+
+        setDeletingIndex(indexToDelete);
+
+        setTimeout(() => {
+            setItineraryData(prevData => prevData.filter((_, index) => index !== indexToDelete));
+            setDeletingIndex(null);
+        }, transitionDuration);
+    };
 
     return (
         <div className="output-container">
@@ -40,24 +45,61 @@ const Output = () => {
                         <th>{translate('output_location')}</th>
                         <th>{translate('output_time')}</th>
                         <th>{translate('output_description')}</th>
+                        <th></th> 
                     </tr>
                 </thead>
                 <tbody>
-                    {itineraryData.length === 0 ? (
+                    {itineraryData.length === 0 && deletingIndex === null ? (
                         <tr>
-                            <td colSpan="3" style={{ textAlign: 'center' }}>{translate('output_no_itinerary_data')}</td>
+                            <td colSpan="4" style={{ textAlign: 'center' }}>{translate('output_no_itinerary_data')}</td>
                         </tr>
                     ) : (
-                        itineraryData.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.diadiem}</td>
-                                <td>{item.thoigian}</td>
-                                <td>{item.mota}</td>
-                            </tr>
-                        ))
+                        itineraryData.map((item, index) => {
+                            const isDeleting = index === deletingIndex;
+
+                            return (
+                                <tr 
+                                    key={index}
+                                    className={isDeleting ? 'deleting' : ''} 
+                                >
+                                    <td className=''>{item.diadiem}</td>
+                                    <td>{item.thoigian}</td>
+                                    <td>{item.mota}</td>
+                                    <td className='delete-button-cell'>
+                                        <button 
+                                            className='delete' 
+                                            onClick={() => handleDelete(index)}
+                                            disabled={isDeleting} 
+                                        >
+                                        </button>
+                                    </td>
+                                </tr>
+                            );
+                        })
                     )}
                 </tbody>
             </table>
+            <div className='retry-accept-list'>
+                {/* 🌟 HIỂN THỊ SỐ LẦN THỬ LẠI CÒN LẠI 🌟 */}
+                {/* Đặt trong một div hoặc style để căn giữa nếu cần */}
+                {tryCount > 0 && (
+                    <p className='remaining-tries'>
+                        {translate('output_remaining_tries')}: {tryCount}
+                    </p>
+                )}
+                
+                {/* 🌟 SỬ DỤNG HANDLER MỚI 🌟 */}
+                <button 
+                    className='output-retry-button' 
+                    onClick={onTryAgainClick}
+                    disabled={tryCount <= 0} // Vô hiệu hóa khi hết lượt
+                >
+                    {translate('output_retry_button')}
+                </button>
+                <button className='output-accept-button' onClick={onAcceptClick}>
+                    {translate('output_accept_button')}
+                </button>
+            </div>
         </div>
     );
 };

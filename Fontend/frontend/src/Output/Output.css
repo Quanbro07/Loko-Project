@@ -7,13 +7,14 @@
     width: 150%;
     max-width: 900px;
     overflow-x: auto;
-
+    position: relative; /* Quan trọng cho việc căn chỉnh số lần thử lại */
 }
 
 .itinerary-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
+    table-layout: fixed;
 }
 
 .itinerary-table th,
@@ -21,9 +22,135 @@
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+    vertical-align: top; 
 }
 
 .itinerary-table th {
     background-color: #f2f2f2;
     font-weight: bold;
+    vertical-align: middle; 
+}
+
+/* Giữ nguyên widths */
+.itinerary-table thead th:nth-child(1) {
+    width: 25%; 
+}
+.itinerary-table thead th:nth-child(2) {
+    width: 15%;
+}
+.itinerary-table thead th:nth-child(3) {
+    width: 45%; 
+}
+.itinerary-table thead th:nth-child(4) {
+    width: 10%;
+}
+
+/* Áp dụng Flexbox và height: 100% trực tiếp lên TD */
+
+.delete{
+    background-image: url('../img/deleteicon.png');
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    border-radius: 50%;
+    border:none;
+    cursor: pointer;
+    margin:5px 16px;
+}
+
+/* Định nghĩa Transition cho các hàng trong bảng */
+.itinerary-table tbody tr {
+    max-height: 500px; 
+    transition: 
+        max-height 0.3s ease-out, 
+        opacity 0.3s ease-out,
+        padding 0.3s ease-out,
+        border 0.3s ease-out,
+        margin 0.3s ease-out;
+    overflow: hidden; 
+}
+
+/* Style cho hàng đang trong quá trình xóa */
+.itinerary-table tbody tr.deleting {
+    max-height: 0; 
+    opacity: 0; 
+    padding-top: 0 !important; 
+    padding-bottom: 0 !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+/* Đảm bảo các cell (td) cũng không có padding và border khi hàng đang xóa */
+.itinerary-table tbody tr.deleting td {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.retry-accept-list {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 40px;
+    position: relative; /* Cần thiết cho p.remaining-tries */
+    padding-bottom: 30px; /* Thêm padding để có chỗ cho text */
+}
+
+/* 🌟 STYLE MỚI CHO SỐ LẦN THỬ LẠI 🌟 */
+.remaining-tries {
+    position: absolute;
+    bottom: 0px; 
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #003c72; 
+    margin: 0;
+}
+
+.output-retry-button{
+    background-color: #a93326; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    height:50px;
+    transition: ease background-color 0.4s;
+    width:200px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: solid #a93326 3px;
+}
+
+.output-retry-button:disabled {
+    background-color: #ccc;
+    border-color: #aaa;
+    cursor: not-allowed;
+}
+
+.output-accept-button{
+    background-color: #067200; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    height:50px;
+    transition: ease background-color 0.4s;
+    width:200px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: solid #067200 3px;
+}
+
+.output-accept-button:hover{
+    background-color: white;
+    color:#067200;
+}
+
+.output-retry-button:hover:not(:disabled){
+    background-color: white;
+    color:#a93326;
 }

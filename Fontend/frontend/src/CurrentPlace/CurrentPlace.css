@@ -1,0 +1,170 @@
+.currplace-container {
+    padding: 20px;
+    margin: 20px auto;
+    width:800px;
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    box-shadow: 4px 4px 12px rgba(52, 52, 52, 0.572);
+    text-align: center;
+}
+
+.currplace-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.currplace-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.currplace-next-button {
+    background-color: #003c72;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    transform: translateY(15px);
+}
+
+.currplace-next-button:hover {
+    background-color: rgb(0, 62, 129);
+}
+
+/* ------------------------------------- */
+/* --- CÁC THÀNH PHẦN TẠO SLIDING --- */
+/* ------------------------------------- */
+
+.currplace-slide-window {
+    width: 100%;
+    overflow: hidden; /* Cực kỳ quan trọng: Giấu các thẻ không hiển thị */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.currplace-slide-wrapper {
+    /* Quan trọng: Cho phép các thẻ xếp hàng ngang và áp dụng transition */
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.currplace-card {
+    /* Quan trọng: Mỗi card chiếm đúng 100% chiều rộng của cửa sổ hiển thị */
+    flex-shrink: 0; 
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: white;
+    text-align: left;
+    height: auto;
+    min-height: 200px; /* Chiều cao tối thiểu */
+}
+
+/* ------------------------------------- */
+/* --- STYLE NỘI DUNG CARD --- */
+/* ------------------------------------- */
+
+.place-title {
+    font-size: 1.4em;
+    color: #2a6f97;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+.place-time {
+    font-size: 1em;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.place-description {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.place-rating {
+    font-size: 1em;
+    font-weight: bold;
+    color: #f39c12;
+}
+
+.rating-stars {
+    white-space: nowrap; /* Giữ ngôi sao trên cùng một hàng */
+}
+
+.rating-value {
+    font-weight: normal;
+    color: #555;
+}
+
+.currplace-counter {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #777;
+    font-weight: 500;
+}
+
+/* Thêm vào cuối file CurrentPlace.css */
+
+.place-rating-input {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.rating-prompt {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.star-rating-container {
+    font-size: 2em; /* Kích thước lớn hơn cho dễ thao tác */
+    line-height: 1;
+}
+
+.star {
+    margin: 0 2px;
+    transition: color 0.2s;
+    user-select: none; /* Không cho phép chọn chữ */
+}
+
+.rating-feedback {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Thiết lập kiểu dáng cơ bản cho nút */
+
+.currplace-next-button:hover {
+    background-color: #0056b3;
+}
+
+/* 🌟 CẬP NHẬT TRẠNG THÁI DISABLED 🌟 */
+.currplace-next-button:disabled {
+    /* 1. Màu nền xám nhạt */
+    background-color: #ccc; 
+    
+    /* 2. Màu chữ xám tối */
+    color: #666; 
+    
+    /* 3. Loại bỏ con trỏ chuột (freeze cursor) */
+    cursor: not-allowed; 
+    
+    /* 4. Loại bỏ hiệu ứng hover khi disabled */
+    opacity: 0.8; 
+
+}
+/* Đảm bảo các style cũ liên quan đến rating đã bị xóa */
+/* Ví dụ: xóa .currplace-rating và .place-rating (cũ) nếu có */
