@@ -1,8 +1,6 @@
 package com.exproject.backend.exception;
 
-import com.exproject.backend.exception.customException.InvalidTokenException;
-import com.exproject.backend.exception.customException.PasswordConflictException;
-import com.exproject.backend.exception.customException.UserAlreadyExistException;
+import com.exproject.backend.exception.customException.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -88,6 +86,101 @@ public class GlobalExceptionHandle {
                                 "timestamp", LocalDateTime.now().toString(),
                                 "status", HttpStatus.UNAUTHORIZED.value(),
                                 "error", "Unauthorized",
+                                "message", ex.getMessage()
+                        )
+                );
+
+    }
+
+    // Email gửi đến không hợp lệ
+    @ExceptionHandler(EmailSendFailedException.class)
+    public ResponseEntity<?> handleEmailSendFailedException(EmailSendFailedException ex) {
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(
+                        Map.of(
+                                "timestamp", LocalDateTime.now().toString(),
+                                "status", HttpStatus.BAD_REQUEST.value(),
+                                "error", "Invalid Email Address",
+                                "message", ex.getMessage()
+                        )
+                );
+
+    }
+
+    // User email chưa được verify
+    @ExceptionHandler(UserNotVerifyException.class)
+    public ResponseEntity<?> handleUserNotVerify(UserNotVerifyException ex) {
+
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(
+                        Map.of(
+                                "timestamp", LocalDateTime.now().toString(),
+                                "status", HttpStatus.FORBIDDEN.value(),
+                                "error", "Email Not Verify",
+                                "message", ex.getMessage()
+                        )
+                );
+
+    }
+
+    // Verify Code hết hạn
+    @ExceptionHandler(VerificationCodeExpireException.class)
+    public ResponseEntity<?> handleVerificationCodeExpire(VerificationCodeExpireException ex) {
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(
+                        Map.of(
+                                "timestamp", LocalDateTime.now().toString(),
+                                "status", HttpStatus.BAD_REQUEST.value(),
+                                "error", "Verification Code Expired",
+                                "message", ex.getMessage()
+                        )
+                );
+
+    }
+
+    // Verify Code ko hợp lệ
+    @ExceptionHandler(InvalidVerificationCodeException.class)
+    public ResponseEntity<?> handleVerificationCodeInvalid(InvalidVerificationCodeException ex) {
+
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(
+                        Map.of(
+                                "timestamp", LocalDateTime.now().toString(),
+                                "status", HttpStatus.CONFLICT.value(),
+                                "error", "Invalid Verification Code",
+                                "message", ex.getMessage()
+                        )
+                );
+
+    }
+
+    @ExceptionHandler(AccountAlreadyVerifiedException.class)
+    public ResponseEntity<?> handleUserAlreadyVerfied(AccountAlreadyVerifiedException ex) {
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(
+                        Map.of(
+                                "timestamp", LocalDateTime.now().toString(),
+                                "status", HttpStatus.BAD_REQUEST.value(),
+                                "error", "Account Already Verified",
+                                "message", ex.getMessage()
+                        )
+                );
+
+    }
+
+    // Invalid Email or Password
+    @ExceptionHandler(InvalidEmailOrPasswordException.class)
+    public ResponseEntity<?> handleUserAlreadyVerfied(InvalidEmailOrPasswordException ex) {
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(
+                        Map.of(
+                                "timestamp", LocalDateTime.now().toString(),
+                                "status", HttpStatus.UNAUTHORIZED.value(),
+                                "error", "Invalid Email or Password",
                                 "message", ex.getMessage()
                         )
                 );

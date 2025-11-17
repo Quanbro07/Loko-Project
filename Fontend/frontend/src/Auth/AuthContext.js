@@ -33,10 +33,13 @@ export const AuthProvider = ({ children }) => {
             if (response.ok) {
                 const data = await response.json();
                 setToken(data.accessToken);
-                setUser(data.user);
+                // Backend returns `username` in the top-level response (not a `user` object).
+                // Normalize into a small user object used by the app UI.
+                const resolvedUser = data.user || { username: data.username, age: data.age, gender: data.gender };
+                setUser(resolvedUser);
                 setIsAuthenticated(true);
                 localStorage.setItem('token', data.accessToken);
-                localStorage.setItem('user', JSON.stringify(data.user));
+                localStorage.setItem('user', JSON.stringify(resolvedUser));
                 return { success: true };
             } else {
                 const error = await response.json();
@@ -64,12 +67,19 @@ export const AuthProvider = ({ children }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                setToken(data.accessToken);
-                setUser(data.user);
-                setIsAuthenticated(true);
-                localStorage.setItem('token', data.accessToken);
-                localStorage.setItem('user', JSON.stringify(data.user));
-                return { success: true };
+                // Registration may return a PendingVerificationResponse (no tokens).
+                // Only set token/user if backend included them; otherwise return pending info.
+                if (data.accessToken) {
+                    setToken(data.accessToken);
+                    const resolvedUser = data.user || { username: data.username, age: data.age, gender: data.gender };
+                    setUser(resolvedUser);
+                    setIsAuthenticated(true);
+                    localStorage.setItem('token', data.accessToken);
+                    localStorage.setItem('user', JSON.stringify(resolvedUser));
+                    return { success: true };
+                }
+                // Pending verification flow
+                return { success: true, pending: true, email: data.email };
             } else {
                 const error = await response.json();
                 // Translate error messages

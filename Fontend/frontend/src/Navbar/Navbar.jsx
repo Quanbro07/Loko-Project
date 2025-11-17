@@ -31,14 +31,23 @@ const Navbar = () => {
                 <div className='mid-nav'>
                     <NavLink to="/homepage" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_home')}</NavLink>
                     <NavLink to="/search" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_search')}</NavLink>
-                    <NavLink to="/currentplan" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_currentplan')}</NavLink>
+                    <NavLink
+                        to="/currentplan"
+                        className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}
+                        onClick={(e) => {
+                            if (!isAuthenticated) {
+                                e.preventDefault();
+                                navigate('/login');
+                            }
+                        }}
+                    >{translate('navbar_currentplan')}</NavLink>
                     <NavLink
                         to="/user"
                         className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}
                         onClick={(e) => {
                             if (!isAuthenticated) {
                                 e.preventDefault();
-                                navigate('/auth?mode=login');
+                                navigate('/login');
                             }
                         }}
                     >{translate('navbar_account')}</NavLink>

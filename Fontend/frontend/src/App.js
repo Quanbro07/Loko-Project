@@ -8,29 +8,28 @@ import SecurityWrapper from './SecurityWrapper/SecurityWrapper';
 import { LanguageProvider } from './Language/LanguageContext'; // Import LanguageProvider
 import { AuthProvider } from './Auth/AuthContext'; // Import AuthProvider
 import AuthPage from './Auth/AuthPage';
+import VerifyPage from './Auth/VerifyPage';
 import CurrentPlan from './CurrentPlan/CurrentPlan';
 
 function App() {
   return (
-    <SecurityWrapper>
-      <LanguageProvider> {/* Wrap Routes with LanguageProvider */}
-          <AuthProvider> {/* Wrap with AuthProvider */}
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/homepage" element={<Homepage />} />
-              <Route path="/aboutus" element={<Aboutus />} />
-              <Route path="/user" element={<User />} /> {/* Add new route for User */}
-              <Route path="/auth" element={<AuthPage />} />
-              <Route path="/search" element={<Plan />} /> {/* Add new route for Plan */}
-              <Route path="/currentplan" element={<CurrentPlan />} />
-              {/* convenience routes for direct /login and /signup */}
-              <Route path="/login" element={<Navigate to="/auth?mode=login" replace />} />
-              <Route path="/signup" element={<Navigate to="/auth?mode=register" replace />} />
-            </Routes>
-          </AuthProvider>
-      </LanguageProvider>
-    </SecurityWrapper>
-      
+    <LanguageProvider> {/* Wrap Routes with LanguageProvider */}
+      <AuthProvider> {/* Wrap with AuthProvider */}
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/aboutus" element={<Aboutus />} />
+          <Route path="/user" element={<User />} /> {/* Add new route for User */}
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/auth/verify" element={<VerifyPage />} />
+          <Route path="/search" element={<Plan />} /> {/* Add new route for Plan */}
+          <Route path="/currentplan" element={<CurrentPlan />} />
+          {/* convenience routes for direct /login and /signup */}
+          <Route path="/login" element={<Navigate to="/auth?mode=login" replace />} />
+          <Route path="/signup" element={<Navigate to="/auth?mode=register" replace />} />
+        </Routes>
+      </AuthProvider>
+    </LanguageProvider>
   );
 }
 
