@@ -3,7 +3,6 @@ import json, math, sys
 from config import *
 from utils import parse_operating_hours
 
-# SỬA ĐỔI: Thêm `force_hotel_idx`
 def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=None, force_hotel_idx=None):
     """
     Load data, áp dụng penalty_overrides, 
@@ -15,7 +14,7 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
     
     try:
         with open(ATTRACTIONS_FILE, 'r', encoding='utf-8') as f:
-            locations = json.load(f)
+            locations = json.load(f) # <-- Biến 'locations' được tải ở đây
     except Exception as e:
         print(f"❌ Lỗi đọc attractions: {e}")
         sys.exit(1)
@@ -36,18 +35,14 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         print(f"⚠️ Dữ liệu không khớp: {len(locations)} điểm nhưng {len(matrix)} hàng ma trận.")
         sys.exit(1)
 
-    # --- SỬA ĐỔI: Logic chọn Depot (Khách sạn) ---
-    
+    # --- Logic chọn Depot ---
     hotel_index = None
-    
-    # 1. Nếu đã "khóa" khách sạn, sử dụng nó
     if force_hotel_idx is not None:
         if 0 <= force_hotel_idx < len(locations):
             hotel_index = force_hotel_idx
         else:
             print(f"⚠️ Lỗi: force_hotel_idx ({force_hotel_idx}) không hợp lệ.")
             
-    # 2. Nếu chưa "khóa" (lần chạy đầu tiên), tìm KS tốt nhất
     if hotel_index is None:
         hotel_penalties = {}
         for i, loc in enumerate(locations):
@@ -60,12 +55,13 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         
         if not hotel_penalties:
             print("⚠️ Không tìm thấy khách sạn nào.")
-            return None, None, None
+            # --- SỬA LỖI Ở ĐÂY (trả về 4 giá trị) ---
+            return None, None, None, None 
 
         hotel_index = min(hotel_penalties, key=hotel_penalties.get)
-    # --- KẾT THÚC SỬA ĐỔI ---
+    # ---
 
-    # --- Logic lọc bỏ các KS khác (Đã đúng) ---
+    # --- Logic lọc bỏ các KS khác ---
     all_hotel_indices = {
         i for i, loc in enumerate(locations) 
         if "hotel" in [t.lower() for t in loc.get("tags", [])] or 
@@ -126,6 +122,8 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         "num_places": len(locs), 
         "depot": 0
     }
+    # Sửa lỗi cú pháp dấu nháy
     print(f"✅ Instance ready: {len(locs)} địa điểm (đã lọc bỏ các KS khác), depot = '{locs[0].get('title', 'Khách sạn')}' (Gốc: {hotel_index})")
     
-    return instance, hotel_index, node_map
+    # --- SỬA LỖI Ở ĐÂY (trả về 4 giá trị) ---
+    return instance, hotel_index, node_map, locations

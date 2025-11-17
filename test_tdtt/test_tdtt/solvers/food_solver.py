@@ -27,37 +27,30 @@ class FoodSolver(BaseSolver):
                 idx = self.manager.NodeToIndex(node)
                 self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_min, 300)
 
-    # --- SỬA ĐỔI: Xóa logic ghi file, trả về schedule_data ---
-    def run_single_itinerary(self, attempt_num, time_limit_seconds=30):
+    # --- SỬA ĐỔI: Đổi tên hàm, xóa Y/N, xóa lưu file ---
+    def generate_day_schedule(self, time_limit_seconds=30):
         """
-        Hàm này chạy MỘT lần, hỏi y/n, và trả kết quả về cho main.py
+        Hàm này chạy MỘT lần và trả kết quả về cho main.py
         """
         solution = self.solve(time_limit_seconds) 
         
         if not solution:
-            print("❌ Không thể tìm được lịch trình hợp lệ.")
-            # Trả về "no", danh sách rỗng, và data rỗng
-            return "n", [], [] 
+            print("❌ Không thể tìm được lịch trình hợp lệ cho ngày này.")
+            return None, None 
 
-        print("\n🗓️  Lịch trình được tạo:")
+        print("\n🗓️  Lịch trình (ngày) được tạo:")
         print("=" * 70)
         
         visited_nodes, schedule_data = self.format_solution(solution)
         
         print("=" * 70)
         
-        # --- ĐÃ XÓA LOGIC GHI FILE JSON ---
-
-        feedback = input("\nBạn có hài lòng với lịch trình này không? (y/n): ").strip().lower()
-        
-        if feedback != "y":
-            feedback = "n"
-        
-        # Trả về 3 giá trị
-        return feedback, visited_nodes, schedule_data
+        # Trả về kết quả (main.py sẽ xử lý)
+        return visited_nodes, schedule_data
     # --- KẾT THÚC SỬA ĐỔI ---
 
     def _reset_solver(self):
+        # (Hàm này vẫn hữu ích nếu bạn muốn reset nội bộ)
         self.manager = pywrapcp.RoutingIndexManager(self.num_places, 1, self.depot)
         self.routing = pywrapcp.RoutingModel(self.manager)
         self._add_cost_callbacks()
@@ -67,7 +60,7 @@ class FoodSolver(BaseSolver):
     def format_solution(self, solution):
         """
         In ra lịch trình chi tiết VÀ trả về dữ liệu (list) để lưu JSON.
-        (Logic nghỉ ngơi đã được sửa ở bước trước)
+        (Hàm này giữ nguyên như phiên bản trước)
         """
         visited_nodes = []
         schedule_data = [] 
@@ -167,7 +160,7 @@ class FoodSolver(BaseSolver):
 
                             rest_start_1_str = minutes_to_str(current_leave_actual)
                             rest_end_1_str = minutes_to_str(arrive_at_hotel_time)
-                            
+
                             print(f"- [{rest_start_1_str} → {rest_end_1_str}] (Di chuyển về) {hotel_title} (Dừng: 0p)")
                             print(f"- [{rest_start_str} → {rest_end_str}] (Nghỉ ngơi tại) {hotel_title} (Dừng: {rest_duration}p)")
                             print(f"    💤 Năng lượng đã hồi phục!")
