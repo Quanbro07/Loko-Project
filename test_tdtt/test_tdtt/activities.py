@@ -14,39 +14,65 @@ BATCH_SIZE = 10
 
 # === Prompt yêu cầu xác định "activity" ===
 PROMPT_TEMPLATE = """
-Bạn là chuyên gia về du lịch ẩm thực tại Việt Nam.
+Bạn là chuyên gia du lịch, ẩm thực và địa điểm vui chơi tại Việt Nam.
 
-Nhiệm vụ: Với mỗi địa điểm bên dưới, hãy xác định **ngắn gọn, tự nhiên và chính xác** người ta thường **đến đó để làm gì**.
+Nhiệm vụ:
+Với mỗi địa điểm bên dưới, hãy tạo ra một mô tả **activity chi tiết**, tự nhiên, ngắn gọn nhưng đủ thông tin để người dùng biết chính xác HỌ SẼ LÀM GÌ tại địa điểm đó.
 
-Dữ liệu đầu vào là danh sách các địa điểm (chỉ có tên).  
-Hãy trả về kết quả ở định dạng JSON với cấu trúc **chính xác** như sau:
+Bạn được cung cấp đầy đủ:
+- tên địa điểm (title)
+- mô tả (description)
+- thời gian đến – rời đi
+- rating
+- loại địa điểm có thể suy luận từ tên và mô tả
+
+Hãy trả kết quả theo JSON với cấu trúc:
 {{
   "results": [
-    {{"place": "Tên địa điểm", "activity": "mô tả ngắn gọn hoạt động chính"}}
+    {{"place": "Tên địa điểm", "activity": "Mô tả chi tiết hoạt động chính"}}
   ]
 }}
 
-❗ Quy tắc suy luận:
-1. Dựa vào **tên địa điểm** để đoán hoạt động cụ thể nhất có thể:
-   - Nếu tên chứa "coffee", "cafe", "roastery" → `"uống cà phê"`, `"thưởng thức cà phê"`, hoặc `"đọc sách và uống cà phê"`
-   - Nếu tên chứa "restaurant", "quán ăn", "nhà hàng" → `"thưởng thức món ăn"`, `"ăn trưa"`, `"ăn tối"`
-   - Nếu tên chứa "bar", "pub", "sky" → `"uống cocktail"`, `"thưởng thức đồ uống"`, `"ngắm cảnh đêm"`
-   - Nếu tên chứa "market", "chợ" → `"mua sắm"`, `"ăn vặt"`, `"dạo chợ"`
-   - Nếu tên chứa "hotel", "resort", "homestay" → `"nghỉ ngơi"`, `"trở về khách sạn"`
-   - Nếu tên chứa "street", "alley", "corner" → `"dạo phố"`, `"ăn vặt"`
-   - Nếu tên chứa "museum", "temple", "pagoda" → `"tham quan"`
-   - Nếu là tên đặc sản hoặc vùng miền → `"thưởng thức đặc sản địa phương"`
-   - Nếu không rõ, chọn `"tham quan"`.
+=============================
+QUY TẮC PHÂN TÍCH & TẠO ACTIVITY
+=============================
 
-2. Viết **tự nhiên, đa dạng**, tránh lặp lại cùng một mẫu.  
-   Ví dụ: thay vì `"ăn tối"`, có thể viết `"thưởng thức bữa tối tại nhà hàng sang trọng"` nếu tên nghe cao cấp.
+1. **PHẢI DỰA TRÊN TÊN ĐỊA ĐIỂM + MÔ TẢ + LOẠI HÌNH SUY LUẬN**
+   - Nếu là quán ăn / restaurant / dining → mô tả: người dùng đến để **thưởng thức món gì**, phong cách ăn uống gì (casual, fine dining,…).
+   - Nếu là cafe → mô tả: thưởng thức cà phê, không gian, nghỉ chân.
+   - Nếu là công viên → đi dạo, tập thể dục, chụp ảnh, thư giãn.
+   - Nếu là đền chùa, di tích → tham quan, tìm hiểu lịch sử, chụp ảnh.
+   - Nếu là escape room → chơi giải đố, trải nghiệm trò chơi thử thách.
+   - Nếu là khu mua sắm / chợ → mua sắm, ăn vặt, khám phá địa phương.
+   - Nếu là bar / pub → thưởng thức cocktail, nghe nhạc, chill buổi tối.
+   - Nếu không rõ → chọn hoạt động hợp lý nhất theo bối cảnh.
 
-3. Chỉ trả về JSON, **không giải thích thêm**.
+2. **ĐỐI VỚI KHÁCH SẠN / RESORT**
+   - Nếu là **điểm đầu tiên trong ngày** → "nghỉ ngơi tại khách sạn" hoặc "xuất phát từ khách sạn".
+   - Nếu KHÔNG PHẢI điểm đầu tiên → **bắt buộc** viết dạng:
+     → `"Quay về khách sạn để nghỉ ngơi / thư giãn / chuẩn bị cho chặng tiếp theo…"`
 
-Dưới đây là danh sách địa điểm:
+3. **VIẾT CHI TIẾT – TỰ NHIÊN – CÓ NGỮ CẢNH**
+   Ví dụ:
+   - Thay vì: “ăn tối”
+     → “thưởng thức bữa tối phong cách fine dining với thực đơn sáng tạo theo mùa”
+   - Thay vì: “tham quan”
+     → “tham quan Văn Miếu – Quốc Tử Giám và tìm hiểu lịch sử giáo dục thời phong kiến”
+
+4. **CÓ THỂ DỰA VÀO MÔ TẢ (description) NẾU CÓ**
+   - Nếu mô tả nói “có hồ bơi lắp kính” → đưa vào activity.
+   - Nếu mô tả nói “có đường chạy bộ” → đưa vào activity của công viên.
+   - Nếu mô tả rỗng, chỉ dùng tên + suy luận hợp lý.
+
+5. **KHÔNG ĐƯỢC tạo ra thông tin sai hoặc tưởng tượng không có căn cứ.**
+
+6. **Trả đúng JSON format, không thêm bất kỳ text nào ngoài JSON.**
+
+=============================
+DANH SÁCH ĐỊA ĐIỂM
+=============================
 {locations}
 """
-
 
 # === Hàm phụ để trích xuất JSON từ text trả về ===
 def extract_json(text):
