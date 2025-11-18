@@ -1,0 +1,59 @@
+services:
+  db:
+    container_name: postgres
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: quanbro7
+      POSTGRES_DB: loko_project
+
+    profiles: ["prod"]
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5332:5432"
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  redis:
+    container_name: redis_container
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+    networks:
+      - app-network
+    volumes:
+      - redis_data:/data
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    profiles: ["prod"]
+    container_name: loko-project-app
+    depends_on:
+      - db
+      - redis
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/loko_project
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: quanbro7
+
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+
+    env_file:
+      - Backend/.env
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:
+  redis_data:
