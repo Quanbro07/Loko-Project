@@ -12,6 +12,7 @@ API_KEY = "c45056e1054eb471aa09bed19faef41ceddf9cce13e88ebdc58238c25a841854"
 def get_city_coordinates(city_name, api_key):
     """
     Bước 1: Lấy tọa độ (lat, lng) của thành phố để làm trung tâm tìm kiếm.
+    (Giữ nguyên logic cũ)
     """
     print(f"--- [Bước 1] Lấy tọa độ trung tâm cho '{city_name}' ---")
     params = {
@@ -51,7 +52,7 @@ def get_city_coordinates(city_name, api_key):
 
 def fetch_top_places(city_name, ll_string, type_of_place):
     """
-    Bước 2: Tìm top [type_of_place] in [city_name] in Vietnam (tối đa 20 kết quả)
+    Bước 2: Tìm top địa điểm và map sang cấu trúc JSON mới.
     """
     query = f"top {type_of_place} in {city_name} in vietnam"
     print(f"\n--- [Bước 2] Tìm kiếm: '{query}' ---")
@@ -80,21 +81,46 @@ def fetch_top_places(city_name, ll_string, type_of_place):
         return []
 
     print(f"Tìm thấy {len(local_results)} kết quả, lấy 20 đầu tiên.")
+    
     results = []
     for item in local_results[:20]:
         gps_coords = item.get("gps_coordinates", {})
-        results.append({
-            "type_of_place": type_of_place,
-            "title": item.get("title"),
-            "place_id": item.get("place_id"),
+        
+        # --- Xử lý Operating Hours ---
+        # API thường trả về dict hoặc complex object, ta convert sang string để khớp format
+        raw_hours = item.get("operating_hours")
+        open_time_str = "N/A"
+        if isinstance(raw_hours, dict):
+            # Nếu trả về dict (thứ: giờ), ta lấy tạm giá trị đầu tiên hoặc convert string
+            open_time_str = str(raw_hours).replace("'", '"') 
+        elif raw_hours:
+            open_time_str = str(raw_hours)
+
+        # --- Xử lý Images (dùng thumbnail) ---
+        raw_imgs = []
+        thumbnail = item.get("thumbnail")
+        if thumbnail:
+            raw_imgs.append({
+                "img_url": thumbnail,
+                "description": "Thumbnail từ Google Maps"
+            })
+
+        # --- Mapping sang cấu trúc mới ---
+        new_structure = {
+            "gg_place_id": item.get("place_id"),
+            "location_name": item.get("title"),
             "latitude": gps_coords.get("latitude"),
             "longitude": gps_coords.get("longitude"),
+            "open_time": open_time_str,
             "types": item.get("types"),
-            "operating_hours": item.get("operating_hours"),
-            "thumbnail": item.get("thumbnail"),
-            "rating": item.get("rating"),
+            "average_rating": item.get("rating"),
+            "review_count": 0,          # Yêu cầu hardcode là 0
+            "province_id": 0,           # Placeholder
+            "category_ids": [],         # Placeholder
+            "rawImgs": raw_imgs,         # Cấu trúc list chứa dict
             "description": item.get("description")
-        })
+        }
+        results.append(new_structure)
 
     return results
 
@@ -133,7 +159,7 @@ if __name__ == "__main__":
             print("Bạn chưa nhập tên thành phố.")
             sys.exit(0)
 
-        type_of_place = input("Nhập loại địa điểm (ví dụ: restaurants, hotels, coffee shops, attractions...): ").strip()
+        type_of_place = input("Nhập loại địa điểm (ví dụ: restaurants, hotels, coffee shops...): ").strip()
         if not type_of_place:
             print("Bạn chưa nhập loại địa điểm.")
             sys.exit(0)
@@ -144,10 +170,10 @@ if __name__ == "__main__":
 
         top_places = fetch_top_places(city_input, ll_string, type_of_place)
 
-        # === ChỈ SỬA PHẦN TÊN FILE ===
-        # Dù loại địa điểm gì, vẫn chỉ dùng tên tỉnh/thành phố
+        # Tạo tên file dựa trên tên thành phố
         city_safe = city_input.lower().replace(' ', '_')
-        output_filename = f"{city_safe}.json"   # <-- sửa ở đây, bỏ type_of_place
+        output_filename = f"{city_safe}.json"
+        
         append_to_json(top_places, output_filename)
 
         print("\n--- Hoàn tất tìm kiếm ---")

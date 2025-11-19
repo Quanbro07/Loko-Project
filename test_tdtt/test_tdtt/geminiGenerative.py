@@ -8,8 +8,8 @@ import google.generativeai as genai
 # Không chia sẻ file này cho bất kỳ ai.
 API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
 # ==============================================================================
-
-INPUT_FILE = "ha_noi.json"
+2
+INPUT_FILE = "nha_trang.json"
 OUTPUT_FILE = "attractions_with_tags.json"
 
 genai.configure(api_key=API_KEY)
@@ -101,8 +101,7 @@ STRICT RULES (READ CAREFULLY — THEY ARE ENFORCED):
 4) **NO EXTRA TAGS** — Use ONLY tags from the allowed list. Do not invent new labels or synonyms.
 
 5) **SPECIAL TAG RULES**:
-    - "amusement park" → for amusement parks, theme parks, and entertainment complexes featuring mechanical rides, thrill attractions, and themed entertainment zones. Includes outdoor or indoor amusement centers, family entertainment centers (FECs), and theme-based recreational parks. Focus is on rides, games, and large-scale attractions designed for fun and excitement. Excludes simple playgrounds, botanical gardens, or resorts without amusement features.
-    - "water park" → for parks and complexes primarily offering water-based attractions such as slides, wave pools, lazy rivers, and aquatic playgrounds. Includes indoor and outdoor water parks, aqua complexes, and large resort water zones where water recreation is the main activity. Excludes regular swimming pools, beaches, or resorts without specialized water attractions.
+    - "amusement/water park" → for parks and complexes primarily offering water-based attractions such as slides, wave pools, lazy rivers, and aquatic playgrounds. Includes indoor and outdoor water parks, aqua complexes, and large resort water zones where water recreation is the main activity. Excludes regular swimming pools, beaches, or resorts without specialized water attractions.
     - "zoo" → only for zoological parks, wildlife sanctuaries, or animal exhibits where viewing, studying, and conserving animals are the primary purposes. Includes safari parks, animal conservation centers, and wildlife breeding areas open to the public.
     - "aquarium" → for aquariums, oceanariums, or marine life exhibits dedicated to displaying aquatic animals and marine ecosystems. Includes underwater tunnels, marine museums, and large-scale marine observation centers.
     - "nightlife" → for venues primarily active during evening or night hours, including bars, pubs, clubs, lounges, and entertainment venues focusing on night-time social activities, live music, or dance.
