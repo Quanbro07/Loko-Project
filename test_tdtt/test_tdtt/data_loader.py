@@ -84,9 +84,9 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         original_idx = node_map[i] # Lấy index GỐC
         
         tags = [t.lower() for t in loc.get("tags", [])]
-        rating = loc.get("rating", None)
+        rating = loc.get("average_rating", None)
         st = profile.get_service_time(tags)
-        op = loc.get("operating_hours", None)
+        op = loc.get("open_time", None)
         
         tw = parse_operating_hours(op, st) 
         
@@ -123,7 +123,7 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         "depot": 0
     }
     # Sửa lỗi cú pháp dấu nháy
-    print(f"✅ Instance ready: {len(locs)} địa điểm (đã lọc bỏ các KS khác), depot = '{locs[0].get('title', 'Khách sạn')}' (Gốc: {hotel_index})")
+    print(f"✅ Instance ready: {len(locs)} địa điểm (đã lọc bỏ các KS khác), depot = '{locs[0].get('location_name', 'Khách sạn')}' (Gốc: {hotel_index})")
     
     # --- SỬA LỖI Ở ĐÂY (trả về 4 giá trị) ---
     return instance, hotel_index, node_map, locations

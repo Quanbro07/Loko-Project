@@ -14,9 +14,6 @@ class AmusementSolver(BaseSolver):
         super().__init__(instance, profile)
 
     def _add_profile_specific_constraints(self):
-        """
-        Kế thừa logic ăn uống chung và thêm logic nightlife.
-        """
         super()._add_profile_specific_constraints()
 
         print("... Thêm ràng buộc Giải trí (Nightlife)...")
@@ -27,11 +24,7 @@ class AmusementSolver(BaseSolver):
                 idx = self.manager.NodeToIndex(node)
                 self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_min, 300)
 
-    # --- SỬA ĐỔI: Đổi tên hàm, xóa Y/N, xóa lưu file ---
     def generate_day_schedule(self, time_limit_seconds=30):
-        """
-        Hàm này chạy MỘT lần và trả kết quả về cho main.py
-        """
         solution = self.solve(time_limit_seconds) 
         
         if not solution:
@@ -45,9 +38,7 @@ class AmusementSolver(BaseSolver):
         
         print("=" * 70)
         
-        # Trả về kết quả (main.py sẽ xử lý)
         return visited_nodes, schedule_data
-    # --- KẾT THÚC SỬA ĐỔI ---
 
     def _reset_solver(self):
         self.manager = pywrapcp.RoutingIndexManager(self.num_places, 1, self.depot)
@@ -59,7 +50,6 @@ class AmusementSolver(BaseSolver):
     def format_solution(self, solution):
         """
         In ra lịch trình chi tiết VÀ trả về dữ liệu (list) để lưu JSON.
-        (Hàm này giữ nguyên như phiên bản trước)
         """
         visited_nodes = []
         schedule_data = [] 
@@ -69,7 +59,9 @@ class AmusementSolver(BaseSolver):
         total_added_rest_time = 0 
         time_matrix = self.instance["time_matrix"] 
         depot_place = self.locations[self.depot] 
-        hotel_title = depot_place.get('title', 'Khách sạn')
+        
+        # SỬA ĐỔI: title -> location_name
+        hotel_title = depot_place.get('location_name', 'Khách sạn')
         
         max_end_time_mins = self.instance["max_duration"]
         
@@ -77,7 +69,10 @@ class AmusementSolver(BaseSolver):
             node = self.manager.NodeToIndex(index)
             place = self.locations[node]
             tags = [t.lower() for t in place.get("tags", [])]
-            name = place.get("title", f"Place {node}")
+            
+            # SỬA ĐỔI: title -> location_name
+            name = place.get("location_name", f"Place {node}")
+            
             service_time = self.instance["service_time"][node]
             
             time_var = self.time_dim.CumulVar(index)
@@ -101,10 +96,14 @@ class AmusementSolver(BaseSolver):
             print(f"- [{start_str} → {end_str}] {name} (Dừng: {service_time}p)")
             print(f"    Tags: {tags} | Energy: {total_energy}%")
             
+            # SỬA ĐỔI: Cập nhật các trường trong JSON output
             schedule_data.append({
                 "start": start_str, "end": end_str,
-                "place_id": place.get("place_id"), "title": name,
-                "description": place.get("description"), "rating": place.get("rating"),
+                "place_id": place.get("gg_place_id"), # place_id -> gg_place_id
+                "title": name,
+                "description": place.get("description"), 
+                "rating": place.get("average_rating"), # rating -> average_rating
+                "tags": tags,
                 "longitude": place.get("longitude"), "latitude": place.get("latitude")
             })
 
@@ -135,7 +134,7 @@ class AmusementSolver(BaseSolver):
                         estimated_end_after_rest = end_time_actual + detour_time
                         
                         if estimated_end_after_rest > max_end_time_mins:
-                            print(f"    ⚠️ Không đủ thời gian để nghỉ ngơi (sẽ vượt quá {minutes_to_str(max_end_time_mins)}), tiếp tục lịch trình.")
+                            print(f"    ⚠️ Không đủ thời gian để nghỉ ngơi...")
                         else:
                             next_arrival_solved = solution.Value(self.time_dim.CumulVar(next_index))
                             current_leave_solved = arrival_solved + service_time
@@ -144,35 +143,35 @@ class AmusementSolver(BaseSolver):
                             
                             if end_time_actual + extra_time_needed > max_end_time_mins:
                                 extra_time_needed = max(0, max_end_time_mins - end_time_actual)
-                                if extra_time_needed == 0:
-                                    print(f"    ⚠️ Không đủ thời gian để nghỉ ngơi, tiếp tục lịch trình.")
-                                    visited_nodes.append(node)
-                                    last_tag = tags[0] if tags else "unknown"
-                                    index = solution.Value(self.routing.NextVar(index))
-                                    continue
-                            
-                            total_energy = 100 
-                            total_added_rest_time += extra_time_needed
+                                if extra_time_needed == 0: pass
+                                else: pass
 
-                            current_leave_actual = end_time_actual
-                            arrive_at_hotel_time = current_leave_actual + travel_to_depot
-                            rest_start_str = minutes_to_str(arrive_at_hotel_time)
-                            leave_hotel_time = arrive_at_hotel_time + rest_duration
-                            rest_end_str = minutes_to_str(leave_hotel_time)
+                            if extra_time_needed > 0:
+                                total_energy = 100 
+                                total_added_rest_time += extra_time_needed
 
-                            rest_start_1_str = minutes_to_str(current_leave_actual)
-                            rest_end_1_str = minutes_to_str(arrive_at_hotel_time)
+                                current_leave_actual = end_time_actual
+                                arrive_at_hotel_time = current_leave_actual + travel_to_depot
+                                rest_start_str = minutes_to_str(arrive_at_hotel_time)
+                                leave_hotel_time = arrive_at_hotel_time + rest_duration
+                                rest_end_str = minutes_to_str(leave_hotel_time)
 
-                            print(f"- [{rest_start_1_str} → {rest_end_1_str}] (Di chuyển về) {hotel_title} (Dừng: 0p)")
-                            print(f"- [{rest_start_str} → {rest_end_str}] (Nghỉ ngơi tại) {hotel_title} (Dừng: {rest_duration}p)")
-                            print(f"    💤 Năng lượng đã hồi phục!")
+                                rest_start_1_str = minutes_to_str(current_leave_actual)
+                                rest_end_1_str = minutes_to_str(arrive_at_hotel_time)
 
-                            schedule_data.append({
-                                "start": rest_start_str, "end": rest_end_str,
-                                "place_id": depot_place.get("place_id"), "title": f"(Nghỉ ngơi tại) {hotel_title}",
-                                "description": f"Nghỉ ngơi {rest_duration} phút", "rating": depot_place.get("rating"),
-                                "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
-                            })
+                                print(f"- [{rest_start_1_str} → {rest_end_1_str}] (Di chuyển về) {hotel_title} (Dừng: 0p)")
+                                print(f"- [{rest_start_str} → {rest_end_str}] (Nghỉ ngơi tại) {hotel_title} (Dừng: {rest_duration}p)")
+                                print(f"    💤 Năng lượng đã hồi phục!")
+
+                                schedule_data.append({
+                                    "start": rest_start_str, "end": rest_end_str,
+                                    "place_id": depot_place.get("gg_place_id"), # place_id -> gg_place_id
+                                    "title": f"(Nghỉ ngơi tại) {hotel_title}",
+                                    "description": f"Nghỉ ngơi {rest_duration} phút", 
+                                    "rating": depot_place.get("average_rating"), # rating -> average_rating
+                                    "tags": depot_place.get("tags", []),
+                                    "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
+                                })
                     else:
                         print(f"    💤 Năng lượng thấp! May mắn đây là điểm cuối.")
 
@@ -188,8 +187,11 @@ class AmusementSolver(BaseSolver):
         
         schedule_data.append({
             "start": end_str_final, "end": end_str_final,
-            "place_id": depot_place.get("place_id"), "title": f"Quay về {hotel_title}",
-            "description": depot_place.get("description"), "rating": depot_place.get("rating"),
+            "place_id": depot_place.get("gg_place_id"), # place_id -> gg_place_id
+            "title": f"Quay về {hotel_title}",
+            "description": depot_place.get("description"), 
+            "rating": depot_place.get("average_rating"), # rating -> average_rating
+            "tags": depot_place.get("tags", []),
             "longitude": depot_place.get("longitude"), "latitude": depot_place.get("latitude")
         })
         

@@ -1,305 +1,522 @@
 {
   "Day 1": [
     {
-      "start": "08:00",
-      "end": "08:00",
-      "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-      "title": "Hotel de l'Opera Hanoi - MGallery",
-      "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên.",
-      "rating": 4.5,
-      "longitude": 105.8555913,
-      "latitude": 21.024400699999997,
-      "activity": "Xuất phát từ khách sạn Hotel de l'Opera Hanoi - MGallery để bắt đầu hành trình khám phá các điểm đến hấp dẫn của thành phố."
+      "start": "07:00",
+      "end": "07:00",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "Vinpearl Resort Nha Trang",
+      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "Nghỉ ngơi tại Vinpearl Resort Nha Trang để thư giãn, tận hưởng tiện nghi cao cấp và chuẩn bị sẵn sàng cho hành trình khám phá."
     },
     {
-      "start": "08:40",
-      "end": "11:40",
-      "place_id": "ChIJIbhTQzmrNTERHBoID7tQyUc",
-      "title": "Bảo tàng Dân tộc học Việt Nam",
-      "description": "Bảo tàng trưng bày các hiện vật văn hóa. Bảo tàng dân tộc học trưng bày về các nền văn hóa đa dạng của Việt Nam với vườn cây và nhà hàng.",
-      "rating": 4.6,
-      "longitude": 105.7987354,
-      "latitude": 21.040342199999998,
-      "activity": "Tham quan Bảo tàng Dân tộc học Việt Nam để khám phá và tìm hiểu sâu sắc về văn hóa, phong tục, và đời sống đa dạng của 54 dân tộc anh em trên khắp Việt Nam."
-    },
-    {
-      "start": "11:46",
-      "end": "15:16",
-      "place_id": "ChIJ1eo0p-BVNDERHJmZk_Dk_o4",
-      "title": "Top Thủ Thuật Hay",
+      "start": "07:06",
+      "end": "10:06",
+      "place_id": "ChIJefNOHABncDER9RjSG5wEsQ8",
+      "title": "Sân khấu thực cảnh Tata Show",
       "description": null,
-      "rating": null,
-      "longitude": 105.7643975,
-      "latitude": 21.0349188,
-      "activity": "Khám phá các ý tưởng, mẹo vặt và thủ thuật hữu ích tại 'Top Thủ Thuật Hay', mang lại cái nhìn mới mẻ và giải pháp sáng tạo cho cuộc sống hàng ngày."
+      "rating": 4.4,
+      "tags": [
+        "cultural performance"
+      ],
+      "longitude": 109.2402453,
+      "latitude": 12.2167184,
+      "activity": "Tiếp tục thưởng thức Tata Show, chiêm ngưỡng các màn biểu diễn nghệ thuật đẳng cấp trong không gian sân khấu thực cảnh."
     },
     {
-      "start": "15:21",
-      "end": "18:51",
-      "place_id": "ChIJMRBjaTqrNTERQVQ-xzYNEPM",
-      "title": "Tàu lượn siêu tốc vườn thú Hà Nội",
+      "start": "10:06",
+      "end": "13:06",
+      "place_id": "ChIJefNOHABncDER9RjSG5wEsQ8",
+      "title": "Sân khấu thực cảnh Tata Show",
       "description": null,
-      "rating": 4.5,
-      "longitude": 105.8043429,
-      "latitude": 21.0297,
-      "activity": "Trải nghiệm cảm giác mạnh trên Tàu lượn siêu tốc tại vườn thú Hà Nội, tận hưởng tốc độ và những cú lượn ngoạn mục giữa không gian xanh."
+      "rating": 4.4,
+      "tags": [
+        "cultural performance"
+      ],
+      "longitude": 109.2402453,
+      "latitude": 12.2167184,
+      "activity": "Tiếp tục thưởng thức Tata Show, chiêm ngưỡng các màn biểu diễn nghệ thuật đẳng cấp trong không gian sân khấu thực cảnh."
     },
     {
-      "start": "19:04",
-      "end": "20:04",
-      "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-      "title": "(Nghỉ ngơi tại) Hotel de l'Opera Hanoi - MGallery",
-      "description": "Nghỉ ngơi 60 phút",
-      "rating": 4.5,
-      "longitude": 105.8555913,
-      "latitude": 21.024400699999997,
-      "activity": "Quay về Hotel de l'Opera Hanoi - MGallery để nghỉ ngơi, thư giãn trong không gian sang trọng và chuẩn bị cho các hoạt động tiếp theo trong ngày."
-    },
-    {
-      "start": "20:06",
-      "end": "22:06",
-      "place_id": "ChIJvYgNzb2rNTERtAKcAGpD86s",
-      "title": "T.U.N.G Dining",
+      "start": "13:06",
+      "end": "14:06",
+      "place_id": "ChIJ3zYVFiBncDER2tYesq2Osvg",
+      "title": "Tata Aventure",
       "description": null,
       "rating": 4.7,
-      "longitude": 105.8500153,
-      "latitude": 21.0269004,
-      "activity": "Thưởng thức trải nghiệm ẩm thực tinh tế tại T.U.N.G Dining, nơi bạn sẽ được khám phá thực đơn sáng tạo với các món ăn được chế biến công phu và trình bày nghệ thuật."
+      "tags": [],
+      "longitude": 109.2402587,
+      "latitude": 12.217362699999999,
+      "activity": "Trải nghiệm Tata Aventure, tham gia vào các trò chơi phiêu lưu cảm giác mạnh hoặc khám phá những khu vực giải trí đầy thử thách."
     },
     {
-      "start": "22:08",
-      "end": "00:08",
-      "place_id": "ChIJrSnreyyrNTERerYhe3EwyaA",
-      "title": "MẸT Vietnamese Restaurant & Vegetarian Met 2",
+      "start": "14:06",
+      "end": "15:06",
+      "place_id": "ChIJW-dkTHVncDERNKX3A0JHfdw",
+      "title": "Đường lượn nhớ đời - Alpine Coaster",
       "description": null,
-      "rating": 4.9,
-      "longitude": 105.85036099999999,
-      "latitude": 21.032778399999998,
-      "activity": "Trải nghiệm hương vị ẩm thực Việt Nam truyền thống tại MẸT Vietnamese Restaurant & Vegetarian Met 2, với đa dạng món ăn từ đặc sản vùng miền đến các lựa chọn chay thanh đạm."
+      "rating": 3.1,
+      "tags": [],
+      "longitude": 109.2403535,
+      "latitude": 12.2158765,
+      "activity": "Chinh phục 'Đường lượn nhớ đời' Alpine Coaster, tận hưởng cảm giác mạnh và ngắm nhìn toàn cảnh từ trên cao khi lao dốc."
     },
     {
-      "start": "00:09",
-      "end": "02:50",
-      "place_id": "ChIJ_zpboOqrNTERHl5FFqctDVs",
-      "title": "Upper Haven Sky Bar",
+      "start": "15:12",
+      "end": "16:12",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
+      "description": "Nghỉ ngơi 60 phút",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "Quay về Vinpearl Resort Nha Trang để nghỉ ngơi, thư giãn sau một ngày khám phá và chuẩn bị cho các hoạt động tiếp theo."
+    },
+    {
+      "start": "16:18",
+      "end": "17:18",
+      "place_id": "ChIJN041CH9ncDERZbt9zOaXORs",
+      "title": "Thủy cung Vinpearl Nha Trang",
+      "description": null,
+      "rating": 4.4,
+      "tags": [],
+      "longitude": 109.2410017,
+      "latitude": 12.219395599999999,
+      "activity": "Tham quan Thủy cung Vinpearl Nha Trang, khám phá thế giới đại dương đầy màu sắc với hàng ngàn loài sinh vật biển độc đáo."
+    },
+    {
+      "start": "17:18",
+      "end": "20:48",
+      "place_id": "ChIJkUGmBixncDERFp4zmUmm_C0",
+      "title": "Tata World River Adventure VinWonders Nha Trang",
       "description": null,
       "rating": 5,
-      "longitude": 105.85295119999999,
-      "latitude": 21.034589099999998,
-      "activity": "Thư giãn và ngắm nhìn toàn cảnh thành phố từ trên cao tại Upper Haven Sky Bar, thưởng thức những ly cocktail đặc sắc trong không gian sang trọng và âm nhạc sôi động."
+      "tags": [
+        "amusement/water park"
+      ],
+      "longitude": 109.24096329999999,
+      "latitude": 12.2182712,
+      "activity": "Trải nghiệm Tata World River Adventure tại VinWonders Nha Trang, tham gia vào cuộc phiêu lưu trên sông với những bất ngờ và cảnh quan kỳ thú."
     },
     {
-      "start": "02:50",
-      "end": "02:50",
-      "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-      "title": "Quay về Hotel de l'Opera Hanoi - MGallery",
-      "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên.",
-      "rating": 4.5,
-      "longitude": 105.8555913,
-      "latitude": 21.024400699999997,
+      "start": "20:50",
+      "end": "21:50",
+      "place_id": "ChIJCaPEQARncDERaambqvjdbEs",
+      "title": "Quảng trường 2-4",
+      "description": null,
+      "rating": 4.7,
+      "tags": [
+        "festival"
+      ],
+      "longitude": 109.197092,
+      "latitude": 12.239284099999999,
+      "activity": "Đi dạo, tản bộ quanh Quảng trường 2-4, hòa mình vào không khí sôi động của thành phố biển Nha Trang, ngắm cảnh hoặc chụp ảnh lưu niệm."
+    },
+    {
+      "start": "21:57",
+      "end": "22:57",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
+      "description": "Nghỉ ngơi 60 phút",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "tham quan và khám phá"
+    },
+    {
+      "start": "23:05",
+      "end": "01:05",
+      "place_id": "ChIJ1a2mELxncDERDfi3IyhnWYA",
+      "title": "BAO ngon",
+      "description": null,
+      "rating": 4.9,
+      "tags": [
+        "restaurant",
+        "nightlife"
+      ],
+      "longitude": 109.1899499,
+      "latitude": 12.240426099999999,
+      "activity": "Thưởng thức bữa ăn tại BAO ngon, khám phá hương vị ẩm thực địa phương với các món ăn được chế biến tỉ mỉ và hấp dẫn."
+    },
+    {
+      "start": "01:10",
+      "end": "02:20",
+      "place_id": "ChIJ50nfFJ9ncDERIWjo8aIDvTg",
+      "title": "Дом Культуры",
+      "description": null,
+      "rating": 5,
+      "tags": [
+        "cultural performance"
+      ],
+      "longitude": 109.20239559999999,
+      "latitude": 12.2189677,
+      "activity": "Tham quan Дом Культуры (House of Culture) để tìm hiểu về trung tâm văn hóa cộng đồng, có thể tham gia các sự kiện văn hóa, triển lãm hoặc chiêm ngưỡng kiến trúc độc đáo (nếu có)."
+    },
+    {
+      "start": "02:20",
+      "end": "02:20",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "Quay về Vinpearl Resort Nha Trang",
+      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
       "activity": "tham quan và khám phá"
     }
   ],
   "Day 2": [
     {
-      "start": "08:00",
+      "start": "07:00",
+      "end": "07:00",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "Vinpearl Resort Nha Trang",
+      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "Tận hưởng kỳ nghỉ dưỡng tại Vinpearl Resort Nha Trang với các tiện ích cao cấp như hồ bơi, bãi biển riêng và dịch vụ spa, hoặc xuất phát từ đây để bắt đầu hành trình khám phá thành phố."
+    },
+    {
+      "start": "07:00",
       "end": "08:00",
-      "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-      "title": "Hotel de l'Opera Hanoi - MGallery",
-      "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên.",
-      "rating": 4.5,
-      "longitude": 105.8555913,
-      "latitude": 21.024400699999997,
-      "activity": "Xuất phát từ khách sạn Hotel de l'Opera Hanoi - MGallery để bắt đầu hành trình khám phá thủ đô."
-    },
-    {
-      "start": "09:02",
-      "end": "12:02",
-      "place_id": "ChIJEQB--OurNTERK41Q2gDyemQ",
-      "title": "Nhà hát Lớn Hà Nội",
-      "description": "Nhà hát lớn biểu diễn nhạc cổ điển xây năm 1911. Nhà hát lộng lẫy này khánh thành từ năm 1911 và là nơi tổ chức biểu diễn nghệ thuật, trình diễn nhạc cổ điển, khiêu vũ và opera.",
-      "rating": 4.6,
-      "longitude": 105.85762539999999,
-      "latitude": 21.0242438,
-      "activity": "Tham quan kiến trúc Pháp cổ kính của Nhà hát Lớn Hà Nội và tìm hiểu về lịch sử văn hóa nghệ thuật biểu diễn nơi đây."
-    },
-    {
-      "start": "12:10",
-      "end": "15:40",
-      "place_id": "ChIJMRBjaTqrNTERQVQ-xzYNEPM",
-      "title": "Tàu lượn siêu tốc vườn thú Hà Nội",
-      "description": null,
-      "rating": 4.5,
-      "longitude": 105.8043429,
-      "latitude": 21.0297,
-      "activity": "Trải nghiệm cảm giác mạnh trên tàu lượn siêu tốc tại Vườn thú Hà Nội, tận hưởng không khí vui chơi giải trí và khám phá các loài động vật."
-    },
-    {
-      "start": "15:53",
-      "end": "18:53",
-      "place_id": "ChIJZ73nJpmrNTERHt_VdIgHDlg",
-      "title": "Văn Miếu – Quốc Tử Giám",
-      "description": "Ngôi đền lớn giữa khung cảnh thôn quê. Ngôi đền Nho giáo có khoảng sân tươi đẹp, bàn thờ và đền thờ lớn, và cổng chính đồ sộ.",
-      "rating": 4.6,
-      "longitude": 105.8356692,
-      "latitude": 21.0281175,
-      "activity": "Tham quan quần thể Văn Miếu – Quốc Tử Giám, tìm hiểu về lịch sử giáo dục và các vị danh nhân khoa bảng của Việt Nam."
-    },
-    {
-      "start": "18:58",
-      "end": "19:58",
-      "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-      "title": "(Nghỉ ngơi tại) Hotel de l'Opera Hanoi - MGallery",
-      "description": "Nghỉ ngơi 60 phút",
-      "rating": 4.5,
-      "longitude": 105.8555913,
-      "latitude": 21.024400699999997,
-      "activity": "Quay về khách sạn Hotel de l'Opera Hanoi - MGallery để nghỉ ngơi, thư giãn hoặc chuẩn bị cho các hoạt động tiếp theo trong ngày."
-    },
-    {
-      "start": "20:00",
-      "end": "22:00",
-      "place_id": "ChIJs1WPXL-rNTER5yFT1nC5oxY",
-      "title": "Nhà Hàng Little Hanoi",
+      "place_id": "ChIJtWRRQudmcDERM7pYaRqfkNk",
+      "title": "Sky Wheel",
       "description": null,
       "rating": 4.7,
-      "longitude": 105.85403319999999,
-      "latitude": 21.033067,
-      "activity": "Thưởng thức các món ăn truyền thống và đặc sản Hà Nội trong không gian ấm cúng, đậm chất địa phương tại Nhà Hàng Little Hanoi."
+      "tags": [],
+      "longitude": 109.2428491,
+      "latitude": 12.221850199999999,
+      "activity": "Tham gia trải nghiệm vòng quay Sky Wheel để ngắm toàn cảnh thành phố Nha Trang và bờ biển tuyệt đẹp từ trên cao, đặc biệt là vào buổi chiều tối khi đèn lên."
     },
     {
-      "start": "22:01",
-      "end": "00:01",
-      "place_id": "ChIJBc_8ksCrNTER7xjIdzUga9w",
-      "title": "Hanoi Food Culture",
+      "start": "08:05",
+      "end": "09:05",
+      "place_id": "ChIJ651BEmVncDERY1Pj2Zhbs1Q",
+      "title": "Công Viên Phù Đổng",
+      "description": null,
+      "rating": 4.5,
+      "tags": [],
+      "longitude": 109.1993064,
+      "latitude": 12.2297812,
+      "activity": "Đi dạo, hít thở không khí trong lành, tập thể dục nhẹ nhàng hoặc thư giãn tại Công Viên Phù Đổng, một không gian xanh mát lý tưởng bên bờ biển Nha Trang."
+    },
+    {
+      "start": "09:09",
+      "end": "12:39",
+      "place_id": "ChIJ27FghMFncDERSk2aFV86gOI",
+      "title": "Vịnh Phao Nổi Splash Bay",
+      "description": null,
+      "rating": 3.9,
+      "tags": [
+        "amusement/water park"
+      ],
+      "longitude": 109.2394657,
+      "latitude": 12.219857399999999,
+      "activity": "Thử thách bản thân và vui chơi hết mình với các trò chơi trên phao nổi tại Vịnh Phao Nổi Splash Bay, một công viên nước độc đáo giữa biển với nhiều chướng ngại vật thú vị."
+    },
+    {
+      "start": "12:47",
+      "end": "13:47",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
+      "description": "Nghỉ ngơi 60 phút",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "Quay về Vinpearl Resort Nha Trang để nghỉ ngơi, thư giãn sau một ngày dài khám phá và chuẩn bị cho các hoạt động giải trí hoặc bữa tối tiếp theo."
+    },
+    {
+      "start": "13:53",
+      "end": "14:53",
+      "place_id": "ChIJ5y9wD21ncDERTp8rI0M402w",
+      "title": "Tamarind, The rooftop Bar",
+      "description": null,
+      "rating": 4.6,
+      "tags": [],
+      "longitude": 109.1954851,
+      "latitude": 12.2321761,
+      "activity": "Tận hưởng buổi tối thư giãn tại Tamarind, The rooftop Bar với những ly cocktail sáng tạo, âm nhạc sống động và ngắm nhìn khung cảnh Nha Trang lấp lánh về đêm từ trên cao."
+    },
+    {
+      "start": "14:53",
+      "end": "15:53",
+      "place_id": "ChIJnbttMV9ncDERno2jbjkrEOo",
+      "title": "Vandana Authentic Indian Food",
+      "description": null,
+      "rating": 4.5,
+      "tags": [],
+      "longitude": 109.19559009999999,
+      "latitude": 12.2322147,
+      "activity": "Thưởng thức bữa tối đặc sắc với các món ăn Ấn Độ truyền thống và đích thực tại Vandana Authentic Indian Food, trải nghiệm hương vị cay nồng, phong phú cùng gia vị đặc trưng."
+    },
+    {
+      "start": "15:59",
+      "end": "18:59",
+      "place_id": "ChIJUfK4YYxncDERfB2v8ZdvXxE",
+      "title": "Tháp Bà Ponagar",
+      "description": "Ngôi đền trên triền núi với đồ trưng bày. Ngôi đền 3 tầng thanh bình nằm trên đỉnh núi với 2 tháp nhà thờ là nơi trưng bày hiện vật & hình ảnh lịch sử.",
+      "rating": 4.5,
+      "tags": [
+        "cultural performance",
+        "festival"
+      ],
+      "longitude": 109.1953678,
+      "latitude": 12.265366499999999,
+      "activity": "Tham quan quần thể kiến trúc Chăm cổ Tháp Bà Ponagar, tìm hiểu về lịch sử và văn hóa độc đáo của người Chăm, chiêm ngưỡng kiến trúc ấn tượng và chụp ảnh lưu niệm tại đây."
+    },
+    {
+      "start": "19:11",
+      "end": "22:11",
+      "place_id": "ChIJXSbD5X9dcDERBrdvrbCEu3o",
+      "title": "Cung văn Hóa Thiếu nhi Khánh Hòa",
+      "description": null,
+      "rating": 4.2,
+      "tags": [
+        "cultural performance"
+      ],
+      "longitude": 109.18790089999999,
+      "latitude": 12.2482923,
+      "activity": "Tham quan Cung văn Hóa Thiếu nhi Khánh Hòa để tìm hiểu các hoạt động văn hóa, giáo dục và có thể chiêm ngưỡng các tác phẩm nghệ thuật, không gian vui chơi của trẻ em địa phương."
+    },
+    {
+      "start": "22:19",
+      "end": "23:19",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
+      "description": "Nghỉ ngơi 60 phút",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "tham quan và khám phá"
+    },
+    {
+      "start": "23:27",
+      "end": "01:27",
+      "place_id": "ChIJMxdpUwBncDERQ9-lsNyfBcQ",
+      "title": "NHÀ BẾP NHA TRANG",
       "description": null,
       "rating": 4.9,
-      "longitude": 105.8538401,
-      "latitude": 21.0340925,
-      "activity": "Khám phá và trải nghiệm tinh hoa ẩm thực đường phố, các món ăn đặc trưng của Hà Nội, tìm hiểu sâu hơn về văn hóa ẩm thực địa phương."
+      "tags": [
+        "restaurant",
+        "nightlife"
+      ],
+      "longitude": 109.1917081,
+      "latitude": 12.2417798,
+      "activity": "Thưởng thức bữa ăn mang đậm hương vị đặc trưng của Nha Trang tại NHÀ BẾP NHA TRANG, khám phá ẩm thực địa phương phong phú."
     },
     {
-      "start": "00:03",
-      "end": "02:50",
-      "place_id": "ChIJo6tzBF6rNTERARxjMnqmrP4",
-      "title": "Secret Bar&Pub",
+      "start": "01:29",
+      "end": "02:20",
+      "place_id": "ChIJXSbD5X9dcDERBrdvrbCEu3o",
+      "title": "Cung văn Hóa Thiếu nhi Khánh Hòa",
       "description": null,
-      "rating": 5,
-      "longitude": 105.8519347,
-      "latitude": 21.035639,
-      "activity": "Thưởng thức đồ uống, cocktail sáng tạo và âm nhạc sôi động trong không gian độc đáo, bí mật của Secret Bar&Pub vào buổi tối."
+      "rating": 4.2,
+      "tags": [
+        "cultural performance"
+      ],
+      "longitude": 109.18790089999999,
+      "latitude": 12.2482923,
+      "activity": "Tham quan Cung văn Hóa Thiếu nhi Khánh Hòa để tìm hiểu các hoạt động văn hóa, giáo dục và có thể chiêm ngưỡng các tác phẩm nghệ thuật, không gian vui chơi của trẻ em địa phương."
     },
     {
-      "start": "02:50",
-      "end": "02:50",
-      "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-      "title": "Quay về Hotel de l'Opera Hanoi - MGallery",
-      "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên.",
-      "rating": 4.5,
-      "longitude": 105.8555913,
-      "latitude": 21.024400699999997,
-      "activity": "Quay về Hotel de l'Opera Hanoi - MGallery để nghỉ ngơi, thư giãn sau một ngày dài khám phá Hà Nội hoặc chuẩn bị cho các hoạt động buổi tối tại khách sạn sang trọng này."
+      "start": "02:20",
+      "end": "02:20",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "Quay về Vinpearl Resort Nha Trang",
+      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "tham quan và khám phá"
     }
   ],
   "Day 3": [
     {
-      "start": "08:00",
-      "end": "08:00",
-      "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-      "title": "Hotel de l'Opera Hanoi - MGallery",
-      "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên.",
-      "rating": 4.5,
-      "longitude": 105.8555913,
-      "latitude": 21.024400699999997,
-      "activity": "Quay về Hotel de l'Opera Hanoi - MGallery để nghỉ ngơi, thư giãn trong không gian sang trọng và chuẩn bị cho các hoạt động tiếp theo."
+      "start": "07:00",
+      "end": "07:00",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "Vinpearl Resort Nha Trang",
+      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "Nghỉ ngơi tại Vinpearl Resort Nha Trang và chuẩn bị cho một ngày khám phá thú vị."
     },
     {
-      "start": "08:12",
-      "end": "11:12",
-      "place_id": "ChIJld5RqparNTERVK8x7gvhAZc",
-      "title": "Di tích Nhà tù Hỏa Lò",
-      "description": "Bảo tàng tôn tạo từ nhà tù cũ. Tàn tích của nhà tù nhiều tầng dành cho tù binh ch.tranh Việt Nam chỉ còn lại khu canh gác, nay là bảo tàng.",
-      "rating": 4.5,
-      "longitude": 105.8464781,
-      "latitude": 21.0253297,
-      "activity": "Tham quan Di tích Nhà tù Hỏa Lò để tìm hiểu về lịch sử kháng chiến hào hùng và những câu chuyện bi tráng của dân tộc Việt Nam."
-    },
-    {
-      "start": "11:19",
-      "end": "14:49",
-      "place_id": "ChIJMRBjaTqrNTERQVQ-xzYNEPM",
-      "title": "Tàu lượn siêu tốc vườn thú Hà Nội",
+      "start": "07:28",
+      "end": "10:58",
+      "place_id": "ChIJ9yLtJDOLcDERoCJf3UjWEsQ",
+      "title": "Công viên nước Alma Resort",
       "description": null,
-      "rating": 4.5,
-      "longitude": 105.8043429,
-      "latitude": 21.0297,
-      "activity": "Trải nghiệm cảm giác mạnh với tàu lượn siêu tốc đầy kịch tính tại vườn thú Hà Nội, tận hưởng những phút giây giải trí sôi động."
-    },
-    {
-      "start": "14:56",
-      "end": "17:56",
-      "place_id": "ChIJ5W88Bb6rNTERS1bmOSwQuwQ",
-      "title": "Vietnam Tuong Theatre and Cultural Exhibition",
-      "description": null,
-      "rating": 4.5,
-      "longitude": 105.84707019999999,
-      "latitude": 21.031491799999998,
-      "activity": "Tham dự các buổi biểu diễn nghệ thuật Tuồng truyền thống và khám phá các hiện vật văn hóa tại Vietnam Tuong Theatre and Cultural Exhibition để hiểu sâu hơn về di sản nghệ thuật Việt Nam."
-    },
-    {
-      "start": "17:59",
-      "end": "18:59",
-      "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-      "title": "(Nghỉ ngơi tại) Hotel de l'Opera Hanoi - MGallery",
-      "description": "Nghỉ ngơi 60 phút",
-      "rating": 4.5,
-      "longitude": 105.8555913,
-      "latitude": 21.024400699999997,
-      "activity": "tham quan và khám phá"
-    },
-    {
-      "start": "19:02",
-      "end": "22:02",
-      "place_id": "ChIJfy-VVMerNTERfzjQOJoipXk",
-      "title": "Trung tâm Giao lưu Văn hóa Phố cổ Hà Nội",
-      "description": "Khu triển lãm & sự kiện văn hóa Việt Nam. Bảo tàng có tranh nghệ thuật và khu trưng bày về văn hóa Việt Nam và thường tổ chức sự kiện.",
       "rating": 4.4,
-      "longitude": 105.85279,
-      "latitude": 21.035588,
-      "activity": "Khám phá Trung tâm Giao lưu Văn hóa Phố cổ Hà Nội để tìm hiểu về kiến trúc cổ kính, lối sống và các giá trị văn hóa truyền thống đặc trưng của khu phố cổ Hà Nội."
+      "tags": [
+        "amusement/water park"
+      ],
+      "longitude": 109.1969802,
+      "latitude": 12.0714191,
+      "activity": "Vui chơi sảng khoái với các trò trượt nước mạo hiểm và bể bơi thư giãn tại Công viên nước Alma Resort."
     },
     {
-      "start": "22:03",
-      "end": "00:03",
-      "place_id": "ChIJB1EGIX-rNTER9GVryLt_d3c",
-      "title": "MẸT Vietnamese restaurant & Vegetarian Food 3",
+      "start": "11:37",
+      "end": "12:37",
+      "place_id": "ChIJ29ymqXlncDERh53gkGh2SSY",
+      "title": "Happy Beach",
       "description": null,
-      "rating": 4.9,
-      "longitude": 105.85128929999999,
-      "latitude": 21.0341351,
-      "activity": "Thưởng thức bữa ăn tại MẸT Vietnamese restaurant & Vegetarian Food, trải nghiệm các món ăn Việt Nam truyền thống và đặc biệt là những món chay thanh đạm, hấp dẫn."
+      "rating": 4.3,
+      "tags": [],
+      "longitude": 109.1969898,
+      "latitude": 12.2427466,
+      "activity": "Thư giãn trên bãi cát vàng, tắm biển và tận hưởng không khí trong lành tại Happy Beach."
     },
     {
-      "start": "00:51",
-      "end": "02:50",
-      "place_id": "ChIJ-fgLlUCrNTERoIQkZPuhgNM",
-      "title": "Le Ciel Sky Bar",
+      "start": "12:38",
+      "end": "13:38",
+      "place_id": "ChIJ_ZOJdoJncDERwm0jp8CiPSI",
+      "title": "Altitude Rooftop Bar",
       "description": null,
-      "rating": 4.9,
-      "longitude": 105.84964989999999,
-      "latitude": 21.0306598,
-      "activity": "Thư giãn buổi tối tại Le Ciel Sky Bar, nhâm nhi cocktail và ngắm nhìn toàn cảnh thành phố lung linh từ trên cao trong không gian sang trọng."
+      "rating": 4.7,
+      "tags": [],
+      "longitude": 109.19583089999999,
+      "latitude": 12.24639,
+      "activity": "Thưởng thức cocktail sáng tạo, ngắm nhìn toàn cảnh thành phố từ trên cao và thư giãn trong không gian sang trọng của Altitude Rooftop Bar."
     },
     {
-      "start": "02:50",
-      "end": "02:50",
-      "place_id": "ChIJ__8jvJWrNTERoYMvS7zr7WI",
-      "title": "Quay về Hotel de l'Opera Hanoi - MGallery",
-      "description": "Khách sạn cao cấp có hồ bơi lắp kính. Khách sạn trang nhã có nhà hàng và quán bar sang trọng, hồ bơi có kính bao quanh và sân hiên.",
-      "rating": 4.5,
-      "longitude": 105.8555913,
-      "latitude": 21.024400699999997,
-      "activity": "tham quan và khám phá"
+      "start": "13:45",
+      "end": "14:45",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
+      "description": "Nghỉ ngơi 60 phút",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "Quay về Vinpearl Resort Nha Trang để nghỉ ngơi, thư giãn và nạp năng lượng sau một ngày dài khám phá."
+    },
+    {
+      "start": "14:52",
+      "end": "15:52",
+      "place_id": "ChIJ_ZOJdoJncDERwm0jp8CiPSI",
+      "title": "Altitude Rooftop Bar",
+      "description": null,
+      "rating": 4.7,
+      "tags": [],
+      "longitude": 109.19583089999999,
+      "latitude": 12.24639,
+      "activity": "Thưởng thức cocktail sáng tạo, ngắm nhìn toàn cảnh thành phố từ trên cao và thư giãn trong không gian sang trọng của Altitude Rooftop Bar."
+    },
+    {
+      "start": "16:03",
+      "end": "19:03",
+      "place_id": "ChIJp5jGz9BpcDERo2VapNZi7GQ",
+      "title": "Đại lý Vé Nhà hát Đó (Đó theater)",
+      "description": null,
+      "rating": 4.6,
+      "tags": [
+        "cultural performance"
+      ],
+      "longitude": 109.2375732,
+      "latitude": 12.3005801,
+      "activity": "Đến Đại lý Vé Nhà hát Đó để mua vé và chuẩn bị cho buổi biểu diễn nghệ thuật độc đáo tại Nhà hát Đó."
+    },
+    {
+      "start": "19:04",
+      "end": "22:04",
+      "place_id": "ChIJ6RJHMZRdcDERqbBeCK3Somc",
+      "title": "Life Puppets show - Rối Mơ",
+      "description": null,
+      "rating": 4.7,
+      "tags": [
+        "cultural performance"
+      ],
+      "longitude": 109.2374262,
+      "latitude": 12.3006266,
+      "activity": "Thưởng thức buổi biểu diễn Life Puppets show - Rối Mơ với những màn trình diễn múa rối đầy sáng tạo, mang đậm bản sắc văn hóa Việt Nam."
+    },
+    {
+      "start": "22:14",
+      "end": "00:14",
+      "place_id": "ChIJA-9FNQBncDERyloKoP5HMIo",
+      "title": "Nhà Hàng Cá Bay - View Biển",
+      "description": null,
+      "rating": 4.8,
+      "tags": [
+        "restaurant",
+        "nightlife"
+      ],
+      "longitude": 109.19629859999999,
+      "latitude": 12.253633599999999,
+      "activity": "Thưởng thức bữa ăn với các món hải sản tươi ngon trong không gian mở, ngắm nhìn toàn cảnh biển."
+    },
+    {
+      "start": "00:22",
+      "end": "01:22",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
+      "description": "Nghỉ ngơi 60 phút",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "Nghỉ ngơi và thư giãn tại Vinpearl Resort Nha Trang, tận hưởng các tiện ích của khu nghỉ dưỡng."
+    },
+    {
+      "start": "01:29",
+      "end": "02:20",
+      "place_id": "ChIJn1av5kVncDERHWk8_OMjaII",
+      "title": "Sky Blu Lounge Nha Trang",
+      "description": null,
+      "rating": 4.3,
+      "tags": [],
+      "longitude": 109.19562959999999,
+      "latitude": 12.238841299999999,
+      "activity": "Thư giãn trong không gian sang trọng của Sky Blu Lounge, thưởng thức cocktail và ngắm nhìn Nha Trang về đêm từ trên cao."
+    },
+    {
+      "start": "02:20",
+      "end": "02:20",
+      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
+      "title": "Quay về Vinpearl Resort Nha Trang",
+      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
+      "rating": 4.9,
+      "tags": [
+        "hotel"
+      ],
+      "longitude": 109.2473572,
+      "latitude": 12.220934999999999,
+      "activity": "Quay về Vinpearl Resort Nha Trang để nghỉ ngơi, thư giãn sau một ngày khám phá và chuẩn bị cho những trải nghiệm tiếp theo."
     }
   ]
 }

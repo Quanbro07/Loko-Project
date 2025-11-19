@@ -5,14 +5,14 @@ from tag_rules.amusement_profile import AmusementProfile
 from solvers.amusement_solver import AmusementSolver     
 from data_loader import create_instance_from_files
 import json
+from datetime import datetime, timedelta
 
 def print_full_schedule(full_schedule_data, start_day=1):
     """Helper: In toàn bộ lịch trình nhiều ngày ra console."""
-    for i, day_data in enumerate(full_schedule_data.values(), start=start_day):
-        day_num = i
-        print("\n" + "="*40)
-        print(f"🗓️   NGÀY {day_num}")
-        print("="*40)
+    for date_str, day_data in full_schedule_data.items():
+        print("\n" + "="*50)
+        print(f"🗓️   LỊCH TRÌNH NGÀY: {date_str}")
+        print("="*50)
         
         schedule_list = day_data.get("schedule", [])
         if not schedule_list:
@@ -56,15 +56,29 @@ def main_itinerary_loop():
         SolverClass = FoodSolver
         preferred_tags = ["restaurant", "speciality", "night market"]
 
-    # --- Bước 2: Nhập số ngày ---
+    # --- Bước 2: Nhập ngày đi & Ngày về ---
+    start_date = None
+    end_date = None
     num_days = 0
-    while num_days <= 0:
+    while True:
         try:
-            num_days_input = input("Nhập tổng số ngày du lịch (ví dụ: 3): ").strip()
-            num_days = int(num_days_input)
-            if num_days <= 0: print("Số ngày phải lớn hơn 0.")
+            print("\n--- Nhập thời gian chuyến đi ---")
+            s_input = input("Nhập ngày đi (dd-mm-yyyy, ví dụ 20-12-2025): ").strip()
+            start_date = datetime.strptime(s_input, "%d-%m-%Y")
+
+            e_input = input("Nhập ngày về (dd-mm-yyyy, ví dụ 23-12-2025): ").strip()
+            end_date = datetime.strptime(e_input, "%d-%m-%Y")
+
+            if end_date < start_date:
+                print("❌ Ngày về phải sau hoặc bằng ngày đi. Vui lòng nhập lại.")
+                continue
+            
+            # Tính số ngày (cộng 1 để tính cả ngày bắt đầu)
+            num_days = (end_date - start_date).days + 1
+            print(f"✓ Tổng thời gian: {num_days} ngày.")
+            break
         except ValueError:
-            print("Vui lòng nhập một con số.")
+            print("❌ Định dạng ngày không hợp lệ. Vui lòng nhập đúng định dạng dd-mm-yyyy.")
 
     # --- Bước 3: Khởi tạo Vòng lặp "Thử" (Attempt) ---
     master_penalty_overrides = {} 
@@ -148,7 +162,7 @@ def main_itinerary_loop():
         
         try:
             with open("schedule.json", "w", encoding="utf-8") as f:
-                schedule_to_save = {day: data["schedule"] for day, data in full_trip_attempt_data.items()}
+                schedule_to_save = {day_key: data["schedule"] for day_key, data in full_trip_attempt_data.items()}
                 json.dump(schedule_to_save, f, ensure_ascii=False, indent=4)
             print("✅ Đã lưu lịch trình (tạm thời) vào 'schedule.json'.")
         except Exception as e:
