@@ -38,8 +38,6 @@ public class AIAPIService {
     private final LocationImgService locationImgService;
 
     // Gọi Api lấy location
-    // ** Chưa Handle Location_Img
-    // ** Chưa Handle Tao Location_img
     public List<Location> getLocations(List<CategorySyncStatDTO> categorySyncStatDTOList) {
         String getLocationUrl = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getGetLocationUrl();
 
@@ -106,5 +104,9 @@ public class AIAPIService {
 
         return locationEntities;
     }
+
+    // TODO: Thêm 1 function gọi api makeplan bên AI service
+    // TODO: param là MakePlanRequest + Location + Location user dã đi tỉnh đó
+    // TODO: return phải trả về TripResponse class/record
 
 }
