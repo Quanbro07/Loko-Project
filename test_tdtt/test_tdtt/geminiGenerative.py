@@ -8,12 +8,11 @@ import google.generativeai as genai
 # Không chia sẻ file này cho bất kỳ ai.
 API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
 # ==============================================================================
-2
 INPUT_FILE = "nha_trang.json"
 OUTPUT_FILE = "attractions_with_tags.json"
 
 genai.configure(api_key=API_KEY)
-MODEL = genai.GenerativeModel("models/gemini-2.5-flash") # Đã cập nhật lên 1.5-flash mới hơn
+MODEL = genai.GenerativeModel("models/gemini-2.5-flash")
 
 BATCH_SIZE = 30
 
@@ -129,7 +128,6 @@ Classify these places:
 """
 
 def extract_json(text):
-    """Trích xuất khối JSON từ phản hồi văn bản của AI."""
     try:
         return json.loads(text)
     except json.JSONDecodeError:
@@ -143,10 +141,6 @@ def extract_json(text):
     return None
 
 def detect_template_type(filename):
-    """
-    CHỈ SỬA PHẦN NÀY:
-    Chọn template theo con số người dùng nhập (1 = food, 2 = amusement)
-    """
     while True:
         try:
             choice = int(input("Chọn loại template (1 = food, 2 = amusement): "))
@@ -164,10 +158,10 @@ def classify_batch(batch_titles, template_type="food"):
         template = PROMPT_TEMPLATE_AMUSEMENT
     else:
         template = PROMPT_TEMPLATE_FOOD
-    
+
     prompt_locations = "\n".join(f"- {title}" for title in batch_titles)
     prompt = template.format(locations=prompt_locations)
-    
+
     for _ in range(3):
         try:
             resp = MODEL.generate_content(prompt)
@@ -180,7 +174,7 @@ def classify_batch(batch_titles, template_type="food"):
         except Exception as e:
             print(f"Lỗi API: {e}. Đang thử lại sau 2 giây...")
             time.sleep(2)
-            
+
     print("Lỗi: Thất bại sau 3 lần thử. Gán tag rỗng cho lô này.")
     return [{"place": title, "tags": []} for title in batch_titles]
 
@@ -204,13 +198,19 @@ def main():
 
     for i in range(0, total, BATCH_SIZE):
         batch_objects = locations[i:i+BATCH_SIZE]
-        batch_titles = [loc.get("title", "") for loc in batch_objects]
+
+        # 🔥 SỬA ĐÚNG TẠI ĐÂY: dùng location_name
+        batch_titles = [loc.get("location_name", "") for loc in batch_objects]
+
         classified_tags = classify_batch(batch_titles, template_type)
         tag_map = {res.get("place"): res.get("tags", []) for res in classified_tags}
+
         for obj in batch_objects:
-            title = obj.get("title", "")
+            # 🔥 SỬA ĐÚNG TẠI ĐÂY
+            title = obj.get("location_name", "")
             tags = tag_map.get(title, [])
             obj["tags"] = tags
+
         all_locations_with_tags.extend(batch_objects)
         print(f"[{len(all_locations_with_tags)}/{total}] ✅ Done batch")
         time.sleep(1)
