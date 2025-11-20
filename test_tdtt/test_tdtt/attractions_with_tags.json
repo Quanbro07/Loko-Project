@@ -22,8 +22,7 @@
     "description": null,
     "tags": [
       "amusement/water park",
-      "cultural performance",
-      "restaurant"
+      "cultural performance"
     ]
   },
   {
@@ -46,7 +45,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "amusement/water park"
+    ]
   },
   {
     "gg_place_id": "ChIJ651BEmVncDERY1Pj2Zhbs1Q",
@@ -68,7 +69,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "amusement/water park"
+    ]
   },
   {
     "gg_place_id": "ChIJBzWpKwFfcDERKmYjvw4Ximo",
@@ -90,7 +93,9 @@
       }
     ],
     "description": "Khu nghỉ rậm rạp có dịch vụ tắm bùn nóng. Không gian spa nơi vườn chuối, nổi bật với những quả trứng điêu khắc khổng lồ và khu tắm bùn giàu khoáng chất.",
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJo-J5RmpecDERb3SOXgZEmSk",
@@ -113,7 +118,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "amusement/water park"
+    ]
   },
   {
     "gg_place_id": "ChIJv_FhqN5mcDERS5Mb2BUw0Fc",
@@ -137,8 +144,7 @@
     "description": null,
     "tags": [
       "amusement/water park",
-      "cultural performance",
-      "restaurant"
+      "cultural performance"
     ]
   },
   {
@@ -162,7 +168,7 @@
     ],
     "description": null,
     "tags": [
-      "cultural performance"
+      "amusement/water park"
     ]
   },
   {
@@ -211,7 +217,8 @@
     ],
     "description": "Khu nghỉ dưỡng ven biển có hồ bơi. Khu nghỉ dưỡng ven biển có phòng ốc tinh tế, spa, nhà hàng, quầy bar, bể bơi trong nhà & ngoài trời.",
     "tags": [
-      "hotel"
+      "hotel",
+      "restaurant"
     ]
   },
   {
@@ -234,7 +241,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJ9yLtJDOLcDERoCJf3UjWEsQ",
@@ -280,7 +289,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "amusement/water park"
+    ]
   },
   {
     "gg_place_id": "ChIJm3ky4ej3cDERinK80PAn17w",
@@ -304,7 +315,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJW-dkTHVncDERNKX3A0JHfdw",
@@ -326,7 +339,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJ7ZwDewBncDERPujfkPO8yoA",
@@ -348,7 +363,10 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "amusement/water park",
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJefNOHABncDER9RjSG5wEsQ8",
@@ -395,7 +413,8 @@
     ],
     "description": null,
     "tags": [
-      "amusement/water park"
+      "amusement/water park",
+      "cultural performance"
     ]
   },
   {
@@ -419,7 +438,7 @@
     ],
     "description": "Chương trình xiếc thú và khỉ thả tự do. Điểm tham quan có những chú khỉ tinh nghịch trong chương trình biểu diễn xiếc cùng động vật hoang dã và các địa điểm lặn biển.",
     "tags": [
-      "zoo"
+      "cultural performance"
     ]
   },
   {
@@ -466,7 +485,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJ50nfFJ9ncDERIWjo8aIDvTg",
@@ -517,7 +538,7 @@
     ],
     "description": null,
     "tags": [
-      "festival"
+      "cultural performance"
     ]
   },
   {
@@ -588,7 +609,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJR0Cr4n9dcDERhrCYXyjifKQ",
@@ -612,7 +635,9 @@
       }
     ],
     "description": "Nhà thờ nổi tiếng có gian giữa xây mái vòm. Nhà thờ Tân-Gothic có tháp chuông lộng lẫy, trần nhà mái vòm và những chiếc cửa sổ kính màu đẹp mắt.",
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJ4fNk9-tncDEREaH8DVQWkmY",
@@ -635,7 +660,9 @@
       }
     ],
     "description": "Tảng đá ven biển và tiết mục âm nhạc. Điểm du lịch có những cụm đá tuyệt đẹp ở ven biển, hoạt động bơi lội và tiết mục âm nhạc truyền thống.",
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJUfK4YYxncDERfB2v8ZdvXxE",
@@ -658,8 +685,7 @@
     ],
     "description": "Ngôi đền trên triền núi với đồ trưng bày. Ngôi đền 3 tầng thanh bình nằm trên đỉnh núi với 2 tháp nhà thờ là nơi trưng bày hiện vật & hình ảnh lịch sử.",
     "tags": [
-      "cultural performance",
-      "festival"
+      "cultural performance"
     ]
   },
   {
@@ -683,7 +709,7 @@
     ],
     "description": null,
     "tags": [
-      "cultural performance"
+      "amusement/water park"
     ]
   },
   {
@@ -733,7 +759,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "restaurant"
+    ]
   },
   {
     "gg_place_id": "ChIJ6VnfP3ldcDERHoQBNdIRQhs",
@@ -757,7 +785,9 @@
       }
     ],
     "description": "Ngôi chùa với tượng Phật trên đỉnh đồi. Ngôi chùa thờ Phật hiện đại với một tượng Phật lớn trên đỉnh đồi và tầm nhìn toàn cảnh thành phố.",
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJ_ZOJdoJncDERwm0jp8CiPSI",
@@ -779,7 +809,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJN041CH9ncDERZbt9zOaXORs",
@@ -801,7 +833,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "aquarium"
+    ]
   },
   {
     "gg_place_id": "ChIJR89o2DZncDERC8bYtadAGj0",
@@ -824,7 +858,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJ2TBhifdncDER-bv_z5RkrGo",
@@ -847,7 +883,9 @@
       }
     ],
     "description": "Địa điểm sôi động có nhiều quầy hàng. Địa điểm sôi động có các cửa hàng và quầy hàng bán quần áo, giày dép, đồ lưu niệm và các mặt hàng khác.",
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJqZzbojZncDER5b38XvOq7cE",
@@ -870,8 +908,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "cultural performance"
     ]
   },
   {
@@ -900,7 +937,11 @@
       }
     ],
     "description": "Khách sạn cao cấp có bể bơi và spa. Khách sạn tinh tế, nhìn ra vịnh, có Wi-Fi, quầy bar, nhà hàng, bể bơi và khu spa cao cấp.",
-    "tags": []
+    "tags": [
+      "nightlife",
+      "hotel",
+      "restaurant"
+    ]
   },
   {
     "gg_place_id": "ChIJnbttMV9ncDERno2jbjkrEOo",
@@ -922,7 +963,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "restaurant"
+    ]
   },
   {
     "gg_place_id": "ChIJ9bXQGqddcDERdFE-9Jv9IBE",
@@ -944,7 +987,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "restaurant"
+    ]
   },
   {
     "gg_place_id": "ChIJ2SsvofpncDERMdlG4F3G9jg",
@@ -972,7 +1017,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJ_ZOJdoJncDERwm0jp8CiPSI",
@@ -994,7 +1041,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJXeYWDXlncDERdz6NupXSzTo",
@@ -1018,7 +1067,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "restaurant"
+    ]
   },
   {
     "gg_place_id": "ChIJu4rr9GRncDERiZUt92dcqRY",
@@ -1042,7 +1093,10 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife",
+      "restaurant"
+    ]
   },
   {
     "gg_place_id": "ChIJ29ymqXlncDERh53gkGh2SSY",
@@ -1064,7 +1118,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJSxuDcClncDERwIikCwd0JSY",
@@ -1086,7 +1142,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "cultural performance"
+    ]
   },
   {
     "gg_place_id": "ChIJeVOFV1hncDERe-m8Kk4ms8Q",
@@ -1108,7 +1166,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJix8YGGVncDERjFbduc6Ffrg",
@@ -1132,8 +1192,8 @@
     ],
     "description": "Nhà hàng và hộp đêm thời thượng ven biển. Nhà hàng thời thượng ven biển có DJ, tiết mục ca múa nhạc, cocktail cùng ẩm thực Việt Nam, Ấn Độ và phương Tây.",
     "tags": [
-      "restaurant",
-      "nightlife"
+      "nightlife",
+      "restaurant"
     ]
   },
   {
@@ -1159,7 +1219,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJn1av5kVncDERHWk8_OMjaII",
@@ -1181,7 +1243,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJWRKdumNncDERhHMvKGnE-tY",
@@ -1203,7 +1267,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJJ6BrCcpncDERGbGIX-QqwVc",
@@ -1226,7 +1292,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJZZHZchhncDERiO11-kz3z-s",
@@ -1248,7 +1316,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJ5y9wD21ncDERTp8rI0M402w",
@@ -1272,7 +1342,10 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife",
+      "restaurant"
+    ]
   },
   {
     "gg_place_id": "ChIJaUAjcjxncDERUA2qpPKwx_A",
@@ -1294,7 +1367,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJJ60qoJRncDERDi82dYMWVa8",
@@ -1318,7 +1393,10 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife",
+      "restaurant"
+    ]
   },
   {
     "gg_place_id": "ChIJ5YUnKVtncDERvcFnqblVa1g",
@@ -1341,7 +1419,10 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "cultural performance",
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJgTvkQLRdcDER7RSEwPbkQlo",
@@ -1363,7 +1444,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJ04zatVNncDERykP71bQE1tU",
@@ -1385,7 +1468,9 @@
       }
     ],
     "description": null,
-    "tags": []
+    "tags": [
+      "nightlife"
+    ]
   },
   {
     "gg_place_id": "ChIJxcswvkZncDERQl0fDKfK6EY",
@@ -1410,8 +1495,8 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "nightlife",
+      "restaurant"
     ]
   },
   {
@@ -1444,8 +1529,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1471,8 +1555,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1497,8 +1580,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1522,8 +1604,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1547,8 +1628,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1572,8 +1652,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1598,8 +1677,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1624,8 +1702,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1650,8 +1727,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1678,8 +1754,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1704,8 +1779,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1734,8 +1808,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1760,8 +1833,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1786,8 +1858,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1811,8 +1882,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1837,8 +1907,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1871,8 +1940,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1896,8 +1964,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1925,8 +1992,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -1951,8 +2017,7 @@
     ],
     "description": null,
     "tags": [
-      "restaurant",
-      "nightlife"
+      "restaurant"
     ]
   },
   {
@@ -2125,7 +2190,8 @@
     ],
     "description": "Khu nghỉ dưỡng ven biển có hồ bơi. Khu nghỉ dưỡng ven biển có phòng ốc tinh tế, spa, nhà hàng, quầy bar, bể bơi trong nhà & ngoài trời.",
     "tags": [
-      "hotel"
+      "hotel",
+      "restaurant"
     ]
   },
   {
@@ -2200,7 +2266,8 @@
     ],
     "description": "KS sang trọng có nhà hàng, bể bơi và spa. Khách sạn cao cấp hướng biển có 2 nhà hàng, quầy bar trên sân thượng, bể bơi ngoài trời và khu spa.",
     "tags": [
-      "hotel"
+      "hotel",
+      "restaurant"
     ]
   },
   {
@@ -2274,7 +2341,8 @@
     ],
     "description": null,
     "tags": [
-      "hotel"
+      "hotel",
+      "restaurant"
     ]
   },
   {
@@ -2347,7 +2415,7 @@
     ],
     "description": "Phòng studio cao cấp hướng bể bơi & vịnh. KS kiểu cách có bể bơi ngoài trời, nhà hàng cao cấp, quầy bar và phòng ốc sang trọng. Một số phòng hướng vịnh.",
     "tags": [
-      "hotel"
+      "cultural performance"
     ]
   },
   {
@@ -2401,7 +2469,9 @@
     ],
     "description": "Khách sạn cao cấp có bể bơi và spa. Khách sạn tinh tế, nhìn ra vịnh, có Wi-Fi, quầy bar, nhà hàng, bể bơi và khu spa cao cấp.",
     "tags": [
-      "hotel"
+      "nightlife",
+      "hotel",
+      "restaurant"
     ]
   },
   {
