@@ -20,7 +20,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "amusement/water park",
       "cultural performance"
     ]
@@ -45,7 +45,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "amusement/water park"
     ]
   },
@@ -69,7 +69,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "amusement/water park"
     ]
   },
@@ -93,7 +93,8 @@
       }
     ],
     "description": "Khu nghỉ rậm rạp có dịch vụ tắm bùn nóng. Không gian spa nơi vườn chuối, nổi bật với những quả trứng điêu khắc khổng lồ và khu tắm bùn giàu khoáng chất.",
-    "tags": [
+    "categories": [
+      "amusement/water park",
       "cultural performance"
     ]
   },
@@ -118,7 +119,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "amusement/water park"
     ]
   },
@@ -142,7 +143,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "amusement/water park",
       "cultural performance"
     ]
@@ -167,8 +168,9 @@
       }
     ],
     "description": null,
-    "tags": [
-      "amusement/water park"
+    "categories": [
+      "amusement/water park",
+      "cultural performance"
     ]
   },
   {
@@ -191,7 +193,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "amusement/water park"
     ]
   },
@@ -216,7 +218,7 @@
       }
     ],
     "description": "Khu nghỉ dưỡng ven biển có hồ bơi. Khu nghỉ dưỡng ven biển có phòng ốc tinh tế, spa, nhà hàng, quầy bar, bể bơi trong nhà & ngoài trời.",
-    "tags": [
+    "categories": [
       "hotel",
       "restaurant"
     ]
@@ -241,8 +243,8 @@
       }
     ],
     "description": null,
-    "tags": [
-      "cultural performance"
+    "categories": [
+      "amusement/water park"
     ]
   },
   {
@@ -265,7 +267,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "amusement/water park"
     ]
   },
@@ -289,7 +291,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "amusement/water park"
     ]
   },
@@ -315,7 +317,8 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
+      "amusement/water park",
       "cultural performance"
     ]
   },
@@ -339,8 +342,8 @@
       }
     ],
     "description": null,
-    "tags": [
-      "cultural performance"
+    "categories": [
+      "amusement/water park"
     ]
   },
   {
@@ -363,7 +366,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "amusement/water park",
       "cultural performance"
     ]
@@ -388,7 +391,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -412,7 +415,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "amusement/water park",
       "cultural performance"
     ]
@@ -437,8 +440,9 @@
       }
     ],
     "description": "Chương trình xiếc thú và khỉ thả tự do. Điểm tham quan có những chú khỉ tinh nghịch trong chương trình biểu diễn xiếc cùng động vật hoang dã và các địa điểm lặn biển.",
-    "tags": [
-      "cultural performance"
+    "categories": [
+      "cultural performance",
+      "zoo"
     ]
   },
   {
@@ -461,7 +465,7 @@
       }
     ],
     "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -485,8 +489,8 @@
       }
     ],
     "description": null,
-    "tags": [
-      "cultural performance"
+    "categories": [
+      "amusement/water park"
     ]
   },
   {
@@ -509,7 +513,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -537,8 +541,9 @@
       }
     ],
     "description": null,
-    "tags": [
-      "cultural performance"
+    "categories": [
+      "cultural performance",
+      "festival"
     ]
   },
   {
@@ -561,7 +566,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -585,7 +590,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -609,7 +614,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -635,7 +640,7 @@
       }
     ],
     "description": "Nhà thờ nổi tiếng có gian giữa xây mái vòm. Nhà thờ Tân-Gothic có tháp chuông lộng lẫy, trần nhà mái vòm và những chiếc cửa sổ kính màu đẹp mắt.",
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -660,7 +665,7 @@
       }
     ],
     "description": "Tảng đá ven biển và tiết mục âm nhạc. Điểm du lịch có những cụm đá tuyệt đẹp ở ven biển, hoạt động bơi lội và tiết mục âm nhạc truyền thống.",
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -684,7 +689,7 @@
       }
     ],
     "description": "Ngôi đền trên triền núi với đồ trưng bày. Ngôi đền 3 tầng thanh bình nằm trên đỉnh núi với 2 tháp nhà thờ là nơi trưng bày hiện vật & hình ảnh lịch sử.",
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -708,8 +713,9 @@
       }
     ],
     "description": null,
-    "tags": [
-      "amusement/water park"
+    "categories": [
+      "amusement/water park",
+      "cultural performance"
     ]
   },
   {
@@ -733,7 +739,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -759,7 +765,8 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
+      "nightlife",
       "restaurant"
     ]
   },
@@ -785,7 +792,7 @@
       }
     ],
     "description": "Ngôi chùa với tượng Phật trên đỉnh đồi. Ngôi chùa thờ Phật hiện đại với một tượng Phật lớn trên đỉnh đồi và tầm nhìn toàn cảnh thành phố.",
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -809,7 +816,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -833,7 +840,8 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
+      "amusement/water park",
       "aquarium"
     ]
   },
@@ -858,8 +866,9 @@
       }
     ],
     "description": null,
-    "tags": [
-      "cultural performance"
+    "categories": [
+      "cultural performance",
+      "festival"
     ]
   },
   {
@@ -883,8 +892,8 @@
       }
     ],
     "description": "Địa điểm sôi động có nhiều quầy hàng. Địa điểm sôi động có các cửa hàng và quầy hàng bán quần áo, giày dép, đồ lưu niệm và các mặt hàng khác.",
-    "tags": [
-      "cultural performance"
+    "categories": [
+      "nightlife"
     ]
   },
   {
@@ -907,7 +916,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "cultural performance"
     ]
   },
@@ -937,7 +946,7 @@
       }
     ],
     "description": "Khách sạn cao cấp có bể bơi và spa. Khách sạn tinh tế, nhìn ra vịnh, có Wi-Fi, quầy bar, nhà hàng, bể bơi và khu spa cao cấp.",
-    "tags": [
+    "categories": [
       "nightlife",
       "hotel",
       "restaurant"
@@ -963,7 +972,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -987,7 +996,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1017,7 +1026,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1041,7 +1050,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1067,7 +1076,8 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
+      "nightlife",
       "restaurant"
     ]
   },
@@ -1093,7 +1103,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife",
       "restaurant"
     ]
@@ -1118,7 +1128,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1142,8 +1152,8 @@
       }
     ],
     "description": null,
-    "tags": [
-      "cultural performance"
+    "categories": [
+      "nightlife"
     ]
   },
   {
@@ -1166,7 +1176,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1191,7 +1201,7 @@
       }
     ],
     "description": "Nhà hàng và hộp đêm thời thượng ven biển. Nhà hàng thời thượng ven biển có DJ, tiết mục ca múa nhạc, cocktail cùng ẩm thực Việt Nam, Ấn Độ và phương Tây.",
-    "tags": [
+    "categories": [
       "nightlife",
       "restaurant"
     ]
@@ -1219,7 +1229,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1243,7 +1253,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1267,7 +1277,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1292,7 +1302,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1316,7 +1326,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1342,7 +1352,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife",
       "restaurant"
     ]
@@ -1367,7 +1377,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1393,7 +1403,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife",
       "restaurant"
     ]
@@ -1419,7 +1429,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "cultural performance",
       "nightlife"
     ]
@@ -1444,7 +1454,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1468,7 +1478,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife"
     ]
   },
@@ -1494,7 +1504,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "nightlife",
       "restaurant"
     ]
@@ -1528,7 +1538,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1554,7 +1564,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1579,7 +1589,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1603,7 +1613,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1627,7 +1637,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1651,7 +1661,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1676,7 +1686,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1701,7 +1711,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1726,7 +1736,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1753,7 +1763,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1778,7 +1788,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1807,7 +1817,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1832,7 +1842,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1857,7 +1867,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1881,7 +1891,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1906,7 +1916,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1939,7 +1949,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1963,7 +1973,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -1991,7 +2001,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -2016,7 +2026,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "restaurant"
     ]
   },
@@ -2042,7 +2052,7 @@
       }
     ],
     "description": "KS xa hoa có spa và 3 bể bơi ngoài trời. Khách sạn có phòng ở tao nhã, một số phòng nhìn ra vịnh, nhà hàng sang trọng, 3 bể bơi, 2 quầy bar và khu spa.",
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2068,7 +2078,7 @@
       }
     ],
     "description": "Khách sạn thời thượng có 1 bể bơi vô cực. Khách sạn sành điệu có phòng ở & suite ấm cúng có ban công, phòng ăn, một bể bơi vô cực & một phòng spa.",
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2092,7 +2102,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2116,7 +2126,7 @@
       }
     ],
     "description": "Khách sạn cao cấp có 2 nhà hàng. Khách sạn cao cấp, phòng ốc trang nhã, có bể bơi ngoài trời, 2 nhà hàng và quán bar.",
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2140,7 +2150,7 @@
       }
     ],
     "description": "Khách sạn xa hoa nhìn ra vịnh và có nhà hàng. Khách sạn cao tầng, sang trọng có khu spa, 2 nhà hàng trang nhã và bể bơi tầng thượng nhìn ra vịnh.",
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2164,7 +2174,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2189,7 +2199,7 @@
       }
     ],
     "description": "Khu nghỉ dưỡng ven biển có hồ bơi. Khu nghỉ dưỡng ven biển có phòng ốc tinh tế, spa, nhà hàng, quầy bar, bể bơi trong nhà & ngoài trời.",
-    "tags": [
+    "categories": [
       "hotel",
       "restaurant"
     ]
@@ -2214,7 +2224,7 @@
       }
     ],
     "description": "Khách sạn căn hộ xa hoa, đối diện biển. Khách sạn căn hộ sang trọng nằm đối diện bãi biển, có bể bơi vô cực, khu spa và 2 nhà hàng.",
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2238,7 +2248,7 @@
       }
     ],
     "description": "KS cao cấp có bể bơi trên sân thượng. Khách sạn sang trọng với phòng ốc hiện đại, có lối đi thẳng ra biển, nhà hàng, khu spa và bể bơi.",
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2265,7 +2275,7 @@
       }
     ],
     "description": "KS sang trọng có nhà hàng, bể bơi và spa. Khách sạn cao cấp hướng biển có 2 nhà hàng, quầy bar trên sân thượng, bể bơi ngoài trời và khu spa.",
-    "tags": [
+    "categories": [
       "hotel",
       "restaurant"
     ]
@@ -2290,7 +2300,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2314,7 +2324,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2340,7 +2350,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "hotel",
       "restaurant"
     ]
@@ -2365,7 +2375,7 @@
       }
     ],
     "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2390,7 +2400,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2414,8 +2424,8 @@
       }
     ],
     "description": "Phòng studio cao cấp hướng bể bơi & vịnh. KS kiểu cách có bể bơi ngoài trời, nhà hàng cao cấp, quầy bar và phòng ốc sang trọng. Một số phòng hướng vịnh.",
-    "tags": [
-      "cultural performance"
+    "categories": [
+      "hotel"
     ]
   },
   {
@@ -2438,7 +2448,7 @@
       }
     ],
     "description": "Resort sang trọng có spa, bãi tắm riêng. Resort cao cấp, phòng ở trang nhã, bãi tắm riêng, khu spa, 3 nhà hàng và bể bơi tầng thượng.",
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2468,7 +2478,7 @@
       }
     ],
     "description": "Khách sạn cao cấp có bể bơi và spa. Khách sạn tinh tế, nhìn ra vịnh, có Wi-Fi, quầy bar, nhà hàng, bể bơi và khu spa cao cấp.",
-    "tags": [
+    "categories": [
       "nightlife",
       "hotel",
       "restaurant"
@@ -2495,7 +2505,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "hotel"
     ]
   },
@@ -2519,7 +2529,7 @@
       }
     ],
     "description": null,
-    "tags": [
+    "categories": [
       "hotel"
     ]
   }

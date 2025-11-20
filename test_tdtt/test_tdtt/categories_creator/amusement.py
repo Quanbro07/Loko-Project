@@ -3,7 +3,7 @@ import re
 import time
 
 # ----------------------------------------------------------
-# 1. TYPE MAPPING (GIỮ NGUYÊN CÁC ĐỊNH NGHĨA RỘNG)
+# 1. TYPE MAPPING (GIỮ NGUYÊN)
 # ----------------------------------------------------------
 TYPE_TO_TAG = {
     # --- AMUSEMENT ---
@@ -19,7 +19,7 @@ TYPE_TO_TAG = {
     "thủy cung": "aquarium",
     "aquarium": "aquarium",
     
-    # --- CULTURAL (ĐỊNH NGHĨA RỘNG: CẢ SHOW & THẮNG CẢNH) ---
+    # --- CULTURAL ---
     "nhà hát": "cultural performance",
     "trung tâm văn hóa": "cultural performance",
     "lễ hội": "festival",
@@ -54,7 +54,7 @@ TYPE_TO_TAG = {
 }
 
 # ----------------------------------------------------------
-# 2. NAME HINTS & BRAND LOGIC
+# 2. NAME HINTS
 # ----------------------------------------------------------
 NAME_HINTS = {
     "festival": "festival",
@@ -95,9 +95,10 @@ def tags_from_types(types):
                 results.add(v)
     return list(results)
 
+# --- CẬP NHẬT PROMPT: ĐỔI TAGS -> CATEGORIES ---
 PROMPT_AMUSEMENT = """
 Classify these places.
-Allowed tags: amusement/water park, zoo, aquarium, nightlife, festival, cultural performance, hotel, restaurant.
+Allowed categories: amusement/water park, zoo, aquarium, nightlife, festival, cultural performance, hotel, restaurant.
 
 RULES:
 - Flexible tagging: A place can be BOTH a park AND a cultural spot.
@@ -108,7 +109,7 @@ RULES:
 Format:
 {
   "results": [
-    { "place": "<name>", "tags": ["tag1", "tag2"] }
+    { "place": "<name>", "categories": ["cat1", "cat2"] }
   ]
 }
 
@@ -129,56 +130,49 @@ def classify_with_model(model, items):
                 return data["results"]
         except:
             time.sleep(1)
-    return [{"place": item["location_name"], "tags": []} for item in items]
+    # Trả về list rỗng nếu lỗi, key là categories
+    return [{"place": item["location_name"], "categories": []} for item in items]
 
-def clean_tags(name, types, tags):
-    # 1. Deduplicate ban đầu
+def clean_categories(name, types, tags):
+    # (Logic giữ nguyên, chỉ đổi tên hàm cho hợp ngữ cảnh)
     tags = list(set(tags))
     lower_name = name.lower()
     types_str = " ".join(types).lower()
 
-    # 2. LOGIC ĐẶC BIỆT (HYBRID LOGIC) - QUAN TRỌNG
-    # Nếu là VinWonders, Sun World, hoặc các khu tổ hợp lớn -> ÉP CÓ CẢ 2 TAG
+    # Logic Hybrid
     if any(x in lower_name for x in ["vinwonders", "sun world", "vinpearl land", "universal", "disney"]):
-        if "amusement/water park" not in tags:
-            tags.append("amusement/water park")
-        if "cultural performance" not in tags:
-            tags.append("cultural performance")
+        if "amusement/water park" not in tags: tags.append("amusement/water park")
+        if "cultural performance" not in tags: tags.append("cultural performance")
             
-    # Nếu là cáp treo -> ÉP CÓ CẢ 2
     if "cáp treo" in lower_name or "cable car" in lower_name:
         if "amusement/water park" not in tags: tags.append("amusement/water park")
         if "cultural performance" not in tags: tags.append("cultural performance")
 
-    # 3. Name Hints (Bổ sung thêm nếu thiếu)
+    # Name Hints
     for k, v in NAME_HINTS.items():
         if k in lower_name and v not in tags:
             tags.append(v)
 
-    # 4. Restaurant Logic (Lọc nhiễu)
+    # Restaurant filter
     if "restaurant" in tags:
         restaurant_keywords = ["restaurant", "nhà hàng", "quán", "ẩm thực", "dining", "buffet", "kitchen", "bistro", "lounge"]
         is_in_name = any(x in lower_name for x in restaurant_keywords)
         is_in_types = any(x in types_str for x in restaurant_keywords)
-        # VinWonders có nhà hàng bên trong, nhưng nó không phải là tag chính để hiển thị, trừ khi nó là nhà hàng riêng biệt
-        # Tuy nhiên nếu bạn muốn giữ sự linh hoạt, ta nới lỏng điều kiện này
         if not is_in_name and not is_in_types: 
             tags.remove("restaurant")
 
-    # 5. SẮP XẾP & GIỮ LẠI (KHÔNG XÓA LẪN NHAU)
+    # Sort & Filter
     majors = ["amusement/water park", "cultural performance", "zoo", "aquarium", "nightlife", "festival", "hotel", "restaurant"]
     
     final_tags = []
-    # Vòng lặp này chỉ dùng để sắp xếp thứ tự ưu tiên hiển thị, KHÔNG dùng để lọc bỏ
     for major in majors:
         if major in tags:
             final_tags.append(major)
 
-    # Fallback nếu rỗng
+    # Fallback
     if not final_tags:
         final_tags = tags_from_types(types)
     if not final_tags:
-        # Logic fallback thông minh hơn
         if "park" in lower_name or "công viên" in lower_name:
             final_tags = ["amusement/water park"]
         else:
@@ -200,7 +194,6 @@ def run_amusement(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
 
         to_query_items = []
         for item in block:
-            # Vẫn giữ logic gọi AI cũ
             if len(pre_tags_map[item["location_name"]]) < 2:
                 to_query_items.append(item)
 
@@ -208,7 +201,8 @@ def run_amusement(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
         if to_query_items:
             results = classify_with_model(model, to_query_items)
             for r in results:
-                api_result[r["place"]] = r["tags"]
+                # Ưu tiên lấy 'categories', nếu model cũ trả 'tags' thì vẫn lấy được
+                api_result[r["place"]] = r.get("categories", r.get("tags", []))
 
         for item in block:
             name = item["location_name"]
@@ -218,7 +212,13 @@ def run_amusement(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
             if name in api_result:
                 tags.extend(api_result[name])
             
-            item["tags"] = clean_tags(name, ttypes, tags)
+            # ĐỔI TÊN KEY OUTPUT TẠI ĐÂY: 'categories'
+            item["categories"] = clean_categories(name, ttypes, tags)
+            
+            # Xóa key 'tags' cũ nếu có để tránh rác
+            if "tags" in item:
+                del item["tags"]
+                
             all_results.append(item)
 
         print(f"✔ Done {min(i+BATCH_SIZE, total)}/{total}")

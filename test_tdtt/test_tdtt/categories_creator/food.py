@@ -3,7 +3,7 @@ import re
 import time
 
 # ----------------------------------------------------------
-# 1. MAPPING CHI TIẾT CHO FOOD (Việt hóa tối đa)
+# 1. MAPPING CHI TIẾT CHO FOOD (GIỮ NGUYÊN)
 # ----------------------------------------------------------
 TYPE_TO_TAG = {
     # --- RESTAURANT (Ăn chính) ---
@@ -63,11 +63,11 @@ TYPE_TO_TAG = {
     "đặc sản": "speciality",
     "quà lưu niệm": "speciality",
     "souvenir": "speciality",
-    "yến sào": "speciality", # Rất phổ biến ở Nha Trang
+    "yến sào": "speciality",
     "trầm hương": "speciality",
     "hải sản khô": "speciality",
     "nước mắm": "speciality",
-    "nem": "speciality",     # Nem nướng/Nem chua (mua về)
+    "nem": "speciality",
     
     # --- HOTEL ---
     "khách sạn": "hotel",
@@ -76,7 +76,7 @@ TYPE_TO_TAG = {
 }
 
 # ----------------------------------------------------------
-# 2. NAME HINTS (Bắt từ khóa trong tên)
+# 2. NAME HINTS
 # ----------------------------------------------------------
 NAME_HINTS = {
     # Cafe & Snack
@@ -88,7 +88,7 @@ NAME_HINTS = {
     "bakery": "snack",
     "kem": "snack",
     "chè": "snack",
-    "bistro": "restaurant", # Bistro thường là lai giữa cafe và restaurant
+    "bistro": "restaurant", 
     
     # Restaurant
     "nhà hàng": "restaurant",
@@ -138,14 +138,14 @@ def tags_from_types(types):
                 results.add(v)
     return list(results)
 
-# Prompt được tinh chỉnh cho Food
+# --- CẬP NHẬT PROMPT: ĐỔI TAGS -> CATEGORIES ---
 PROMPT_FOOD = """
 Classify these food/dining locations.
-Allowed tags: snack, restaurant, cafe, night market, market, speciality, hotel.
+Allowed categories: snack, restaurant, cafe, night market, market, speciality, hotel.
 
 RULES:
-- "speciality" is for shops selling local gifts like Bird's Nest (Yến Sào), Dried Seafood, etc.
-- "snack" is for Bánh Mì, Ice Cream, Bakery, Street Food.
+- "speciality" is for shops selling local gifts like Bird's Nest (Yến Sào), Dried Seafood.
+- "snack" is for Bánh Mì, Ice Cream, Bakery.
 - "restaurant" is for proper meals (Phở, Seafood, Buffet).
 - Flexible: A bakery with coffee -> ["snack", "cafe"].
 - A hotel with dining -> ["hotel", "restaurant"].
@@ -154,7 +154,7 @@ RULES:
 Format:
 {
   "results": [
-    { "place": "<name>", "tags": ["tag1", "tag2"] }
+    { "place": "<name>", "categories": ["cat1", "cat2"] }
   ]
 }
 
@@ -175,49 +175,44 @@ def classify_with_model(model, items):
                 return data["results"]
         except:
             time.sleep(1)
-    return [{"place": item["location_name"], "tags": []} for item in items]
+    # Trả về key categories rỗng nếu lỗi
+    return [{"place": item["location_name"], "categories": []} for item in items]
 
-def clean_tags(name, types, tags):
-    # 1. Deduplicate
+def clean_categories(name, types, tags):
+    # (Logic giữ nguyên các rule thông minh của Food, chỉ đổi tên hàm)
     tags = list(set(tags))
     lower_name = name.lower()
     types_str = " ".join(types).lower()
 
-    # 2. LOGIC HYBRID & LINH HOẠT
+    # LOGIC HYBRID & LINH HOẠT
     
-    # Nếu tên có cả Coffee và Restaurant/Bistro -> Lấy cả 2
+    # Nếu tên có cả Coffee và Restaurant/Bistro
     if "bistro" in lower_name or ("cafe" in lower_name and "restaurant" in lower_name):
         if "restaurant" not in tags: tags.append("restaurant")
         if "cafe" not in tags: tags.append("cafe")
         
-    # Xử lý Night Market (Chợ đêm thường bán đồ ăn vặt)
+    # Xử lý Night Market
     if "chợ đêm" in lower_name or "night market" in lower_name:
         if "night market" not in tags: tags.append("night market")
         if "snack" not in tags: tags.append("snack")
-        # Xóa tag "market" thường để tránh trùng lặp
         if "market" in tags: tags.remove("market")
 
-    # Xử lý Speciality (Đặc sản)
-    # Nếu là Yến Sào, Trầm Hương -> Chắc chắn là Speciality
+    # Xử lý Speciality
     if any(x in lower_name for x in ["yến sào", "trầm hương", "đặc sản", "gift shop", "lưu niệm"]):
         if "speciality" not in tags: tags.append("speciality")
-        # Thường mấy tiệm này hay bị google gán là "store" -> không phải market
         if "market" in tags: tags.remove("market")
 
-    # 3. Name Hints (Bổ sung từ khóa)
+    # Name Hints
     for k, v in NAME_HINTS.items():
         if k in lower_name and v not in tags:
             tags.append(v)
 
-    # 4. Restaurant vs Snack Conflict (Làm rõ ranh giới)
-    # Nếu vừa có snack vừa có restaurant, ưu tiên giữ cả 2 nếu nó hợp lý (VD: Pizza Hut bán cả 2),
-    # Nhưng nếu là "Bánh mì lề đường" thì nên bỏ restaurant.
+    # Restaurant vs Snack Conflict
     if "snack" in tags and "restaurant" in tags:
-        # Nếu tên chỉ là Tiệm bánh hoặc Kem -> Bỏ Restaurant cho đỡ nặng
         if any(x in lower_name for x in ["bakery", "kem", "ice cream", "chè"]):
             tags.remove("restaurant")
 
-    # 5. SẮP XẾP & LỌC
+    # Sort & Filter
     allowed = ["speciality", "night market", "market", "restaurant", "cafe", "snack", "hotel"]
     
     final_tags = []
@@ -229,11 +224,10 @@ def clean_tags(name, types, tags):
     if not final_tags:
         final_tags = tags_from_types(types)
     if not final_tags:
-        # Mặc định an toàn dựa trên tên
         if "coffee" in lower_name or "cafe" in lower_name:
             final_tags = ["cafe"]
         else:
-            final_tags = ["restaurant"] # Mặc định phổ biến nhất
+            final_tags = ["restaurant"]
 
     return list(dict.fromkeys(final_tags))[:3]
 
@@ -249,7 +243,6 @@ def run_food(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
         
         pre_tags_map = {item["location_name"]: tags_from_types(item["types"]) for item in block}
 
-        # Logic gọi AI: Giữ nguyên tốc độ, chỉ hỏi khi map tĩnh ra < 2 tag
         to_query_items = []
         for item in block:
             if len(pre_tags_map[item["location_name"]]) < 2:
@@ -259,7 +252,8 @@ def run_food(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
         if to_query_items:
             results = classify_with_model(model, to_query_items)
             for r in results:
-                api_result[r["place"]] = r["tags"]
+                # Ưu tiên key 'categories', fallback 'tags'
+                api_result[r["place"]] = r.get("categories", r.get("tags", []))
 
         for item in block:
             name = item["location_name"]
@@ -269,7 +263,13 @@ def run_food(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
             if name in api_result:
                 tags.extend(api_result[name])
             
-            item["tags"] = clean_tags(name, ttypes, tags)
+            # ĐỔI TÊN KEY OUTPUT TẠI ĐÂY: 'categories'
+            item["categories"] = clean_categories(name, ttypes, tags)
+            
+            # Xóa key 'tags' cũ nếu tồn tại
+            if "tags" in item:
+                del item["tags"]
+
             all_results.append(item)
 
         print(f"✔ Done {min(i+BATCH_SIZE, total)}/{total}")

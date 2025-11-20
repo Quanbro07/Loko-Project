@@ -1,6 +1,6 @@
 import google.generativeai as genai
-from tag_creator.amusement import run_amusement
-from tag_creator.food import run_food
+from categories_creator.amusement import run_amusement
+from categories_creator.food import run_food
 
 # ==========================
 # CONFIG INPUT / OUTPUT
@@ -20,7 +20,7 @@ MODEL = genai.GenerativeModel("models/gemini-2.5-flash")
 # MAIN
 # ==========================
 def main():
-    print("=== TAG CREATOR ===")
+    print("=== CATEGORIES CREATOR ===")
     print("1. Food")
     print("2. Amusement")
 
