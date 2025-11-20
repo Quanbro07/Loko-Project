@@ -61,4 +61,5 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
             "WHERE loc IN :locations")
     List<Location> fetchLocationCategories(@Param("locations") List<Location> locations);
 
+    List<Location> findAllByIdIn(List<Long> ids);
 }

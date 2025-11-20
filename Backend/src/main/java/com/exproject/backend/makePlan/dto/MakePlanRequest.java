@@ -1,5 +1,8 @@
 package com.exproject.backend.makePlan.dto;
 
+import com.exproject.backend.aiAPI.dto.RawLocationDTO;
+import com.exproject.backend.location.Location;
+import com.exproject.backend.location.dto.LocationDTO;
 import com.exproject.backend.location_category.info.ELocationCategory;
 import com.exproject.backend.province.info.EProvince;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -41,9 +44,11 @@ public class MakePlanRequest {
     @PositiveOrZero
     private Integer numElders;
 
-    private ELocationCategory locationCategory;
+    private List<ELocationCategory> locationCategories;
 
     private List<LocalTime> fromOperateTime;
 
     private List<LocalTime> toOperateTime;
+
+    private List<LocationDTO> locaitons;
 }

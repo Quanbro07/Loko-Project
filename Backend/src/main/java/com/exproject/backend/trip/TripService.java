@@ -3,6 +3,12 @@ package com.exproject.backend.trip;
 import com.exproject.backend.categorySyncStat.CategorySyncStatService;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location.LocationRepository;
+import com.exproject.backend.location.dto.LocationDTO;
+import com.exproject.backend.location_category.LocationCategoryRepository;
+import com.exproject.backend.location_category.dto.LocationCategoryDTO;
+import com.exproject.backend.location_category.info.LocationCategory;
+import com.exproject.backend.location_img.LocationImg;
+import com.exproject.backend.location_img.dto.LocationImgDTO;
 import com.exproject.backend.province.info.Province;
 import com.exproject.backend.trip.dto.ProgressUpdateDTO;
 import com.exproject.backend.trip.dto.TripRequest;
@@ -23,6 +29,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -46,6 +53,8 @@ public class TripService {
 
     private final TripHistoryService tripHistoryService;
 
+    private final LocationCategoryRepository locationCategoryRepository;
+
     // * Tạo Full Trip
     public void createFullTrip(TripRequest tripRequest) {
         User user = userRepository.findById(tripRequest.getUserId())
@@ -53,17 +62,45 @@ public class TripService {
 
         Trip newTrip = new Trip(tripRequest,user);
 
+        // Loop qua Trip Section Request
         for (TripSectionRequest tripSectionRequest : tripRequest.getTripSections()) {
 
             TripSection newSection = new TripSection(tripSectionRequest);
 
+            // Loop qua Trip Detail Request
             for(TripDetailRequest tripDetailRequest : tripSectionRequest.getTripDetails()) {
 
-                Location location = locationRepository.findById(tripDetailRequest.getLocationId())
+                // Lấy locaiton DTO ra
+                LocationDTO locationDTO = tripDetailRequest.getLocation();
+
+                // Lấy location
+                Location location = locationRepository.findById(locationDTO.getId())
                         .orElseThrow(() -> new RuntimeException("Location not found"));
 
                 // Logic: User chọn địa điểm này -> Hệ thống hiểu User đang quan tâm Tỉnh/Loại này
                 categorySyncStatService.increaseCategorySyncStat(location);
+
+
+                // Loop qua location img
+                for(LocationImgDTO imgDTO: locationDTO.getImgs()) {
+                    // Them img mới
+                    LocationImg newImg = new LocationImg(imgDTO);
+
+                    // Add quan hệ 2 chiều vào
+                    location.addLocationImg(newImg);
+                }
+
+
+                // Loop qua location categories
+                for(LocationCategoryDTO categoryDTO: locationDTO.getCategories()) {
+                    // Tìm category ể set quan hệ 2 chiều
+                    LocationCategory existCategory = locationCategoryRepository
+                            .findById(categoryDTO.getId())
+                                    .orElseThrow(()-> new RuntimeException("Cateogry not Found"));
+
+                    location.addLocationCategory(existCategory);
+                }
+
 
                 TripDetail newTripDetail = new TripDetail(tripDetailRequest,location);
 
@@ -71,10 +108,10 @@ public class TripService {
             }
 
             newTrip.addTripSection(newSection);
+
         }
 
-        tripRepository.save(newTrip);
-
+        Trip savedTrip = tripRepository.save(newTrip);
     }
 
     // Khi Trip đã hoàn thành

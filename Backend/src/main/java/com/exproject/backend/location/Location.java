@@ -86,4 +86,10 @@ public class Location {
 
         reviewLocation.setLocation(this);
     }
+
+    public void addLocationCategory(LocationCategory existCategory) {
+        this.locationCategories.add(existCategory);
+
+        existCategory.getLocations().add(this);
+    }
 }
