@@ -11,27 +11,27 @@ class BaseProfile:
         self.priority_boost = {}
 
     # --- SERVICE TIME ---
-    def get_service_time(self, tags):
+    def get_service_time(self, categories):
         """Thời gian lưu trú tại điểm, dựa theo tag"""
-        tags = [t.lower() for t in tags or []]
-        for t in tags:
+        categories = [t.lower() for t in categories or []]
+        for t in categories:
             if t in self.service_time_map:
                 return self.service_time_map[t]
         return 60  # default 60 phút
 
     # --- PENALTY (mức phạt khi bỏ qua điểm đó) ---
-    def get_penalty(self, tags, rating=None):
+    def get_penalty(self, categories, rating=None):
         """Penalty cơ bản cho điểm đến, điều chỉnh theo rating."""
-        tags = [t.lower() for t in tags or []]
+        categories = [t.lower() for t in categories or []]
         base = 500 # Mặc định
         found = False
-        for t in tags:
+        for t in categories:
             if t in self.penalty_map:
                 base = self.penalty_map[t]
                 found = True
                 break
         
-        if not found and tags:
+        if not found and categories:
             base = 600 # Phạt cao hơn cho các tag không xác định
         
         # giảm penalty nếu rating cao (tức là quan trọng hơn, KHÔNG NÊN BỎ QUA)
@@ -49,24 +49,24 @@ class BaseProfile:
         return base
 
     # --- PREFERENCE (giảm penalty cho tag được chọn) ---
-    def adjust_by_preference(self, penalty, preferred_tags, tags):
+    def adjust_by_preference(self, penalty, preferred_categories, categories):
         """
-        Nếu tag nằm trong preferred_tags, TĂNG MẠNH penalty (để không bị bỏ qua).
+        Nếu tag nằm trong preferred_categories, TĂNG MẠNH penalty (để không bị bỏ qua).
         """
-        tags = [t.lower() for t in tags or []]
-        preferred_tags = [t.lower() for t in preferred_tags or []]
+        categories = [t.lower() for t in categories or []]
+        preferred_categories = [t.lower() for t in preferred_categories or []]
         
-        if any(t in preferred_tags for t in tags):
+        if any(t in preferred_categories for t in categories):
              # Tăng penalty (chi phí bỏ qua) -> khiến nó quan trọng hơn
             return int(penalty * 1.5)
         return penalty
 
-    def boost_priority(self, tags):
+    def boost_priority(self, categories):
         """
         Tăng nhẹ độ ưu tiên (tăng penalty) nếu tag đặc biệt (vd: speciality).
         """
-        tags = [t.lower() for t in tags or []]
-        for t in tags:
+        categories = [t.lower() for t in categories or []]
+        for t in categories:
             if t in self.priority_boost:
                 return self.priority_boost[t] # Trả về hệ số boost
         return 1.0

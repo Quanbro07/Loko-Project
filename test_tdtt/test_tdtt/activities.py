@@ -3,17 +3,14 @@ import re
 import time
 import google.generativeai as genai
 
-# === Cấu hình API ===
-API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU" # Thay bằng key của bạn
+API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
 INPUT_FILE = OUTPUT_FILE = "schedule.json"
 
 genai.configure(api_key=API_KEY)
 MODEL = genai.GenerativeModel("models/gemini-2.5-flash")
 
-# Giảm Batch Size xuống một chút để an toàn hơn cho tác vụ viết văn (nặng đô)
-BATCH_SIZE = 8 
+BATCH_SIZE = 8
 
-# === PROMPT NGUYÊN VĂN (GIỮ NGUYÊN, KHÔNG SỬA 1 CHỮ) ===
 PROMPT_TEMPLATE = """
 Bạn là chuyên gia du lịch, ẩm thực và địa điểm vui chơi tại Việt Nam.
 
@@ -28,42 +25,34 @@ Bạn được cung cấp đầy đủ:
 - loại địa điểm có thể suy luận từ tên và mô tả
 
 Hãy trả kết quả theo JSON với cấu trúc:
-{{
-  "results": [
-    {{"place": "Tên địa điểm", "activity": "Mô tả chi tiết hoạt động chính"}}
-  ]
-}}
+{
+  "results": [
+    {"place": "Tên địa điểm", "activity": "Mô tả chi tiết hoạt động chính"}
+  ]
+}
 
 =============================
 QUY TẮC PHÂN TÍCH & TẠO ACTIVITY
 =============================
 
 1. **PHẢI DỰA TRÊN TÊN ĐỊA ĐIỂM + MÔ TẢ + LOẠI HÌNH SUY LUẬN**
-   - Nếu là quán ăn / restaurant / dining → mô tả: người dùng đến để **thưởng thức món gì**, phong cách ăn uống gì (casual, fine dining,…).
-   - Nếu là cafe → mô tả: thưởng thức cà phê, không gian, nghỉ chân.
-   - Nếu là công viên → đi dạo, tập thể dục, chụp ảnh, thư giãn.
-   - Nếu là đền chùa, di tích → tham quan, tìm hiểu lịch sử, chụp ảnh.
-   - Nếu là escape room → chơi giải đố, trải nghiệm trò chơi thử thách.
-   - Nếu là khu mua sắm / chợ → mua sắm, ăn vặt, khám phá địa phương.
-   - Nếu là bar / pub → thưởng thức cocktail, nghe nhạc, chill buổi tối.
-   - Nếu không rõ → chọn hoạt động hợp lý nhất theo bối cảnh.
+   - Nếu là quán ăn / restaurant / dining → mô tả: người dùng đến để **thưởng thức món gì**, phong cách ăn uống gì (casual, fine dining,…).
+   - Nếu là cafe → mô tả: thưởng thức cà phê, không gian, nghỉ chân.
+   - Nếu là công viên → đi dạo, tập thể dục, chụp ảnh, thư giãn.
+   - Nếu là đền chùa, di tích → tham quan, tìm hiểu lịch sử, chụp ảnh.
+   - Nếu là escape room → chơi giải đố, trải nghiệm trò chơi thử thách.
+   - Nếu là khu mua sắm / chợ → mua sắm, ăn vặt, khám phá địa phương.
+   - Nếu là bar / pub → thưởng thức cocktail, nghe nhạc, chill buổi tối.
+   - Nếu không rõ → chọn hoạt động hợp lý nhất theo bối cảnh.
 
 2. **ĐỐI VỚI KHÁCH SẠN / RESORT**
-   - Nếu là **điểm đầu tiên trong ngày** → "nghỉ ngơi tại khách sạn" hoặc "xuất phát từ khách sạn".
-   - Nếu KHÔNG PHẢI điểm đầu tiên → **bắt buộc** viết dạng:
-     → `"Quay về khách sạn để nghỉ ngơi / thư giãn / chuẩn bị cho chặng tiếp theo…"`
+   - Nếu là **điểm đầu tiên trong ngày** → "nghỉ ngơi tại khách sạn" hoặc "xuất phát từ khách sạn".
+   - Nếu KHÔNG PHẢI điểm đầu tiên → **bắt buộc** viết dạng:
+     → "Quay về khách sạn để nghỉ ngơi / thư giãn / chuẩn bị cho chặng tiếp theo…"
 
 3. **VIẾT CHI TIẾT – TỰ NHIÊN – CÓ NGỮ CẢNH**
-   Ví dụ:
-   - Thay vì: “ăn tối”
-     → “thưởng thức bữa tối phong cách fine dining với thực đơn sáng tạo theo mùa”
-   - Thay vì: “tham quan”
-     → “tham quan Văn Miếu – Quốc Tử Giám và tìm hiểu lịch sử giáo dục thời phong kiến”
 
 4. **CÓ THỂ DỰA VÀO MÔ TẢ (description) NẾU CÓ**
-   - Nếu mô tả nói “có hồ bơi lắp kính” → đưa vào activity.
-   - Nếu mô tả nói “có đường chạy bộ” → đưa vào activity của công viên.
-   - Nếu mô tả rỗng, chỉ dùng tên + suy luận hợp lý.
 
 5. **KHÔNG ĐƯỢC tạo ra thông tin sai hoặc tưởng tượng không có căn cứ.**
 
@@ -75,106 +64,88 @@ DANH SÁCH ĐỊA ĐIỂM
 {locations}
 """
 
-# === Hàm phụ trích xuất JSON từ text (Cải tiến) ===
+
 def extract_json(text):
     try:
-        # Xóa markdown code block nếu model lỡ thêm vào
-        clean_text = re.sub(r"```json|```", "", text).strip()
-        return json.loads(clean_text)
-    except json.JSONDecodeError:
-        # Fallback: Dùng regex tìm khối {}
-        match = re.search(r'\{.*\}', text, re.S)
-        if match:
+        clean = re.sub(r"```json|```", "", text).strip()
+        return json.loads(clean)
+    except:
+        m = re.search(r"\{.*\}", text, re.S)
+        if m:
             try:
-                return json.loads(match.group(0))
-            except json.JSONDecodeError:
+                return json.loads(m.group(0))
+            except:
                 return None
     return None
 
-# === Hàm gọi model phân loại batch (Logic mới: Exponential Backoff) ===
-def classify_batch(batch_titles):
-    prompt_locations = "\n".join(f"- {title}" for title in batch_titles)
-    prompt = PROMPT_TEMPLATE.replace("{locations}", prompt_locations)
 
-    max_retries = 5
-    base_wait_time = 4  # Bắt đầu chờ 4 giây
+def classify_batch(titles):
+    prompt = PROMPT_TEMPLATE.replace(
+        "{locations}",
+        "\n".join(f"- {t}" for t in titles)
+    )
 
-    for attempt in range(max_retries):
+    for attempt in range(5):
         try:
             resp = MODEL.generate_content(prompt)
             data = extract_json(resp.text)
-
             if data and "results" in data:
                 return data["results"]
 
-            print(f"⚠️ Lỗi format JSON (Lần {attempt + 1}). Thử lại...")
+            print(f"⚠️ JSON lỗi (lần {attempt+1}) thử lại…")
 
         except Exception as e:
-            # Nếu lỗi quá tải (429) hoặc server (503)
             if "429" in str(e) or "503" in str(e):
-                wait_time = base_wait_time * (2 ** attempt) # 4s, 8s, 16s...
-                print(f"🔥 API quá tải. Đợi {wait_time}s rồi thử lại (Lần {attempt + 1})...")
-                time.sleep(wait_time)
-                continue 
+                wait = 4 * (2 ** attempt)
+                print(f"🔥 429/503, đợi {wait}s…")
+                time.sleep(wait)
+                continue
             else:
-                print(f"⚠️ Lỗi khác: {e}. Đợi 2s...")
+                print("⚠️ Lỗi khác:", e)
                 time.sleep(2)
 
-    print("❌ Thất bại. Dùng activity mặc định.")
-    return [{"place": title, "activity": "tham quan và trải nghiệm"} for title in batch_titles]
+    print("❌ Dùng activity mặc định.")
+    return [{"place": t, "activity": "tham quan và trải nghiệm"} for t in titles]
 
-# === Hàm chính ===
+
 def main():
-    try:
-        with open(INPUT_FILE, "r", encoding="utf-8") as f:
-            schedule_data = json.load(f)
-    except FileNotFoundError:
-        print(f"❌ Lỗi: Không tìm thấy file '{INPUT_FILE}'.")
-        return
-    except json.JSONDecodeError:
-        print(f"❌ Lỗi: File JSON hỏng.")
-        return
+    with open(INPUT_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-    all_days = {}
-    
-    for day, locations in schedule_data.items():
-        print(f"\n📅 Đang xử lý: {day} ({len(locations)} địa điểm)...")
-        
-        all_locations_with_activity = []
-        total = len(locations)
+    trip_sections = data["tripSections"]
+
+    for section in trip_sections:
+        print(f"\n📅 Xử lý ngày {section['dayNumber']}")
+
+        details = section["tripDetails"]
+        titles = [d["location"]["location_name"] for d in details]
+        total = len(titles)
 
         for i in range(0, total, BATCH_SIZE):
-            batch_objects = locations[i:i+BATCH_SIZE]
-            batch_titles = [loc.get("title", "") for loc in batch_objects]
+            batch_titles = titles[i:i+BATCH_SIZE]
 
-            print(f"   ⏳ Batch {i//BATCH_SIZE + 1}: Gọi AI cho {len(batch_titles)} địa điểm...")
-            
-            classified = classify_batch(batch_titles)
+            print(f"   ⏳ Batch {i//BATCH_SIZE + 1}")
 
-            # Tạo map tra cứu
-            activity_map = {res.get("place"): res.get("activity", "tham quan") for res in classified}
+            results = classify_batch(batch_titles)
+            activity_map = {r["place"]: r["activity"] for r in results}
 
-            # Gán dữ liệu
-            for obj in batch_objects:
-                title = obj.get("title", "")
-                obj["activity"] = activity_map.get(title, "tham quan và khám phá")
+            # Gắn activity vào từng tripDetails
+            for d in details[i:i+BATCH_SIZE]:
+                place = d["location"]["location_name"]
+                d["activity"] = activity_map.get(place, "tham quan và trải nghiệm")
 
-            all_locations_with_activity.extend(batch_objects)
-            
-            # === QUAN TRỌNG: Nghỉ giữa hiệp để tránh 429 ===
             if i + BATCH_SIZE < total:
-                print("   ☕ Nghỉ 5s để tránh rate limit...")
+                print("   ☕ nghỉ 5s…")
                 time.sleep(5)
 
-        all_days[day] = all_locations_with_activity
-        print(f"✅ Xong {day}.")
-        time.sleep(3) # Nghỉ giữa các ngày
+        time.sleep(2)
 
-    # Ghi file
+    # Giữ NGUYÊN cấu trúc ban đầu, chỉ thêm activity
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(all_days, f, ensure_ascii=False, indent=2)
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"\n🎉 Hoàn tất! Đã ghi vào: {OUTPUT_FILE}")
+    print("\n🎉 DONE →", OUTPUT_FILE)
+
 
 if __name__ == "__main__":
     main()

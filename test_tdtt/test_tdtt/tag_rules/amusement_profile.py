@@ -38,13 +38,13 @@ class AmusementProfile(BaseProfile):
             "market": 100,
         }
 
-    def get_penalty(self, tags, rating=None):
+    def get_penalty(self, categories, rating=None):
         """
         Override hàm base để thêm logic "ưu tiên sự đa dạng".
         """
-        base = super().get_penalty(tags, rating)
+        base = super().get_penalty(categories, rating)
         
-        if tags and len(tags) > 2:
+        if categories and len(categories) > 2:
             base = int(base * 1.2)
             
         return base
