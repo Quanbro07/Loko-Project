@@ -1,522 +1,891 @@
 {
-  "Day 1": [
-    {
-      "start": "07:00",
-      "end": "07:00",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "Vinpearl Resort Nha Trang",
-      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "Nghỉ ngơi tại Vinpearl Resort Nha Trang để thư giãn, tận hưởng tiện nghi cao cấp và chuẩn bị sẵn sàng cho hành trình khám phá."
-    },
-    {
-      "start": "07:06",
-      "end": "10:06",
-      "place_id": "ChIJefNOHABncDER9RjSG5wEsQ8",
-      "title": "Sân khấu thực cảnh Tata Show",
-      "description": null,
-      "rating": 4.4,
-      "tags": [
-        "cultural performance"
-      ],
-      "longitude": 109.2402453,
-      "latitude": 12.2167184,
-      "activity": "Tiếp tục thưởng thức Tata Show, chiêm ngưỡng các màn biểu diễn nghệ thuật đẳng cấp trong không gian sân khấu thực cảnh."
-    },
-    {
-      "start": "10:06",
-      "end": "13:06",
-      "place_id": "ChIJefNOHABncDER9RjSG5wEsQ8",
-      "title": "Sân khấu thực cảnh Tata Show",
-      "description": null,
-      "rating": 4.4,
-      "tags": [
-        "cultural performance"
-      ],
-      "longitude": 109.2402453,
-      "latitude": 12.2167184,
-      "activity": "Tiếp tục thưởng thức Tata Show, chiêm ngưỡng các màn biểu diễn nghệ thuật đẳng cấp trong không gian sân khấu thực cảnh."
-    },
-    {
-      "start": "13:06",
-      "end": "14:06",
-      "place_id": "ChIJ3zYVFiBncDER2tYesq2Osvg",
-      "title": "Tata Aventure",
-      "description": null,
-      "rating": 4.7,
-      "tags": [],
-      "longitude": 109.2402587,
-      "latitude": 12.217362699999999,
-      "activity": "Trải nghiệm Tata Aventure, tham gia vào các trò chơi phiêu lưu cảm giác mạnh hoặc khám phá những khu vực giải trí đầy thử thách."
-    },
-    {
-      "start": "14:06",
-      "end": "15:06",
-      "place_id": "ChIJW-dkTHVncDERNKX3A0JHfdw",
-      "title": "Đường lượn nhớ đời - Alpine Coaster",
-      "description": null,
-      "rating": 3.1,
-      "tags": [],
-      "longitude": 109.2403535,
-      "latitude": 12.2158765,
-      "activity": "Chinh phục 'Đường lượn nhớ đời' Alpine Coaster, tận hưởng cảm giác mạnh và ngắm nhìn toàn cảnh từ trên cao khi lao dốc."
-    },
-    {
-      "start": "15:12",
-      "end": "16:12",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
-      "description": "Nghỉ ngơi 60 phút",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "Quay về Vinpearl Resort Nha Trang để nghỉ ngơi, thư giãn sau một ngày khám phá và chuẩn bị cho các hoạt động tiếp theo."
-    },
-    {
-      "start": "16:18",
-      "end": "17:18",
-      "place_id": "ChIJN041CH9ncDERZbt9zOaXORs",
-      "title": "Thủy cung Vinpearl Nha Trang",
-      "description": null,
-      "rating": 4.4,
-      "tags": [],
-      "longitude": 109.2410017,
-      "latitude": 12.219395599999999,
-      "activity": "Tham quan Thủy cung Vinpearl Nha Trang, khám phá thế giới đại dương đầy màu sắc với hàng ngàn loài sinh vật biển độc đáo."
-    },
-    {
-      "start": "17:18",
-      "end": "20:48",
-      "place_id": "ChIJkUGmBixncDERFp4zmUmm_C0",
-      "title": "Tata World River Adventure VinWonders Nha Trang",
-      "description": null,
-      "rating": 5,
-      "tags": [
-        "amusement/water park"
-      ],
-      "longitude": 109.24096329999999,
-      "latitude": 12.2182712,
-      "activity": "Trải nghiệm Tata World River Adventure tại VinWonders Nha Trang, tham gia vào cuộc phiêu lưu trên sông với những bất ngờ và cảnh quan kỳ thú."
-    },
-    {
-      "start": "20:50",
-      "end": "21:50",
-      "place_id": "ChIJCaPEQARncDERaambqvjdbEs",
-      "title": "Quảng trường 2-4",
-      "description": null,
-      "rating": 4.7,
-      "tags": [
-        "festival"
-      ],
-      "longitude": 109.197092,
-      "latitude": 12.239284099999999,
-      "activity": "Đi dạo, tản bộ quanh Quảng trường 2-4, hòa mình vào không khí sôi động của thành phố biển Nha Trang, ngắm cảnh hoặc chụp ảnh lưu niệm."
-    },
-    {
-      "start": "21:57",
-      "end": "22:57",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
-      "description": "Nghỉ ngơi 60 phút",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "tham quan và khám phá"
-    },
-    {
-      "start": "23:05",
-      "end": "01:05",
-      "place_id": "ChIJ1a2mELxncDERDfi3IyhnWYA",
-      "title": "BAO ngon",
-      "description": null,
-      "rating": 4.9,
-      "tags": [
-        "restaurant",
-        "nightlife"
-      ],
-      "longitude": 109.1899499,
-      "latitude": 12.240426099999999,
-      "activity": "Thưởng thức bữa ăn tại BAO ngon, khám phá hương vị ẩm thực địa phương với các món ăn được chế biến tỉ mỉ và hấp dẫn."
-    },
-    {
-      "start": "01:10",
-      "end": "02:20",
-      "place_id": "ChIJ50nfFJ9ncDERIWjo8aIDvTg",
-      "title": "Дом Культуры",
-      "description": null,
-      "rating": 5,
-      "tags": [
-        "cultural performance"
-      ],
-      "longitude": 109.20239559999999,
-      "latitude": 12.2189677,
-      "activity": "Tham quan Дом Культуры (House of Culture) để tìm hiểu về trung tâm văn hóa cộng đồng, có thể tham gia các sự kiện văn hóa, triển lãm hoặc chiêm ngưỡng kiến trúc độc đáo (nếu có)."
-    },
-    {
-      "start": "02:20",
-      "end": "02:20",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "Quay về Vinpearl Resort Nha Trang",
-      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "tham quan và khám phá"
-    }
-  ],
-  "Day 2": [
-    {
-      "start": "07:00",
-      "end": "07:00",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "Vinpearl Resort Nha Trang",
-      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "Tận hưởng kỳ nghỉ dưỡng tại Vinpearl Resort Nha Trang với các tiện ích cao cấp như hồ bơi, bãi biển riêng và dịch vụ spa, hoặc xuất phát từ đây để bắt đầu hành trình khám phá thành phố."
-    },
-    {
-      "start": "07:00",
-      "end": "08:00",
-      "place_id": "ChIJtWRRQudmcDERM7pYaRqfkNk",
-      "title": "Sky Wheel",
-      "description": null,
-      "rating": 4.7,
-      "tags": [],
-      "longitude": 109.2428491,
-      "latitude": 12.221850199999999,
-      "activity": "Tham gia trải nghiệm vòng quay Sky Wheel để ngắm toàn cảnh thành phố Nha Trang và bờ biển tuyệt đẹp từ trên cao, đặc biệt là vào buổi chiều tối khi đèn lên."
-    },
-    {
-      "start": "08:05",
-      "end": "09:05",
-      "place_id": "ChIJ651BEmVncDERY1Pj2Zhbs1Q",
-      "title": "Công Viên Phù Đổng",
-      "description": null,
-      "rating": 4.5,
-      "tags": [],
-      "longitude": 109.1993064,
-      "latitude": 12.2297812,
-      "activity": "Đi dạo, hít thở không khí trong lành, tập thể dục nhẹ nhàng hoặc thư giãn tại Công Viên Phù Đổng, một không gian xanh mát lý tưởng bên bờ biển Nha Trang."
-    },
-    {
-      "start": "09:09",
-      "end": "12:39",
-      "place_id": "ChIJ27FghMFncDERSk2aFV86gOI",
-      "title": "Vịnh Phao Nổi Splash Bay",
-      "description": null,
-      "rating": 3.9,
-      "tags": [
-        "amusement/water park"
-      ],
-      "longitude": 109.2394657,
-      "latitude": 12.219857399999999,
-      "activity": "Thử thách bản thân và vui chơi hết mình với các trò chơi trên phao nổi tại Vịnh Phao Nổi Splash Bay, một công viên nước độc đáo giữa biển với nhiều chướng ngại vật thú vị."
-    },
-    {
-      "start": "12:47",
-      "end": "13:47",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
-      "description": "Nghỉ ngơi 60 phút",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "Quay về Vinpearl Resort Nha Trang để nghỉ ngơi, thư giãn sau một ngày dài khám phá và chuẩn bị cho các hoạt động giải trí hoặc bữa tối tiếp theo."
-    },
-    {
-      "start": "13:53",
-      "end": "14:53",
-      "place_id": "ChIJ5y9wD21ncDERTp8rI0M402w",
-      "title": "Tamarind, The rooftop Bar",
-      "description": null,
-      "rating": 4.6,
-      "tags": [],
-      "longitude": 109.1954851,
-      "latitude": 12.2321761,
-      "activity": "Tận hưởng buổi tối thư giãn tại Tamarind, The rooftop Bar với những ly cocktail sáng tạo, âm nhạc sống động và ngắm nhìn khung cảnh Nha Trang lấp lánh về đêm từ trên cao."
-    },
-    {
-      "start": "14:53",
-      "end": "15:53",
-      "place_id": "ChIJnbttMV9ncDERno2jbjkrEOo",
-      "title": "Vandana Authentic Indian Food",
-      "description": null,
-      "rating": 4.5,
-      "tags": [],
-      "longitude": 109.19559009999999,
-      "latitude": 12.2322147,
-      "activity": "Thưởng thức bữa tối đặc sắc với các món ăn Ấn Độ truyền thống và đích thực tại Vandana Authentic Indian Food, trải nghiệm hương vị cay nồng, phong phú cùng gia vị đặc trưng."
-    },
-    {
-      "start": "15:59",
-      "end": "18:59",
-      "place_id": "ChIJUfK4YYxncDERfB2v8ZdvXxE",
-      "title": "Tháp Bà Ponagar",
-      "description": "Ngôi đền trên triền núi với đồ trưng bày. Ngôi đền 3 tầng thanh bình nằm trên đỉnh núi với 2 tháp nhà thờ là nơi trưng bày hiện vật & hình ảnh lịch sử.",
-      "rating": 4.5,
-      "tags": [
-        "cultural performance",
-        "festival"
-      ],
-      "longitude": 109.1953678,
-      "latitude": 12.265366499999999,
-      "activity": "Tham quan quần thể kiến trúc Chăm cổ Tháp Bà Ponagar, tìm hiểu về lịch sử và văn hóa độc đáo của người Chăm, chiêm ngưỡng kiến trúc ấn tượng và chụp ảnh lưu niệm tại đây."
-    },
-    {
-      "start": "19:11",
-      "end": "22:11",
-      "place_id": "ChIJXSbD5X9dcDERBrdvrbCEu3o",
-      "title": "Cung văn Hóa Thiếu nhi Khánh Hòa",
-      "description": null,
-      "rating": 4.2,
-      "tags": [
-        "cultural performance"
-      ],
-      "longitude": 109.18790089999999,
-      "latitude": 12.2482923,
-      "activity": "Tham quan Cung văn Hóa Thiếu nhi Khánh Hòa để tìm hiểu các hoạt động văn hóa, giáo dục và có thể chiêm ngưỡng các tác phẩm nghệ thuật, không gian vui chơi của trẻ em địa phương."
-    },
-    {
-      "start": "22:19",
-      "end": "23:19",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
-      "description": "Nghỉ ngơi 60 phút",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "tham quan và khám phá"
-    },
-    {
-      "start": "23:27",
-      "end": "01:27",
-      "place_id": "ChIJMxdpUwBncDERQ9-lsNyfBcQ",
-      "title": "NHÀ BẾP NHA TRANG",
-      "description": null,
-      "rating": 4.9,
-      "tags": [
-        "restaurant",
-        "nightlife"
-      ],
-      "longitude": 109.1917081,
-      "latitude": 12.2417798,
-      "activity": "Thưởng thức bữa ăn mang đậm hương vị đặc trưng của Nha Trang tại NHÀ BẾP NHA TRANG, khám phá ẩm thực địa phương phong phú."
-    },
-    {
-      "start": "01:29",
-      "end": "02:20",
-      "place_id": "ChIJXSbD5X9dcDERBrdvrbCEu3o",
-      "title": "Cung văn Hóa Thiếu nhi Khánh Hòa",
-      "description": null,
-      "rating": 4.2,
-      "tags": [
-        "cultural performance"
-      ],
-      "longitude": 109.18790089999999,
-      "latitude": 12.2482923,
-      "activity": "Tham quan Cung văn Hóa Thiếu nhi Khánh Hòa để tìm hiểu các hoạt động văn hóa, giáo dục và có thể chiêm ngưỡng các tác phẩm nghệ thuật, không gian vui chơi của trẻ em địa phương."
-    },
-    {
-      "start": "02:20",
-      "end": "02:20",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "Quay về Vinpearl Resort Nha Trang",
-      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "tham quan và khám phá"
-    }
-  ],
-  "Day 3": [
-    {
-      "start": "07:00",
-      "end": "07:00",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "Vinpearl Resort Nha Trang",
-      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "Nghỉ ngơi tại Vinpearl Resort Nha Trang và chuẩn bị cho một ngày khám phá thú vị."
-    },
-    {
-      "start": "07:28",
-      "end": "10:58",
-      "place_id": "ChIJ9yLtJDOLcDERoCJf3UjWEsQ",
-      "title": "Công viên nước Alma Resort",
-      "description": null,
-      "rating": 4.4,
-      "tags": [
-        "amusement/water park"
-      ],
-      "longitude": 109.1969802,
-      "latitude": 12.0714191,
-      "activity": "Vui chơi sảng khoái với các trò trượt nước mạo hiểm và bể bơi thư giãn tại Công viên nước Alma Resort."
-    },
-    {
-      "start": "11:37",
-      "end": "12:37",
-      "place_id": "ChIJ29ymqXlncDERh53gkGh2SSY",
-      "title": "Happy Beach",
-      "description": null,
-      "rating": 4.3,
-      "tags": [],
-      "longitude": 109.1969898,
-      "latitude": 12.2427466,
-      "activity": "Thư giãn trên bãi cát vàng, tắm biển và tận hưởng không khí trong lành tại Happy Beach."
-    },
-    {
-      "start": "12:38",
-      "end": "13:38",
-      "place_id": "ChIJ_ZOJdoJncDERwm0jp8CiPSI",
-      "title": "Altitude Rooftop Bar",
-      "description": null,
-      "rating": 4.7,
-      "tags": [],
-      "longitude": 109.19583089999999,
-      "latitude": 12.24639,
-      "activity": "Thưởng thức cocktail sáng tạo, ngắm nhìn toàn cảnh thành phố từ trên cao và thư giãn trong không gian sang trọng của Altitude Rooftop Bar."
-    },
-    {
-      "start": "13:45",
-      "end": "14:45",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
-      "description": "Nghỉ ngơi 60 phút",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "Quay về Vinpearl Resort Nha Trang để nghỉ ngơi, thư giãn và nạp năng lượng sau một ngày dài khám phá."
-    },
-    {
-      "start": "14:52",
-      "end": "15:52",
-      "place_id": "ChIJ_ZOJdoJncDERwm0jp8CiPSI",
-      "title": "Altitude Rooftop Bar",
-      "description": null,
-      "rating": 4.7,
-      "tags": [],
-      "longitude": 109.19583089999999,
-      "latitude": 12.24639,
-      "activity": "Thưởng thức cocktail sáng tạo, ngắm nhìn toàn cảnh thành phố từ trên cao và thư giãn trong không gian sang trọng của Altitude Rooftop Bar."
-    },
-    {
-      "start": "16:03",
-      "end": "19:03",
-      "place_id": "ChIJp5jGz9BpcDERo2VapNZi7GQ",
-      "title": "Đại lý Vé Nhà hát Đó (Đó theater)",
-      "description": null,
-      "rating": 4.6,
-      "tags": [
-        "cultural performance"
-      ],
-      "longitude": 109.2375732,
-      "latitude": 12.3005801,
-      "activity": "Đến Đại lý Vé Nhà hát Đó để mua vé và chuẩn bị cho buổi biểu diễn nghệ thuật độc đáo tại Nhà hát Đó."
-    },
-    {
-      "start": "19:04",
-      "end": "22:04",
-      "place_id": "ChIJ6RJHMZRdcDERqbBeCK3Somc",
-      "title": "Life Puppets show - Rối Mơ",
-      "description": null,
-      "rating": 4.7,
-      "tags": [
-        "cultural performance"
-      ],
-      "longitude": 109.2374262,
-      "latitude": 12.3006266,
-      "activity": "Thưởng thức buổi biểu diễn Life Puppets show - Rối Mơ với những màn trình diễn múa rối đầy sáng tạo, mang đậm bản sắc văn hóa Việt Nam."
-    },
-    {
-      "start": "22:14",
-      "end": "00:14",
-      "place_id": "ChIJA-9FNQBncDERyloKoP5HMIo",
-      "title": "Nhà Hàng Cá Bay - View Biển",
-      "description": null,
-      "rating": 4.8,
-      "tags": [
-        "restaurant",
-        "nightlife"
-      ],
-      "longitude": 109.19629859999999,
-      "latitude": 12.253633599999999,
-      "activity": "Thưởng thức bữa ăn với các món hải sản tươi ngon trong không gian mở, ngắm nhìn toàn cảnh biển."
-    },
-    {
-      "start": "00:22",
-      "end": "01:22",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "(Nghỉ ngơi tại) Vinpearl Resort Nha Trang",
-      "description": "Nghỉ ngơi 60 phút",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "Nghỉ ngơi và thư giãn tại Vinpearl Resort Nha Trang, tận hưởng các tiện ích của khu nghỉ dưỡng."
-    },
-    {
-      "start": "01:29",
-      "end": "02:20",
-      "place_id": "ChIJn1av5kVncDERHWk8_OMjaII",
-      "title": "Sky Blu Lounge Nha Trang",
-      "description": null,
-      "rating": 4.3,
-      "tags": [],
-      "longitude": 109.19562959999999,
-      "latitude": 12.238841299999999,
-      "activity": "Thư giãn trong không gian sang trọng của Sky Blu Lounge, thưởng thức cocktail và ngắm nhìn Nha Trang về đêm từ trên cao."
-    },
-    {
-      "start": "02:20",
-      "end": "02:20",
-      "place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-      "title": "Quay về Vinpearl Resort Nha Trang",
-      "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
-      "rating": 4.9,
-      "tags": [
-        "hotel"
-      ],
-      "longitude": 109.2473572,
-      "latitude": 12.220934999999999,
-      "activity": "Quay về Vinpearl Resort Nha Trang để nghỉ ngơi, thư giãn sau một ngày khám phá và chuẩn bị cho những trải nghiệm tiếp theo."
-    }
-  ]
+    "userId": 1,
+    "tripName": "Chuyến đi 3 ngày",
+    "startDate": "2025-12-20",
+    "endDate": "2025-12-22",
+    "numAdult": 0,
+    "numChild": 0,
+    "numElder": 0,
+    "tripSections": [
+        {
+            "dayNumber": 1,
+            "title": "Ngày 1: Khám phá",
+            "tripDetails": [
+                {
+                    "sequenceOrder": 1,
+                    "startTime": "09:30:00",
+                    "endTime": "09:30:00",
+                    "description": "Khu nghỉ dưỡng ven biển có hồ bơi. Khu nghỉ dưỡng ven biển có phòng ốc tinh tế, spa, nhà hàng, quầy bar, bể bơi trong nhà & ngoài trời.",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
+                        "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
+                        "latitude": 12.2257024,
+                        "longitude": 109.23714269999999,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 2,
+                    "startTime": "09:33:00",
+                    "endTime": "13:03:00",
+                    "description": "Tata Aventure",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJ3zYVFiBncDER2tYesq2Osvg",
+                        "location_name": "Tata Aventure",
+                        "latitude": 12.217362699999999,
+                        "longitude": 109.2402587,
+                        "open_time": "N/A",
+                        "average_rating": 4.7,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwXzFVcRq_XNkIJHojSRTEiGfcvvpS-xpbysDTPhWhYshtvnx8LxOS3naVprKE1GTYHwFQMVHPQM4lbuJNrozlbOAFJwKFT-dVAx7E4ZUdXokxVpT6e8TTE2pjxGXQ9sQ5WIiTRDA=w80-h106-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 3,
+                    "startTime": "13:26:00",
+                    "endTime": "16:56:00",
+                    "description": "Tata World River Adventure VinWonders Nha Trang",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJkUGmBixncDERFp4zmUmm_C0",
+                        "location_name": "Tata World River Adventure VinWonders Nha Trang",
+                        "latitude": 12.2182712,
+                        "longitude": 109.24096329999999,
+                        "open_time": "N/A",
+                        "average_rating": 5,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "cultural performance"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxCj6TbwVkXuRfgWo_IURCKItpVcU7hIj0RjPgDtkzJ5OLp6r_VihfY8yperfGDWQmAQ6HiW7hM445wJe_T0JS3qGkGcyJZr6v4bTG76mqJFbwt8SOhNVXxA7SjwGcyNYbdfJEoWA=w80-h106-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 4,
+                    "startTime": "16:56:00",
+                    "endTime": "17:56:00",
+                    "description": "Thủy cung Vinpearl Nha Trang",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN041CH9ncDERZbt9zOaXORs",
+                        "location_name": "Thủy cung Vinpearl Nha Trang",
+                        "latitude": 12.219395599999999,
+                        "longitude": 109.2410017,
+                        "open_time": "N/A",
+                        "average_rating": 4.4,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "aquarium"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSycX1BNpOjtv2htsf7Ql_zmzvUcWvtYYR7D2X7Tgxf0Sm9QG2Bt9FsUfInIqavx5sYZe1PbzQp8yrV2oT__CaJsoQVgOkF3AynKIMQ82Mi0avgDxQ9P_gZExIa-QG3eL8czMCci=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 5,
+                    "startTime": "17:59:00",
+                    "endTime": "18:59:00",
+                    "description": "(Nghỉ ngơi) Vinpearl Resort & Spa Nha Trang Bay",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
+                        "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
+                        "latitude": 12.2257024,
+                        "longitude": 109.23714269999999,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 6,
+                    "startTime": "19:05:00",
+                    "endTime": "21:05:00",
+                    "description": "NHÀ BẾP NHA TRANG",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJMxdpUwBncDERQ9-lsNyfBcQ",
+                        "location_name": "NHÀ BẾP NHA TRANG",
+                        "latitude": 12.2417798,
+                        "longitude": 109.1917081,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyvTkYQMCM70XDJfC-Olh0RvdkAMUzv8rUoFWDt8pE7qu-BO0m8a1QKwRhbBnlnJEq-5692h4dlpDcwoyMPoAqg5CmWg1O2nfV2g7CuL8XAm3HF_lXsRe1dce8gy61NdbYWB8wr_w=w80-h106-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 7,
+                    "startTime": "21:06:00",
+                    "endTime": "23:06:00",
+                    "description": "Mắm Restaurant - Homestyle Vietnamese Flavors",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJmaYQQkJncDERq_k-zYCLolI",
+                        "location_name": "Mắm Restaurant - Homestyle Vietnamese Flavors",
+                        "latitude": 12.2389835,
+                        "longitude": 109.1934409,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxa3lUzzmSwNQsb3esBplzM2Qnyd7CtdrfjVkhCba4kqWVMG364ZAtMA9B2ru8HhOYLvoT58wnqhDT8vZI3-VYe0fYXVMoxdRZGfjnR9PlMQ4yIyuCW4GDWFqVpCMXWGGRIYs9gCe-DzQc=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 8,
+                    "startTime": "23:08:00",
+                    "endTime": "02:38:00",
+                    "description": "VinWonders Nha Trang",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJUXQmxMdncDERI-V3_g5la4I",
+                        "location_name": "VinWonders Nha Trang",
+                        "latitude": 12.217047899999999,
+                        "longitude": 109.2408718,
+                        "open_time": "N/A",
+                        "average_rating": 4.7,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "cultural performance"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy07qzCiWUOzd6u0X4Qme-aMM6eeCmQALqDebzvqXssQAR2Ydl_hhM4Dn0Kvj5m5B1qSe6bAidW6Qxo2O6WNt7HHv6GugQ0SGPafMsskMhwTm9YZ0Qf32KIXhs9g_oA9QGZuNxy-g=w115-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 9,
+                    "startTime": "02:41:00",
+                    "endTime": "02:41:00",
+                    "description": "Quay về Vinpearl Resort & Spa Nha Trang Bay",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
+                        "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
+                        "latitude": 12.2257024,
+                        "longitude": 109.23714269999999,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "dayNumber": 2,
+            "title": "Ngày 2: Khám phá",
+            "tripDetails": [
+                {
+                    "sequenceOrder": 1,
+                    "startTime": "09:30:00",
+                    "endTime": "09:30:00",
+                    "description": "Khu nghỉ dưỡng ven biển có hồ bơi. Khu nghỉ dưỡng ven biển có phòng ốc tinh tế, spa, nhà hàng, quầy bar, bể bơi trong nhà & ngoài trời.",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
+                        "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
+                        "latitude": 12.2257024,
+                        "longitude": 109.23714269999999,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 2,
+                    "startTime": "09:34:00",
+                    "endTime": "12:34:00",
+                    "description": "Karma Lounge Nha Trang",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJSxuDcClncDERwIikCwd0JSY",
+                        "location_name": "Karma Lounge Nha Trang",
+                        "latitude": 12.2252013,
+                        "longitude": 109.2007275,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "cultural performance"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipMERUDwDlBaR7J-Z-1IuqyOZmwMt2HVyGnxpe_0=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 3,
+                    "startTime": "12:36:00",
+                    "endTime": "15:36:00",
+                    "description": "Дом Культуры",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJ50nfFJ9ncDERIWjo8aIDvTg",
+                        "location_name": "Дом Культуры",
+                        "latitude": 12.2189677,
+                        "longitude": 109.20239559999999,
+                        "open_time": "N/A",
+                        "average_rating": 5,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "cultural performance"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOfzgp926nESznoJTgEKGP83WkOjwF9KODh2GmT=w136-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 4,
+                    "startTime": "15:42:00",
+                    "endTime": "18:42:00",
+                    "description": "Nha Trang Sea Star Diving Center",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJtVb3fWhncDERB9Tfv6uOLdc",
+                        "location_name": "Nha Trang Sea Star Diving Center",
+                        "latitude": 12.242242899999999,
+                        "longitude": 109.1865995,
+                        "open_time": "N/A",
+                        "average_rating": 5,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "cultural performance"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipP02s8Ur_Ezgby6dsk4hxUI81lYQeG56O9LRAAH=w132-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 5,
+                    "startTime": "18:48:00",
+                    "endTime": "19:48:00",
+                    "description": "(Nghỉ ngơi) Vinpearl Resort & Spa Nha Trang Bay",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
+                        "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
+                        "latitude": 12.2257024,
+                        "longitude": 109.23714269999999,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 6,
+                    "startTime": "19:54:00",
+                    "endTime": "21:54:00",
+                    "description": "BAO ngon",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJ1a2mELxncDERDfi3IyhnWYA",
+                        "location_name": "BAO ngon",
+                        "latitude": 12.240426099999999,
+                        "longitude": 109.1899499,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxDzEVjkc5jgvOKF7mpXorteoDz0GEfRiSlXIPD7uP9gQPZ7km1hLd3y2tD5wNkIOHqRfU7XrDFeQRPsfA5SxxHYYraqcyPD1k3u39oKCxTUR9ZNuxsFY6NMOZ-V2dPuUVDGA4p=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 7,
+                    "startTime": "21:55:00",
+                    "endTime": "23:55:00",
+                    "description": "Cui Seafood (Cui Quan) | Steak & Vietnamese Food",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJSYcIiqBncDERClg5VvC4Ff0",
+                        "location_name": "Cui Seafood (Cui Quan) | Steak & Vietnamese Food",
+                        "latitude": 12.2385478,
+                        "longitude": 109.1919056,
+                        "open_time": "N/A",
+                        "average_rating": 4.8,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxzkdzMNDw8inSdwAelz6iny4jZcFotxBnN52yCzehYtQvLJVTJuOfHEZy96ULNYkAU-TPd2RKEC-wBsaGAFd_HaXdX9nLLJW-2kiyUd1rHc0FSL-AD19SvVfiAIygkffCb5raF6Q=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 8,
+                    "startTime": "23:57:00",
+                    "endTime": "00:57:00",
+                    "description": "Thủy cung Vinpearl Nha Trang",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN041CH9ncDERZbt9zOaXORs",
+                        "location_name": "Thủy cung Vinpearl Nha Trang",
+                        "latitude": 12.219395599999999,
+                        "longitude": 109.2410017,
+                        "open_time": "N/A",
+                        "average_rating": 4.4,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "aquarium"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSycX1BNpOjtv2htsf7Ql_zmzvUcWvtYYR7D2X7Tgxf0Sm9QG2Bt9FsUfInIqavx5sYZe1PbzQp8yrV2oT__CaJsoQVgOkF3AynKIMQ82Mi0avgDxQ9P_gZExIa-QG3eL8czMCci=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 9,
+                    "startTime": "00:57:00",
+                    "endTime": "03:20:00",
+                    "description": "VinWonders Nha Trang",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJUXQmxMdncDERI-V3_g5la4I",
+                        "location_name": "VinWonders Nha Trang",
+                        "latitude": 12.217047899999999,
+                        "longitude": 109.2408718,
+                        "open_time": "N/A",
+                        "average_rating": 4.7,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "cultural performance"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy07qzCiWUOzd6u0X4Qme-aMM6eeCmQALqDebzvqXssQAR2Ydl_hhM4Dn0Kvj5m5B1qSe6bAidW6Qxo2O6WNt7HHv6GugQ0SGPafMsskMhwTm9YZ0Qf32KIXhs9g_oA9QGZuNxy-g=w115-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 10,
+                    "startTime": "03:20:00",
+                    "endTime": "03:20:00",
+                    "description": "Quay về Vinpearl Resort & Spa Nha Trang Bay",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
+                        "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
+                        "latitude": 12.2257024,
+                        "longitude": 109.23714269999999,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "dayNumber": 3,
+            "title": "Ngày 3: Khám phá",
+            "tripDetails": [
+                {
+                    "sequenceOrder": 1,
+                    "startTime": "09:30:00",
+                    "endTime": "09:30:00",
+                    "description": "Khu nghỉ dưỡng ven biển có hồ bơi. Khu nghỉ dưỡng ven biển có phòng ốc tinh tế, spa, nhà hàng, quầy bar, bể bơi trong nhà & ngoài trời.",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
+                        "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
+                        "latitude": 12.2257024,
+                        "longitude": 109.23714269999999,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 2,
+                    "startTime": "10:35:00",
+                    "endTime": "14:05:00",
+                    "description": "Công Viên Thanh Niên",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJn2AiskNncDERQjCX-h4tLUE",
+                        "location_name": "Công Viên Thanh Niên",
+                        "latitude": 12.2200644,
+                        "longitude": 109.2044593,
+                        "open_time": "N/A",
+                        "average_rating": 4.4,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSytd3FljK6_9TvAJyeEmAM7f8LOnI3HFCH6mFfzyTi3E9NaNQnHoGnK-3CWBzDFQm8hyIy1OjzWPoRJblaRaAV7eBmCZa6rBkIyopUCEWYVC85FpUpdWKGTpk3SR6eb3exzPKq8=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 3,
+                    "startTime": "15:07:00",
+                    "endTime": "18:37:00",
+                    "description": "Công Viên Phù Đổng",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJ651BEmVncDERY1Pj2Zhbs1Q",
+                        "location_name": "Công Viên Phù Đổng",
+                        "latitude": 12.2297812,
+                        "longitude": 109.1993064,
+                        "open_time": "N/A",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxc46J6TgbmgRT6JRKzGbXKLMOM_pMvjNvZjNw4VzrDudmPuXVgw2tQE-4YskQIFoI-K7JuE3LcN_7lOXTYXt2cEdXXe6USmpUy7k9yHCInftDet1WKq0WqIpNx-DobsILm_NIe=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 4,
+                    "startTime": "18:43:00",
+                    "endTime": "20:43:00",
+                    "description": "Vị Việt Quán",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJUXXcv9VncDER-3HFYrNRMlY",
+                        "location_name": "Vị Việt Quán",
+                        "latitude": 12.2425622,
+                        "longitude": 109.1917416,
+                        "open_time": "N/A",
+                        "average_rating": 4.8,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSymwSBVd6_SwvVKvwLyW6kvZdQv2eWCi1ojD45WxEkVjEzvEjU1ut_UKCHUVYvOIVOnn_6MTgrkhf1pyDCKQ0LsBINMvFDvbt22JDqTS7vYERKcCKB0iCfvYAb1ndrt8HVnOFo9_7oovaMk=w80-h106-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 5,
+                    "startTime": "20:48:00",
+                    "endTime": "21:48:00",
+                    "description": "(Nghỉ ngơi) Vinpearl Resort & Spa Nha Trang Bay",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
+                        "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
+                        "latitude": 12.2257024,
+                        "longitude": 109.23714269999999,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 6,
+                    "startTime": "21:54:00",
+                    "endTime": "23:54:00",
+                    "description": "라냐 Là Nhà",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJ3e4XhzlncDERSlXcE5egEUw",
+                        "location_name": "라냐 Là Nhà",
+                        "latitude": 12.2397861,
+                        "longitude": 109.1904295,
+                        "open_time": "N/A",
+                        "average_rating": 4.8,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx4D3t57C4DFPa8dE4DWjasO_cQ0vpdzjvEMjfjqnQnpvKzmZ9o1Fh7g5pebhdnJxUtkJykhHJ_RpELiS2h1K7EzuEKuYZGpVcB7pBP0HNWGJLW3TPyQt-KiXAzw1hh67PMemmShkSMF0vS=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 7,
+                    "startTime": "23:57:00",
+                    "endTime": "03:20:00",
+                    "description": "VinWonders Nha Trang",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJUXQmxMdncDERI-V3_g5la4I",
+                        "location_name": "VinWonders Nha Trang",
+                        "latitude": 12.217047899999999,
+                        "longitude": 109.2408718,
+                        "open_time": "N/A",
+                        "average_rating": 4.7,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "cultural performance"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy07qzCiWUOzd6u0X4Qme-aMM6eeCmQALqDebzvqXssQAR2Ydl_hhM4Dn0Kvj5m5B1qSe6bAidW6Qxo2O6WNt7HHv6GugQ0SGPafMsskMhwTm9YZ0Qf32KIXhs9g_oA9QGZuNxy-g=w115-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 8,
+                    "startTime": "03:20:00",
+                    "endTime": "03:20:00",
+                    "description": "Quay về Vinpearl Resort & Spa Nha Trang Bay",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
+                        "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
+                        "latitude": 12.2257024,
+                        "longitude": 109.23714269999999,
+                        "open_time": "N/A",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 0,
+                        "categories": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
 }

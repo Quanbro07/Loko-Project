@@ -4,17 +4,13 @@ from config import *
 from utils import parse_operating_hours
 
 def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=None, force_hotel_idx=None):
-    """
-    Load data, áp dụng penalty_overrides, 
-    chọn khách sạn tốt nhất (depot) hoặc "khóa" khách sạn đã chọn.
-    """
     print("Đang tải dữ liệu...")
     preferred_tags = preferred_tags or []
     penalty_overrides = penalty_overrides or {} 
     
     try:
         with open(ATTRACTIONS_FILE, 'r', encoding='utf-8') as f:
-            locations = json.load(f) # <-- Biến 'locations' được tải ở đây
+            locations = json.load(f)
     except Exception as e:
         print(f"❌ Lỗi đọc attractions: {e}")
         sys.exit(1)
@@ -23,8 +19,7 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
     try:
         with open(TIME_MATRIX_FILE, 'r', encoding='utf-8') as f:
             for line in f:
-                if not line.strip():
-                    continue
+                if not line.strip(): continue
                 row = [math.ceil(int(v) / 60) for v in line.strip().split()]
                 matrix.append(row)
     except Exception as e:
@@ -55,12 +50,10 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         
         if not hotel_penalties:
             print("⚠️ Không tìm thấy khách sạn nào.")
-            # --- SỬA LỖI Ở ĐÂY (trả về 4 giá trị) ---
-            return None, None, None, None 
+            return None, None, None, None
 
         hotel_index = min(hotel_penalties, key=hotel_penalties.get)
-    # ---
-
+    
     # --- Logic lọc bỏ các KS khác ---
     all_hotel_indices = {
         i for i, loc in enumerate(locations) 
@@ -71,7 +64,6 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         i for i in range(len(locations)) 
         if i not in all_hotel_indices
     ]
-    # ---
     
     locs = [locations[i] for i in reorder]
     mat = [[matrix[i][j] for j in reorder] for i in reorder]
@@ -80,20 +72,22 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
     service_times, time_windows, penalties = [], [], []
     lunch_nodes, night_nodes = [], []
 
-    for i, loc in enumerate(locs): # i = index MỚI (0 đến N)
-        original_idx = node_map[i] # Lấy index GỐC
-        
+    for i, loc in enumerate(locs): 
+        original_idx = node_map[i] 
         tags = [t.lower() for t in loc.get("tags", [])]
-        rating = loc.get("average_rating", None)
+        
+        # --- SỬA LỖI: Map đúng tên trường từ JSON mới ---
+        # Ưu tiên tên mới (location_name), fallback về tên cũ (title) nếu không có
+        rating = loc.get("average_rating") or loc.get("rating")
         st = profile.get_service_time(tags)
-        op = loc.get("open_time", None)
+        op = loc.get("open_time") or loc.get("operating_hours")
         
         tw = parse_operating_hours(op, st) 
         
         if i == 0: # Depot
             tw = [0, MAX_DAY_DURATION] 
             base_penalty = 0
-        else: # Địa điểm
+        else: 
             if original_idx in penalty_overrides:
                 base_penalty = penalty_overrides[original_idx]
             else:
@@ -105,11 +99,13 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         time_windows.append(tw)
         penalties.append(base_penalty)
 
-        if "restaurant" in tags:
-            lunch_nodes.append(i)
-        
-        if any(nt in tags for nt in ["night market", "night-market", "nightmarket", "nightlife", "bar"]):
-            night_nodes.append(i)
+        # --- SỬA LỖI LOGIC: Không thêm Depot vào danh sách ăn uống/vui chơi ---
+        if i != 0: 
+            if "restaurant" in tags:
+                lunch_nodes.append(i)
+            
+            if any(nt in tags for nt in ["night market", "night-market", "nightmarket", "nightlife", "bar"]):
+                night_nodes.append(i)
 
     instance = {
         "locations_data": locs,
@@ -122,8 +118,9 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
         "num_places": len(locs), 
         "depot": 0
     }
-    # Sửa lỗi cú pháp dấu nháy
-    print(f"✅ Instance ready: {len(locs)} địa điểm (đã lọc bỏ các KS khác), depot = '{locs[0].get('location_name', 'Khách sạn')}' (Gốc: {hotel_index})")
     
-    # --- SỬA LỖI Ở ĐÂY (trả về 4 giá trị) ---
+    # Sửa lỗi log: Dùng location_name
+    depot_name = locs[0].get('location_name') or locs[0].get('title', 'Khách sạn')
+    print(f"✅ Instance ready: {len(locs)} địa điểm, depot = '{depot_name}' (Gốc: {hotel_index})")
+    
     return instance, hotel_index, node_map, locations
