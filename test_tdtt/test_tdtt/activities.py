@@ -4,8 +4,7 @@ import time
 import google.generativeai as genai
 
 API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
-INPUT_FILE = "schedule.json"
-OUTPUT_FILE = "schedule_update.json"
+INPUT_FILE = OUTPUT_FILE = "schedule.json"
 
 genai.configure(api_key=API_KEY)
 MODEL = genai.GenerativeModel("models/gemini-2.5-flash")

@@ -3,9 +3,9 @@ import json, math, sys
 from config import *
 from utils import parse_operating_hours
 
-def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=None, force_hotel_idx=None):
+def create_instance_from_files(profile, preferred_categories=None, penalty_overrides=None, force_hotel_idx=None):
     print("Đang tải dữ liệu...")
-    preferred_tags = preferred_tags or []
+    preferred_categories = preferred_categories or []
     penalty_overrides = penalty_overrides or {} 
     
     try:
@@ -41,8 +41,8 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
     if hotel_index is None:
         hotel_penalties = {}
         for i, loc in enumerate(locations):
-            tags = [t.lower() for t in loc.get("tags", [])]
-            if "hotel" in tags or "hotels" in tags:
+            categories = [t.lower() for t in loc.get("categories", [])]
+            if "hotel" in categories or "hotels" in categories:
                 if i in penalty_overrides:
                     hotel_penalties[i] = penalty_overrides[i]
                 else:
@@ -57,8 +57,8 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
     # --- Logic lọc bỏ các KS khác ---
     all_hotel_indices = {
         i for i, loc in enumerate(locations) 
-        if "hotel" in [t.lower() for t in loc.get("tags", [])] or 
-           "hotels" in [t.lower() for t in loc.get("tags", [])]
+        if "hotel" in [t.lower() for t in loc.get("categories", [])] or 
+           "hotels" in [t.lower() for t in loc.get("categories", [])]
     }
     reorder = [hotel_index] + [
         i for i in range(len(locations)) 
@@ -74,12 +74,12 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
 
     for i, loc in enumerate(locs): 
         original_idx = node_map[i] 
-        tags = [t.lower() for t in loc.get("tags", [])]
+        categories = [t.lower() for t in loc.get("categories", [])]
         
         # --- SỬA LỖI: Map đúng tên trường từ JSON mới ---
         # Ưu tiên tên mới (location_name), fallback về tên cũ (title) nếu không có
         rating = loc.get("average_rating") or loc.get("rating")
-        st = profile.get_service_time(tags)
+        st = profile.get_service_time(categories)
         op = loc.get("open_time") or loc.get("operating_hours")
         
         tw = parse_operating_hours(op, st) 
@@ -91,9 +91,9 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
             if original_idx in penalty_overrides:
                 base_penalty = penalty_overrides[original_idx]
             else:
-                base_penalty = profile.get_penalty(tags, rating)
-                base_penalty = profile.adjust_by_preference(base_penalty, preferred_tags, tags)
-                base_penalty = int(base_penalty * profile.boost_priority(tags))
+                base_penalty = profile.get_penalty(categories, rating)
+                base_penalty = profile.adjust_by_preference(base_penalty, preferred_categories, categories)
+                base_penalty = int(base_penalty * profile.boost_priority(categories))
         
         service_times.append(st)
         time_windows.append(tw)
@@ -101,10 +101,10 @@ def create_instance_from_files(profile, preferred_tags=None, penalty_overrides=N
 
         # --- SỬA LỖI LOGIC: Không thêm Depot vào danh sách ăn uống/vui chơi ---
         if i != 0: 
-            if "restaurant" in tags:
+            if "restaurant" in categories:
                 lunch_nodes.append(i)
             
-            if any(nt in tags for nt in ["night market", "night-market", "nightmarket", "nightlife", "bar"]):
+            if any(nt in categories for nt in ["night market", "night-market", "nightmarket", "nightlife", "bar"]):
                 night_nodes.append(i)
 
     instance = {

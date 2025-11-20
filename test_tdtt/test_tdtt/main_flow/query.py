@@ -116,7 +116,6 @@ def fetch_top_places(city_name, ll_string, type_of_place):
             "average_rating": item.get("rating"),
             "review_count": 0,          # Yêu cầu hardcode là 0
             "province_id": 0,           # Placeholder
-            "category_ids": [],         # Placeholder
             "rawImgs": raw_imgs,         # Cấu trúc list chứa dict
             "description": item.get("description")
         }

@@ -43,12 +43,12 @@ def main_itinerary_loop():
         print("\n--- Đã chọn: Giải trí (Amusement) ---")
         profile = AmusementProfile()
         SolverClass = AmusementSolver
-        preferred_tags = ["zoo", "amusement/water park", "cultural performance", "nightlife", "restaurant"]
+        preferred_categories = ["zoo", "amusement/water park", "cultural performance", "nightlife", "restaurant"]
     else:
         print("\n--- Đã chọn: Ẩm thực (Food) ---")
         profile = FoodProfile()
         SolverClass = FoodSolver
-        preferred_tags = ["restaurant", "speciality", "night market"]
+        preferred_categories = ["restaurant", "speciality", "night market"]
 
     start_date = None
     end_date = None
@@ -110,7 +110,7 @@ def main_itinerary_loop():
 
             instance, selected_hotel_idx, node_map, loaded_locations = create_instance_from_files(
                 profile, 
-                preferred_tags, 
+                preferred_categories, 
                 current_attempt_penalties,
                 force_hotel_idx=forced_hotel_original_idx
             )
@@ -191,7 +191,7 @@ def main_itinerary_loop():
                         # Sửa lỗi lấy rating
                         loc_data = locations[original_idx]
                         rating = loc_data.get("average_rating") or loc_data.get("rating")
-                        current_penalty = profile.get_penalty(loc_data.get("tags", []), rating)
+                        current_penalty = profile.get_penalty(loc_data.get("categories", []), rating)
                         master_penalty_overrides[original_idx] = int(max(5, current_penalty * 0.2))
 
     if attempt == max_total_attempts:

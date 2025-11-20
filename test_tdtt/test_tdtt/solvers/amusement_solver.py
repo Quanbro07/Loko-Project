@@ -15,8 +15,8 @@ class AmusementSolver(BaseSolver):
         print("... Thêm ràng buộc Giải trí (Nightlife)...")
         night_start_min = (21 * 60) - DAY_START_TIME 
         for node in self.instance["night_nodes"]:
-            tags = self.instance["locations_data"][node].get("tags", [])
-            if "nightlife" in tags or "bar" in tags:
+            categories = self.instance["locations_data"][node].get("categories", [])
+            if "nightlife" in categories or "bar" in categories:
                 idx = self.manager.NodeToIndex(node)
                 self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_min, 5)
 
@@ -55,7 +55,7 @@ class AmusementSolver(BaseSolver):
         sequence_order = 1
 
         def create_location_object(place_data):
-            cats = [{"id": i+1, "categoryName": t} for i, t in enumerate(place_data.get("tags", []))]
+            cats = [{"id": i+1, "categoryName": t} for i, t in enumerate(place_data.get("categories", []))]
             imgs = []
             for i, img in enumerate(place_data.get("rawImgs", [])):
                 imgs.append({
@@ -81,7 +81,7 @@ class AmusementSolver(BaseSolver):
         while not self.routing.IsEnd(index):
             node = self.manager.NodeToIndex(index)
             place = self.locations[node]
-            tags = [t.lower() for t in place.get("tags", [])]
+            categories = [t.lower() for t in place.get("categories", [])]
             
             name = place.get("location_name") or place.get("title", f"Place {node}")
             service_time = self.instance["service_time"][node]
@@ -115,10 +115,10 @@ class AmusementSolver(BaseSolver):
             sequence_order += 1
 
             if node != self.depot:
-                if "hotel" in tags: energy_loss = -50
-                elif any(t in ["zoo", "amusement/water park"] for t in tags): energy_loss = 35
-                elif any(t in ["cultural performance", "nightlife", "market"] for t in tags): energy_loss = 25
-                elif any(t in ["restaurant", "cafe"] for t in tags): energy_loss = 10
+                if "hotel" in categories: energy_loss = -50
+                elif any(t in ["zoo", "amusement/water park"] for t in categories): energy_loss = 35
+                elif any(t in ["cultural performance", "nightlife", "market"] for t in categories): energy_loss = 25
+                elif any(t in ["restaurant", "cafe"] for t in categories): energy_loss = 10
                 else: energy_loss = 20
                 
                 total_energy = max(0, min(100, total_energy - energy_loss))
