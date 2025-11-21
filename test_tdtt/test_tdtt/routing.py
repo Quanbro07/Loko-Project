@@ -1,106 +1,100 @@
 import json
-import requests  # Bạn cần cài thư viện này
-import time      # Thêm thư viện time để tạm dừng
- 
+import requests
+import time
+
 # --- Cấu hình ---
 API_KEY = "936a7ef652bd479d8fb93d36dc2e1a3e"
 API_BASE_URL = "https://api.geoapify.com/v1/routing"
 
-# --- Tên file (sử dụng tên file gốc) ---
+# --- Tên file ---
 REQUEST_FILE = "geoapify_request.json"
 OUTPUT_RESPONSE_FILE = "route_response.json"
 OUTPUT_GEOMETRY_FILE = "route_geometry.json"
 
-def call_geoapify_api_by_day():
+def get_segment_route(start_point, end_point, mode):
     """
-    Đọc file request theo ngày, gọi API Geoapify cho mỗi ngày
-    và lưu kết quả theo cấu trúc ngày.
+    Gọi API cho 2 điểm. 
+    Trả về danh sách tọa độ nếu thành công.
+    Trả về đường thẳng nối 2 điểm nếu thất bại (qua biển/lỗi).
     """
+    # Chuyển đổi sang format "lat,lon" cho URL
+    waypoints_str = f"{start_point[1]},{start_point[0]}|{end_point[1]},{end_point[0]}"
     
-    # 1. Đọc file JSON request đã tạo ở bước 1
+    params = {
+        'waypoints': waypoints_str,
+        'mode': mode,
+        'apiKey': API_KEY
+    }
+    
+    try:
+        response = requests.get(API_BASE_URL, params=params, timeout=10)
+        if response.status_code == 200:
+            data = response.json()
+            if 'features' in data and len(data['features']) > 0:
+                # API trả về Geometry dạng LineString -> lấy coordinates
+                # coordinates là list các [lon, lat]
+                return data['features'][0]['geometry']['coordinates']
+    except Exception as e:
+        print(f"      ⚠️ Lỗi kết nối segment: {e}")
+    
+    # Fallback: Nếu lỗi hoặc không tìm thấy đường -> Trả về đường thẳng
+    print("      -> Không tìm thấy đường bộ (có thể qua biển), dùng đường thẳng.")
+    return [start_point, end_point]
+
+def call_geoapify_api_smart():
+    print(f"📂 Đang đọc file request: {REQUEST_FILE}...")
+    
     try:
         with open(REQUEST_FILE, 'r', encoding='utf-8') as f:
             all_requests_data = json.load(f)
-        print(f"Đã đọc thành công file request: {REQUEST_FILE}")
-    except FileNotFoundError:
-        print(f"Lỗi: Không tìm thấy file '{REQUEST_FILE}'.")
-        print("Vui lòng chạy script 'create_route_request.py' trước.")
-        return
-    except json.JSONDecodeError:
-        print(f"Lỗi: File '{REQUEST_FILE}' không phải là JSON hợp lệ.")
+    except Exception as e:
+        print(f"❌ Lỗi đọc file: {e}")
         return
     
-    all_responses = {}
-    all_geometries = {}
+    final_geometries = {}
 
-    # 2. Duyệt qua từng ngày và gọi API
-    for day_name, request_data in all_requests_data.items():
-        print(f"\n--- Đang xử lý {day_name} ---")
+    for day_key, request_data in all_requests_data.items():
+        print(f"\n🚀 Đang xử lý {day_key}...")
+        mode = request_data['mode']
+        waypoints = request_data['waypoints'] # List các [lon, lat]
         
-        try:
-            mode = request_data['mode']
-            waypoints_lon_lat = request_data['waypoints']
-
-            # 3. Chuyển đổi Waypoints sang định dạng GET (lat,lon|lat,lon)
-            waypoints_get_format = []
-            for point in waypoints_lon_lat:
-                lat = point[1]
-                lon = point[0]
-                waypoints_get_format.append(f"{lat},{lon}")
+        day_segments_coordinates = [] # Chứa danh sách các đoạn đường
+        
+        # Duyệt qua từng cặp điểm (A->B, B->C, ...)
+        for i in range(len(waypoints) - 1):
+            start_pt = waypoints[i]
+            end_pt = waypoints[i+1]
             
-            waypoints_string = "|".join(waypoints_get_format)
+            print(f"   - Đoạn {i+1}: Từ {start_pt} đến {end_pt}...", end=" ")
             
-            # 4. Xây dựng URL cho yêu cầu GET
-            params = {
-                'waypoints': waypoints_string,
-                'mode': mode,
-                'apiKey': API_KEY
-            }
-
-            # 5. Gửi yêu cầu GET
-            print(f"Đang gửi yêu cầu (GET) cho {day_name}...")
-            response = requests.get(API_BASE_URL, params=params)
-
-            # 6. Xử lý kết quả
-            if response.status_code == 200:
-                print(f"✅ Yêu cầu API thành công cho {day_name} (Status code: 200)")
-                response_data = response.json()
-                all_responses[day_name] = response_data # Lưu response đầy đủ
-
-                # Trích xuất geometry
-                try:
-                    geometry = response_data['features'][0]['geometry']
-                    all_geometries[day_name] = geometry # Lưu geometry
-                    print(f"-> Đã trích xuất geometry cho {day_name}.")
-                except (KeyError, IndexError, TypeError):
-                    print(f"Lỗi: Không thể trích xuất 'geometry' cho {day_name}.")
-                    all_geometries[day_name] = None
+            # Gọi hàm xử lý từng đoạn
+            segment_coords = get_segment_route(start_pt, end_pt, mode)
             
+            # Thêm đoạn đường này vào danh sách của ngày
+            day_segments_coordinates.append(segment_coords)
+            
+            if len(segment_coords) > 2:
+                print("OK (Đường bộ)")
             else:
-                print(f"Lỗi! API trả về mã trạng thái {response.status_code} cho {day_name}")
-                print(f"Nội dung lỗi: {response.text}")
-                all_responses[day_name] = {"error": response.text, "status_code": response.status_code}
-                all_geometries[day_name] = None
+                print("OK (Đường thẳng)")
+                
+            time.sleep(0.2) # Nghỉ xíu tránh spam API
 
-        except Exception as e:
-            print(f"Đã xảy ra lỗi ngoài ý muốn khi xử lý {day_name}: {e}")
-        
-        time.sleep(0.5) # Tạm dừng 0.5 giây giữa các lần gọi để tránh spam API
+        # Lưu kết quả dạng MultiLineString
+        final_geometries[day_key] = {
+            "type": "MultiLineString",
+            "coordinates": day_segments_coordinates
+        }
 
-    # 7. Ghi tất cả kết quả ra file
+    # Lưu file kết quả
     try:
-        with open(OUTPUT_RESPONSE_FILE, 'w', encoding='utf-8') as f:
-            json.dump(all_responses, f, indent=4, ensure_ascii=False)
-        print(f"\nĐã lưu toàn bộ kết quả response vào: {OUTPUT_RESPONSE_FILE}")
-
         with open(OUTPUT_GEOMETRY_FILE, 'w', encoding='utf-8') as f:
-            json.dump(all_geometries, f, indent=4, ensure_ascii=False)
-        print(f"Đã lưu toàn bộ lộ trình (GeoJSON) vào: {OUTPUT_GEOMETRY_FILE}")
-        print("\nĐây là file bạn cần để vẽ lên bản đồ.")
+            json.dump(final_geometries, f, indent=4, ensure_ascii=False)
+        print(f"\n✅ HOÀN TẤT! File lộ trình đã lưu tại: {OUTPUT_GEOMETRY_FILE}")
+        print("   (Các đoạn qua biển đã được nối bằng đường thẳng)")
         
     except Exception as e:
-        print(f"Đã xảy ra lỗi khi ghi file đầu ra: {e}")
+        print(f"❌ Lỗi khi lưu file: {e}")
 
-# Chạy hàm
 if __name__ == "__main__":
-    call_geoapify_api_by_day()
+    call_geoapify_api_smart()
