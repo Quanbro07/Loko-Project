@@ -5,7 +5,7 @@ from categories_creator.food import run_food
 # ==========================
 # CONFIG INPUT / OUTPUT
 # ==========================
-INPUT_FILE = "nha_trang.json"
+INPUT_FILE = "ho_chi_minh.json"
 OUTPUT_FILE = "attractions_with_tags.json"
 BATCH_SIZE = 20  # Đặt ở main
 

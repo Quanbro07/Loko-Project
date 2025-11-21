@@ -1,144 +1,22 @@
 [
   {
-    "gg_place_id": "ChIJUXQmxMdncDERI-V3_g5la4I",
-    "location_name": "VinWonders Nha Trang",
-    "latitude": 12.217047899999999,
-    "longitude": 109.2408718,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJ9YE09dEudTERNEcX1eDdajY",
+    "location_name": "Thiên Đường Giải Trí Thỏ Trắng",
+    "latitude": 10.785501499999999,
+    "longitude": 106.66605299999999,
+    "open_time": "{\"thứ sáu\": \"Đóng cửa\", \"thứ bảy\": \"08:00–19:00\", \"chủ nhật\": \"08:00–19:00\", \"thứ hai\": \"Đóng cửa\", \"thứ ba\": \"Đóng cửa\", \"thứ tư\": \"Đóng cửa\", \"thứ năm\": \"Đóng cửa\"}",
     "types": [
       "Công viên giải trí",
-      "Công viên xe dã ngoại"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy07qzCiWUOzd6u0X4Qme-aMM6eeCmQALqDebzvqXssQAR2Ydl_hhM4Dn0Kvj5m5B1qSe6bAidW6Qxo2O6WNt7HHv6GugQ0SGPafMsskMhwTm9YZ0Qf32KIXhs9g_oA9QGZuNxy-g=w115-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park",
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ3zYVFiBncDER2tYesq2Osvg",
-    "location_name": "Tata Aventure",
-    "latitude": 12.217362699999999,
-    "longitude": 109.2402587,
-    "open_time": "N/A",
-    "types": [
-      "Công viên nước"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwXzFVcRq_XNkIJHojSRTEiGfcvvpS-xpbysDTPhWhYshtvnx8LxOS3naVprKE1GTYHwFQMVHPQM4lbuJNrozlbOAFJwKFT-dVAx7E4ZUdXokxVpT6e8TTE2pjxGXQ9sQ5WIiTRDA=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ651BEmVncDERY1Pj2Zhbs1Q",
-    "location_name": "Công Viên Phù Đổng",
-    "latitude": 12.2297812,
-    "longitude": 109.1993064,
-    "open_time": "N/A",
-    "types": [
-      "Công viên"
-    ],
-    "average_rating": 4.5,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxc46J6TgbmgRT6JRKzGbXKLMOM_pMvjNvZjNw4VzrDudmPuXVgw2tQE-4YskQIFoI-K7JuE3LcN_7lOXTYXt2cEdXXe6USmpUy7k9yHCInftDet1WKq0WqIpNx-DobsILm_NIe=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJBzWpKwFfcDERKmYjvw4Ximo",
-    "location_name": "Khu Du Lịch Trăm Trứng -100 Egg Theme Park",
-    "latitude": 12.1852992,
-    "longitude": 109.16149659999999,
-    "open_time": "N/A",
-    "types": [
+      "Công viên giải trí",
+      "Công viên",
       "Điểm thu hút khách du lịch"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz-6WtfbQ_O2gWqfbqsCJtzby8750jxvIT5LrpDFHEnVFd-E-KMJTOfMwmqBLqMrRihlfgxMMCNIsvn6f37MsK95Sz9szkKjHokKREZbrCcaS0SHN8U1egWyRJxHX8HOynySyJV=w148-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Khu nghỉ rậm rạp có dịch vụ tắm bùn nóng. Không gian spa nơi vườn chuối, nổi bật với những quả trứng điêu khắc khổng lồ và khu tắm bùn giàu khoáng chất.",
-    "categories": [
-      "amusement/water park",
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJo-J5RmpecDERb3SOXgZEmSk",
-    "location_name": "100 Egg Theme Park",
-    "latitude": 12.1860837,
-    "longitude": 109.1704834,
-    "open_time": "N/A",
-    "types": [
-      "Công viên giải trí",
-      "Phòng tắm ngoài trời"
-    ],
-    "average_rating": 4,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipP33rtf5FauEiUkvVKb663aNd9-U8DnJ-XMq2E7=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJv_FhqN5mcDERS5Mb2BUw0Fc",
-    "location_name": "Vinpearl Land",
-    "latitude": 12.216229199999999,
-    "longitude": 109.2413414,
-    "open_time": "N/A",
-    "types": [
-      "Trạm cáp treo"
     ],
     "average_rating": 4.3,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwvaKZV9vteAY_fvJgGbeLEBsl5p053RJi7CZqCFXLpWk3obC_I0B8c-zigJEOXupK_v58jyLRLCw2XnUxKAIswKUUKuqftiubd9a-iUV0_qUE3MIiIs0Qlq63jAQHF0nwDeJWn=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxVvJoJo-ELEpNTTDRZN6AJSLA7taigm6b9_ywKrqJIpqjgiR2UBR8fK-bEtZSWxtgbC66rgLNlR3U7wx1Rw-Lp_qg6oENiiZBvCybcloX0zU5PYxlsheIg-FEc952EeB2ZF9Yb=w163-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
@@ -149,96 +27,46 @@
     ]
   },
   {
-    "gg_place_id": "ChIJXSbD5X9dcDERBrdvrbCEu3o",
-    "location_name": "Cung văn Hóa Thiếu nhi Khánh Hòa",
-    "latitude": 12.2482923,
-    "longitude": 109.18790089999999,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJ4RqUkJkudTER-QHI35eZcWI",
+    "location_name": "Công viên nước Đầm Sen",
+    "latitude": 10.768894699999999,
+    "longitude": 106.63599389999999,
+    "open_time": "{\"thứ sáu\": \"09:00–18:00\", \"thứ bảy\": \"09:00–18:00\", \"chủ nhật\": \"08:30–18:00\", \"thứ hai\": \"09:00–18:00\", \"thứ ba\": \"Đóng cửa\", \"thứ tư\": \"09:00–18:00\", \"thứ năm\": \"09:00–18:00\"}",
+    "types": [
+      "Công viên nước",
+      "Công viên",
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzRiUEXmsdZoBMvA747L1bf2ivqBd-CA-6Io4PqMY6SY69HkIfq9-2apY8CkPoBozbtrUL0P59fc-qWa4ueovAWU7ospkPPaxBg9VS8vgFRUBcj9BGxiPK6A13RbQtbk4aqBqoe0A=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Công viên rực rỡ với các điểm tham quan. Tổ hợp vui chơi giải trí cho gia đình với các hoạt động cưỡi ngựa, công viên nước, rạp chiếu phim & sở thú.",
+    "categories": [
+      "amusement/water park",
+      "cultural performance"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJI6esUYYpdTERJAJosl0nMpE",
+    "location_name": "MenaWorld _ Menas Mall Sai Gon Airport",
+    "latitude": 10.8133059,
+    "longitude": 106.66552949999999,
+    "open_time": "{\"thứ sáu\": \"09:00–22:00\", \"thứ bảy\": \"08:00–22:00\", \"chủ nhật\": \"08:00–22:00\", \"thứ hai\": \"09:00–22:00\", \"thứ ba\": \"09:00–22:00\", \"thứ tư\": \"09:00–22:00\", \"thứ năm\": \"09:00–22:00\"}",
     "types": [
       "Trung tâm vui chơi dành cho trẻ em"
     ],
-    "average_rating": 4.2,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyW42xi2BZi3_jDgBimWxmsCbn4QC35FpLngKgQy2GOhKVCaqT5tAmHrhARBKIgw-tJobt-17iocIm26lG3rGTSjbyvYhTBHU7pR_5AOOTBeZjbNr9m7rz3D6iGefaidaTSUH5g=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park",
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ27FghMFncDERSk2aFV86gOI",
-    "location_name": "Vịnh Phao Nổi Splash Bay",
-    "latitude": 12.219857399999999,
-    "longitude": 109.2394657,
-    "open_time": "N/A",
-    "types": [
-      "Công viên nước"
-    ],
-    "average_rating": 3.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzv5uiYJ7r6EOLAShBbaPVb_T7plmcUUZGVtgLO3QIkvnAPoCBznsBsdfF9w8la4v3ipPp4eiVHXAXhdqV9MCoE1jklNSik8QspCy5Q5r0jJukRlkkx8QtvnYsD6rB0d2HoY9Adjg=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
-    "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
-    "latitude": 12.2257024,
-    "longitude": 109.23714269999999,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn",
-      "Nhà hàng tiệc đứng"
-    ],
     "average_rating": 4.9,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Khu nghỉ dưỡng ven biển có hồ bơi. Khu nghỉ dưỡng ven biển có phòng ốc tinh tế, spa, nhà hàng, quầy bar, bể bơi trong nhà & ngoài trời.",
-    "categories": [
-      "hotel",
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJtWRRQudmcDERM7pYaRqfkNk",
-    "location_name": "Sky Wheel",
-    "latitude": 12.221850199999999,
-    "longitude": 109.2428491,
-    "open_time": "N/A",
-    "types": [
-      "Vòng đu quay"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyPVMfeMGwuxLNOlINr45ds5etacHF0EKCD9NMUgSzJfK0ZoR3IvHUbQvP6NM0HE-anAPyT9WWlOfv9GIgLV1H4HD8Bg7X-xBRJWT_-I_XuY6RGXBYwEVQkf2UBWHOBoHHIm-UV=w137-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPBlrmztUeiTBoSTP0VspAZ4tCLn-arSv0n5xG2=w122-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
@@ -248,493 +76,398 @@
     ]
   },
   {
-    "gg_place_id": "ChIJ9yLtJDOLcDERoCJf3UjWEsQ",
-    "location_name": "Công viên nước Alma Resort",
-    "latitude": 12.0714191,
-    "longitude": 109.1969802,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJa2jyR5cudTERy2ySbqgJudk",
+    "location_name": "Đầm Sen",
+    "latitude": 10.768736599999999,
+    "longitude": 106.63610829999999,
+    "open_time": "{\"thứ sáu\": \"07:30–18:00\", \"thứ bảy\": \"07:30–20:00\", \"chủ nhật\": \"07:30–20:00\", \"thứ hai\": \"07:30–18:00\", \"thứ ba\": \"07:30–18:00\", \"thứ tư\": \"07:30–18:30\", \"thứ năm\": \"07:30–18:00\"}",
     "types": [
+      "Công viên giải trí",
       "Công viên nước"
-    ],
-    "average_rating": 4.4,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy7RT2nUiSQjA233WWWVuUm5d8MrjWBqsNRsiWyqgitQo1AIXC3jQBDbHnGagpBBjae2IUhMMw9gAv9Zvxs_Ds8_Qhl6aaiFQqJWkYz58hkiyBUL-NgIGELmypUfM7Rs29oXrV2=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJn2AiskNncDERQjCX-h4tLUE",
-    "location_name": "Công Viên Thanh Niên",
-    "latitude": 12.2200644,
-    "longitude": 109.2044593,
-    "open_time": "N/A",
-    "types": [
-      "Công viên"
-    ],
-    "average_rating": 4.4,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSytd3FljK6_9TvAJyeEmAM7f8LOnI3HFCH6mFfzyTi3E9NaNQnHoGnK-3CWBzDFQm8hyIy1OjzWPoRJblaRaAV7eBmCZa6rBkIyopUCEWYVC85FpUpdWKGTpk3SR6eb3exzPKq8=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJm3ky4ej3cDERinK80PAn17w",
-    "location_name": "Kong Forest Nha Trang - ATV, Zipline, Rafting",
-    "latitude": 12.1129082,
-    "longitude": 108.9979674,
-    "open_time": "N/A",
-    "types": [
-      "Trung tâm thể thao mạo hiểm",
-      "Khu cắm trại",
-      "Điểm thu hút khách du lịch"
-    ],
-    "average_rating": 4.6,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyliS12sHxxtJciJsknzrF4RNPMvFW_5eUX44MsHaJTH4Scnd8BAr51QAYUs5tmWyCVOoLIztBXniI1jyvkfuj4fJKed4NZvbaRCrrFFncsdUK3ow8Msfjgi8QsOmjCYIrIcW1ENQ=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park",
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJW-dkTHVncDERNKX3A0JHfdw",
-    "location_name": "Đường lượn nhớ đời - Alpine Coaster",
-    "latitude": 12.2158765,
-    "longitude": 109.2403535,
-    "open_time": "N/A",
-    "types": [
-      "Xe lượn"
-    ],
-    "average_rating": 3.1,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyxfE9Jr3SM5xM7B0QjMPfnubAUzll5NJrygKd5Xq38f3FKdxO9Pp_fr0X55bmNhos9K3cuMn0UmpHbfH61CUowd35J_85k8UvE9DkgO7KTp3RCRZf1PRh4Jjvzfst8DwbHO6GW=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ7ZwDewBncDERPujfkPO8yoA",
-    "location_name": "Cáp Treo Vinpearl Harbour Nha Trang",
-    "latitude": 12.2032945,
-    "longitude": 109.2170405,
-    "open_time": "N/A",
-    "types": [
-      "Tàu điện cáp treo"
-    ],
-    "average_rating": 4.2,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw26fOTHPr0q7BYRA_bO3tv3zrdKr08v-u6G2K6-uH-lOfNsdEM4avN2C6sLqa4HOK8p6L1K6o6lW3ugV185HxVPU6wgsaR86snETuK0HO3jNpSOkb3PU-9kODfaMmCS2QsBp2R=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park",
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJefNOHABncDER9RjSG5wEsQ8",
-    "location_name": "Sân khấu thực cảnh Tata Show",
-    "latitude": 12.2167184,
-    "longitude": 109.2402453,
-    "open_time": "N/A",
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "average_rating": 4.4,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxtPdqx0rxtswnfGtM01lkjfHRl0Q8nf-4e3xTJKRtVZNcpZk_aM90Tjk6fZbunr7oxQO9g3sPHNDTPrDnRu1AUMfMgYNUedP5_6tJeMVaow-V9pBJoL6-8x5SNSo36JCFEUUu5RAYkv5aA=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJkUGmBixncDERFp4zmUmm_C0",
-    "location_name": "Tata World River Adventure VinWonders Nha Trang",
-    "latitude": 12.2182712,
-    "longitude": 109.24096329999999,
-    "open_time": "N/A",
-    "types": [
-      "Khu vực chèo thuyền"
-    ],
-    "average_rating": 5,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxCj6TbwVkXuRfgWo_IURCKItpVcU7hIj0RjPgDtkzJ5OLp6r_VihfY8yperfGDWQmAQ6HiW7hM445wJe_T0JS3qGkGcyJZr6v4bTG76mqJFbwt8SOhNVXxA7SjwGcyNYbdfJEoWA=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park",
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJdb_UoJRpcDER33c4x2XzS5o",
-    "location_name": "Khu du lịch Đảo Khỉ",
-    "latitude": 12.359675,
-    "longitude": 109.21291,
-    "open_time": "N/A",
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "average_rating": 4.2,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxCK_rG4PFO2qFauiEdSHrXBch6NZcp7rlZjG3npVw_l5Lvbg6t-a3AwEPhML-0yMm4Okas559xRLvmLLRZ9Y5nUKJ1vSKU7pF_q0Amxmvj6E5nODRzgJquf_8-v3Vw2_VDRXrSHg=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Chương trình xiếc thú và khỉ thả tự do. Điểm tham quan có những chú khỉ tinh nghịch trong chương trình biểu diễn xiếc cùng động vật hoang dã và các địa điểm lặn biển.",
-    "categories": [
-      "cultural performance",
-      "zoo"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-    "location_name": "Vinpearl Resort Nha Trang",
-    "latitude": 12.220934999999999,
-    "longitude": 109.2473572,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipN7400cr1PDkKiIKBLe46nh-qaJ26tGWJxpI6kL=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJtVb3fWhncDERB9Tfv6uOLdc",
-    "location_name": "Nha Trang Sea Star Diving Center",
-    "latitude": 12.242242899999999,
-    "longitude": 109.1865995,
-    "open_time": "N/A",
-    "types": [
-      "Trung tâm lặn"
-    ],
-    "average_rating": 5,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipP02s8Ur_Ezgby6dsk4hxUI81lYQeG56O9LRAAH=w132-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ50nfFJ9ncDERIWjo8aIDvTg",
-    "location_name": "Дом Культуры",
-    "latitude": 12.2189677,
-    "longitude": 109.20239559999999,
-    "open_time": "N/A",
-    "types": [
-      "Trung tâm văn hoá"
-    ],
-    "average_rating": 5,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOfzgp926nESznoJTgEKGP83WkOjwF9KODh2GmT=w136-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJCaPEQARncDERaambqvjdbEs",
-    "location_name": "Quảng trường 2-4",
-    "latitude": 12.239284099999999,
-    "longitude": 109.197092,
-    "open_time": "N/A",
-    "types": [
-      "Công viên",
-      "Đại lý du lịch biển",
-      "Nơi tổ chức sự kiện",
-      "Địa điểm ca nhạc trực tiếp",
-      "Điểm thu hút khách du lịch"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy5J9CaywnFSD222q5rG9smq-GCc67pB-KDdccA3cU0vkvAR024bUrPKFua15lSJUnC1KOH69Vyu6Eg_vmiUlVM4kmTvFvSztlNWgL0F-RXIgtNnhqYzOM4p1Om56SrIVgAdbiBVw=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "cultural performance",
-      "festival"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ6RJHMZRdcDERqbBeCK3Somc",
-    "location_name": "Life Puppets show - Rối Mơ",
-    "latitude": 12.3006266,
-    "longitude": 109.2374262,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hát nghệ thuật biểu diễn"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxymfV6o5D1Aj35pXFsmkWsUMr3brR9Ov0O1wUw6D0adA29QZrg7YBUJahpt3aoutgLGI3BNc4UkGrwciKk3eBhaAu4fClrn2LQuUB--RsCudbGrpIO4oVQKQeU_mw0xLdEHyXxgQ=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJefNOHABncDER9RjSG5wEsQ8",
-    "location_name": "Sân khấu thực cảnh Tata Show",
-    "latitude": 12.2167184,
-    "longitude": 109.2402453,
-    "open_time": "N/A",
-    "types": [
-      "Điểm thu hút khách du lịch"
-    ],
-    "average_rating": 4.4,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyNati-AfruaYWJZp6cRJ96fdFAqmZDB9ecrZcX6MT_d9OckU7PzkCugo52czEfw9TpblWRwAAq2Tgs2GcbSsHqRvr8M6god5O6REOk-sMulmg5Pw0oVQ7kAH8zgKtHVWe4rtU=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJk8NQo3tncDERmZmXYkZsakQ",
-    "location_name": "Trung tâm Hội nghị tỉnh Khánh Hòa",
-    "latitude": 12.239234999999999,
-    "longitude": 109.1960939,
-    "open_time": "N/A",
-    "types": [
-      "Trung tâm hội nghị"
     ],
     "average_rating": 4.3,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwZwEke8fFTnDCgfFScLPiUFjLYzNNF7zWaSkI7abddRfSZU5BV5wGhmsqwLH4mHvjrHCsnqOjfsAYUE8LJeXtkV2AUL5frgqusE3oR3Ew50MglGyfEDy0_h7sOQiunFSx8RPAA=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzc-tXkqHGJySW_lVA58RDfm23aGYlzOLaNmRmByKdFrgwSWHI6XYOg-ttkjXt04B2T2ABFtVjkmaG4hiN2zya9QBkn8h7imJrcT1dGk97BSsu743ZWafz2eoedR1hFJ5_6g4P8=w131-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
     "description": null,
     "categories": [
-      "cultural performance"
+      "amusement/water park"
     ]
   },
   {
-    "gg_place_id": "ChIJR0Cr4n9dcDERhrCYXyjifKQ",
-    "location_name": "Nhà thờ Núi",
-    "latitude": 12.2467309,
-    "longitude": 109.1881257,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJE2s16d8odTERhi4YxyrQpg4",
+    "location_name": "Khu Vui chơi Trẻ em - Công viên Gia Định",
+    "latitude": 10.8123367,
+    "longitude": 106.6735483,
+    "open_time": "{\"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\", \"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\"}",
     "types": [
-      "Nhà thờ Công giáo",
-      "Nhà thờ lớn",
-      "Nhà thờ"
+      "Công viên giải trí",
+      "Sân chơi"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz3EIgbDynrPByExvqDZpfWbBSsUjdc4G8Dw0fKmUQd8KUAadSKzwFELZ8Cxzb6j2Es_4R1VY3bxwEajbrFPLUEyH1bkrTYVU1T4D34X6Dbvc554pAviFhCQiyZLGsi20Ufqv4Zmw=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "amusement/water park"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJtcFh4QordTERPQVubtwdiPs",
+    "location_name": "FANPEKKA",
+    "latitude": 10.800914899999999,
+    "longitude": 106.6155969,
+    "open_time": "{\"thứ sáu\": \"10:00–22:00\", \"thứ bảy\": \"09:00–22:00\", \"chủ nhật\": \"09:00–22:00\", \"thứ hai\": \"10:00–22:00\", \"thứ ba\": \"10:00–22:00\", \"thứ tư\": \"10:00–22:00\", \"thứ năm\": \"10:00–22:00\"}",
+    "types": [
+      "Trung tâm vui chơi dành cho trẻ em"
     ],
     "average_rating": 4.1,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyt7NfrlUFXruVfWzbPj22v2fGvBeYF6p-C0XI5WuWEpPvUGguEdDnKLPbzxpX_DPDnH6Qsi6GduKRW08YsgQQEgiOUguqI-D_7HXBo_Sfnk2wYr8xiFgmtN-92Tc0htsMM1Ow_1w=w80-h106-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyAt84fYn_G2tmI6qL3-npAVuHyU9zw_HDGei8DDdA45M8unxKbigmQ_jiCf0kNtRwr8TFNh_u9TSDnB422BqysYCr1AmljrpqUGtJL1NejAw8JdXrhXSPIXI8TQJfGT2k3AAx_=w122-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
-    "description": "Nhà thờ nổi tiếng có gian giữa xây mái vòm. Nhà thờ Tân-Gothic có tháp chuông lộng lẫy, trần nhà mái vòm và những chiếc cửa sổ kính màu đẹp mắt.",
+    "description": null,
+    "categories": [
+      "amusement/water park"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJA0FSQqEvdTERuUNes8gZ6-I",
+    "location_name": "Vietopia",
+    "latitude": 10.7415542,
+    "longitude": 106.69500389999999,
+    "open_time": "{\"thứ sáu\": \"08:00–16:00\", \"thứ bảy\": \"08:00–16:00\", \"chủ nhật\": \"08:00–16:00\", \"thứ hai\": \"Đóng cửa\", \"thứ ba\": \"08:00–16:00\", \"thứ tư\": \"08:00–16:00\", \"thứ năm\": \"08:00–16:00\"}",
+    "types": [
+      "Công viên giải trí",
+      "Chương trình ngoại khóa",
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.2,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyt82tvYjZokS077DMJ-1q7NDZ5GY4mKb5xYwpMLPdOTQw6sH54PD2gH3Qpd_CeuMzLz1r4SC0AR4PEHvYZnu505W5NLz83VWMOzotxuN6KRSgClaiE89YIkfVNkE1juKpVDsTrtg=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "T.tâm giáo dục & vui chơi lớn trong nhà. Sân chơi trong nhà rộng kiểu thành phố thu nhỏ với các hoạt động giáo dục, thực hành.",
     "categories": [
       "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJ4fNk9-tncDEREaH8DVQWkmY",
-    "location_name": "Hòn Chồng",
-    "latitude": 12.27292,
-    "longitude": 109.2064934,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJDXlfx1sndTERFg6NcPqJ8e8",
+    "location_name": "Công viên văn hóa Suối Tiên",
+    "latitude": 10.866186299999999,
+    "longitude": 106.8031678,
+    "open_time": "{\"thứ sáu\": \"08:00–17:00\", \"thứ bảy\": \"08:00–17:00\", \"chủ nhật\": \"08:00–17:00\", \"thứ hai\": \"08:00–17:00\", \"thứ ba\": \"08:00–17:00\", \"thứ tư\": \"08:00–17:00\", \"thứ năm\": \"08:00–17:00\"}",
     "types": [
-      "Điểm thu hút khách du lịch",
-      "Thắng cảnh"
+      "Công viên giải trí",
+      "Công viên"
     ],
     "average_rating": 4.3,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxh7glhW6xPp-w2w9zJF-197RIbiHiQ0dxR2-3q7Qgqdk0MaaLMImlKEiLRGUowO5JIurArR_nBBPFJVLF0Oi3hIuV7oC1eN7eCSegY4FI_0t-s3od9kwj4_IGnkX6gnGpqKkQD=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyn9eZOPdg0LuCC8xnHjpfrvVYIl3PG65399oR8kviS3mCAZc44lE166aiuWyxpCxURjSnzSBH5tJYBA5iTji_spKXjmc_3oUySCqUvAq97hHwVmKS5KMxJFDbkEIPXG_2XOs18=w186-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
-    "description": "Tảng đá ven biển và tiết mục âm nhạc. Điểm du lịch có những cụm đá tuyệt đẹp ở ven biển, hoạt động bơi lội và tiết mục âm nhạc truyền thống.",
+    "description": "Công viên văn hóa giải trí lấy cảm hứng từ Phật. Công viên giải trí có nhiều tàu lượn và hoạt động vui chơi dưới nước nằm giữa các công trình Phật Giáo nổi bật.",
     "categories": [
-      "cultural performance"
+      "amusement/water park"
     ]
   },
   {
-    "gg_place_id": "ChIJUfK4YYxncDERfB2v8ZdvXxE",
-    "location_name": "Tháp Bà Ponagar",
-    "latitude": 12.265366499999999,
-    "longitude": 109.1953678,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJKxbWuSUhdTERaf6JH7dvvmA",
+    "location_name": "Công viên Grand Park",
+    "latitude": 10.8398883,
+    "longitude": 106.8456016,
+    "open_time": "{\"thứ sáu\": \"10:00–21:00\", \"thứ bảy\": \"10:00–21:00\", \"chủ nhật\": \"10:00–21:00\", \"thứ hai\": \"10:00–21:00\", \"thứ ba\": \"10:00–21:00\", \"thứ tư\": \"10:00–21:00\", \"thứ năm\": \"10:00–21:00\"}",
     "types": [
-      "Điểm thu hút khách du lịch"
+      "Công viên giải trí"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxghUmIz7TlHMBd65XHbDj1XD_5Xw1o_rk_1AhO2-JOK4j675IicelkrF7FaHdd0oMalmAwfC3BXA0NbQkFyganI0Aie2m-Zo50_2wpTbQZ5yztLZ02MZSVbmKQR0c0B5AJZcIr-TkRA0gu=w80-h106-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "amusement/water park"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJW7U9AggpdTERqzQ7L8I2lR4",
+    "location_name": "Sân chơi Giáo Trí Thiếu Nhi tiNiWorld Vincom Quang Trung",
+    "latitude": 10.8293011,
+    "longitude": 106.67253339999999,
+    "open_time": "{\"thứ sáu\": \"10:00–21:30\", \"thứ bảy\": \"10:00–21:30\", \"chủ nhật\": \"10:00–21:30\", \"thứ hai\": \"10:00–21:30\", \"thứ ba\": \"10:00–21:30\", \"thứ tư\": \"10:00–21:30\", \"thứ năm\": \"10:00–21:30\"}",
+    "types": [
+      "Trung tâm vui chơi dành cho trẻ em",
+      "Sân chơi trong nhà"
+    ],
+    "average_rating": 4.2,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwc07UrU9CWJ26R97AfeHjpOnJh7y-3qL7it_DS-gVaBHe0VYsMhCjyYxmqLCY4WMkO6r0vslCRZs89AoLCyDrHLxzrUIsHYhSgSgUMcMA-ebBT0Hn_dfy6LgtGFqVG7okif2I1=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "amusement/water park"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ2999pt4ldTERy2QtUvjbIRI",
+    "location_name": "Công Viên Thế Kỷ 21",
+    "latitude": 10.7811567,
+    "longitude": 106.7520358,
+    "open_time": "{\"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\", \"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\"}",
+    "types": [
+      "Công viên giải trí"
+    ],
+    "average_rating": 4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw8dvxOlBKL2n19D22eSN3MVBZWGcXPoiX-fe1vIjkX89YhFYVknCGf7AE70cJCPzgI9zBQq-jkLNp_oRzaqTrxBq_3s8qGX0eth0ghYVA2OI7USMN3bljhx7gRfcNOUVvC3Adu=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "amusement/water park"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJK1--AHwpdTERKbswkZpcjuA",
+    "location_name": "Jump Arena Starmart Gò Vấp",
+    "latitude": 10.835335599999999,
+    "longitude": 106.66043289999999,
+    "open_time": "{\"thứ sáu\": \"10:00–21:00\", \"thứ bảy\": \"09:00–21:00\", \"chủ nhật\": \"09:00–21:00\", \"thứ hai\": \"10:00–21:00\", \"thứ ba\": \"10:00–21:00\", \"thứ tư\": \"10:00–21:00\", \"thứ năm\": \"10:00–21:00\"}",
+    "types": [
+      "Trung tâm vui chơi giải trí"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxKqrjF3R9O-1AtTlyrRNrVF5Ow5yYU1mNVuj6UYbA3DVbLqtcLCWgrNyDoSx1a5zFbbC8LO3Vp84GsC3B-ghamefGwGzFz_L3Z_u56mYPaWIt_rHT8awa2P0yrr31j3NDMS5z4861ikGF1=w143-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "amusement/water park"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJcUBm_6cvdTERgOKJ-GP60C0",
+    "location_name": "Jump Arena HimLam",
+    "latitude": 10.742073099999999,
+    "longitude": 106.69511949999999,
+    "open_time": "{\"thứ sáu\": \"09:00–19:00\", \"thứ bảy\": \"09:00–21:00\", \"chủ nhật\": \"09:00–21:00\", \"thứ hai\": \"09:00–19:00\", \"thứ ba\": \"09:00–19:00\", \"thứ tư\": \"09:00–19:00\", \"thứ năm\": \"09:00–19:00\"}",
+    "types": [
+      "Công viên giải trí"
     ],
     "average_rating": 4.5,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwp5OQPXQyyzUlDJG54HfiejnuUBedWHVA0VBnaT7YPXuz0BeQfWhvCaYKuvEWD-Bvq-uDq_197Shs-ohMGQcmNVzfEqF304OxZ1K7BYDdaHb5fypsvsFjJTy-vCAYLq8zgIgnZSw=w163-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzer4h5Y8ezWsOhYBYV0mn-o5vQFABDfT6sd4GJHGo_e_FGgnb50SWehfl7se08wh28ebD15mhJfJ4gq69qmf9FDolmUftEAYLtRWcgfBLlutiU6qeuyD6cE6VjJstjteHSW1o4=w163-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
-    "description": "Ngôi đền trên triền núi với đồ trưng bày. Ngôi đền 3 tầng thanh bình nằm trên đỉnh núi với 2 tháp nhà thờ là nơi trưng bày hiện vật & hình ảnh lịch sử.",
+    "description": null,
+    "categories": [
+      "amusement/water park"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJJenkHgAvdTERPzJF69yFr90",
+    "location_name": "Công viên Văn hoá Lê Thị Riêng",
+    "latitude": 10.785147799999999,
+    "longitude": 106.66474869999999,
+    "open_time": "{\"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\", \"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\"}",
+    "types": [
+      "Công viên"
+    ],
+    "average_rating": 4.6,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz1Q-8XFf7uU8EVRBAkBL20gwIuiMqldh9Jjx9CiR7uVdQuGEA2ydOtfGSu1lb5ZoR8gjRQeEeQvr0Ww0IvX0MCOCDQKgp5Es2kuocC5peuD8x7yn04sCKKQB7WysHA-vZqFfSAt3h0YPRg=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "amusement/water park"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJZ_V4ShkvdTERSYAJsTpzol4",
+    "location_name": "tiNiWorld Nowzone",
+    "latitude": 10.7644215,
+    "longitude": 106.6825193,
+    "open_time": "{\"thứ sáu\": \"09:30–22:00\", \"thứ bảy\": \"09:30–22:00\", \"chủ nhật\": \"09:30–22:00\", \"thứ hai\": \"14:00–22:00\", \"thứ ba\": \"09:30–22:00\", \"thứ tư\": \"09:30–22:00\", \"thứ năm\": \"09:30–22:00\"}",
+    "types": [
+      "Trung tâm vui chơi dành cho trẻ em",
+      "Nhà hàng"
+    ],
+    "average_rating": 4.2,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyyjhyWgpsptewnWIBE3aVkDtsHK1y-a8Slo5s3cjbx3IXJ5tW64v9OAmx0WUlMJzTcFSkqEtNFxYp0E9yY2-pjCUfbM5sn2y9haV36bqumg5sbex_OT6q_1qadH8asG2m1loq0bQ=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "amusement/water park",
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJx7wwM0svdTERjuH2a9dkuU0",
+    "location_name": "Thảo Cầm Viên Sài Gòn",
+    "latitude": 10.787334399999999,
+    "longitude": 106.70505659999999,
+    "open_time": "{\"thứ sáu\": \"07:00–17:30\", \"thứ bảy\": \"07:00–17:30\", \"chủ nhật\": \"07:00–17:30\", \"thứ hai\": \"07:00–17:30\", \"thứ ba\": \"07:00–17:30\", \"thứ tư\": \"07:00–17:30\", \"thứ năm\": \"07:00–17:30\"}",
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Vườn bách thú"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz25-QnrM7RyTQHy3qE7KTAEBcCe1eDjyqeYvYEpZmqOneRzHO8o_4zj9HvEVToOD_90qrQS6tIdN4fv5sEKjWeyFCaXn1lQdB0ViDyLjMqjFKP_QD5Uyc44HcB8uVP6nnkvY2Q=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Vườn thú có động vật có vú và bò sát. Vườn thú mộc mạc có nhiều loại thú khác nhau, bao gồm cả hươu cao cổ, lạc đà, voi và rắn.",
     "categories": [
       "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJXSbD5X9dcDERBrdvrbCEu3o",
-    "location_name": "Cung văn Hóa Thiếu nhi Khánh Hòa",
-    "latitude": 12.2482923,
-    "longitude": 109.18790089999999,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJLwB-bsQvdTERXLdP2IuZvt4",
+    "location_name": "Tinker Box",
+    "latitude": 10.788329599999999,
+    "longitude": 106.7029919,
+    "open_time": "{\"thứ sáu\": \"08:30–21:00\", \"thứ bảy\": \"08:30–21:00\", \"chủ nhật\": \"08:30–21:00\", \"thứ hai\": \"Đóng cửa\", \"thứ ba\": \"Đóng cửa\", \"thứ tư\": \"Đóng cửa\", \"thứ năm\": \"Đóng cửa\"}",
+    "types": [
+      "Sân chơi trong nhà",
+      "Dịch vụ tiệc cho trẻ em"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz_YYTy7Dp0qQo0j54NL2vBuT59UiSQQOQ5qgi-hkQPFk0TxU9UlooHXi-zArbChigIOX0t1tpexc9cqyC38Spm2cHi3chfqek0xmKKiIfSLs8dDApOrJRB2CKxTnH1lbIVwKqzUCHZE6pE=w80-h106-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "cultural performance"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJQdYDnJsndTERRXcHjMrj8_U",
+    "location_name": "KHU DU LỊCH BÌNH QUỚI 1",
+    "latitude": 10.829494,
+    "longitude": 106.739177,
+    "open_time": "{\"thứ sáu\": \"08:00–21:00\", \"thứ bảy\": \"08:00–21:00\", \"chủ nhật\": \"08:00–21:00\", \"thứ hai\": \"08:00–21:00\", \"thứ ba\": \"08:00–21:00\", \"thứ tư\": \"08:00–21:00\", \"thứ năm\": \"08:00–21:00\"}",
+    "types": [
+      "Công viên giải trí"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzfWlO1T5HOt_2uTM0HaJYhRj7pwKpyZ8XhA9t9xmlaZbwKV46pR4hKmB73W8cXs-D72C5LRB3ayiAZ2WuMZWv6iR65bsRj--rhc62TGZfkb5GsDTeIEKeRIBvfIVvRYiiecq0=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "amusement/water park"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJR6vwWigpdTERbBiFlolBce8",
+    "location_name": "Nhà Thiếu Nhi Quận Phú Nhuận",
+    "latitude": 10.7950007,
+    "longitude": 106.6744164,
+    "open_time": "{\"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\", \"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\"}",
     "types": [
       "Trung tâm vui chơi dành cho trẻ em"
     ],
-    "average_rating": 4.2,
+    "average_rating": 4.1,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxuygZlk7Fj6yDqATCIlbxf4YbKgL3RRsY8TXbfPlK0P6I677wpAN7ZBiwE202Qmc7z6fVXiMbeZFPap7iRkAZIA_ObNe_O6XR2wS-k6oSHHvQhAOvIOl8awUkFC1RnHr3BMUM=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwXp3eHCyK3R3sDM2Gt1cXQ0GAcMFvQLFAaGxYm-pCKOXqN1VrrFnjgQDI_pKKYHOBWjcL9yfABtfeRBZ5O0knjldeFDDyMMev4TdR4hJJl_mB_jfn6G7PK1gINv29YbDZXMSm4mg=w80-h106-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
     "description": null,
     "categories": [
-      "amusement/water park",
-      "cultural performance"
+      "amusement/water park"
     ]
   },
   {
-    "gg_place_id": "ChIJp5jGz9BpcDERo2VapNZi7GQ",
-    "location_name": "Đại lý Vé Nhà hát Đó (Đó theater)",
-    "latitude": 12.3005801,
-    "longitude": 109.2375732,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJP-wgqbwvdTERveQw05H8tBc",
+    "location_name": "Kiwooza Planet",
+    "latitude": 10.7201954,
+    "longitude": 106.71633299999999,
+    "open_time": "{\"thứ sáu\": \"09:00–21:00\", \"thứ bảy\": \"09:00–21:00\", \"chủ nhật\": \"09:00–21:00\", \"thứ hai\": \"09:00–21:00\", \"thứ ba\": \"09:00–21:00\", \"thứ tư\": \"09:00–21:00\", \"thứ năm\": \"09:00–21:00\"}",
     "types": [
-      "Nhà hát nghệ thuật biểu diễn",
-      "Nhà hát múa rối"
+      "Sân chơi trong nhà"
     ],
     "average_rating": 4.6,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy-HGAKWGIpTZ3zr7q70cJkXQvx33Eph-OEzwDSk_Nouvq-FzbP42YrZ7kSMJ-0FMNoPVBObwQpQegJgoM_6Z31Y7FfYHhzrndhAZ3pKsJa8JO15oJI2RV8DKD6W8SyhKpxZ758ug=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwFC_1usdLt3W2sCeq5J0Vh77IxIpTMlzytlZ5pOI-kRNeEgLboIaLmRidPhY_zBSV-nghngiO3ZOLhftkp5zZGecdNMYphn8Tx8ESOeoyJEVmN9GoZWQoFWFBfnsZDAnbwzx5MhQ=w80-h106-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
@@ -744,174 +477,44 @@
     ]
   },
   {
-    "gg_place_id": "ChIJXeYWDXlncDERdz6NupXSzTo",
-    "location_name": "Skylight",
-    "latitude": 12.2433961,
-    "longitude": 109.195842,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng",
-      "Hộp đêm",
-      "Sân ngắm cảnh"
-    ],
-    "average_rating": 4.6,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipM_mGxKgKo9WwEuA1tw2ZtJ-9autn-qKsA_A63X=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife",
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ6VnfP3ldcDERHoQBNdIRQhs",
-    "location_name": "Chùa Long Sơn",
-    "latitude": 12.2501803,
-    "longitude": 109.1801753,
-    "open_time": "N/A",
-    "types": [
-      "Chùa phật giáo",
-      "Chùa",
-      "Điểm thu hút khách du lịch"
-    ],
-    "average_rating": 4.3,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyBfF6E8PoFocYNAMuElh91Zzz9klOiJ6ndZLQ3U0IZ9jETvDd7S2hk9YbTlTKa2nAf9fUPME1oBoQ6B77-w3wQYJ2wZZ8nkK0eKxtWSY06vGo10ElSQ8Cz-dQJC_yHSizC1sXZ=w80-h142-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Ngôi chùa với tượng Phật trên đỉnh đồi. Ngôi chùa thờ Phật hiện đại với một tượng Phật lớn trên đỉnh đồi và tầm nhìn toàn cảnh thành phố.",
-    "categories": [
-      "cultural performance"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ_ZOJdoJncDERwm0jp8CiPSI",
-    "location_name": "Altitude Rooftop Bar",
-    "latitude": 12.24639,
-    "longitude": 109.19583089999999,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzuJ5xKvEJHepWkFytoE3q_fnrxF0JDr_IHBlKWambx0GZVeZxvWjq6an7SK3UCN0vBSHbD-vC-FvTr3MEuE65fU-N9K0A7ZQZh6_EoySLDG4zSO9ANCXaXzjyEZjJzDEzN_h79HNPdmh8=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJN041CH9ncDERZbt9zOaXORs",
-    "location_name": "Thủy cung Vinpearl Nha Trang",
-    "latitude": 12.219395599999999,
-    "longitude": 109.2410017,
-    "open_time": "N/A",
-    "types": [
-      "Công viên thủy cung"
-    ],
-    "average_rating": 4.4,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSycX1BNpOjtv2htsf7Ql_zmzvUcWvtYYR7D2X7Tgxf0Sm9QG2Bt9FsUfInIqavx5sYZe1PbzQp8yrV2oT__CaJsoQVgOkF3AynKIMQ82Mi0avgDxQ9P_gZExIa-QG3eL8czMCci=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "amusement/water park",
-      "aquarium"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJR89o2DZncDERC8bYtadAGj0",
-    "location_name": "Beach Nha Trang",
-    "latitude": 12.2883043,
-    "longitude": 109.2058634,
+    "gg_place_id": "ChIJKcrnSUYvdTERO64MErYx9VU",
+    "location_name": "Nhà hát Thành phố Hồ Chí Minh",
+    "latitude": 10.776612799999999,
+    "longitude": 106.7031715,
     "open_time": "N/A",
     "types": [
       "Điểm thu hút khách du lịch",
-      "Bãi đậu thủy phi cơ"
+      "Nhà hát Opera"
     ],
-    "average_rating": 4.8,
+    "average_rating": 4.6,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw9dydgRtxjKP5WrjGZnigKuxVeqO7hCGbI4CU8LRO0qB0IQF75xsCT-GWZZv_X41FBdav3iQSyAbN3Ak-wZOB0a2xyNss5zxZaKPMS_iT38c2Xa09nqzL0LMkVIy76F1zeop1tLA=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxJPxEJ9LhwUrBENnhK4XO-jAIJjnXNGLBz8RL3oLVXnb8uGAaBjI7euqxih9-oJShFmDnPLpcPe0_Y7WFvGgP_n5BJXGLJcIve08dIAcfUUJ8OBvjJOgtj3u2QvGOYG5xokZCwqw=w122-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
-    "description": null,
+    "description": "Phòng hòa nhạc & sân khấu ba lê. Nhà hát opera tinh xảo từ thời Pháp thuộc vào thế kỷ 19, nay là nơi biểu diễn ba lê và nhạc giao hưởng của thành phố.",
     "categories": [
-      "cultural performance",
-      "festival"
+      "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJ2TBhifdncDER-bv_z5RkrGo",
-    "location_name": "Chợ Đêm Nha Trang",
-    "latitude": 12.2397172,
-    "longitude": 109.19644219999999,
+    "gg_place_id": "ChIJqQNDazcpdTERUM4-CBL2RMI",
+    "location_name": "Nhà hát Quân đội - Khu vực phía Nam",
+    "latitude": 10.8020053,
+    "longitude": 106.65644739999999,
     "open_time": "N/A",
     "types": [
-      "Chợ đêm",
-      "Chợ"
+      "Nhà hát nghệ thuật biểu diễn"
     ],
-    "average_rating": 3.8,
+    "average_rating": 4.2,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzCbWJC4c6P9fYiQaGUPLOygkU0igq0cJhTUdp6_DRxmDtC8-cEBnnqzCvLg40RLCmj12S1pknryU4hsnLL1yPbmpwUSG2T-uycKVR2h_3xNqBHP9GkQ1e7_ENWh4oeb7XRIZyV-iq4TLPr=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Địa điểm sôi động có nhiều quầy hàng. Địa điểm sôi động có các cửa hàng và quầy hàng bán quần áo, giày dép, đồ lưu niệm và các mặt hàng khác.",
-    "categories": [
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJqZzbojZncDER5b38XvOq7cE",
-    "location_name": "Emperor Cruise",
-    "latitude": 12.2071057,
-    "longitude": 109.21640219999999,
-    "open_time": "N/A",
-    "types": [
-      "Đại lý du lịch biển"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwzsu0k0FdOTiUfPubXiNT520mMh_4OZuGyLJa589wzrpF11lReEVdWbUBiGWcb8UCdURaI_vNlc_KqCzmJlsj79Cz3p9-SktrBqsY3rXBIqaKgtC-GsTICpvUppT-H6L0YPIdF=w204-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzrkrn4qDzxmMnzLiL_Zmdp6t-BrcZ32AJ4szu5LYDr9-Fht_rM2bpr0oFxLexUmaRu6uevya_GQ7oB4gPgttuEFEzUZbAbtOcWyC0NbUwPmtTjp3aOuMwnbYqF2VRVZOWgYctxzw=w163-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
@@ -921,458 +524,339 @@
     ]
   },
   {
-    "gg_place_id": "ChIJQ1REIWZncDERTfT5MDYVWaQ",
-    "location_name": "Queen Ann Nha Trang Hotel",
-    "latitude": 12.2261726,
-    "longitude": 109.20025899999999,
+    "gg_place_id": "ChIJ5WWKcjwvdTERfULdIVZ1EhE",
+    "location_name": "Sân Khấu Trống Đồng",
+    "latitude": 10.772653799999999,
+    "longitude": 106.69222979999999,
     "open_time": "N/A",
     "types": [
-      "Khách sạn",
-      "Dịch vụ đưa đón tại sân bay",
-      "Quán bar",
-      "Phòng tập thể dục",
-      "Nhà hàng",
-      "Đại lý du lịch tham quan",
-      "Hồ bơi"
+      "Sân khấu/Vũ đài",
+      "Địa điểm ca nhạc trực tiếp"
     ],
-    "average_rating": 4.7,
+    "average_rating": 4.1,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipO32lSlOe1cZExBK1y1XUoaajt9Y3MF_6swUNs_=w80-h120-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzqBMrNM4j3rA7vbqDaL9L88g8HWjek-Tjo6cZ2wyD7Kuz4anV5wRWhepE8rmjy0RDjR4Nm5lR9Kp4h222_UFUomntYuwtlapw4dkOsaGB-GlKr-_ZorbSwhFoH-SPrRkGPuyeb=w122-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
-    "description": "Khách sạn cao cấp có bể bơi và spa. Khách sạn tinh tế, nhìn ra vịnh, có Wi-Fi, quầy bar, nhà hàng, bể bơi và khu spa cao cấp.",
+    "description": null,
     "categories": [
-      "nightlife",
-      "hotel",
-      "restaurant"
+      "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJnbttMV9ncDERno2jbjkrEOo",
-    "location_name": "Vandana Authentic Indian Food",
-    "latitude": 12.2322147,
-    "longitude": 109.19559009999999,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJL0dwVTgvdTERao3t8B1Jhxc",
+    "location_name": "Dinh Độc Lập",
+    "latitude": 10.776994199999999,
+    "longitude": 106.69530209999999,
+    "open_time": "{\"thứ sáu\": \"08:00–15:30\", \"thứ bảy\": \"08:00–15:30\", \"chủ nhật\": \"08:00–15:30\", \"thứ hai\": \"08:00–15:30\", \"thứ ba\": \"08:00–15:30\", \"thứ tư\": \"08:00–15:30\", \"thứ năm\": \"08:00–15:30\"}",
     "types": [
-      "Nhà hàng Ấn Độ"
+      "Điểm thu hút khách du lịch",
+      "Điểm mốc lịch sử",
+      "Bảo tàng"
     ],
     "average_rating": 4.5,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipO7wRnXlR7jVPNJeee6cHFzb6b3OZioCFFv14K0=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwSLlO_t0FKEDVQhbK60x93Ua8zQ2Lc4eCvD23b7OPA-OWSfaF-QPnBbYA_TJCu7xAWMjy9YQVpj40VEfl_AeqthWlMl86FbeNTcP8Ye329NDtyZ1PoyEVYt2Q0qruwsZA5_aA=w122-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
-    "description": null,
+    "description": "Cơ quan đầu não của chính phủ thời chiến. Di tích lịch sử về chiến tranh Việt Nam cho phép tham quan văn phòng chính phủ, phòng chỉ huy và hiện vật.",
     "categories": [
-      "restaurant"
+      "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJ9bXQGqddcDERdFE-9Jv9IBE",
-    "location_name": "Nhà hàng Nha Trang xưa",
-    "latitude": 12.2466911,
-    "longitude": 109.1558934,
+    "gg_place_id": "ChIJW7FVNjovdTERDdcTm9xxa3k",
+    "location_name": "Nhà Hát Múa Rối Nước Rồng Vàng",
+    "latitude": 10.776259699999999,
+    "longitude": 106.69253739999999,
     "open_time": "N/A",
     "types": [
-      "Nhà hàng"
+      "Nhà hát nghệ thuật biểu diễn"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzqRdzOpuk4zEXZZc8pTFFB5BEKWqKdM8l41ZSL08-P0yndtKTeDI2DYBKnih84GONPysFdqRC34dxuqZds9quNnLGxtBCZUQpsJ16uMG_NI08m-59yo_rDFhEtdayi1Tc5qz6d=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Các tiết mục múa rối trên sân khấu nước. Nhà hát đẹp mắt tổ chức các tiết mục múa rối Việt Nam trên sân khấu nước có nền nhạc sống.",
+    "categories": [
+      "cultural performance"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJS8Yv1zcvdTERUI2V47UxkPw",
+    "location_name": "Đường sách Thành phố Hồ Chí Minh",
+    "latitude": 10.780963,
+    "longitude": 106.7000734,
+    "open_time": "{\"thứ sáu\": \"08:00–21:00\", \"thứ bảy\": \"08:00–21:00\", \"chủ nhật\": \"08:00–21:00\", \"thứ hai\": \"08:00–21:00\", \"thứ ba\": \"08:00–21:00\", \"thứ tư\": \"08:00–21:00\", \"thứ năm\": \"08:00–21:00\"}",
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Hiệu sách"
     ],
     "average_rating": 4.6,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyNrPkmth0bPuc9PpW6QLQVTKJWZ0KYsXliOeHlIqWrDMczWQtRv1JYiVKRrBa6rB4UMnFOAQFeLRkWKre8_5Yp_f-iEEs7lFSn3hHheqmg03AMWZkkT3kbfDKvsbO-8aKRJgga7E3JL85-=w163-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyVhx0qeueLxphF3_eT7w1WUd1GX-cNHwPQvz4DtaPFSk6OUw4LSvex2bmShMnzF0DD4iZwASF5_DzucisHDz4pNJL3A33TmCXAhgeJFFkiPvdYlqF9sTYWr3wkdcG5HyoKgibE=w163-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
-    "description": null,
+    "description": "Hiệu sách độc lập và quán cà phê ngoài trời. Con phố đi bộ nhộn nhịp có các hiệu sách tiếng Việt và tiếng nước ngoài cùng địa điểm uống cà phê ngoài trời.",
     "categories": [
-      "restaurant"
+      "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJ2SsvofpncDERMdlG4F3G9jg",
-    "location_name": "The Sigma",
-    "latitude": 12.248719399999999,
-    "longitude": 109.1938946,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJMYonc3gndTERYotSEXLMKQc",
+    "location_name": "Réhahn Gallery",
+    "latitude": 10.775262999999999,
+    "longitude": 106.7042458,
+    "open_time": "{\"thứ sáu\": \"08:30–22:00\", \"thứ bảy\": \"08:30–22:00\", \"chủ nhật\": \"08:30–22:00\", \"thứ hai\": \"08:30–22:00\", \"thứ ba\": \"08:30–22:00\", \"thứ tư\": \"08:30–22:00\", \"thứ năm\": \"08:30–22:00\"}",
     "types": [
-      "Quán bar",
-      "Câu lạc bộ",
-      "Quán bar cocktail",
-      "Quán bar Hookah",
-      "Quầy giải khát",
-      "Hộp đêm",
-      "Quán rượu"
+      "Điểm thu hút khách du lịch",
+      "Trung tâm văn hoá",
+      "Studio nhiếp ảnh",
+      "Phòng trưng bày nghệ thuật"
     ],
     "average_rating": 4.9,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzGz9gyvTLhGOUlEAbD2tsEh66SaW9lB19-30e984UX-KGb2kjo99j6bikADXZqyM1NAAjG6csLmODIPbbqp6nHz2xZ-xJhXa9iZ_8925FohivJYEnH7WU04LxMlAoMAjGOL4NUaQ=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOotGnZCBpudEadAQyIk9fi1Th9jBrkqyoDn_G_=w163-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
     "description": null,
     "categories": [
-      "nightlife"
+      "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJ_ZOJdoJncDERwm0jp8CiPSI",
-    "location_name": "Altitude Rooftop Bar",
-    "latitude": 12.24639,
-    "longitude": 109.19583089999999,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJ39ckMWEvdTER63fzItgE-_k",
+    "location_name": "Indochina Queen",
+    "latitude": 10.765958,
+    "longitude": 106.7087557,
+    "open_time": "{\"thứ sáu\": \"08:00–22:00\", \"thứ bảy\": \"08:00–22:00\", \"chủ nhật\": \"08:00–22:00\", \"thứ hai\": \"08:00–22:00\", \"thứ ba\": \"08:00–22:00\", \"thứ tư\": \"08:00–22:00\", \"thứ năm\": \"08:00–22:00\"}",
     "types": [
-      "Quán bar"
+      "Điểm thu hút khách du lịch"
     ],
-    "average_rating": 4.7,
+    "average_rating": 4.5,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSys0Mr15_ZAZTYvbI8Cso1jF5lVixHJJvW14ABj9Ow7_KSb-6lTDzCrAE3l24dCUptSFf6BlVsvKUtotGTClzi8ha-WxcWZt1Yjo4J-5jR_ZPdwofzoK-v9GMTsdqffSNW560dykebwiVWw=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSynOcEJEHZdB62dugHHm7953EzF7g-aZ5MOIiTl1XHQadZ8OqjAWxGF4gPZUHACKHaF5a-5ajQZUqlbAJAjc_eh7g_8iVbbh4VK1C_xqgDmHyT09boO6zSfpJDg9Tud9JNCPdgQ=w122-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
     "description": null,
     "categories": [
-      "nightlife"
+      "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJXeYWDXlncDERdz6NupXSzTo",
-    "location_name": "Skylight",
-    "latitude": 12.2433961,
-    "longitude": 109.195842,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJ3cDP7UgvdTERTp4dZuhxxqc",
+    "location_name": "IDECAF - Viện Trao đổi Văn hóa với Pháp",
+    "latitude": 10.7799935,
+    "longitude": 106.7034805,
+    "open_time": "{\"thứ sáu\": \"07:30–17:00\", \"thứ bảy\": \"Đóng cửa\", \"chủ nhật\": \"Đóng cửa\", \"thứ hai\": \"07:30–17:00\", \"thứ ba\": \"07:30–17:00\", \"thứ tư\": \"07:30–17:00\", \"thứ năm\": \"07:30–17:00\"}",
     "types": [
-      "Hộp đêm",
-      "Nhà hàng",
-      "Sân ngắm cảnh"
+      "Trung tâm văn hoá",
+      "Công ty quản lý sự kiện",
+      "Trường ngoại ngữ"
     ],
     "average_rating": 4.6,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy_LnIC0rsrOYIsTTVXxRCtWZmxd6vrq-uwjMPaBbp-e3WhJ8mN4Ci69ldQ7FJnBPMaULjiclgqOKx6MXXa1y9gEItO1Ih-CKBJg-eGyiu3NVPrOGbNaewBiGDyx3iVYr0QtxS2Yw=w189-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyMkTFiqkPEbTLGXwp_6Y0S60uvNxNAktyZl1BLzWtrG2ySD5DxunyAN_ueBj55f-xUSxukySZ8gUPpA-dJK25GcaM7RTeSMpnbJPIF5hrglfApS-x_x_MOkNKxsc_jVMjgZ57DZZRO5cU=w122-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
     "description": null,
     "categories": [
-      "nightlife",
-      "restaurant"
+      "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJu4rr9GRncDERiZUt92dcqRY",
-    "location_name": "The Cloud Bar",
-    "latitude": 12.236706,
-    "longitude": 109.1941066,
+    "gg_place_id": "ChIJ63PnLZ8vdTER7I2i6l3lWM8",
+    "location_name": "A O Show - Lune Production",
+    "latitude": 10.7765627,
+    "longitude": 106.7030791,
     "open_time": "N/A",
     "types": [
-      "Quán bar",
-      "Nhà hàng",
-      "Quán cà phê"
+      "Nhà hát nghệ thuật biểu diễn"
     ],
-    "average_rating": 4.9,
+    "average_rating": 4.5,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipP4qZWhBuy1PHzcz-toAhlP21PrgC-ES9IWE8Ba=w138-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOX7pLJjAh_wJBzncdcejQ6T34rLPRDy9Tl5GzB=w122-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
     "description": null,
     "categories": [
-      "nightlife",
-      "restaurant"
+      "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJ29ymqXlncDERh53gkGh2SSY",
-    "location_name": "Happy Beach",
-    "latitude": 12.2427466,
-    "longitude": 109.1969898,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJPccxGQAvdTERYMYelqaxe8M",
+    "location_name": "Bảo tàng Mỹ thuật Thành phố Hồ Chí Minh",
+    "latitude": 10.770016199999999,
+    "longitude": 106.6991857,
+    "open_time": "{\"thứ sáu\": \"08:00–17:00\", \"thứ bảy\": \"08:00–17:00\", \"chủ nhật\": \"08:00–17:00\", \"thứ hai\": \"08:00–17:00\", \"thứ ba\": \"08:00–17:00\", \"thứ tư\": \"08:00–17:00\", \"thứ năm\": \"08:00–17:00\"}",
     "types": [
-      "Quán bar"
+      "Bảo tàng nghệ thuật"
     ],
-    "average_rating": 4.3,
+    "average_rating": 4.5,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMnECqKhXStE87HZSSrYLHxINRO-zNW5ImlVMxw=w138-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwUNFGMdOLKBUFwDUJH8u4fNcxI4ElBQjwHLYAFwif9DwhYCPkQixwhOyrbH4IchO80IRpyJwq6GelGnfUAqLbx1J1FN1k0K4X6g56085m5rU90cnvFf6v-pWWkFLcPoYikjfRGS01mEgsq=w161-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
     "description": null,
     "categories": [
-      "nightlife"
+      "cultural performance"
     ]
   },
   {
-    "gg_place_id": "ChIJSxuDcClncDERwIikCwd0JSY",
-    "location_name": "Karma Lounge Nha Trang",
-    "latitude": 12.2252013,
-    "longitude": 109.2007275,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJUeVrkX4vdTERdzSK2rZCsI4",
+    "location_name": "Yoko Cafe",
+    "latitude": 10.7766316,
+    "longitude": 106.6892034,
+    "open_time": "{\"thứ sáu\": \"08:00–00:00\", \"thứ bảy\": \"08:00–00:00\", \"chủ nhật\": \"16:00–23:30\", \"thứ hai\": \"08:00–17:00\", \"thứ ba\": \"08:00–00:00\", \"thứ tư\": \"08:00–00:00\", \"thứ năm\": \"08:00–00:00\"}",
     "types": [
-      "Quán rượu"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMERUDwDlBaR7J-Z-1IuqyOZmwMt2HVyGnxpe_0=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJeVOFV1hncDERe-m8Kk4ms8Q",
-    "location_name": "Paradise Club Nha Trang",
-    "latitude": 12.2431982,
-    "longitude": 109.1965295,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOS5H7KsWxyWM2XrxRVda0txEJOu5mwPnYgpnSB=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJix8YGGVncDERjFbduc6Ffrg",
-    "location_name": "Sailing Club Nha Trang",
-    "latitude": 12.2340918,
-    "longitude": 109.1980213,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar",
+      "Quán cà phê",
+      "Địa điểm ca nhạc trực tiếp",
       "Nhà hàng"
     ],
-    "average_rating": 4.2,
+    "average_rating": 4.4,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOgNbvAEBrBYGYgfCjAvCpsgR6marvZSCEn_lrD=w138-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyCk1D0YSVc65k7EGdDCHWWPIbZ6OX_Sv-iDWg6-WvTjAMujEfkufMND6Q1tibWAoBY6O3frcyrv2mZa6g_3sLm_8ESs8S7OkcNZ4Rcr4jzOPKk0aAWobprAYjRGWwmplCAOCWPXQ=w122-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
-    "description": "Nhà hàng và hộp đêm thời thượng ven biển. Nhà hàng thời thượng ven biển có DJ, tiết mục ca múa nhạc, cocktail cùng ẩm thực Việt Nam, Ấn Độ và phương Tây.",
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ7xws_hUvdTERPhK16pDbKsU",
+    "location_name": "Thi Bar Saigon",
+    "latitude": 10.7676733,
+    "longitude": 106.6939433,
+    "open_time": "{\"thứ sáu\": \"19:00–02:00\", \"thứ bảy\": \"19:00–02:00\", \"chủ nhật\": \"19:00–02:00\", \"thứ hai\": \"19:00–02:00\", \"thứ ba\": \"Đóng cửa\", \"thứ tư\": \"19:00–02:00\", \"thứ năm\": \"19:00–02:00\"}",
+    "types": [
+      "Quán bar cho người đồng tính",
+      "Quán bar cocktail",
+      "Câu lạc bộ âm nhạc"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz8Sx7Yr3fPEC6vX_NatLGLro3UJ1R4h7T-yvEQ-maEMvp65TAXdp3qzv9oTYLWkBzks-QRd8u2Owd-QKY6dBmYtkdx5jCPdrAwv60T8DKgavAuUsfUwGyXMSGCCf08ho_MDamPug=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJMRRuhj4vdTER1M4F3fECIGI",
+    "location_name": "Chill Skybar & Dining",
+    "latitude": 10.770564799999999,
+    "longitude": 106.69437769999999,
+    "open_time": "{\"thứ sáu\": \"17:30–01:30\", \"thứ bảy\": \"17:30–01:30\", \"chủ nhật\": \"17:30–01:30\", \"thứ hai\": \"17:30–01:30\", \"thứ ba\": \"17:30–01:30\", \"thứ tư\": \"17:30–01:30\", \"thứ năm\": \"17:30–01:30\"}",
+    "types": [
+      "Quán bar cocktail",
+      "Bữa tối",
+      "Nhà hàng hỗn hợp",
+      "Hộp đêm"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwpHhe00bHXEZXAzE8LPH9zm2LDqkeNq2pB7lHGXZQYZeB7X6mxgLvq09pFSyvpAPVM53ZRIkWX_7HLkknQfv-_iAOVfnwgyXnIUvQ6c4NcDtaZUGtvfAajeSi56ItRszQWHL1O=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Quán bar sân thượng hiện đại có món đa dạng. Quán bar hiện đại nhìn ra đường chân trời, phục vụ các món nhẹ, đồ ăn dùng chung, món thịt và cocktail.",
     "categories": [
       "nightlife",
       "restaurant"
     ]
   },
   {
-    "gg_place_id": "ChIJ03CXTd5ncDERGHjzxr_TpLI",
-    "location_name": "BING DOU ROOFTOP",
-    "latitude": 12.238507499999999,
-    "longitude": 109.1935634,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar cocktail",
-      "Quán bar Hookah",
-      "Cửa hàng cần shisha",
-      "Quán rượu"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwdNTiMtTVds8vyqKwpCWn2U1KBvWIZb6zSN8ZtGQmvThfP9ZA_QuXTdqRjDte8uJ3oI3y6C7ocBbyXccgQxm7PjIV4xlEfdP2tYraBLHkpe61j-zbBXHyklfVOopE88tgx2GlS_rMfwH_K=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJn1av5kVncDERHWk8_OMjaII",
-    "location_name": "Sky Blu Lounge Nha Trang",
-    "latitude": 12.238841299999999,
-    "longitude": 109.19562959999999,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar"
-    ],
-    "average_rating": 4.3,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipO37YLBZuVoTBtMpkcR6CvB6wZ9IGG1PntiNx08=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJWRKdumNncDERhHMvKGnE-tY",
-    "location_name": "LAST CALL NHA TRANG",
-    "latitude": 12.2381011,
-    "longitude": 109.1955715,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipO62VW7MOxveFz7s-yCZvchvJue2Z8khF2y5nlZ=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJJ6BrCcpncDERGbGIX-QqwVc",
-    "location_name": "Tê Bê Chilling Cocktail Bar",
-    "latitude": 12.2591638,
-    "longitude": 109.19760889999999,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar cocktail",
-      "Quán cà phê"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipP-3kt1L0R5mokvnRclR9FASi7oPUWE3nhe91Uw=w137-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJZZHZchhncDERiO11-kz3z-s",
-    "location_name": "Than - The Cave",
-    "latitude": 12.233084,
-    "longitude": 109.1948525,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar cocktail"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw-pj0BvM98-sF34w-R5KXr641ijsQ5MbAWRKrif4VDOtax9wYMPwiHY8W0IVXm_PKacUr09z6RL_ZTyZBNVUtITG_bUPPNIUmAPH2QinJHzAk8994MjdSaOvOIYPyzPtfjPEApGufpIYL3=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ5y9wD21ncDERTp8rI0M402w",
-    "location_name": "Tamarind, The rooftop Bar",
-    "latitude": 12.2321761,
-    "longitude": 109.1954851,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJZXuvTiQvdTERf4jNoF70ljM",
+    "location_name": "Bar 22 Girl Bar Ho Chi Minh City",
+    "latitude": 10.773104,
+    "longitude": 106.70269599999999,
+    "open_time": "{\"thứ sáu\": \"16:00–04:00\", \"thứ bảy\": \"16:00–04:00\", \"chủ nhật\": \"16:00–04:00\", \"thứ hai\": \"16:00–04:00\", \"thứ ba\": \"16:00–04:00\", \"thứ tư\": \"16:00–04:00\", \"thứ năm\": \"16:00–04:00\"}",
     "types": [
       "Quán bar",
       "Bar & Grill",
-      "Nhà hàng Ấn Độ"
+      "Quán bar tiếp viên nữ",
+      "Quán rượu"
     ],
-    "average_rating": 4.6,
+    "average_rating": 4.9,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipO8V79PFIEqgFzcbuzyTIup5L-ZrGtr-4ybM04h=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPlZQrFQNdoTZOXVL6nefQk4II3DOv2CSXzo8Me=w163-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
     "description": null,
     "categories": [
-      "nightlife",
-      "restaurant"
+      "nightlife"
     ]
   },
   {
-    "gg_place_id": "ChIJaUAjcjxncDERUA2qpPKwx_A",
-    "location_name": "HK Club Nha Trang (Havana Club cũ)",
-    "latitude": 12.2434037,
-    "longitude": 109.19662319999999,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJ-RuF0RcvdTERXKbS7gx3qCU",
+    "location_name": "TNR Saigon",
+    "latitude": 10.7671385,
+    "longitude": 106.69064309999999,
+    "open_time": "{\"thứ sáu\": \"18:00–04:00\", \"thứ bảy\": \"18:00–04:00\", \"chủ nhật\": \"18:00–03:00\", \"thứ hai\": \"18:00–03:00\", \"thứ ba\": \"18:00–03:00\", \"thứ tư\": \"18:00–03:00\", \"thứ năm\": \"18:00–03:00\"}",
     "types": [
       "Quán bar"
     ],
-    "average_rating": 4.4,
+    "average_rating": 4.5,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSws2G6TYHPyoXB-ZxjHFvmL7lauCc6zQZqPsBxEk-VZckH0py9qmuC19RZU0_qGMKa2_e2rISmW94IkGobhZ6O6YeGHUgTsaXc-zLSqpXSCPHZFvdihVhv2ItJ1eMRn7kxEibkd=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNmOwoIj8eFQnd0Q3rqXe8BaiE0W6PHUuWw2s4j=w138-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
@@ -1382,98 +866,20 @@
     ]
   },
   {
-    "gg_place_id": "ChIJJ60qoJRncDERDi82dYMWVa8",
-    "location_name": "Nhà Bar",
-    "latitude": 12.2297359,
-    "longitude": 109.19824519999999,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar",
-      "Hộp đêm",
-      "Nhà hàng"
-    ],
-    "average_rating": 4.3,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx4srcDRu3VeoYPaA56naO73nv6HN10mLr50OqsvgHLn9qy3Fzr__tW_1gKzJ8_jQsJ3Cpia9bR71DaQ4LfPaStD3d9ewvzMtApCZwW_oGEVkZRvz6uU1pO20E0WZvTlv33_ra4=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife",
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ5YUnKVtncDERvcFnqblVa1g",
-    "location_name": "Z Beach Nha Trang",
-    "latitude": 12.228753999999999,
-    "longitude": 109.2000467,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar",
-      "Điểm thu hút khách du lịch"
-    ],
-    "average_rating": 4.2,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyBmnHJWt2nTZvv_5x46Jhp2n7E_tBR1ojN3wrPOxcSpZ1herCbTgHScksvwIi4UdYmiiGGNJhYOwz1cj2V6UoRt2mHkv82z-R7ZVzw5ZkFVAKhFbBnDQkufsYro3ndh84xYulr=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "cultural performance",
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJgTvkQLRdcDER7RSEwPbkQlo",
-    "location_name": "Dom Nha Trang",
-    "latitude": 12.2350117,
-    "longitude": 109.1838355,
-    "open_time": "N/A",
-    "types": [
-      "Quán bar"
-    ],
-    "average_rating": 4.4,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPRZ2ReI29z8iNsSW5Yw3uewYtgICiF6zcVAkaL=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "nightlife"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ04zatVNncDERykP71bQE1tU",
-    "location_name": "Hybrid Nha Trang",
-    "latitude": 12.2300171,
-    "longitude": 109.1966369,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJF2D3dVYvdTERYLRnXilc5qA",
+    "location_name": "Apocalypse Now Sai Gon",
+    "latitude": 10.777133,
+    "longitude": 106.70592459999999,
+    "open_time": "{\"thứ sáu\": \"20:00–03:00\", \"thứ bảy\": \"20:00–03:00\", \"chủ nhật\": \"20:00–03:00\", \"thứ hai\": \"20:00–03:00\", \"thứ ba\": \"20:00–03:00\", \"thứ tư\": \"20:00–03:00\", \"thứ năm\": \"20:00–03:00\"}",
     "types": [
       "Quán bar cocktail"
     ],
-    "average_rating": 4.5,
+    "average_rating": 4.4,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOP7qkP9gOW-iiOhlQuZwtyhHpYyBkTmdHfZU5g=w163-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSypAkbSDyNVAVqwKfwVJuTjZ_gHiTgAgeZdaf0ADyBqVifPZBbjHX_rxInZmqL1kiYmIWEkUPy4uEWeh8Rq8KRVFBOA2MwwIRcmDcjpvCO7tiC43hz6wpaKkZxkz8KlLZXK6hwZHCTdJ2z1=w163-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
@@ -1483,1052 +889,905 @@
     ]
   },
   {
-    "gg_place_id": "ChIJxcswvkZncDERQl0fDKfK6EY",
-    "location_name": "Nhà hàng bia tươi Louisiane",
-    "latitude": 12.2310188,
-    "longitude": 109.1988028,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJO9BqXjYvdTERVrVlBcU1Ccc",
+    "location_name": "Social Club Rooftop",
+    "latitude": 10.7824226,
+    "longitude": 106.6973331,
+    "open_time": "{\"thứ sáu\": \"15:00–01:00\", \"thứ bảy\": \"15:00–01:00\", \"chủ nhật\": \"15:00–00:00\", \"thứ hai\": \"15:00–00:00\", \"thứ ba\": \"15:00–00:00\", \"thứ tư\": \"15:00–00:00\", \"thứ năm\": \"15:00–00:00\"}",
+    "types": [
+      "Quán bar"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwlFzRGm3gvYasZ355Muxl6gE9yLTR5OtGbsrCX6ba0dwekNX6AK7QoMFLb8eClx2wD_Gkp7U_5Vvjx5BT9frKFENXibGgSrPAllr7IVG75rMAcn8Ps0G6Tt4jJw2Wyrewza0li=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJp9y4KUcvdTER5kymyvLBVbU",
+    "location_name": "Kim's Tavern Girl Bar Saigon",
+    "latitude": 10.773121999999999,
+    "longitude": 106.70272399999999,
+    "open_time": "{\"thứ sáu\": \"16:00–04:00\", \"thứ bảy\": \"16:00–04:00\", \"chủ nhật\": \"16:00–04:00\", \"thứ hai\": \"16:00–04:00\", \"thứ ba\": \"16:00–04:00\", \"thứ tư\": \"16:00–04:00\", \"thứ năm\": \"16:00–04:00\"}",
     "types": [
       "Quán bar",
-      "Nhà hàng",
-      "Nhà máy bia"
+      "Bar & Grill",
+      "Quán bar tiếp viên nữ",
+      "Quán rượu"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOrgl02mCvh1Aq2_9t4c9tbx0MK1SCc1oynQw=w149-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ61ArJTQvdTER8ka83mioMXU",
+    "location_name": "Canalis Club",
+    "latitude": 10.787355699999999,
+    "longitude": 106.6868219,
+    "open_time": "{\"thứ sáu\": \"20:30–03:30\", \"thứ bảy\": \"20:30–03:30\", \"chủ nhật\": \"20:30–03:30\", \"thứ hai\": \"20:30–03:30\", \"thứ ba\": \"20:30–03:30\", \"thứ tư\": \"20:30–03:30\", \"thứ năm\": \"20:30–03:30\"}",
+    "types": [
+      "Vũ trường"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx_YyMMioKUbaeHHaK4gUflL5hd2RMbDzjia0XBzlIV-b0rqj4AlmO5oy2hpa6kp7nq2A-SQoYqnHu2ba1YrUUw3UPOQWz12FFB9WZ1nRxDFrcwLtVxnArr-NiGgwsEandt9LfA=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJaQ2jzk4vdTER4m_MR7gRTfo",
+    "location_name": "Elixir Lounge Bar",
+    "latitude": 10.781445699999999,
+    "longitude": 106.70610769999999,
+    "open_time": "{\"thứ sáu\": \"17:00–04:00\", \"thứ bảy\": \"17:00–04:00\", \"chủ nhật\": \"Đóng cửa\", \"thứ hai\": \"17:00–04:00\", \"thứ ba\": \"17:00–04:00\", \"thứ tư\": \"17:00–04:00\", \"thứ năm\": \"17:00–04:00\"}",
+    "types": [
+      "Quán bar",
+      "Quán bar cocktail",
+      "Quán bar cho người đồng tính",
+      "Quán bar tiếp viên nữ",
+      "Cửa hàng rượu bia",
+      "Quầy giải khát",
+      "Quán rượu"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPQxkIN7WouxZ3xuNIpMrVdh_3eQab3coXcG-bM=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJv_nCOEcpdTERmyi6jg3sNhw",
+    "location_name": "Arcan",
+    "latitude": 10.769909,
+    "longitude": 106.701492,
+    "open_time": "N/A",
+    "types": [
+      "Hộp đêm",
+      "Quán bar",
+      "Câu lạc bộ khiêu vũ",
+      "DJ",
+      "Nơi tổ chức sự kiện",
+      "Địa điểm ca nhạc trực tiếp",
+      "Câu lạc bộ âm nhạc"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMWityscdAO0efwjWUWoWv7K7T_ha45PIs3u0js=w137-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJDQJYx2GrNTER58pZ0M0eE2E",
+    "location_name": "Twilight Sky Bar Saigon",
+    "latitude": 10.7731993,
+    "longitude": 106.6956783,
+    "open_time": "{\"thứ sáu\": \"17:00–00:00\", \"thứ bảy\": \"17:00–00:00\", \"chủ nhật\": \"17:00–00:00\", \"thứ hai\": \"17:00–00:00\", \"thứ ba\": \"17:00–00:00\", \"thứ tư\": \"17:00–00:00\", \"thứ năm\": \"17:00–00:00\"}",
+    "types": [
+      "Quán bar"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMK8bP2N8svHaVNIQbB4nbkmFZ6oAhjoNLCWrWN=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJPZNYAyMpdTERSMElIuOXxdI",
+    "location_name": "Saigon Saigon Rooftop Bar",
+    "latitude": 10.7761926,
+    "longitude": 106.70342679999999,
+    "open_time": "{\"thứ sáu\": \"16:30–01:00\", \"thứ bảy\": \"16:30–01:00\", \"chủ nhật\": \"16:30–01:00\", \"thứ hai\": \"16:30–01:00\", \"thứ ba\": \"16:30–01:00\", \"thứ tư\": \"16:30–01:00\", \"thứ năm\": \"16:30–01:00\"}",
+    "types": [
+      "Quán bar"
+    ],
+    "average_rating": 4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwUz_XxExRINABQw7WrZ5pjM_6COSjQ5Hx7BPptZvfFh-Qm5R5qLmkAn5I_HySUmNvmvTzawriM2ePZFjXYwqhNXFRkoHmqi29GVCKwaHxlQH4Q6gy8UXYJSNPpbkkUocfLxob44w=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJPQgd7EcvdTERlSRcqHIHHIg",
+    "location_name": "Loop 1 - Cocktail Bar & Kitchen",
+    "latitude": 10.7792348,
+    "longitude": 106.7023067,
+    "open_time": "{\"thứ sáu\": \"17:00–01:00\", \"thứ bảy\": \"17:00–01:00\", \"chủ nhật\": \"17:00–01:00\", \"thứ hai\": \"17:00–01:00\", \"thứ ba\": \"17:00–01:00\", \"thứ tư\": \"17:00–01:00\", \"thứ năm\": \"17:00–01:00\"}",
+    "types": [
+      "Quán bar cocktail"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNHm5X7Mf5W5qELF8ULh-gmqKNGVLadjzqKRfmO=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJW5ka4UAvdTEREh-iFKjmlE8",
+    "location_name": "Bar 5 Saigon",
+    "latitude": 10.7713644,
+    "longitude": 106.7024727,
+    "open_time": "{\"thứ sáu\": \"14:00–01:00\", \"thứ bảy\": \"14:00–01:00\", \"chủ nhật\": \"14:00–01:00\", \"thứ hai\": \"14:00–01:00\", \"thứ ba\": \"14:00–01:00\", \"thứ tư\": \"14:00–01:00\", \"thứ năm\": \"14:00–01:00\"}",
+    "types": [
+      "Quán bar",
+      "Bar & Grill",
+      "Quán bar ca nhạc trực tiếp"
     ],
     "average_rating": 4.3,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSweVQu9i32AoJSk1d5ks1ERM2do3Y87iHX8QEMTbkw_S_sRWAknbWmfqStEPX34AmXiHNovr2NwggMIFCZPMMeNwVtMamrmoYuIGNQTgV8MAZJhzf6aAIARW09fBXV4lGb5XVY=w163-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwNzDJ1i3648mPudhfMNHmTP53KFvY2RbsoqKw7MYHU1M_lXafLTX8OqC8SusxLOVIkXPlriQRME2QBejqVrcB_WiT7UPBiGA5gGlT4jFBlaRpHmu66XNbh06eQMWiXfhJ_O_BA=w204-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
     "description": null,
     "categories": [
-      "nightlife",
-      "restaurant"
+      "nightlife"
     ]
   },
   {
-    "gg_place_id": "ChIJSYcIiqBncDERClg5VvC4Ff0",
-    "location_name": "Cui Seafood (Cui Quan) | Steak & Vietnamese Food",
-    "latitude": 12.2385478,
-    "longitude": 109.1919056,
-    "open_time": "N/A",
+    "gg_place_id": "ChIJyf5lrRcvdTER6_Ii1NXfYhg",
+    "location_name": "The View Rooftop Bar",
+    "latitude": 10.7657083,
+    "longitude": 106.6910667,
+    "open_time": "{\"thứ sáu\": \"07:00–02:00\", \"thứ bảy\": \"07:00–02:00\", \"chủ nhật\": \"07:00–02:00\", \"thứ hai\": \"07:00–02:00\", \"thứ ba\": \"07:00–02:00\", \"thứ tư\": \"07:00–02:00\", \"thứ năm\": \"07:00–02:00\"}",
     "types": [
-      "Nhà hàng hải sản",
-      "Nhà hàng Anh",
-      "Nhà hàng Đức",
-      "Nhà hàng ý",
-      "Nhà hàng Nhật Bản",
-      "Nhà hàng Trung Quốc",
-      "Nhà hàng Nga",
-      "Chợ hải sản",
-      "Nhà hàng bít tết",
-      "Nhà hàng Việt Nam"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxzkdzMNDw8inSdwAelz6iny4jZcFotxBnN52yCzehYtQvLJVTJuOfHEZy96ULNYkAU-TPd2RKEC-wBsaGAFd_HaXdX9nLLJW-2kiyUd1rHc0FSL-AD19SvVfiAIygkffCb5raF6Q=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJyQC23LBncDERBkzLFEbVXlM",
-    "location_name": "Ngon Gallery",
-    "latitude": 12.236219,
-    "longitude": 109.19685439999999,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng tiệc đứng",
-      "Nhà hàng",
-      "Nhà hàng hải sản"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz1Qs93tdnjCElc-Ip9VmMBXFRVnvnuuLf4NhldbOuMNPQPB8K_MSp7wBa1bMIEsn4Y4KMuAiuF7CiogfPD7hgDjJ3HYbE9DQlrBt_gxWOIEDD8s35kau1oVWxNAy4eQ9TcVS0I=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJMxdpUwBncDERQ9-lsNyfBcQ",
-    "location_name": "NHÀ BẾP NHA TRANG",
-    "latitude": 12.2417798,
-    "longitude": 109.1917081,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng Việt Nam",
-      "Nhà hàng"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyvTkYQMCM70XDJfC-Olh0RvdkAMUzv8rUoFWDt8pE7qu-BO0m8a1QKwRhbBnlnJEq-5692h4dlpDcwoyMPoAqg5CmWg1O2nfV2g7CuL8XAm3HF_lXsRe1dce8gy61NdbYWB8wr_w=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJA-9FNQBncDERyloKoP5HMIo",
-    "location_name": "Nhà Hàng Cá Bay - View Biển",
-    "latitude": 12.253633599999999,
-    "longitude": 109.19629859999999,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMHWrJJcoiKJaAZ1XPAuflsVfigNLe0y9t4cjUs=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ093FquZncDER-WJ0HQGGgq0",
-    "location_name": "Cafe Atlas",
-    "latitude": 12.272888199999999,
-    "longitude": 109.20126139999999,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng hỗn hợp"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipN9bHRIr3Zb2wQAO93aMiS__3849e4Q7JnmirIl=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ70j0HMBncDERRLkGjOOxP4w",
-    "location_name": "Ơi Nha Trang Restaurant",
-    "latitude": 12.249066,
-    "longitude": 109.1945781,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng Việt Nam"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOOE3oyeMbC1anFvSon6cXg5KRY8uGYf86ewH7t=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJtx5tNn1ncDERPgHGJ6KfLug",
-    "location_name": "Làng Ngon",
-    "latitude": 12.236007899999999,
-    "longitude": 109.1895581,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng Việt Nam",
-      "Nhà hàng hải sản"
-    ],
-    "average_rating": 4.5,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOyrDbgcyZBPvCd7usL165-yCX2J_ZzFO7abRpk=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ3e4XhzlncDERSlXcE5egEUw",
-    "location_name": "라냐 Là Nhà",
-    "latitude": 12.2397861,
-    "longitude": 109.1904295,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng Việt Nam",
-      "Nhà hàng gia đình"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx4D3t57C4DFPa8dE4DWjasO_cQ0vpdzjvEMjfjqnQnpvKzmZ9o1Fh7g5pebhdnJxUtkJykhHJ_RpELiS2h1K7EzuEKuYZGpVcB7pBP0HNWGJLW3TPyQt-KiXAzw1hh67PMemmShkSMF0vS=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ1a2mELxncDERDfi3IyhnWYA",
-    "location_name": "BAO ngon",
-    "latitude": 12.240426099999999,
-    "longitude": 109.1899499,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng",
-      "Quán cà phê"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxDzEVjkc5jgvOKF7mpXorteoDz0GEfRiSlXIPD7uP9gQPZ7km1hLd3y2tD5wNkIOHqRfU7XrDFeQRPsfA5SxxHYYraqcyPD1k3u39oKCxTUR9ZNuxsFY6NMOZ-V2dPuUVDGA4p=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJWU9s5chncDERTiomOGbHjQM",
-    "location_name": "Xóm Mới Garden",
-    "latitude": 12.240882899999999,
-    "longitude": 109.191768,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng",
-      "Khu vực nướng",
-      "Quán cà phê",
-      "Nhà hàng Việt Nam"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxjK0-2x-Jp6WqWB4kac8Xl9puhIZGW_NmNGmvu41heHeSALkgBrh59lMSM2S95-RNQNWdx9hlRkSkYT96TEByaE397bq2DB-_RY1vO1PUDS0bUyv21UzryDXPNUyf9nqop-aVD=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJg2GAgnxncDER2lrnU_T6qJs",
-    "location_name": "Yashoda",
-    "latitude": 12.2376831,
-    "longitude": 109.19386589999999,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng Ấn Độ",
-      "Nhà hàng"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz8ydBZ7DQLdN8urY9AM73-YELgjcZTejWnbyA_hdSrJZ0wGpAZv8nw92vD6V_Bj2ddwyB8E43YG8DHszhyYVctswk3lq48sfC-ou3DaTfbHONPk3OGUt6IwftG3WI5mk3GbCgHNMyWwno=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJF6Zz67ZncDERityXRy4L6TI",
-    "location_name": "La Cala - Gusto Italiano",
-    "latitude": 12.2387325,
-    "longitude": 109.19270619999999,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng ý",
-      "Quán cà phê",
-      "Nhà hàng món cá",
-      "Nhà hàng pizza",
-      "Nhà hàng hải sản",
-      "Quán rượu"
-    ],
-    "average_rating": 4.6,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx4IAnfnWYbZpawcYfgJAzWJKD6gajRpWqhNVb_g-G5bz_Yzf-eCNh7dd8xPkyeabW-thmdHJw8tPXUpVwDPixVfB2zEEyJWJ0zciJiqYZzmzNf1a-DNPWgRZXOuiZHED5Ey89kuw=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJl255An1ncDER0HWBSEqA9CA",
-    "location_name": "Ngoc Trai Seafood Restaurant - Since 2004",
-    "latitude": 12.237457899999999,
-    "longitude": 109.18990699999999,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng hải sản",
-      "Nhà hàng Việt Nam"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNsCm46uHP8vqJC7gxzM1tNmT1z3s4r-m1ope9Z=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJS2Cia31ncDERJ7Xak7sCnNA",
-    "location_name": "Nôm Nôm Restaurant & Cafe",
-    "latitude": 12.2322065,
-    "longitude": 109.1955981,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng",
-      "Nhà hàng Việt Nam"
-    ],
-    "average_rating": 4.5,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxorw0xMiTiJuRsRgirtgr-1wG90OnqrVMJhqK6078S9eSHowp0pbdGpDueKpHiV1yQqh9CesZgW20dNam-olJa9No4dYO6Wbqykjn53uf--vIs5dWZRmmn71ny07b8TfD67F0=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJm9ZemhxncDERTacSu6NU2EQ",
-    "location_name": "Cơm Nhà Nha Trang - 베트남 밥 전문점",
-    "latitude": 12.240208599999999,
-    "longitude": 109.1884577,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng Việt Nam"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxCkW1n81pgG6jRJKIxm5nY53j-EVW62Pbyf746P2pMgW5AjqEtV88vf_8L8uRPtXKi6dheap35-mWKuReoaAOatuDCOhyKNJTBZKAe9eyhsdC1LuLuTP2g9Z6FVVbyzcRmvc7KpJoynUv3=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJmaYQQkJncDERq_k-zYCLolI",
-    "location_name": "Mắm Restaurant - Homestyle Vietnamese Flavors",
-    "latitude": 12.2389835,
-    "longitude": 109.1934409,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng Việt Nam",
-      "Nhà hàng châu Á"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxa3lUzzmSwNQsb3esBplzM2Qnyd7CtdrfjVkhCba4kqWVMG364ZAtMA9B2ru8HhOYLvoT58wnqhDT8vZI3-VYe0fYXVMoxdRZGfjnR9PlMQ4yIyuCW4GDWFqVpCMXWGGRIYs9gCe-DzQc=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ39j0rXtncDER0zAF_BxiPJ4",
-    "location_name": "Hoang Sa restaurant - 냐짱 해산물 - 나트랑 해산물 - Seafood Nha Trang - 해산물 요리 - 나트랑 해산물 요리 - Ресторан морепродуктов в Нячанге",
-    "latitude": 12.2357965,
-    "longitude": 109.19702819999999,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng hải sản",
-      "Món nướng",
-      "Quán bia",
-      "Nhà hàng thịt gà",
-      "Nhà hàng món cá",
-      "Nhà hàng món lẩu",
-      "Nhà hàng",
-      "Nhà hàng cơm",
-      "Nhà hàng Việt Nam",
-      "Quán rượu"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyN_olGbC-L8dsojTue7vqEEdKu5gtLphMlG5JE-WfcOJO6etNQ_XuMFg7hZMBXRTJiFC9cVgjN9h8F8upQgpOyKnnmcDp2yQl81UQZxOuKH1Im8W9ew5fYGPm8DXpFPaunfmo=w92-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJUXXcv9VncDER-3HFYrNRMlY",
-    "location_name": "Vị Việt Quán",
-    "latitude": 12.2425622,
-    "longitude": 109.1917416,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng Việt Nam"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSymwSBVd6_SwvVKvwLyW6kvZdQv2eWCi1ojD45WxEkVjEzvEjU1ut_UKCHUVYvOIVOnn_6MTgrkhf1pyDCKQ0LsBINMvFDvbt22JDqTS7vYERKcCKB0iCfvYAb1ndrt8HVnOFo9_7oovaMk=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ86eeYWtncDERcqTGgdgjEhM",
-    "location_name": "Armenia Nha Trang",
-    "latitude": 12.233030399999999,
-    "longitude": 109.1944048,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng",
-      "Nhà hàng Armenia",
-      "Quán cà phê",
-      "Cửa hàng Kebab",
-      "Nhà hàng món thịt"
-    ],
-    "average_rating": 4.6,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipO8NMvPUwnrcjsZ5qmNHiSOgzU-2EbbBSItKB0X=w80-h100-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ4w2U7HpncDERcX2nliBlphA",
-    "location_name": "Ớt Hiểm",
-    "latitude": 12.2503189,
-    "longitude": 109.1941458,
-    "open_time": "N/A",
-    "types": [
-      "Nhà hàng Việt Nam",
-      "Nhà hàng"
-    ],
-    "average_rating": 4.5,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzoxJIx88ly8SgZY8ER2SSMzX3bcECNHIO_CmYQzXIhWh98wpPlUoGszYrbFPiIGBrAVQSYUFYsQCHIh47awL90-dGTfXTyi0jjgDvTNS1KVkOoW7GvAlfSSe3_NgdeTxHo2txlKw=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJz9GDk3hncDER70e9Z85BVdc",
-    "location_name": "InterContinental Nha Trang",
-    "latitude": 12.2449937,
-    "longitude": 109.19609059999999,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn",
-      "Trung tâm hội thảo",
-      "Địa điểm tổ chức lễ cưới"
-    ],
-    "average_rating": 4.6,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPS2qRCt5pyHhF2BYbXHcyZ-oirMIRR-41j0Js8=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "KS xa hoa có spa và 3 bể bơi ngoài trời. Khách sạn có phòng ở tao nhã, một số phòng nhìn ra vịnh, nhà hàng sang trọng, 3 bể bơi, 2 quầy bar và khu spa.",
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJFaisupWrNTERG5UmoYkX7E0",
-    "location_name": "Khách sạn Sheraton Nha Trang",
-    "latitude": 12.2463429,
-    "longitude": 109.1961206,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn",
-      "Dịch vụ lên kế hoạch cuộc họp",
-      "Địa điểm tổ chức lễ cưới"
-    ],
-    "average_rating": 4.6,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNki_f3ur6zn4rin_Xs2vwOJF-zVyzOdPSiHgKG=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Khách sạn thời thượng có 1 bể bơi vô cực. Khách sạn sành điệu có phòng ở & suite ấm cúng có ban công, phòng ăn, một bể bơi vô cực & một phòng spa.",
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJjykAnX1ocDERX7nh937TDi8",
-    "location_name": "Amiana Resort Nha Trang",
-    "latitude": 12.295209,
-    "longitude": 109.2338719,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn nghỉ dưỡng"
-    ],
-    "average_rating": 4.6,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGsrHon4COtaxe9eJeQVYfS-ai1FKac4q4ZTTqGsj-8PIk7CirdlzvKwQfO3uqsdOIunhC9a1HVZhEtV_wS6MVJbHpWH2KT1pVxJjv8noR9wGGBIvOur0wmDh30DaoGO7wBdtKU7OwdqCNBOwFw9ZwApy18osIM7d453tpCAi4YIb6OCr05xortGA=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ81KfH39ncDERJkOzm6AWw3A",
-    "location_name": "Meliá Vinpearl Nha Trang Empire",
-    "latitude": 12.2426063,
-    "longitude": 109.1935773,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMBKkINFfKXaHY21mof5W1mFdYmhozRJnga5XbB=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Khách sạn cao cấp có 2 nhà hàng. Khách sạn cao cấp, phòng ốc trang nhã, có bể bơi ngoài trời, 2 nhà hàng và quán bar.",
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJSdXMKQtncDERm4jC2uD06kY",
-    "location_name": "Potique Hotel Nha Trang",
-    "latitude": 12.2410245,
-    "longitude": 109.19467189999999,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMaJBD1DyoBQxc76vCuxhkFkvI23LFRUdwD8Q0S=w122-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Khách sạn xa hoa nhìn ra vịnh và có nhà hàng. Khách sạn cao tầng, sang trọng có khu spa, 2 nhà hàng trang nhã và bể bơi tầng thượng nhìn ra vịnh.",
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJgfNLedlmcDER0CSjrneOTQU",
-    "location_name": "Vinpearl Luxury Nha Trang",
-    "latitude": 12.2128973,
-    "longitude": 109.2437362,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn nghỉ dưỡng"
-    ],
-    "average_rating": 5,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNkxt3bw0s8nW6182kGUxD2rICAgKoGFxencIh3=w144-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJt7Ke-4VncDERYYsESZv6EhI",
-    "location_name": "Vinpearl Resort & Spa Nha Trang Bay",
-    "latitude": 12.2257024,
-    "longitude": 109.23714269999999,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn",
-      "Nhà hàng tiệc đứng"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNvpHxzK62zqeO0qjc-KcCBmxoPMDD5mibQyOei=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Khu nghỉ dưỡng ven biển có hồ bơi. Khu nghỉ dưỡng ven biển có phòng ốc tinh tế, spa, nhà hàng, quầy bar, bể bơi trong nhà & ngoài trời.",
-    "categories": [
-      "hotel",
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJXZ2cGO9ncDERm5wUjlVIb6c",
-    "location_name": "Vinpearl Beachfront Nha Trang",
-    "latitude": 12.232930999999999,
-    "longitude": 109.19703849999999,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipObaVywlJuklxVzDkQWbz-GKVEAKUQS9ksVZnGv=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Khách sạn căn hộ xa hoa, đối diện biển. Khách sạn căn hộ sang trọng nằm đối diện bãi biển, có bể bơi vô cực, khu spa và 2 nhà hàng.",
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJ_12M_XhncDERZYGVZbFDw9M",
-    "location_name": "Khách sạn Havana Nha Trang",
-    "latitude": 12.2433961,
-    "longitude": 109.195842,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn"
-    ],
-    "average_rating": 4.5,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipN8pRoMkF9IVx2EYNYvZ_T-j2ewa_0ym4ggGqJ6=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "KS cao cấp có bể bơi trên sân thượng. Khách sạn sang trọng với phòng ốc hiện đại, có lối đi thẳng ra biển, nhà hàng, khu spa và bể bơi.",
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJDbDbhINncDERb9NeTWDJ0ww",
-    "location_name": "Khách Sạn Sunrise Nha Trang",
-    "latitude": 12.2505802,
-    "longitude": 109.1960525,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn",
-      "Nhà hàng",
-      "Spa",
-      "Địa điểm tổ chức lễ cưới"
-    ],
-    "average_rating": 4.5,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipP65jmuFrNqlre9amwR_oAjdAq6l1LSLRSX5bAV=w148-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "KS sang trọng có nhà hàng, bể bơi và spa. Khách sạn cao cấp hướng biển có 2 nhà hàng, quầy bar trên sân thượng, bể bơi ngoài trời và khu spa.",
-    "categories": [
-      "hotel",
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJT34_cyRncDERbarjqh1GbNY",
-    "location_name": "Boma Resort Nha Trang",
-    "latitude": 12.294587199999999,
-    "longitude": 109.227536,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn nghỉ dưỡng"
-    ],
-    "average_rating": 4.6,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOETn2mizvKFmIRC9wrFtIcoCyXDqB0WNQRJkwf=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJffrW799ncDERZ4t2-RBTpcA",
-    "location_name": "Maris Hotel Nha Trang",
-    "latitude": 12.2333071,
-    "longitude": 109.1963703,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipO6TICP4UhPKi6DAp_2uaeMndajPya5CwoonHXt=w80-h106-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJr21FdEBgcDER_kstTUscDKI",
-    "location_name": "Mia Resort Nha Trang",
-    "latitude": 12.1352578,
-    "longitude": 109.2123833,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn nghỉ dưỡng",
-      "Khách sạn",
-      "Nhà hàng"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPXfWxqEEKBmD7gMBKvFgSWtRh7JF8VD517UDhg=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "hotel",
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJu4iW3eFmcDER24HB38M54Go",
-    "location_name": "Vinpearl Resort Nha Trang",
-    "latitude": 12.220934999999999,
-    "longitude": 109.2473572,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn"
-    ],
-    "average_rating": 4.9,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipN7400cr1PDkKiIKBLe46nh-qaJ26tGWJxpI6kL=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Khu nghỉ dưỡng cao cấp có bãi biển riêng. Phòng ở bài trí tinh tế trong khu nghỉ dưỡng ven biển sang trọng với 8 điểm ăn uống, bể bơi ngoài trời và spa.",
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJeZUTdudpcDER7KBZhf7fIZc",
-    "location_name": "Alibu Resort Nha Trang",
-    "latitude": 12.2941855,
-    "longitude": 109.229089,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn nghỉ dưỡng",
-      "Khách sạn"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGuI8jXA1U48g-TKV4X42edInMEFbGBKmHPvu8I1c3TLI_UcQs08HImUMwvV98SW6klJpnwrX4e3wWhaIBmWQf8TFO6CL9CzXMRMn4tb5aZ_7DOouQ2bvYSg5v0h33tFCsHXnqpi1D25r7m5r9x_OT0NxS35JP6megH4RdvhRKHkMR95Blirpoo=w138-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": null,
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJUzhI4HpncDERX9CGfvf6064",
-    "location_name": "Citadines Bayfront Nha Trang",
-    "latitude": 12.236219,
-    "longitude": 109.1968526,
-    "open_time": "N/A",
-    "types": [
-      "Chỗ ở được phục vụ"
-    ],
-    "average_rating": 4.6,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipO7aBcIzZzG4Wa-VSQPUZv7MUB3dn0YlTVbbDOO=w80-h120-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Phòng studio cao cấp hướng bể bơi & vịnh. KS kiểu cách có bể bơi ngoài trời, nhà hàng cao cấp, quầy bar và phòng ốc sang trọng. Một số phòng hướng vịnh.",
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJszdDheNncDERwneMp0K_hNk",
-    "location_name": "Boton Blue Hotel & Spa",
-    "latitude": 12.284805299999999,
-    "longitude": 109.2038867,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn"
-    ],
-    "average_rating": 4.7,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhG9m86d6qYb-yWWCU-eQnE8ZMzv7A0DO3ik6WD9kj5T1iwOB8swChx_GUiYCPT4bwXxs3Y5ztnsmMP3x-I1H1utcOb6nsr1SbYDBXEcTEYMQbaTqh0B98aWhdwZpAJ_kb-vJpFHUmFut21ZQ0SRIHgw1vwVmxecHGlIfMpseMmeISZUCUbe9m34=w163-h92-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Resort sang trọng có spa, bãi tắm riêng. Resort cao cấp, phòng ở trang nhã, bãi tắm riêng, khu spa, 3 nhà hàng và bể bơi tầng thượng.",
-    "categories": [
-      "hotel"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJQ1REIWZncDERTfT5MDYVWaQ",
-    "location_name": "Queen Ann Nha Trang Hotel",
-    "latitude": 12.2261726,
-    "longitude": 109.20025899999999,
-    "open_time": "N/A",
-    "types": [
-      "Khách sạn",
-      "Dịch vụ đưa đón tại sân bay",
       "Quán bar",
-      "Phòng tập thể dục",
-      "Nhà hàng",
-      "Đại lý du lịch tham quan",
-      "Hồ bơi"
+      "Quầy giải khát",
+      "Nhà hàng"
     ],
-    "average_rating": 4.7,
+    "average_rating": 4.6,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipO32lSlOe1cZExBK1y1XUoaajt9Y3MF_6swUNs_=w80-h120-k-no",
-        "description": "Thumbnail từ Google Maps"
-      }
-    ],
-    "description": "Khách sạn cao cấp có bể bơi và spa. Khách sạn tinh tế, nhìn ra vịnh, có Wi-Fi, quầy bar, nhà hàng, bể bơi và khu spa cao cấp.",
-    "categories": [
-      "nightlife",
-      "hotel",
-      "restaurant"
-    ]
-  },
-  {
-    "gg_place_id": "ChIJtbL2VHVncDERg1FX9QD_s2k",
-    "location_name": "InterContinental Residences Nha Trang",
-    "latitude": 12.2445911,
-    "longitude": 109.1960166,
-    "open_time": "N/A",
-    "types": [
-      "Căn hộ được phục vụ",
-      "Khách sạn lưu trú dài hạn"
-    ],
-    "average_rating": 4.8,
-    "review_count": 0,
-    "province_id": 0,
-    "category_ids": [],
-    "rawImgs": [
-      {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOdZ9YqwXUa9IjUvmpyKBPPXT3nvAPy4Q3noKbp=w138-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPh-9KkQuveIF3l8gd7hnia3oXWkU3MWPWNiOsa=w138-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
     "description": null,
+    "categories": [
+      "nightlife",
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ4WFdZUcvdTERagSa2_ZMxb8",
+    "location_name": "Above Sky Bar - Liberty Central Saigon Citypoint",
+    "latitude": 10.7746725,
+    "longitude": 106.7005951,
+    "open_time": "{\"thứ sáu\": \"08:00–00:00\", \"thứ bảy\": \"08:00–00:00\", \"chủ nhật\": \"08:00–00:00\", \"thứ hai\": \"08:00–00:00\", \"thứ ba\": \"08:00–00:00\", \"thứ tư\": \"08:00–00:00\", \"thứ năm\": \"08:00–00:00\"}",
+    "types": [
+      "Quán bar"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyZYN6QVxirL4XSyaZN4TElHepEiD8wKXfuUKgPWbNFL0eZg-9IMDqYoNbUH_hYo7XWjGzISVSIIweaU6jX2KB_WaLC52gNg-8btkVVvlBT0uA9pyCtmxwon7T-3nSum9k5vhgOyA=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJlz772_wvdTERII6QAAGtnMA",
+    "location_name": "Vintage Culture Saigon",
+    "latitude": 10.765186199999999,
+    "longitude": 106.6952644,
+    "open_time": "{\"thứ sáu\": \"18:00–02:00\", \"thứ bảy\": \"18:00–02:00\", \"chủ nhật\": \"18:00–02:00\", \"thứ hai\": \"18:00–01:00\", \"thứ ba\": \"18:00–01:00\", \"thứ tư\": \"18:00–01:00\", \"thứ năm\": \"18:00–01:00\"}",
+    "types": [
+      "Quán bar cocktail"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPy4xbbwMHoTwOFT5bjOFniGBNQiBl-xvGn5Mkq=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJs1CmPgAvdTERGIGKdMyQktk",
+    "location_name": "Papaya Papa – Rooftop Restaurant, Bar & Club Ho Chi Minh City",
+    "latitude": 10.7831204,
+    "longitude": 106.69743869999999,
+    "open_time": "{\"thứ sáu\": \"17:00–04:00\", \"thứ bảy\": \"17:00–04:00\", \"chủ nhật\": \"17:00–02:00\", \"thứ hai\": \"Đóng cửa\", \"thứ ba\": \"17:00–02:00\", \"thứ tư\": \"17:00–02:00\", \"thứ năm\": \"17:00–02:00\"}",
+    "types": [
+      "Quán bar",
+      "Nhà hàng",
+      "Câu lạc bộ",
+      "Quán bar cocktail",
+      "DJ",
+      "Nhà hàng Pháp",
+      "Quán rượu"
+    ],
+    "average_rating": 4.6,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxpmGgEiKT04QKj-qA5VMoZ1BykgC3FmL-WKJlZ6QRbuEpLTTftmncX151Ec3C9Fq_Pp8_Aet8oR7nDuz2fYgH0LXaTAVUufGEN6pUE9MJ79jdI_svGn5Iv3crk3yM-1FZpDdY7pw=w204-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife",
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJlzKT_hIvdTER16ptCu38MjY",
+    "location_name": "Lost - Drink & Chill",
+    "latitude": 10.7743892,
+    "longitude": 106.7044296,
+    "open_time": "{\"thứ sáu\": \"12:00–03:00\", \"thứ bảy\": \"12:00–03:00\", \"chủ nhật\": \"12:00–03:00\", \"thứ hai\": \"12:00–03:00\", \"thứ ba\": \"12:00–03:00\", \"thứ tư\": \"12:00–03:00\", \"thứ năm\": \"12:00–03:00\"}",
+    "types": [
+      "Quán bar cocktail"
+    ],
+    "average_rating": 4.6,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPzYsNsZ33RejdP6oZ1nigY4sO7Oqyjq1tHkzdF=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJsRJkf5AvdTERsLNx2qrYH5U",
+    "location_name": "Frolic Bar",
+    "latitude": 10.7656574,
+    "longitude": 106.69452489999999,
+    "open_time": "{\"thứ sáu\": \"00:00–03:00, 20:00–00:00\", \"thứ bảy\": \"00:00–06:00, 20:00–00:00\", \"chủ nhật\": \"00:00–06:00, 20:00–00:00\", \"thứ hai\": \"00:00–03:00, 20:00–00:00\", \"thứ ba\": \"00:00–03:00, 20:00–00:00\", \"thứ tư\": \"00:00–03:00, 20:00–00:00\", \"thứ năm\": \"00:00–03:00, 20:00–00:00\"}",
+    "types": [
+      "Quán bar cho người đồng tính",
+      "Quán bar",
+      "Hộp đêm đồng tính nam",
+      "Hộp đêm"
+    ],
+    "average_rating": 4.6,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPaCctJ83I5P_09o0E7idYBiAEGJbdsU69xhSof=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJE569cDQvdTERS1BrwSFGha4",
+    "location_name": "NOIR . Dining in the Dark Saigon",
+    "latitude": 10.786636699999999,
+    "longitude": 106.6946782,
+    "open_time": "{\"thứ sáu\": \"17:30–23:00\", \"thứ bảy\": \"17:30–23:00\", \"chủ nhật\": \"17:30–23:00\", \"thứ hai\": \"Đóng cửa\", \"thứ ba\": \"17:30–23:00\", \"thứ tư\": \"17:30–23:00\", \"thứ năm\": \"17:30–23:00\"}",
+    "types": [
+      "Nhà hàng",
+      "Nhà hàng lai Á",
+      "Nhà hàng Châu Âu",
+      "Nhà hàng hỗn hợp",
+      "Nhà hàng Việt Nam"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzb-jjDp1-M7UEtgnaYLpfmwYI_Zv_GgnVSjEliP_swOwlS7Xj99XdIjbML9SE25WXVoGZ6bM0BW9r1IFDIDTYGIFSoSS8B9eRc958esFgnqrUzupG2YzBy3I5DFpN3MwKABh-_1g=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJu04FSLMvdTERb-bt47b4Loo",
+    "location_name": "Mars Venus Restaurant - Wine Cellar",
+    "latitude": 10.7930952,
+    "longitude": 106.67152329999999,
+    "open_time": "{\"thứ sáu\": \"17:00–22:00\", \"thứ bảy\": \"17:00–22:00\", \"chủ nhật\": \"17:00–22:00\", \"thứ hai\": \"17:00–22:00\", \"thứ ba\": \"17:00–22:00\", \"thứ tư\": \"17:00–22:00\", \"thứ năm\": \"17:00–22:00\"}",
+    "types": [
+      "Nhà hàng Châu Âu",
+      "Nhà hàng"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOFW6EHjv-qbMffZI55C6uqbg3urmKWOlYC9ziw=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Nhà hàng sang trọng phục vụ rượu và món quốc tế. Nhà hàng xanh mát, lãng mạn này phục vụ các loại rượu và đặc sản quốc tế.",
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJMfOx7S8vdTERH8b2es5CUq8",
+    "location_name": "HOME Saigon",
+    "latitude": 10.7832942,
+    "longitude": 106.6896996,
+    "open_time": "{\"thứ sáu\": \"11:00–22:00\", \"thứ bảy\": \"11:00–22:00\", \"chủ nhật\": \"11:00–22:00\", \"thứ hai\": \"11:00–22:00\", \"thứ ba\": \"11:00–22:00\", \"thứ tư\": \"11:00–22:00\", \"thứ năm\": \"11:00–22:00\"}",
+    "types": [
+      "Nhà hàng Việt Nam"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMbQq7qra2V9ocfgfv4NalVrH01Ag9IS2WU3YGo=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJrynSb-IvdTERj9svzc1sjVY",
+    "location_name": "Home Saigon Restaurant & Bar",
+    "latitude": 10.768258,
+    "longitude": 106.693968,
+    "open_time": "{\"thứ sáu\": \"09:00–22:30\", \"thứ bảy\": \"09:00–22:30\", \"chủ nhật\": \"09:00–22:30\", \"thứ hai\": \"09:00–22:30\", \"thứ ba\": \"09:00–22:30\", \"thứ tư\": \"09:00–22:30\", \"thứ năm\": \"09:00–22:30\"}",
+    "types": [
+      "Nhà hàng Việt Nam"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMBi0_-ZfXgBfhlZqp0rRZ_1EFml892uN5kuVFq=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife",
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJU3h_As0vdTERMUbEMW-qpvw",
+    "location_name": "Pandan Leaf Saigon Restaurant & Rooftop Bar",
+    "latitude": 10.7695119,
+    "longitude": 106.695821,
+    "open_time": "{\"thứ sáu\": \"09:30–22:30\", \"thứ bảy\": \"09:30–22:30\", \"chủ nhật\": \"09:30–22:30\", \"thứ hai\": \"09:30–22:30\", \"thứ ba\": \"09:30–22:30\", \"thứ tư\": \"09:30–22:30\", \"thứ năm\": \"09:30–22:30\"}",
+    "types": [
+      "Nhà hàng Việt Nam"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxu_BXnotEzm3bh6dih01ZdsWs-BLdtkOp6Z5bwwY0uYJEC9xoEYW72q3mpyb4OUJo1VKxcPnYmVrHx2v5VtS0CBc5aVn0N_SJwiv_g8hx3zPw8iTCS_3ObUnhXL6w3_ad_kQNK=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "nightlife",
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJh2FeSBUvdTERCRKLSex0DA0",
+    "location_name": "Quince Saigon",
+    "latitude": 10.766199,
+    "longitude": 106.6992167,
+    "open_time": "{\"thứ sáu\": \"17:30–22:30\", \"thứ bảy\": \"17:30–22:30\", \"chủ nhật\": \"17:30–22:30\", \"thứ hai\": \"17:30–22:30\", \"thứ ba\": \"17:30–22:30\", \"thứ tư\": \"17:30–22:30\", \"thứ năm\": \"17:30–22:30\"}",
+    "types": [
+      "Nhà hàng Châu Âu hiện đại",
+      "Nhà hàng"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyd2xXDWoWbwK07mCgBO0YU18L8x25okfFCr1Pbuu8V7k1Zod9pEzBREG6Qoz35Jk4C3MD-2cX8Fpt3--Wg5Zcdg36DYVUqafUYHZqmTTdU9kQWXuvUo4EXuc57dWvMr2CD-Px2=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJw7OnY3svdTERpyRr4oLRX8Y",
+    "location_name": "A Taste Of Saigon",
+    "latitude": 10.7738453,
+    "longitude": 106.70217749999999,
+    "open_time": "{\"thứ sáu\": \"09:30–22:00\", \"thứ bảy\": \"09:30–22:00\", \"chủ nhật\": \"09:30–22:00\", \"thứ hai\": \"09:30–22:00\", \"thứ ba\": \"09:30–22:00\", \"thứ tư\": \"09:30–22:00\", \"thứ năm\": \"09:30–22:00\"}",
+    "types": [
+      "Nhà hàng Việt Nam",
+      "Khu ăn uống"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwUp2CVWlbT17jGrskTkPLPwrvkLOjfAODKbSiyQoIC8bVjZm6X2IiQLWFazVS7ELHL07qfu9goXhof-m4pAHlA2dSavvP87d2YszdpUCoyKtFgyOr2dbYP5DELnfLS6J8D7sXJbGcrz4Im=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ-xqtuXovdTERSpI8r3FJO-A",
+    "location_name": "Vị Sài Gòn Restaurant & Café",
+    "latitude": 10.7770411,
+    "longitude": 106.6885969,
+    "open_time": "{\"thứ sáu\": \"08:30–22:00\", \"thứ bảy\": \"08:30–22:00\", \"chủ nhật\": \"08:30–22:00\", \"thứ hai\": \"08:30–22:00\", \"thứ ba\": \"08:30–22:00\", \"thứ tư\": \"08:30–22:00\", \"thứ năm\": \"08:30–22:00\"}",
+    "types": [
+      "Nhà hàng",
+      "Nhà hàng gia đình",
+      "Nhà hàng cao cấp",
+      "Nhà hàng cho người ăn chay",
+      "Nhà hàng Việt Nam"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz5uFtGjULSIkSI8T7E-VjKnb7ZrfA-0PcXW-ib63ij5k8o-YZljOurmmmvpwRu3dmDsnMGFBNGL22ULIDD7eCCJB0N7W7j3Fa9dmiyl6MYOb7TrqyBXH4ArncyXtFG6YqSQJDWbm969yYT=w197-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJzZmzw0gvdTERMd1Mj0vWl6g",
+    "location_name": "Cloud Nine Restaurant Sai Gon",
+    "latitude": 10.7731993,
+    "longitude": 106.6956783,
+    "open_time": "{\"thứ sáu\": \"11:30–23:00\", \"thứ bảy\": \"11:30–23:00\", \"chủ nhật\": \"11:30–23:00\", \"thứ hai\": \"11:30–23:00\", \"thứ ba\": \"11:30–23:00\", \"thứ tư\": \"11:30–23:00\", \"thứ năm\": \"11:30–23:00\"}",
+    "types": [
+      "Nhà hàng"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipP6iZe_8gOiX9HYMbRUogaIHqf5KUj11oUG5c_n=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJEcajfDQvdTERH4PrCxvRqkc",
+    "location_name": "Blanc. Restaurant Saigon",
+    "latitude": 10.786261999999999,
+    "longitude": 106.6943793,
+    "open_time": "{\"thứ sáu\": \"17:30–23:00\", \"thứ bảy\": \"17:30–23:00\", \"chủ nhật\": \"17:30–23:00\", \"thứ hai\": \"Đóng cửa\", \"thứ ba\": \"17:30–23:00\", \"thứ tư\": \"17:30–23:00\", \"thứ năm\": \"17:30–23:00\"}",
+    "types": [
+      "Nhà hàng lai Á"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxzT4VVPjPqXTx3Wz-f_x3D3YeLxznra8ttrAxyHQxRgIhJZltwUOUWmNKCYBC7hyiXQ1_nddk30NwXkZXulIf7SheYN10aJssW9gWq8qcNbMS_f5GZ6dTm85EO7dX8bzAeLec=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJQWEDwVwvdTERSkPyXQfqnn8",
+    "location_name": "Vo Roof",
+    "latitude": 10.772117999999999,
+    "longitude": 106.70272899999999,
+    "open_time": "{\"thứ sáu\": \"10:00–23:30\", \"thứ bảy\": \"10:00–23:30\", \"chủ nhật\": \"10:00–23:30\", \"thứ hai\": \"10:00–23:00\", \"thứ ba\": \"10:00–23:00\", \"thứ tư\": \"10:00–23:00\", \"thứ năm\": \"10:00–23:00\"}",
+    "types": [
+      "Nhà hàng"
+    ],
+    "average_rating": 4.6,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwry6_5WCqsHlbADqYatQN7Bc-CzffKa749h8wqeuCsKCXtLzvXzc9qcjGhoombcNz92mmEKS5IlA5WaQh2FvLrxXJ05f-Rghv20UlfGUZvFUuOaiub1QfPauUtZSTK6zx6U8fx=w137-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJZ_dpJ0EvdTER5wOl-TLvN-8",
+    "location_name": "Ănăn Saigon",
+    "latitude": 10.771728999999999,
+    "longitude": 106.70289299999999,
+    "open_time": "{\"thứ sáu\": \"17:00–23:00\", \"thứ bảy\": \"17:00–23:00\", \"chủ nhật\": \"17:00–23:00\", \"thứ hai\": \"Đóng cửa\", \"thứ ba\": \"17:00–23:00\", \"thứ tư\": \"17:00–23:00\", \"thứ năm\": \"17:00–23:00\"}",
+    "types": [
+      "Nhà hàng Việt Nam",
+      "Nhà hàng lai Á"
+    ],
+    "average_rating": 4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzwb5uJ6K3WGP5Q3Go-0hyEqW6_mSu0I4ggluxQtVf0atYN6KNhbmO1-K914czwHzd3eNrXylx2zFodfMoSDSL1HX67zuwYJC7QFR0hmWuTUAUCGEAgu22KgJet_T4ddXryAfqWwQ=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJY36QJ0YvdTERSsKGBuhpiCI",
+    "location_name": "Hoa Túc Saigon",
+    "latitude": 10.778500399999999,
+    "longitude": 106.7037745,
+    "open_time": "{\"thứ sáu\": \"11:00–22:00\", \"thứ bảy\": \"11:00–22:00\", \"chủ nhật\": \"11:00–22:00\", \"thứ hai\": \"11:00–22:00\", \"thứ ba\": \"11:00–22:00\", \"thứ tư\": \"11:00–22:00\", \"thứ năm\": \"11:00–22:00\"}",
+    "types": [
+      "Nhà hàng Việt Nam"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx0DBStH1bU8djr58E8Vr_fHYn2MjD3MhB91sOmEUrQ3PhsNhtyHTFRtIrwNLAmCTkjYO82vlZMhjhB8UnqOWEFhEiJH6684XIRECXZ4K4ZLEEnjVlTXpu3g2nzXpU7v5zWpQ8J=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJcwyUxjgvdTERFwXMvGKDY0U",
+    "location_name": "Bếp Mẹ Ỉn - Lê Thánh Tôn",
+    "latitude": 10.7738567,
+    "longitude": 106.6980798,
+    "open_time": "{\"thứ sáu\": \"10:30–22:30\", \"thứ bảy\": \"10:30–22:30\", \"chủ nhật\": \"10:30–22:30\", \"thứ hai\": \"10:30–22:30\", \"thứ ba\": \"10:30–22:30\", \"thứ tư\": \"10:30–22:30\", \"thứ năm\": \"10:30–22:30\"}",
+    "types": [
+      "Nhà hàng Việt Nam",
+      "Nhà hàng gia đình",
+      "Nhà hàng phở",
+      "Nhà hàng",
+      "Nhà hàng món chay"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwWPpOK4DHMvcNt47Z9fZ7ACjtBCTlgetEUTpmmwFvOq7o6kq-qfhEmy1JpKqs_Rr_gsNabviqY7zfUo-kVWY-zR7o0o0gkYyPbCDU8JRmAjei22GQ3oFbC_x43Cr6aLaP9DQz3=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ9SX_2pQvdTERPUHI65O6sTg",
+    "location_name": "Sol Kitchen & Bar",
+    "latitude": 10.7742439,
+    "longitude": 106.697015,
+    "open_time": "{\"thứ sáu\": \"11:00–14:00, 17:00–22:30\", \"thứ bảy\": \"11:00–14:00, 17:00–22:30\", \"chủ nhật\": \"11:00–14:00, 17:00–22:30\", \"thứ hai\": \"11:00–14:00, 17:00–22:30\", \"thứ ba\": \"11:00–14:00, 17:00–22:30\", \"thứ tư\": \"11:00–14:00, 17:00–22:30\", \"thứ năm\": \"11:00–14:00, 17:00–22:30\"}",
+    "types": [
+      "Nhà hàng Mỹ Latinh"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzovzpmip2g4U48oHv3X0U07WgtkhPSUaH-1zZBn80ircPc7ktAu0bL3m9PykqpSYRv-wPx2Z6Vib69ui8u29koA6bAI7GS2SZZu3o2xO00CAKIcqCWgDBXgodVc629fRN2bsEj=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Nhà hàng ẩm thực Mỹ Latinh cao cấp. Nhà hàng cao cấp, thời thượng phục vụ các món ăn đặc trưng kiểu Mỹ Latinh hiện đại.",
+    "categories": [
+      "nightlife",
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJS9ccHU8vdTERvvqyiMoMuGc",
+    "location_name": "Esta Saigon",
+    "latitude": 10.793225999999999,
+    "longitude": 106.68825799999999,
+    "open_time": "{\"thứ sáu\": \"18:00–23:00\", \"thứ bảy\": \"18:00–23:00\", \"chủ nhật\": \"Đóng cửa\", \"thứ hai\": \"18:00–23:00\", \"thứ ba\": \"18:00–23:00\", \"thứ tư\": \"18:00–23:00\", \"thứ năm\": \"18:00–23:00\"}",
+    "types": [
+      "Nhà hàng lai Á"
+    ],
+    "average_rating": 4.6,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy01-q65e6cfMrHjclm6g__qDEm7u0pyc8tQUjds6oZJC5oCcsZ_7jlyBoOLGaXBjiefBY34UjAQ45Tmh7AYjH8R_gI2U-y2taUsyGwGnAkOTGlDyyXFBy6EjBEq4ybqCv6ILmC=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJbS3N5TwvdTERkqK4OzuiHkY",
+    "location_name": "Natraj Indian Cuisine",
+    "latitude": 10.7712497,
+    "longitude": 106.68986389999999,
+    "open_time": "{\"thứ sáu\": \"10:00–22:30\", \"thứ bảy\": \"10:00–22:30\", \"chủ nhật\": \"10:00–22:30\", \"thứ hai\": \"10:00–22:30\", \"thứ ba\": \"10:00–22:30\", \"thứ tư\": \"10:00–22:30\", \"thứ năm\": \"10:00–22:30\"}",
+    "types": [
+      "Nhà hàng Ấn Độ"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyvJ29q6N8QS34ZD5ocSgp1TEyZ7jQutx37cQdKAL1t_vXPSWv0nmaCOCO2BxnMXv9sMr-H5RTGLPyTxVPWaAvKWhFJMG8VcODJhvsOTqARM7am5_KrR2VCv-BHPgW47nVHYryM=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ2-WrjTcvdTERNwe9MG_XXGM",
+    "location_name": "Propaganda",
+    "latitude": 10.7787806,
+    "longitude": 106.69815829999999,
+    "open_time": "{\"thứ sáu\": \"07:30–22:00\", \"thứ bảy\": \"07:30–22:00\", \"chủ nhật\": \"07:30–22:00\", \"thứ hai\": \"07:30–22:00\", \"thứ ba\": \"07:30–22:00\", \"thứ tư\": \"07:30–22:00\", \"thứ năm\": \"07:30–22:00\"}",
+    "types": [
+      "Nhà hàng Việt Nam",
+      "Quán cà phê",
+      "Điểm mốc lịch sử",
+      "Nhà hàng"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwbZflASRUWHFudaU31lB9rxACGgszUPn1D3tUbGmGIDXdTm8jfQfO6hY-E9tGVW7YM8teF92N8MQ78NzUx186G8nY3nnoaqa8lsChs7Mm1bg2es1FUEu6_hdC5g3gv3tF42Khe=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJu49RQx4pdTERxx9HgXOajrE",
+    "location_name": "Big Bowl",
+    "latitude": 10.8174504,
+    "longitude": 106.66394,
+    "open_time": "{\"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\", \"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\"}",
+    "types": [
+      "Nhà hàng phở",
+      "Quán ăn nhỏ"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwNWcDH3sGPoYB9ZAFP9f5FOvidCWJU_dS6ZYIq-rZfkuspxsVcYzYtn-4k-Xr0s-Cw7UN5bNZ8arnsfLPZ4xpiN9qvX8FTYhG5xa0f65SJFEhKkJfQhFBTErbu0bTqXh-K4Rx-zw=w80-h106-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJKX8tRwkpdTERV87b3PtSHg4",
+    "location_name": "Å by TUNG",
+    "latitude": 10.792513999999999,
+    "longitude": 106.6905869,
+    "open_time": "{\"thứ sáu\": \"18:00–23:30\", \"thứ bảy\": \"18:00–23:30\", \"chủ nhật\": \"18:00–23:30\", \"thứ hai\": \"18:00–23:30\", \"thứ ba\": \"18:00–23:30\", \"thứ tư\": \"18:00–23:30\", \"thứ năm\": \"18:00–23:30\"}",
+    "types": [
+      "Nhà hàng cao cấp"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxuYxmXYPiUMBZtN3xHBZzrVM2cBnJWkF4FP-WL_3u7dkgwfQIPOMM0alxwcww2FIcmm_ClHomULTiFCviA-Axavyt8KxK1Qr58s9_5Z2TUbluiBVMCeGL-FOfUgUlGkE_0rUjl=w80-h106-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJg0-MEhIvdTER_FsxkUAm1dI",
+    "location_name": "La Siesta Premium Saigon",
+    "latitude": 10.773074099999999,
+    "longitude": 106.69575499999999,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPj_iEydFe4aiCC0PzqOjTAmWHh2Gg9Qr6xQG2n=w137-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Khách sạn cao cấp có phòng chờ trên tầng thượng. Phòng ở sang trọng, một số có sân hiên, cùng với sảnh cocktail trên tầng thượng và hồ bơi vô cực.",
     "categories": [
       "hotel"
     ]
   },
   {
-    "gg_place_id": "ChIJV5-fj4xncDERWVExWsE1GCg",
-    "location_name": "Mercure Nha Trang Beach",
-    "latitude": 12.2300726,
-    "longitude": 109.19823059999999,
+    "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
+    "location_name": "Park Hyatt Saigon",
+    "latitude": 10.7777514,
+    "longitude": 106.7033802,
     "open_time": "N/A",
     "types": [
       "Khách sạn"
     ],
-    "average_rating": 4.8,
+    "average_rating": 4.5,
     "review_count": 0,
     "province_id": 0,
-    "category_ids": [],
     "rawImgs": [
       {
-        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNcV0YsF6cagUlvT4Zjxdgm3MzfCrrCBat63GTn=w122-h92-k-no",
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
         "description": "Thumbnail từ Google Maps"
       }
     ],
-    "description": null,
+    "description": "Khách sạn cao cấp có nhà hàng và spa. Khách sạn cao cấp với phòng ở tinh tế, một số phòng có sân hiên, có nhà hàng, bể bơi ngoài trời và spa.",
     "categories": [
       "hotel"
     ]
