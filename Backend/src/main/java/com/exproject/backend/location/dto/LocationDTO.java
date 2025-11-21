@@ -45,8 +45,9 @@ public class LocationDTO {
     @JsonProperty("province_id")
     private Long provinceId; // Hứng ID, không phải object
 
-    @JsonProperty("category_ids")
+    @JsonProperty("categories")
     private List<LocationCategoryDTO> categories;
 
+    @JsonProperty("imgs")
     private List<LocationImgDTO> imgs;
 }
