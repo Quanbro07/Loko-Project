@@ -47,7 +47,7 @@ public class MakePlanController {
         test.setNumAdults(2);
         test.setIsElder(true);
         test.setNumElders(1);
-        test.setLocationCategories(List.of(ELocationCategory.CAFE,ELocationCategory.AMUSEMENT));
+        test.setLocationCategories(List.of(ELocationCategory.CAFE,ELocationCategory.CAFE));
 
         test.setFromOperateTime(List.of(LocalTime.now(),LocalTime.now()));
         test.setToOperateTime(List.of(LocalTime.now(),LocalTime.now()));
