@@ -17,6 +17,14 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import com.exproject.backend.makePlan.dto.MakePlanRequest;
+import com.exproject.backend.trip.dto.TripRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -108,5 +116,18 @@ public class AIAPIService {
     // TODO: Thêm 1 function gọi api makeplan bên AI service
     // TODO: param là MakePlanRequest + Location + Location user dã đi tỉnh đó
     // TODO: return phải trả về TripResponse class/record
+    // gọi AI sinh TripRequest từ MakePlanRequest
+        public TripRequest generateTripPlan(MakePlanRequest makePlanRequest) {
+            String url = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getMakePlanUrl();
+
+            ResponseEntity<TripRequest> response = restTemplate.exchange(
+                    url,
+                    HttpMethod.POST,
+                    new HttpEntity<>(makePlanRequest),
+                    TripRequest.class
+            );
+
+            return response.getBody();
+        }
 
 }

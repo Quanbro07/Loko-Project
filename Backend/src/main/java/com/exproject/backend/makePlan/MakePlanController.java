@@ -14,6 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.exproject.backend.makePlan.dto.MakePlanRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -24,6 +29,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/make-plan")
 public class MakePlanController {
+    private final MakePlanService makePlanService;
 
     private final LocationRepository locationRepository;
 
@@ -54,5 +60,11 @@ public class MakePlanController {
         test.setLocaitons(testLocationsMapper);
 
         return ResponseEntity.ok(test);
+    }
+    @PostMapping
+    public ResponseEntity<Void> makePlan(@RequestBody MakePlanRequest request) {
+        makePlanService.makePlan(request);
+        // createFullTrip là void nên ở đây chỉ trả về 201 CREATED
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

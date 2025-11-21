@@ -1,5 +1,7 @@
 package com.exproject.backend.makePlan.dto;
 
+import com.exproject.backend.hobby.info.EHobby;
+
 import com.exproject.backend.aiAPI.dto.RawLocationDTO;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location.dto.LocationDTO;
@@ -27,6 +29,8 @@ public class MakePlanRequest {
 
     private EProvince province;
 
+    private EHobby hobby;
+
     // True đi 1 người
     // False đi nhóm
     private Boolean isAlone;
@@ -39,7 +43,7 @@ public class MakePlanRequest {
     @PositiveOrZero
     private Integer numAdults;
 
-    private Boolean IsElder;
+    private Boolean isElder;
 
     @PositiveOrZero
     private Integer numElders;
