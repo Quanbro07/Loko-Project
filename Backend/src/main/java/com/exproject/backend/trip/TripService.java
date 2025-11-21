@@ -56,7 +56,7 @@ public class TripService {
     private final LocationCategoryRepository locationCategoryRepository;
 
     // * Tạo Full Trip
-    public Trip createFullTrip(TripRequest tripRequest) {
+    public void createFullTrip(TripRequest tripRequest) {
         User user = userRepository.findById(tripRequest.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -80,20 +80,27 @@ public class TripService {
                 // Logic: User chọn địa điểm này -> Hệ thống hiểu User đang quan tâm Tỉnh/Loại này
                 categorySyncStatService.increaseCategorySyncStat(location);
 
+
                 // Loop qua location img
                 for(LocationImgDTO imgDTO: locationDTO.getImgs()) {
+                    // Them img mới
                     LocationImg newImg = new LocationImg(imgDTO);
+
+                    // Add quan hệ 2 chiều vào
                     location.addLocationImg(newImg);
                 }
 
+
                 // Loop qua location categories
                 for(LocationCategoryDTO categoryDTO: locationDTO.getCategories()) {
+                    // Tìm category ể set quan hệ 2 chiều
                     LocationCategory existCategory = locationCategoryRepository
                             .findById(categoryDTO.getId())
-                            .orElseThrow(()-> new RuntimeException("Cateogry not Found"));
+                                    .orElseThrow(()-> new RuntimeException("Cateogry not Found"));
 
                     location.addLocationCategory(existCategory);
                 }
+
 
                 TripDetail newTripDetail = new TripDetail(tripDetailRequest,location);
 
@@ -101,12 +108,11 @@ public class TripService {
             }
 
             newTrip.addTripSection(newSection);
+
         }
 
         Trip savedTrip = tripRepository.save(newTrip);
-        return savedTrip;
     }
-
 
     // Khi Trip đã hoàn thành
     public void completeTrip(Long tripId) {
