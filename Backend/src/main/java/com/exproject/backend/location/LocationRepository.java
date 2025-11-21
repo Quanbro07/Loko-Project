@@ -34,6 +34,8 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
                                     @Param("minDate") LocalDateTime minDate,
                                     Pageable pageable);
 
+
+
     @Transactional
     @Modifying
     @Query(value = """

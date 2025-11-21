@@ -6,10 +6,12 @@ import com.exproject.backend.location.dto.LocationDTO;
 import com.exproject.backend.location_category.info.ELocationCategory;
 import com.exproject.backend.province.info.EProvince;
 import jakarta.validation.constraints.PositiveOrZero;
+import com.exproject.backend.hobby.info.EHobby;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -26,6 +28,8 @@ public class MakePlanRequest {
     private LocalDate endDate;
 
     private EProvince province;
+
+    private EHobby hobby;
 
     // True đi 1 người
     // False đi nhóm
