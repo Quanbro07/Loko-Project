@@ -7,6 +7,7 @@ import com.exproject.backend.location.Location;
 import com.exproject.backend.location.dto.LocationDTO;
 import com.exproject.backend.location_category.info.ELocationCategory;
 import com.exproject.backend.province.info.EProvince;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,8 +24,10 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class MakePlanRequest {
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
     private EProvince province;

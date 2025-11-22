@@ -67,6 +67,6 @@ public class UserInitializer implements CommandLineRunner {
         AuthenticationResponse responseAdmin = authenticationService.authenticate(authenticationRequest2);
 
         System.out.println("Token User: " + responseUser.getAccessToken());
-        System.out.println("Token Admin: " + responseUser.getAccessToken());
+        System.out.println("Token Admin: " + responseAdmin.getAccessToken());
     }
 }

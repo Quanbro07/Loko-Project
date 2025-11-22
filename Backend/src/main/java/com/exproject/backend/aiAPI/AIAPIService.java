@@ -47,7 +47,8 @@ public class AIAPIService {
 
     // Gọi Api lấy location
     public List<Location> getLocations(List<CategorySyncStatDTO> categorySyncStatDTOList) {
-        String getLocationUrl = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getGetLocationUrl();
+        String getLocationUrl = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl() +
+                pythonAPIConfig.getGetLocationUrl();
 
         ResponseEntity<List<RawLocationDTO>> rawLocationListResponse = restTemplate.exchange(
                 getLocationUrl,
@@ -118,7 +119,10 @@ public class AIAPIService {
     // TODO: return phải trả về TripResponse class/record
     // gọi AI sinh TripRequest từ MakePlanRequest
         public TripRequest generateTripPlan(MakePlanRequest makePlanRequest) {
-            String url = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getMakePlanUrl();
+            String url = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl() +
+                    pythonAPIConfig.getMakePlanUrl();
+
+            System.out.println(url);
 
             ResponseEntity<TripRequest> response = restTemplate.exchange(
                     url,

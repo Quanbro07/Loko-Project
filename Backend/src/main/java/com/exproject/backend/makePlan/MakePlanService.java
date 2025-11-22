@@ -50,25 +50,22 @@ public class MakePlanService {
         Long provinceId = (long) (request.getProvince().ordinal() + 1);
 
         // Collect locations
-        List<Location> collected = new ArrayList<>();
+        List<LocationDTO> locationDTOS = new ArrayList<>();
 
         for (ELocationCategory cate : categories) {
 
             Long categoryId = (long) (cate.ordinal() + 1);
-            List<Location> topLocations =
+            List<LocationDTO> topLocations =
                     locationService.getTopLocations(provinceId, categoryId);
 
-            collected.addAll(topLocations);
+            locationDTOS.addAll(topLocations);
         }
 
-        if (collected.isEmpty()) {
+        if (locationDTOS.isEmpty()) {
             throw new RuntimeException("Không tìm thấy location phù hợp cho hobby: " + hobby);
         }
 
-        // Map Location -> LocationDTO
-        List<LocationDTO> locationDTOS = collected.stream()
-                .map(locationMapper::toLocationDTO)
-                .collect(Collectors.toList());
+
 
         request.setLocationCategories(categories);
         request.setLocaitons(locationDTOS);

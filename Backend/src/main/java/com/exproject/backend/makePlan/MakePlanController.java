@@ -9,6 +9,7 @@ import com.exproject.backend.location.dto.LocationRequest;
 import com.exproject.backend.location_category.info.ELocationCategory;
 import com.exproject.backend.makePlan.dto.MakePlanRequest;
 import com.exproject.backend.province.info.EProvince;
+import com.exproject.backend.trip.dto.TripRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,10 +62,10 @@ public class MakePlanController {
 
         return ResponseEntity.ok(test);
     }
-    @PostMapping
-    public ResponseEntity<Void> makePlan(@RequestBody MakePlanRequest request) {
-        makePlanService.makePlan(request);
-        // createFullTrip là void nên ở đây chỉ trả về 201 CREATED
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    @PostMapping("/make")
+    public ResponseEntity<TripRequest> makePlan(@RequestBody MakePlanRequest request) {
+        TripRequest response = makePlanService.makePlan(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }
