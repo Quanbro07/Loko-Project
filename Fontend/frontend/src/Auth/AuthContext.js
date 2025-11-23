@@ -104,6 +104,33 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('user');
     };
 
+    // Auto-logout when JWT token expires (if token is a JWT with an `exp` claim)
+    useEffect(() => {
+        if (!token) return;
+        let timer;
+        try {
+            const parts = token.split('.');
+            if (parts.length !== 3) return;
+            const payload = JSON.parse(atob(parts[1]));
+            const exp = payload && payload.exp;
+            if (!exp) return;
+            // If already expired, logout immediately
+            if (Date.now() / 1000 > exp) {
+                logout();
+                return;
+            }
+            const msUntilExp = exp * 1000 - Date.now();
+            timer = setTimeout(() => {
+                logout();
+            }, Math.max(msUntilExp, 0));
+        } catch (e) {
+            // If token isn't a JWT or parsing fails, do nothing (safe fallback)
+        }
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
+    }, [token]);
+
     const switchAuthMode = () => {
         setAuthMode(authMode === 'login' ? 'register' : 'login');
     };
