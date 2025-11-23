@@ -1,11 +1,12 @@
 import google.generativeai as genai
 from categories_creator.amusement import run_amusement
+from categories_creator.adventure import run_adventure
 from categories_creator.food import run_food
 
 # ==========================
 # CONFIG INPUT / OUTPUT
 # ==========================
-INPUT_FILE = "ho_chi_minh.json"
+INPUT_FILE = "lam_dong.json"
 OUTPUT_FILE = "attractions_with_tags.json"
 BATCH_SIZE = 20  # Đặt ở main
 
@@ -23,8 +24,9 @@ def main():
     print("=== CATEGORIES CREATOR ===")
     print("1. Food")
     print("2. Amusement")
+    print("3. Adventure")
 
-    choice = input("Chọn loại xử lý (1/2): ").strip()
+    choice = input("Chọn loại xử lý (1-3): ").strip()
 
     if choice == "1":
         print("🚀 Chạy Food...")
@@ -34,6 +36,11 @@ def main():
     elif choice == "2":
         print("🚀 Chạy Amusement...")
         run_amusement(MODEL, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE)
+        print("🎉 Hoàn tất xử lý Amusement!")
+
+    elif choice == "3":
+        print("🚀 Chạy Adventure...")
+        run_adventure(MODEL, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE)
         print("🎉 Hoàn tất xử lý Amusement!")
 
     else:

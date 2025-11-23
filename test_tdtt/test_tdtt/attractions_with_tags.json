@@ -1,1630 +1,1425 @@
 [
-    {
-        "gg_place_id": "ChIJ9YE09dEudTERNEcX1eDdajY",
-        "location_name": "Thiên Đường Giải Trí Thỏ Trắng",
-        "latitude": 10.785501499999999,
-        "longitude": 106.66605299999999,
-        "open_time": "08:00",
-        "close_time": "19:00",
-        "average_rating": 4.3,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzQRyUPy5pGXf1vn8smC5vH6Rb5pomIdm4I9Tn-v0INuwjME3z0LUqgbezJ9MO7kDLmis3UfBv-GLhKjThiWWQH2HfzB6JoPA46Zt6W5_dBHgyCWB9skIr9cPk_Pk9B9PR5w3ip=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8,
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ4RqUkJkudTER-QHI35eZcWI",
-        "location_name": "Công viên nước Đầm Sen",
-        "latitude": 10.768894699999999,
-        "longitude": 106.63599389999999,
-        "open_time": "08:30",
-        "close_time": "18:00",
-        "average_rating": 4.3,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyW7_-6iKSrl7hkxvxMRiqZ4vLdhZFKaSg8XRQKAX9ByErP5F_TWQsvkaz00nK5P5CLzm1qJunOuDaiZ-4iY8X_fLkGpHxNPzltt0w2TDU2Hma_DYL-UC3mIYZftYf3o_WNPx4f7Q=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Công viên rực rỡ với các điểm tham quan. Tổ hợp vui chơi giải trí cho gia đình với các hoạt động cưỡi ngựa, công viên nước, rạp chiếu phim & sở thú.",
-        "category_ids": [
-            8,
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJa2jyR5cudTERy2ySbqgJudk",
-        "location_name": "Đầm Sen",
-        "latitude": 10.768736599999999,
-        "longitude": 106.63610829999999,
-        "open_time": "07:30",
-        "close_time": "20:00",
-        "average_rating": 4.3,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwVg1QyUJFLnqi1wORoVYeH-5kx3MGMWPquEyRjIJV-Q6LmhfjDYw-I7dzZs055SK9SRa85S4AFgvzyJWTBjvHpPxoDsw3AOZxtYhuKQYSFq7_h8qh7lEn89_Hmxsk229cFFEcT=w131-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJDXlfx1sndTERFg6NcPqJ8e8",
-        "location_name": "Công viên văn hóa Suối Tiên",
-        "latitude": 10.866186299999999,
-        "longitude": 106.8031678,
-        "open_time": "08:00",
-        "close_time": "17:00",
-        "average_rating": 4.3,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzssGqMmpLd1S9Zwi3nIGHU_5UdzOBfNY7uQgPXshE6FgE0UVbjIqLyst44xr7sh4LwIhHEvg0ICHTQfRFaqu-nNRdUEXAlaD3MCNnYmiWvj9-ocLZQkLeUcPcmJYbI51x1vWjy=w186-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Công viên văn hóa giải trí lấy cảm hứng từ Phật. Công viên giải trí có nhiều tàu lượn và hoạt động vui chơi dưới nước nằm giữa các công trình Phật Giáo nổi bật.",
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJE2s16d8odTERhi4YxyrQpg4",
-        "location_name": "Khu Vui chơi Trẻ em - Công viên Gia Định",
-        "latitude": 10.8123367,
-        "longitude": 106.6735483,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.3,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzbS103eN4J5XqGYQ-SLstKnyO_XWOnBCvpY4TxKZKJIjGE-BV-0iKaIemMuOZe_sYJ89STmQsNoaXDdqwlsnWBSgoNANzdlTCBBnmaH76guyU8FQ6CFvYCb_bivCFApCexfbCR=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJKxbWuSUhdTERaf6JH7dvvmA",
-        "location_name": "Công viên Grand Park",
-        "latitude": 10.8398883,
-        "longitude": 106.8456016,
-        "open_time": "10:00",
-        "close_time": "21:00",
-        "average_rating": 4.8,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxG-ksK5MQj7g9xXiSMHcqKZdXvQvRZU5JkyFo2zvu6bGzWpKjQEXnZXW7_KeRPK0GWhr__hXdf_CC7kfHhUQMwyvxIUspHXCycHnHHlhnx3FPjCZltgG9bZXeyDnajl5A25mPISDCtFDkB=w80-h106-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJA0FSQqEvdTERuUNes8gZ6-I",
-        "location_name": "Vietopia",
-        "latitude": 10.7415542,
-        "longitude": 106.69500389999999,
-        "open_time": "08:00",
-        "close_time": "16:00",
-        "average_rating": 4.2,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzrWF0Nn5pW_YL7LkjHgcWoS495JeYT9WAVOwrBRfr90SGzWQwDDaW7Q4As4uYzQZ2KtQDl9RPHKQXwE2IBKBnNfBhw_hw8GWxlBw5fH3nXGGJCEWkislGUaWAOW5SjHMukFTLBkQ=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "T.tâm giáo dục & vui chơi lớn trong nhà. Sân chơi trong nhà rộng kiểu thành phố thu nhỏ với các hoạt động giáo dục, thực hành.",
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJtcFh4QordTERPQVubtwdiPs",
-        "location_name": "FANPEKKA",
-        "latitude": 10.800914899999999,
-        "longitude": 106.6155969,
-        "open_time": "09:00",
-        "close_time": "22:00",
-        "average_rating": 4.1,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwwbxtDcvERsdD_PR4fH6Q2BGgl0AaDIXppU2VigsrBD71krorcdvJhaF21884VaRSd_maElzd7MneGPbyK2Wzr9p8Qxv9y3IuKRc0Bk-PrI3HKhOr28yEtOdSPm311EKLBcXfd=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ2999pt4ldTERy2QtUvjbIRI",
-        "location_name": "Công Viên Thế Kỷ 21",
-        "latitude": 10.7811567,
-        "longitude": 106.7520358,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.0,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzfEgqiS3FnfVdsoStwYqnlDf_Thlyn_b7xmf2NWO6aq2UQqpASPEbYQ4TF86U8ANBzfwBYoe9VBqQBovyGSM9Dze_2OHUu-lGeUmZV8vQ2qODft6AmLys5f3FcdzKFy8IjNnuJ=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJk58YdgAvdTER0JFO1TJJuK0",
-        "location_name": "Khu vui chơi trẻ em Topworld Kidsplay & Cafe",
-        "latitude": 10.7896085,
-        "longitude": 106.6392619,
-        "open_time": "08:30",
-        "close_time": "21:30",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipMbSOCJUHKOULZ_XOm3v9P0pG5opW-DDaL5B5OS=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJcUBm_6cvdTERgOKJ-GP60C0",
-        "location_name": "Jump Arena HimLam",
-        "latitude": 10.742073099999999,
-        "longitude": 106.69511949999999,
-        "open_time": "09:00",
-        "close_time": "21:00",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzer4h5Y8ezWsOhYBYV0mn-o5vQFABDfT6sd4GJHGo_e_FGgnb50SWehfl7se08wh28ebD15mhJfJ4gq69qmf9FDolmUftEAYLtRWcgfBLlutiU6qeuyD6cE6VjJstjteHSW1o4=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJW7U9AggpdTERqzQ7L8I2lR4",
-        "location_name": "Sân chơi Giáo Trí Thiếu Nhi tiNiWorld Vincom Quang Trung",
-        "latitude": 10.8293011,
-        "longitude": 106.67253339999999,
-        "open_time": "10:00",
-        "close_time": "21:30",
-        "average_rating": 4.2,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwc07UrU9CWJ26R97AfeHjpOnJh7y-3qL7it_DS-gVaBHe0VYsMhCjyYxmqLCY4WMkO6r0vslCRZs89AoLCyDrHLxzrUIsHYhSgSgUMcMA-ebBT0Hn_dfy6LgtGFqVG7okif2I1=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJrT8yBQApdTERqxrCJG2LoRo",
-        "location_name": "Khu Vui Chơi Trẻ Em Happy Kids",
-        "latitude": 10.833528699999999,
-        "longitude": 106.6343943,
-        "open_time": "08:00",
-        "close_time": "22:00",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx9HLxOWEjP4v1UV0ZpuPOz3nWYGS3DUO6G176J35QVsOSdVq6tRMB-y_lddyOSv0sKOATQIWzsD1Z_nXh69y2spvoOqlmx9VEbQF8O0oE7W3-gGeEiBKF7N1CVriqUWYbga2D1GinhZuXs=w80-h106-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJZ_V4ShkvdTERSYAJsTpzol4",
-        "location_name": "tiNiWorld Nowzone",
-        "latitude": 10.7644215,
-        "longitude": 106.6825193,
-        "open_time": "09:30",
-        "close_time": "22:00",
-        "average_rating": 4.2,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzfDH5749tsJBJ28U0puDgHDSOlOG3LdYGGDcZ2Aso72es-DByDnp_uyKzkv3NldYvqteQldZphCBE_R2FQxy1SsEOOzI7B8UZwVJXyi3IrtzXUNwqCoD9F_7wve0qQM_lpEHLDiQ=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8,
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJK1--AHwpdTERKbswkZpcjuA",
-        "location_name": "Jump Arena Starmart Gò Vấp",
-        "latitude": 10.835335599999999,
-        "longitude": 106.66043289999999,
-        "open_time": "09:00",
-        "close_time": "21:00",
-        "average_rating": 4.8,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyLYIwGf42vV76qB3Vq09W05oAFLRD1u3Re0mPe4cFnvlTQdu4HBeN3eVzRlh2pvLqcyCi_RGbFTj9KRwoEt_jqRqudQmVAzn5iZ6J2ixNMIvGxkMRRdJH5Ab6cjLedSbzCMAlTvg=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJJenkHgAvdTERPzJF69yFr90",
-        "location_name": "Công viên Văn hoá Lê Thị Riêng",
-        "latitude": 10.785147799999999,
-        "longitude": 106.66474869999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSziNLV5HOciBKfcP7ZDX2UmHUwTDwfohvIxoWv_IFQnXwEkN7jMC0-XLOqryP3ZWhT8WY8vRxl8KbfyazlT8IIS__kCN0z3qTKQdSwaZfLX8e5jLIqHfszKpjFb8_SuAyl1P07-v4eJyux_=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJx7wwM0svdTERjuH2a9dkuU0",
-        "location_name": "Thảo Cầm Viên Sài Gòn",
-        "latitude": 10.787334399999999,
-        "longitude": 106.70505659999999,
-        "open_time": "07:00",
-        "close_time": "17:30",
-        "average_rating": 4.3,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxuBnBtcJQcjN8m_hmivpAcFjAGQsF0-fQ7gHzGS7baiEN0YFA_YuMn-gJk7Ppxo1BFSZxh0EWCxtTDcXqwCXiRUyJPhay2-6UcxQ6H9kqsaVCSZ1gf7ulZnyFcUfUcnZo9pdhS=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Vườn thú có động vật có vú và bò sát. Vườn thú mộc mạc có nhiều loại thú khác nhau, bao gồm cả hươu cao cổ, lạc đà, voi và rắn.",
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJBzP6dK0sCzERhMxxKzHiDaM",
-        "location_name": "Khu du lịch Tây Thành (Công viên nước Củ Chi)",
-        "latitude": 10.9850645,
-        "longitude": 106.53354209999999,
-        "open_time": "07:00",
-        "close_time": "17:00",
-        "average_rating": 3.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxVV-CQUzkOjiN2n1wNAnyjSBg5i9cNH3cMEZgyLPrkcLtzHiKgvNmxrACNiHtQ6Dxtb3JNy-2x9N8LrrUy9AvwYGlmbkrEcqlB8WYAgtNbeyaRSMbY1kARxH_5RWzmQAX8TdyU=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            8
-        ]
-    },
-    {
-        "gg_place_id": "ChIJP-wgqbwvdTERveQw05H8tBc",
-        "location_name": "Kiwooza Planet",
-        "latitude": 10.7201954,
-        "longitude": 106.71633299999999,
-        "open_time": "09:00",
-        "close_time": "21:00",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyNfPQMOy7etO2pM-TQD3kDILBwZByMA84HmDD0ojYqw1vTJHPbdjRX0E8eNgIcpzFniMjAKIl5pnwPYPO7izfIiOsKNHriePrrK117MPzsuLfgeNaMjbWDGeeFvKcXgUcrtkFIMA=w80-h106-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJLwB-bsQvdTERXLdP2IuZvt4",
-        "location_name": "Tinker Box",
-        "latitude": 10.788329599999999,
-        "longitude": 106.7029919,
-        "open_time": "08:30",
-        "close_time": "21:00",
-        "average_rating": 4.4,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSygzG-BR2hXlbUpe3zE28dJ0RQyPVcAWYn78Bm45VpLHTZpTk8Xk-St3J6hW0WKmuOTkCxmW96c0PT4AHJh5RpcnR3r4EjNAml1kJ5PoRKI_H9obhxia9yGgQoyDdfKeM5vvjUm7PjWOF3E=w80-h106-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJKcrnSUYvdTERO64MErYx9VU",
-        "location_name": "Nhà hát Thành phố Hồ Chí Minh",
-        "latitude": 10.776612799999999,
-        "longitude": 106.7031715,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzDkByb_03wnhmrQ7geiai6ZERrFGeSdsigOTiQ0FDjGGth8Nz9er3fbqtkC2YtLv1NWM6OnOAXtD6e2UsHW5q_QOAJ8nSQGOg9lLfjsBsQKFk6MT3UyiqnTLGiuK9kiYuaXBPeLA=w80-h99-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Phòng hòa nhạc & sân khấu ba lê. Nhà hát opera tinh xảo từ thời Pháp thuộc vào thế kỷ 19, nay là nơi biểu diễn ba lê và nhạc giao hưởng của thành phố.",
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJqQNDazcpdTERUM4-CBL2RMI",
-        "location_name": "Nhà hát Quân đội - Khu vực phía Nam",
-        "latitude": 10.8020053,
-        "longitude": 106.65644739999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.2,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyNq_4aJIajePKJk5jSsCqB_aiujzpja_bBajAid4wCM0nv16wBNKvrg30a9HHvVtc2fSRNf0q1i8ER7OLVoqN26D8f3sI4MiSQklCDzrqoi0Jo8ZH_2rso_hJTQ9d5X1K1pcT5tg=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJW7FVNjovdTERDdcTm9xxa3k",
-        "location_name": "Nhà Hát Múa Rối Nước Rồng Vàng",
-        "latitude": 10.776259699999999,
-        "longitude": 106.69253739999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.4,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwvxue4S_PwivLZRzFZkXfkb8FUiKSPet6HyjaalWkLWvLciKwdF0u057EPqaMC9p-E2rgAqWr1NATvAZGhVNvpuPkaRlOEK6-gBEn23fGROM8heOFbvxjg5r1_H55bAduT7MxR=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Các tiết mục múa rối trên sân khấu nước. Nhà hát đẹp mắt tổ chức các tiết mục múa rối Việt Nam trên sân khấu nước có nền nhạc sống.",
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJL0dwVTgvdTERao3t8B1Jhxc",
-        "location_name": "Dinh Độc Lập",
-        "latitude": 10.776994199999999,
-        "longitude": 106.69530209999999,
-        "open_time": "08:00",
-        "close_time": "15:30",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw9X4CZSadaw0j3I--0hMsAHAOfhy0upMfljg-0QOrSCsXtexrKYg_H2QY2pPP9e2k_FpahUupCa0sQrgdip33SW_EbxXHTdjrJnQGvEf5zVpzEUsNy1fxWnUtqX-r6lUPljSE=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Cơ quan đầu não của chính phủ thời chiến. Di tích lịch sử về chiến tranh Việt Nam cho phép tham quan văn phòng chính phủ, phòng chỉ huy và hiện vật.",
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ5WWKcjwvdTERfULdIVZ1EhE",
-        "location_name": "Sân Khấu Trống Đồng",
-        "latitude": 10.772653799999999,
-        "longitude": 106.69222979999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.1,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzw29FSGnalRH_h9kpVo5jcDUjEXnt4HI4mLbaS41xMP2p8sig2hLLvtg4sY6zoctTtLOJoioqH_9QG2QIqQ_07Uppb7TuG6YCn4yhjQ8Nk5wNGyCDUOHE13APLmLeKHc4jGNLzYw=w189-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJN_oLn04pdTERuCcukqU_A6A",
-        "location_name": "Nhà hát VOH Music One",
-        "latitude": 10.7900531,
-        "longitude": 106.7014621,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzGrLsE4kmu5eQjMEBS-x79GRyDmWEDOb3ZgRrMtiJ02xUKAHZlwQRwePZ0I2e4sztXTmq69PllrD9V4dk0Qdd1hhIOsu5sGtEuz604KTS4_wKDRlxTKcAo8JXYHRtBHZR2-sbU=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJxyX4QjkvdTERuG_BSs8SJDQ",
-        "location_name": "Nhạc viện Thành phố Hồ Chí Minh",
-        "latitude": 10.7741828,
-        "longitude": 106.6950945,
-        "open_time": "08:00",
-        "close_time": "17:00",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyol2lVTqFR5wLwv084uqNTi4XrlFlQeBDLNjtjUdDwipxiZV5Hr4E02oEGK-1Kvjq0Milv4x6hmUYn-pm52cbOdPZipAGXVeTwWSSvtOXSjALO5u1NF8fyxF1rwfbSG9fJpri1=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJS8Yv1zcvdTERUI2V47UxkPw",
-        "location_name": "Đường sách Thành phố Hồ Chí Minh",
-        "latitude": 10.780963,
-        "longitude": 106.7000734,
-        "open_time": "08:00",
-        "close_time": "21:00",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx88bzNNzJPJvUieCuRy3LV8WuFhFEoH9_J14bWiVfzrnr6SChXKrT68crcTOKyRwhSDkPRt_2L3EsDAaFueuyzQWoR-bwpGyeY3npO92TcrImvcFR8AVy-f7UxgIIPPUiwSk6x=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Hiệu sách độc lập và quán cà phê ngoài trời. Con phố đi bộ nhộn nhịp có các hiệu sách tiếng Việt và tiếng nước ngoài cùng địa điểm uống cà phê ngoài trời.",
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJMYonc3gndTERYotSEXLMKQc",
-        "location_name": "Réhahn Gallery",
-        "latitude": 10.775262999999999,
-        "longitude": 106.7042458,
-        "open_time": "08:30",
-        "close_time": "22:00",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOotGnZCBpudEadAQyIk9fi1Th9jBrkqyoDn_G_=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ63PnLZ8vdTER7I2i6l3lWM8",
-        "location_name": "A O Show - Lune Production",
-        "latitude": 10.7765627,
-        "longitude": 106.7030791,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNK6ITsfs699xxkfNGGF3GcoUsQ8jweML0CB4L-=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJMY8VKDcvdTERvnGTm3AhyiA",
-        "location_name": "Nhà hát Kịch Sân khấu Nhỏ",
-        "latitude": 10.7807097,
-        "longitude": 106.69436329999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyppMZcYgGZCyu5vFO_kyDhHLiYwQmQ5EFlaCDJixJRqSqcdOM776dwweA4ecRPlmJdJxichh4o2lJADlIPWrLWe8uO9t4Hrn63Jy-mM-HiFk8ZtIwHsfZE7lHfUSHv2dAVyt3N-w=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJa73U7UgvdTERjLF-t2zp5Eo",
-        "location_name": "Nhà hát Kịch IDECAF",
-        "latitude": 10.7796931,
-        "longitude": 106.70370489999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.7,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyeZDvQN15PLFqo1IhMreUm7zcCVZ9NBThLUinHXxhvDFxaxChMiW66gqd3URpn1SvGN1IDSsFF-cOD25UQJDvWZ_nuP_0T4y7kEqMurevm15j0UemEqQcEgYa2aqwRO_BLKhQfoFDr43TJ=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJzwg3ojAvdTERqnQUK99K2Xw",
-        "location_name": "Bảo tàng Chứng tích Chiến tranh",
-        "latitude": 10.7795106,
-        "longitude": 106.6920916,
-        "open_time": "07:30",
-        "close_time": "17:30",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyn8O7YZQo9bb-y6-6F_bLyNeRWNI_0G9CffOCojqCYQ17dzS1d2iVkcx511a-W2Oz78drwWs4QdLCQpoNg8JZEl0XqtQPz0u6Yr510xOenna_fOJiWhgiLbuGTEnUTFZET3rYl=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Nơi trưng bày quân khí & ảnh về quân đội. Bảo tàng tưởng niệm trưng bày các bức ảnh, vũ khí & vật phẩm khác từ các cuộc chiến tại Việt Nam & Đông Dương.",
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ39ckMWEvdTER63fzItgE-_k",
-        "location_name": "Indochina Queen",
-        "latitude": 10.765958,
-        "longitude": 106.7087557,
-        "open_time": "08:00",
-        "close_time": "22:00",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwouEndgbaptXxhQISlJyE5nkcN-eA0Nw_ESoDSDhOpapxy20gD7oW8CKl63gQGYlQ8OK96XTFe6XI1VkP4kYARtWWlxnwuB3bMy5ksH7a254A4_RmVWbsmRYji9GCiXVoReL1gKoo4W30k=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJcUQNoocpdTERL66CbEI2hhA",
-        "location_name": "Arena Multimedia",
-        "latitude": 10.8040612,
-        "longitude": 106.6367126,
-        "open_time": "07:00",
-        "close_time": "21:00",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPgzrD7lX9j0Bq6cQd3bT05Q4QYCF-Sc_P48XfB=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJTeYpMT8vdTERMH8sUnkta40",
-        "location_name": "Chợ Bến Thành",
-        "latitude": 10.7725168,
-        "longitude": 106.6980208,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.0,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzLOB3trseJEjHHav5zuxDczxrJJc-TBjd9DcRELGVgRRuRTe-EHiweRTiAVk9AFT8r4VbHmA5HkaufQKnyX-Ru0uoRBwLWxH2LoP8XaL9aX1-UUJblIm9kb3KDXHi6Xz4C9eX-Wu4LnEiJ=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Nơi mua đồ lưu niệm & ẩm thực địa phương. Chợ nổi tiếng để mua đồ thủ công, lưu niệm, quần áo & hàng hóa khác đồng thời thưởng thức ẩm thực địa phương.",
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ3cDP7UgvdTERTp4dZuhxxqc",
-        "location_name": "IDECAF - Viện Trao đổi Văn hóa với Pháp",
-        "latitude": 10.7799935,
-        "longitude": 106.7034805,
-        "open_time": "07:30",
-        "close_time": "17:00",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyhIsOf_OAUD5cWWjwFOlq8biFVv66Ly5KErLCt9VgfV2XZzxhu-qEk2O5InIAxyYnFMr6DntKIy-l-jygkeOmSwX9VlD3eRKux2i7k9-zS5xRxqA5SigUrhT9tZ4rNnhjlackGZ2O4vJ0=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            13
-        ]
-    },
-    {
-        "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
-        "location_name": "Park Hyatt Saigon",
-        "latitude": 10.7777514,
-        "longitude": 106.7033802,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn cao cấp có nhà hàng và spa. Khách sạn cao cấp với phòng ở tinh tế, một số phòng có sân hiên, có nhà hàng, bể bơi ngoài trời và spa.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJH5mRK98pdTER0K5WqRnJ-fY",
-        "location_name": "Vinpearl Landmark 81, Autograph Collection",
-        "latitude": 10.795225499999999,
-        "longitude": 106.7218884,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.7,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPoEH-VmK3DRprO2lQjhO9yU4D3dtFC0QTJOIG5=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn cao cấp có spa và đài quan sát. Khách sạn sang trọng có phòng ở và phòng suite xa hoa, khu spa, bể bơi, nhà hàng và đài quan sát.",
-        "category_ids": [
-            8,
-            13,
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJZfg1SZwvdTERDnigNkg9xaI",
-        "location_name": "Khách sạn Mai House Saigon",
-        "latitude": 10.782094299999999,
-        "longitude": 106.6915855,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.8,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipMlYiUKH5OScGi1sj9c2yfyX72jvnhhDt7dtxre=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn cao cấp có khu spa và nhà hàng. Khách sạn cao cấp có phòng ốc và căn hộ tinh tế, bể bơi ngoài trời, spa và nhà hàng.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ59lcHy0vdTERz58yQGlLKNI",
-        "location_name": "La Vela Saigon Hotel",
-        "latitude": 10.788659299999999,
-        "longitude": 106.68548369999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.3,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPR4vUmVbGk-9GXL_d_TtkMVTHI5lvfVcB7fLnY=w80-h106-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "KS cao tầng, xa hoa có bar tầng thượng. Khách sạn cao tầng, sang trọng có quán bar trên tầng thượng, bể bơi vô cực, spa và 3 nhà hàng cao cấp.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJmfcfuUYvdTERoM-VKjTQBLA",
-        "location_name": "The Reverie Saigon",
-        "latitude": 10.7737397,
-        "longitude": 106.704549,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipMxeVQuQks0WJm3kXNSsiTifJxOmfDn2s6IXTl-=w188-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn trang nhã có 5 khu vực ăn uống. Khách sạn cao cấp với phòng ốc sang trọng, có 5 khu vực ăn uống, có cả hồ bơi ngoài trời và spa.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ_eaM5x4pdTERlegTAEoaBXs",
-        "location_name": "Holiday Inn & Suites Saigon Airport",
-        "latitude": 10.8016313,
-        "longitude": 106.6550403,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipM1-jqgP-2pCo7uEPuM2rfUTVq8QVEbX0kgdIJc=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn bình dân có xe đưa đón sân bay. Khách sạn bình dân có nhà hàng, bể bơi ngoài trời, xe đưa đón sân bay miễn phí và phòng tập thể dục.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJq6q6BkQvdTER9iu5PBUfVv8",
-        "location_name": "Hotel Majestic Saigon",
-        "latitude": 10.7727782,
-        "longitude": 106.70618789999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFDG9EBOHjYdli7K0cqLceavjubAbQXUBrEHbh1q-DTefCIaIR9izaMSS-MlOZkLjdArvYB_L2XFqvkHbCnEQrbCekukjnHvKkRozJeUBYuz45y6-IN_p8VC1o2wYRdmHbbn87Cmndn-tA6Z5XCPw8hvfyUVMQHNs5gx-m2OMZlBUUvw9Nvexc_=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn lớn có sòng bạc và spa. Khách sạn sang trọng cung cấp các phòng ấm cúng theo phong cách cổ điển, hồ bơi ngoài trời, spa và sòng bạc.",
-        "category_ids": [
-            2,
-            11,
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJaxSI9iEodTERHkou9oDb7Ls",
-        "location_name": "An Lam Retreats Saigon River",
-        "latitude": 10.870975,
-        "longitude": 106.69911309999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.4,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPHA9sP613kPdOKNYxHeKeviFPMSzE_cJXU22a1=w137-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Resort yên tĩnh ven sông, có nhà hàng. Resort yên tĩnh nằm ven sông, phòng suite và biệt thự sang trọng, nhà hàng ngoài trời, spa và bể bơi.",
-        "category_ids": [
-            2,
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJXzbGaSkpdTERJadAGdVQo6I",
-        "location_name": "Eastin Grand Hotel Saigon",
-        "latitude": 10.7964431,
-        "longitude": 106.67356869999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.4,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPadmWbP6BI6wYAXYyEWcxjOsdsonPy6pyEOdGO=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn hiện đại có phòng ở sang trọng. Khách sạn hiện đại có 5 nhà hàng và quán bar, phòng tập thể dục, bể bơi ngoài trời và hiên tắm nắng.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJV4k8_9UodTERU5KXbkYpSYs",
-        "location_name": "Parkroyal Sài Gòn",
-        "latitude": 10.799136899999999,
-        "longitude": 106.6679551,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.3,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhHk2BNHYRUCbFPH6BBHuvncQNcJf2xevKATcsg_6sEkqGJG7zlrfsIlvNLcuE7VqwGztF8tfVjl0Yvz7Yidwetdbvfftg3748khCyK9ptO8_7VA697-DZASmzAkb9dZesn4yH_aTqZytZwK9_EoUs3ORiHfQ3FmP_wnlPDtF2hR5TFOYMX0xW_7=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "KS trang nhã có nhà hàng, quán bar, spa. Phòng ở sang trọng trong KS đẳng cấp có nhà hàng, quán bar/sảnh chờ, khu spa, phòng gym và bể bơi ngoài trời.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJg0-MEhIvdTER_FsxkUAm1dI",
-        "location_name": "La Siesta Premium Saigon",
-        "latitude": 10.773074099999999,
-        "longitude": 106.69575499999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPj_iEydFe4aiCC0PzqOjTAmWHh2Gg9Qr6xQG2n=w137-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn cao cấp có phòng chờ trên tầng thượng. Phòng ở sang trọng, một số có sân hiên, cùng với sảnh cocktail trên tầng thượng và hồ bơi vô cực.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJq6tuBUQvdTERPrUo2ili-N4",
-        "location_name": "Khách sạn LOTTE Sài Gòn",
-        "latitude": 10.7786426,
-        "longitude": 106.7067745,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipMhVc3VzjnL7QkOhgmwNorEph87EZCLqMfGyRZi=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "KS sang trọng có nhà hàng, hướng sông. Phòng ở và suite trong khách sạn sành điệu có 4 nhà hàng, quán bar tráng lệ ở sảnh và bể bơi ngoài trời.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJpV-7MUovdTERS3tmu3Rt9kw",
-        "location_name": "Khách sạn Sofitel Sài Gòn",
-        "latitude": 10.784077199999999,
-        "longitude": 106.7025694,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.7,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPK0l-amKmNchuE2I0GQVtKdPD2fmL1GhfwEAwX=w145-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn cao cấp có nhà hàng Pháp. Khách sạn sang trọng có phòng ở và phòng suite hiện đại, nhà hàng Pháp, bể bơi tầng thượng và khu spa.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJB6vQmUYvdTERlbCxxWUYTSk",
-        "location_name": "The Reverie Saigon Residential Suites",
-        "latitude": 10.7740758,
-        "longitude": 106.7049878,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhEssfpbXOxqTxlMK8-XuzOx0hN6FJeSixOEQqPbc5w-D-ptNAwSwZyuqHThxBk-bWiiPYFMGawdf2Gcdu1iJfbKmse3m-58h-6z6GiAURds9zsY0TK3dfmF2-Kdz8OLmv-vYIkknmkzFuTABRveIQMPtiU8kmPAeeKbP07tjVADVN2eGBJ7f5HL=w80-h108-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn căn hộ sang trọng có bể bơi. Khách sạn cao cấp có bể bơi ngoài trời, căn hộ xa hoa loại 1 và 2 phòng ngủ cùng phòng tắm lát đá cẩm thạch.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJF9cbwBsvdTERxQn29H80jjU",
-        "location_name": "Hotel Nikko Saigon",
-        "latitude": 10.764387,
-        "longitude": 106.682954,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOx2htVp1pvSrqk9lnUU8Bhb6Ubbkxkd11Bj3bg=w164-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "KS cao cấp có phòng gym, spa và bể bơi. Khách sạn bài trí tinh tế có 2 nhà hàng, quầy bar ngoài sảnh, bể bơi ngoài trời, phòng tập và khu spa.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJtxV8ddAndTERKPQ3NQbfrwM",
-        "location_name": "Mia Saigon - Luxury Boutique Hotel",
-        "latitude": 10.8100904,
-        "longitude": 106.75088579999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOh3p51im8ugzHkeYMLNJniUk9q64qZEoxuPzDg=w114-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "KS sang trọng có bể bơi và hướng sông. Khách sạn sang trọng nhìn ra sông, có phòng ốc trang nhã, nhà hàng, khu spa và bể bơi ngoài trời.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJf1gziDwvdTERWyvojyS-heg",
-        "location_name": "Hotel Grand Saigon",
-        "latitude": 10.7742233,
-        "longitude": 106.70534509999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.4,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipP-A1qccsTBWCeL3hN54AixIAfHWqk9KmrKlIuq=w80-h120-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "KS thập niên 30, quán cà phê sân thượng. KS sang trọng có nhà hàng tự chọn, sòng bài, quán cà phê tầng thượng, phòng ở thoáng mát và suite xa hoa.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJZfXdjj4vdTER1-XCkv7ltio",
-        "location_name": "New World Saigon Hotel",
-        "latitude": 10.7708719,
-        "longitude": 106.6951897,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNLegIVTMku0B4xE5ka1bTCFmemWKjqhy5tGy3s=w247-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn cao cấp có bể bơi ngoài trời. Khách sạn cao cấp có nhà hàng thiết kế trang nhã, phòng tập, spa, bể bơi ngoài trời và quầy bar sôi động.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJk_3V7hYvdTERiYmhSgvmA88",
-        "location_name": "Khách sạn Pullman Sài Gòn Centre",
-        "latitude": 10.7643271,
-        "longitude": 106.69167069999999,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipN0sX4mLIZ5l-nENLmMmBw6t1MvqowTu-4lCjeg=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "KS sang trọng có quầy bar ở tầng thượng. Khách sạn quốc tế nhìn ra thành phố, có phòng ốc sang trọng, một quầy bar ở tầng thượng, nhà hàng và một khu spa.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJA0evAkgvdTERLNUql8b4ipU",
-        "location_name": "Khách sạn Sheraton Sài Gòn",
-        "latitude": 10.7754461,
-        "longitude": 106.7038779,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.6,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipO5NNHsN97gj2Kdo1e8yxcH8kLdMwUtGfbemPBB=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Khách sạn cao cấp, có nhà hàng và spa. Khách sạn trang nhã, có nhà hàng quốc tế, bể bơi ngoài trời, spa, cùng một phòng tập thể dục mở cửa 24/7.",
-        "category_ids": [
-            7
-        ]
-    },
-    {
-        "gg_place_id": "ChIJu04FSLMvdTERb-bt47b4Loo",
-        "location_name": "Mars Venus Restaurant - Wine Cellar",
-        "latitude": 10.7930952,
-        "longitude": 106.67152329999999,
-        "open_time": "17:00",
-        "close_time": "22:00",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOxdzzNq_KcnRkavuV51hM7Ic0s0xpHbtjie3Ac=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": "Nhà hàng sang trọng phục vụ rượu và món quốc tế. Nhà hàng xanh mát, lãng mạn này phục vụ các loại rượu và đặc sản quốc tế.",
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJu49RQx4pdTERxx9HgXOajrE",
-        "location_name": "Big Bowl",
-        "latitude": 10.8174504,
-        "longitude": 106.66394,
-        "open_time": "00:00",
-        "close_time": "23:59",
-        "average_rating": 4.7,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyhHVgVP0m6zl8lcPl8mZG-5GBQcFyZ42ldsdg9qklpfvaw03huRFzzRO96XWq39vXtWJRutCLbrE34KOZ7-lSnvOyGWw2Yxaq9CzI691_4aTgWx-2y8Cooc4AUyuHInJr0kvSW=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJC2EyGDEpdTERKT-rdzh9w_g",
-        "location_name": "Hachi Noodle House",
-        "latitude": 10.8104114,
-        "longitude": 106.6674393,
-        "open_time": "06:30",
-        "close_time": "21:30",
-        "average_rating": 4.8,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyL4d44sTu2D2D6nK3zZK2quKho4rNezXooply7Y05rYXWN_PXioyHlSiJwBZj5GjcI6a52Gc-whN7A8JGYt3sojCMX5J_e5l8NKk5LdpXJGcbFIrWWBLxlSfFG5u3x16bDP-Lr=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ8wjT4LQpdTERO-tJE5Up2bA",
-        "location_name": "Tiệm Nướng Nhà Bird",
-        "latitude": 10.793054399999999,
-        "longitude": 106.6398013,
-        "open_time": "16:00",
-        "close_time": "23:30",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNkKjUo2IEmJ2Uze-s3V1K2SZkAO0X7M6Pp_cwV=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJrynSb-IvdTERj9svzc1sjVY",
-        "location_name": "Home Saigon Restaurant & Bar",
-        "latitude": 10.768258,
-        "longitude": 106.693968,
-        "open_time": "09:00",
-        "close_time": "22:30",
-        "average_rating": 4.8,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz2hhLOO0H_vPSTzQ_C6FYIJ3N33CbC3WEtC2ffVR1Y4Z85dbGVDGCVZz4OEug0qlJc-pUWsXRNPVQVxFcJZ9Gc42sQ5bK78VNC4chxyDKKsAmTT__juW2J2C71FlNKFh2OySRSqQ=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2,
-            11
-        ]
-    },
-    {
-        "gg_place_id": "ChIJaW64DPwpdTER5AfS7bHPdlw",
-        "location_name": "Takumi-Tei, Saigon",
-        "latitude": 10.8016299,
-        "longitude": 106.654197,
-        "open_time": "10:00",
-        "close_time": "22:00",
-        "average_rating": 4.7,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxLOOO1IFHqTfJBGfStLEGdahGi1NQQ0Cm2lA1och0nLo5P7ov_VW-bJwyC6BgwCmK_EwciGB8wLC87yrXY29XBKGSoKzDge4z4wp9tLuMa5vi6sPYDMsoc782jeqfMz6Hp_TKg=w134-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJYcbg-jMpdTERVy4bg9oAKY0",
-        "location_name": "Hàn quốc quán",
-        "latitude": 10.796165,
-        "longitude": 106.65942849999999,
-        "open_time": "10:00",
-        "close_time": "22:00",
-        "average_rating": 4.7,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw57aw2ErYZU21238em27r-7fNLRcaB6vOTQGkTu0_JB9-yaw0RFThnmETWs2oUkD3p2NQokUR9uMg67qNgg0x2TCH0KBP3PXNEJ60T1JsYcVpIuzxHDs9oRmkn__ORIpENmB0gXA=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJzZmzw0gvdTERMd1Mj0vWl6g",
-        "location_name": "Cloud Nine Restaurant Sai Gon",
-        "latitude": 10.7731993,
-        "longitude": 106.6956783,
-        "open_time": "11:30",
-        "close_time": "23:00",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOWih5a5_6eLVAVzPA-j07JUXeSmW-MQeEudO3t=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJMfOx7S8vdTERH8b2es5CUq8",
-        "location_name": "HOME Saigon",
-        "latitude": 10.7832942,
-        "longitude": 106.6896996,
-        "open_time": "11:00",
-        "close_time": "22:00",
-        "average_rating": 4.7,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipMbQq7qra2V9ocfgfv4NalVrH01Ag9IS2WU3YGo=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJxWPSRlMpdTERYv5_KQOHWhs",
-        "location_name": "Nhà hàng chay Tami Coffee & Chay (Vegetarian Restaurant)",
-        "latitude": 10.795722699999999,
-        "longitude": 106.6708338,
-        "open_time": "07:00",
-        "close_time": "22:00",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwaAevKUpLS4g4iGDHr9pRqA3Em4U5YBDa1PoB0m8wzE_0lK_7VxffthMDTTiHDZnUW_M-yNCY_8-lHR6vl97Am4qDcqP3PJsnW_suUd2EOE7CFEGivXmFDy4Dt6lX8XrnrA0qO=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJE569cDQvdTERS1BrwSFGha4",
-        "location_name": "NOIR . Dining in the Dark Saigon",
-        "latitude": 10.786636699999999,
-        "longitude": 106.6946782,
-        "open_time": "17:30",
-        "close_time": "23:00",
-        "average_rating": 4.7,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw-rbacAcb2dnBvA5aqvgNJx_Cueliuo4byCUhg7LgJB3nQI9W-envc5_ud7pUGhMcO0rtcXVErirhP93SNHpRvA7umDip3pZuZL6lK1Kc902MpES7_RGupToM5KWzRiHg65rY8VA=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ-xqtuXovdTERSpI8r3FJO-A",
-        "location_name": "Vị Sài Gòn Restaurant & Café",
-        "latitude": 10.7770411,
-        "longitude": 106.6885969,
-        "open_time": "08:30",
-        "close_time": "22:00",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwVCyEqmFCHkyOCfopNXrsiVVr1XVqmDcjfSrUn6j91mU_psUpR1qtc5Tc3FFxe7X_RnIMaDBFpySyu0vJgSXLilFeN2BAtoLjHlTwKc2pscXU3dGpcImQsHcojdEQaScQXQFsuZ47kVDW7=w197-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJMSJtWJ8pdTERMPx4DNqUeMM",
-        "location_name": "Mầm Vegetarian - Nhà hàng chay Mầm",
-        "latitude": 10.7968177,
-        "longitude": 106.67319549999999,
-        "open_time": "09:30",
-        "close_time": "22:00",
-        "average_rating": 4.8,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSztTzFioyOwmdJLNFL5yu5m_5xhUZnAH9648zE0AEL24bQPHbzaZnUDk0-NiiC5aQsRyBvjvu7nYaFRAkQ18x6G_mqt3ULadr5dNk_AUpvHfgrfYJxrLy6VvHdK3PphAiSk0y9O=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJU3h_As0vdTERMUbEMW-qpvw",
-        "location_name": "Pandan Leaf Saigon Restaurant & Rooftop Bar",
-        "latitude": 10.7695119,
-        "longitude": 106.695821,
-        "open_time": "09:30",
-        "close_time": "22:30",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwJSJWaFLpdARhrfjEWQtYjbA1WfvYZqW42ieS0WrHHzM1R2NOgrT349JSHEisS347aZ9SD208Es88JVCXti_wrvo1G3KCwK77JfDe9E_BkaS-qTjAVZAsh4L9XTsaRQ8d29nPg=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2,
-            11
-        ]
-    },
-    {
-        "gg_place_id": "ChIJw7OnY3svdTERpyRr4oLRX8Y",
-        "location_name": "A Taste Of Saigon",
-        "latitude": 10.7738453,
-        "longitude": 106.70217749999999,
-        "open_time": "09:30",
-        "close_time": "22:00",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw8oRtwxBGHJNlq7-WGdwLYPPmVSUfq5W0sdHhCQA3kn6V-DhPtP9v8_u4SpxMRW_IB8ccgoLdHB6kP1fdSh-PEzZRRkjieZGqM_X56hE4D-p_KqLuuqg3GwsyBrLKMbOGFC0z_TM-iCGM=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJ60qeg4MpdTER2BlrXcbjVVM",
-        "location_name": "Saigon Cafe Bar Kitchen",
-        "latitude": 10.8171698,
-        "longitude": 106.6641794,
-        "open_time": "06:00",
-        "close_time": "00:00",
-        "average_rating": 4.4,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyfy9QDMIakBhq0zfpjgzqHW_Acdy6aWRGfoHRKPZLxt6MV44HibFeJMjmI8xUmbYnIhQaE4JwRPOdX4XeXGrPigwn7XFBrAgru5CG72kqPfeOZCVW9dv72wo5Xdn8wTyUQPGV2=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2,
-            11
-        ]
-    },
-    {
-        "gg_place_id": "ChIJKX8tRwkpdTERV87b3PtSHg4",
-        "location_name": "Å by TUNG",
-        "latitude": 10.792513999999999,
-        "longitude": 106.6905869,
-        "open_time": "18:00",
-        "close_time": "23:30",
-        "average_rating": 4.8,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzzldj_kmz-lTEClIsph4nexQRUdbfft0kdziHiCxTeZJazLxMYmZ7TWLmWcP9jbymd-MwgIEgU8s5xNU-AJBKSywxhWWxZqGJMJ8T8_8DN63DCbdb8F6m-AbhuXRhhjgDSv8tI=w80-h106-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJfw_iSOkvdTERz5z42lgTX1o",
-        "location_name": "De Tham Restaurant - Vietnamese cuisine & vegetarian Food",
-        "latitude": 10.7682442,
-        "longitude": 106.69363039999999,
-        "open_time": "10:30",
-        "close_time": "23:30",
-        "average_rating": 4.9,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzGpj8w-ZeVVSsJOTR1Nm98Kq7fW7WxaVqL8ecEoM0ZPu0TtQZ1b6WeJRbIhEmPqNvp49YwcGl-oCz7lwRYeXLbki7aLHo5P0VwGn2PT5K-mrxGXDj7L4GOlVgpoVgk6AceSL3As4vrWHLT=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJEyzbR08pdTER8P6cSrRERps",
-        "location_name": "AL Fresco's",
-        "latitude": 10.8013114,
-        "longitude": 106.65231059999999,
-        "open_time": "10:00",
-        "close_time": "22:00",
-        "average_rating": 4.5,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwFShGulR7jQtmUnAmd9FIUmE706OanmZx6j09ZMU7l5tgP8-pLPWWZLVLFnE2C6udxWyg4hSDKZZRo99tYXp7eoZoRcfzIDW4-8tDz_5YMXM4MAcL9N1y_ygZVS1hiDNv-3PfKuQ=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    },
-    {
-        "gg_place_id": "ChIJJf1dgDwpdTERAHE1hP0b08I",
-        "location_name": "Hansol",
-        "latitude": 10.8077927,
-        "longitude": 106.6616514,
-        "open_time": "10:00",
-        "close_time": "22:00",
-        "average_rating": 4.4,
-        "review_count": 0,
-        "province_id": 101,
-        "rawImgs": [
-            {
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzhXePXqdFLngXUIFEh7Z1q_dhNzOjYZWiJBUr_JRRCY3OGw313c3RfDr6AhQd2_YcORMEJba22G4EWdBADdklnWW_XNzLgHVU3EFs-Y-zcKzSo28gfMFlK1LSS3228EGOvPelGlw=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-            }
-        ],
-        "description": null,
-        "category_ids": [
-            2
-        ]
-    }
+  {
+    "gg_place_id": "ChIJAQAAUBhFcTERMLpEa0AJyoA",
+    "location_name": "Khu Du Lịch Thác Pongour",
+    "latitude": 11.689304199999999,
+    "longitude": 108.2656291,
+    "open_time": "{\"chủ nhật\": \"07:30–17:00\", \"thứ hai\": \"07:30–17:00\", \"thứ ba\": \"07:30–17:00\", \"thứ tư\": \"07:30–17:00\", \"thứ năm\": \"07:30–17:00\", \"thứ sáu\": \"07:30–17:00\", \"thứ bảy\": \"07:30–17:00\"}",
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxewxa9ulGmBuUBRK6yGokwPa1Z_PWbiuZRCE8ZMMX3nCQFEqQVDRWZOD1iYyjQdCPlvgf-0A2C0MrUtP0EJA83_E0JIVT9oFPcQQgG6QvMajbQFAIfR959gHA6aziJgFFRaCRd=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "waterfall"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ_R7ltS4TcTERiCiDrViVuFk",
+    "location_name": "Dalat Adventure Tours",
+    "latitude": 11.949451,
+    "longitude": 108.4559828,
+    "open_time": "{\"chủ nhật\": \"06:00–22:00\", \"thứ hai\": \"06:00–22:00\", \"thứ ba\": \"06:00–22:00\", \"thứ tư\": \"06:00–22:00\", \"thứ năm\": \"06:00–22:00\", \"thứ sáu\": \"06:00–22:00\", \"thứ bảy\": \"06:00–22:00\"}",
+    "types": [
+      "Nhà điều hành du lịch"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxNj1fpHl3NzbN1WVTMQzpFpp2KdZjjvO6UEPLalg1Q3pRWhOD4CWauheysNKdJSQPAYaqzM2L2JsblRuORL1JZDe8XafBXLnyI5DYpP4QqTlYNih-A-2lrMkOpVSklgZvb_Dk=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJeeLn-P1DcTER59_5GuB122Q",
+    "location_name": "Liêng Rơwoa Camp - Trại Thác Voi",
+    "latitude": 11.8220768,
+    "longitude": 108.3323303,
+    "open_time": "N/A",
+    "types": [
+      "Khu cắm trại"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNjOs2VLi3KpNp5XHv4Mva1rfDgjksvhvif7VnG=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "waterfall"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ61j0gC4TcTERahPdwdGQccw",
+    "location_name": "Highland Sport Travel - Adventure Tours Dalat, Viet Nam",
+    "latitude": 11.960957599999999,
+    "longitude": 108.4433238,
+    "open_time": "{\"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\", \"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\"}",
+    "types": [
+      "Người tổ chức hoạt động ngoài trời",
+      "Trung tâm thể thao mạo hiểm",
+      "Nhà điều hành du lịch",
+      "Đại lý du lịch thể thao"
+    ],
+    "average_rating": 5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz7b8msHVrLPjxtDgtp3FWhEvdqYxtLyqQRobA1Z33YAaPmTF2QOZOIl9ONEbYa9RzH54LWccKbXXKF9yKfaM0Nw7OuepZqGFdvdkRmlv0mtrrorBdR82ydvEmCM-oac8xPvJ-v=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJv2dGwzhrcTERWbixSfB_mD0",
+    "location_name": "Đường Hầm Điêu Khắc",
+    "latitude": 11.882505199999999,
+    "longitude": 108.41156939999999,
+    "open_time": "{\"chủ nhật\": \"07:00–17:00\", \"thứ hai\": \"07:00–17:00\", \"thứ ba\": \"07:00–17:00\", \"thứ tư\": \"07:00–17:00\", \"thứ năm\": \"07:00–17:00\", \"thứ sáu\": \"07:00–17:00\", \"thứ bảy\": \"07:00–17:00\"}",
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.2,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwwBHIqw4ZFz3hgYAhJc9Bu-PhnGGBh1NvOpwDKuS09XFm_YnvWdWX2OHThd_rZKDavG0KYMdnTArFaSu79uU4EFgVXsHaTNLXyJrsfY23V1pqlsu4HWZhE0AZMMuT1uba29Wpd2w=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Công viên với tác phẩm điêu khắc đất sét. Khu trưng bày nghệ thuật với các tác phẩm điêu khắc bằng đất sét khổng lồ đủ thể loại từ thằn lằn đến tàu hỏa.",
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJwVhjjlrzczER8ZDYj86TgNw",
+    "location_name": "Dasara Waterfall",
+    "latitude": 11.643858,
+    "longitude": 107.7392098,
+    "open_time": "N/A",
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.6,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy-jnJqCON05bh-X3Ntxima21ECvWB-obW2d7Dt_HTTux79-shp3dOrf4Ma1SpFpZzcq9RruUaGbgKLdTFwWy3k4s8e4Em8vn7Q-6MVFg7JXwv_dmDjoWny1MP5iAfz28BUXlpZ=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "waterfall"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJtZiXaI9tcTERDmbfFSxuAG0",
+    "location_name": "Thác Ankroet",
+    "latitude": 11.990631599999999,
+    "longitude": 108.36747059999999,
+    "open_time": "N/A",
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzaP38rl_vdVO82sXjNthhHhgy-XnbbwCGe_gZ2NhEPZacHSsQ2qeXz8Y4aSwuB77c1J-cRNTS55FuOamHJD87k2DKbw64f1Y4Fee2lRgwTl74TUA_pxUznamhke9kzoKtL26Ln=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "waterfall"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJi3fQy75zcTERZbshK6HjEto",
+    "location_name": "Langbiang Adventure Squad - Enduro, Trekking",
+    "latitude": 12.0151846,
+    "longitude": 108.42356,
+    "open_time": "{\"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\", \"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\"}",
+    "types": [
+      "Trung tâm thể thao mạo hiểm"
+    ],
+    "average_rating": 5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNhJnaXOpVrY2YqHJKPz79WpW1VBqzBdxEa6YBH=w154-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJU4S2v3YTcTERHLIqj5iwwDE",
+    "location_name": "Dalat Amusement Park",
+    "latitude": 11.9779375,
+    "longitude": 108.44710939999999,
+    "open_time": "N/A",
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxFvwqR_1SBCjpqP0QqZNOnWq6WDHXiVQHpnVL2-hQdY998wOiPkCTZkkBT70G1yoog57Lfluf8Fgln6RqNaLyoGjSfvmcxNF5uXMt3wX7MWm1zQSHZ8XW8thjbOKLBovFg7krKlWYRJC05=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJQTO5pKEUcTERZcAVKbeOzvg",
+    "location_name": "Khu du lịch Thác Datanla",
+    "latitude": 11.9034324,
+    "longitude": 108.4496999,
+    "open_time": "{\"chủ nhật\": \"07:30–16:30\", \"thứ hai\": \"07:30–16:30\", \"thứ ba\": \"07:30–16:30\", \"thứ tư\": \"07:30–16:30\", \"thứ năm\": \"07:30–16:30\", \"thứ sáu\": \"07:30–16:30\", \"thứ bảy\": \"07:30–16:30\"}",
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx3pN-l6bSzOsmemvg9xdCffRssKaMISPVOnWZ_RvbupNs0rCBGWoeNj8ZE2ccBuOdHFoptMfrjH5l6-rD3eCU800CgiyBeW3161rh9cL74FI11eS85T2F1ko9ZKju6ZQhq5SZp=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Thác nước nhỏ có khu vui chơi và đi bộ. Khu thắng cảnh nhộn nhịp có nhiều thác nước nhỏ, tàu lượn siêu tốc, tuyến cáp treo và các con đường mòn đi bộ.",
+    "categories": [
+      "waterfall"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJneCVGe5HcTERs3KKPMik6WM",
+    "location_name": "Samten Hills Dalat",
+    "latitude": 11.6918891,
+    "longitude": 108.4239144,
+    "open_time": "{\"chủ nhật\": \"06:00–20:00\", \"thứ hai\": \"06:00–20:00\", \"thứ ba\": \"06:00–20:00\", \"thứ tư\": \"06:00–20:00\", \"thứ năm\": \"06:00–20:00\", \"thứ sáu\": \"06:00–20:00\", \"thứ bảy\": \"06:00–20:00\"}",
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwqR7Tc_phcZe2TtLmyr8UBdZ1_aPah3eR37JO_wWwB7lnnxmYQzekvdalqkr4Mrej3rSIjKrteDY9pY7mWmonDOOb4jY10MtcZOWdQ3OFBsrPfPVgWm8gAdN9GOvr9THso86lSDQ=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJnTeNtC4TcTERXB91hXZz4lA",
+    "location_name": "Viet Challenge Tours",
+    "latitude": 11.9443308,
+    "longitude": 108.43488099999999,
+    "open_time": "{\"chủ nhật\": \"07:30–21:00\", \"thứ hai\": \"07:30–21:00\", \"thứ ba\": \"07:30–21:00\", \"thứ tư\": \"07:30–21:00\", \"thứ năm\": \"07:30–21:00\", \"thứ sáu\": \"07:30–21:00\", \"thứ bảy\": \"07:30–21:00\"}",
+    "types": [
+      "Nhà điều hành du lịch"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPNt512LtYovjfDdj1Fs4oM8t5-CGTg2Cta13Fo=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJxUPozbAScTERgXK6RNYL8Pw",
+    "location_name": "Đồi Thiên Phúc Đức",
+    "latitude": 11.994605799999999,
+    "longitude": 108.42856959999999,
+    "open_time": "N/A",
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzdWEm5AQniDeOe2F1QUNLErFqZyrj4z74e1AxgMt1-6--1r4PvdFZnmjjMzuDaObwCCVOIIjsNPuWOxyBql4j480xa-blg7YZcW3F4njMAka1VZZrrmYc8Y2lz-RfZoKdcbhwiNA=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Cảnh sương mù lúc bình minh và cây thông. Ngọn đồi rợp bóng cây thông có con đường mòn dẫn lối đến và nổi tiếng với cảnh bình minh trên thung lũng sương mù bên dưới.",
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJsbs-HAB1cTERiJppkmPh_zg",
+    "location_name": "Xứ sở Cổng Trời",
+    "latitude": 12.09635,
+    "longitude": 108.377048,
+    "open_time": "N/A",
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzI8V5Amgo3Y-nKONx6uEbh9aqR1U3T5CH5fnhVIEHM1ZiIZ4X_npRvO1zz0orMoaPkVZ4buUosPn8vuQTBr5wSSvTvNp_1Hs69TU4SByBf_uwCI-IwhrSluzc8wphCX61Oakr2LAfJY8bQ=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ6X7a7NTjczER9_Iv-KbxvKo",
+    "location_name": "Đèo Tân Thanh",
+    "latitude": 11.739808199999999,
+    "longitude": 108.04221629999999,
+    "open_time": "{\"chủ nhật\": \"06:00–22:00\", \"thứ hai\": \"06:00–22:00\", \"thứ ba\": \"06:00–22:00\", \"thứ tư\": \"06:00–22:00\", \"thứ năm\": \"06:00–22:00\", \"thứ sáu\": \"06:00–22:00\", \"thứ bảy\": \"06:00–22:00\"}",
+    "types": [
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwoPz4sgvK_I60t6KoqCXgZOYTipzfk2FA-VqzcXnFurdbieAqfhjHt73pwVvvlt-XBJVcDvWzeNgItK9Ab7KuW1M4raH4EAkEYvEOQtF-SGVsGrhxA0_XsUqgzBYPg4_P1_3YF=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJVWpX3hlFcTERL70HydbZ8DU",
+    "location_name": "Thác Pongour",
+    "latitude": 11.6873826,
+    "longitude": 108.2653754,
+    "open_time": "N/A",
+    "types": [
+      "Thác nước"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyFKiLm2jjupnhG65tH0BjIOKU-n7xw9hgxH9K6f7a2Z_O5CHoR0v6RuvFzv1LqjnTLIPtuXbJtj37Te9eciRLdv_hoFpqYjvxYvjA35VuWYwTlzZ0L0hXk6JJiXeEunPh-PKhB=w80-h97-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Thác nước bậc thang có lối đi và vườn cây. Thác tuyệt đẹp đổ nước xuống những tầng đá, nằm giữa những khu vườn kiểng có các quầy hàng.",
+    "categories": [
+      "waterfall"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJdREJBSYTcTER5Svkxdggcr4",
+    "location_name": "Viet Action Tours",
+    "latitude": 11.9546218,
+    "longitude": 108.42699429999999,
+    "open_time": "{\"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\", \"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\"}",
+    "types": [
+      "Đại lý du lịch tham quan",
+      "Đại lý du lịch bằng Ca nô & Kayak",
+      "Đại lý du lịch"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyijw3Tt2t2YgnUXLUenLMlUE7qiN8NSu08z1Rw68fN4Ffj8CZnNDYHrB29j2PGyrgmPJ3WSJrU2bharm02L68tYeQuUxQQE6IuBgM0cfni9_OmQdpXzDiDezCyEfZpzbT_0CtZ=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJkd0BOskTcTERP5_WHUmafc4",
+    "location_name": "Highland Adventure Travel Da Lat Canyoning Tour",
+    "latitude": 11.930278099999999,
+    "longitude": 108.43621759999999,
+    "open_time": "{\"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\", \"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\"}",
+    "types": [
+      "Nhà điều hành du lịch",
+      "Đại lý du lịch tham quan",
+      "Đại lý du lịch thể thao"
+    ],
+    "average_rating": 5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMBxm7eaHvfWfiPRGYXWOpNfj7t5yQuy37VNiTl=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJKQb-oyQTcTERiVn-etOO62Y",
+    "location_name": "Quảng trường Lâm Viên",
+    "latitude": 11.9393622,
+    "longitude": 108.44520299999999,
+    "open_time": "{\"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\", \"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\"}",
+    "types": [
+      "Quảng trường",
+      "Điểm thu hút khách du lịch"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwmvQsZJUuzthbKYmwZXPyqUpJfKDhMEWxztwBFUVHD3trdN_bqNgOv-8TqXOzDI0NvY0gDJFzIADIHaKDP7O0Cbd_oeLWLqnRUGbhZvwRpL9wZuT_eDRzcRDM19WUlw9_x9hoG=w145-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Quảng trường ven hồ có thiết kế ấn tượng. Quảng trường ven hồ nổi bật với những tòa nhà ốp kính hiện đại nổi tiếng, có nhiều quầy thực phẩm và sự kiện âm nhạc.",
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJbQIpRcrzczERWmwP0ZKvJeg",
+    "location_name": "Khu du lịch Thác Đamb'ri",
+    "latitude": 11.6408036,
+    "longitude": 107.74342689999999,
+    "open_time": "N/A",
+    "types": [
+      "Điểm thu hút khách du lịch",
+      "Công viên giải trí",
+      "Khu trẻ em",
+      "Khu ăn uống",
+      "Khu bể bơi",
+      "Khách sạn nghỉ dưỡng"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyGXZRtHWWUHgQPDmXdNBgDi-WPyMd57_kXLCd1k8in-HO0RdYofk4a5Kg6i5wJ8_8zMWJ3HhyL15MV92VxHRSeBJ5lVX-OByyIkcnpHE-fXQE1aoQ39hmGwigOuGoxdEaHT7Erew=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Khu DL thác nước có lối đi bộ & nhà hàng. Thác nước lớn và quang cảnh hùng vĩ nằm giữa thiên nhiên hoang sơ với lối đi bộ và nhà hàng.",
+    "categories": [
+      "waterfall"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJl9p2kTETcTERD2UK-Y4pL70",
+    "location_name": "Khách sạn Dalat Palace",
+    "latitude": 11.9376172,
+    "longitude": 108.4403766,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMA3dmc6SrKjg4gaj2rErnBn8xtc4pYDK549R17=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Khách sạn uy nghi, nhà hàng cao cấp, spa. Khách sạn trang trọng từ thập niên 1920, cảnh hồ, vườn cây tuyệt đẹp, nhà hàng, spa và phòng ở tinh tế.",
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJb3zd0SsTcTERMXcrD-idmCg",
+    "location_name": "MerPerle Dalat Hotel",
+    "latitude": 11.9411183,
+    "longitude": 108.4583036,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipN_0tW7daZ3PNWIyB1-hufAcP6lduWkvkj_-RHy=w109-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ0Yk_-VEJdDERlC1u8igmN20",
+    "location_name": "Cao Lan Hamlet",
+    "latitude": 11.462855699999999,
+    "longitude": 107.8103405,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn nghỉ dưỡng"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPaIaKviKP-9EvkUxuGIx0rFkR1fOnV9SstE7gs=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ9Yy2qt9BcTERUftgDDdWpEQ",
+    "location_name": "SANDALS STAR HOTEL",
+    "latitude": 11.737309999999999,
+    "longitude": 108.3735854,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhFCERKSWPfZIeXF1bAeG0DL7jw_b5l5m5RRBxZ3mXbv46bosJgbwF-xAGKrCOxUwc8g9tpLFDopG-czhgW5a2ypee2OUJSTz_2Aug07M1TQbJhNc-0GoWlQtAieIBsdZOFhArj5PVdzXpMjV6oGz203-3tVydA9n4fAVxm5fl-uhqfGLUivmaPc=w209-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJq2JiJwFrcTER_VMff_0G05Y",
+    "location_name": "Mơ Stay - Forest Resort",
+    "latitude": 11.886597199999999,
+    "longitude": 108.4089393,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn nghỉ dưỡng"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOiHfS4Xx2KgDTrHV00dTyv7IJeMxnlA_Cqxzej=w137-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJS2jADNRscTERN7cFfAWSmGs",
+    "location_name": "Ana Mandara Villas Dalat Resort & Spa",
+    "latitude": 11.944039,
+    "longitude": 108.4236,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn nghỉ dưỡng",
+      "Sân gôn thu nhỏ",
+      "Nhà hàng",
+      "Spa",
+      "Bể bơi"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPo89B6-Msl6Sr5p4Z3ZjARJpYay8rDosjVAc01=w154-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJRXfYM1MTcTERm2W_mcYPd-8",
+    "location_name": "Colline Dalat - Công ty TNHH Đỉnh Đồi",
+    "latitude": 11.9439482,
+    "longitude": 108.4381016,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPkHtxgLMCUZUL-WXlgXM8r_Y4aGi0JBnGvkwQt=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "KS hiện đại có nhà hàng và phòng tập. Khách sạn hiện đại với phòng ở tinh tế, có 2 nhà hàng, 2 quán bar và phòng tập thể dục.",
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJRZmEBEZrcTERIkUn7yHrWQA",
+    "location_name": "Binh An Village Resort Dalat",
+    "latitude": 11.8877595,
+    "longitude": 108.4176396,
+    "open_time": "{\"chủ nhật\": \"Mở cửa cả ngày\", \"thứ hai\": \"Mở cửa cả ngày\", \"thứ ba\": \"Mở cửa cả ngày\", \"thứ tư\": \"Mở cửa cả ngày\", \"thứ năm\": \"Mở cửa cả ngày\", \"thứ sáu\": \"Mở cửa cả ngày\", \"thứ bảy\": \"Mở cửa cả ngày\"}",
+    "types": [
+      "Quầy cà phê",
+      "Nhà hàng"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSylz_MDg874KbrayC1JrGYniH5JlQb-wBS0f8gmWi0IJh7TgtyODu-j6ZTzHL_Rs4h32NjITWIxrZj99DWp4YsNNQKJkmTRxgrpF76KOBYOzHZsZlIH6Ep7kjbrGTzpj4koyU9f=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Khu nghỉ dưỡng yên tĩnh có hồ, sân golf và yoga. Khu nghỉ dưỡng ven hồ thanh bình với các phòng nghỉ bình dân và biệt thự 3 tầng, cùng sân golf, yoga, nhà hàng và quầy bar.",
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJxUv4_fYTcTERV8V2xU9nkS8",
+    "location_name": "SA' Villas Dalat",
+    "latitude": 11.941769299999999,
+    "longitude": 108.4807678,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx5WauWOVnT_2-jJA9WwRaWp5dmqqfrmiFOlQHLtwFR3CpdUkYqBhZ61oSGoaoB0z-4P7aUtcT6NZauMmuFsT_RhQxRkfsm2xZmSjmEYKxbNn9_St4oz70wyM9XGYQu5bCTkrZw=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJT_TcVJUUcTERQNkr-QgVPug",
+    "location_name": "Swiss-Belresort Tuyen Lam Dalat",
+    "latitude": 11.8824243,
+    "longitude": 108.4518585,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn nghỉ dưỡng",
+      "Khách sạn"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzNRcph24G6iGRM8RVhSVN3z9Bjbnw4VwD8I12DN4mu_HQ6Yc4jKMVJVdSJQixiBr-RXZmHgZdGW9nce8eYPU1_CaR-fsCunuF9iMrd0jIOcGrSKzwaVwQmLAjO6x-veKz-Gy8G=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ2dCKfvNVcTER_pO0xJQwQ9o",
+    "location_name": "Ivory Falls Villa",
+    "latitude": 11.542676199999999,
+    "longitude": 108.0697848,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn",
+      "Biệt thự"
+    ],
+    "average_rating": 4.6,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNa0EVioxbzuIVehp6Q7KeW-ooz_fW2EA8-QUo=w137-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJxwYY4q8UcTERt31w04QnILo",
+    "location_name": "Terracotta Hotel & Resort Dalat",
+    "latitude": 11.8948927,
+    "longitude": 108.43805379999999,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGxA9bovZVChKPAbTm8ne_4WVN1arZcpB6_KLQtRiCRaJXH63p2QjjvQh9N2RVgmI3AlZwqb34trW8VCcme3uhVnFI62JCBAEtvrc_rEKrH3iry97ilcQbvJabVAiVRADSBQBm6VGb6QCgqQJUL1oEwiQTKtCcSWCbO1CYiMZd3Wei5pC2TMwU=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Khu nghỉ dưỡng ven hồ có spa, sân tennis. Phòng ở và biệt thự cao cấp tại khu nghỉ dưỡng ven hồ có spa, phòng ăn, sân tennis, phòng gym, phòng karaoke.",
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJrYwq6a4UcTERyc7HOyuPJhk",
+    "location_name": "Dalat Edensee Lake Resort & Spa",
+    "latitude": 11.8868268,
+    "longitude": 108.4235015,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn nghỉ dưỡng",
+      "Khách sạn"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGbN0DM1vD4aD94XWJt5wLBP665RP2sy7DB4mFF-TupcXMyeJ6x14yPmLcSwx6ipxlWweHTn3dAf7YO3Y6Gq5DqJr6pvEi4ynCX95TPK9r9QV52PFCor9uoPeSWg4EgNxgZSG7rmGw9UvFmhUS2M1Qyzb1cYkvd6JMV0iliK3SSjNjCkn8YZk4=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJxZUaQF0TcTER8VUw22Qz9p8",
+    "location_name": "The Fuji Villa Da Lat",
+    "latitude": 11.940954699999999,
+    "longitude": 108.4645666,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwqmtf-PzKqf5LHSjHFd_IGK0dqbEJDmQivfoyi1E6AkzTEVsPBejBKdrAPYbZsWa_EaeX3Syj-dGR6A1_v-HTkJV-c2z1o3EBGWadqAOod3APIXXCRwf64Bu3OtHJcMwoGfh9E=w80-h106-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJBUy1IT5ycTEREZLjJbrKlHQ",
+    "location_name": "Laan Dalat Retreat",
+    "latitude": 12.0201476,
+    "longitude": 108.350253,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn nghỉ dưỡng"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipP_YzOSLEoBlMGiBMgZQ1w6wQNIADaDXQsC7Qff=w137-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJGTnGczATcTERIWcBABVZ_3k",
+    "location_name": "Du Parc Hotel Dalat",
+    "latitude": 11.9366756,
+    "longitude": 108.43905679999999,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipN9gLO3RI5HGerCr_-WjAysCgOhJT7NGOpuJ3Y2=w137-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Khách sạn trang nhã có bữa sáng miễn phí. Khách sạn sang trọng theo phong cách Pháp thuộc, có chỗ đỗ xe, bữa sáng miễn phí, quán bar và nhà hàng.",
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJr9wOWC4TcTERIhyHEu1dFY4",
+    "location_name": "Pearl Wealth Dalat Hotel",
+    "latitude": 11.940521799999999,
+    "longitude": 108.43469119999999,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwxyJ6PbZn5S76vidJXjvG8gu3q1Ktqrrl6nmD60ps2WNH6r79I-gYrXW3VXkmnC_AqMQvWohmmLDQJ3PL9IXCacX80UJiZh6TEbClK_udUpVG4ZTIoS8i94NsL-lbN1qO2k_cx=w80-h120-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJVdIyadj3czERb1D2I6xq4VU",
+    "location_name": "B'LAO LUXURY HOTEL",
+    "latitude": 11.539261,
+    "longitude": 107.813076,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGhUTgrn0XLmQYbhhJlb98RrhH02XiLZvuG3s_qxhtyTV_UgcwpkWedX-XJ4O5nw7UKDejjRpmdpGZvPRq2yM6je8JugvsMaIRzdutfkG_JFLXepWxa1dmpVmK5mDe_pgVVTbm6l0wqzj13VYYSbJ03-ebdvPr0kt8pvdXgxWss8FN9zkpR0XddZg=w132-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Khách sạn ấm cúng có nhà hàng. Khách sạn bình dân có nhà hàng, quầy bar, phòng ở đơn giản và một số phòng có ban công.",
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJU4s13rsVcTEReGE_DVgWwX0",
+    "location_name": "Cereja Hotel & Resort",
+    "latitude": 11.8886638,
+    "longitude": 108.43475009999999,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn",
+      "Phòng tiệc",
+      "Khách sạn nghỉ dưỡng",
+      "Biệt thự"
+    ],
+    "average_rating": 4.1,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMOyH9571MZYWBw4SgWkrPmGIeqEjQe1I5YSlMr=w137-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJdc7PNv0ScTERqOJMnMwT4X0",
+    "location_name": "La Sapinette Hotel Da Lat",
+    "latitude": 11.9487861,
+    "longitude": 108.4638799,
+    "open_time": "N/A",
+    "types": [
+      "Khách sạn"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipPSO2ZAPLwucH6LOu4lT7O8jnoGVwsof4u90Kvb=w138-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": "Khách sạn cao cấp có 2 nhà hàng và spa. Khách sạn sang trọng, nhà hàng Pháp và Việt Nam, quán bar, khu spa và phòng tập thể dục.",
+    "categories": [
+      "hotel"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJzZ3AnfZWcTERGl7nmClCHMA",
+    "location_name": "Cơm Niêu Cô Hương",
+    "latitude": 11.6056838,
+    "longitude": 108.0995543,
+    "open_time": "{\"chủ nhật\": \"07:30–16:30\", \"thứ hai\": \"07:30–16:00\", \"thứ ba\": \"07:30–16:00\", \"thứ tư\": \"07:30–16:00\", \"thứ năm\": \"07:30–16:00\", \"thứ sáu\": \"07:30–16:00\", \"thứ bảy\": \"07:30–16:30\"}",
+    "types": [
+      "Nhà hàng"
+    ],
+    "average_rating": 4.3,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxIfF-AlfxghTjDZj-sP0wXXB5-T0ef6pp7x_UC7S7m83ZwN7qpMpkEESLtbzBAm4F4-eFkrQWsZjP8T18-isT_SFLlRff2wiBK-F33KdggXzC8LmySicOr6OqXwdB7mJDnXk8ESQ=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJMzXtGY4TcTERzanixs08VxE",
+    "location_name": "Tiệm ăn Đà Lạt Phố - Restaurant",
+    "latitude": 11.9442842,
+    "longitude": 108.4348971,
+    "open_time": "{\"chủ nhật\": \"09:30–21:30\", \"thứ hai\": \"09:30–21:30\", \"thứ ba\": \"09:30–21:30\", \"thứ tư\": \"09:30–21:30\", \"thứ năm\": \"09:30–21:30\", \"thứ sáu\": \"09:30–21:30\", \"thứ bảy\": \"09:30–21:30\"}",
+    "types": [
+      "Nhà hàng",
+      "Quán cà phê"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipMxGduP4RS_9ljIYCLWgH45JZGDhJnSH7ovk2OG=w80-h106-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJa7kF1ZUTcTERS2YSxffS_54",
+    "location_name": "Moon Dining",
+    "latitude": 11.9365756,
+    "longitude": 108.4411566,
+    "open_time": "{\"chủ nhật\": \"17:00–22:00\", \"thứ hai\": \"17:00–22:00\", \"thứ ba\": \"17:00–22:00\", \"thứ tư\": \"17:00–22:00\", \"thứ năm\": \"17:00–22:00\", \"thứ sáu\": \"17:00–22:00\", \"thứ bảy\": \"17:00–22:00\"}",
+    "types": [
+      "Nhà hàng",
+      "Cửa hàng cà phê"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxX5CiiSX05E_GK572Twvas_0-qoTMxoWYT0cM4A3hwDfBixUGyswl04VxoiwTWJUyKjgeukBkQNXLkPNQ9sVN1BUN10ePu9MVRhPQWY6AsYBPBEI2lb3KLzyyOeGMcHvUCPPTK=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJo9tCD5sTcTERaG6zEkT3d9Y",
+    "location_name": "Nhà hàng Túi Mơ To Garden Restaurant",
+    "latitude": 11.9410479,
+    "longitude": 108.4837046,
+    "open_time": "{\"chủ nhật\": \"10:30–22:00\", \"thứ hai\": \"10:30–22:00\", \"thứ ba\": \"10:30–22:00\", \"thứ tư\": \"10:30–22:00\", \"thứ năm\": \"10:30–22:00\", \"thứ sáu\": \"10:30–22:00\", \"thứ bảy\": \"10:30–22:00\"}",
+    "types": [
+      "Nhà hàng món nướng",
+      "Món nướng",
+      "Nhà hàng gia đình",
+      "Nhà hàng món lẩu",
+      "Nhà hàng",
+      "Nhà hàng Việt Nam"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzk2_r-4P2LQfDEX7o309ERPolcoaOdaqCiibQHsk5iPUIMo0wklGH4mguNN29y4-UmWIfL0OE--hGur-p7XfN9o7tWeaTiLJz1AsClz2hc4OmVh5cABcqH7fBSEDFMK-xxXy6q=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJE2DmmigTcTER78OP81G33ig",
+    "location_name": "Boho",
+    "latitude": 11.9462631,
+    "longitude": 108.4392003,
+    "open_time": "{\"chủ nhật\": \"10:30–22:30\", \"thứ hai\": \"10:30–22:30\", \"thứ ba\": \"10:30–22:30\", \"thứ tư\": \"10:30–22:30\", \"thứ năm\": \"10:30–22:30\", \"thứ sáu\": \"10:30–22:30\", \"thứ bảy\": \"10:30–22:30\"}",
+    "types": [
+      "Khu ăn uống"
+    ],
+    "average_rating": 4.2,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOLV9IAoajkSDxKSKohpOqdS3IQoNZqVGqfTeXg=w114-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJFbaMW95VcTER_LBNlnStsGI",
+    "location_name": "Nhà hàng Tâm Châu",
+    "latitude": 11.5759858,
+    "longitude": 108.07407149999999,
+    "open_time": "{\"chủ nhật\": \"06:00–22:00\", \"thứ hai\": \"06:00–22:00\", \"thứ ba\": \"06:00–22:00\", \"thứ tư\": \"06:00–22:00\", \"thứ năm\": \"06:00–22:00\", \"thứ sáu\": \"06:00–22:00\", \"thứ bảy\": \"06:00–22:00\"}",
+    "types": [
+      "Nhà hàng"
+    ],
+    "average_rating": 4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwtdrBQYfoBvHxOLdLJISaOim8WQl0trn4C6mqyRxZNAJTyXeC84Qtrh7zRvPvFvrgGjP8mI9w731zaBVSTEeCLSWmLk4O3S8t1YrnzL9uxaM47wB2b4ZWa9KV7SJyz36yjEfBo=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJIQ3O0dttcTERwU80Ib9XQY8",
+    "location_name": "Moto Laurie Cafe & Bistro",
+    "latitude": 11.9327402,
+    "longitude": 108.42637169999999,
+    "open_time": "{\"chủ nhật\": \"08:00–21:00\", \"thứ hai\": \"Đóng cửa\", \"thứ ba\": \"08:00–21:00\", \"thứ tư\": \"08:00–21:00\", \"thứ năm\": \"08:00–21:00\", \"thứ sáu\": \"08:00–21:00\", \"thứ bảy\": \"08:00–21:00\"}",
+    "types": [
+      "Nhà hàng",
+      "Quán bar",
+      "Quán cà phê",
+      "Cửa hàng bánh",
+      "Cửa hàng xe máy",
+      "Nhà hàng pizza",
+      "Nhà hàng bít tết",
+      "Nhà hàng món chay",
+      "Quán rượu"
+    ],
+    "average_rating": 4.8,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipOPzB2NsO7jTIUIB4TAEBPF35kpNIZ4G24BlN0f=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJpUxspckTcTERQotRcaVt_VE",
+    "location_name": "Trang's Cookery Restaurant",
+    "latitude": 11.9471866,
+    "longitude": 108.4354851,
+    "open_time": "{\"chủ nhật\": \"08:00–21:30\", \"thứ hai\": \"08:00–21:30\", \"thứ ba\": \"08:00–21:30\", \"thứ tư\": \"08:00–21:30\", \"thứ năm\": \"08:00–21:30\", \"thứ sáu\": \"08:00–21:30\", \"thứ bảy\": \"08:00–21:30\"}",
+    "types": [
+      "Nhà hàng"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx8zCCSNJAww5-0qdJ8pSRxml8D3rSrYwIZdnF39lDdNmXHbMXsG25OW3tMjwMhz7YGGPmTjdqXufhBhM93lOWTNWJpUjta889fCAh6_3X3anNgO1OUwFYAm4jBLDAcb74cqldj=w80-h106-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJNcFG0lwTcTERR0Ndu7-IsWY",
+    "location_name": "Chef's Dalat",
+    "latitude": 11.9477289,
+    "longitude": 108.43205119999999,
+    "open_time": "{\"chủ nhật\": \"08:00–22:00\", \"thứ hai\": \"08:00–22:00\", \"thứ ba\": \"08:00–22:00\", \"thứ tư\": \"08:00–22:00\", \"thứ năm\": \"08:00–22:00\", \"thứ sáu\": \"08:00–22:00\", \"thứ bảy\": \"08:00–22:00\"}",
+    "types": [
+      "Nhà hàng Châu Âu hiện đại"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyTQsFsNomygl3N33qU_LXXXrJn-H_0uWjEkoBWJX0XSK9zTU8Fbg5wiWGdp1xxxSOhA1WBG5L70L2oesXvFr5Izm4lkjrnVfhrdrxeNF4KZTe-OHxwQ6YU-eUbWlTRc8da2yj1=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJE6THaPJXcTER3T3ifFQ8kjI",
+    "location_name": "Quán Cơm Phở Hải Linh",
+    "latitude": 11.6091721,
+    "longitude": 108.12251979999999,
+    "open_time": "N/A",
+    "types": [
+      "Nhà hàng"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx9NoGNgFTCm7Sczkf7BJBcUMiJ75wREVxZ8pkilChAOfVLKiPvVBNXZUPua3-TexDur-TXPi9QDqvcT1DRECyg4AgSrfCESzRBXizb6q0U0pKSUX8YqztD5cApnqx-Dei4CAG6Tg=w80-h106-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJgVH94mETcTERznUgkkpqT5E",
+    "location_name": "Restaurant Da Quy, Nhà Hàng Dã Quỳ .Bò né - Bánh mì chảo Dã Quỳ",
+    "latitude": 11.944850299999999,
+    "longitude": 108.4343426,
+    "open_time": "{\"chủ nhật\": \"07:30–22:00\", \"thứ hai\": \"07:30–22:00\", \"thứ ba\": \"07:30–22:00\", \"thứ tư\": \"07:30–22:00\", \"thứ năm\": \"07:30–22:00\", \"thứ sáu\": \"07:30–22:00\", \"thứ bảy\": \"07:30–22:00\"}",
+    "types": [
+      "Nhà hàng"
+    ],
+    "average_rating": 4.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyjkLgaZccxiWidCO0LgeeZCKNuTOLuTxVriTi8DN7NPjU7nKI_xECvuwX2lota8daSYJ3DJ1AhqDZ4g3VrxItUcr5yuz7K7gCkAV0pOuC9GVxs4x6uilBqs7yghX0-jHkAFCnmSg=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJIy_UPQBXcTERbx9f5OQpyoU",
+    "location_name": "Hồ Ba Anh",
+    "latitude": 11.603942,
+    "longitude": 108.12626,
+    "open_time": "N/A",
+    "types": [
+      "Quán cà phê"
+    ],
+    "average_rating": 5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzDJFkhkqMbLSJu2nyy4cg1kzq__M1ZYX4VY5MOJ-OuvpvqWo7WIfbvk4RQh4EF5dB8M92J-2r1ghO5ak9ZRkpKB-WMdEmswLTIs43QYRAkpc2BJ_9ZdBzJSk05wQhPsdIr9uznWA=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJpWohSykTcTERwN0IPtYQpqw",
+    "location_name": "Goc ha thanh",
+    "latitude": 11.9439496,
+    "longitude": 108.434512,
+    "open_time": "{\"chủ nhật\": \"11:30–21:30\", \"thứ hai\": \"11:30–21:30\", \"thứ ba\": \"11:30–21:30\", \"thứ tư\": \"11:30–21:30\", \"thứ năm\": \"11:30–21:30\", \"thứ sáu\": \"11:30–21:30\", \"thứ bảy\": \"11:30–21:30\"}",
+    "types": [
+      "Nhà hàng"
+    ],
+    "average_rating": 4.4,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzkK38ac6m48JzJJ6CcuzdxwwKpdvvjoKW8SScojt54dcFXBrB5771FkZxuC6j9b47qOcHdmAbc6AjR28X-J96RcZ02eIXpVm5TH7013eoON7EkaaRr419DEaL7n9mLxTVoI9QTLw=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJeTDCP0X2czERr6CQt5WNv9I",
+    "location_name": "Cali Restaurant",
+    "latitude": 11.5411295,
+    "longitude": 107.7977873,
+    "open_time": "{\"chủ nhật\": \"09:30–22:00\", \"thứ hai\": \"09:30–22:00\", \"thứ ba\": \"09:30–22:00\", \"thứ tư\": \"09:30–22:00\", \"thứ năm\": \"09:30–22:00\", \"thứ sáu\": \"09:30–22:00\", \"thứ bảy\": \"09:30–22:00\"}",
+    "types": [
+      "Nhà hàng"
+    ],
+    "average_rating": 4.1,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyg2UxLQIaPJlbmHqB4hXj2xX33Pm4AOu5rkZfftm4H0iSZgcW2gFG5Sx33n8ItSdVQRWK-5wAg1NPx4O7iMH-sNmowBdgShphjLP5gy4X2qRwLnKsRzVWXcP-ZpZJ-H9H4ayTv=w163-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJH1nUvTpHcTEREtlLer6CTDw",
+    "location_name": "Lacay Restaurant",
+    "latitude": 11.7345308,
+    "longitude": 108.3718732,
+    "open_time": "{\"chủ nhật\": \"10:00–23:00\", \"thứ hai\": \"10:00–23:00\", \"thứ ba\": \"10:00–23:00\", \"thứ tư\": \"10:00–23:00\", \"thứ năm\": \"10:00–23:00\", \"thứ sáu\": \"10:00–23:00\", \"thứ bảy\": \"10:00–23:00\"}",
+    "types": [
+      "Nhà hàng"
+    ],
+    "average_rating": 4.5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipNW0wG_sD9WVM-7aTlnTDrrkKsqoepIrnbIiiCI=w137-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ54CWzR4TcTERQ7d7zVOBQrI",
+    "location_name": "OM Nướng - Đà Lạt",
+    "latitude": 11.939459699999999,
+    "longitude": 108.4572639,
+    "open_time": "{\"chủ nhật\": \"16:30–23:30\", \"thứ hai\": \"16:30–23:30\", \"thứ ba\": \"16:30–23:30\", \"thứ tư\": \"16:30–23:30\", \"thứ năm\": \"16:30–23:30\", \"thứ sáu\": \"16:30–23:30\", \"thứ bảy\": \"16:30–23:30\"}",
+    "types": [
+      "Nhà hàng Việt Nam"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy-OB4NpudbohTQ_SiCb6rMaclXqn1voOC1ZrUpkWUzR9hWJmeKWOcTMc1wXAyd8gAgeEP80yRJe5lfmOdwWmWR9qLsdS-LLS5FLWyjazYme9bamOyu9jQQCqS2Wys9hpZ41Hzz=w80-h106-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJIxgNtMJVcTERoreyZUbWCUg",
+    "location_name": "Coffee kalaview",
+    "latitude": 11.5423262,
+    "longitude": 108.1104124,
+    "open_time": "N/A",
+    "types": [
+      "Quán cà phê"
+    ],
+    "average_rating": 5,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzS4h7OFC_J7NivMUDy1mRccCmU_6jVnEAFyznIY3XSeV0oExxnq3UAXOryMIDeT7xwVi-6ZLBzUMins4RaGR1A2xw5SpcnDTHcxuPzuPscEwrG4_vcWqgZAj6JARr1BLsapjP0=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJOXmsPiJXcTERPpI74K8wsYM",
+    "location_name": "Hồ Cá Phong Vân",
+    "latitude": 11.5800691,
+    "longitude": 108.07814959999999,
+    "open_time": "N/A",
+    "types": [
+      "Nhà hàng Việt Nam",
+      "Khu ăn uống",
+      "Công viên xe dã ngoại"
+    ],
+    "average_rating": 3.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyg9Pv-8iUXmZt-_QyIrHzg9h4HBA3fjZWKawxIhZrPGsgjKyzDYts62k9W2PPoCpDgakoUGFSAW_4WEVv1j_qi6SA0aQrhtsaGxuOpllSHHxTmFKWHqy7jTPdgSHZbWvKojRSY4Q=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJ41JW2jETcTERVnRitMoJx7A",
+    "location_name": "Quán nướng Chu",
+    "latitude": 11.945764899999999,
+    "longitude": 108.4411025,
+    "open_time": "{\"chủ nhật\": \"12:00–00:00\", \"thứ hai\": \"12:00–00:00\", \"thứ ba\": \"12:00–00:00\", \"thứ tư\": \"12:00–00:00\", \"thứ năm\": \"12:00–00:00\", \"thứ sáu\": \"12:00–00:00\", \"thứ bảy\": \"12:00–00:00\"}",
+    "types": [
+      "Nhà hàng món nướng",
+      "Nhà hàng"
+    ],
+    "average_rating": 3.7,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzGnEzd4s4YVhWRZmUVZMd3OG7WolDZrB9UnICxK7-bWkJvbfZnAWX-gXWMcdjc2IxYvj57OMzVTkeIruMI0R0bgP75yIP7nV8es_I5h-wp_RBGm31J5-Wu-R8dWAlLwpQ2F68=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "restaurant"
+    ]
+  },
+  {
+    "gg_place_id": "ChIJzZTRb2ITcTERWlGidA6B1Dg",
+    "location_name": "SAGAR INDIAN CUISINE ĐÀ LẠT (HALAL FOOD) 사가르 인도 레스토랑",
+    "latitude": 11.944322999999999,
+    "longitude": 108.4348131,
+    "open_time": "{\"chủ nhật\": \"10:00–22:00\", \"thứ hai\": \"10:00–22:00\", \"thứ ba\": \"14:30–22:00\", \"thứ tư\": \"10:00–22:00\", \"thứ năm\": \"10:00–22:00\", \"thứ sáu\": \"10:00–22:00\", \"thứ bảy\": \"10:00–22:00\"}",
+    "types": [
+      "Nhà hàng Ấn Độ",
+      "Nhà hàng cho người theo đạo Hồi"
+    ],
+    "average_rating": 4.9,
+    "review_count": 0,
+    "province_id": 0,
+    "rawImgs": [
+      {
+        "img_url": "https://lh3.googleusercontent.com/p/AF1QipO_1STjLNI1W8GlTH8QMkW4rMd860LhThoTuiNk=w122-h92-k-no",
+        "description": "Thumbnail từ Google Maps"
+      }
+    ],
+    "description": null,
+    "categories": [
+      "mountain"
+    ]
+  }
 ]

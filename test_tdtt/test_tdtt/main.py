@@ -4,7 +4,9 @@ import json
 from tag_rules.food_profile import FoodProfile
 from solvers.food_solver import FoodSolver
 from tag_rules.amusement_profile import AmusementProfile 
-from solvers.amusement_solver import AmusementSolver     
+from solvers.amusement_solver import AmusementSolver
+from tag_rules.adventure_profile import AdventureProfile
+from solvers.adventure_solver import AdventureSolver
 from data_loader import create_instance_from_files
 
 def print_full_schedule(final_output):
@@ -37,6 +39,7 @@ def main_itinerary_loop():
     print("="*60)
     print("1: Ẩm thực (Food)")
     print("2: Giải trí (Amusement)")
+    print("3: Mạo hiểm (Adventure)")
     choice = input("Lựa chọn của bạn [Mặc định: 1]: ").strip()
 
     if choice == "2":
@@ -44,6 +47,11 @@ def main_itinerary_loop():
         profile = AmusementProfile()
         SolverClass = AmusementSolver
         preferred_categories = ["zoo", "amusement/water park", "cultural performance", "nightlife", "restaurant"]
+    elif choice == "3":
+        print("\n--- Đã chọn: Mạo hiểm (Adventure) ---")
+        profile = AdventureProfile()
+        SolverClass = AdventureSolver
+        preferred_categories = ["moutain", "cave", "waterfall", "camping", "diving", "restaurant"]
     else:
         print("\n--- Đã chọn: Ẩm thực (Food) ---")
         profile = FoodProfile()
