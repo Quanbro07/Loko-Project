@@ -22,11 +22,12 @@ class PlaceItem(BaseModel):
     location_name: Optional[str]
     latitude: Optional[float]
     longitude: Optional[float]
-    open_time: Union[Dict[str, str], str, None] = "N/A"
+    open_time: Optional[str] = None
+    close_time: Optional[str] = None
     types: List[str] = Field(default=[], exclude=True)
     average_rating: Optional[float]
     review_count: int = 0
     province_id: int = 0
     rawImgs: List[PlaceImage] = []
     description: Optional[str] = None
-    categories: List[str] = [] # AI đã gắn tag
+    category_ids: List[int] = []

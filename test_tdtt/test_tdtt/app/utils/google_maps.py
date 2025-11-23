@@ -1,50 +1,86 @@
-# utils/google_maps.py
 import requests
-from app.core.config import SERP_API_KEY # 1. Import Key từ config chung
+import re
+from app.core.config import SERP_API_KEY
 
 def get_city_coordinates(city_name):
-    """
-    Lấy tọa độ trung tâm thành phố từ SerpApi
-    """
+    # ... (Giữ nguyên hàm này không đổi) ...
     print(f"--- [Crawler Helper] Lấy tọa độ: '{city_name}' ---")
     params = {
-        "api_key": SERP_API_KEY, # Dùng key từ config
+        "api_key": SERP_API_KEY,
         "engine": "google_maps",
         "type": "search",
         "q": city_name,
         "hl": "vi",
         "gl": "vn"
     }
-
     try:
         response = requests.get("https://serpapi.com/search.json", params=params)
         response.raise_for_status()
         data = response.json()
-
         gps_coords = None
         if "place_results" in data and data["place_results"].get("gps_coordinates"):
             gps_coords = data["place_results"]["gps_coordinates"]
         elif "local_results" in data and len(data["local_results"]) > 0:
             gps_coords = data["local_results"][0].get("gps_coordinates")
-
         if gps_coords:
             lat, lng = gps_coords.get("latitude"), gps_coords.get("longitude")
             if lat and lng:
                 return f"@{lat},{lng},14z"
-
         print(f"⚠️ Cảnh báo: Không tìm thấy tọa độ cho '{city_name}'.")
         return None
-
     except Exception as e:
         print(f"❌ Lỗi kết nối khi lấy tọa độ: {e}")
         return None
 
+# --- SỬA HÀM NÀY ---
+def parse_operating_hours(raw_hours):
+    """
+    Hàm xử lý logic tách giờ mở/đóng cửa.
+    Nếu không có dữ liệu -> Mặc định là Mở cửa cả ngày (00:00 - 23:59)
+    """
+    # THAY ĐỔI QUAN TRỌNG: Set mặc định là cả ngày
+    default_res = ("00:00", "23:59")
+
+    # 1. Nếu không có dữ liệu hoặc không phải Dict -> Trả về Mặc định
+    if not raw_hours or not isinstance(raw_hours, dict):
+        return default_res
+
+    # 2. Tìm một ngày bất kỳ có giờ mở cửa
+    sample_time_str = None
+    for day, time_val in raw_hours.items():
+        if time_val and "Đóng cửa" not in time_val and "Closed" not in time_val:
+            sample_time_str = time_val
+            break
+    
+    # Nếu toàn bộ các ngày đều đóng cửa hoặc không tìm thấy giờ -> Trả về Mặc định
+    # (Để an toàn cho thuật toán, coi như mở cả ngày thay vì bỏ qua)
+    if not sample_time_str:
+        return default_res
+
+    # 3. Chuẩn hóa chuỗi
+    sample_time_str = sample_time_str.replace("–", "-").strip()
+
+    # 4. Xử lý "Mở cửa cả ngày"
+    if "cả ngày" in sample_time_str.lower() or "24 hours" in sample_time_str.lower():
+        return "00:00", "23:59"
+
+    # 5. Xử lý tách giờ
+    try:
+        intervals = sample_time_str.split(',')
+        first_interval = intervals[0].strip()
+        last_interval = intervals[-1].strip()
+
+        open_t = first_interval.split('-')[0].strip()
+        close_t = last_interval.split('-')[-1].strip()
+
+        return open_t, close_t
+
+    except Exception as e:
+        print(f"⚠️ Lỗi parse giờ: {sample_time_str} -> Dùng mặc định cả ngày.")
+        return default_res
 
 def fetch_top_places(city_name, ll_string, type_of_place):
-    """
-    Tìm kiếm địa điểm và trả về danh sách Dict (khớp với DTO PlaceItem)
-    """
-    # Thêm 'in vietnam' để tăng độ chính xác nếu cần, hoặc bỏ tùy logic của bạn
+    # ... (Giữ nguyên hàm này, nó sẽ gọi parse_operating_hours mới ở trên) ...
     query = f"top {type_of_place} in {city_name}" 
     print(f"--- [Crawler Helper] Searching: '{query}' ---")
 
@@ -67,17 +103,13 @@ def fetch_top_places(city_name, ll_string, type_of_place):
         if not local_results:
             return []
 
-        # Lấy 20 kết quả đầu
         for item in local_results[:20]:
             gps_coords = item.get("gps_coordinates", {})
             
-            # Xử lý Operating Hours
             raw_hours = item.get("operating_hours")
-            open_time_data = "N/A"
-            if raw_hours:
-                open_time_data = raw_hours
+            # Gọi hàm xử lý giờ mới
+            open_t, close_t = parse_operating_hours(raw_hours)
 
-            # Xử lý Images
             raw_imgs = []
             thumbnail = item.get("thumbnail")
             if thumbnail:
@@ -86,20 +118,20 @@ def fetch_top_places(city_name, ll_string, type_of_place):
                     "description": "Thumbnail từ Google Maps"
                 })
 
-            # Tạo object khớp với format bạn cần
             new_structure = {
                 "gg_place_id": item.get("place_id"),
                 "location_name": item.get("title"),
                 "latitude": gps_coords.get("latitude"),
                 "longitude": gps_coords.get("longitude"),
-                "open_time": open_time_data,
-                "types": item.get("types", []), # Mặc định là list rỗng nếu None
-                "average_rating": item.get("rating", 0.0), # Mặc định 0.0
+                "open_time": open_t,
+                "close_time": close_t,
+                "types": item.get("types", []),
+                "average_rating": item.get("rating", 0.0),
                 "review_count": 0,
                 "province_id": 0,
                 "rawImgs": raw_imgs,
                 "description": item.get("description"),
-                "categories": [] # Để trống chờ AI điền sau
+                "categories": []
             }
             results.append(new_structure)
 
