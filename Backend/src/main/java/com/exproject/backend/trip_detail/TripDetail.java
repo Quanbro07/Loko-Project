@@ -43,6 +43,10 @@ public class TripDetail {
     @Column(name = "transport_note")
     private String transportNote;
 
+    @Column(name = "description")
+    private String description;
+
+
 
     public TripDetail(TripDetailRequest tripDetailRequest, Location location) {
 
@@ -51,5 +55,6 @@ public class TripDetail {
         this.startTime = tripDetailRequest.getStartTime();
         this.endTime = tripDetailRequest.getEndTime();
         this.transportNote = tripDetailRequest.getTransportNote();
+        this.description = tripDetailRequest.getDescription();
     }
 }

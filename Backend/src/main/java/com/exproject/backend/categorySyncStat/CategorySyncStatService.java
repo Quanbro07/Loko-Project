@@ -21,6 +21,7 @@ public class CategorySyncStatService {
     private final CategorySyncStatRepository categorySyncStatRepository;
 
     // Tăng usage Category Sunc Stat
+    @Transactional
     public void increaseCategorySyncStat(Location location) {
         Province province = location.getProvince();
 
@@ -61,7 +62,6 @@ public class CategorySyncStatService {
         // Ngưỡng cho bọn COLD: Cũ hơn 3 tháng mới thèm update
         LocalDateTime coldDateThreshold = now.minusMonths(3);
 
-        // 2. CẤU HÌNH NGƯỠNG ĐỘ HOT (Bạn có thể lưu vào file properties)
         // Ví dụ: Được dùng trên 10 lần là coi như Hot (cần chăm sóc kỹ hơn)
         int hotUsageThreshold = 10;
 
@@ -81,10 +81,32 @@ public class CategorySyncStatService {
         return tasksDTO;
     }
 
+    // Update lastSynced At khi được lấy
+    @Transactional
+    public void updateLastSyncedAt(List<CategorySyncStatDTO> tasks) {
+        LocalDateTime now = LocalDateTime.now();
+
+        for (CategorySyncStatDTO task : tasks) {
+            // Dùng findBy... vì nó đã có trong cache (nếu có)
+            categorySyncStatRepository
+                    .findByProvinceIdAndLocationCategoryId(task.getProvinceId(), task.getLocationCategoryId())
+                    .ifPresent(stat -> {
+                        stat.setLastSyncedAt(now);
+                        categorySyncStatRepository.save(stat); // Cập nhật
+                    });
+        }
+    }
+
+    // Helper Function
     private CategorySyncStatDTO convertToCategorySyncStatDTO(CategorySyncStat stat) {
+        Province province = stat.getProvince();
+        LocationCategory locationCategory = stat.getLocationCategory();
+
         return CategorySyncStatDTO.builder()
-                .provinceName(stat.getProvince().getProvinceName())
-                .locationCategoryName(stat.getLocationCategory().getLocationCategoryName())
+                .provinceId(province.getId())
+                .locationCategoryId(locationCategory.getId())
+                .provinceName(province.getProvinceName())
+                .locationCategoryName(locationCategory.getLocationCategoryName())
                 .usageCount(stat.getUsageCount())
                 .lastSyncedAt(stat.getLastSyncedAt())
                 .build();

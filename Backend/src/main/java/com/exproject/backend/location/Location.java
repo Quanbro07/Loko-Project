@@ -4,6 +4,7 @@ import com.exproject.backend.location_category.info.LocationCategory;
 import com.exproject.backend.location_img.LocationImg;
 import com.exproject.backend.province.info.Province;
 import com.exproject.backend.review_location.ReviewLocation;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,10 +33,11 @@ public class Location {
     // FK tới province
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "province_id", nullable = false)
+    @JsonIgnore
     private Province province;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ReviewLocation> reviews = new ArrayList<>();
+    private List<ReviewLocation> reviewLocations = new ArrayList<>();
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LocationImg> locationImgs = new ArrayList<>();
@@ -74,4 +76,22 @@ public class Location {
 
     @Column(name = "update_at")
     private LocalDateTime updateAt;
+
+    public void addLocationImg(LocationImg locationImg) {
+        this.locationImgs.add(locationImg);
+
+        locationImg.setLocation(this);
+    }
+
+    public void addReviewLocation(ReviewLocation reviewLocation) {
+        this.reviewLocations.add(reviewLocation);
+
+        reviewLocation.setLocation(this);
+    }
+
+    public void addLocationCategory(LocationCategory existCategory) {
+        this.locationCategories.add(existCategory);
+
+        existCategory.getLocations().add(this);
+    }
 }

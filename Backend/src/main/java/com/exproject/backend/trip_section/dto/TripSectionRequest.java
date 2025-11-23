@@ -14,10 +14,9 @@ import java.util.List;
 @Builder
 public class TripSectionRequest {
 
-    private Long tripId;
     private Integer dayNumber;
+
     private String title;
-    private String description;
 
     private List<TripDetailRequest> tripDetails;
 }

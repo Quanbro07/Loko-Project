@@ -17,4 +17,4 @@ spring:
             enable: true
 
   profiles:
-    active: product
+    active: dev

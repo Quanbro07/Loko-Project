@@ -13,6 +13,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 @Order(1)
@@ -31,7 +33,7 @@ public class UserInitializer implements CommandLineRunner {
 
         User user1 = User.builder()
                 .username("Quanbro7")
-                .email("Quanbroisdead@gmail.com")
+                .email("ngocquan612006@gmail.com")
                 .password(passwordEncoder.encode("Quanbroisdead"))
                 .age(19)
                 .role(Role.USER)
@@ -39,15 +41,32 @@ public class UserInitializer implements CommandLineRunner {
                 .enabled(true)
                 .build();
 
-        userRepository.save(user1);
+        User user2 = User.builder()
+                .username("TrongChicken")
+                .email("hs.nguyenthanhtrong@gmail.com")
+                .password(passwordEncoder.encode("trongbro7"))
+                .age(21)
+                .role(Role.ADMIN)
+                .gender(Gender.MALE)
+                .enabled(true)
+                .build();
 
-        AuthenticationRequest authenticationRequest = AuthenticationRequest.builder()
-                .email("Quanbroisdead@gmail.com")
+        userRepository.saveAll(List.of(user1,user2));
+
+        AuthenticationRequest authenticationRequest1 = AuthenticationRequest.builder()
+                .email("ngocquan612006@gmail.com")
                 .password("Quanbroisdead")
                 .build();
 
-        AuthenticationResponse response = authenticationService.authenticate(authenticationRequest);
+        AuthenticationRequest authenticationRequest2 = AuthenticationRequest.builder()
+                .email("hs.nguyenthanhtrong@gmail.com")
+                .password("trongbro7")
+                .build();
 
-        System.out.println("Token: " + response.getAccessToken());
+        AuthenticationResponse responseUser = authenticationService.authenticate(authenticationRequest1);
+        AuthenticationResponse responseAdmin = authenticationService.authenticate(authenticationRequest2);
+
+        System.out.println("Token User: " + responseUser.getAccessToken());
+        System.out.println("Token Admin: " + responseAdmin.getAccessToken());
     }
 }

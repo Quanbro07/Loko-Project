@@ -1,6 +1,7 @@
 package com.exproject.backend.location_img;
 
 import com.exproject.backend.location.Location;
+import com.exproject.backend.location_img.dto.LocationImgDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,4 +29,8 @@ public class LocationImg {
 
     private String description;
 
+    public LocationImg(LocationImgDTO imgDTO) {
+        this.imgUrl = imgDTO.getImg_url();
+        this.description = imgDTO.getDescription();
+    }
 }

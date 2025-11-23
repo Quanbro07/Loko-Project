@@ -1,7 +1,9 @@
 package com.exproject.backend.trip.dto;
 
+import com.exproject.backend.location.dto.LocationResponse;
 import com.exproject.backend.trip.info.Trip;
 import com.exproject.backend.trip.info.TripStatus;
+import com.exproject.backend.trip_section.dto.TripSectionResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +11,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -34,16 +38,8 @@ public class TripResponse {
 
     private LocalDateTime createAt;
 
-    public TripResponse(Trip trip) {
-        this.tripId = trip.getId();
+    private List<TripSectionResponse> tripSections;
 
-        this.tripName = trip.getTripName();
-        this.startDate = trip.getStartDate();
-        this.endDate = trip.getEndDate();
-        this.numAdult = trip.getNumAdult();
-        this.numChild = trip.getNumChild();
-        this.numElder = trip.getNumElder();
-        this.status = trip.getStatus();
-        this.createAt = trip.getCreateAt();
-    }
+
+
 }
