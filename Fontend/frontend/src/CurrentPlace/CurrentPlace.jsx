@@ -1,46 +1,47 @@
 import './CurrentPlace.css';
-import schedule from '../Output/schedule.json'; 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { useLanguage } from '../Language/LanguageContext';
 
-// 🌟 NHẬN PROPS KIỂM SOÁT STATE TỪ COMPONENT CHA 🌟
-const CurrentPlace = ({ currentIndex, setCurrentIndex }) => { 
+const CurrentPlace = ({ scheduleData, currentIndex, setCurrentIndex }) => {
     const { translate } = useLanguage();
-    // ❌ Đã loại bỏ: const [currentIndex, setCurrentIndex] = useState(0); (State được quản lý ở component cha)
     
-    const scheduleData = schedule; 
-    const totalPlaces = scheduleData.length;
+    // Đảm bảo là array
+    const dataArray = useMemo(() => Array.isArray(scheduleData) ? scheduleData : [], [scheduleData]);
+    const totalPlaces = dataArray.length;
 
-    // Các state nội bộ vẫn giữ nguyên
-    const [placeRatings, setPlaceRatings] = useState(new Array(totalPlaces).fill(0)); 
+    // --- State Rating (Giữ nguyên) ---
+    const [placeRatings, setPlaceRatings] = useState(new Array(totalPlaces || 0).fill(0)); 
     const [hoverRating, setHoverRating] = useState(0); 
     
     const isLastSlide = currentIndex === totalPlaces - 1; 
 
-    // ----------------------------------------------------
-    // SỬA LOGIC NEXT (Một chiều, Dừng ở slide cuối)
-    // ----------------------------------------------------
     const handleNext = useCallback(() => {
-        // Gọi hàm cập nhật state từ component cha
         if (currentIndex < totalPlaces - 1) {
             setCurrentIndex(currentIndex + 1); 
         }
     }, [totalPlaces, currentIndex, setCurrentIndex]);
 
     const handleRatingSubmit = (placeIndex, rating, placeId) => {
-        setPlaceRatings(prevRatings => {
-            const newRatings = [...prevRatings];
-            newRatings[placeIndex] = rating;
-            return newRatings;
+        setPlaceRatings(prev => {
+            const newR = [...prev];
+            newR[placeIndex] = rating;
+            return newR;
         });
-        
-        console.log(`[BACKEND] Đã gửi rating ${rating} sao cho Place ID: ${placeId}`);
-        // TODO: Thực hiện API call để gửi dữ liệu rating
+        // API call here...
     };
     
     const stars = [1, 2, 3, 4, 5];
-    const cardWidthPercentage = 100 / totalPlaces;
-    const transformValue = `translateX(-${currentIndex * cardWidthPercentage}%)`; 
+    
+    if (totalPlaces === 0) {
+        return (
+            <div className='currplace-container'>
+                 <p className='no-schedule-data'>Không có lịch trình chi tiết cho ngày này.</p>
+            </div>
+        );
+    }
+
+    // Tính toán độ rộng
+    const transformValue = `translateX(-${currentIndex * 100}%)`; 
 
     return(
         <div className='currplace-container'>
@@ -57,65 +58,71 @@ const CurrentPlace = ({ currentIndex, setCurrentIndex }) => {
                     className='currplace-slide-wrapper' 
                     style={{ 
                         transform: transformValue,
-                        width: `${totalPlaces * 100}%` 
+                        width: `${totalPlaces * 100}%`,
+                        display: 'flex', // Đảm bảo flexbox để slide ngang
+                        transition: 'transform 0.5s ease'
                     }}
                 >
-                    {scheduleData.map((place, index) => (
-                        <div 
-                            key={index} 
-                            className='currplace-card'
-                            style={{ width: `${100 / totalPlaces}%` }} 
-                        >
-                            <h3 className='place-title'>{place.title}</h3>
-                            <div className='place-time'>
-                                ⏰ {place.start} - {place.end}
-                            </div>
-                            <div className='place-description'>
-                                📝 {place.description || translate('currentplace_no_description_available') || 'Không có mô tả chi tiết.'}
-                            </div>
-                            
-                            <div className='place-rating-input'>
-                                <p className='rating-prompt'>{translate('currentplace_rate_this_place') || 'Đánh giá địa điểm này:'}</p>
-                                <div className='star-rating-container'>
-                                    {stars.map((starValue) => (
-                                        <span
-                                            key={starValue}
-                                            className='star'
-                                            style={{
-                                                color: (index === currentIndex && hoverRating >= starValue) || placeRatings[index] >= starValue ? '#FFD700' : '#ccc',
-                                                cursor: 'pointer',
-                                            }}
-                                            onClick={() => {
-                                                if (index === currentIndex) {
-                                                    handleRatingSubmit(index, starValue, place.place_id);
-                                                }
-                                            }}
-                                            onMouseEnter={() => {
-                                                if (index === currentIndex) setHoverRating(starValue);
-                                            }}
-                                            onMouseLeave={() => {
-                                                if (index === currentIndex) setHoverRating(0);
-                                            }}
-                                        >
-                                            ★
-                                        </span>
-                                    ))}
+                    {dataArray.map((place, index) => {
+                        // 🌟 MAP DATA TỪ JSON 🌟
+                        const title = place.location?.location_name || place.title || "Unknown Location";
+                        const time = `${place.startTime?.substring(0,5)} - ${place.endTime?.substring(0,5)}`;
+                        const desc = place.description;
+                        const placeId = place.location?.id || index;
+
+                        return (
+                            <div 
+                                key={index} 
+                                className='currplace-card'
+                                style={{ width: '100%', flexShrink: 0 }} // Mỗi card chiếm 100% view
+                            >
+                                <h3 className='place-title'>{title}</h3>
+                                <div className='place-time'>
+                                    ⏰ {time}
                                 </div>
-                                <p className='rating-feedback'>
-                                    {(placeRatings[index] > 0) 
-                                        }
-                                </p>
+                                <div className='place-description'>
+                                    📝 {desc || translate('currentplace_no_description_available') || 'Không có mô tả chi tiết.'}
+                                </div>
+                                
+                                {/* --- Phần Rating Giữ Nguyên --- */}
+                                <div className='place-rating-input'>
+                                    <p className='rating-prompt'>{translate('currentplace_rate_this_place') || 'Đánh giá địa điểm này:'}</p>
+                                    <div className='star-rating-container'>
+                                        {stars.map((starValue) => (
+                                            <span
+                                                key={starValue}
+                                                className='star'
+                                                style={{
+                                                    color: (index === currentIndex && hoverRating >= starValue) || placeRatings[index] >= starValue ? '#FFD700' : '#ccc',
+                                                    cursor: 'pointer',
+                                                    fontSize: '24px'
+                                                }}
+                                                onClick={() => {
+                                                    if (index === currentIndex) handleRatingSubmit(index, starValue, placeId);
+                                                }}
+                                                onMouseEnter={() => {
+                                                    if (index === currentIndex) setHoverRating(starValue);
+                                                }}
+                                                onMouseLeave={() => {
+                                                    if (index === currentIndex) setHoverRating(0);
+                                                }}
+                                            >
+                                                ★
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
             <button 
                     className='currplace-next-button' 
                     onClick={handleNext}
-                    disabled={isLastSlide} // Vô hiệu hóa khi là slide cuối
+                    disabled={isLastSlide}
                 >
-                    {translate('currplace_next_button')} 
+                    {translate('currplace_next_button') || 'Tiếp theo'} 
                 </button>
             <div className='currplace-counter'>
                 {currentIndex + 1} / {totalPlaces}

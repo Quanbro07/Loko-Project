@@ -1,26 +1,40 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useMap } from 'react-leaflet';
-import L from 'leaflet'; // Cần import thư viện Leaflet gốc
+import L from 'leaflet';
 
-// Component này sẽ tính toán và điều chỉnh ranh giới bản đồ
 const MapBoundsController = ({ points }) => {
-    const map = useMap(); // Lấy đối tượng bản đồ từ context
+    const map = useMap();
 
     useEffect(() => {
-        if (points && points.length > 0) {
-            // 1. Tạo một mảng các đối tượng LatLng của Leaflet từ tọa độ của bạn
-            const latLngs = points.map(p => L.latLng(p.lat, p.lng));
+        // 1. Kiểm tra dữ liệu đầu vào
+        if (!points || points.length === 0) return;
 
-            // 2. Tạo Bounding Box (LatLngBounds) từ mảng tọa độ
-            const bounds = L.latLngBounds(latLngs);
+        // 2. Tạo bounds
+        // L.latLngBounds chấp nhận mảng các mảng con dạng [lat, lng]
+        const latLngs = points.map(p => [p.lat, p.lng]);
+        const bounds = L.latLngBounds(latLngs);
 
-            // 3. Sử dụng fitBounds để điều chỉnh bản đồ
-            // { padding: [50, 50] } là để tạo khoảng đệm (padding) quanh các điểm
-            map.fitBounds(bounds, { padding: [50, 50] });
+        // 3. Kiểm tra bounds có hợp lệ không
+        if (bounds.isValid()) {
+            // 4. Dùng setTimeout để fix lỗi render giao diện (Quan trọng)
+            const timer = setTimeout(() => {
+                // Báo cho Leaflet biết kích thước container đã thay đổi (fix lỗi map xám hoặc zoom sai)
+                map.invalidateSize();
+                
+                // Thực hiện zoom
+                map.fitBounds(bounds, { 
+                    padding: [50, 50], // Khoảng cách đệm từ mép
+                    maxZoom: 16,       // Không zoom quá sát nếu chỉ có 1 điểm
+                    animate: true,     // Hiệu ứng mượt
+                    duration: 1
+                });
+            }, 200); // Đợi 200ms cho giao diện ổn định
+
+            return () => clearTimeout(timer);
         }
-    }, [map, points]); // Chạy lại khi đối tượng map hoặc danh sách điểm thay đổi
+    }, [map, points]);
 
-    return null; // Component này không render gì cả
+    return null;
 };
 
 export default MapBoundsController;
