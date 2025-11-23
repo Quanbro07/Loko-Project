@@ -65,7 +65,8 @@
     ],
     "description": null,
     "categories": [
-      "waterfall"
+      "waterfall",
+      "camping"
     ]
   },
   {
@@ -114,7 +115,7 @@
     ],
     "description": "Công viên với tác phẩm điêu khắc đất sét. Khu trưng bày nghệ thuật với các tác phẩm điêu khắc bằng đất sét khổng lồ đủ thể loại từ thằn lằn đến tàu hỏa.",
     "categories": [
-      "mountain"
+      "cave"
     ]
   },
   {
@@ -469,7 +470,8 @@
     ],
     "description": "Khu DL thác nước có lối đi bộ & nhà hàng. Thác nước lớn và quang cảnh hùng vĩ nằm giữa thiên nhiên hoang sơ với lối đi bộ và nhà hàng.",
     "categories": [
-      "waterfall"
+      "waterfall",
+      "hotel"
     ]
   },
   {
@@ -492,7 +494,7 @@
     ],
     "description": "Khách sạn uy nghi, nhà hàng cao cấp, spa. Khách sạn trang trọng từ thập niên 1920, cảnh hồ, vườn cây tuyệt đẹp, nhà hàng, spa và phòng ở tinh tế.",
     "categories": [
-      "mountain"
+      "hotel"
     ]
   },
   {
@@ -538,7 +540,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "hotel"
     ]
   },
   {
@@ -611,7 +613,8 @@
     ],
     "description": null,
     "categories": [
-      "hotel"
+      "hotel",
+      "restaurant"
     ]
   },
   {
@@ -634,7 +637,7 @@
     ],
     "description": "KS hiện đại có nhà hàng và phòng tập. Khách sạn hiện đại với phòng ở tinh tế, có 2 nhà hàng, 2 quán bar và phòng tập thể dục.",
     "categories": [
-      "mountain"
+      "hotel"
     ]
   },
   {
@@ -658,7 +661,8 @@
     ],
     "description": "Khu nghỉ dưỡng yên tĩnh có hồ, sân golf và yoga. Khu nghỉ dưỡng ven hồ thanh bình với các phòng nghỉ bình dân và biệt thự 3 tầng, cùng sân golf, yoga, nhà hàng và quầy bar.",
     "categories": [
-      "hotel"
+      "hotel",
+      "restaurant"
     ]
   },
   {
@@ -681,7 +685,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "hotel"
     ]
   },
   {
@@ -729,7 +733,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "hotel"
     ]
   },
   {
@@ -799,7 +803,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "hotel"
     ]
   },
   {
@@ -822,7 +826,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "hotel"
     ]
   },
   {
@@ -963,7 +967,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "restaurant"
     ]
   },
   {
@@ -1011,7 +1015,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "restaurant"
     ]
   },
   {
@@ -1139,7 +1143,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "restaurant"
     ]
   },
   {
@@ -1162,7 +1166,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "restaurant"
     ]
   },
   {
@@ -1254,7 +1258,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "restaurant"
     ]
   },
   {
@@ -1277,7 +1281,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "restaurant"
     ]
   },
   {
@@ -1300,7 +1304,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "restaurant"
     ]
   },
   {
@@ -1323,7 +1327,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "restaurant"
     ]
   },
   {
@@ -1371,7 +1375,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "restaurant"
     ]
   },
   {
@@ -1419,7 +1423,7 @@
     ],
     "description": null,
     "categories": [
-      "mountain"
+      "restaurant"
     ]
   }
 ]

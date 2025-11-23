@@ -21,15 +21,19 @@ TYPE_TO_TAG = {
     "cavern": "cave",
     "grotto": "cave",
     
-    # --- WATERFALL ---
+    # --- WATERFALL (Thêm suối) ---
     "waterfall": "waterfall",
-    
-    # --- CAMPING ---
+    "suối": "waterfall", 
+
+    # --- CAMPING (Thêm tiếng Việt) ---
     "campground": "camping",
     "camping": "camping",
     "rv_park": "camping",
     "campsite": "camping",
     "tent": "camping",
+    "khu cắm trại": "camping", # <--- QUAN TRỌNG: Google trả về type này
+    "bãi cắm trại": "camping",
+    "lều": "camping",
     
     # --- DIVING / WATER SPORT ---
     "diving": "diving",
@@ -52,6 +56,7 @@ TYPE_TO_TAG = {
     "restaurant": "restaurant",
     "food": "restaurant",
     "meal": "restaurant",
+    "Khu ăn uống": "restaurant",
     "cafe": "restaurant", # Dân adventure thường gộp cafe vào chỗ nghỉ chân ăn uống
     "bakery": "restaurant",
     "bar": "restaurant"   # Ít đi bar, coi như chỗ ăn uống
@@ -62,50 +67,110 @@ TYPE_TO_TAG = {
 # ----------------------------------------------------------
 # Các từ khóa trong tên địa điểm gợi ý chính xác category
 NAME_HINTS = {
-    # Mountain
-    "núi": "mountain",
-    "đỉnh": "mountain",
-    "đèo": "mountain",
-    "dốc": "mountain",
-    "mount": "mountain",
-    "peak": "mountain",
-    "trekking": "mountain",
-    "leo núi": "mountain",
+    # --- MOUNTAIN (Cẩn thận hơn) ---
+    "núi": "mountain", "đèo": "mountain", "trekking": "mountain", 
+    "langbiang": "mountain", "bidoup": "mountain", "tuyền lâm": "mountain",
+    # Bỏ chữ "đỉnh" đứng một mình để tránh "Công ty Đỉnh Đồi", chỉ bắt "đỉnh núi" nếu cần
+    "đỉnh núi": "mountain", "peak": "mountain", 
+
+    # --- CAVE ---
+    "hang": "cave", "động": "cave", "grotto": "cave", "đường hầm" : "cave",
     
-    # Cave
-    "hang": "cave",
-    "động": "cave",
-    "grotto": "cave",
-    "cave": "cave",
+    # --- WATERFALL ---
+    "thác": "waterfall", "waterfall": "waterfall", "suối": "waterfall", "cascade": "waterfall",
     
-    # Waterfall
-    "thác": "waterfall",
-    "waterfall": "waterfall",
-    "suối": "waterfall", # Suối thường đi kèm thác hoặc tắm
+    # --- CAMPING ---
+    "camping": "camping", "cắm trại": "camping", "glamping": "camping",
+    "camp": "camping", "trại": "camping", "lều": "camping", 
     
-    # Camping
-    "camping": "camping",
-    "cắm trại": "camping",
-    "glamping": "camping",
-    "lều": "camping",
-    "bãi trại": "camping",
+    # --- DIVING ---
+    "lặn": "diving", "san hô": "diving", 
     
-    # Diving
-    "lặn": "diving",
-    "san hô": "diving",
-    "coral": "diving",
-    "dive": "diving",
-    "scuba": "diving",
-    "hòn": "diving", # Các hòn đảo nhỏ thường để lặn (AI sẽ lọc kỹ hơn)
+    # --- HOTEL (Thêm các từ khóa phổ biến) ---
+    "hotel": "hotel", "homestay": "hotel", "resort": "hotel", "bungalow": "hotel",
+    "villa": "hotel", "hostel": "hotel", "nhà nghỉ": "hotel", "khách sạn": "hotel",
+    "lodge": "hotel", "palace": "hotel", "dalat palace": "hotel",
     
-    # Hotel & Restaurant hints (Cơ bản)
-    "homestay": "hotel",
-    "bungalow": "hotel",
-    "resort": "hotel",
-    "quán": "restaurant",
-    "nhà hàng": "restaurant",
-    "bếp": "restaurant"
+    # --- RESTAURANT (Thêm tên món ăn để nhận diện) ---
+    "nhà hàng": "restaurant", "quán": "restaurant", "bếp": "restaurant", 
+    "kitchen": "restaurant", "coffee": "restaurant", "cafe": "restaurant",
+    "cơm": "restaurant", "phở": "restaurant", "bún": "restaurant", 
+    "lẩu": "restaurant", "nướng": "restaurant", "mì": "restaurant",
+    "pizza": "restaurant", "bbq": "restaurant", "buffet": "restaurant",
+    "ẩm thực": "restaurant", "bánh": "restaurant", "ăn vặt": "restaurant"
 }
+
+# ----------------------------------------------------------
+# 2. HÀM CLEAN CATEGORIES (Đã sửa logic ưu tiên Type gốc)
+# ----------------------------------------------------------
+def clean_categories(name, types, tags):
+    """
+    Sửa lỗi: Ưu tiên tuyệt đối cho Hotel và Restaurant dựa trên Type gốc.
+    Chỉ fallback về Mountain khi không tìm thấy gì khác.
+    """
+    # Chuẩn hóa
+    lower_name = name.lower()
+    types_str = " ".join(types).lower()
+    current_tags = set(tags) # Dùng set để tránh trùng
+
+    # --- BƯỚC 1: CHECK TYPE GỐC (BẮT BUỘC) ---
+    # Nếu Google đã bảo là Hotel/Restaurant thì phải tin nó trước.
+    if "khách sạn" in types_str or "hotel" in types_str or "lodging" in types_str:
+        current_tags.add("hotel")
+        
+    if "nhà hàng" in types_str or "restaurant" in types_str or "food" in types_str:
+        current_tags.add("restaurant")
+
+    # --- BƯỚC 2: QUÉT TÊN (NAME HINTS) ---
+    for k, v in NAME_HINTS.items():
+        if k in lower_name:
+            current_tags.add(v)
+
+    # --- BƯỚC 3: LOGIC KẾT HỢP (HYBRID) ---
+    # (Giữ nguyên logic Camping + Nature)
+    has_waterfall = any(x in lower_name for x in ["thác", "waterfall", "suối"])
+    has_camping   = any(x in lower_name for x in ["camp", "trại", "glamping", "lều"])
+    
+    if has_waterfall and has_camping:
+        current_tags.add("waterfall")
+        current_tags.add("camping")
+
+    # --- BƯỚC 4: XỬ LÝ XUNG ĐỘT (Conflict Resolution) ---
+    
+    # TRƯỜNG HỢP 1: Vừa Hotel vừa Mountain (VD: Colline Đỉnh Đồi)
+    # Nếu là Hotel rõ ràng, nhưng bị dính từ khóa Mountain (do tên "Đỉnh"), ta ưu tiên Hotel.
+    # Trừ khi nó là "Resort & Spa giữa rừng" thì giữ cả hai.
+    if "hotel" in current_tags and "mountain" in current_tags:
+        # Nếu tên không có chữ "núi/rừng/đèo" mà chỉ dính chữ "đỉnh" của tên riêng -> Bỏ mountain
+        if not any(x in lower_name for x in ["núi", "rừng", "đèo", "trekking", "view"]):
+            if "đỉnh" in lower_name: # Fix lỗi "Đỉnh Đồi"
+                current_tags.remove("mountain")
+
+    # TRƯỜNG HỢP 2: Restaurant bị dính Mountain
+    if "restaurant" in current_tags and "mountain" in current_tags:
+        # Nếu tên là quán ăn bình thường -> Bỏ mountain
+        if any(x in lower_name for x in ["cơm", "bún", "phở", "quán"]):
+            current_tags.remove("mountain")
+
+    # --- BƯỚC 5: SẮP XẾP & FALLBACK ---
+    priority_order = ["mountain", "cave", "waterfall", "diving", "camping", "hotel", "restaurant"]
+    final_tags = []
+    
+    for major in priority_order:
+        if major in current_tags:
+            final_tags.append(major)
+
+    # Fallback: Chỉ gán Mountain nếu danh sách RỖNG hoàn toàn
+    if not final_tags:
+        # Check lại lần cuối xem có phải quán ăn không
+        if any(x in lower_name for x in ["quán", "ăn", "cafe", "coffee", "bistro"]):
+             final_tags.append("restaurant")
+        elif any(x in lower_name for x in ["stay", "nghỉ", "phòng"]):
+             final_tags.append("hotel")
+        else:
+             final_tags.append("mountain") # Default cuối cùng
+
+    return list(dict.fromkeys(final_tags))[:3]
 
 # ----------------------------------------------------------
 def extract_json(text):
@@ -169,61 +234,6 @@ def classify_with_model(model, items):
             time.sleep(1)
     # Trả về rỗng nếu lỗi
     return [{"place": item["location_name"], "categories": []} for item in items]
-
-def clean_categories(name, types, tags):
-    """
-    Hàm làm sạch và ưu tiên tag cho Adventure
-    """
-    tags = list(set(tags))
-    lower_name = name.lower()
-    types_str = " ".join(types).lower()
-
-    # --- Logic Hybrid & Keyword forcing ---
-    
-    # 1. Force tag nếu tên địa điểm quá rõ ràng
-    for k, v in NAME_HINTS.items():
-        if k in lower_name and v not in tags:
-            tags.append(v)
-            
-    # 2. Xử lý "National Park" / "Vườn quốc gia"
-    # Thường VQG bao gồm núi và rừng -> gán Mountain
-    if "national park" in types_str or "vườn quốc gia" in lower_name:
-        if "mountain" not in tags: tags.append("mountain")
-
-    # 3. Xử lý Restaurant filter
-    # Nếu là Hotel/Resort thì thường có ăn uống, nhưng ta chỉ để tag Hotel để tránh loãng
-    # Trừ khi tên nó là "Restaurant & Hotel"
-    if "restaurant" in tags and "hotel" in tags:
-        # Ưu tiên Hotel, bỏ Restaurant trừ khi tên có chữ "nhà hàng"/"quán"
-        if not any(x in lower_name for x in ["nhà hàng", "quán", "restaurant", "food"]):
-            tags.remove("restaurant")
-
-    # 4. Sort & Filter theo độ ưu tiên Adventure
-    # Thứ tự ưu tiên: Các hoạt động Nature > Camping > Hotel > Restaurant
-    majors = ["mountain", "cave", "waterfall", "diving", "camping", "hotel", "restaurant"]
-    
-    final_tags = []
-    for major in majors:
-        if major in tags:
-            final_tags.append(major)
-
-    # 5. Fallback (Nếu không tìm thấy tag nào)
-    if not final_tags:
-        # Thử lấy lại từ types gốc
-        final_tags = tags_from_types(types)
-    
-    if not final_tags:
-        # Fallback cuối cùng dựa vào tên
-        if any(x in lower_name for x in ["hotel", "homestay", "nghỉ", "stay"]):
-            final_tags = ["hotel"]
-        elif any(x in lower_name for x in ["quán", "ăn", "cafe", "coffee"]):
-            final_tags = ["restaurant"]
-        else:
-            # Nếu là địa điểm thiên nhiên lạ, gán tạm mountain (đi bộ ngắm cảnh)
-            final_tags = ["mountain"]
-
-    # Giới hạn 3 tag quan trọng nhất
-    return list(dict.fromkeys(final_tags))[:3]
 
 def run_adventure(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
     print(f"🚀 Bắt đầu xử lý Adventure cho file: {INPUT_FILE}")
