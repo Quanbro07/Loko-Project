@@ -4,7 +4,9 @@ import json
 from tag_rules.food_profile import FoodProfile
 from solvers.food_solver import FoodSolver
 from tag_rules.amusement_profile import AmusementProfile 
-from solvers.amusement_solver import AmusementSolver     
+from solvers.amusement_solver import AmusementSolver
+from tag_rules.adventure_profile import AdventureProfile
+from solvers.adventure_solver import AdventureSolver
 from data_loader import create_instance_from_files
 
 def print_full_schedule(final_output):
