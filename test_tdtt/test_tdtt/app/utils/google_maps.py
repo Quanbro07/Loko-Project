@@ -73,11 +73,9 @@ def fetch_top_places(city_name, ll_string, type_of_place):
             
             # Xử lý Operating Hours
             raw_hours = item.get("operating_hours")
-            open_time_str = "N/A"
-            if isinstance(raw_hours, dict):
-                open_time_str = str(raw_hours).replace("'", '"') 
-            elif raw_hours:
-                open_time_str = str(raw_hours)
+            open_time_data = "N/A"
+            if raw_hours:
+                open_time_data = raw_hours
 
             # Xử lý Images
             raw_imgs = []
@@ -94,7 +92,7 @@ def fetch_top_places(city_name, ll_string, type_of_place):
                 "location_name": item.get("title"),
                 "latitude": gps_coords.get("latitude"),
                 "longitude": gps_coords.get("longitude"),
-                "open_time": open_time_str,
+                "open_time": open_time_data,
                 "types": item.get("types", []), # Mặc định là list rỗng nếu None
                 "average_rating": item.get("rating", 0.0), # Mặc định 0.0
                 "review_count": 0,

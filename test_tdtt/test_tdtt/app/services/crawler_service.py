@@ -2,7 +2,7 @@ from app.core.constants import CATEGORY_KEYWORDS
 from app.utils import google_maps as query_module  # Import module utils mới
 from app.services import tagging_service
 
-def process_location_sync(city_name: str, category_name: str):
+def process_location_sync(city_name: str, category_name: str, province_id: int):
     # 1. Chuẩn hóa tên thành phố
     formatted_city = city_name.replace("_", " ").strip()
     
@@ -30,6 +30,7 @@ def process_location_sync(city_name: str, category_name: str):
         # Gộp kết quả, lọc trùng lặp
         for p in places:
             if p['gg_place_id'] not in seen_ids:
+                p['province_id'] = province_id
                 seen_ids.add(p['gg_place_id'])
                 all_places.append(p)
 

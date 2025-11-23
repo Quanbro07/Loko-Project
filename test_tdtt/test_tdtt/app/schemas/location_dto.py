@@ -1,6 +1,6 @@
 # app/schemas/location_dto.py
-from pydantic import BaseModel
-from typing import List, Optional
+from pydantic import BaseModel, Field
+from typing import List, Optional, Union, Dict
 
 # Request từ Backend gửi sang
 class CategorySyncRequest(BaseModel):
@@ -22,8 +22,8 @@ class PlaceItem(BaseModel):
     location_name: Optional[str]
     latitude: Optional[float]
     longitude: Optional[float]
-    open_time: Optional[str]
-    types: List[str] = []
+    open_time: Union[Dict[str, str], str, None] = "N/A"
+    types: List[str] = Field(default=[], exclude=True)
     average_rating: Optional[float]
     review_count: int = 0
     province_id: int = 0

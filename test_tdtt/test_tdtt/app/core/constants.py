@@ -10,9 +10,9 @@ CATEGORY_KEYWORDS = {
         "hotel" # Food thường gắn liền nơi ở hoặc ăn uống trong ks
     ],
     "Amusement": [
-        "amusement park", 
+        "amusement", 
         "cultural performance", 
         "hotel", 
-        "tourist attraction"
+        "restaurant"
     ]
 }
