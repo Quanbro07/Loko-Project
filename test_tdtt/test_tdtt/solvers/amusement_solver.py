@@ -96,8 +96,8 @@ class AmusementSolver(BaseSolver):
             end_time_actual = min(arrival_actual + service_time, max_end_time_mins)
             if end_time_actual < arrival_actual: break
             
-            start_str = f"{minutes_to_str(arrival_actual)}:00"
-            end_str = f"{minutes_to_str(end_time_actual)}:00"
+            start_str = f"{minutes_to_str(arrival_actual, 'up')}:00"
+            end_str = f"{minutes_to_str(end_time_actual, 'down')}:00"
 
             if node == self.depot and index != self.routing.Start(0):
                 break 
@@ -141,8 +141,8 @@ class AmusementSolver(BaseSolver):
                             arrive_hotel = current_leave + travel_to_depot
                             leave_hotel = arrive_hotel + rest_duration
                             
-                            s_rest = f"{minutes_to_str(arrive_hotel)}:00"
-                            e_rest = f"{minutes_to_str(leave_hotel)}:00"
+                            s_rest = f"{minutes_to_str(arrive_hotel, 'up')}:00"
+                            e_rest = f"{minutes_to_str(leave_hotel, 'down')}:00"
                             
                             print(f"    💤 Nghỉ ngơi tại {hotel_title}")
                             
@@ -160,7 +160,7 @@ class AmusementSolver(BaseSolver):
 
         end_time_solved = solution.Value(self.time_dim.CumulVar(index))
         end_time_actual = min(end_time_solved + total_added_rest_time, max_end_time_mins)
-        end_str_final = f"{minutes_to_str(end_time_actual)}:00"
+        end_str_final = f"{minutes_to_str(end_time_actual, 'down')}:00"
         
         print(f"- [{end_str_final[:5]}] Quay về {hotel_title}")
         
