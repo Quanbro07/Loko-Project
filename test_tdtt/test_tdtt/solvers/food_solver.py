@@ -15,8 +15,8 @@ class FoodSolver(BaseSolver):
         print("... Thêm ràng buộc Ẩm thực (Chợ đêm)...")
         night_start_min = (19 * 60) - DAY_START_TIME 
         for node in self.instance["night_nodes"]:
-            categories = self.instance["locations_data"][node].get("categories", [])
-            if "night market" in categories:
+            tags = self.instance["locations_data"][node].get("tags", [])
+            if "night market" in tags:
                 idx = self.manager.NodeToIndex(node)
                 self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_min, 300)
 
@@ -47,14 +47,12 @@ class FoodSolver(BaseSolver):
         total_added_rest_time = 0 
         time_matrix = self.instance["time_matrix"] 
         depot_place = self.locations[self.depot] 
-        
         hotel_title = depot_place.get('location_name', 'Khách sạn')
         max_end_time_mins = self.instance["max_duration"]
         sequence_order = 1
 
-        # --- Helper tạo object location lồng nhau ---
         def create_location_object(place_data):
-            cats = [{"id": i+1, "categoryName": t} for i, t in enumerate(place_data.get("categories", []))]
+            cats = [{"id": i+1, "categoryName": t} for i, t in enumerate(place_data.get("tags", []))]
             imgs = []
             for i, img in enumerate(place_data.get("rawImgs", [])):
                 imgs.append({
@@ -62,6 +60,7 @@ class FoodSolver(BaseSolver):
                     "img_url": img.get("img_url"),
                     "description": img.get("description", "Ảnh địa điểm")
                 })
+            
 
             return {
                 "id": 0,
@@ -70,18 +69,18 @@ class FoodSolver(BaseSolver):
                 "latitude": place_data.get("latitude"),
                 "longitude": place_data.get("longitude"),
                 "open_time": place_data.get("open_time", "N/A"),
+                "close_time": place_data.get("close_time", "N/A"),
                 "average_rating": place_data.get("average_rating"),
                 "review_count": place_data.get("review_count", 0),
                 "province_id": place_data.get("province_id", 0),
-                "categories": cats,
+                "category_ids": cats,
                 "imgs": imgs
             }
-        # -------------------------------------------
 
         while not self.routing.IsEnd(index):
             node = self.manager.NodeToIndex(index)
             place = self.locations[node]
-            categories = [t.lower() for t in place.get("categories", [])]
+            tags = [t.lower() for t in place.get("tags", [])]
             name = place.get("location_name", f"Place {node}")
             service_time = self.instance["service_time"][node]
             
@@ -104,22 +103,22 @@ class FoodSolver(BaseSolver):
             
             print(f"- [{start_str[:5]} → {end_str[:5]}] {name} (ID: {place.get('gg_place_id')})")
             
-            # --- TẠO TRIP DETAIL ---
             trip_details.append({
                 "sequenceOrder": sequence_order,
                 "startTime": start_str,
                 "endTime": end_str,
-                "description": place.get("description") or name, # Lấy description từ source hoặc dùng tên
+                "description": place.get("description") or name,
                 "location": create_location_object(place)
             })
             sequence_order += 1
 
             if node != self.depot:
-                if "hotel" in categories: energy_loss = -50
-                elif any(t in ["market", "night market"] for t in categories): energy_loss = 25
-                elif any(t in ["restaurant", "cafe", "speciality"] for t in categories): energy_loss = 10
+                if "hotel" in tags: energy_loss = -50
+                elif any(t in ["market", "night market"] for t in tags): energy_loss = 25
+                elif any(t in ["restaurant", "cafe", "speciality"] for t in tags): energy_loss = 10
                 else: energy_loss = 15
                 total_energy = max(0, min(100, total_energy - energy_loss))
+                
 
                 if total_energy < 30:
                     next_index = solution.Value(self.routing.NextVar(index))

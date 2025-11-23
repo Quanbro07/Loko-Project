@@ -44,6 +44,9 @@ TAG_TO_ID = {
     "cultural performance": 13
 }
 
+# --- TẠO TỪ ĐIỂN ĐẢO NGƯỢC (ID -> TAG) ---
+ID_TO_TAG = {v: k for k, v in TAG_TO_ID.items()}
+
 def get_category_id(tag_raw: str) -> int:
     """
     Hàm chuẩn hóa và lấy ID.
@@ -57,3 +60,11 @@ def get_category_id(tag_raw: str) -> int:
     
     # 2. Tra từ điển
     return TAG_TO_ID.get(clean_tag)
+
+# --- HÀM MỚI ĐỂ LẤY TAG TỪ ID ---
+def get_tag_from_id(cat_id: int) -> str:
+    """
+    Chuyển đổi ID category thành tag string.
+    VD: 8 -> "amusement/water park"
+    """
+    return ID_TO_TAG.get(cat_id, "unknown")

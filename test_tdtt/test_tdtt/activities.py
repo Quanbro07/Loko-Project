@@ -3,7 +3,7 @@ import re
 import time
 import google.generativeai as genai
 
-API_KEY = "AIzaSyBE55DXF2LX6iPKJ8PM_QzNOFSiYDoYDFM"
+API_KEY = "AIzaSyA8yLQNd5k8uACJm30TJn78fsrKzPp2TMU"
 INPUT_FILE = OUTPUT_FILE = "schedule.json"
 
 genai.configure(api_key=API_KEY)
