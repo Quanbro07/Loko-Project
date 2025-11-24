@@ -20,4 +20,6 @@ public class AuthenticationResponse {
     private Integer age;
 
     private Gender gender;
+
+    private Role role;
 }

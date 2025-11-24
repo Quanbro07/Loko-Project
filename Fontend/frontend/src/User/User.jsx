@@ -174,7 +174,6 @@ const User = () => {
 
     return (
         <div className="user-page-background">
-            <Navbar />
             <div className='ticket-container'>
                 <div className='ticket-header'>
                     <img src="/img/plane-ticket.png" alt="Plane Ticket" className="plane-icon" />
@@ -285,7 +284,6 @@ const User = () => {
             {/* Visited provinces map: pass an array of province slugs (normalized, e.g. "ha-noi", "an-giang").
                     The list is fetched from backend (GET /api/user/visited) when available. */}
             <VisitedMap visited={visitedSlugs} />
-            <Footer className="footer" />
         </div>
     )
 }

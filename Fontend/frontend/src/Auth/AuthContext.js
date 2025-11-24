@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     });
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [authMode, setAuthMode] = useState('login'); // 'login' or 'register'
-
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         if (token && user) {
             setIsAuthenticated(true);
@@ -19,6 +19,28 @@ export const AuthProvider = ({ children }) => {
             setUser(null);
         }
     }, [token, user]);
+
+    useEffect(() => {
+        // Giả lập check token từ localStorage khi reload trang
+        const checkAuth = async () => {
+            setIsLoading(true); // Bắt đầu load
+            try {
+                const storedUser = localStorage.getItem('user');
+                const token = localStorage.getItem('token');
+                
+                if (token && storedUser) {
+                    setUser(JSON.parse(storedUser));
+                    setIsAuthenticated(true);
+                }
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setIsLoading(false); // Kết thúc load (Dù thành công hay thất bại)
+            }
+        };
+
+        checkAuth();
+    }, []);
 
     const login = async (credentials) => {
         try {
@@ -35,12 +57,12 @@ export const AuthProvider = ({ children }) => {
                 setToken(data.accessToken);
                 // Backend returns `username` in the top-level response (not a `user` object).
                 // Normalize into a small user object used by the app UI.
-                const resolvedUser = data.user || { username: data.username, age: data.age, gender: data.gender };
+                const resolvedUser = data.user || { username: data.username, age: data.age, gender: data.gender, role:data.role};
                 setUser(resolvedUser);
                 setIsAuthenticated(true);
                 localStorage.setItem('token', data.accessToken);
                 localStorage.setItem('user', JSON.stringify(resolvedUser));
-                return { success: true };
+                return { success: true, user: resolvedUser };
             } else {
                 const error = await response.json();
                 // Translate error messages
@@ -141,6 +163,7 @@ export const AuthProvider = ({ children }) => {
             user,
             token,
             authMode,
+            isLoading,
             login,
             register,
             logout,

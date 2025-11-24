@@ -1,4 +1,4 @@
-import './Admin.css';  
+import './AdminDashboard.css';  
 
 const Admin = () => {
     return(
