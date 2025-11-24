@@ -1,6 +1,7 @@
 package com.exproject.backend.authenticate.dto;
 
 import com.exproject.backend.user.info.Gender;
+import com.exproject.backend.user.info.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
