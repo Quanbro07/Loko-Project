@@ -55,7 +55,6 @@ public class User implements UserDetails {
     private LocalDateTime resetPasswordExpiryAt;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JsonManagedReference
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JoinTable(

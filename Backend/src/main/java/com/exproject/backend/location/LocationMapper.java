@@ -20,16 +20,19 @@ public class LocationMapper {
 
         LocationDTO dto = new LocationDTO();
 
+        dto.setId(location.getId());
         dto.setGgPlaceId(location.getGgPlaceId());
         dto.setLocationName(location.getLocationName());
         dto.setLatitude(location.getLatitude());
         dto.setLongitude(location.getLongitude());
         dto.setOpenTime(location.getOpenTime());
+        dto.setCloseTime(location.getCloseTime());
         dto.setAvgVisitTime(location.getAvgVisitTime());
         dto.setTicketPrice(location.getTicketPrice());
         dto.setAverageRating(location.getAverageRating());
         dto.setReviewCount(location.getReviewCount());
         dto.setProvinceId(location.getProvince().getId());
+        dto.setDescription(location.getDescription());
 
         List<LocationCategoryDTO> categoryDTO = location.getLocationCategories().stream()
                 .map(this::toCategoryDTO)

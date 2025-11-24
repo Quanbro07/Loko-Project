@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,11 +21,15 @@ public class LocationRequest {
 
     private Double longitude;
 
-    private String openTime;
+    private LocalTime openTime;
 
-    private String avgVisitTime;
+    private LocalTime closeTime;
+
+    private Long avgVisitTime;
 
     private Double ticketPrice;
+
+    private String description;
 
     private String ggPlaceId;
 

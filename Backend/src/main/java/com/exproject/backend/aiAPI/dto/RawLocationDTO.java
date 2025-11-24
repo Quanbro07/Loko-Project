@@ -1,11 +1,13 @@
 package com.exproject.backend.aiAPI.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @Data
@@ -23,10 +25,15 @@ public class RawLocationDTO {
     private Double longitude;
 
     @JsonProperty("open_time")
-    private String openTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "HH:mm")
+    private LocalTime openTime;
+
+    @JsonProperty("close_time")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "HH:mm")
+    private LocalTime closeTime;
 
     @JsonProperty("avg_visit_time")
-    private String avgVisitTime;
+    private Long avgVisitTime;
 
     @JsonProperty("ticket_price")
     private Double ticketPrice;
@@ -39,6 +46,9 @@ public class RawLocationDTO {
 
     @JsonProperty("province_id")
     private Long provinceId; // Hứng ID, không phải object
+
+    @JsonProperty("description")
+    private String description;
 
     @JsonProperty("category_ids")
     private List<Long> categoryIds;

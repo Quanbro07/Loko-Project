@@ -12,6 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,10 +61,13 @@ public class Location {
     private Double longitude;
 
     @Column(name = "open_time")
-    private String openTime;
+    private LocalTime openTime;
+
+    @Column(name = "close_time")
+    private LocalTime closeTime;
 
     @Column(name = "avg_visit_time")
-    private String avgVisitTime;
+    private Long avgVisitTime;
 
     @Column(name = "ticket_price")
     private Double ticketPrice;
@@ -73,6 +77,9 @@ public class Location {
 
     @Column(name = "review_count")
     private Integer reviewCount = 0;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "update_at")
     private LocalDateTime updateAt;

@@ -2,6 +2,7 @@ package com.exproject.backend.hobby.info;
 
 import com.exproject.backend.user.info.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,6 +28,7 @@ public class Hobby {
     @ManyToMany(mappedBy = "hobbies")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @JsonIgnore
     private Set<User> users = new HashSet<>();
 
     public Hobby(EHobby eHobby) {
