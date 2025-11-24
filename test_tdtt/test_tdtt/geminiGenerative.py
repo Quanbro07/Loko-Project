@@ -1,6 +1,7 @@
 import google.generativeai as genai
 from categories_creator.amusement import run_amusement
 from categories_creator.adventure import run_adventure
+from categories_creator.history import run_history
 from categories_creator.food import run_food
 
 # ==========================
@@ -25,6 +26,7 @@ def main():
     print("1. Food")
     print("2. Amusement")
     print("3. Adventure")
+    print("4. History")
 
     choice = input("Chọn loại xử lý (1-3): ").strip()
 
@@ -41,6 +43,11 @@ def main():
     elif choice == "3":
         print("🚀 Chạy Adventure...")
         run_adventure(MODEL, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE)
+        print("🎉 Hoàn tất xử lý Amusement!")
+
+    elif choice == "4":
+        print("🚀 Chạy History...")
+        run_history(MODEL, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE)
         print("🎉 Hoàn tất xử lý Amusement!")
 
     else:

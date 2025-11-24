@@ -7,6 +7,8 @@ from tag_rules.amusement_profile import AmusementProfile
 from solvers.amusement_solver import AmusementSolver
 from tag_rules.adventure_profile import AdventureProfile
 from solvers.adventure_solver import AdventureSolver
+from tag_rules.history_profile import HistoryProfile
+from solvers.history_solver import HistorySolver
 from data_loader import create_instance_from_files
 
 def print_full_schedule(final_output):
@@ -42,6 +44,8 @@ def main_itinerary_loop():
     print("="*60)
     print("1: Ẩm thực (Food) - Ưu tiên nhà hàng, đặc sản, chợ đêm")
     print("2: Giải trí (Amusement) - Ưu tiên công viên, show, nightlife")
+    print("3: Mạo hiểm (Adventure) - Ưu tiên núi, hang động, suối - thác")
+    print("4: Lịch sử (History) - Ưu tiên thành lũy, bãi chiến trường cũ")
     choice = input("Lựa chọn của bạn [Mặc định: 1]: ").strip()
 
     if choice == "1":
@@ -55,6 +59,18 @@ def main_itinerary_loop():
         profile = AmusementProfile()
         SolverClass = AmusementSolver
         preferred_tags = ["zoo", "amusement/water park", "cultural performance", "nightlife", "aquarium", "festival", "restaurant"]
+
+    elif choice == "3":
+        print("\n--- Đã chọn: Mạo hiểm (Adventure) ---")
+        profile = AdventureProfile()
+        SolverClass = AdventureSolver
+        preferred_tags = ["moutain", "cave", "waterfall", "camping", "diving", "restaurant"]
+
+    elif choice == "4":
+        print("\n--- Đã chọn: Lịch sử (History) ---")
+        profile = HistoryProfile()
+        SolverClass = HistorySolver
+        preferred_tags = ["museum", "citadel/palace", "church/temple/pagoda", "old battlefield", "restaurant"]
 
     # --- Bước 2: Nhập Ngày đi & Ngày về ---
     start_date = None

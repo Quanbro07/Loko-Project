@@ -41,7 +41,31 @@ TAG_TO_ID = {
     "festival": 12,
 
     # ID 13: CULTURE_PERFORMANCE
-    "cultural performance": 13
+    "cultural performance": 13,
+
+    # ID 14: MOUTAIN
+    "moutain": 14,
+
+    # ID 15: CAVE
+    "cave": 15,
+
+    # ID 16: CAMPING
+    "camping": 16,
+
+    # ID 17: DIVING
+    "diving": 17,
+
+    # ID 18: MUSEUM
+    "museum": 18,
+
+    # ID 19: CITADEL/PALACE
+    "citadel/palace": 19,
+
+    # ID 20: CHURCH/TEMPLE/PAGODA
+    "church/temple/pagoda": 20,
+
+    # ID 16: OLD BATTLEFIELD
+    "old battlefield": 21
 }
 
 # --- TẠO TỪ ĐIỂN ĐẢO NGƯỢC (ID -> TAG) ---
