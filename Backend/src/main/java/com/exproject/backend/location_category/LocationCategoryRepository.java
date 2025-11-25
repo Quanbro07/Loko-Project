@@ -14,5 +14,5 @@ public interface LocationCategoryRepository extends JpaRepository<LocationCatego
 
     List<LocationCategory> findAllByIdIn(List<Long> ids);
 
-
+    Optional<LocationCategory> findById(Long id);
 }

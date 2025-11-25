@@ -361,6 +361,7 @@ public class AuthenticationService {
                 .username(user.getDisplayUserName())
                 .age(user.getAge())
                 .gender(user.getGender())
+                .role(user.getRole())
                 .build();
     }
 }

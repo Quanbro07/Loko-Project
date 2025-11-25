@@ -56,7 +56,7 @@ public class TripMapper {
 
         TripSectionResponse tripSectionResponse = new TripSectionResponse();
 
-        tripSectionResponse.setTripId(tripSection.getId());
+        tripSectionResponse.setId(tripSection.getId());
         tripSectionResponse.setTripId(tripSection.getTrip().getId());
         tripSectionResponse.setDayNumber(tripSection.getDayNumber());
         tripSectionResponse.setTitle(tripSection.getTitle());

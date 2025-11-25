@@ -1,5 +1,7 @@
-package com.exproject.backend.aiAPI.dto;
+package com.exproject.backend.location.dto;
 
+import com.exproject.backend.location_category.dto.LocationCategoryDTO;
+import com.exproject.backend.location_img.dto.LocationImgDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -14,7 +16,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RawLocationDTO {
+public class LocationDTO {
+    private Long id;
+
     @JsonProperty("gg_place_id")
     private String ggPlaceId;
 
@@ -22,14 +26,15 @@ public class RawLocationDTO {
     private String locationName;
 
     private Double latitude;
+
     private Double longitude;
 
-    @JsonProperty("open_time")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "HH:mm")
+    @JsonProperty("open_time")
     private LocalTime openTime;
 
-    @JsonProperty("close_time")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "HH:mm")
+    @JsonProperty("close_time")
     private LocalTime closeTime;
 
     @JsonProperty("avg_visit_time")
@@ -50,8 +55,9 @@ public class RawLocationDTO {
     @JsonProperty("description")
     private String description;
 
-    @JsonProperty("category_ids")
-    private List<Long> categoryIds;
+    @JsonProperty("categories")
+    private List<LocationCategoryDTO> categories;
 
-    private List<RawLocationImgDTO> rawImgs;
+    @JsonProperty("imgs")
+    private List<LocationImgDTO> imgs;
 }

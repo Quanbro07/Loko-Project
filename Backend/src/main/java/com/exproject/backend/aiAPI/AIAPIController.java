@@ -1,10 +1,12 @@
 package com.exproject.backend.aiAPI;
 
+import com.exproject.backend.aiAPI.dto.RawLocationDTO;
+import com.exproject.backend.location.dto.LocationDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/ai-api")
@@ -21,6 +23,15 @@ public class AIAPIController {
                 + pythonAPIConfig.getMakePlanUrl();
     }
 
+    @PostMapping("/mock")
+    public ResponseEntity<List<LocationDTO>> mock(
+            @RequestBody List<RawLocationDTO> rawLocations) {
+
+        List<LocationDTO> response = aiAPIService.convertRawToLocationDTO(rawLocations);
+
+        return ResponseEntity.ok(response);
+
+    }
 
 
 }

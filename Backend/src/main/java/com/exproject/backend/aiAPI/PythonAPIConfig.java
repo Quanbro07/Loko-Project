@@ -13,6 +13,8 @@ public class PythonAPIConfig {
 
     private String baseUrl;
 
+    private String versionUrl;
+
     private String getLocationUrl;
 
     private String makePlanUrl;
