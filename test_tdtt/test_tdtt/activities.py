@@ -3,7 +3,7 @@ import re
 import time
 import google.generativeai as genai
 
-API_KEY = "AIzaSyB1ZGPnAMCHz9QC_KguYToOxkprnZ2yMMU"
+API_KEY = "AIzaSyA8yLQNd5k8uACJm30TJn78fsrKzPp2TMU"
 INPUT_FILE = OUTPUT_FILE = "schedule.json"
 
 genai.configure(api_key=API_KEY)
@@ -46,9 +46,17 @@ QUY TẮC PHÂN TÍCH & TẠO ACTIVITY
    - Nếu không rõ → chọn hoạt động hợp lý nhất theo bối cảnh.
 
 2. **ĐỐI VỚI KHÁCH SẠN / RESORT**
-   - Nếu là **điểm đầu tiên trong ngày** → "nghỉ ngơi tại khách sạn" hoặc "xuất phát từ khách sạn".
-   - Nếu KHÔNG PHẢI điểm đầu tiên → **bắt buộc** viết dạng:
-     → "Quay về khách sạn để nghỉ ngơi / thư giãn / chuẩn bị cho chặng tiếp theo…"
+   - Nếu "sequenceOrder" = 1 → tức là điểm đầu tiên của ngày:
+    → Luôn phải viết theo dạng:
+        "Xuất phát từ khách sạn..."
+        "Khởi hành từ khách sạn..."
+        "Bắt đầu ngày mới tại khách sạn và di chuyển đến..."
+        "Rời khách sạn để bắt đầu hành trình..."
+
+- Nếu "sequenceOrder" > 1 → nghĩa là quay về khách sạn giữa/ngày cuối:
+    → Luôn phải viết theo dạng:
+        "Quay về khách sạn để nghỉ ngơi..."
+        "Trở lại khách sạn để thư giãn..."
 
 3. **VIẾT CHI TIẾT – TỰ NHIÊN – CÓ NGỮ CẢNH**
 

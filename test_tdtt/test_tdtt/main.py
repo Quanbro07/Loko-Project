@@ -4,10 +4,15 @@ import json
 from tag_rules.food_profile import FoodProfile
 from solvers.food_solver import FoodSolver
 from tag_rules.amusement_profile import AmusementProfile 
-from solvers.amusement_solver import AmusementSolver     
+from solvers.amusement_solver import AmusementSolver
+from tag_rules.adventure_profile import AdventureProfile
+from solvers.adventure_solver import AdventureSolver
+from tag_rules.history_profile import HistoryProfile
+from solvers.history_solver import HistorySolver
 from data_loader import create_instance_from_files
 
 def print_full_schedule(final_output):
+    """Helper: In toàn bộ lịch trình từ cấu trúc JSON mới ra console."""
     print("\n" + "="*60)
     print(f"📝 {final_output.get('tripName', 'Lịch trình')}")
     print(f"📅 Thời gian: {final_output.get('startDate')} - {final_output.get('endDate')}")
@@ -28,28 +33,46 @@ def print_full_schedule(final_output):
             loc = item.get('location', {})
             name = loc.get('location_name', 'Địa điểm')
             desc = item.get('description', '')
-            
             print(f"- [{s} → {e}] {name} | {desc}")
 
+
 def main_itinerary_loop():
+    
+    # --- Bước 1: Chọn Profile và Solver ---
     print("\n" + "="*60)
     print("🏞️  CHỌN LOẠI HÌNH DU LỊCH")
     print("="*60)
-    print("1: Ẩm thực (Food)")
-    print("2: Giải trí (Amusement)")
+    print("1: Ẩm thực (Food) - Ưu tiên nhà hàng, đặc sản, chợ đêm")
+    print("2: Giải trí (Amusement) - Ưu tiên công viên, show, nightlife")
+    print("3: Mạo hiểm (Adventure) - Ưu tiên núi, hang động, suối - thác")
+    print("4: Lịch sử (History) - Ưu tiên thành lũy, bãi chiến trường cũ")
     choice = input("Lựa chọn của bạn [Mặc định: 1]: ").strip()
 
-    if choice == "2":
-        print("\n--- Đã chọn: Giải trí (Amusement) ---")
-        profile = AmusementProfile()
-        SolverClass = AmusementSolver
-        preferred_categories = ["zoo", "amusement/water park", "cultural performance", "nightlife", "restaurant"]
-    else:
+    if choice == "1":
         print("\n--- Đã chọn: Ẩm thực (Food) ---")
         profile = FoodProfile()
         SolverClass = FoodSolver
-        preferred_categories = ["restaurant", "speciality", "night market"]
+        preferred_tags = ["restaurant", "speciality", "night market"]
 
+    elif choice == "2":
+        print("\n--- Đã chọn: Giải trí (Amusement) ---")
+        profile = AmusementProfile()
+        SolverClass = AmusementSolver
+        preferred_tags = ["zoo", "amusement/water park", "cultural performance", "nightlife", "aquarium", "festival", "restaurant"]
+
+    elif choice == "3":
+        print("\n--- Đã chọn: Mạo hiểm (Adventure) ---")
+        profile = AdventureProfile()
+        SolverClass = AdventureSolver
+        preferred_tags = ["moutain", "cave", "waterfall", "camping", "diving", "restaurant"]
+
+    elif choice == "4":
+        print("\n--- Đã chọn: Lịch sử (History) ---")
+        profile = HistoryProfile()
+        SolverClass = HistorySolver
+        preferred_tags = ["museum", "citadel/palace", "church/temple/pagoda", "old battlefield", "restaurant"]
+
+    # --- Bước 2: Nhập Ngày đi & Ngày về ---
     start_date = None
     end_date = None
     num_days = 0
@@ -59,13 +82,13 @@ def main_itinerary_loop():
     while True:
         try:
             print("\n--- Nhập thời gian chuyến đi ---")
-            s_input = input("Nhập ngày đi (dd-mm-yyyy, ví dụ 20-12-2025): ").strip()
-            start_date = datetime.strptime(s_input, "%d-%m-%Y")
-            start_date_str = datetime.strftime(start_date, "%Y-%m-%d")
+            s_input = input("Nhập ngày đi (yyyy-mm-dd, ví dụ 2025-12-20): ").strip()
+            start_date = datetime.strptime(s_input, "%Y-%m-%d")
+            start_date_str = s_input
 
-            e_input = input("Nhập ngày về (dd-mm-yyyy, ví dụ 23-12-2025): ").strip()
-            end_date = datetime.strptime(e_input, "%d-%m-%Y")
-            end_date_str = datetime.strftime(end_date, "%Y-%m-%d")
+            e_input = input("Nhập ngày về (yyyy-mm-dd, ví dụ 2025-12-22): ").strip()
+            end_date = datetime.strptime(e_input, "%Y-%m-%d")
+            end_date_str = e_input
 
             if end_date < start_date:
                 print("❌ Ngày về phải sau hoặc bằng ngày đi. Vui lòng nhập lại.")
@@ -75,11 +98,13 @@ def main_itinerary_loop():
             print(f"✓ Tổng thời gian: {num_days} ngày.")
             break
         except ValueError:
-            print("❌ Định dạng ngày không hợp lệ. Vui lòng nhập đúng định dạng dd-mm-yyyy.")
+            print("❌ Định dạng ngày không hợp lệ. Vui lòng nhập đúng định dạng yyyy-mm-dd.")
 
+    # --- Bước 3: Khởi tạo Vòng lặp "Thử" ---
     master_penalty_overrides = {} 
     max_total_attempts = 5 
     
+    # --- VÒNG LẶP BÊN NGOÀI (Cho mỗi lần thử y/n) ---
     for attempt in range(1, max_total_attempts + 1):
         print("\n" + "="*60)
         print(f"🚀 BẮT ĐẦU SINH TOÀN BỘ LỊCH TRÌNH (Lần thử {attempt}/{max_total_attempts})")
@@ -92,16 +117,18 @@ def main_itinerary_loop():
             "tripName": f"Chuyến đi {num_days} ngày",
             "startDate": start_date_str,
             "endDate": end_date_str,
-            "numAdult": 0, "numChild": 0, "numElder": 0,
+            "numAdult": 2, "numChild": 0, "numElder": 0,
             "tripSections": []
         }
         
         all_visited_nodes_for_penalty = [] 
         all_node_maps = []
+
         forced_hotel_original_idx = None
         itinerary_failed = False
         locations = None 
 
+        # --- VÒNG LẶP BÊN TRONG (Tự động lặp qua các ngày) ---
         for i in range(num_days):
             current_date = start_date + timedelta(days=i)
             day_num = i + 1
@@ -110,7 +137,7 @@ def main_itinerary_loop():
 
             instance, selected_hotel_idx, node_map, loaded_locations = create_instance_from_files(
                 profile, 
-                preferred_categories, 
+                preferred_tags, 
                 current_attempt_penalties,
                 force_hotel_idx=forced_hotel_original_idx
             )
@@ -149,17 +176,23 @@ def main_itinerary_loop():
             all_visited_nodes_for_penalty.append(visited_nodes)
             all_node_maps.append(node_map)
             
+            # --- SỬA LỖI 1: Xử lý tránh trùng lặp giữa các ngày ---
             for reordered_idx in visited_nodes:
                 original_idx = node_map.get(reordered_idx)
-                if original_idx:
+                # Dùng 'is not None' để bắt được cả index 0
+                if original_idx is not None:
                     current_attempt_penalties[original_idx] = 1 
+            # ----------------------------------------------------
         
+        # --- Kết thúc vòng lặp "Ngày" ---
+
         if itinerary_failed or len(final_output["tripSections"]) != num_days:
             print(f"❌ Thử nghiệm thất bại.")
             if forced_hotel_original_idx is not None:
                  master_penalty_overrides[forced_hotel_original_idx] = master_penalty_overrides.get(forced_hotel_original_idx, 10) * 5
             continue 
 
+        # --- Hiển thị và Hỏi ---
         print("\n" + "="*60)
         print(f"🎉 ĐÃ TẠO XONG (Lần thử {attempt})")
         print_full_schedule(final_output)
@@ -182,17 +215,19 @@ def main_itinerary_loop():
             print(f"🔄 Đã hiểu. Đang tạo lại...")
             master_penalty_overrides[forced_hotel_original_idx] = master_penalty_overrides.get(forced_hotel_original_idx, 10) * 5
 
+            # Logic phạt mới: Phạt dựa trên danh sách các node đã đi của từng ngày
             for i in range(len(all_visited_nodes_for_penalty)):
                 visited_nodes = all_visited_nodes_for_penalty[i]
                 node_map = all_node_maps[i]
                 for reordered_idx in visited_nodes:
                     original_idx = node_map.get(reordered_idx)
-                    if original_idx and original_idx != forced_hotel_original_idx:
-                        # Sửa lỗi lấy rating
+                    # --- SỬA LỖI 2: Xử lý phạt khi user chọn 'No' ---
+                    if original_idx is not None and original_idx != forced_hotel_original_idx:
                         loc_data = locations[original_idx]
                         rating = loc_data.get("average_rating") or loc_data.get("rating")
-                        current_penalty = profile.get_penalty(loc_data.get("categories", []), rating)
+                        current_penalty = profile.get_penalty(loc_data.get("tags", []), rating)
                         master_penalty_overrides[original_idx] = int(max(5, current_penalty * 0.2))
+                    # -----------------------------------------------
 
     if attempt == max_total_attempts:
         print("\n--- Đã hết số lần thử. ---")

@@ -15,8 +15,8 @@ class AmusementSolver(BaseSolver):
         print("... Thêm ràng buộc Giải trí (Nightlife)...")
         night_start_min = (21 * 60) - DAY_START_TIME 
         for node in self.instance["night_nodes"]:
-            categories = self.instance["locations_data"][node].get("categories", [])
-            if "nightlife" in categories or "bar" in categories:
+            tags = self.instance["locations_data"][node].get("tags", [])
+            if "nightlife" in tags or "bar" in tags:
                 idx = self.manager.NodeToIndex(node)
                 self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_min, 5)
 
@@ -47,15 +47,13 @@ class AmusementSolver(BaseSolver):
         total_added_rest_time = 0 
         time_matrix = self.instance["time_matrix"] 
         depot_place = self.locations[self.depot] 
-        
-        # Ưu tiên location_name
-        hotel_title = depot_place.get('location_name') or depot_place.get('title', 'Khách sạn')
-        
+        hotel_title = depot_place.get('location_name', 'Khách sạn')
         max_end_time_mins = self.instance["max_duration"]
+        
         sequence_order = 1
 
         def create_location_object(place_data):
-            cats = [{"id": i+1, "categoryName": t} for i, t in enumerate(place_data.get("categories", []))]
+            cats = [{"id": i+1, "categoryName": t} for i, t in enumerate(place_data.get("tags", []))]
             imgs = []
             for i, img in enumerate(place_data.get("rawImgs", [])):
                 imgs.append({
@@ -63,27 +61,28 @@ class AmusementSolver(BaseSolver):
                     "img_url": img.get("img_url"),
                     "description": img.get("description", "Ảnh địa điểm")
                 })
+            
 
             return {
                 "id": 0,
-                "gg_place_id": place_data.get("gg_place_id") or place_data.get("place_id"),
-                "location_name": place_data.get("location_name") or place_data.get("title"),
+                "gg_place_id": place_data.get("gg_place_id"),
+                "location_name": place_data.get("location_name"),
                 "latitude": place_data.get("latitude"),
                 "longitude": place_data.get("longitude"),
-                "open_time": place_data.get("open_time") or place_data.get("operating_hours", "N/A"),
-                "average_rating": place_data.get("average_rating") or place_data.get("rating"),
+                "open_time": place_data.get("open_time", "N/A"),
+                "close_time": place_data.get("close_time", "N/A"),
+                "average_rating": place_data.get("average_rating"),
                 "review_count": place_data.get("review_count", 0),
                 "province_id": place_data.get("province_id", 0),
-                "categories": cats,
+                "category_ids": cats,
                 "imgs": imgs
             }
 
         while not self.routing.IsEnd(index):
             node = self.manager.NodeToIndex(index)
             place = self.locations[node]
-            categories = [t.lower() for t in place.get("categories", [])]
-            
-            name = place.get("location_name") or place.get("title", f"Place {node}")
+            tags = [t.lower() for t in place.get("tags", [])]
+            name = place.get("location_name", f"Place {node}")
             service_time = self.instance["service_time"][node]
             
             time_var = self.time_dim.CumulVar(index)
@@ -97,13 +96,13 @@ class AmusementSolver(BaseSolver):
             end_time_actual = min(arrival_actual + service_time, max_end_time_mins)
             if end_time_actual < arrival_actual: break
             
-            start_str = f"{minutes_to_str(arrival_actual)}:00"
-            end_str = f"{minutes_to_str(end_time_actual)}:00"
+            start_str = f"{minutes_to_str(arrival_actual, 'up')}:00"
+            end_str = f"{minutes_to_str(end_time_actual, 'down')}:00"
 
             if node == self.depot and index != self.routing.Start(0):
                 break 
             
-            print(f"- [{start_str[:5]} → {end_str[:5]}] {name}")
+            print(f"- [{start_str[:5]} → {end_str[:5]}] {name} (ID: {place.get('gg_place_id')})")
             
             trip_details.append({
                 "sequenceOrder": sequence_order,
@@ -115,10 +114,10 @@ class AmusementSolver(BaseSolver):
             sequence_order += 1
 
             if node != self.depot:
-                if "hotel" in categories: energy_loss = -50
-                elif any(t in ["zoo", "amusement/water park"] for t in categories): energy_loss = 35
-                elif any(t in ["cultural performance", "nightlife", "market"] for t in categories): energy_loss = 25
-                elif any(t in ["restaurant", "cafe"] for t in categories): energy_loss = 10
+                if "hotel" in tags: energy_loss = -50
+                elif any(t in ["zoo", "amusement/water park"] for t in tags): energy_loss = 35
+                elif any(t in ["cultural performance", "nightlife", "market"] for t in tags): energy_loss = 25
+                elif any(t in ["restaurant", "cafe"] for t in tags): energy_loss = 10
                 else: energy_loss = 20
                 
                 total_energy = max(0, min(100, total_energy - energy_loss))
@@ -142,8 +141,8 @@ class AmusementSolver(BaseSolver):
                             arrive_hotel = current_leave + travel_to_depot
                             leave_hotel = arrive_hotel + rest_duration
                             
-                            s_rest = f"{minutes_to_str(arrive_hotel)}:00"
-                            e_rest = f"{minutes_to_str(leave_hotel)}:00"
+                            s_rest = f"{minutes_to_str(arrive_hotel, 'up')}:00"
+                            e_rest = f"{minutes_to_str(leave_hotel, 'down')}:00"
                             
                             print(f"    💤 Nghỉ ngơi tại {hotel_title}")
                             
@@ -161,7 +160,7 @@ class AmusementSolver(BaseSolver):
 
         end_time_solved = solution.Value(self.time_dim.CumulVar(index))
         end_time_actual = min(end_time_solved + total_added_rest_time, max_end_time_mins)
-        end_str_final = f"{minutes_to_str(end_time_actual)}:00"
+        end_str_final = f"{minutes_to_str(end_time_actual, 'down')}:00"
         
         print(f"- [{end_str_final[:5]}] Quay về {hotel_title}")
         
@@ -169,7 +168,7 @@ class AmusementSolver(BaseSolver):
             "sequenceOrder": sequence_order,
             "startTime": end_str_final,
             "endTime": end_str_final,
-            "description": f"Quay về {hotel_title}",
+            "description": f"Kết thúc ngày, quay về {hotel_title}",
             "location": create_location_object(depot_place)
         })
         
