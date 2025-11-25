@@ -52,7 +52,7 @@ public class UserService {
     private UserResponse convertToUserResponse(User user) {
         return UserResponse.builder()
                 .id(user.getId())
-                .username(user.getUsername())
+                .username(user.getDisplayUserName())
                 .email(user.getEmail())
                 .age(user.getAge())
                 .gender(user.getGender())

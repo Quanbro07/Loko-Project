@@ -74,7 +74,7 @@ public class MakePlanService {
         }
 
 
-        request.setLocaitons(locationDTOS);
+        request.setLocations(locationDTOS);
 
         // Gọi AI server -> trả TripRequest
         TripRequest tripRequest = aiapiService.generateTripPlan(request);

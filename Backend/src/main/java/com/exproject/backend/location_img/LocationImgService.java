@@ -14,7 +14,12 @@ public class LocationImgService {
 
     public List<LocationImg> createLocationImgs(List<RawLocationImgDTO> rawLocationImgs
     ,Location location) {
+        if (rawLocationImgs == null) {
+            return new ArrayList<>();
+        }
+
         List<LocationImg> locationImgs = new ArrayList<>();
+
         for (RawLocationImgDTO rawLocationImg : rawLocationImgs) {
             LocationImg locationImg = LocationImg.builder()
                     .imgUrl(rawLocationImg.getImgUrl())

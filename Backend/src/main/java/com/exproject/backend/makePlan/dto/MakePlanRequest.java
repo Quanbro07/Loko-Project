@@ -57,5 +57,5 @@ public class MakePlanRequest {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime toOperateTime;
 
-    private List<LocationDTO> locaitons;
+    private List<LocationDTO> locations;
 }

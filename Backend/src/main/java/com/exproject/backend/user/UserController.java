@@ -38,8 +38,9 @@ public class UserController {
     }
 
     @GetMapping("/getAll")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<Page<UserResponse>> getAllUsers(
-            @PageableDefault(page=0,size=20,sort="#userId",direction = Sort.Direction.ASC)
+            @PageableDefault(page=0,size=20,sort="id",direction = Sort.Direction.ASC)
             Pageable page) {
 
         Page<UserResponse> response = userService.getAllUsers(page);

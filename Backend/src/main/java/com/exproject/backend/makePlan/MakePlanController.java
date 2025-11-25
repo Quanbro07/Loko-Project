@@ -61,7 +61,7 @@ public class MakePlanController {
 
         test.setFromOperateTime(LocalTime.now());
         test.setToOperateTime(LocalTime.now());
-        test.setLocaitons(testLocationsMapper);
+        test.setLocations(testLocationsMapper);
 
         return ResponseEntity.ok(test);
     }
@@ -79,5 +79,12 @@ public class MakePlanController {
         RegeneratePlanPartResponse response = makePlanService.regeneratePlanPart(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/test-plan")
+    public ResponseEntity<MakePlanRequest> testPlan(
+            @RequestBody MakePlanRequest request
+    ) {
+        return ResponseEntity.status(HttpStatus.OK).body(request);
     }
 }
