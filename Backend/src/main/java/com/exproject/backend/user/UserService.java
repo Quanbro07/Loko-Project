@@ -40,6 +40,42 @@ public class UserService {
         userRepository.save(existUser);
     }
 
+    public void enableUser(Long userId) {
+        User existUser = userRepository.findById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+
+        // Enable user
+        existUser.setEnabled(true);
+
+        userRepository.save(existUser);
+    }
+
+    public void deleteUser(Long userId) {
+        User existUser = userRepository.findById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+        if(existUser.getRole() == Role.ADMIN) {
+            throw new CannotDisableAdminException("You can't delete user admin");
+        }
+
+        userRepository.delete(existUser);
+
+    }
+
+    public void upgradeUser(Long userId) {
+        User existUser = userRepository.findById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+        if(existUser.getRole() == Role.ADMIN) {
+            throw new CannotDisableAdminException("You can't upgrade user admin");
+        }
+
+        existUser.setRole(Role.VIP);
+
+        userRepository.save(existUser);
+    }
+
     public Page<UserResponse> getAllUsers(Pageable page) {
         Role admin = Role.ADMIN;
 
@@ -86,4 +122,7 @@ public class UserService {
                 .role(user.getRole())
                 .build();
     }
+
+
+
 }

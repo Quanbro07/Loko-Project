@@ -65,4 +65,29 @@ public class UserController {
 
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/enable")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<Void> enableUser(@RequestParam Long userId) {
+        userService.enableUser(userId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/delete")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<Void> deleteUser(@RequestParam Long userId) {
+        userService.deleteUser(userId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/upgrade")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<Void> upgradeUser(@RequestParam Long userId) {
+        userService.upgradeUser(userId);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }
