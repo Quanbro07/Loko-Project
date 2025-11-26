@@ -18,7 +18,7 @@ const UserList = () => {
         setLoading(true);
     
         // --- CHECKPOINT 1: Kiểm tra đầu vào ---
-        const token = localStorage.getItem('accessToken');
+        const token = localStorage.getItem('token');
         console.group("🔍 DEBUG: Chuẩn bị gọi API");
         console.log("1. URL:", `/api/v1/user/getAll`);
         console.log("2. Page:", page);
@@ -31,7 +31,7 @@ const UserList = () => {
         console.groupEnd();
     
         try {
-            const url = `/api/v1/user/getAll`;
+            const url = `http://localhost:8080/api/v1/user/getAll`;
             
             // Tạo config object để log ra xem trước khi gửi
             const requestConfig = {
@@ -86,6 +86,66 @@ const UserList = () => {
         }
     };
 
+    const handleDisableUser = async (userId) => {
+        if (!window.confirm("Bạn có chắc chắn muốn vô hiệu hóa người dùng này?")) return;
+
+        try {
+            // Gọi API theo format @RequestParam: /disable?userId=...
+            const url = `http://localhost:8080/api/v1/user/disable?userId=${userId}`;
+            
+            // Post request, body là null vì tham số nằm trên URL
+            await axios.post(url, null);
+
+            // Cập nhật State ngay lập tức (UI Optimistic Update)
+            setUsers(prevUsers => prevUsers.map(user => 
+                user.id === userId ? { ...user, enabled: false } : user
+            ));
+            alert("Đã vô hiệu hóa thành công!");
+
+        } catch (err) {
+            console.error("Lỗi khi disable user:", err);
+            alert("Lỗi: Không thể vô hiệu hóa người dùng.");
+        }
+    };
+
+    // const handleEnableUser = async (userId) => {
+    //     if (!window.confirm("Kích hoạt lại người dùng này?")) return;
+
+    //     try {
+    //         const url = `http://localhost:8080/api/v1/user/enable?userId=${userId}`; 
+    //         await axios.post(url, null, getAuthConfig());
+
+    //         setUsers(prevUsers => prevUsers.map(user => 
+    //             user.id === userId ? { ...user, enabled: true } : user
+    //         ));
+    //         alert("Đã kích hoạt thành công!");
+    //     } catch (err) {
+    //         console.error("Lỗi khi enable user:", err);
+    //         alert("Lỗi: Không thể kích hoạt người dùng.");
+    //     }
+    // };
+
+    // const handleChangeRole = async (userId, newRole) => {
+    //     const actionText = newRole === 'VIP_USER' ? "nâng lên VIP" : "xuống thường";
+    //     if (!window.confirm(`Bạn muốn ${actionText} cho user này?`)) return;
+
+    //     try {
+    //         const url = `http://localhost:8080/api/v1/user/change-role`; 
+    //         await axios.post(url, null, {
+    //             ...getAuthConfig(),
+    //             params: { userId: userId, role: newRole }
+    //         });
+
+    //         setUsers(prevUsers => prevUsers.map(user => 
+    //             user.id === userId ? { ...user, role: newRole } : user
+    //         ));
+            
+    //     } catch (err) {
+    //         console.error("Lỗi đổi role:", err);
+    //         alert("Lỗi khi cập nhật quyền hạn.");
+    //     }
+    // };
+
     // 4. useEffect để gọi API khi component load hoặc page thay đổi
     useEffect(() => {
         fetchUsers(currentPage);
@@ -115,6 +175,10 @@ const UserList = () => {
                         <th>Tuổi</th>
                         <th>Giới tính</th>
                         <th>Vai trò</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,6 +194,46 @@ const UserList = () => {
                                 <span className={`role-badge ${user.role ? user.role.toLowerCase() : ''}`}>
                                     {user.role}
                                 </span>
+                            </td>
+                            <td>{(user.enabled ? "Hoạt động":"Ngưng hoạt động")}</td>
+                            <td className='button-span'>
+                            {user.enabled ? (
+                                    // Nếu đang Enable -> Hiện nút Deactivate
+                                    <button 
+                                        className='admin-button deactivate-button'
+                                        onClick={() => handleDisableUser(user.id)}
+                                    >
+                                        Vô hiệu
+                                    </button>
+                                ) : (
+                                    // Nếu đang Disable -> Hiện nút Reactivate
+                                    <button 
+                                        className='admin-button reactivate-button'
+                                        // onClick={() => handleEnableUser(user.id)}
+                                    >
+                                        Kích hoạt
+                                    </button>
+                                )}
+                            </td>
+                            <td className='button-span'>
+                            {user.role === 'USER' ? (
+                                    <button 
+                                        className='admin-button to-vip-user-button'
+                                        // onClick={() => handleChangeRole(user.id, 'VIP_USER')}
+                                    >
+                                        Lên VIP
+                                    </button>
+                                ) : (
+                                    <button 
+                                        className='admin-button to-normal-user-button'
+                                        // onClick={() => handleChangeRole(user.id, 'USER')}
+                                    >
+                                        Về thường
+                                    </button>
+                                )}
+                            </td>
+                            <td className='button-span'>
+                                <div className='admin-button admin-delete-button'>Xóa người dùng</div>
                             </td>
                         </tr>
                     ))}
