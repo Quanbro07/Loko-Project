@@ -8,13 +8,11 @@ import Footer from '../Footer/Footer';
 const MainLayout = () => {
   return (
     <div>
-       <Navbar />  
        
        <div className="main-content">
           <Outlet /> {/* Nơi nội dung các trang con (Home, User...) sẽ hiện ra */}
        </div>
 
-       <Footer /> 
     </div>
   );
 };

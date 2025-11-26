@@ -28,6 +28,7 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf->csrf.disable())
+                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(

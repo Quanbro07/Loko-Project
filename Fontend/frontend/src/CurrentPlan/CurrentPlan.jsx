@@ -58,6 +58,7 @@ const CurrentPlan = () => {
     
     return (
         <div>
+            <Navbar/>
             <div className='body-container'>
                 
                 {/* 🌟 OutputReal: Hiển thị danh sách & Điều khiển chuyển ngày 🌟 */}
@@ -94,6 +95,7 @@ const CurrentPlan = () => {
                 )}
                 
             </div>
+            <Footer/>
         </div>
     );
 }

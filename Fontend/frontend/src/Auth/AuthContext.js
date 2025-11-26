@@ -62,6 +62,7 @@ export const AuthProvider = ({ children }) => {
                 setIsAuthenticated(true);
                 localStorage.setItem('token', data.accessToken);
                 localStorage.setItem('user', JSON.stringify(resolvedUser));
+                console.log(response);
                 return { success: true, user: resolvedUser };
             } else {
                 const error = await response.json();

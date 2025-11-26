@@ -59,7 +59,9 @@ public class JwtService {
     public String generateToken(Map<String, Object> extractClaims,
         UserDetails userDetails,
         long expirationTime) {
-
+        if (userDetails.getAuthorities() != null && !userDetails.getAuthorities().isEmpty()) {
+        extractClaims.put("role", userDetails.getAuthorities().iterator().next().getAuthority());
+    }
         return Jwts.builder()
                 .setClaims(extractClaims)
                 .setSubject(userDetails.getUsername())

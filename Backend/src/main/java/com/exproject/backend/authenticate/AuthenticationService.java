@@ -109,6 +109,12 @@ public class AuthenticationService {
             if(!user.isEnabled()) {
                 throw new UserNotVerifyException("Your email is not verified");
             }
+            Map<String, Object> extraClaims = new HashMap<>();
+            extraClaims.put("role", user.getRole().name());
+
+// ĐÚNG: Phải gọi hàm 'generateToken' (hoặc hàm nào nhận 2 tham số)
+// và truyền 'extraClaims' vào tham số thứ nhất.
+            String jwtAccessToken = jwtService.generateToken(extraClaims, user);
 
             String jwtAccessToken = jwtService.generateAccessToken(user);
             String jwtRefreshToken = jwtService.generateRefreshToken(user);

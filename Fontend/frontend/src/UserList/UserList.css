@@ -1,0 +1,67 @@
+.user-list-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-table th, .user-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.role-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: white;
+    background-color: #6c757d; /* Default gray */
+}
+
+/* Style riêng cho từng Role (tuỳ chọn) */
+.role-badge.admin { background-color: #dc3545; } /* Đỏ */
+.role-badge.user { background-color: #28a745; }  /* Xanh lá */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.loading, .error {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+.error { color: red; }

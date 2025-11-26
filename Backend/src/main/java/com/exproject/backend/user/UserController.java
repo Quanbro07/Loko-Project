@@ -39,7 +39,7 @@ public class UserController {
 
     @GetMapping("/getAll")
     public ResponseEntity<Page<UserResponse>> getAllUsers(
-            @PageableDefault(page=0,size=20,sort="#userId",direction = Sort.Direction.ASC)
+            @PageableDefault(page=0,size=20,sort="id",direction = Sort.Direction.ASC)
             Pageable page) {
 
         Page<UserResponse> response = userService.getAllUsers(page);
@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @PostMapping("/disable")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Void> disableUser(@RequestParam Long userId) {
         userService.disableUser(userId);
 
