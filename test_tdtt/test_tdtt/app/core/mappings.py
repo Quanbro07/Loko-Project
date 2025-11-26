@@ -66,6 +66,7 @@ TAG_TO_ID = {
 
     # ID 21: OLD_BATTLEFIELD
     "old battlefield": 21
+
 }
 
 # --- TẠO TỪ ĐIỂN ĐẢO NGƯỢC (ID -> TAG) ---

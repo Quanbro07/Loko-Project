@@ -1,9 +1,8 @@
 from datetime import datetime
 from typing import List, Dict
-from app.schemas.schedule_dto import ScheduleRequest, ScheduleResponse, TripSectionDTO # Import thêm response models
+from app.schemas.schedule_dto import ScheduleRequest, ScheduleResponse, TripSectionDTO
 from app.core.mappings import get_tag_from_id
 from app.services.matrix_service import MatrixService
-# XÓA DÒNG NÀY: from app.services.activity_service import ActivityService 
 
 from app.tag_rules.amusement_profile import AmusementProfile
 from app.solvers.amusement_solver import AmusementSolver
@@ -14,9 +13,7 @@ from app.schedule_utils import time_str_to_minutes, parse_operating_hours
 class ScheduleService:
     def __init__(self):
         self.matrix_service = MatrixService()
-        # XÓA DÒNG NÀY: self.activity_service = ActivityService()
 
-    # Đổi return type hint thành ScheduleResponse cho chuẩn
     def create_schedule(self, request: ScheduleRequest) -> ScheduleResponse:
         # 1. Tính toán Context thời gian
         day_start_mins = time_str_to_minutes(request.fromOperateTime)
@@ -87,6 +84,7 @@ class ScheduleService:
         for i in range(num_days):
             day_num = i + 1
             
+            # --- UPDATE: Truyền thêm isChildren và isElder vào hàm tạo instance ---
             instance = self._create_instance(
                 filtered_locations, 
                 filtered_matrix, 
@@ -94,17 +92,16 @@ class ScheduleService:
                 preferred_tags, 
                 penalty_overrides, 
                 context, 
-                current_hobby=request.hobby
+                current_hobby=request.hobby,
+                is_children=request.isChildren, # MỚI
+                is_elder=request.isElder        # MỚI
             )
             
             solver = SolverClass(instance, profile, context)
             
-            # Solver trả về raw dict list
             visited_indices, trip_details_raw = solver.generate_day_schedule(time_limit_seconds=5)
             
             if trip_details_raw:
-                # XÓA ĐOẠN GỌI ACTIVITY SERVICE Ở ĐÂY
-                
                 # Clean up tags khỏi location output
                 for item in trip_details_raw:
                     if "location" in item and isinstance(item["location"], dict):
@@ -112,7 +109,6 @@ class ScheduleService:
                         loc_copy.pop("tags", None)
                         item["location"] = loc_copy
                 
-                # Title Logic
                 if request.hobby == "FOOD":
                     title = f"Ngày {day_num}: Food Tour & Đặc sản"
                 elif request.hobby == "AMUSEMENT":
@@ -130,7 +126,6 @@ class ScheduleService:
                     if v_idx != 0: 
                          penalty_overrides[v_idx] = 0
 
-        # Trả về Pydantic Model (ScheduleResponse) thay vì Dict để Router dễ xử lý
         return ScheduleResponse(
             userId=1,
             tripName=f"Chuyến đi {request.province}",
@@ -148,9 +143,8 @@ class ScheduleService:
                 return i
         return 0 
 
-    def _create_instance(self, locs, matrix, profile, preferred_tags, penalty_overrides, context, current_hobby):
-        # ... (Giữ nguyên logic bên trong hàm này không đổi) ...
-        # (Tôi rút gọn đoạn này để response ngắn gọn, bạn giữ nguyên code cũ của hàm này)
+    # --- UPDATE: Thêm tham số is_children, is_elder ---
+    def _create_instance(self, locs, matrix, profile, preferred_tags, penalty_overrides, context, current_hobby, is_children=False, is_elder=False):
         service_times = []
         time_windows = []
         penalties = []
@@ -177,7 +171,9 @@ class ScheduleService:
                 if i in penalty_overrides:
                     base_penalty = penalty_overrides[i]
                 else:
+                    # 1. Lấy Base Score từ Profile (Amusement, Food...)
                     base_penalty = profile.get_penalty(tags, rating)
+                    
                     is_preferred = any(t in preferred_tags for t in tags)
                     is_filler = any(t in FILLER_TAGS for t in tags)
                     is_dining = any(t in ["restaurant", "food", "buffet"] for t in tags)
@@ -188,6 +184,10 @@ class ScheduleService:
                     else:
                         base_penalty = profile.adjust_by_preference(base_penalty, preferred_tags, tags)
                         base_penalty = int(base_penalty * profile.boost_priority(tags))
+                    
+                    # 2. --- APPLY LOGIC TRẺ EM / NGƯỜI GIÀ Ở ĐÂY ---
+                    # Logic này sẽ nhân tiếp vào base_penalty đã tính ở trên
+                    base_penalty = profile.adjust_demographic_score(base_penalty, tags, is_children, is_elder)
 
             service_times.append(st)
             time_windows.append(tw)
