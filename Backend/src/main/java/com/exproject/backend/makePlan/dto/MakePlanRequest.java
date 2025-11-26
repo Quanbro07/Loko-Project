@@ -51,11 +51,11 @@ public class MakePlanRequest {
     @PositiveOrZero
     private Integer numElders;
 
-    private List<ELocationCategory> locationCategories;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    private LocalTime fromOperateTime;
 
-    private List<LocalTime> fromOperateTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
+    private LocalTime toOperateTime;
 
-    private List<LocalTime> toOperateTime;
-
-    private List<LocationDTO> locaitons;
+    private List<LocationDTO> locations;
 }

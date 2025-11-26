@@ -13,7 +13,9 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -27,32 +29,52 @@ public class UserInitializer implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     @Override
     public void run(String... args) throws Exception {
-        if(userRepository.count() > 0) {
-            return;
+        Optional<User> checkExistUser1 = userRepository.findByEmail("ngocquan612006@gmail.com");
+        Optional<User> checkExistUser2 = userRepository.findByEmail("hs.nguyenthanhtrong@gmail.com");
+
+        // User1 chưa có
+        // Mồi vào DB
+        if(checkExistUser1.isEmpty()) {
+            // Tạo User 1
+            User user1 = User.builder()
+                    .username("Quanbro7")
+                    .fullName("Trần Ngọc Quân")
+                    .email("ngocquan612006@gmail.com")
+                    .password(passwordEncoder.encode("Quanbroisdead"))
+                    .age(19)
+                    .dob(LocalDate.of(2006,1,6))
+                    .role(Role.USER)
+                    .gender(Gender.MALE)
+                    .createAt(LocalDate.now())
+                    .enabled(true)
+                    .build();
+
+
+
+            // Luu User 1
+            userRepository.save(user1);
         }
 
-        User user1 = User.builder()
-                .username("Quanbro7")
-                .email("ngocquan612006@gmail.com")
-                .password(passwordEncoder.encode("Quanbroisdead"))
-                .age(19)
-                .role(Role.USER)
-                .gender(Gender.MALE)
-                .enabled(true)
-                .build();
+        // User2 chua co
+        // Mồi vào DB
+        if(checkExistUser2.isEmpty()) {
+            User user2 = User.builder()
+                    .username("TrongChicken")
+                    .fullName("Nguyen Thanh Trong")
+                    .email("hs.nguyenthanhtrong@gmail.com")
+                    .password(passwordEncoder.encode("trongbro7"))
+                    .age(21)
+                    .dob(LocalDate.of(2004,1,1))
+                    .role(Role.ADMIN)
+                    .gender(Gender.MALE)
+                    .createAt(LocalDate.now())
+                    .enabled(true)
+                    .build();
 
-        User user2 = User.builder()
-                .username("TrongChicken")
-                .email("hs.nguyenthanhtrong@gmail.com")
-                .password(passwordEncoder.encode("trongbro7"))
-                .age(21)
-                .role(Role.ADMIN)
-                .gender(Gender.MALE)
-                .enabled(true)
-                .build();
+            userRepository.save(user2);
+        }
 
-        userRepository.saveAll(List.of(user1,user2));
-
+        // Authenticate User 1
         AuthenticationRequest authenticationRequest1 = AuthenticationRequest.builder()
                 .email("ngocquan612006@gmail.com")
                 .password("Quanbroisdead")

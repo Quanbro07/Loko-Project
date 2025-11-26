@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,9 +20,21 @@ public class AuthenticationResponse {
 
     private String username;
 
+    private String fullName;
+
     private Integer age;
 
     private Gender gender;
 
     private Role role;
+    
+    private Integer visitedProvince;
+
+    private LocalDate dob;
+
+    private LocalDate createAt;
+
+    private byte[] avatarImg;
+
+    private String avatarType;
 }

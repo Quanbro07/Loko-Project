@@ -1,5 +1,6 @@
 package com.exproject.backend.user.info;
 
+import com.exproject.backend.avatar.Avatar;
 import com.exproject.backend.hobby.info.Hobby;
 import com.exproject.backend.province.info.Province;
 import com.exproject.backend.review_location.ReviewLocation;
@@ -12,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -26,6 +28,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String fullName;
+
     private String username;
 
     private String email;
@@ -39,6 +43,14 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    private LocalDate dob;
+
+    private LocalDate createAt;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "avatar_id", referencedColumnName = "id",nullable = true)
+    private Avatar avatar;
 
     private Boolean enabled;
 
@@ -55,7 +67,6 @@ public class User implements UserDetails {
     private LocalDateTime resetPasswordExpiryAt;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JsonManagedReference
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JoinTable(
@@ -146,5 +157,10 @@ public class User implements UserDetails {
         this.reviewLocations.add(reviewLocation);
 
         reviewLocation.setUser(this);
+    }
+
+    public void addAvatar(Avatar avatar) {
+        this.avatar = avatar;
+        avatar.setUser(this);
     }
 }

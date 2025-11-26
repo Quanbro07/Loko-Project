@@ -30,6 +30,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf->csrf.disable())
                 .cors(Customizer.withDefaults())
+                .cors(org.springframework.security.config.Customizer.withDefaults())
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(

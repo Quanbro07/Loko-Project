@@ -44,7 +44,7 @@ public class RedisConfig {
 
         return RedisCacheManager.builder(connectionFactory)
                 .cacheDefaults(cacheConfig)
-                .withCacheConfiguration("top_locations",
+                .withCacheConfiguration("top_locations_dto",
                         cacheConfig.entryTtl(Duration.ofHours(12))
                 )
                 .withCacheConfiguration("review_locations",
