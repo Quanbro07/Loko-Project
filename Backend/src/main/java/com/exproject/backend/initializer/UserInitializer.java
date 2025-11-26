@@ -13,6 +13,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,11 +38,14 @@ public class UserInitializer implements CommandLineRunner {
             // Tạo User 1
             User user1 = User.builder()
                     .username("Quanbro7")
+                    .fullName("Trần Ngọc Quân")
                     .email("ngocquan612006@gmail.com")
                     .password(passwordEncoder.encode("Quanbroisdead"))
                     .age(19)
+                    .dob(LocalDate.of(2006,1,6))
                     .role(Role.USER)
                     .gender(Gender.MALE)
+                    .createAt(LocalDate.now())
                     .enabled(true)
                     .build();
 
@@ -56,11 +60,14 @@ public class UserInitializer implements CommandLineRunner {
         if(checkExistUser2.isEmpty()) {
             User user2 = User.builder()
                     .username("TrongChicken")
+                    .fullName("Nguyen Thanh Trong")
                     .email("hs.nguyenthanhtrong@gmail.com")
                     .password(passwordEncoder.encode("trongbro7"))
                     .age(21)
+                    .dob(LocalDate.of(2004,1,1))
                     .role(Role.ADMIN)
                     .gender(Gender.MALE)
+                    .createAt(LocalDate.now())
                     .enabled(true)
                     .build();
 

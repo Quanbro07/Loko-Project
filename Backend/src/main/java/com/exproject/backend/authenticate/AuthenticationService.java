@@ -1,13 +1,16 @@
 package com.exproject.backend.authenticate;
 
 import com.exproject.backend.authenticate.dto.*;
+import com.exproject.backend.avatar.Avatar;
 import com.exproject.backend.email.EmailService;
 import com.exproject.backend.config.JwtService;
 import com.exproject.backend.exception.customException.*;
 import com.exproject.backend.user.UserRepository;
 import com.exproject.backend.user.info.Role;
 import com.exproject.backend.user.info.User;
+import com.exproject.backend.utils.ImgUltils;
 import jakarta.mail.MessagingException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -18,9 +21,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
@@ -58,16 +61,24 @@ public class AuthenticationService {
                     registerRequest.getEmail() + " already exists");
         }
 
+        // BUILDER user
         User newUser = User.builder()
                 .username(registerRequest.getUsername())
+                .fullName(registerRequest.getFullName())
+
                 .email(registerRequest.getEmail())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
+
                 .age(registerRequest.getAge())
                 .role(Role.USER)
                 .gender(registerRequest.getGender())
+                .dob(registerRequest.getDob())
+                .createAt(LocalDate.now())
+
                 .enabled(false)
                 .verificationCode(generateVerificationCode())
                 .verificationExpireAt(LocalDateTime.now().plusMinutes(15))
+
                 .resetPasswordToken(null)
                 .resetPasswordExpiryAt(null)
                 .build();
@@ -94,6 +105,8 @@ public class AuthenticationService {
     }
 
     // Authenticate
+    // TODO: chỉnh lại response thêm info cùng số tỉnh đã đi và avatar
+    @Transactional
     public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
         try {
             authenticationManager.authenticate(
@@ -110,10 +123,12 @@ public class AuthenticationService {
                 throw new UserNotVerifyException("Your email is not verified");
             }
 
+            Avatar avatar = user.getAvatar();
+
             String jwtAccessToken = jwtService.generateAccessToken(user);
             String jwtRefreshToken = jwtService.generateRefreshToken(user);
 
-            return buildAuthenticationResponse(user,jwtAccessToken,jwtRefreshToken);
+            return buildAuthenticationResponse(user,jwtAccessToken,jwtRefreshToken,avatar);
 
         }
         catch (BadCredentialsException e) {
@@ -122,7 +137,7 @@ public class AuthenticationService {
     }
 
     // Refresh Token
-    public AuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
+    public TokenDTO refreshToken(RefreshTokenRequest refreshTokenRequest) {
         final String refreshToken = refreshTokenRequest.getRefreshToken();
 
         String userEmail = jwtService.extractUsername(refreshToken);
@@ -137,17 +152,20 @@ public class AuthenticationService {
         User existUser = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
+
         // Check Valid Token
         if(jwtService.isTokenValid(userDetails, refreshToken)) {
 
             String jwtAccessToken = jwtService.generateAccessToken(userDetails);
 
-            return buildAuthenticationResponse(existUser,jwtAccessToken,refreshToken);
+            return buildTokenDTO(existUser,jwtAccessToken,refreshToken);
         }
         else {
             throw new InvalidTokenException("Refresh token is expired or invalid");
         }
     }
+
+
 
     // Verify Email
     public VerifyResponse verifyUser(VerifyRequest request) {
@@ -350,18 +368,37 @@ public class AuthenticationService {
 
 
     // Build Response
-    private AuthenticationResponse buildAuthenticationResponse(User user,
-           String jwtAccessToken,
-           String jwtRefreshToken)
+    private AuthenticationResponse buildAuthenticationResponse(
+            User user,
+            String jwtAccessToken,
+            String jwtRefreshToken,
+            Avatar avatar)
     {
 
         return AuthenticationResponse.builder()
                 .accessToken(jwtAccessToken)
                 .refreshToken(jwtRefreshToken)
+
                 .username(user.getDisplayUserName())
+                .fullName(user.getFullName())
                 .age(user.getAge())
+                .dob(user.getDob())
+
                 .gender(user.getGender())
                 .role(user.getRole())
+                .createAt(user.getCreateAt())
+                .visitedProvince(user.getVisitedProvinces().size())
+                .avatarImg(avatar != null ? ImgUltils.decompressImage(avatar.getAvatarImg()) : null)
+                .avatarType(avatar != null ? avatar.getType() : null)
+
+                .build();
+    }
+
+    private TokenDTO buildTokenDTO(User existUser, String jwtAccessToken, String refreshToken) {
+        return TokenDTO.builder()
+                .accessToken(jwtAccessToken)
+                .refreshToken(refreshToken)
+                .email(existUser.getEmail())
                 .build();
     }
 }

@@ -6,12 +6,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class RegisterRequest {
     private String username;
+
+    private String FullName;
 
     private String email;
 
@@ -22,4 +26,6 @@ public class RegisterRequest {
     private Integer age;
 
     private Gender gender;
+
+    private LocalDate dob;
 }

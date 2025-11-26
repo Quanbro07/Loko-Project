@@ -1,6 +1,7 @@
 package com.exproject.backend.user;
 
 import com.exproject.backend.exception.customException.CannotDisableAdminException;
+import com.exproject.backend.user.dto.UserDTO;
 import com.exproject.backend.user.dto.UserResponse;
 import com.exproject.backend.user.info.Role;
 import com.exproject.backend.user.info.User;
@@ -48,6 +49,32 @@ public class UserService {
 
         return userResponseList;
     }
+
+    public UserDTO changeUserInfo(UserDTO dto) {
+        User user = userRepository.findById(dto.getUserId())
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+        user.setUsername(dto.getUserName());
+        user.setFullName(dto.getFullName());
+        user.setDob(dto.getDob());
+        user.setGender(dto.getGender());
+
+        User savedUser = userRepository.save(user);
+
+        return UserMapToDTO(savedUser);
+    }
+
+    // Helper Function
+    private UserDTO UserMapToDTO(User user) {
+        return UserDTO.builder()
+                .userId(user.getId())
+                .userName(user.getDisplayUserName())
+                .fullName(user.getFullName())
+                .dob(user.getDob())
+                .gender(user.getGender())
+                .build();
+    }
+
 
     private UserResponse convertToUserResponse(User user) {
         return UserResponse.builder()

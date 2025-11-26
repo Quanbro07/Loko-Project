@@ -1,5 +1,6 @@
 package com.exproject.backend.user;
 
+import com.exproject.backend.user.dto.UserDTO;
 import com.exproject.backend.user.dto.UserResponse;
 import com.exproject.backend.user.info.Gender;
 import com.exproject.backend.user.info.User;
@@ -54,5 +55,14 @@ public class UserController {
         userService.disableUser(userId);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PreAuthorize("authentication.principal.id == #userDTO.getUserId() " +
+            "or hasAuthority('ROLE_ADMIN')")
+    @PostMapping("/change-info")
+    public ResponseEntity<UserDTO> changeInfoUser(@RequestBody UserDTO userDTO) {
+        UserDTO response = userService.changeUserInfo(userDTO);
+
+        return ResponseEntity.ok(response);
     }
 }

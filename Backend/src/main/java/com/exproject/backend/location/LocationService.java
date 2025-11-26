@@ -1,5 +1,6 @@
 package com.exproject.backend.location;
 
+import com.exproject.backend.aiAPI.dto.RawLocationDTO;
 import com.exproject.backend.location.dto.LocationDTO;
 import com.exproject.backend.location_category.dto.LocationCategoryDTO;
 import com.exproject.backend.location_category.info.LocationCategory;
@@ -140,4 +141,7 @@ public class LocationService {
     public void clearLocationCache(Long provinceId, Long categoryId) {
         System.out.println("Đã xóa cache Redis cho: " + provinceId + " - " + categoryId);
     }
+
+
+
 }
