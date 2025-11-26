@@ -30,10 +30,10 @@ public class Trip {
     private User user;
 
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TripSection> tripSections;
+    private List<TripSection> tripSections = new ArrayList<>();
 
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ReviewLocation> reviews = new ArrayList<>();
+    private List<ReviewLocation> reviewLocations = new ArrayList<>();
 
     @OneToOne(mappedBy = "trip",cascade = CascadeType.ALL, orphanRemoval = true)
     private TripHistory tripHistory;
@@ -62,6 +62,12 @@ public class Trip {
 
     @Column(name = "create_at")
     private LocalDateTime createAt;
+
+    @Column(name = "current_trip_section_id")
+    private Long currentTripSectionId;
+    
+    @Column(name = "current_trip_detail_id")
+    private Long currentTripDetailId;
 
     // Constructor
     public Trip(TripRequest tripRequest, User user) {
@@ -94,5 +100,11 @@ public class Trip {
         this.tripHistory = tripHistory;
 
         tripHistory.setTrip(this);
+    }
+
+    public void addReviewLocation(ReviewLocation reviewLocation) {
+        this.reviewLocations.add(reviewLocation);
+
+        reviewLocation.setTrip(this);
     }
 }

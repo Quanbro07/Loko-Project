@@ -1,5 +1,6 @@
 package com.exproject.backend.user.info;
 
+import com.exproject.backend.avatar.Avatar;
 import com.exproject.backend.hobby.info.Hobby;
 import com.exproject.backend.province.info.Province;
 import com.exproject.backend.review_location.ReviewLocation;
@@ -12,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -26,6 +28,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String fullName;
+
     private String username;
 
     private String email;
@@ -39,6 +43,14 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    private LocalDate dob;
+
+    private LocalDate createAt;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "avatar_id", referencedColumnName = "id",nullable = true)
+    private Avatar avatar;
 
     private Boolean enabled;
 
@@ -55,7 +67,6 @@ public class User implements UserDetails {
     private LocalDateTime resetPasswordExpiryAt;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JsonManagedReference
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JoinTable(
@@ -88,7 +99,7 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<ReviewLocation> reviews = new ArrayList<>();
+    private List<ReviewLocation> reviewLocations = new ArrayList<>();
 
     @Override
     public String getUsername() {
@@ -101,7 +112,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override
@@ -140,5 +151,16 @@ public class User implements UserDetails {
     public void addVisitedProvince(Province province) {
         this.visitedProvinces.add(province);
         province.getVisitedUsers().add(this);
+    }
+
+    public void addReviewLocation(ReviewLocation reviewLocation) {
+        this.reviewLocations.add(reviewLocation);
+
+        reviewLocation.setUser(this);
+    }
+
+    public void addAvatar(Avatar avatar) {
+        this.avatar = avatar;
+        avatar.setUser(this);
     }
 }

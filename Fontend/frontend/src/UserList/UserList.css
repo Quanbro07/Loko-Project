@@ -1,0 +1,158 @@
+.user-list-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-table th, .user-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.user-table td{
+    font-size:18px;
+
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.role-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: white;
+    background-color: #6c757d; /* Default gray */
+}
+
+/* Style riêng cho từng Role (tuỳ chọn) */
+.role-badge.vip { 
+    background-color: #f8e074;
+    width:100px;
+    height:50px; 
+    font-size: 20px;
+}
+.role-badge.user { 
+    background-color: #28a745; 
+    width:100px;
+    height:50px; 
+    font-size: 20px;
+}  
+.role-badge.admin { background-color: #cd80f4;
+    width:100px;
+    height:50px; 
+    font-size:20px;
+} 
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.loading, .error {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+.error { color: red; }
+
+.admin-button{
+    width:130px;
+    height:40px;
+    text-align: center;
+    padding-top:5px;
+    cursor:pointer;
+    border-radius:15px;
+    border:solid 2px #e0e0e037;
+    margin:0 auto;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color:#fff;
+}
+
+.deactivate-button{
+    background-color: #d47329;
+}
+
+.reactivate-button{
+    background-color: #2c8236;
+}
+
+.to-vip-user-button{
+    background-color: #ffe438;
+}
+
+.to-normal-user-button{
+    background-color: #8dc6f7;
+}
+
+.admin-delete-button{
+    background-color: #e74c3c;
+}
+
+.button-span{
+    display:flex;
+    flex-direction: row;
+}
+
+.search-bar{
+    margin-bottom: 15px;
+}
+
+.admin-input-search{
+    width:250px;
+    height:40px;
+    border-radius:10px;
+    border:solid 2px #e0e0e0d5;
+    padding-left:10px;
+    font-size: 14px;
+    margin-right:10px;
+}   
+
+.admin-search-button{
+    width:180px;
+    height:40px;
+    text-align: center;
+    cursor:pointer;
+    border-radius:10px;
+    border:solid 2px #e0e0e037;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color:#fff; 
+}
+
+
+
+

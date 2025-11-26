@@ -4,8 +4,14 @@ public enum ELocationCategory {
     SNACK,
     RESTAURANT,
     CAFE,
-    NIGHTMARKET,
+    NIGHT_MARKET,
     MARKET,
     SPECIALITY,
-    HOTEL
+    HOTEL,
+    AMUSEMENT_WATER_PARK,
+    ZOO,
+    AQUARIUM,
+    NIGHTLIFE,
+    FESTIVAL,
+    CULTURE_PERFORMANCE,
 }

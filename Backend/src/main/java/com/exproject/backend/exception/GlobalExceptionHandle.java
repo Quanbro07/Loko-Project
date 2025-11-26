@@ -3,12 +3,12 @@ package com.exproject.backend.exception;
 import com.exproject.backend.exception.customException.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 import java.util.Map;
 
@@ -47,7 +47,10 @@ public class GlobalExceptionHandle {
                 );
     }
 
-    @ExceptionHandler({BadCredentialsException.class, UsernameNotFoundException.class})
+    @ExceptionHandler({
+            BadCredentialsException.class,
+            UsernameNotFoundException.class,
+    })
     public ResponseEntity<?> handleAuthExceptions(Exception ex) {
 
         return ResponseEntity
@@ -185,6 +188,22 @@ public class GlobalExceptionHandle {
                         )
                 );
 
+    }
+
+    // Admin ko thể disable admin
+    @ExceptionHandler(CannotDisableAdminException.class)
+    public ResponseEntity<?> handlePasswordConflict(CannotDisableAdminException ex) {
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(
+                        Map.of(
+                                "timestamp", LocalDateTime.now().toString(),
+                                "status", HttpStatus.CONFLICT.value(),
+                                "error", "Conflict",
+                                "message", ex.getMessage()
+                        )
+                );
     }
 
     // Bắt Exception Còn lại

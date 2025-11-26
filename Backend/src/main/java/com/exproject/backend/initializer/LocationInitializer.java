@@ -16,6 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -120,7 +121,8 @@ public class LocationInitializer implements CommandLineRunner {
                 // Các field bắt buộc khác fake tạm
                 .latitude(21.0)
                 .longitude(105.0)
-                .openTime("08:00 - 22:00")
+                .openTime(LocalTime.of(8,0))
+                .closeTime(LocalTime.of(10,0))
                 .build();
     }
 

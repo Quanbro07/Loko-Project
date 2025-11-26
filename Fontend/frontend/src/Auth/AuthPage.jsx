@@ -69,7 +69,15 @@ const AuthPage = () => {
       } else {
         // On success: if login -> go to homepage; if register -> go to login page
         if (authMode === 'login') {
-          navigate('/homepage');
+          const userRole = result.user?.role || result.role; // Lấy role ra kiểm tra
+
+          console.log("Current Role:", userRole); // Log ra để debug xem nó là ADMIN hay USER
+
+          if (userRole === 'ADMIN') {
+            navigate('/admin'); // Nếu là ADMIN -> trang Admin
+          } else {
+            navigate('/user');  // Nếu là USER (hoặc khác) -> trang User
+          }
         } else {
           // After register, clear any session and redirect to verify page so user can enter email code
           try {

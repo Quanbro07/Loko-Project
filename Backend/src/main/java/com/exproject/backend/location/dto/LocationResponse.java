@@ -1,10 +1,16 @@
 package com.exproject.backend.location.dto;
 
 import com.exproject.backend.location.Location;
+import com.exproject.backend.location_category.dto.LocationCategoryResponse;
+import com.exproject.backend.location_img.dto.LocationImgResponse;
+import com.exproject.backend.province.info.Province;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,6 +22,8 @@ public class LocationResponse {
 
     private String ggPlaceId;
 
+    private Long provinceId;
+
     private String provinceName;
 
     private String locationName;
@@ -24,21 +32,33 @@ public class LocationResponse {
 
     private Double longitude;
 
-    private String openTime;
+    private LocalTime openTime;
 
-    private String avgVisitTime;
+    private LocalTime closeTime;
+
+    private Long avgVisitTime;
 
     private Double ticketPrice;
+
+    private String description;
+
+    private List<LocationImgResponse> locationImgs;
+
+    private List<LocationCategoryResponse> locationCategories;
 
 
     // Constructor
     public LocationResponse(Location location) {
+        Province province = location.getProvince();
+
         this.id = location.getId();
-        this.provinceName = location.getProvince().getProvinceName();
+        this.provinceId = province.getId();
+        this.provinceName = province.getProvinceName();
         this.locationName = location.getLocationName();
         this.latitude = location.getLatitude();
         this.longitude = location.getLongitude();
         this.openTime = location.getOpenTime();
+        this.closeTime = location.getCloseTime();
         this.avgVisitTime = location.getAvgVisitTime();
         this.ticketPrice = location.getTicketPrice();
         this.ggPlaceId = location.getGgPlaceId();

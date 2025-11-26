@@ -10,6 +10,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 public class CategorySyncStatDTO {
+    private Long provinceId;
+
+    private Long locationCategoryId;
+
     private String provinceName;
 
     private String locationCategoryName;

@@ -68,7 +68,7 @@ const Plan = () => {
     return (
         <div>
             <div className="homepage-background">
-                <Navbar />
+                <Navbar/>
                 <Input
                     onSearch={handleSearch} // Hàm search lần đầu
                     isResultShown={isResultShown}
@@ -94,7 +94,7 @@ const Plan = () => {
                     />
                 )}
             </div>
-            <Footer />
+            <Footer/>
         </div>
     );
 };
