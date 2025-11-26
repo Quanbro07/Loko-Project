@@ -16,9 +16,9 @@ class AmusementProfile(BaseProfile):
             "market": 60,
             "cafe": 45,
             "hotel": 0,
-            "culture_performance": 120,
             "aquarium": 120,
-            "museum": 120
+            "museum": 120,
+            "night market": 120
         }
 
         self.penalty_map = {
@@ -30,7 +30,6 @@ class AmusementProfile(BaseProfile):
             "aquarium": 500,
             "museum": 450,
             "cultural performance": 450,
-            "culture_performance": 450,
             "nightlife": 400,
 
             # Support Nodes (Điểm phụ) - Điểm thấp hơn

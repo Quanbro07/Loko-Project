@@ -1,35 +1,22 @@
 from app.solvers.base_solver import BaseSolver
 from app.schedule_utils import minutes_to_str, time_str_to_minutes
 
-class AmusementSolver(BaseSolver):
+class AdventureSolver(BaseSolver):
     def __init__(self, instance, profile, context):
         super().__init__(instance, profile, context)
 
     def _add_profile_specific_constraints(self):
-        # FIX: Tăng penalty để ép AI phải chọn địa điểm ăn uống nếu có
-        
+        # ---------------------------------------------------------
+        # 1. RÀNG BUỘC ĂN UỐNG (Giống AmusementSolver để đảm bảo sức khỏe)
+        # ---------------------------------------------------------
         lunch_start = self.context.get("lunch_start")
         lunch_end = self.context.get("lunch_end")
         dinner_start = self.context.get("dinner_start")
         dinner_end = self.context.get("dinner_end")
         
-        # TĂNG PENALTY: Từ 150 lên 300. 
-        # Nếu bỏ qua khung giờ này (hoặc chọn sai giờ) sẽ bị phạt nặng hơn -> AI sẽ ưu tiên xếp đúng giờ ăn.
+        # Penalty cao cho Adventure vì cần nạp năng lượng kỹ
         meal_penalty = 300 
 
-        # 1. Xử lý Nightlife
-        day_start_mins = self.context.get("day_start_mins")
-        night_start_absolute = 21 * 60 
-        night_start_relative = night_start_absolute - day_start_mins
-        
-        if night_start_relative < self.context.get("max_duration"):
-            for node in self.instance["night_nodes"]:
-                tags = self.instance["locations_data"][node].get("tags", [])
-                if "nightlife" in tags or "bar" in tags:
-                    idx = self.manager.NodeToIndex(node)
-                    self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_relative, 200)
-
-        # 2. Xử lý Ăn uống
         for node in self.instance["lunch_nodes"]:
             idx = self.manager.NodeToIndex(node)
             loc_data = self.instance["locations_data"][node]
@@ -48,17 +35,35 @@ class AmusementSolver(BaseSolver):
                 if dinner_start and dinner_end:
                     self.time_dim.SetCumulVarSoftLowerBound(idx, dinner_start, meal_penalty)
                     self.time_dim.SetCumulVarSoftUpperBound(idx, dinner_end, meal_penalty)
-            
             elif is_strict_lunch:
                 if lunch_start and lunch_end:
                     self.time_dim.SetCumulVarSoftLowerBound(idx, lunch_start, meal_penalty)
                     self.time_dim.SetCumulVarSoftUpperBound(idx, lunch_end, meal_penalty)
-            
             else:
-                # Mở cả ngày -> Linh hoạt (Lunch start -> Dinner end)
                 if lunch_start and dinner_end:
                     self.time_dim.SetCumulVarSoftLowerBound(idx, lunch_start, meal_penalty)
                     self.time_dim.SetCumulVarSoftUpperBound(idx, dinner_end, meal_penalty)
+
+        # ---------------------------------------------------------
+        # 2. RÀNG BUỘC ĐẶC THÙ ADVENTURE: EARLY BIRDS
+        # ---------------------------------------------------------
+        # Các hoạt động nặng/thiên nhiên nên bắt đầu trước 11:00 AM
+        day_start_mins = self.context.get("day_start_mins")
+        morning_limit_min = (11 * 60) - day_start_mins
+        
+        early_birds = ["mountain", "trekking", "climbing", "diving", "natural_feature"]
+
+        # Duyệt qua các node (trừ depot)
+        for node in range(1, self.num_places):
+            # Hỗ trợ cả field 'tags' (chuẩn mới) và 'categories' (legacy data)
+            loc_data = self.instance["locations_data"][node]
+            tags = loc_data.get("tags") or loc_data.get("categories", [])
+            
+            # Nếu có tag cần đi sớm
+            if any(t in tags for t in early_birds):
+                idx = self.manager.NodeToIndex(node)
+                # SoftUpperBound: Phạt nhẹ nếu đi muộn, ưu tiên xếp buổi sáng
+                self.time_dim.SetCumulVarSoftUpperBound(idx, morning_limit_min, 10)
 
     def generate_day_schedule(self, time_limit_seconds=15):
         solution = self.solve(time_limit_seconds)
@@ -93,25 +98,18 @@ class AmusementSolver(BaseSolver):
             
             arrival_actual = arrival_solved + total_added_rest_time
             
-            # Nếu đến nơi mà đã hết giờ ngày -> Dừng
+            # Check giới hạn ngày
             if arrival_actual >= max_end_time_relative:
                 break
 
             service_time = self.instance["service_time"][node]
-            
-            # Thời gian kết thúc thực tế (bị chặn bởi max_duration)
             end_time_actual = min(arrival_actual + service_time, max_end_time_relative)
             
-            # --- FIX LOGIC: TRÁNH ĐI CỐ (SHORT VISIT) ---
-            # Tính thời gian thực sự chơi được
+            # --- CHECK SHORT VISIT (Tránh đi lướt qua các điểm Adventure) ---
             actual_duration = end_time_actual - arrival_actual
-            
-            # Logic: Nếu thời gian chơi thực tế quá ngắn (ví dụ < 50% thời gian chuẩn hoặc < 30 phút)
-            # Thì coi như không đủ để trải nghiệm -> CẮT BỎ, kết thúc ngày sớm hơn.
-            # (Trừ trường hợp là depot đầu tiên)
             if node != self.depot and index != self.routing.Start(0):
+                # Adventure cần trải nghiệm sâu, nếu thời gian quá ngắn thì bỏ qua
                 if actual_duration < (service_time * 0.5) or actual_duration < 30:
-                    # Dừng vòng lặp, không thêm node này vào lịch
                     break
 
             if end_time_actual < arrival_actual:
@@ -140,68 +138,70 @@ class AmusementSolver(BaseSolver):
             })
             sequence_order += 1
 
-            # --- Logic Energy & Rest ---
+            # --- LOGIC NĂNG LƯỢNG (ADVENTURE SPECIFIC) ---
             if node != self.depot:
-                tags = place.get("tags", [])
-                if "hotel" in tags: energy_loss = -50
-                elif any(t in ["zoo", "amusement/water park"] for t in tags): energy_loss = 35
-                elif any(t in ["culture performance", "nightlife", "market"] for t in tags): energy_loss = 25
-                elif any(t in ["restaurant", "cafe"] for t in tags): energy_loss = 10
-                else: energy_loss = 20
+                tags = place.get("tags") or place.get("categories", [])
+                
+                # Adventure tiêu tốn nhiều năng lượng hơn Amusement
+                if "hotel" in tags: 
+                    energy_loss = -50
+                elif any(t in ["mountain"] for t in tags): 
+                    energy_loss = 60 # Rất tốn sức
+                elif any(t in ["cave", "diving", "waterfall"] for t in tags): 
+                    energy_loss = 40 # Tốn sức vừa
+                elif any(t in ["restaurant", "camping"] for t in tags): 
+                    energy_loss = 10
+                else: 
+                    energy_loss = 20
                 
                 total_energy = max(0, min(100, total_energy - energy_loss))
 
+                # Adventure mode: Ngưỡng mệt là < 30
                 if total_energy < 30:
-                     next_index = solution.Value(self.routing.NextVar(index))
-                     if not self.routing.IsEnd(next_index):
-                         next_node = self.manager.NodeToIndex(next_index)
-                         travel_direct = time_matrix[node][next_node]
-                         travel_to_depot = time_matrix[node][self.depot]
-                         rest_duration = 60 
-                         travel_from_depot = time_matrix[self.depot][next_node]
-                         
-                         detour_cost = travel_to_depot + rest_duration + travel_from_depot
-                         added_time = max(0, detour_cost - travel_direct)
-                         
-                         if end_time_actual + travel_to_depot + rest_duration < max_end_time_relative:
-                             total_energy = 100 
-                             total_added_rest_time += added_time 
-                             
-                             rest_start = end_time_actual + travel_to_depot
-                             rest_end = rest_start + rest_duration
-                             
-                             s_rest = minutes_to_str(rest_start, day_start_mins, 'up')
-                             e_rest = minutes_to_str(rest_end, day_start_mins, 'down')
-                             
-                             trip_details.append({
-                                "sequenceOrder": sequence_order,
-                                "startTime": s_rest,
-                                "endTime": e_rest,
-                                "description": f"Về {hotel_title} nghỉ ngơi nạp năng lượng",
-                                "activity": "Nghỉ ngơi",
-                                "location": depot_place
-                             })
-                             sequence_order += 1
+                      next_index = solution.Value(self.routing.NextVar(index))
+                      if not self.routing.IsEnd(next_index):
+                          next_node = self.manager.NodeToIndex(next_index)
+                          travel_direct = time_matrix[node][next_node]
+                          travel_to_depot = time_matrix[node][self.depot]
+                          
+                          # Adventure cần nghỉ lâu hơn (90 phút) để hồi sức
+                          rest_duration = 90 
+                          travel_from_depot = time_matrix[self.depot][next_node]
+                          
+                          detour_cost = travel_to_depot + rest_duration + travel_from_depot
+                          added_time = max(0, detour_cost - travel_direct)
+                          
+                          if end_time_actual + travel_to_depot + rest_duration < max_end_time_relative:
+                              total_energy = 100 
+                              total_added_rest_time += added_time 
+                              
+                              rest_start = end_time_actual + travel_to_depot
+                              rest_end = rest_start + rest_duration
+                              
+                              s_rest = minutes_to_str(rest_start, day_start_mins, 'up')
+                              e_rest = minutes_to_str(rest_end, day_start_mins, 'down')
+                              
+                              trip_details.append({
+                                 "sequenceOrder": sequence_order,
+                                 "startTime": s_rest,
+                                 "endTime": e_rest,
+                                 "description": f"Về {hotel_title} nghỉ ngơi phục hồi sức lực",
+                                 "activity": "Nghỉ ngơi",
+                                 "location": depot_place
+                              })
+                              sequence_order += 1
             
             visited_nodes.append(node)
             index = solution.Value(self.routing.NextVar(index))
 
         # Điểm kết thúc
-        # Sử dụng thời điểm kết thúc của node cuối cùng hợp lệ
-        # Nếu break sớm ở trên, thời điểm này sẽ là thời điểm kết thúc của node trước đó
-        
-        # Cần lấy thời gian kết thúc của node CUỐI CÙNG trong trip_details để làm mốc về khách sạn
         last_end_str = trip_details[-1]["endTime"] if trip_details else minutes_to_str(0, day_start_mins, 'down')
-        
-        # Tuy nhiên, để chính xác theo flow thời gian, ta lấy end_time_actual của vòng lặp cuối cùng (nếu break thì là của node bị break? Không, phải là node trước đó).
-        # Đơn giản nhất: Lấy end time của activity cuối cùng + thời gian di chuyển về depot (ước lượng hoặc lấy từ matrix nếu có next_node là end).
-        # Ở đây đơn giản hóa: Lấy end time của activity cuối cùng.
         
         trip_details.append({
             "sequenceOrder": sequence_order,
             "startTime": last_end_str,
             "endTime": last_end_str,
-            "description": f"Kết thúc ngày, quay về {hotel_title}",
+            "description": f"Kết thúc hành trình khám phá, về {hotel_title}",
             "location": depot_place,
             "activity": "Nghỉ ngơi"
         })
