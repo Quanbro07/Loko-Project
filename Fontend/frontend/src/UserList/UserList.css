@@ -21,6 +21,11 @@
     color: white;
 }
 
+.user-table td{
+    font-size:18px;
+
+}
+
 .user-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
@@ -35,8 +40,23 @@
 }
 
 /* Style riêng cho từng Role (tuỳ chọn) */
-.role-badge.vip { background-color: #f8e074; } /* Đỏ */
-.role-badge.user { background-color: #28a745; }  /* Xanh lá */
+.role-badge.vip { 
+    background-color: #f8e074;
+    width:100px;
+    height:50px; 
+    font-size: 20px;
+}
+.role-badge.user { 
+    background-color: #28a745; 
+    width:100px;
+    height:50px; 
+    font-size: 20px;
+}  
+.role-badge.admin { background-color: #cd80f4;
+    width:100px;
+    height:50px; 
+    font-size:20px;
+} 
 
 .pagination {
     display: flex;
@@ -76,6 +96,9 @@
     border:solid 2px #e0e0e037;
     margin:0 auto;
     font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color:#fff;
 }
 
 .deactivate-button{
@@ -97,4 +120,39 @@
 .admin-delete-button{
     background-color: #e74c3c;
 }
+
+.button-span{
+    display:flex;
+    flex-direction: row;
+}
+
+.search-bar{
+    margin-bottom: 15px;
+}
+
+.admin-input-search{
+    width:250px;
+    height:40px;
+    border-radius:10px;
+    border:solid 2px #e0e0e0d5;
+    padding-left:10px;
+    font-size: 14px;
+    margin-right:10px;
+}   
+
+.admin-search-button{
+    width:180px;
+    height:40px;
+    text-align: center;
+    cursor:pointer;
+    border-radius:10px;
+    border:solid 2px #e0e0e037;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color:#fff; 
+}
+
+
+
 
