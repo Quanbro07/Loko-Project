@@ -5,18 +5,23 @@ import com.exproject.backend.hobby.info.EHobby;
 import com.exproject.backend.hobby.info.HobbyCategoryMapping;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location.LocationMapper;
+import com.exproject.backend.location.LocationRepository;
 import com.exproject.backend.location.LocationService;
 import com.exproject.backend.location.dto.LocationDTO;
+import com.exproject.backend.location_category.dto.LocationCategoryDTO;
 import com.exproject.backend.location_category.info.ELocationCategory;
 import com.exproject.backend.makePlan.dto.MakePlanRequest;
-import com.exproject.backend.province.info.EProvince;
-import com.exproject.backend.trip.TripService;
+import com.exproject.backend.makePlan.dto.RegeneratePlanPartRequest;
+import com.exproject.backend.makePlan.dto.RegeneratePlanPartResponse;
+import com.exproject.backend.makePlan.dto.RejectedPlanPartDTO;
 import com.exproject.backend.trip.dto.TripRequest;
+import com.exproject.backend.trip_detail.dto.TripDetailRequest;
+import com.exproject.backend.trip_section.dto.TripSectionRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +31,10 @@ public class MakePlanService {
     private final LocationService locationService;
     private final LocationMapper locationMapper;
     private final AIAPIService aiapiService;
+    private final LocationRepository locationRepository;
 
+    // ** Make Plan
+    @Transactional(readOnly = true)
     public TripRequest makePlan(MakePlanRequest request) {
 
         // Map Hobby -> categories
@@ -66,9 +74,7 @@ public class MakePlanService {
         }
 
 
-
-        request.setLocationCategories(categories);
-        request.setLocaitons(locationDTOS);
+        request.setLocations(locationDTOS);
 
         // Gọi AI server -> trả TripRequest
         TripRequest tripRequest = aiapiService.generateTripPlan(request);
@@ -78,5 +84,178 @@ public class MakePlanService {
         }
 
         return tripRequest;
+    }
+
+    // ** Regenerate Plan  Some Part
+    @Transactional(readOnly = true)
+    public RegeneratePlanPartResponse regeneratePlanPart(RegeneratePlanPartRequest request) {
+        // List chứa các TempID/DetailID bị lỗi
+        List<Long> failedTripDetailIds = new ArrayList<>();
+
+        Set<Long> rejectedDetailIds = request.getRejectedDetail().stream()
+                .map(RejectedPlanPartDTO::getTripDetailId)
+                .collect(Collectors.toSet());
+
+        Set<Long> excludedLocationIds = request.getRejectedDetail().stream()
+                .map(RejectedPlanPartDTO::getLocationId)
+                .collect(Collectors.toSet());
+
+        TripRequest currentTrip = request.getCurrentTrip();
+
+        // Add các location ĐANG CÓ trong trip (mà không bị reject) vào list loại trừ
+        for(TripSectionRequest section : currentTrip.getTripSections()) {
+            for(TripDetailRequest detail : section.getTripDetails()) {
+                // Nếu detail này KHÔNG nằm trong danh sách reject ->
+                // Nghĩa là nó được giữ lại
+                if (!rejectedDetailIds.contains(detail.getTempId())) {
+                    excludedLocationIds.add(detail.getLocation().getId());
+                }
+            }
+        }
+
+        Map<Long, List<LocationDTO>> provinceLocationDtosCache = new HashMap<>();
+
+        // Logic chính
+        for(TripSectionRequest section: currentTrip.getTripSections()) {
+
+            for(int i = 0 ; i < section.getTripDetails().size(); i++) {
+
+                TripDetailRequest detail = section.getTripDetails().get(i);
+                // Neu Detail khong nằm trong rejected detail thì bỏ qua
+                if(!rejectedDetailIds.contains(detail.getTempId())) {
+                    continue;
+                }
+
+                LocationDTO rejected_location = detail.getLocation();
+
+                Long provinceId = rejected_location.getProvinceId();
+
+                // OPTIMIZATION: Chỉ fetch DB nếu chưa có trong cache Map
+                // --- OPTIMIZATION: Fetch & Map ngay lập tức ---
+                if (!provinceLocationDtosCache.containsKey(provinceId)) {
+                    // Fetch Entity (Có Category)
+                    List<Location> entities = locationRepository.findAllByProvince(provinceId);
+
+                    // Map sang DTO 1 lần duy nhất ở đây
+                    // Dù có dính N+1 query lấy ảnh thì cũng chỉ bị 1 lần cho cả list
+                    List<LocationDTO> dtos = entities.stream()
+                            .map(locationMapper::toLocationDTO)
+                            .collect(Collectors.toList());
+
+                    provinceLocationDtosCache.put(provinceId, dtos);
+                }
+
+                // Lấy List DTO từ cache
+                List<LocationDTO> sourceLocationDTOs = provinceLocationDtosCache.get(provinceId);
+
+                // Lấy Set categories ra
+                Set<Long> categoryIds = rejected_location.getCategories().stream()
+                        .map(LocationCategoryDTO::getId)
+                        .collect(Collectors.toSet());
+
+                // Tìm start và end (Neighbors)
+                LocationDTO start = (i > 0) ? section.getTripDetails().get(i-1).getLocation() : null;
+                LocationDTO end = (i < section.getTripDetails().size() - 1) ? section.getTripDetails().get(i+1).getLocation() : null;
+
+                // Tìm candidate phù hơp
+                List<LocationDTO> candidates = locationService.
+                        getTopReplacementLocations(
+                                sourceLocationDTOs,
+                                categoryIds,
+                                rejected_location.getOpenTime(),
+                                rejected_location.getCloseTime(),
+                                excludedLocationIds);
+
+                // Tìm best dựa trên nó
+                LocationDTO best = locationService.getBestReplacementLocations(start,candidates,end);
+
+                // Có địa điểm
+                if(best != null) {
+                    // Thêm vào để không lấy lại địa điểm đó
+                    excludedLocationIds.add(best.getId());
+
+                    // Set Location mới vào
+                    detail.setLocation(best);
+
+                    // Generate Activity/Descrption
+                    Set<String> cateNames = best.getCategories().stream()
+                            .map(LocationCategoryDTO::getCategoryName)
+                            .collect(Collectors.toSet());
+
+                    String autoDescription = generateActivityDescription(best.getLocationName(), cateNames);
+
+                    // Set vào field description (activity)
+                    detail.setDescription(autoDescription);
+                }
+                else {
+                    failedTripDetailIds.add(detail.getTempId());
+                }
+            }
+        }
+
+        // Builder
+        RegeneratePlanPartResponse response = RegeneratePlanPartResponse.builder()
+                .newTrip(currentTrip)
+                .failedTripDetailIds(failedTripDetailIds)
+                .build();
+
+
+        return response;
+    }
+
+    private String generateActivityDescription(String locationName, Set<String> categoryNames) {
+        // 1. Làm sạch tên địa điểm (nếu data có rác kiểu "TOP 1", "HOT", etc.)
+        // Ví dụ: "Highlands (TOP 1)" -> "Highlands"
+        String cleanName = locationName.replaceAll("\\(TOP \\d+\\)", "")
+                .replaceAll("\\(.*?\\)", "") // Bỏ nội dung trong ngoặc đơn bất kỳ
+                .trim();
+
+        // 2. Duyệt qua các category để tìm mẫu câu phù hợp
+        // Lưu ý: Priority (Thứ tự ưu tiên). Nếu địa điểm vừa là CAFE vừa là RESTAURANT,
+        // vòng lặp gặp cái nào trước sẽ return cái đó.
+
+        for (String cat : categoryNames) {
+            // Đảm bảo so sánh không phân biệt hoa thường
+            switch (cat.toUpperCase()) {
+                // --- ĂN UỐNG ---
+                case "CAFE":
+                    return "Thưởng thức đồ uống và thư giãn tại " + cleanName;
+                case "RESTAURANT":
+                    return "Dùng bữa và thưởng thức ẩm thực tại " + cleanName;
+                case "SNACK":
+                    return "Khám phá các món ăn vặt hấp dẫn tại " + cleanName;
+                case "SPECIALITY":
+                    return "Thưởng thức và mua sắm đặc sản tại " + cleanName;
+
+                // --- VUI CHƠI / GIẢI TRÍ ---
+                case "AMUSEMENT_WATER_PARK":
+                    return "Vui chơi giải trí hết mình tại " + cleanName;
+                case "ZOO":
+                    return "Tham quan và khám phá thế giới động vật tại " + cleanName;
+                case "AQUARIUM":
+                    return "Khám phá đại dương thu nhỏ tại " + cleanName;
+                case "NIGHTLIFE":
+                    return "Trải nghiệm không khí sôi động về đêm tại " + cleanName;
+
+                // --- MUA SẮM / CHỢ ---
+                case "NIGHT_MARKET":
+                    return "Dạo chơi, ăn uống và mua sắm tại chợ đêm " + cleanName;
+                case "MARKET":
+                    return "Tham quan và mua sắm tại chợ " + cleanName;
+
+                // --- VĂN HÓA / SỰ KIỆN ---
+                case "CULTURE_PERFORMANCE":
+                    return "Thưởng thức chương trình biểu diễn nghệ thuật tại " + cleanName;
+                case "FESTIVAL":
+                    return "Hòa mình vào không khí lễ hội tại " + cleanName;
+
+                // --- LƯU TRÚ ---
+                case "HOTEL":
+                    return "Check-in và nghỉ ngơi tại " + cleanName;
+            }
+        }
+
+        // Default nếu không khớp category nào hoặc list rỗng
+        return "Ghé thăm và tham quan " + cleanName;
     }
 }

@@ -63,7 +63,6 @@ const Aboutus = () => {
 
     return (
         <div>
-            <Navbar />
             <div className="banner"></div>
             <div className="info">
                 <div className="left-info">
@@ -86,7 +85,6 @@ const Aboutus = () => {
                 <AboutUsOutput itineraryData={dataSet2} id="s2" />
                 <AboutUsOutput itineraryData={dataSet3} id="s3" />
             </div>
-            <Footer />
         </div>
     )
 }

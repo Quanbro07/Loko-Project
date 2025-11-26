@@ -49,7 +49,7 @@ const Homepage = () => {
     };
     return (
         <div className='home-page'>
-            <Navbar></Navbar>
+            <Navbar />
             <div>
                 <div className='travel-with-loko'>
                     {translate("travel_with_loko").replace('LOKO', '')}
@@ -78,7 +78,7 @@ const Homepage = () => {
                     </div>
                 </div>
             )}
-            <Footer className='homepage-footer'></Footer>
+            <Footer className='homepage-footer'/>
         </div>
     );
 };

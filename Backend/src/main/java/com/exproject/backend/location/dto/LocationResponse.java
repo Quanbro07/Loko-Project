@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @Data
@@ -31,11 +32,15 @@ public class LocationResponse {
 
     private Double longitude;
 
-    private String openTime;
+    private LocalTime openTime;
 
-    private String avgVisitTime;
+    private LocalTime closeTime;
+
+    private Long avgVisitTime;
 
     private Double ticketPrice;
+
+    private String description;
 
     private List<LocationImgResponse> locationImgs;
 
@@ -53,6 +58,7 @@ public class LocationResponse {
         this.latitude = location.getLatitude();
         this.longitude = location.getLongitude();
         this.openTime = location.getOpenTime();
+        this.closeTime = location.getCloseTime();
         this.avgVisitTime = location.getAvgVisitTime();
         this.ticketPrice = location.getTicketPrice();
         this.ggPlaceId = location.getGgPlaceId();

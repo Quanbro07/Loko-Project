@@ -1,6 +1,7 @@
 package com.exproject.backend.makePlan;
 
 import com.exproject.backend.aiAPI.dto.RawLocationDTO;
+import com.exproject.backend.hobby.info.EHobby;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location.LocationMapper;
 import com.exproject.backend.location.LocationRepository;
@@ -8,6 +9,8 @@ import com.exproject.backend.location.dto.LocationDTO;
 import com.exproject.backend.location.dto.LocationRequest;
 import com.exproject.backend.location_category.info.ELocationCategory;
 import com.exproject.backend.makePlan.dto.MakePlanRequest;
+import com.exproject.backend.makePlan.dto.RegeneratePlanPartRequest;
+import com.exproject.backend.makePlan.dto.RegeneratePlanPartResponse;
 import com.exproject.backend.province.info.EProvince;
 import com.exproject.backend.trip.dto.TripRequest;
 import lombok.RequiredArgsConstructor;
@@ -47,6 +50,7 @@ public class MakePlanController {
         MakePlanRequest test = new MakePlanRequest();
         test.setStartDate(LocalDate.now());
         test.setEndDate(LocalDate.now().plusDays(3));
+        test.setHobby(EHobby.BEACHISLANDTOUR);
         test.setProvince(EProvince.TPHCM);
         test.setIsAlone(true);
         test.setIsChildren(true);
@@ -54,11 +58,10 @@ public class MakePlanController {
         test.setNumAdults(2);
         test.setIsElder(true);
         test.setNumElders(1);
-        test.setLocationCategories(List.of(ELocationCategory.CAFE,ELocationCategory.CAFE));
 
-        test.setFromOperateTime(List.of(LocalTime.now(),LocalTime.now()));
-        test.setToOperateTime(List.of(LocalTime.now(),LocalTime.now()));
-        test.setLocaitons(testLocationsMapper);
+        test.setFromOperateTime(LocalTime.now());
+        test.setToOperateTime(LocalTime.now());
+        test.setLocations(testLocationsMapper);
 
         return ResponseEntity.ok(test);
     }
@@ -67,5 +70,21 @@ public class MakePlanController {
         TripRequest response = makePlanService.makePlan(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping("/regenerate-part")
+    public ResponseEntity<RegeneratePlanPartResponse> regeneratePartPlan(
+            @RequestBody RegeneratePlanPartRequest request) {
+
+        RegeneratePlanPartResponse response = makePlanService.regeneratePlanPart(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/test-plan")
+    public ResponseEntity<MakePlanRequest> testPlan(
+            @RequestBody MakePlanRequest request
+    ) {
+        return ResponseEntity.status(HttpStatus.OK).body(request);
     }
 }

@@ -59,7 +59,6 @@ public class JwtService {
     public String generateToken(Map<String, Object> extractClaims,
         UserDetails userDetails,
         long expirationTime) {
-
         return Jwts.builder()
                 .setClaims(extractClaims)
                 .setSubject(userDetails.getUsername())

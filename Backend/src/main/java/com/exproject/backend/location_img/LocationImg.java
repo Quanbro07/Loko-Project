@@ -2,6 +2,7 @@ package com.exproject.backend.location_img;
 
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location_img.dto.LocationImgDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +23,7 @@ public class LocationImg {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id", nullable = false)
+    @JsonIgnore
     private Location location;
 
     @Column(name = "img_url", nullable = false)
