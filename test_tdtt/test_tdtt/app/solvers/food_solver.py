@@ -13,20 +13,29 @@ class FoodSolver(BaseSolver):
         dinner_start = self.context.get("dinner_start")
         dinner_end = self.context.get("dinner_end")
         
-        # Tăng penalty lên 300 để ưu tiên giờ ăn
-        meal_penalty = 300 
+        meal_penalty = 300 # Penalty cao cho việc bỏ bữa
 
-        # 1. Xử lý Chợ đêm
+        # 1. Xử lý Chợ đêm & Nightlife
         day_start_mins = self.context.get("day_start_mins")
+        
+        # Mốc 19:00 cho chợ đêm
         night_start_absolute = 19 * 60 
         night_start_relative = night_start_absolute - day_start_mins
         
+        # Nếu chuyến đi kéo dài qua 19:00 tối
         if night_start_relative < self.context.get("max_duration"):
             for node in self.instance["night_nodes"]:
                 tags = self.instance["locations_data"][node].get("tags", [])
-                if "night market" in tags:
+                
+                # Xác định node này có buộc phải đi đêm không
+                is_night_market = "night market" in tags
+                is_nightlife = any(t in tags for t in ["nightlife", "bar", "pub"])
+                
+                # FIX: Tăng penalty cực mạnh (300) để ép các điểm này xuống buổi tối
+                # Nếu để penalty thấp (ví dụ 5-10), AI sẽ hy sinh giờ giấc để đổi lấy quãng đường ngắn hơn
+                if is_night_market or is_nightlife:
                     idx = self.manager.NodeToIndex(node)
-                    self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_relative, 5)
+                    self.time_dim.SetCumulVarSoftLowerBound(idx, night_start_relative, 300)
 
         # 2. Xử lý Ăn uống
         for node in self.instance["lunch_nodes"]:
@@ -96,7 +105,7 @@ class FoodSolver(BaseSolver):
             service_time = self.instance["service_time"][node]
             end_time_actual = min(arrival_actual + service_time, max_end_time_relative)
 
-            # --- FIX: Cắt bỏ node nếu thời gian chơi quá ngắn ---
+            # Cắt bỏ node nếu thời gian chơi quá ngắn
             actual_duration = end_time_actual - arrival_actual
             if node != self.depot and index != self.routing.Start(0):
                 if actual_duration < (service_time * 0.5) or actual_duration < 30:
@@ -168,7 +177,6 @@ class FoodSolver(BaseSolver):
             visited_nodes.append(node)
             index = solution.Value(self.routing.NextVar(index))
 
-        # Điểm kết thúc logic mới
         last_end_str = trip_details[-1]["endTime"] if trip_details else minutes_to_str(0, day_start_mins, 'down')
         
         trip_details.append({

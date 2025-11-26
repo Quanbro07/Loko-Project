@@ -61,11 +61,12 @@ TAG_TO_ID = {
     # ID 19: CITADEL/PALACE
     "citadel/palace": 19,
 
-    # ID 20: CHURCH/TEMPLE/PAGODA
+    # ID 20: CHURCH_TEMPLE_PAGODA
     "church/temple/pagoda": 20,
 
-    # ID 16: OLD BATTLEFIELD
+    # ID 21: OLD_BATTLEFIELD
     "old battlefield": 21
+
 }
 
 # --- TẠO TỪ ĐIỂN ĐẢO NGƯỢC (ID -> TAG) ---

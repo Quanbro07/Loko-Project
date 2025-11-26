@@ -15,7 +15,7 @@ class AmusementSolver(BaseSolver):
         
         # TĂNG PENALTY: Từ 150 lên 300. 
         # Nếu bỏ qua khung giờ này (hoặc chọn sai giờ) sẽ bị phạt nặng hơn -> AI sẽ ưu tiên xếp đúng giờ ăn.
-        meal_penalty = 300 
+        meal_penalty = 10000 
 
         # 1. Xử lý Nightlife
         day_start_mins = self.context.get("day_start_mins")
