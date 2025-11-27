@@ -32,6 +32,7 @@ public class UserInitializer implements CommandLineRunner {
         Optional<User> checkExistUser1 = userRepository.findByEmail("ngocquan612006@gmail.com");
         Optional<User> checkExistUser2 = userRepository.findByEmail("hs.nguyenthanhtrong@gmail.com");
 
+
         // User1 chưa có
         // Mồi vào DB
         if(checkExistUser1.isEmpty()) {
@@ -53,6 +54,16 @@ public class UserInitializer implements CommandLineRunner {
 
             // Luu User 1
             userRepository.save(user1);
+
+            System.out.println("Create new User 1");
+
+        }
+        else {
+            User existUser1 = checkExistUser1.get();
+            existUser1.setPassword(passwordEncoder.encode("Quanbroisdead"));
+            existUser1.setEnabled(true);
+            userRepository.save(existUser1);
+            System.out.println("User 1 existed. Forced ENABLED = true and reset password.");
         }
 
         // User2 chua co
@@ -72,6 +83,17 @@ public class UserInitializer implements CommandLineRunner {
                     .build();
 
             userRepository.save(user2);
+
+            System.out.println("Create new User 2");
+
+        }
+        else {
+            User existUser2 = checkExistUser2.get();
+
+            existUser2.setPassword(passwordEncoder.encode("trongbro7"));
+            existUser2.setEnabled(true);
+            userRepository.save(existUser2);
+            System.out.println("User 2 existed. Forced ENABLED = true and reset password.");
         }
 
         // Authenticate User 1
@@ -85,10 +107,21 @@ public class UserInitializer implements CommandLineRunner {
                 .password("trongbro7")
                 .build();
 
-        AuthenticationResponse responseUser = authenticationService.authenticate(authenticationRequest1);
-        AuthenticationResponse responseAdmin = authenticationService.authenticate(authenticationRequest2);
+        try {
+            AuthenticationResponse responseUser = authenticationService.authenticate(authenticationRequest1);
+            System.out.println("Token User: " + responseUser.getAccessToken());
+        }
+        catch(Exception e) {
+            System.out.println("Error authenticating USER ");
+        }
 
-        System.out.println("Token User: " + responseUser.getAccessToken());
-        System.out.println("Token Admin: " + responseAdmin.getAccessToken());
+        try {
+            AuthenticationResponse responseAdmin = authenticationService.authenticate(authenticationRequest2);
+
+            System.out.println("Token Admin: " + responseAdmin.getAccessToken());
+        }
+        catch(Exception e) {
+            System.out.println("Error authenticating ADMIN ");
+        }
     }
 }
