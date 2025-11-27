@@ -19,9 +19,4 @@ spring:
   profiles:
     active: product
 
-python:
-  api:
-    base-url: http://localhost:5000
-    version-url: /api/v1/
-    get-location-url: locations/sync-locations
-    make-plan-url: /schedule/generate
+
