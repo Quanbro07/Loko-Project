@@ -17,7 +17,7 @@ spring:
             enable: true
 
   profiles:
-    active: dev
+    active: product
 
 python:
   api:
