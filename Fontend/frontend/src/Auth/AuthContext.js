@@ -9,8 +9,8 @@ export const AuthProvider = ({ children }) => {
         return savedUser && savedUser !== 'undefined' ? JSON.parse(savedUser) : null;
     });
     const [token, setToken] = useState(localStorage.getItem('token'));
-    const [authMode, setAuthMode] = useState('login'); // 'login' or 'register'
-    const [isLoading, setIsLoading] = useState(true);
+    const [authMode, setAuthMode] = useState('login'); 
+
     useEffect(() => {
         if (token && user) {
             setIsAuthenticated(true);
@@ -20,142 +20,171 @@ export const AuthProvider = ({ children }) => {
         }
     }, [token, user]);
 
-    useEffect(() => {
-        // Giả lập check token từ localStorage khi reload trang
-        const checkAuth = async () => {
-            setIsLoading(true); // Bắt đầu load
-            try {
-                const storedUser = localStorage.getItem('user');
-                const token = localStorage.getItem('token');
-                
-                if (token && storedUser) {
-                    setUser(JSON.parse(storedUser));
-                    setIsAuthenticated(true);
-                }
-            } catch (error) {
-                console.error(error);
-            } finally {
-                setIsLoading(false); // Kết thúc load (Dù thành công hay thất bại)
-            }
-        };
-
-        checkAuth();
-    }, []);
-
+    // 1. LOGIN
     const login = async (credentials) => {
         try {
             const response = await fetch('http://localhost:8080/api/v1/auth/authenticate', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(credentials),
             });
 
             if (response.ok) {
                 const data = await response.json();
+                if (!data.accessToken) {
+                    return { success: false, error: 'Tài khoản chưa được kích hoạt. Vui lòng kiểm tra email.' };
+                }
                 setToken(data.accessToken);
-                // Backend returns `username` in the top-level response (not a `user` object).
-                // Normalize into a small user object used by the app UI.
-                const resolvedUser = data.user || { username: data.username, age: data.age, gender: data.gender, role:data.role};
+                const resolvedUser = data.user || { 
+                    username: data.username, 
+                    role: data.role, // <--- THÊM DÒNG NÀY (Lấy role từ backend)
+                    age: data.age, 
+                    gender: data.gender,
+                    fullName: data.fullName // Nếu backend có trả về
+                };                
                 setUser(resolvedUser);
                 setIsAuthenticated(true);
                 localStorage.setItem('token', data.accessToken);
                 localStorage.setItem('user', JSON.stringify(resolvedUser));
-                console.log(response);
                 return { success: true, user: resolvedUser };
             } else {
                 const error = await response.json();
-                // Translate error messages
                 let errorMessage = error.message || 'Đăng nhập thất bại';
-                if (errorMessage.includes('Bad credentials') || errorMessage.includes('User not found')) {
-                    errorMessage = 'Email hoặc mật khẩu không đúng';
-                }
+                if (errorMessage.includes('Bad credentials')) errorMessage = 'Email hoặc mật khẩu không đúng';
+                else if (errorMessage.includes('disabled')) errorMessage = 'Tài khoản chưa được kích hoạt.';
                 return { success: false, error: errorMessage };
             }
         } catch (error) {
-            return { success: false, error: 'Lỗi kết nối' };
+            return { success: false, error: 'Lỗi kết nối server' };
         }
     };
 
+    // 2. REGISTER
     const register = async (userData) => {
         try {
             const response = await fetch('http://localhost:8080/api/v1/auth/register', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userData),
             });
 
             if (response.ok) {
-                const data = await response.json();
-                // Registration may return a PendingVerificationResponse (no tokens).
-                // Only set token/user if backend included them; otherwise return pending info.
-                if (data.accessToken) {
-                    setToken(data.accessToken);
-                    const resolvedUser = data.user || { username: data.username, age: data.age, gender: data.gender };
-                    setUser(resolvedUser);
-                    setIsAuthenticated(true);
-                    localStorage.setItem('token', data.accessToken);
-                    localStorage.setItem('user', JSON.stringify(resolvedUser));
-                    return { success: true };
-                }
-                // Pending verification flow
-                return { success: true, pending: true, email: data.email };
+                return { success: true }; 
             } else {
                 const error = await response.json();
-                // Translate error messages
-                let errorMessage = error.message || 'Đăng ký thất bại';
-                if (errorMessage.includes('Password and confirm password do not match')) {
-                    errorMessage = 'Mật khẩu và xác nhận mật khẩu không khớp';
-                } else if (errorMessage.includes('already exists')) {
-                    errorMessage = 'Email này đã được sử dụng';
-                }
-                return { success: false, error: errorMessage };
+                return { success: false, error: error.message || 'Đăng ký thất bại' };
             }
         } catch (error) {
-            return { success: false, error: 'Lỗi kết nối' };
+            return { success: false, error: 'Lỗi kết nối server' };
         }
     };
 
-    const logout = () => {
+    // 3. VERIFY ACCOUNT
+    const verifyAccount = async (email, code) => {
+        try {
+            const response = await fetch('http://localhost:8080/api/v1/auth/verify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, verificationCode: code }),
+            });
+
+            if (response.ok) {
+                return { success: true };
+            } else {
+                const error = await response.json();
+                return { success: false, error: error.message || 'Mã xác thực không đúng' };
+            }
+        } catch (error) {
+            return { success: false, error: 'Lỗi kết nối server' };
+        }
+    };
+
+    // 4. FORGOT PASSWORD
+    const forgotPassword = async (email) => {
+        try {
+            const url = `http://localhost:8080/api/v1/auth/forget-password?email=${encodeURIComponent(email)}`;
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            if (response.ok) {
+                return { success: true, message: 'Vui lòng kiểm tra email để lấy mã xác nhận.' };
+            } else {
+                const error = await response.json();
+                return { success: false, error: error.message || 'Không thể gửi yêu cầu' };
+            }
+        } catch (error) {
+            return { success: false, error: 'Lỗi kết nối server' };
+        }
+    };
+
+    // 5. CHECK VERIFICATION CODE (VÀ LẤY TEMP TOKEN)
+    const checkVerificationCode = async (email, code) => {
+        try {
+            const response = await fetch('http://localhost:8080/api/v1/auth/verify-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, verificationCode: code }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                // --- QUAN TRỌNG: Lấy jwtToken từ phản hồi ---
+                // Backend trả về: { ..., jwtToken: "...", ... }
+                return { success: true, token: data.jwtToken }; 
+            } else {
+                const error = await response.json();
+                return { success: false, error: error.message || 'Mã xác nhận không đúng.' };
+            }
+        } catch (error) {
+            return { success: false, error: 'Lỗi kết nối server' };
+        }
+    };
+
+    // 6. RESET PASSWORD (GỬI KÈM TOKEN)
+    const resetPassword = async (data) => {
+        try {
+            const headers = { 'Content-Type': 'application/json' };
+            
+            // --- QUAN TRỌNG: Nếu có token tạm thời, gắn vào Header ---
+            if (data.token) {
+                headers['Authorization'] = `Bearer ${data.token}`;
+            }
+
+            const response = await fetch('http://localhost:8080/api/v1/auth/change-password', {
+                method: 'POST',
+                headers: headers, // Sử dụng headers đã cấu hình
+                body: JSON.stringify({
+                    email: data.email,
+                    verificationCode: data.verificationCode,
+                    password: data.password,
+                    confirmPassword: data.confirmPassword
+                }),
+            });
+
+            if (response.ok) {
+                return { success: true, message: 'Đổi mật khẩu thành công.' };
+            } else {
+                const error = await response.json();
+                return { success: false, error: error.message || 'Đổi mật khẩu thất bại.' };
+            }
+        } catch (error) {
+            return { success: false, error: 'Lỗi kết nối server' };
+        }
+    }
+
+    const logout = async () => {
         setToken(null);
         setUser(null);
         setIsAuthenticated(false);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        setAuthMode('login');
     };
 
-    // Auto-logout when JWT token expires (if token is a JWT with an `exp` claim)
-    useEffect(() => {
-        if (!token) return;
-        let timer;
-        try {
-            const parts = token.split('.');
-            if (parts.length !== 3) return;
-            const payload = JSON.parse(atob(parts[1]));
-            const exp = payload && payload.exp;
-            if (!exp) return;
-            // If already expired, logout immediately
-            if (Date.now() / 1000 > exp) {
-                logout();
-                return;
-            }
-            const msUntilExp = exp * 1000 - Date.now();
-            timer = setTimeout(() => {
-                logout();
-            }, Math.max(msUntilExp, 0));
-        } catch (e) {
-            // If token isn't a JWT or parsing fails, do nothing (safe fallback)
-        }
-        return () => {
-            if (timer) clearTimeout(timer);
-        };
-    }, [token]);
-
-    const switchAuthMode = () => {
-        setAuthMode(authMode === 'login' ? 'register' : 'login');
+    const switchAuthMode = (mode) => {
+        setAuthMode(mode);
     };
 
     return (
@@ -164,9 +193,12 @@ export const AuthProvider = ({ children }) => {
             user,
             token,
             authMode,
-            isLoading,
             login,
             register,
+            verifyAccount,
+            forgotPassword,
+            checkVerificationCode,
+            resetPassword,
             logout,
             setAuthMode,
             switchAuthMode
