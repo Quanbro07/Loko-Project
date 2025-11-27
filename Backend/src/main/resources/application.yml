@@ -17,4 +17,11 @@ spring:
             enable: true
 
   profiles:
-    active: product
+    active: dev
+
+python:
+  api:
+    base-url: http://localhost:5000
+    version-url: /api/v1
+    get-location-url: /get-locations
+    make-plan-url: /make-plan

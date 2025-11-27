@@ -120,6 +120,7 @@ public class UserService {
                 .age(user.getAge())
                 .gender(user.getGender())
                 .role(user.getRole())
+                .enabled(user.isEnabled())
                 .build();
     }
 

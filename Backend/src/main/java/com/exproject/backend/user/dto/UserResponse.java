@@ -23,4 +23,6 @@ public class UserResponse {
     private Gender gender;
 
     private Role role;
+
+    private Boolean enabled;
 }

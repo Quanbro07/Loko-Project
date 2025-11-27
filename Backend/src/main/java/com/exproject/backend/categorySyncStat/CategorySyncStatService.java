@@ -1,5 +1,6 @@
 package com.exproject.backend.categorySyncStat;
 
+import com.exproject.backend.aiAPI.AIAPIService;
 import com.exproject.backend.categorySyncStat.dto.CategorySyncStatDTO;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location_category.info.LocationCategory;
@@ -19,6 +20,8 @@ import java.util.stream.Collectors;
 public class CategorySyncStatService {
 
     private final CategorySyncStatRepository categorySyncStatRepository;
+
+    private final AIAPIService aiAPIService;
 
     // Tăng usage Category Sunc Stat
     @Transactional
@@ -87,7 +90,6 @@ public class CategorySyncStatService {
         LocalDateTime now = LocalDateTime.now();
 
         for (CategorySyncStatDTO task : tasks) {
-            // Dùng findBy... vì nó đã có trong cache (nếu có)
             categorySyncStatRepository
                     .findByProvinceIdAndLocationCategoryId(task.getProvinceId(), task.getLocationCategoryId())
                     .ifPresent(stat -> {
@@ -110,5 +112,14 @@ public class CategorySyncStatService {
                 .usageCount(stat.getUsageCount())
                 .lastSyncedAt(stat.getLastSyncedAt())
                 .build();
+    }
+
+    // Hàm set location thủ công
+    public void getLocation(CategorySyncStatDTO request) {
+
+        // Gọi API
+        List<Location> locationsSync = aiAPIService.getLocations(List.of(request));
+
+
     }
 }

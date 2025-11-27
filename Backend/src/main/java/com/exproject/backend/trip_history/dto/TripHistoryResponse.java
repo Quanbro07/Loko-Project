@@ -1,5 +1,6 @@
 package com.exproject.backend.trip_history.dto;
 
+import com.exproject.backend.province.info.EProvince;
 import com.exproject.backend.trip_history.TripHistory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,6 +21,9 @@ public class TripHistoryResponse {
     private Long tripId;
 
     private LocalDate visitDate;
+
+    // TODO: Handle visited Province
+    private EProvince visitedProvince;
 
     public TripHistoryResponse(TripHistory tripHistory) {
         this.id = tripHistory.getId();
