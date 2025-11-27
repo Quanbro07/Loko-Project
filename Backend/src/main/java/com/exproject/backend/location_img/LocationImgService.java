@@ -15,6 +15,7 @@ public class LocationImgService {
     public List<LocationImg> createLocationImgs(List<RawLocationImgDTO> rawLocationImgs
     ,Location location) {
         if (rawLocationImgs == null) {
+            System.out.println("NO IMG");
             return new ArrayList<>();
         }
 

@@ -1,28 +1,26 @@
 package com.exproject.backend.user.dto;
 
 import com.exproject.backend.user.info.Gender;
-import com.exproject.backend.user.info.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserResponse {
-    private Long id;
+public class UserDTO {
+    private Long userId;
 
-    private String username;
+    private String userName;
 
-    private String email;
+    private String fullName;
 
-    private Integer age;
+    private LocalDate dob;
 
     private Gender gender;
 
-    private Role role;
-
-    private Boolean enabled;
 }

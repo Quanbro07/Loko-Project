@@ -22,18 +22,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 import com.exproject.backend.makePlan.dto.MakePlanRequest;
 import com.exproject.backend.trip.dto.TripRequest;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -55,6 +48,7 @@ public class AIAPIService {
 
     // Gọi Api lấy location
     public List<Location> getLocations(List<CategorySyncStatDTO> categorySyncStatDTOList) {
+        // URL
         String getLocationUrl = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl() +
                 pythonAPIConfig.getGetLocationUrl();
 
@@ -147,7 +141,6 @@ public class AIAPIService {
     public List<LocationDTO> convertRawToLocationDTO(List<RawLocationDTO> rawLocations) {
         List<Location> locationEntities = new ArrayList<>();
 
-        System.out.println("HI#1");
         // Loop qua để nhồi các mối quan hệ Object vào Location
         for(RawLocationDTO rawLocationDTO : rawLocations) {
             Optional<Province> provinceOpt = provinceRepository.findById(rawLocationDTO.getProvinceId());
@@ -165,7 +158,6 @@ public class AIAPIService {
             List<LocationCategory> categories = locationCategoryRepository.
                     findAllById(rawLocationDTO.getCategoryIds());
 
-            System.out.println("HI#2");
 
             if(categories.size() != rawLocationDTO.getCategoryIds().size()) {
                 // Log cảnh báo nếu có category ID không tìm thấy
@@ -173,7 +165,6 @@ public class AIAPIService {
                         + rawLocationDTO.getGgPlaceId());
             }
 
-            System.out.println("HI#3");
 
             Location location = Location.builder()
                     .ggPlaceId(rawLocationDTO.getGgPlaceId())
@@ -193,13 +184,10 @@ public class AIAPIService {
                     .locationImgs(new ArrayList<>()) // ** Quan trọng chưa Set img
                     .build();
 
-            System.out.println("HI#4");
 
             List<LocationImg> locationImgList =  locationImgService.
                     createLocationImgs(rawLocationDTO.getRawImgs(), location);
 
-
-            System.out.println("HI#5");
 
 
             locationEntities.add(location);
@@ -207,13 +195,11 @@ public class AIAPIService {
 
         locationRepository.saveAll(locationEntities);
 
-        System.out.println("HI#6");
 
         List<LocationDTO> locationDTOList = locationEntities.stream()
                 .map(locationMapper::toLocationDTO)
                 .toList();
 
-        System.out.println("HI#7");
 
         return locationDTOList;
     }

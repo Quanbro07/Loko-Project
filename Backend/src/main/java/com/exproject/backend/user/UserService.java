@@ -1,6 +1,7 @@
 package com.exproject.backend.user;
 
 import com.exproject.backend.exception.customException.CannotDisableAdminException;
+import com.exproject.backend.user.dto.UserDTO;
 import com.exproject.backend.user.dto.UserResponse;
 import com.exproject.backend.user.info.Role;
 import com.exproject.backend.user.info.User;
@@ -39,6 +40,42 @@ public class UserService {
         userRepository.save(existUser);
     }
 
+    public void enableUser(Long userId) {
+        User existUser = userRepository.findById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+
+        // Enable user
+        existUser.setEnabled(true);
+
+        userRepository.save(existUser);
+    }
+
+    public void deleteUser(Long userId) {
+        User existUser = userRepository.findById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+        if(existUser.getRole() == Role.ADMIN) {
+            throw new CannotDisableAdminException("You can't delete user admin");
+        }
+
+        userRepository.delete(existUser);
+
+    }
+
+    public void upgradeUser(Long userId) {
+        User existUser = userRepository.findById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+        if(existUser.getRole() == Role.ADMIN) {
+            throw new CannotDisableAdminException("You can't upgrade user admin");
+        }
+
+        existUser.setRole(Role.VIP);
+
+        userRepository.save(existUser);
+    }
+
     public Page<UserResponse> getAllUsers(Pageable page) {
         Role admin = Role.ADMIN;
 
@@ -49,6 +86,32 @@ public class UserService {
         return userResponseList;
     }
 
+    public UserDTO changeUserInfo(UserDTO dto) {
+        User user = userRepository.findById(dto.getUserId())
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+        user.setUsername(dto.getUserName());
+        user.setFullName(dto.getFullName());
+        user.setDob(dto.getDob());
+        user.setGender(dto.getGender());
+
+        User savedUser = userRepository.save(user);
+
+        return UserMapToDTO(savedUser);
+    }
+
+    // Helper Function
+    private UserDTO UserMapToDTO(User user) {
+        return UserDTO.builder()
+                .userId(user.getId())
+                .userName(user.getDisplayUserName())
+                .fullName(user.getFullName())
+                .dob(user.getDob())
+                .gender(user.getGender())
+                .build();
+    }
+
+
     private UserResponse convertToUserResponse(User user) {
         return UserResponse.builder()
                 .id(user.getId())
@@ -57,6 +120,10 @@ public class UserService {
                 .age(user.getAge())
                 .gender(user.getGender())
                 .role(user.getRole())
+                .enabled(user.isEnabled())
                 .build();
     }
+
+
+
 }

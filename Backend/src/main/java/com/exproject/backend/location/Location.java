@@ -38,9 +38,11 @@ public class Location {
     private Province province;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<ReviewLocation> reviewLocations = new ArrayList<>();
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<LocationImg> locationImgs = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -49,6 +51,7 @@ public class Location {
             joinColumns = @JoinColumn(name = "location_id"),
             inverseJoinColumns = @JoinColumn(name = "location_category_id")
     )
+    @Builder.Default
     private List<LocationCategory> locationCategories = new ArrayList<>();
 
     @Column(name = "location_name", nullable = false)

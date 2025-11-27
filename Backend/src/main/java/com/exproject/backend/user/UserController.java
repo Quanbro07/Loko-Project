@@ -1,5 +1,6 @@
 package com.exproject.backend.user;
 
+import com.exproject.backend.user.dto.UserDTO;
 import com.exproject.backend.user.dto.UserResponse;
 import com.exproject.backend.user.info.Gender;
 import com.exproject.backend.user.info.User;
@@ -55,4 +56,38 @@ public class UserController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @PreAuthorize("authentication.principal.id == #userDTO.getUserId() " +
+            "or hasAuthority('ROLE_ADMIN')")
+    @PostMapping("/change-info")
+    public ResponseEntity<UserDTO> changeInfoUser(@RequestBody UserDTO userDTO) {
+        UserDTO response = userService.changeUserInfo(userDTO);
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/enable")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<Void> enableUser(@RequestParam Long userId) {
+        userService.enableUser(userId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/delete")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<Void> deleteUser(@RequestParam Long userId) {
+        userService.deleteUser(userId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/upgrade")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<Void> upgradeUser(@RequestParam Long userId) {
+        userService.upgradeUser(userId);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }
