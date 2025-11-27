@@ -5,6 +5,8 @@ import os
 from app.core.gemini_config import MODEL, BATCH_SIZE
 from categories_creator.food import run_food
 from categories_creator.amusement import run_amusement
+from categories_creator.adventure import run_adventure
+from categories_creator.history import run_history
 
 # Import hàm mapping
 from app.core.mappings import get_category_id
@@ -27,6 +29,10 @@ def apply_ai_tags(places_data: list, category_name: str) -> list:
             run_food(MODEL, input_path, output_path, BATCH_SIZE)
         elif category_name == "Amusement":
             run_amusement(MODEL, input_path, output_path, BATCH_SIZE)
+        elif category_name == "Adventure":
+            run_adventure(MODEL, input_path, output_path, BATCH_SIZE)
+        elif category_name == "History":
+            run_history(MODEL, input_path, output_path, BATCH_SIZE)
         else:
             return places_data 
 

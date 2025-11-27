@@ -10,8 +10,34 @@ CATEGORY_KEYWORDS = {
         "hotel" # Food thường gắn liền nơi ở hoặc ăn uống trong ks
     ],
     "Amusement": [
-        "amusement", 
-        "cultural performance", 
+        "amusement",
+        "amusement park",
+        "water park",
+        "zoo",
+        "aquarium",
+        "cultural performance",
+        "nightlife",
+        "festival",
+        "hotel",
+        "restaurant"
+    ],
+    "Adventure": [
+        "moutain", 
+        "cave",
+        "waterfall",
+        "camping",
+        "diving", 
+        "hotel", 
+        "restaurant"
+    ],
+    "History": [
+        "museum", 
+        "citadel",
+        "palace",
+        "old battlefield",
+        "church",
+        "temple",
+        "pagoda" 
         "hotel", 
         "restaurant"
     ]

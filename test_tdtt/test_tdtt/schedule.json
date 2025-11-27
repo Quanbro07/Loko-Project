@@ -1,901 +1,874 @@
 {
-  "userId": 1,
-  "tripName": "Chuyến đi 3 ngày",
-  "startDate": "2025-12-26",
-  "endDate": "2025-12-28",
-  "numAdult": 2,
-  "numChild": 0,
-  "numElder": 0,
-  "tripSections": [
-    {
-      "dayNumber": 1,
-      "title": "Ngày 1: Khám phá",
-      "tripDetails": [
+    "userId": 1,
+    "tripName": "Chuyến đi 3 ngày",
+    "startDate": "2025-12-24",
+    "endDate": "2025-12-26",
+    "numAdult": 2,
+    "numChild": 0,
+    "numElder": 0,
+    "tripSections": [
         {
-          "sequenceOrder": 1,
-          "startTime": "09:15:00",
-          "endTime": "09:15:00",
-          "description": "Khách sạn cao cấp có nhà hàng và spa. Khách sạn cao cấp với phòng ở tinh tế, một số phòng có sân hiên, có nhà hàng, bể bơi ngoài trời và spa.",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
-            "location_name": "Park Hyatt Saigon",
-            "latitude": 10.7777514,
-            "longitude": 106.7033802,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "hotel"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
+            "dayNumber": 1,
+            "title": "Ngày 1: Khám phá",
+            "tripDetails": [
+                {
+                    "sequenceOrder": 1,
+                    "startTime": "07:30:00",
+                    "endTime": "07:30:00",
+                    "description": "Khách sạn cao cấp có nhà hàng và spa. Khách sạn cao cấp với phòng ở tinh tế, một số phòng có sân hiên, có nhà hàng, bể bơi ngoài trời và spa.",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
+                        "location_name": "Park Hyatt Saigon",
+                        "latitude": 10.7777514,
+                        "longitude": 106.7033802,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 2,
+                    "startTime": "07:40:00",
+                    "endTime": "11:05:00",
+                    "description": "Khu Vui chơi Trẻ em - Công viên Gia Định",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJE2s16d8odTERhi4YxyrQpg4",
+                        "location_name": "Khu Vui chơi Trẻ em - Công viên Gia Định",
+                        "latitude": 10.8123367,
+                        "longitude": 106.6735483,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.3,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzbS103eN4J5XqGYQ-SLstKnyO_XWOnBCvpY4TxKZKJIjGE-BV-0iKaIemMuOZe_sYJ89STmQsNoaXDdqwlsnWBSgoNANzdlTCBBnmaH76guyU8FQ6CFvYCb_bivCFApCexfbCR=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 3,
+                    "startTime": "11:20:00",
+                    "endTime": "14:45:00",
+                    "description": "Khu Vui Chơi Trẻ Em Happy Kids",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJrT8yBQApdTERqxrCJG2LoRo",
+                        "location_name": "Khu Vui Chơi Trẻ Em Happy Kids",
+                        "latitude": 10.833528699999999,
+                        "longitude": 106.6343943,
+                        "open_time": "08:00",
+                        "close_time": "22:00",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx9HLxOWEjP4v1UV0ZpuPOz3nWYGS3DUO6G176J35QVsOSdVq6tRMB-y_lddyOSv0sKOATQIWzsD1Z_nXh69y2spvoOqlmx9VEbQF8O0oE7W3-gGeEiBKF7N1CVriqUWYbga2D1GinhZuXs=w80-h106-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 4,
+                    "startTime": "14:55:00",
+                    "endTime": "18:20:00",
+                    "description": "Khu vui chơi trẻ em Topworld Kidsplay & Cafe",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJk58YdgAvdTER0JFO1TJJuK0",
+                        "location_name": "Khu vui chơi trẻ em Topworld Kidsplay & Cafe",
+                        "latitude": 10.7896085,
+                        "longitude": 106.6392619,
+                        "open_time": "08:30",
+                        "close_time": "21:30",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipMbSOCJUHKOULZ_XOm3v9P0pG5opW-DDaL5B5OS=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 5,
+                    "startTime": "18:35:00",
+                    "endTime": "19:30:00",
+                    "description": "(Nghỉ ngơi) Park Hyatt Saigon",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
+                        "location_name": "Park Hyatt Saigon",
+                        "latitude": 10.7777514,
+                        "longitude": 106.7033802,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 6,
+                    "startTime": "19:45:00",
+                    "endTime": "21:40:00",
+                    "description": "Tiệm Nướng Nhà Bird",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJ8wjT4LQpdTERO-tJE5Up2bA",
+                        "location_name": "Tiệm Nướng Nhà Bird",
+                        "latitude": 10.793054399999999,
+                        "longitude": 106.6398013,
+                        "open_time": "16:00",
+                        "close_time": "23:30",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipNkKjUo2IEmJ2Uze-s3V1K2SZkAO0X7M6Pp_cwV=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 7,
+                    "startTime": "21:50:00",
+                    "endTime": "23:45:00",
+                    "description": "Nhà hàng sang trọng phục vụ rượu và món quốc tế. Nhà hàng xanh mát, lãng mạn này phục vụ các loại rượu và đặc sản quốc tế.",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJu04FSLMvdTERb-bt47b4Loo",
+                        "location_name": "Mars Venus Restaurant - Wine Cellar",
+                        "latitude": 10.7930952,
+                        "longitude": 106.67152329999999,
+                        "open_time": "17:00",
+                        "close_time": "22:00",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOxdzzNq_KcnRkavuV51hM7Ic0s0xpHbtjie3Ac=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 8,
+                    "startTime": "23:55:00",
+                    "endTime": "02:20:00",
+                    "description": "Công viên Văn hoá Lê Thị Riêng",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJJenkHgAvdTERPzJF69yFr90",
+                        "location_name": "Công viên Văn hoá Lê Thị Riêng",
+                        "latitude": 10.785147799999999,
+                        "longitude": 106.66474869999999,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.6,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSziNLV5HOciBKfcP7ZDX2UmHUwTDwfohvIxoWv_IFQnXwEkN7jMC0-XLOqryP3ZWhT8WY8vRxl8KbfyazlT8IIS__kCN0z3qTKQdSwaZfLX8e5jLIqHfszKpjFb8_SuAyl1P07-v4eJyux_=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 9,
+                    "startTime": "02:20:00",
+                    "endTime": "02:20:00",
+                    "description": "Kết thúc ngày, quay về Park Hyatt Saigon",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
+                        "location_name": "Park Hyatt Saigon",
+                        "latitude": 10.7777514,
+                        "longitude": 106.7033802,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                }
             ]
-          },
-          "activity": "Trải nghiệm tiện nghi cao cấp, thư giãn tại hồ bơi hoặc thưởng thức ẩm thực tinh tế trong không gian đẳng cấp của Park Hyatt Saigon."
         },
         {
-          "sequenceOrder": 2,
-          "startTime": "09:20:00",
-          "endTime": "12:15:00",
-          "description": "Nhà hát Kịch IDECAF",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJa73U7UgvdTERjLF-t2zp5Eo",
-            "location_name": "Nhà hát Kịch IDECAF",
-            "latitude": 10.7796931,
-            "longitude": 106.70370489999999,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.7,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "cultural performance"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyeZDvQN15PLFqo1IhMreUm7zcCVZ9NBThLUinHXxhvDFxaxChMiW66gqd3URpn1SvGN1IDSsFF-cOD25UQJDvWZ_nuP_0T4y7kEqMurevm15j0UemEqQcEgYa2aqwRO_BLKhQfoFDr43TJ=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
+            "dayNumber": 2,
+            "title": "Ngày 2: Khám phá",
+            "tripDetails": [
+                {
+                    "sequenceOrder": 1,
+                    "startTime": "07:30:00",
+                    "endTime": "07:30:00",
+                    "description": "Khách sạn cao cấp có nhà hàng và spa. Khách sạn cao cấp với phòng ở tinh tế, một số phòng có sân hiên, có nhà hàng, bể bơi ngoài trời và spa.",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
+                        "location_name": "Park Hyatt Saigon",
+                        "latitude": 10.7777514,
+                        "longitude": 106.7033802,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 2,
+                    "startTime": "07:40:00",
+                    "endTime": "11:10:00",
+                    "description": "Đầm Sen",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJa2jyR5cudTERy2ySbqgJudk",
+                        "location_name": "Đầm Sen",
+                        "latitude": 10.768736599999999,
+                        "longitude": 106.63610829999999,
+                        "open_time": "07:30",
+                        "close_time": "20:00",
+                        "average_rating": 4.3,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwVg1QyUJFLnqi1wORoVYeH-5kx3MGMWPquEyRjIJV-Q6LmhfjDYw-I7dzZs055SK9SRa85S4AFgvzyJWTBjvHpPxoDsw3AOZxtYhuKQYSFq7_h8qh7lEn89_Hmxsk229cFFEcT=w131-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 3,
+                    "startTime": "11:15:00",
+                    "endTime": "14:40:00",
+                    "description": "Công viên rực rỡ với các điểm tham quan. Tổ hợp vui chơi giải trí cho gia đình với các hoạt động cưỡi ngựa, công viên nước, rạp chiếu phim & sở thú.",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJ4RqUkJkudTER-QHI35eZcWI",
+                        "location_name": "Công viên nước Đầm Sen",
+                        "latitude": 10.768894699999999,
+                        "longitude": 106.63599389999999,
+                        "open_time": "08:30",
+                        "close_time": "18:00",
+                        "average_rating": 4.3,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "cultural performance"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyW7_-6iKSrl7hkxvxMRiqZ4vLdhZFKaSg8XRQKAX9ByErP5F_TWQsvkaz00nK5P5CLzm1qJunOuDaiZ-4iY8X_fLkGpHxNPzltt0w2TDU2Hma_DYL-UC3mIYZftYf3o_WNPx4f7Q=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 4,
+                    "startTime": "14:55:00",
+                    "endTime": "18:20:00",
+                    "description": "Jump Arena HimLam",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJcUBm_6cvdTERgOKJ-GP60C0",
+                        "location_name": "Jump Arena HimLam",
+                        "latitude": 10.742073099999999,
+                        "longitude": 106.69511949999999,
+                        "open_time": "09:00",
+                        "close_time": "21:00",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzer4h5Y8ezWsOhYBYV0mn-o5vQFABDfT6sd4GJHGo_e_FGgnb50SWehfl7se08wh28ebD15mhJfJ4gq69qmf9FDolmUftEAYLtRWcgfBLlutiU6qeuyD6cE6VjJstjteHSW1o4=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 5,
+                    "startTime": "18:35:00",
+                    "endTime": "19:30:00",
+                    "description": "(Nghỉ ngơi) Park Hyatt Saigon",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
+                        "location_name": "Park Hyatt Saigon",
+                        "latitude": 10.7777514,
+                        "longitude": 106.7033802,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 6,
+                    "startTime": "19:35:00",
+                    "endTime": "21:35:00",
+                    "description": "De Tham Restaurant - Vietnamese cuisine & vegetarian Food",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJfw_iSOkvdTERz5z42lgTX1o",
+                        "location_name": "De Tham Restaurant - Vietnamese cuisine & vegetarian Food",
+                        "latitude": 10.7682442,
+                        "longitude": 106.69363039999999,
+                        "open_time": "10:30",
+                        "close_time": "23:30",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzGpj8w-ZeVVSsJOTR1Nm98Kq7fW7WxaVqL8ecEoM0ZPu0TtQZ1b6WeJRbIhEmPqNvp49YwcGl-oCz7lwRYeXLbki7aLHo5P0VwGn2PT5K-mrxGXDj7L4GOlVgpoVgk6AceSL3As4vrWHLT=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 7,
+                    "startTime": "21:40:00",
+                    "endTime": "23:35:00",
+                    "description": "Cloud Nine Restaurant Sai Gon",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJzZmzw0gvdTERMd1Mj0vWl6g",
+                        "location_name": "Cloud Nine Restaurant Sai Gon",
+                        "latitude": 10.7731993,
+                        "longitude": 106.6956783,
+                        "open_time": "11:30",
+                        "close_time": "23:00",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOWih5a5_6eLVAVzPA-j07JUXeSmW-MQeEudO3t=w138-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 8,
+                    "startTime": "23:50:00",
+                    "endTime": "02:20:00",
+                    "description": "Công Viên Thế Kỷ 21",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJ2999pt4ldTERy2QtUvjbIRI",
+                        "location_name": "Công Viên Thế Kỷ 21",
+                        "latitude": 10.7811567,
+                        "longitude": 106.7520358,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.0,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzfEgqiS3FnfVdsoStwYqnlDf_Thlyn_b7xmf2NWO6aq2UQqpASPEbYQ4TF86U8ANBzfwBYoe9VBqQBovyGSM9Dze_2OHUu-lGeUmZV8vQ2qODft6AmLys5f3FcdzKFy8IjNnuJ=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 9,
+                    "startTime": "02:20:00",
+                    "endTime": "02:20:00",
+                    "description": "Kết thúc ngày, quay về Park Hyatt Saigon",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
+                        "location_name": "Park Hyatt Saigon",
+                        "latitude": 10.7777514,
+                        "longitude": 106.7033802,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                }
             ]
-          },
-          "activity": "Thưởng thức các vở kịch, hài kịch và chương trình nghệ thuật sân khấu đặc sắc, mang đậm bản sắc văn hóa Việt tại Nhà hát Kịch IDECAF."
         },
         {
-          "sequenceOrder": 3,
-          "startTime": "12:20:00",
-          "endTime": "15:15:00",
-          "description": "Phòng hòa nhạc & sân khấu ba lê. Nhà hát opera tinh xảo từ thời Pháp thuộc vào thế kỷ 19, nay là nơi biểu diễn ba lê và nhạc giao hưởng của thành phố.",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJKcrnSUYvdTERO64MErYx9VU",
-            "location_name": "Nhà hát Thành phố Hồ Chí Minh",
-            "latitude": 10.776612799999999,
-            "longitude": 106.7031715,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.6,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "cultural performance"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzDkByb_03wnhmrQ7geiai6ZERrFGeSdsigOTiQ0FDjGGth8Nz9er3fbqtkC2YtLv1NWM6OnOAXtD6e2UsHW5q_QOAJ8nSQGOg9lLfjsBsQKFk6MT3UyiqnTLGiuK9kiYuaXBPeLA=w80-h99-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
+            "dayNumber": 3,
+            "title": "Ngày 3: Khám phá",
+            "tripDetails": [
+                {
+                    "sequenceOrder": 1,
+                    "startTime": "07:30:00",
+                    "endTime": "07:30:00",
+                    "description": "Khách sạn cao cấp có nhà hàng và spa. Khách sạn cao cấp với phòng ở tinh tế, một số phòng có sân hiên, có nhà hàng, bể bơi ngoài trời và spa.",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
+                        "location_name": "Park Hyatt Saigon",
+                        "latitude": 10.7777514,
+                        "longitude": 106.7033802,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 2,
+                    "startTime": "08:00:00",
+                    "endTime": "11:30:00",
+                    "description": "Thiên Đường Giải Trí Thỏ Trắng",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJ9YE09dEudTERNEcX1eDdajY",
+                        "location_name": "Thiên Đường Giải Trí Thỏ Trắng",
+                        "latitude": 10.785501499999999,
+                        "longitude": 106.66605299999999,
+                        "open_time": "08:00",
+                        "close_time": "19:00",
+                        "average_rating": 4.3,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            },
+                            {
+                                "id": 2,
+                                "categoryName": "cultural performance"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzQRyUPy5pGXf1vn8smC5vH6Rb5pomIdm4I9Tn-v0INuwjME3z0LUqgbezJ9MO7kDLmis3UfBv-GLhKjThiWWQH2HfzB6JoPA46Zt6W5_dBHgyCWB9skIr9cPk_Pk9B9PR5w3ip=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 3,
+                    "startTime": "11:40:00",
+                    "endTime": "15:05:00",
+                    "description": "Sân chơi Giáo Trí Thiếu Nhi tiNiWorld Vincom Quang Trung",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJW7U9AggpdTERqzQ7L8I2lR4",
+                        "location_name": "Sân chơi Giáo Trí Thiếu Nhi tiNiWorld Vincom Quang Trung",
+                        "latitude": 10.8293011,
+                        "longitude": 106.67253339999999,
+                        "open_time": "10:00",
+                        "close_time": "21:30",
+                        "average_rating": 4.2,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwc07UrU9CWJ26R97AfeHjpOnJh7y-3qL7it_DS-gVaBHe0VYsMhCjyYxmqLCY4WMkO6r0vslCRZs89AoLCyDrHLxzrUIsHYhSgSgUMcMA-ebBT0Hn_dfy6LgtGFqVG7okif2I1=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 4,
+                    "startTime": "15:15:00",
+                    "endTime": "18:40:00",
+                    "description": "Jump Arena Starmart Gò Vấp",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJK1--AHwpdTERKbswkZpcjuA",
+                        "location_name": "Jump Arena Starmart Gò Vấp",
+                        "latitude": 10.835335599999999,
+                        "longitude": 106.66043289999999,
+                        "open_time": "09:00",
+                        "close_time": "21:00",
+                        "average_rating": 4.8,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "amusement/water park"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyLYIwGf42vV76qB3Vq09W05oAFLRD1u3Re0mPe4cFnvlTQdu4HBeN3eVzRlh2pvLqcyCi_RGbFTj9KRwoEt_jqRqudQmVAzn5iZ6J2ixNMIvGxkMRRdJH5Ab6cjLedSbzCMAlTvg=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 5,
+                    "startTime": "18:55:00",
+                    "endTime": "19:50:00",
+                    "description": "(Nghỉ ngơi) Park Hyatt Saigon",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
+                        "location_name": "Park Hyatt Saigon",
+                        "latitude": 10.7777514,
+                        "longitude": 106.7033802,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 6,
+                    "startTime": "20:00:00",
+                    "endTime": "21:55:00",
+                    "description": "Nhà hàng chay Tami Coffee & Chay (Vegetarian Restaurant)",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJxWPSRlMpdTERYv5_KQOHWhs",
+                        "location_name": "Nhà hàng chay Tami Coffee & Chay (Vegetarian Restaurant)",
+                        "latitude": 10.795722699999999,
+                        "longitude": 106.6708338,
+                        "open_time": "07:00",
+                        "close_time": "22:00",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwaAevKUpLS4g4iGDHr9pRqA3Em4U5YBDa1PoB0m8wzE_0lK_7VxffthMDTTiHDZnUW_M-yNCY_8-lHR6vl97Am4qDcqP3PJsnW_suUd2EOE7CFEGivXmFDy4Dt6lX8XrnrA0qO=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 7,
+                    "startTime": "22:05:00",
+                    "endTime": "00:00:00",
+                    "description": "Vị Sài Gòn Restaurant & Café",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJ-xqtuXovdTERSpI8r3FJO-A",
+                        "location_name": "Vị Sài Gòn Restaurant & Café",
+                        "latitude": 10.7770411,
+                        "longitude": 106.6885969,
+                        "open_time": "08:30",
+                        "close_time": "22:00",
+                        "average_rating": 4.9,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "restaurant"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwVCyEqmFCHkyOCfopNXrsiVVr1XVqmDcjfSrUn6j91mU_psUpR1qtc5Tc3FFxe7X_RnIMaDBFpySyu0vJgSXLilFeN2BAtoLjHlTwKc2pscXU3dGpcImQsHcojdEQaScQXQFsuZ47kVDW7=w197-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 8,
+                    "startTime": "00:05:00",
+                    "endTime": "02:20:00",
+                    "description": "Nhà hát Kịch IDECAF",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJa73U7UgvdTERjLF-t2zp5Eo",
+                        "location_name": "Nhà hát Kịch IDECAF",
+                        "latitude": 10.7796931,
+                        "longitude": 106.70370489999999,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.7,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "cultural performance"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyeZDvQN15PLFqo1IhMreUm7zcCVZ9NBThLUinHXxhvDFxaxChMiW66gqd3URpn1SvGN1IDSsFF-cOD25UQJDvWZ_nuP_0T4y7kEqMurevm15j0UemEqQcEgYa2aqwRO_BLKhQfoFDr43TJ=w122-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "sequenceOrder": 9,
+                    "startTime": "02:20:00",
+                    "endTime": "02:20:00",
+                    "description": "Kết thúc ngày, quay về Park Hyatt Saigon",
+                    "location": {
+                        "id": 0,
+                        "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
+                        "location_name": "Park Hyatt Saigon",
+                        "latitude": 10.7777514,
+                        "longitude": 106.7033802,
+                        "open_time": "00:00",
+                        "close_time": "23:59",
+                        "average_rating": 4.5,
+                        "review_count": 0,
+                        "province_id": 101,
+                        "category_ids": [
+                            {
+                                "id": 1,
+                                "categoryName": "hotel"
+                            }
+                        ],
+                        "imgs": [
+                            {
+                                "id": 1,
+                                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
+                                "description": "Thumbnail từ Google Maps"
+                            }
+                        ]
+                    }
+                }
             ]
-          },
-          "activity": "Tham quan kiến trúc cổ kính tráng lệ của Nhà hát Lớn Sài Gòn và thưởng thức các buổi biểu diễn opera, ballet, hòa nhạc hoặc các sự kiện văn hóa lớn."
-        },
-        {
-          "sequenceOrder": 4,
-          "startTime": "15:20:00",
-          "endTime": "18:15:00",
-          "description": "Réhahn Gallery",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJMYonc3gndTERYotSEXLMKQc",
-            "location_name": "Réhahn Gallery",
-            "latitude": 10.775262999999999,
-            "longitude": 106.7042458,
-            "open_time": "08:30",
-            "close_time": "22:00",
-            "average_rating": 4.9,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "cultural performance"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOotGnZCBpudEadAQyIk9fi1Th9jBrkqyoDn_G_=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Chiêm ngưỡng bộ sưu tập ảnh chân dung và phong cảnh độc đáo của nhiếp ảnh gia Réhahn, khám phá vẻ đẹp văn hóa và con người Việt Nam qua những tác phẩm nghệ thuật đầy cảm xúc."
-        },
-        {
-          "sequenceOrder": 5,
-          "startTime": "18:20:00",
-          "endTime": "19:15:00",
-          "description": "(Nghỉ ngơi) Park Hyatt Saigon",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
-            "location_name": "Park Hyatt Saigon",
-            "latitude": 10.7777514,
-            "longitude": 106.7033802,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "hotel"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Trải nghiệm tiện nghi cao cấp, thư giãn tại hồ bơi hoặc thưởng thức ẩm thực tinh tế trong không gian đẳng cấp của Park Hyatt Saigon."
-        },
-        {
-          "sequenceOrder": 6,
-          "startTime": "19:25:00",
-          "endTime": "21:20:00",
-          "description": "A Taste Of Saigon",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJw7OnY3svdTERpyRr4oLRX8Y",
-            "location_name": "A Taste Of Saigon",
-            "latitude": 10.7738453,
-            "longitude": 106.70217749999999,
-            "open_time": "09:30",
-            "close_time": "22:00",
-            "average_rating": 4.9,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "restaurant"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw8oRtwxBGHJNlq7-WGdwLYPPmVSUfq5W0sdHhCQA3kn6V-DhPtP9v8_u4SpxMRW_IB8ccgoLdHB6kP1fdSh-PEzZRRkjieZGqM_X56hE4D-p_KqLuuqg3GwsyBrLKMbOGFC0z_TM-iCGM=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Khám phá và thưởng thức các món ăn truyền thống đặc trưng, mang đậm hương vị ẩm thực đường phố và văn hóa Sài Gòn tại A Taste Of Saigon."
-        },
-        {
-          "sequenceOrder": 7,
-          "startTime": "21:25:00",
-          "endTime": "23:20:00",
-          "description": "Cloud Nine Restaurant Sai Gon",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJzZmzw0gvdTERMd1Mj0vWl6g",
-            "location_name": "Cloud Nine Restaurant Sai Gon",
-            "latitude": 10.7731993,
-            "longitude": 106.6956783,
-            "open_time": "11:30",
-            "close_time": "23:00",
-            "average_rating": 4.9,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "restaurant"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOWih5a5_6eLVAVzPA-j07JUXeSmW-MQeEudO3t=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Thưởng thức bữa ăn tối lãng mạn với các món ăn quốc tế và Việt Nam được chế biến tinh tế, trong không gian sang trọng cùng tầm nhìn đẹp tại Cloud Nine Restaurant Sai Gon."
-        },
-        {
-          "sequenceOrder": 8,
-          "startTime": "23:30:00",
-          "endTime": "02:30:00",
-          "description": "Công viên Văn hoá Lê Thị Riêng",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJJenkHgAvdTERPzJF69yFr90",
-            "location_name": "Công viên Văn hoá Lê Thị Riêng",
-            "latitude": 10.785147799999999,
-            "longitude": 106.66474869999999,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.6,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "amusement/water park"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSziNLV5HOciBKfcP7ZDX2UmHUwTDwfohvIxoWv_IFQnXwEkN7jMC0-XLOqryP3ZWhT8WY8vRxl8KbfyazlT8IIS__kCN0z3qTKQdSwaZfLX8e5jLIqHfszKpjFb8_SuAyl1P07-v4eJyux_=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Đi dạo, tập thể dục, tham gia các hoạt động giải trí ngoài trời hoặc đơn giản là thư giãn trong không gian xanh mát của Công viên Văn hóa Lê Thị Riêng."
-        },
-        {
-          "sequenceOrder": 9,
-          "startTime": "02:30:00",
-          "endTime": "02:30:00",
-          "description": "Kết thúc ngày, quay về Park Hyatt Saigon",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
-            "location_name": "Park Hyatt Saigon",
-            "latitude": 10.7777514,
-            "longitude": 106.7033802,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "hotel"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Đắm mình trong không gian sang trọng và dịch vụ đẳng cấp tại Park Hyatt Saigon. Tại đây, bạn có thể thư giãn tại hồ bơi, thưởng thức ẩm thực tinh tế tại các nhà hàng cao cấp, nhâm nhi cocktail tại quầy bar sành điệu, hoặc nghỉ ngơi thoải mái trong căn phòng tiện nghi sau một ngày dài khám phá trung tâm thành phố."
         }
-      ]
-    },
-    {
-      "dayNumber": 2,
-      "title": "Ngày 2: Khám phá",
-      "tripDetails": [
-        {
-          "sequenceOrder": 1,
-          "startTime": "09:15:00",
-          "endTime": "09:15:00",
-          "description": "Khách sạn cao cấp có nhà hàng và spa. Khách sạn cao cấp với phòng ở tinh tế, một số phòng có sân hiên, có nhà hàng, bể bơi ngoài trời và spa.",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
-            "location_name": "Park Hyatt Saigon",
-            "latitude": 10.7777514,
-            "longitude": 106.7033802,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "hotel"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Trải nghiệm lưu trú đẳng cấp, thư giãn tại hồ bơi hoặc thưởng thức ẩm thực tinh tế tại các nhà hàng thuộc khách sạn Park Hyatt Saigon."
-        },
-        {
-          "sequenceOrder": 2,
-          "startTime": "09:20:00",
-          "endTime": "12:15:00",
-          "description": "IDECAF - Viện Trao đổi Văn hóa với Pháp",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJ3cDP7UgvdTERTp4dZuhxxqc",
-            "location_name": "IDECAF - Viện Trao đổi Văn hóa với Pháp",
-            "latitude": 10.7799935,
-            "longitude": 106.7034805,
-            "open_time": "07:30",
-            "close_time": "17:00",
-            "average_rating": 4.6,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "cultural performance"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyhIsOf_OAUD5cWWjwFOlq8biFVv66Ly5KErLCt9VgfV2XZzxhu-qEk2O5InIAxyYnFMr6DntKIy-l-jygkeOmSwX9VlD3eRKux2i7k9-zS5xRxqA5SigUrhT9tZ4rNnhjlackGZ2O4vJ0=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Tham quan và tìm hiểu về văn hóa Pháp thông qua các buổi triển lãm, sự kiện hoặc đăng ký tham gia các khóa học tiếng Pháp."
-        },
-        {
-          "sequenceOrder": 3,
-          "startTime": "12:20:00",
-          "endTime": "15:15:00",
-          "description": "Hiệu sách độc lập và quán cà phê ngoài trời. Con phố đi bộ nhộn nhịp có các hiệu sách tiếng Việt và tiếng nước ngoài cùng địa điểm uống cà phê ngoài trời.",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJS8Yv1zcvdTERUI2V47UxkPw",
-            "location_name": "Đường sách Thành phố Hồ Chí Minh",
-            "latitude": 10.780963,
-            "longitude": 106.7000734,
-            "open_time": "08:00",
-            "close_time": "21:00",
-            "average_rating": 4.6,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "cultural performance"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx88bzNNzJPJvUieCuRy3LV8WuFhFEoH9_J14bWiVfzrnr6SChXKrT68crcTOKyRwhSDkPRt_2L3EsDAaFueuyzQWoR-bwpGyeY3npO92TcrImvcFR8AVy-f7UxgIIPPUiwSk6x=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Dạo bước dọc con đường sách yên bình, khám phá các gian hàng với đa dạng thể loại sách, đọc tại chỗ hoặc thư giãn tại một quán cà phê sách."
-        },
-        {
-          "sequenceOrder": 4,
-          "startTime": "15:30:00",
-          "endTime": "18:25:00",
-          "description": "Arena Multimedia",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJcUQNoocpdTERL66CbEI2hhA",
-            "location_name": "Arena Multimedia",
-            "latitude": 10.8040612,
-            "longitude": 106.6367126,
-            "open_time": "07:00",
-            "close_time": "21:00",
-            "average_rating": 4.9,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "cultural performance"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPgzrD7lX9j0Bq6cQd3bT05Q4QYCF-Sc_P48XfB=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Tham quan, tìm hiểu về các chương trình đào tạo chuyên sâu về thiết kế đồ họa, làm phim, animation, hoặc tham dự các buổi giới thiệu nếu có."
-        },
-        {
-          "sequenceOrder": 5,
-          "startTime": "18:35:00",
-          "endTime": "19:35:00",
-          "description": "(Nghỉ ngơi) Park Hyatt Saigon",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
-            "location_name": "Park Hyatt Saigon",
-            "latitude": 10.7777514,
-            "longitude": 106.7033802,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "hotel"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Trải nghiệm lưu trú đẳng cấp, thư giãn tại hồ bơi hoặc thưởng thức ẩm thực tinh tế tại các nhà hàng thuộc khách sạn Park Hyatt Saigon."
-        },
-        {
-          "sequenceOrder": 6,
-          "startTime": "19:45:00",
-          "endTime": "21:40:00",
-          "description": "Nhà hàng sang trọng phục vụ rượu và món quốc tế. Nhà hàng xanh mát, lãng mạn này phục vụ các loại rượu và đặc sản quốc tế.",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJu04FSLMvdTERb-bt47b4Loo",
-            "location_name": "Mars Venus Restaurant - Wine Cellar",
-            "latitude": 10.7930952,
-            "longitude": 106.67152329999999,
-            "open_time": "17:00",
-            "close_time": "22:00",
-            "average_rating": 4.9,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "restaurant"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipOxdzzNq_KcnRkavuV51hM7Ic0s0xpHbtjie3Ac=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Thưởng thức bữa tối trong không gian lãng mạn, chọn lựa và nhâm nhi những ly rượu vang hảo hạng từ hầm rượu độc đáo của nhà hàng."
-        },
-        {
-          "sequenceOrder": 7,
-          "startTime": "21:45:00",
-          "endTime": "23:40:00",
-          "description": "Nhà hàng chay Tami Coffee & Chay (Vegetarian Restaurant)",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJxWPSRlMpdTERYv5_KQOHWhs",
-            "location_name": "Nhà hàng chay Tami Coffee & Chay (Vegetarian Restaurant)",
-            "latitude": 10.795722699999999,
-            "longitude": 106.6708338,
-            "open_time": "07:00",
-            "close_time": "22:00",
-            "average_rating": 4.9,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "restaurant"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwaAevKUpLS4g4iGDHr9pRqA3Em4U5YBDa1PoB0m8wzE_0lK_7VxffthMDTTiHDZnUW_M-yNCY_8-lHR6vl97Am4qDcqP3PJsnW_suUd2EOE7CFEGivXmFDy4Dt6lX8XrnrA0qO=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Thưởng thức các món ăn chay thanh đạm, dinh dưỡng và nhâm nhi cà phê trong không gian yên tĩnh, thư thái."
-        },
-        {
-          "sequenceOrder": 8,
-          "startTime": "23:50:00",
-          "endTime": "02:30:00",
-          "description": "Khu Vui chơi Trẻ em - Công viên Gia Định",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJE2s16d8odTERhi4YxyrQpg4",
-            "location_name": "Khu Vui chơi Trẻ em - Công viên Gia Định",
-            "latitude": 10.8123367,
-            "longitude": 106.6735483,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.3,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "amusement/water park"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzbS103eN4J5XqGYQ-SLstKnyO_XWOnBCvpY4TxKZKJIjGE-BV-0iKaIemMuOZe_sYJ89STmQsNoaXDdqwlsnWBSgoNANzdlTCBBnmaH76guyU8FQ6CFvYCb_bivCFApCexfbCR=w138-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Dẫn trẻ em đến khu vui chơi để thỏa sức khám phá các trò chơi vận động an toàn, đồng thời cả gia đình có thể dạo mát và thư giãn trong không gian xanh của công viên."
-        },
-        {
-          "sequenceOrder": 9,
-          "startTime": "02:30:00",
-          "endTime": "02:30:00",
-          "description": "Kết thúc ngày, quay về Park Hyatt Saigon",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
-            "location_name": "Park Hyatt Saigon",
-            "latitude": 10.7777514,
-            "longitude": 106.7033802,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "hotel"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Tận hưởng kỳ nghỉ sang trọng, thư giãn trong không gian tinh tế với các tiện nghi đẳng cấp, và trải nghiệm ẩm thực đa dạng tại các nhà hàng hoặc thưởng thức đồ uống tại quầy bar sang trọng của khách sạn."
-        }
-      ]
-    },
-    {
-      "dayNumber": 3,
-      "title": "Ngày 3: Khám phá",
-      "tripDetails": [
-        {
-          "sequenceOrder": 1,
-          "startTime": "09:15:00",
-          "endTime": "09:15:00",
-          "description": "Khách sạn cao cấp có nhà hàng và spa. Khách sạn cao cấp với phòng ở tinh tế, một số phòng có sân hiên, có nhà hàng, bể bơi ngoài trời và spa.",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
-            "location_name": "Park Hyatt Saigon",
-            "latitude": 10.7777514,
-            "longitude": 106.7033802,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "hotel"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Quay về Park Hyatt Saigon để nghỉ ngơi sau một ngày dài khám phá, thư giãn trong không gian sang trọng và chuẩn bị cho các hoạt động buổi tối."
-        },
-        {
-          "sequenceOrder": 2,
-          "startTime": "09:20:00",
-          "endTime": "12:15:00",
-          "description": "Cơ quan đầu não của chính phủ thời chiến. Di tích lịch sử về chiến tranh Việt Nam cho phép tham quan văn phòng chính phủ, phòng chỉ huy và hiện vật.",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJL0dwVTgvdTERao3t8B1Jhxc",
-            "location_name": "Dinh Độc Lập",
-            "latitude": 10.776994199999999,
-            "longitude": 106.69530209999999,
-            "open_time": "08:00",
-            "close_time": "15:30",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "cultural performance"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw9X4CZSadaw0j3I--0hMsAHAOfhy0upMfljg-0QOrSCsXtexrKYg_H2QY2pPP9e2k_FpahUupCa0sQrgdip33SW_EbxXHTdjrJnQGvEf5zVpzEUsNy1fxWnUtqX-r6lUPljSE=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Tham quan Dinh Độc Lập để tìm hiểu về kiến trúc lịch sử và những sự kiện quan trọng đã diễn ra tại đây, khám phá một phần di sản văn hóa và chính trị của Việt Nam."
-        },
-        {
-          "sequenceOrder": 3,
-          "startTime": "12:20:00",
-          "endTime": "15:15:00",
-          "description": "Nhạc viện Thành phố Hồ Chí Minh",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJxyX4QjkvdTERuG_BSs8SJDQ",
-            "location_name": "Nhạc viện Thành phố Hồ Chí Minh",
-            "latitude": 10.7741828,
-            "longitude": 106.6950945,
-            "open_time": "08:00",
-            "close_time": "17:00",
-            "average_rating": 4.6,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "cultural performance"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyol2lVTqFR5wLwv084uqNTi4XrlFlQeBDLNjtjUdDwipxiZV5Hr4E02oEGK-1Kvjq0Milv4x6hmUYn-pm52cbOdPZipAGXVeTwWSSvtOXSjALO5u1NF8fyxF1rwfbSG9fJpri1=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Thưởng thức các buổi hòa nhạc, biểu diễn âm nhạc cổ điển hoặc các sự kiện văn hóa nghệ thuật tại Nhạc viện Thành phố Hồ Chí Minh, nơi ươm mầm và trình diễn tài năng âm nhạc."
-        },
-        {
-          "sequenceOrder": 4,
-          "startTime": "15:25:00",
-          "endTime": "18:50:00",
-          "description": "Thiên Đường Giải Trí Thỏ Trắng",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJ9YE09dEudTERNEcX1eDdajY",
-            "location_name": "Thiên Đường Giải Trí Thỏ Trắng",
-            "latitude": 10.785501499999999,
-            "longitude": 106.66605299999999,
-            "open_time": "08:00",
-            "close_time": "19:00",
-            "average_rating": 4.3,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "amusement/water park"
-              },
-              {
-                "id": 2,
-                "categoryName": "cultural performance"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzQRyUPy5pGXf1vn8smC5vH6Rb5pomIdm4I9Tn-v0INuwjME3z0LUqgbezJ9MO7kDLmis3UfBv-GLhKjThiWWQH2HfzB6JoPA46Zt6W5_dBHgyCWB9skIr9cPk_Pk9B9PR5w3ip=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Trải nghiệm các trò chơi giải trí đa dạng, từ các trò cảm giác mạnh đến khu vui chơi dành cho gia đình và trẻ em tại Thiên Đường Giải Trí Thỏ Trắng."
-        },
-        {
-          "sequenceOrder": 5,
-          "startTime": "19:00:00",
-          "endTime": "19:55:00",
-          "description": "(Nghỉ ngơi) Park Hyatt Saigon",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
-            "location_name": "Park Hyatt Saigon",
-            "latitude": 10.7777514,
-            "longitude": 106.7033802,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "hotel"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Quay về Park Hyatt Saigon để nghỉ ngơi sau một ngày dài khám phá, thư giãn trong không gian sang trọng và chuẩn bị cho các hoạt động buổi tối."
-        },
-        {
-          "sequenceOrder": 6,
-          "startTime": "20:05:00",
-          "endTime": "22:00:00",
-          "description": "De Tham Restaurant - Vietnamese cuisine & vegetarian Food",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJfw_iSOkvdTERz5z42lgTX1o",
-            "location_name": "De Tham Restaurant - Vietnamese cuisine & vegetarian Food",
-            "latitude": 10.7682442,
-            "longitude": 106.69363039999999,
-            "open_time": "10:30",
-            "close_time": "23:30",
-            "average_rating": 4.9,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "restaurant"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzGpj8w-ZeVVSsJOTR1Nm98Kq7fW7WxaVqL8ecEoM0ZPu0TtQZ1b6WeJRbIhEmPqNvp49YwcGl-oCz7lwRYeXLbki7aLHo5P0VwGn2PT5K-mrxGXDj7L4GOlVgpoVgk6AceSL3As4vrWHLT=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Thưởng thức các món ăn truyền thống Việt Nam và các lựa chọn ẩm thực chay đặc sắc tại De Tham Restaurant, trải nghiệm hương vị địa phương phong phú."
-        },
-        {
-          "sequenceOrder": 7,
-          "startTime": "22:05:00",
-          "endTime": "00:00:00",
-          "description": "Pandan Leaf Saigon Restaurant & Rooftop Bar",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJU3h_As0vdTERMUbEMW-qpvw",
-            "location_name": "Pandan Leaf Saigon Restaurant & Rooftop Bar",
-            "latitude": 10.7695119,
-            "longitude": 106.695821,
-            "open_time": "09:30",
-            "close_time": "22:30",
-            "average_rating": 4.9,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "restaurant"
-              },
-              {
-                "id": 2,
-                "categoryName": "nightlife"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwJSJWaFLpdARhrfjEWQtYjbA1WfvYZqW42ieS0WrHHzM1R2NOgrT349JSHEisS347aZ9SD208Es88JVCXti_wrvo1G3KCwK77JfDe9E_BkaS-qTjAVZAsh4L9XTsaRQ8d29nPg=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Dùng bữa tối tại nhà hàng với các món ăn hấp dẫn, sau đó lên Rooftop Bar của Pandan Leaf Saigon để thưởng thức đồ uống, ngắm cảnh thành phố về đêm trong không gian lãng mạn."
-        },
-        {
-          "sequenceOrder": 8,
-          "startTime": "00:10:00",
-          "endTime": "02:30:00",
-          "description": "Nhà hát Kịch Sân khấu Nhỏ",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJMY8VKDcvdTERvnGTm3AhyiA",
-            "location_name": "Nhà hát Kịch Sân khấu Nhỏ",
-            "latitude": 10.7807097,
-            "longitude": 106.69436329999999,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "cultural performance"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyppMZcYgGZCyu5vFO_kyDhHLiYwQmQ5EFlaCDJixJRqSqcdOM776dwweA4ecRPlmJdJxichh4o2lJADlIPWrLWe8uO9t4Hrn63Jy-mM-HiFk8ZtIwHsfZE7lHfUSHv2dAVyt3N-w=w122-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Đắm mình vào thế giới kịch nghệ qua các vở diễn tại Nhà hát Kịch Sân khấu Nhỏ, trải nghiệm nghệ thuật biểu diễn chân thực và sống động."
-        },
-        {
-          "sequenceOrder": 9,
-          "startTime": "02:30:00",
-          "endTime": "02:30:00",
-          "description": "Kết thúc ngày, quay về Park Hyatt Saigon",
-          "location": {
-            "id": 0,
-            "gg_place_id": "ChIJN6yML0YvdTERu3qIwePETD0",
-            "location_name": "Park Hyatt Saigon",
-            "latitude": 10.7777514,
-            "longitude": 106.7033802,
-            "open_time": "00:00",
-            "close_time": "23:59",
-            "average_rating": 4.5,
-            "review_count": 0,
-            "province_id": 101,
-            "category_ids": [
-              {
-                "id": 1,
-                "categoryName": "hotel"
-              }
-            ],
-            "imgs": [
-              {
-                "id": 1,
-                "img_url": "https://lh3.googleusercontent.com/p/AF1QipPxbNNXEHFwO7QhYQ3CkZIrwkMyzlxKOqeIRz-o=w163-h92-k-no",
-                "description": "Thumbnail từ Google Maps"
-              }
-            ]
-          },
-          "activity": "Nghỉ ngơi và thư giãn trong không gian sang trọng, tận hưởng các tiện ích cao cấp như hồ bơi, spa, cùng trải nghiệm ẩm thực tinh tế tại các nhà hàng và quán bar của khách sạn."
-        }
-      ]
-    }
-  ]
+    ]
 }
