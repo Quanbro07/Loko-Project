@@ -86,8 +86,19 @@ TAG_TO_ID = {
     "homestay": 27,
 
     #ID 28: SPA
-    "spa": 28
+    "spa": 28,
 
+    #ID 29: RIVER
+    "river": 29,
+
+    #ID 30: FLOWER_FIELD_GARDEN
+    "flower field/garden": 30,
+
+    #ID 31:BAR
+    "bar": 31,
+
+    #ID 32: WALKING_STREET
+    "walking street": 32
 }
 
 # --- TẠO TỪ ĐIỂN ĐẢO NGƯỢC (ID -> TAG) ---

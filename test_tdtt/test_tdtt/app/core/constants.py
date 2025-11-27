@@ -63,5 +63,31 @@ CATEGORY_KEYWORDS = {
         "resort",
         "homestay", 
         "restaurant"
+    ],
+    "Photograph": [
+        "hotel", 
+        "viewpoint",
+        "moutain",
+        "beach",
+        "island",
+        "cafe" 
+        "resort",
+        "homestay", 
+        "restaurant",
+        "waterfall",
+        "river",
+        "lake",
+        "festival",
+        "church",
+        "temple"
+    ],
+    "Nightlife": [
+        "hotel", 
+        "night market",
+        "bar",
+        "camping",
+        "cafe" 
+        "walking street",
+        "restaurant"
     ]
 }
