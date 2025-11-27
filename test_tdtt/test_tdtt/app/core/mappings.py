@@ -58,14 +58,35 @@ TAG_TO_ID = {
     # ID 18: MUSEUM
     "museum": 18,
 
-    # ID 19: CITADEL/PALACE
+    # ID 19: CITADEL_PALACE
     "citadel/palace": 19,
 
     # ID 20: CHURCH_TEMPLE_PAGODA
     "church/temple/pagoda": 20,
 
     # ID 21: OLD_BATTLEFIELD
-    "old battlefield": 21
+    "old battlefield": 21,
+
+    #ID 22: BEACH
+    "beach": 22,
+
+    #ID 23: ISLAND
+    "island": 23,
+
+    #ID 24: YATCH_CRUISE
+    "yatch/cruise": 24,
+
+    #ID 25: VIEWPOINT
+    "viewpoint": 25,
+
+    #ID 26: RESORT
+    "resort": 26,
+
+    #ID 27: HOMESTAY
+    "homestay": 27,
+
+    #ID 28: SPA
+    "spa": 28
 
 }
 

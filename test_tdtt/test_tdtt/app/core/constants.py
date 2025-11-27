@@ -40,5 +40,28 @@ CATEGORY_KEYWORDS = {
         "pagoda" 
         "hotel", 
         "restaurant"
+    ],
+    "Honeymoon": [
+        "hotel", 
+        "beach",
+        "island",
+        "yatch",
+        "cruise",
+        "viewpoint",
+        "cafe" 
+        "resort",
+        "homestay", 
+        "restaurant"
+    ],
+    "Vacation": [
+        "hotel", 
+        "beach",
+        "island",
+        "spa",
+        "camping",
+        "cafe" 
+        "resort",
+        "homestay", 
+        "restaurant"
     ]
 }
