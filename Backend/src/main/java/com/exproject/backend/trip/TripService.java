@@ -10,6 +10,9 @@ import com.exproject.backend.location_category.info.LocationCategory;
 import com.exproject.backend.location_img.LocationImg;
 import com.exproject.backend.location_img.dto.LocationImgDTO;
 import com.exproject.backend.province.info.Province;
+import com.exproject.backend.route.dto.RoutePathResponse;
+import com.exproject.backend.route.dto.RouteResponse;
+import com.exproject.backend.route.dto.SectionRouteResponse;
 import com.exproject.backend.trip.dto.ProgressUpdateDTO;
 import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip.dto.TripResponse;
@@ -24,10 +27,12 @@ import com.exproject.backend.trip_section.TripSectionRepository;
 import com.exproject.backend.trip_section.dto.TripSectionRequest;
 import com.exproject.backend.user.info.User;
 import com.exproject.backend.user.UserRepository;
+import com.exproject.backend.utils.PolylineUltils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.RouteMatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,19 +61,42 @@ public class TripService {
     private final LocationCategoryRepository locationCategoryRepository;
 
     // * Tạo Full Trip
-    public void createFullTrip(TripRequest tripRequest) {
+    @Transactional
+    public void createFullTrip(TripRequest tripRequest, RouteResponse routeResponse) {
         User user = userRepository.findById(tripRequest.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
+        if(tripRequest.getTripSections().size() != routeResponse.getSections().size()) {
+            throw new RuntimeException("Data mismatch: Section count does not match Routes");
+        }
+
         Trip newTrip = new Trip(tripRequest,user);
 
+        // Dùng vòng lặp Index để đồng bộ dữ liệu
+        List<TripSectionRequest> sectionRequests = tripRequest.getTripSections();
+        List<SectionRouteResponse> sectionRoutes = routeResponse.getSections();
+
         // Loop qua Trip Section Request
-        for (TripSectionRequest tripSectionRequest : tripRequest.getTripSections()) {
+        for (int i = 0 ; i < sectionRequests.size() ; i++) {
+            TripSectionRequest tripSectionRequest = sectionRequests.get(i);
+            SectionRouteResponse sectionRoute = sectionRoutes.get(i);
 
             TripSection newSection = new TripSection(tripSectionRequest);
 
+            // Lấy trip Detail cùng route Path ra
+            List<TripDetailRequest> tripDetailRequests = tripSectionRequest.getTripDetails();
+            List<RoutePathResponse> routePaths = sectionRoute.getRoutePath();
+
+            if(tripDetailRequests.size() != routePaths.size()) {
+                throw new RuntimeException("Data mismatch: Route count does not match Trip Details");
+            }
+
             // Loop qua Trip Detail Request
-            for(TripDetailRequest tripDetailRequest : tripSectionRequest.getTripDetails()) {
+            for(int j = 0 ; j < tripDetailRequests.size() ; j++) {
+                TripDetailRequest tripDetailRequest = tripDetailRequests.get(j);
+                RoutePathResponse routePath = routePaths.get(j);
+
+                List<List<Double>> pathSegment = routePath.getPath();
 
                 // Lấy locaiton DTO ra
                 LocationDTO locationDTO = tripDetailRequest.getLocation();
@@ -80,8 +108,7 @@ public class TripService {
                 // Logic: User chọn địa điểm này -> Hệ thống hiểu User đang quan tâm Tỉnh/Loại này
                 categorySyncStatService.increaseCategorySyncStat(location);
 
-
-                // Loop qua location img
+                /*// Loop qua location img
                 for(LocationImgDTO imgDTO: locationDTO.getImgs()) {
                     // Them img mới
                     LocationImg newImg = new LocationImg(imgDTO);
@@ -99,10 +126,26 @@ public class TripService {
                                     .orElseThrow(()-> new RuntimeException("Cateogry not Found"));
 
                     location.addLocationCategory(existCategory);
+                }*/
+
+
+                TripDetail newTripDetail = new TripDetail(tripDetailRequest);
+
+                newTripDetail.addLocation(location);
+
+                if(pathSegment != null && !pathSegment.isEmpty()) {
+
+                    String newPolyline = PolylineUltils.encode(pathSegment);
+
+                    newTripDetail.setRoutePolyline(newPolyline);
+                    newTripDetail.setTime_second(routePath.getDurationSeconds());
+                    newTripDetail.setDistance(routePath.getDistanceMeters());
                 }
-
-
-                TripDetail newTripDetail = new TripDetail(tripDetailRequest,location);
+                else {
+                    newTripDetail.setRoutePolyline(null);
+                    newTripDetail.setTime_second(null);
+                    newTripDetail.setDistance(null);
+                }
 
                 newSection.addTripDetail(newTripDetail);
             }

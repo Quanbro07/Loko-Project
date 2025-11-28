@@ -20,4 +20,6 @@ public class PythonAPIConfig {
     private String makePlanUrl;
 
     private String regeneratePlanUrl;
+
+    private String routeURL;
 }

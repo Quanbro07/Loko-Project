@@ -8,6 +8,7 @@ import com.exproject.backend.location.LocationMapper;
 import com.exproject.backend.location.LocationRepository;
 import com.exproject.backend.location.LocationService;
 import com.exproject.backend.location.dto.LocationDTO;
+import com.exproject.backend.location.dto.LocationIdDTO;
 import com.exproject.backend.location_category.dto.LocationCategoryDTO;
 import com.exproject.backend.location_category.info.ELocationCategory;
 import com.exproject.backend.makePlan.dto.*;
@@ -32,7 +33,7 @@ public class MakePlanService {
 
     // ** Make Plan
     @Transactional(readOnly = true)
-    public TripRequest makePlan(MakePlanRequest request) {
+    public TripRequest makePlan(MakePlanRequest request, Long userId) {
 
         // Map Hobby -> categories
         EHobby hobby = request.getHobby();
@@ -70,8 +71,14 @@ public class MakePlanService {
             throw new RuntimeException("Không tìm thấy location phù hợp cho hobby: " + hobby);
         }
 
-
+        // Set Location
         request.setLocations(locationDTOS);
+
+        // GỌi hàm tìm tất cả visited location
+        List<LocationIdDTO> visitedLocation = locationService.getVisitedLocations(userId);
+
+        // Set visitedLocation
+        request.setVisitedLocations(visitedLocation);
 
         // Gọi AI server -> trả TripRequest
         TripRequest tripRequest = aiapiService.generateTripPlan(request);
@@ -200,8 +207,9 @@ public class MakePlanService {
         return response;
     }
 
+    // Generate Full Plan
     @Transactional(readOnly = true)
-    public TripRequest regeneratePlanFull(RegeneratePlanFullRequest request) {
+    public TripRequest regeneratePlanFull(RegeneratePlanFullRequest request,Long userId) {
         MakePlanRequest makePlaneRequest = request.getMakePlanRequest();
 
         EHobby hobby = makePlaneRequest.getHobby();
@@ -238,6 +246,12 @@ public class MakePlanService {
 
         makePlaneRequest.setLocations(locationDTOs);
 
+        // GỌi hàm tìm tất cả visited location
+        List<LocationIdDTO> visitedLocation = locationService.getVisitedLocations(userId);
+
+        // Set visitedLocation
+        makePlaneRequest.setVisitedLocations(visitedLocation);
+
         // Gọi API regenerateFull
         TripRequest tripRequest = aiapiService.regenerateTripPlan(request);
 
@@ -247,6 +261,14 @@ public class MakePlanService {
 
         return tripRequest;
     }
+
+    // TODO: CONFIRM MAKEPLAN
+    // TODO: Gọi hàm createFullTrip
+    // TODO: Tạo file PDF
+    // TODO: Lưu file PDF
+    // TODO: gọi Python AI service lấy route
+
+
 
     // Helper Function
     private String generateActivityDescription(String locationName, Set<String> categoryNames) {

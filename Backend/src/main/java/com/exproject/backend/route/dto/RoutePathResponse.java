@@ -1,0 +1,25 @@
+package com.exproject.backend.route.dto;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class RoutePathResponse {
+
+    @JsonProperty("distance_meter")
+    private Double distanceMeters;
+
+    @JsonProperty("duration_second")
+    private Integer durationSeconds;
+
+    @JsonProperty("path")
+    private List<List<Double>> path;
+}

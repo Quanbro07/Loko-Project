@@ -35,3 +35,4 @@ python:
     get-location-url: /locations/sync-locations
     make-plan-url: /schedule/generate
     regenerate-plan-url: /schedule/generate
+    route-url: /schedule/route

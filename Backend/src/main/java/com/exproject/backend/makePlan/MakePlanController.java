@@ -11,8 +11,10 @@ import com.exproject.backend.location_category.info.ELocationCategory;
 import com.exproject.backend.makePlan.dto.*;
 import com.exproject.backend.province.info.EProvince;
 import com.exproject.backend.trip.dto.TripRequest;
+import com.exproject.backend.user.info.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,8 +41,10 @@ public class MakePlanController {
 
 
     @PostMapping("/make")
-    public ResponseEntity<TripRequest> makePlan(@RequestBody MakePlanRequest request) {
-        TripRequest response = makePlanService.makePlan(request);
+    public ResponseEntity<TripRequest> makePlan(
+            @AuthenticationPrincipal User user,
+            @RequestBody MakePlanRequest request) {
+        TripRequest response = makePlanService.makePlan(request,user.getId());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
@@ -56,9 +60,10 @@ public class MakePlanController {
 
     @PostMapping("/regenerate-full")
     public ResponseEntity<TripRequest> regenerateFullPlan(
+            @AuthenticationPrincipal User user,
             @RequestBody RegeneratePlanFullRequest request) {
 
-        TripRequest response = makePlanService.regeneratePlanFull(request);
+        TripRequest response = makePlanService.regeneratePlanFull(request,user.getId());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

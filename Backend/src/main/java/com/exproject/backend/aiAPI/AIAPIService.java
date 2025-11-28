@@ -13,6 +13,8 @@ import com.exproject.backend.location_img.LocationImgService;
 import com.exproject.backend.makePlan.dto.RegeneratePlanFullRequest;
 import com.exproject.backend.province.ProvinceRepository;
 import com.exproject.backend.province.info.Province;
+import com.exproject.backend.route.dto.RouteRequest;
+import com.exproject.backend.route.dto.RouteResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -149,6 +151,22 @@ public class AIAPIService {
                 HttpMethod.POST,
                 new HttpEntity<>(regenerateRequest),
                 TripRequest.class
+        );
+
+        return response.getBody();
+    }
+
+    public RouteResponse generateRoutePlan(RouteRequest routeRequest) {
+        String routeURL = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl()
+                + pythonAPIConfig.getRouteURL();
+
+        System.out.println(routeURL);
+
+        ResponseEntity<RouteResponse> response = restTemplate.exchange(
+                routeURL,
+                HttpMethod.POST,
+                new HttpEntity<>(routeRequest),
+                RouteResponse.class
         );
 
         return response.getBody();

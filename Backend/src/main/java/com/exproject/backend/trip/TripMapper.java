@@ -6,12 +6,14 @@ import com.exproject.backend.location_category.dto.LocationCategoryResponse;
 import com.exproject.backend.location_category.info.LocationCategory;
 import com.exproject.backend.location_img.LocationImg;
 import com.exproject.backend.location_img.dto.LocationImgResponse;
+import com.exproject.backend.route.dto.RoutePathResponse;
 import com.exproject.backend.trip.dto.TripResponse;
 import com.exproject.backend.trip.info.Trip;
 import com.exproject.backend.trip_detail.TripDetail;
 import com.exproject.backend.trip_detail.dto.TripDetailResponse;
 import com.exproject.backend.trip_section.TripSection;
 import com.exproject.backend.trip_section.dto.TripSectionResponse;
+import com.exproject.backend.utils.PolylineUltils;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -95,6 +97,15 @@ public class TripMapper {
 
             tripDetailResponse.setLocation(locationResponse);
         }
+
+        List<List<Double>> path = PolylineUltils.decode(tripDetail.getRoutePolyline());
+
+        RoutePathResponse dto = new RoutePathResponse();
+        dto.setDistanceMeters(tripDetail.getDistance());
+        dto.setDurationSeconds(tripDetail.getTime_second());
+        dto.setPath(path);
+
+        tripDetailResponse.setRoutePath(dto);
 
         return tripDetailResponse;
     }

@@ -5,9 +5,11 @@ import com.exproject.backend.hobby.info.EHobby;
 import com.exproject.backend.aiAPI.dto.RawLocationDTO;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location.dto.LocationDTO;
+import com.exproject.backend.location.dto.LocationIdDTO;
 import com.exproject.backend.location_category.info.ELocationCategory;
 import com.exproject.backend.province.info.EProvince;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -57,5 +59,9 @@ public class MakePlanRequest {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime toOperateTime;
 
+    @JsonProperty("locations")
     private List<LocationDTO> locations;
+
+    @JsonProperty("visited_locations")
+    private List<LocationIdDTO> visitedLocations;
 }
