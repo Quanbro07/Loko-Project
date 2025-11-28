@@ -8,9 +8,7 @@ import com.exproject.backend.location.LocationRepository;
 import com.exproject.backend.location.dto.LocationDTO;
 import com.exproject.backend.location.dto.LocationRequest;
 import com.exproject.backend.location_category.info.ELocationCategory;
-import com.exproject.backend.makePlan.dto.MakePlanRequest;
-import com.exproject.backend.makePlan.dto.RegeneratePlanPartRequest;
-import com.exproject.backend.makePlan.dto.RegeneratePlanPartResponse;
+import com.exproject.backend.makePlan.dto.*;
 import com.exproject.backend.province.info.EProvince;
 import com.exproject.backend.trip.dto.TripRequest;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +37,41 @@ public class MakePlanController {
 
     private final LocationMapper locationMapper;
 
+
+    @PostMapping("/make")
+    public ResponseEntity<TripRequest> makePlan(@RequestBody MakePlanRequest request) {
+        TripRequest response = makePlanService.makePlan(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping("/regenerate-part")
+    public ResponseEntity<RegeneratePlanPartResponse> regeneratePartPlan(
+            @RequestBody RegeneratePlanPartRequest request) {
+
+        RegeneratePlanPartResponse response = makePlanService.regeneratePlanPart(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping("/regenerate-full")
+    public ResponseEntity<TripRequest> regenerateFullPlan(
+            @RequestBody RegeneratePlanFullRequest request) {
+
+        TripRequest response = makePlanService.regeneratePlanFull(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    // Test API
+    @GetMapping("/test-plan")
+    public ResponseEntity<MakePlanRequest> testPlan(
+            @RequestBody MakePlanRequest request
+    ) {
+        return ResponseEntity.status(HttpStatus.OK).body(request);
+    }
+
+
     @GetMapping("/test")
     public ResponseEntity<MakePlanRequest> test() {
         List<Location> testLocations = locationRepository.findAllByIdIn(List.of(1L, 2L, 3L));
@@ -64,27 +97,5 @@ public class MakePlanController {
         test.setLocations(testLocationsMapper);
 
         return ResponseEntity.ok(test);
-    }
-    @PostMapping("/make")
-    public ResponseEntity<TripRequest> makePlan(@RequestBody MakePlanRequest request) {
-        TripRequest response = makePlanService.makePlan(request);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
-
-    @PostMapping("/regenerate-part")
-    public ResponseEntity<RegeneratePlanPartResponse> regeneratePartPlan(
-            @RequestBody RegeneratePlanPartRequest request) {
-
-        RegeneratePlanPartResponse response = makePlanService.regeneratePlanPart(request);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
-
-    @GetMapping("/test-plan")
-    public ResponseEntity<MakePlanRequest> testPlan(
-            @RequestBody MakePlanRequest request
-    ) {
-        return ResponseEntity.status(HttpStatus.OK).body(request);
     }
 }

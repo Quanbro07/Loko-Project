@@ -30,7 +30,8 @@ spring:
 
 python:
   api:
-    base-url: http://localhost:5000
+    base-url: http://localhost:8000
     version-url: /api/v1
-    get-location-url: /get-locations
-    make-plan-url: /make-plan
+    get-location-url: /locations/sync-locations
+    make-plan-url: /schedule/generate
+    regenerate-plan-url: /schedule/generate
