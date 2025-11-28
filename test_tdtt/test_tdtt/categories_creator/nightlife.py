@@ -3,75 +3,72 @@ import re
 import time
 
 # ----------------------------------------------------------
-# 1. TYPE MAPPING (NIGHTLIFE: ENTERTAINMENT & LATE NIGHT)
+# 1. TYPE MAPPING (NIGHTLIFE: ENTERTAINMENT, CHILL & LATE NIGHT)
 # ----------------------------------------------------------
 TYPE_TO_TAG = {
-    # --- NIGHTLIFE SPECIFIC ---
+    # --- HARDCORE NIGHTLIFE (Bar, Club, Karaoke) ---
     "bar": "bar",
+    "night_club": "nightlife", # Club/Disco xếp vào Nightlife (ID 11)
+    "disco": "nightlife",
+    "karaoke": "nightlife",
+    "casino": "nightlife",
     "pub": "bar",
-    "club": "bar",
+    "wine_bar": "bar",
+    "cocktail_bar": "bar",
     "lounge": "bar",
-    "nightlife": "bar",
-    "wine": "bar",
-    "beer": "bar",
-    "karaoke": "bar", # Karaoke thường đi kèm bar/giải trí đêm
-    "cocktail": "bar",
-
-    "night market": "night market",
-    "chợ đêm": "night market",
+    "beer_hall": "restaurant", # Bia hơi/Beer garden thường là quán ăn/nhậu
     
-    "walking street": "walking street",
-    "phố đi bộ": "walking street",
-    "pedestrian": "walking street",
-
-    # --- ACCOMMODATION (Camping is popular for night activities) ---
-    "camp": "camping",
-    "camping": "camping",
-    "cắm trại": "camping",
-    "glamping": "camping",
+    # --- WALKING STREET / MARKET ---
+    "tourist_attraction": "walking street", # Sẽ check name hint
+    "point_of_interest": "walking street",
+    "night_market": "night market",
     
+    # --- ACCOMMODATION (SLEEP) ---
     "hotel": "hotel",
-    "khách sạn": "hotel",
-    "hostel": "hotel", # Hostel thường có hoạt động đêm
+    "lodging": "hotel",
+    "resort": "hotel",
+    "love_hotel": "hotel", # Khách sạn tình yêu (phổ biến ở khu chơi đêm)
+    "motel": "hotel",
+    "hostel": "hotel",     # Dân tây hay ở hostel khu Bùi Viện
     
-    # --- F&B ---
+    # --- F&B (EAT & CHILL) ---
+    "restaurant": "restaurant",
+    "food": "restaurant",
     "cafe": "cafe",
     "coffee": "cafe",
-    "cà phê": "cafe",
-    "tea": "cafe",
-    
-    "restaurant": "restaurant",
-    "nhà hàng": "restaurant",
-    "quán ăn": "restaurant",
-    "ẩm thực": "restaurant",
-    "bistro": "restaurant", # Bistro thường lai giữa restaurant và bar
-    "dining": "restaurant"
+    "bistro": "restaurant" # Bistro lai giữa Bar và Restaurant
 }
 
 # ----------------------------------------------------------
-# 2. NAME HINTS
+# 2. NAME HINTS (VIETNAMESE NIGHTLIFE CONTEXT)
 # ----------------------------------------------------------
 NAME_HINTS = {
-    "bar": "bar",
-    "pub": "bar",
-    "club": "bar",
-    "lounge": "bar",
-    "bia": "bar",
-    "beer": "bar",
-    "chợ đêm": "night market",
-    "night market": "night market",
-    "phố đi bộ": "walking street",
-    "walking street": "walking street",
-    "quảng trường": "walking street", # Quảng trường buổi tối thường như phố đi bộ
-    "glamping": "camping",
-    "camp": "camping",
-    "lều": "camping",
-    "hotel": "hotel",
-    "khách sạn": "hotel",
-    "cafe": "cafe",
-    "coffee": "cafe"
+    # --- BAR / CLUB / PUB ---
+    "bar": "bar", "pub": "bar", "lounge": "bar", 
+    "club": "nightlife", "disco": "nightlife", "nightclub": "nightlife",
+    "rooftop": "bar", "sky bar": "bar", "beer club": "bar", # Beer Club là Bar
+    "mixology": "bar", "speakeasy": "bar", 
+    "acoustic": "nightlife", # Nhạc sống/Bolero
+    "karaoke": "nightlife", "ktv": "nightlife",
+    
+    # --- WALKING STREET / VIBE ---
+    "phố đi bộ": "walking street", "walking street": "walking street",
+    "bùi viện": "walking street", "tạ hiện": "walking street", "nguyễn huệ": "walking street",
+    "chợ đêm": "night market", "night market": "night market", "night bazaar": "night market",
+    
+    # --- EATING (NHẬU) ---
+    "bia": "restaurant", "beer": "restaurant", # Bia hơi/Bia tô là Restaurant
+    "nhậu": "restaurant", "ốc": "restaurant", "hải sản": "restaurant",
+    "lẩu": "restaurant", "nướng": "restaurant", "bbq": "restaurant",
+    "bistro": "restaurant", "nhà hàng": "restaurant", "quán": "restaurant",
+    
+    # --- ACCOMMODATION ---
+    "hotel": "hotel", "khách sạn": "hotel", "homestay": "hotel",
+    "hostel": "hotel", "nhà nghỉ": "hotel"
 }
 
+# ----------------------------------------------------------
+# 3. HELPER FUNCTIONS
 # ----------------------------------------------------------
 def extract_json(text):
     try:
@@ -94,17 +91,94 @@ def tags_from_types(types):
                 results.add(v)
     return list(results)
 
-# --- CẬP NHẬT PROMPT: NIGHTLIFE THEME ---
+# ----------------------------------------------------------
+# 4. LOGIC: CLEAN CATEGORIES (NIGHTLIFE SPECIFIC)
+# ----------------------------------------------------------
+def clean_categories(name, types, tags):
+    tags = list(set(tags))
+    lower_name = name.lower()
+    types_str = " ".join(types).lower()
+
+    # --- BƯỚC 1: NAME HINTS ---
+    for k, v in NAME_HINTS.items():
+        if k in lower_name:
+            if v not in tags: tags.append(v)
+
+    # --- BƯỚC 2: LOGIC HYBRID & PRIORITY ---
+
+    # Rule A: Beer Club vs Bia Hơi
+    # Nếu tên có "Beer Club" -> Bar. Nếu chỉ là "Bia Tô/Bia Hơi" -> Restaurant.
+    if "beer" in lower_name or "bia" in lower_name:
+        if "club" in lower_name:
+            if "bar" not in tags: tags.append("bar")
+            if "restaurant" in tags: tags.remove("restaurant")
+        else:
+            if "restaurant" not in tags: tags.append("restaurant")
+
+    # Rule B: Rooftop/Sky Bar -> Bar (View đẹp)
+    if "rooftop" in lower_name or "sky" in lower_name:
+        if "bar" not in tags: tags.append("bar")
+        # Rooftop thường bán cả cafe, nhưng tối là Bar. Ưu tiên Bar.
+        if "cafe" in tags: tags.remove("cafe")
+
+    # Rule C: Phố đi bộ (Walking Street)
+    # Các con phố nổi tiếng như Bùi Viện / Tạ Hiện -> Vừa là Phố đi bộ, vừa là Nightlife (sôi động)
+    if any(x in lower_name for x in ["bùi viện", "tạ hiện", "phố đi bộ"]):
+        if "walking street" not in tags: tags.append("walking street")
+        # Nếu chưa có tag nightlife/bar thì thêm vào vì mấy phố này toàn bar
+        if "nightlife" not in tags and "bar" not in tags: tags.append("nightlife")
+
+    # Rule D: Acoustic / Live Music (Cafe nhạc sống)
+    if "acoustic" in lower_name or "live music" in lower_name or "phòng trà" in lower_name:
+        if "nightlife" not in tags: tags.append("nightlife") # Nhạc sống là giải trí đêm
+        if "cafe" not in tags: tags.append("cafe")
+
+    # Rule E: Bistro (Nhà hàng lai Bar)
+    if "bistro" in lower_name:
+        if "restaurant" not in tags: tags.append("restaurant")
+        # Bistro có thể uống rượu, nhưng bản chất vẫn là ăn, nên giữ restaurant
+
+    # --- BƯỚC 3: SORT & FILTER ---
+    majors = [
+        "nightlife",      # ID 11 (Club, Disco, Karaoke)
+        "bar",            # ID 31 (Pub, Lounge, Sky Bar)
+        "walking street", # ID 32
+        "night market",   # ID 4
+        "restaurant",     # ID 2 (Quán nhậu, ăn đêm)
+        "hotel",          # ID 7
+        "cafe"            # ID 3 (Acoustic)
+    ]
+    
+    final_tags = []
+    for major in majors:
+        if major in tags:
+            final_tags.append(major)
+
+    # --- BƯỚC 4: FALLBACK ---
+    if not final_tags:
+        if "club" in lower_name: final_tags.append("nightlife")
+        elif "pub" in lower_name or "lounge" in lower_name: final_tags.append("bar")
+        elif "hotel" in lower_name: final_tags.append("hotel")
+        elif "coffee" in lower_name: final_tags.append("cafe")
+        else: final_tags.append("restaurant") # Default an toàn
+
+    return list(dict.fromkeys(final_tags))[:3]
+
+# ----------------------------------------------------------
+# 5. GEMINI PROMPT
+# ----------------------------------------------------------
 PROMPT_NIGHTLIFE = """
-Classify these places for a nightlife/entertainment trip.
-Allowed categories: hotel, night market, bar, camping, cafe, walking street, restaurant.
+Classify these places for a Nightlife/Entertainment profile.
+Allowed categories: nightlife, bar, walking street, night market, restaurant, hotel, cafe.
 
 RULES:
-- Nightlife focus: Bars, Pubs, Clubs, Lounges, Beer Clubs -> "bar".
-- Markets: Only specific Night Markets -> "night market".
-- Walking Streets: Pedestrian zones/streets -> "walking street".
-- Camping: Glamping or campsites -> "camping".
-- F&B: Distinguish late-night Cafes vs Restaurants.
+- "nightlife": Nightclubs, Discos, Karaoke, Casinos, Live Music Venues (Phòng trà).
+- "bar": Pubs, Lounges, Rooftop Bars, Cocktail Bars, Beer Clubs.
+- "walking street": Pedestrian streets like Bui Vien, Ta Hien, Nguyen Hue.
+- "restaurant": Late night dining, "Nhậu" places (Beer gardens), Bistros, Street Food.
+- "hotel": Places to stay near nightlife areas.
+- "cafe": Acoustic cafes, 24h cafes.
+- Hybrid: "Bùi Viện Walking Street" -> ["walking street", "nightlife"].
 - JSON only.
 
 Format:
@@ -133,71 +207,12 @@ def classify_with_model(model, items):
             time.sleep(1)
     return [{"place": item["location_name"], "categories": []} for item in items]
 
-def clean_categories(name, types, tags):
-    tags = list(set(tags))
-    lower_name = name.lower()
-    types_str = " ".join(types).lower()
-
-    # 1. Name Hints (Mạnh tay với các từ khóa đặc thù)
-    for k, v in NAME_HINTS.items():
-        if k in lower_name and v not in tags:
-            tags.append(v)
-            
-    # 2. Logic Walking Street & Night Market
-    # Nếu tên có "Chợ đêm" -> Xóa restaurant/cafe (vì nó là khu phức hợp)
-    if "chợ đêm" in lower_name or "night market" in lower_name:
-        if "night market" not in tags: tags.append("night market")
-        if "restaurant" in tags: tags.remove("restaurant")
-        if "cafe" in tags: tags.remove("cafe")
-        
-    # Tương tự với Phố đi bộ
-    if "phố đi bộ" in lower_name or "walking street" in lower_name:
-        if "walking street" not in tags: tags.append("walking street")
-
-    # 3. Logic Bar/Pub
-    # Nếu là Bistro/Gastrobar -> Có thể giữ cả restaurant và bar
-    if "bistro" in lower_name:
-        if "restaurant" not in tags: tags.append("restaurant")
-        if "bar" not in tags: tags.append("bar")
-    # Các từ khóa mạnh cho Bar
-    elif any(k in lower_name for k in ["pub", "club", "lounge", "sky bar", "mixology"]):
-        if "bar" not in tags: tags.append("bar")
-        # Thường pub/club ít khi tag là restaurant trừ khi phục vụ ăn chính
-        if "restaurant" in tags and "bistro" not in lower_name: 
-            tags.remove("restaurant")
-
-    # 4. F&B Cleaning
-    cafe_keywords = ["coffee", "cafe", "cà phê", "tea", "trà"]
-    if any(k in lower_name for k in cafe_keywords):
-        if "cafe" not in tags: tags.append("cafe")
-        if "restaurant" in tags: tags.remove("restaurant")
-        if "bar" in tags: tags.remove("bar") # Trừ khi cafe bar, nhưng ưu tiên cafe để tránh nhầm
-
-    # 5. Sort & Filter (Allowed categories only)
-    majors = [
-        "hotel", 
-        "night market", "walking street", "bar", 
-        "camping", 
-        "restaurant", "cafe"
-    ]
-    
-    final_tags = []
-    for major in majors:
-        if major in tags:
-            final_tags.append(major)
-
-    # Fallback
-    if not final_tags:
-        final_tags = tags_from_types(types)
-    if not final_tags:
-        if "hotel" in lower_name: final_tags = ["hotel"]
-        elif "coffee" in lower_name: final_tags = ["cafe"]
-        elif "bar" in lower_name: final_tags = ["bar"]
-        else: final_tags = ["restaurant"] # Mặc định an toàn cho nightlife
-
-    return list(dict.fromkeys(final_tags))[:3]
-
+# ----------------------------------------------------------
+# 6. MAIN RUNNER
+# ----------------------------------------------------------
 def run_nightlife(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
+    print(f"🍸 Bắt đầu xử lý Nightlife cho file: {INPUT_FILE}")
+    
     with open(INPUT_FILE, "r", encoding="utf-8") as f:
         locations = json.load(f)
 
@@ -209,9 +224,9 @@ def run_nightlife(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
         
         pre_tags_map = {item["location_name"]: tags_from_types(item["types"]) for item in block}
 
+        # Query AI
         to_query_items = []
         for item in block:
-            # Nightlife cần phân loại kỹ hơn vì Google Maps hay gộp chung Bar/Restaurant
             if len(pre_tags_map[item["location_name"]]) < 1:
                 to_query_items.append(item)
 
@@ -219,7 +234,7 @@ def run_nightlife(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
         if to_query_items:
             results = classify_with_model(model, to_query_items)
             for r in results:
-                api_result[r["place"]] = r.get("categories", r.get("tags", []))
+                api_result[r["place"]] = r.get("categories", [])
 
         for item in block:
             name = item["location_name"]
@@ -229,13 +244,9 @@ def run_nightlife(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
             if name in api_result:
                 tags.extend(api_result[name])
             
-            # Gán vào key 'categories'
             item["categories"] = clean_categories(name, ttypes, tags)
             
-            # Xóa key 'tags' cũ
-            if "tags" in item:
-                del item["tags"]
-                
+            if "tags" in item: del item["tags"]
             all_results.append(item)
 
         print(f"✔ Done {min(i+BATCH_SIZE, total)}/{total}")
@@ -244,4 +255,4 @@ def run_nightlife(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(all_results, f, ensure_ascii=False, indent=2)
 
-    print("\n🎉 Hoàn tất! File output:", OUTPUT_FILE)
+    print("\n🎉 Hoàn tất Nightlife! File output:", OUTPUT_FILE)

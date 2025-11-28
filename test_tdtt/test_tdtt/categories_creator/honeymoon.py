@@ -3,93 +3,99 @@ import re
 import time
 
 # ----------------------------------------------------------
-# 1. TYPE MAPPING (HONEYMOON / RESORT / RELAX)
+# 1. TYPE MAPPING (HONEYMOON: ROMANCE + LUXURY)
 # ----------------------------------------------------------
 TYPE_TO_TAG = {
-    # --- ACCOMMODATION ---
+    # --- ACCOMMODATION (PRIORITY: RESORT) ---
     "resort": "resort",
     "khu nghỉ dưỡng": "resort",
-    "villa": "resort",
-    "bungalow": "resort",
-    
-    "homestay": "homestay",
-    "nhà nghỉ": "homestay",
-    "guest house": "homestay",
-    "hostel": "homestay",
-    "farmstay": "homestay",
-    
+    "villa": "resort", 
+    "bungalow": "resort", # Bungalow thường lãng mạn
+    "retreat": "resort",
+
     "hotel": "hotel",
     "khách sạn": "hotel",
+    "boutique_hotel": "hotel", # Boutique hotel thường đẹp, hợp cặp đôi
     "lodging": "hotel",
-    "nơi lưu trú": "hotel",
     
-    # --- MARINE / COASTAL ---
+    "homestay": "homestay",
+    "nhà gỗ": "homestay",
+    
+    # --- ROMANTIC NATURE ---
     "beach": "beach",
-    "bãi biển": "beach",
     "bãi tắm": "beach",
-    "coast": "beach",
     
     "island": "island",
     "đảo": "island",
     "hòn": "island",
-    "cù lao": "island",
     
-    "yacht": "yacht/cruise",
-    "cruise": "yacht/cruise",
-    "du thuyền": "yacht/cruise",
-    "bến tàu": "yacht/cruise",
-    "pier": "yacht/cruise",
-    "marina": "yacht/cruise",
-    "boat": "yacht/cruise",
-
-    # --- F&B ---
-    "cafe": "cafe",
-    "coffee": "cafe",
-    "cà phê": "cafe",
-    "tea": "cafe",
-    "quán nước": "cafe",
+    "flower": "flower field/garden",
+    "garden": "flower field/garden",
+    "vườn": "flower field/garden",
+    "thung lũng": "flower field/garden", # Thung lũng tình yêu...
     
+    # --- LUXURY / RELAX ---
+    "spa": "spa",
+    "massage": "spa",
+    "wellness": "spa",
+    "onsen": "spa",
+    
+    "yacht": "yatch/cruise",
+    "cruise": "yatch/cruise",
+    "du thuyền": "yatch/cruise",
+    "bến tàu": "yatch/cruise",
+    "marina": "yatch/cruise",
+    
+    # --- ROMANTIC DINING & VIEW ---
     "restaurant": "restaurant",
     "nhà hàng": "restaurant",
-    "quán ăn": "restaurant",
-    "ẩm thực": "restaurant",
-    "dining": "restaurant",
+    "fine_dining": "restaurant",
     "bistro": "restaurant",
     
-    # --- SIGHTSEEING ---
+    "cafe": "cafe",
+    "coffee": "cafe",
+    "lounge": "bar",
+    "bar": "bar",
+    "pub": "bar",
+    "sky_bar": "bar",
+    
     "viewpoint": "viewpoint",
-    "đài quan sát": "viewpoint",
-    "lookout": "viewpoint",
-    "tầm nhìn": "viewpoint",
-    "đỉnh": "viewpoint", 
-    "observation": "viewpoint",
-    "deck": "viewpoint"
+    "scenic": "viewpoint",
+    "đài quan sát": "viewpoint"
 }
 
 # ----------------------------------------------------------
-# 2. NAME HINTS
+# 2. NAME HINTS (VIETNAMESE ROMANTIC CONTEXT)
 # ----------------------------------------------------------
 NAME_HINTS = {
-    "resort": "resort",
-    "villa": "resort",
-    "retreat": "resort",
-    "homestay": "homestay",
-    "hotel": "hotel",
-    "khách sạn": "hotel",
-    "beach": "beach",
-    "bãi": "beach",
-    "hòn": "island",
-    "đảo": "island",
-    "du thuyền": "yacht/cruise",
-    "cruise": "yacht/cruise",
-    "coffee": "cafe",
-    "kafe": "cafe",
-    "cà phê": "cafe",
-    "rooftop": "viewpoint",
-    "sky bar": "viewpoint",
-    "view": "viewpoint"
+    # --- ACCOMMODATION ---
+    "resort": "resort", "khu nghỉ dưỡng": "resort", "ana mandara": "resort", "six senses": "resort",
+    "villa": "resort", "biệt thự": "resort",
+    "homestay": "homestay", "đợi một người": "homestay", "nhà bên hồ": "homestay",
+    "hotel": "hotel", "khách sạn": "hotel",
+    
+    # --- ROMANCE / NATURE ---
+    "tình yêu": "flower field/garden", # Thung lũng tình yêu
+    "mộng mơ": "flower field/garden", # Đồi mộng mơ
+    "thung lũng": "flower field/garden", 
+    "vườn": "flower field/garden", "garden": "flower field/garden",
+    "bãi": "beach", "beach": "beach",
+    "hòn": "island", "đảo": "island", "island": "island",
+    
+    # --- LUXURY / RELAX ---
+    "spa": "spa", "massage": "spa", "tắm bùn": "spa", "onsen": "spa",
+    "du thuyền": "yatch/cruise", "cruise": "yatch/cruise", "emperor": "yatch/cruise",
+    
+    # --- VIEW & CHILL ---
+    "sunset": "viewpoint", "hoàng hôn": "viewpoint", # Ngắm hoàng hôn
+    "rooftop": "bar", "tầng thượng": "bar", "sky bar": "bar",
+    "view": "viewpoint", "tầm nhìn": "viewpoint", "cổng trời": "viewpoint",
+    "mây": "viewpoint", "cloud": "viewpoint", # Săn mây cùng người yêu
+    "bistro": "restaurant", "dining": "restaurant"
 }
 
+# ----------------------------------------------------------
+# 3. HELPER FUNCTIONS
 # ----------------------------------------------------------
 def extract_json(text):
     try:
@@ -112,17 +118,92 @@ def tags_from_types(types):
                 results.add(v)
     return list(results)
 
-# --- CẬP NHẬT PROMPT: HONEYMOON / RELAX THEME ---
+# ----------------------------------------------------------
+# 4. LOGIC: CLEAN CATEGORIES (HONEYMOON SPECIFIC)
+# ----------------------------------------------------------
+def clean_categories(name, types, tags):
+    tags = list(set(tags))
+    lower_name = name.lower()
+    types_str = " ".join(types).lower()
+
+    # --- BƯỚC 1: NAME HINTS ---
+    for k, v in NAME_HINTS.items():
+        if k in lower_name:
+            if v not in tags: tags.append(v)
+            
+            # Logic phụ: Nếu là "Sky Bar" hoặc "Rooftop" -> Thêm Viewpoint
+            if "rooftop" in lower_name or "sky bar" in lower_name or "sunset" in lower_name:
+                if "viewpoint" not in tags: tags.append("viewpoint")
+
+    # --- BƯỚC 2: HIERARCHY & PRIORITY ---
+
+    # Rule A: Resort > Hotel > Homestay (Trừ khi Homestay rất chill)
+    if "resort" in tags:
+        if "hotel" in tags: tags.remove("hotel")
+        if "homestay" in tags: tags.remove("homestay")
+    
+    # Rule B: Bar & Cafe (View đẹp)
+    # Nếu là Rooftop Bar -> Ưu tiên Bar + Viewpoint, bỏ Cafe (trừ khi tên có Cafe)
+    if "bar" in tags and "viewpoint" in tags:
+        if "cafe" in tags and "cafe" not in lower_name and "coffee" not in lower_name:
+            tags.remove("cafe")
+
+    # Rule C: Flower Field/Garden (Địa điểm lãng mạn)
+    # Nếu tên có "Thung lũng tình yêu", "Vườn hoa" -> Flower Field + Viewpoint
+    if any(x in lower_name for x in ["thung lũng", "vườn hoa", "flower", "love", "tình yêu"]):
+        if "flower field/garden" not in tags: tags.append("flower field/garden")
+        if "viewpoint" not in tags: tags.append("viewpoint")
+
+    # Rule D: Du thuyền (Luxury Dinner)
+    if "yatch/cruise" in tags:
+        # Giữ lại restaurant nếu là ăn tối trên tàu
+        pass
+
+    # --- BƯỚC 3: SORT & FILTER ---
+    majors = [
+        "resort",               # ID 26
+        "hotel",                # ID 7
+        "homestay",             # ID 27
+        "spa",                  # ID 28
+        "yatch/cruise",         # ID 24
+        "beach",                # ID 22
+        "island",               # ID 23
+        "flower field/garden",  # ID 30 (Check-in lãng mạn)
+        "restaurant",           # ID 2 (Fine dining)
+        "bar",                  # ID 31 (Rooftop)
+        "cafe",                 # ID 3
+        "viewpoint"             # ID 25
+    ]
+    
+    final_tags = []
+    for major in majors:
+        if major in tags:
+            final_tags.append(major)
+
+    # --- BƯỚC 4: FALLBACK ---
+    if not final_tags:
+        if "coffee" in lower_name: final_tags.append("cafe")
+        elif "hotel" in lower_name: final_tags.append("hotel")
+        elif "resort" in lower_name: final_tags.append("resort")
+        elif "spa" in lower_name: final_tags.append("spa")
+        else: final_tags.append("viewpoint") # Đi trăng mật thì ngắm cảnh là safe choice
+
+    return list(dict.fromkeys(final_tags))[:3]
+
+# ----------------------------------------------------------
+# 5. GEMINI PROMPT
+# ----------------------------------------------------------
 PROMPT_HONEYMOON = """
-Classify these places for a honeymoon/relax trip.
-Allowed categories: hotel, resort, homestay, beach, island, yacht/cruise, restaurant, cafe, viewpoint.
+Classify these places for a Honeymoon/Romantic trip.
+Allowed categories: hotel, resort, homestay, beach, island, yatch/cruise, spa, restaurant, cafe, bar, flower field/garden, viewpoint.
 
 RULES:
-- Hierarchy: If it's a 'resort', do NOT tag 'hotel'.
-- Ambiguity: 'Island Resort' -> ["resort", "island"].
-- Cafe with View: A cafe on a hill/rooftop -> ["cafe", "viewpoint"].
-- Homestay: Small lodging, guest house, bungalow -> "homestay".
-- Luxury: High-end dining -> "restaurant".
+- Atmosphere: Focus on Romantic, Luxury, Chill, Scenic.
+- Hierarchy: "Resort" > "Hotel".
+- Scenic: "Love Valley", "Flower Garden" -> "flower field/garden".
+- Nightlife: "Rooftop Bar", "Sky Lounge" -> ["bar", "viewpoint"].
+- Dining: "Fine Dining", "Steakhouse" -> "restaurant".
+- Wellness: "Couple Spa", "Massage" -> "spa".
 - JSON only.
 
 Format:
@@ -151,63 +232,12 @@ def classify_with_model(model, items):
             time.sleep(1)
     return [{"place": item["location_name"], "categories": []} for item in items]
 
-def clean_categories(name, types, tags):
-    tags = list(set(tags))
-    lower_name = name.lower()
-    types_str = " ".join(types).lower()
-
-    # 1. Name Hints
-    for k, v in NAME_HINTS.items():
-        if k in lower_name and v not in tags:
-            tags.append(v)
-            
-    # 2. Accommodation Logic
-    # Ưu tiên Resort > Hotel > Homestay
-    if "resort" in tags:
-        if "hotel" in tags: tags.remove("hotel")
-        if "homestay" in tags: tags.remove("homestay")
-    
-    # Xử lý Villa: thường là Resort hoặc Homestay cao cấp, ít khi gọi là Hotel
-    if "villa" in lower_name:
-        if "hotel" in tags: tags.remove("hotel")
-        if "resort" not in tags and "homestay" not in tags: tags.append("resort")
-
-    # 3. F&B Logic
-    cafe_keywords = ["coffee", "cafe", "cà phê", "tea", "trà"]
-    if any(k in lower_name for k in cafe_keywords):
-        if "cafe" not in tags: tags.append("cafe")
-        if "restaurant" in tags: tags.remove("restaurant")
-        
-    # 4. Viewpoint Logic
-    # Rooftop/Sky Bar -> Cafe/Nightlife (đã map) + Viewpoint
-    if any(k in lower_name for k in ["rooftop", "sky bar", "panorama", "đỉnh"]):
-        if "viewpoint" not in tags: tags.append("viewpoint")
-
-    # 5. Sort & Filter (Allowed categories only)
-    majors = [
-        "resort", "homestay", "hotel", 
-        "beach", "island", "yacht/cruise", 
-        "restaurant", "cafe", 
-        "viewpoint"
-    ]
-    
-    final_tags = []
-    for major in majors:
-        if major in tags:
-            final_tags.append(major)
-
-    # Fallback
-    if not final_tags:
-        final_tags = tags_from_types(types)
-    if not final_tags:
-        if "coffee" in lower_name: final_tags = ["cafe"]
-        elif "resort" in lower_name: final_tags = ["resort"]
-        elif "hotel" in lower_name: final_tags = ["hotel"]
-        else: final_tags = ["viewpoint"]
-
-    return list(dict.fromkeys(final_tags))[:3]
-
+# ----------------------------------------------------------
+# 6. MAIN RUNNER
+# ----------------------------------------------------------
 def run_honeymoon(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
+    print(f"💍 Bắt đầu xử lý Honeymoon cho file: {INPUT_FILE}")
+    
     with open(INPUT_FILE, "r", encoding="utf-8") as f:
         locations = json.load(f)
 
@@ -219,16 +249,17 @@ def run_honeymoon(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
         
         pre_tags_map = {item["location_name"]: tags_from_types(item["types"]) for item in block}
 
+        # Query AI
         to_query_items = []
         for item in block:
-            if len(pre_tags_map[item["location_name"]]) < 1:
+            if len(pre_tags_map[item["location_name"]]) < 2:
                 to_query_items.append(item)
 
         api_result = {}
         if to_query_items:
             results = classify_with_model(model, to_query_items)
             for r in results:
-                api_result[r["place"]] = r.get("categories", r.get("tags", []))
+                api_result[r["place"]] = r.get("categories", [])
 
         for item in block:
             name = item["location_name"]
@@ -238,13 +269,9 @@ def run_honeymoon(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
             if name in api_result:
                 tags.extend(api_result[name])
             
-            # Gán vào key 'categories'
             item["categories"] = clean_categories(name, ttypes, tags)
             
-            # Xóa key 'tags' cũ
-            if "tags" in item:
-                del item["tags"]
-                
+            if "tags" in item: del item["tags"]
             all_results.append(item)
 
         print(f"✔ Done {min(i+BATCH_SIZE, total)}/{total}")
@@ -253,4 +280,4 @@ def run_honeymoon(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(all_results, f, ensure_ascii=False, indent=2)
 
-    print("\n🎉 Hoàn tất! File output:", OUTPUT_FILE)
+    print("\n🎉 Hoàn tất Honeymoon! File output:", OUTPUT_FILE)

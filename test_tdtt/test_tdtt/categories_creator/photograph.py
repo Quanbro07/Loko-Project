@@ -3,115 +3,140 @@ import re
 import time
 
 # ----------------------------------------------------------
-# 1. TYPE MAPPING (PHOTOGRAPHY: SCENIC, ARCHITECTURE, NATURE)
+# 1. TYPE MAPPING (PHOTOGRAPHY: EXPANDED)
 # ----------------------------------------------------------
 TYPE_TO_TAG = {
     # --- ARCHITECTURE / CULTURE ---
     "church": "church/temple/pagoda",
-    "nhà thờ": "church/temple/pagoda",
+    "place_of_worship": "church/temple/pagoda",
     "cathedral": "church/temple/pagoda",
     "basilica": "church/temple/pagoda",
     "temple": "church/temple/pagoda",
-    "đền": "church/temple/pagoda",
     "pagoda": "church/temple/pagoda",
-    "chùa": "church/temple/pagoda",
     "shrine": "church/temple/pagoda",
-    "miếu": "church/temple/pagoda",
+    "monastery": "church/temple/pagoda",
     
     "citadel": "citadel/palace",
-    "thành": "citadel/palace",
     "palace": "citadel/palace",
-    "cung điện": "citadel/palace",
-    "fortress": "citadel/palace",
     "castle": "citadel/palace",
-    "lăng": "citadel/palace", # Lăng tẩm (tomb) thường đi cùng nhóm di tích
+    "fortress": "citadel/palace",
+    "museum": "museum", # Mapping file có ID 18
+    "landmark": "viewpoint", 
 
     # --- NATURE (LAND & FLORA) ---
     "viewpoint": "viewpoint",
-    "lookout": "viewpoint",
-    "đài quan sát": "viewpoint",
-    "deck": "viewpoint",
+    "observation_deck": "viewpoint",
     
     "mountain": "mountain",
-    "núi": "mountain",
-    "đỉnh": "mountain",
     "peak": "mountain",
     "hill": "mountain",
-    "đồi": "mountain",
-    "pass": "mountain", # Đèo
+    "natural_feature": "viewpoint", # Tạm gán, sẽ check name hint
     
     "garden": "flower field/garden",
-    "vườn": "flower field/garden",
-    "flower": "flower field/garden",
-    "hoa": "flower field/garden",
-    "farm": "flower field/garden", # Nông trại check-in
-    "park": "flower field/garden", # Công viên cây xanh
+    "park": "flower field/garden",
+    "farm": "flower field/garden", 
+    "florist": "flower field/garden",
     
     # --- NATURE (WATER) ---
     "waterfall": "waterfall",
-    "thác": "waterfall",
     
     "river": "river",
-    "sông": "river",
-    "suối": "river",
-    "stream": "river",
-    "lake": "river", # Hồ cũng gộp vào nhóm water scenic (hoặc tách nếu cần)
-    "hồ": "river",
+    "lake": "river", # Gộp Lake vào River theo mapping ID 29
     
     "island": "island",
-    "đảo": "island",
-    "hòn": "island",
+    "archipelago": "island",
     
     "beach": "beach",
-    "bãi": "beach",
-    "coast": "beach",
-
+    "natural_feature": "beach", # Đôi khi bãi biển là natural_feature
+    
     # --- ACCOMMODATION ---
     "resort": "resort",
     "villa": "resort",
     "homestay": "homestay",
-    "hostel": "homestay",
     "hotel": "hotel",
-    "khách sạn": "hotel",
+    "lodging": "hotel",
 
     # --- F&B ---
     "cafe": "cafe",
-    "coffee": "cafe",
-    "tea": "cafe",
+    "coffee_shop": "cafe",
+    "tea_house": "cafe",
     "restaurant": "restaurant",
-    "nhà hàng": "restaurant",
-    "bistro": "restaurant"
+    "bar": "bar"
 }
 
 # ----------------------------------------------------------
-# 2. NAME HINTS
+# 2. NAME HINTS (DETAILED & LOCALIZED)
 # ----------------------------------------------------------
 NAME_HINTS = {
-    "chùa": "church/temple/pagoda",
-    "đền": "church/temple/pagoda",
-    "nhà thờ": "church/temple/pagoda",
-    "miếu": "church/temple/pagoda",
-    "hoàng thành": "citadel/palace",
-    "đại nội": "citadel/palace",
-    "dinh": "citadel/palace",
-    "lăng": "citadel/palace",
-    "view": "viewpoint",
-    "tầm nhìn": "viewpoint",
-    "cổng trời": "viewpoint",
-    "đèo": "viewpoint", # Đèo thường là viewpoint đẹp
-    "thác": "waterfall",
-    "suối": "river",
-    "sông": "river",
-    "hồ": "river",
-    "núi": "mountain",
-    "đỉnh": "mountain",
-    "vườn": "flower field/garden",
-    "thung lũng": "flower field/garden",
-    "đồng cừu": "flower field/garden", # Địa điểm chụp ảnh phổ biến
-    "coffee": "cafe",
-    "cafe": "cafe"
+    # --- RELIGIOUS ---
+    "chùa": "church/temple/pagoda", "pagoda": "church/temple/pagoda",
+    "đền": "church/temple/pagoda", "temple": "church/temple/pagoda",
+    "nhà thờ": "church/temple/pagoda", "church": "church/temple/pagoda", "cathedral": "church/temple/pagoda",
+    "miếu": "church/temple/pagoda", "phủ": "church/temple/pagoda",
+    "thiền viện": "church/temple/pagoda", "tu viện": "church/temple/pagoda", "tịnh xá": "church/temple/pagoda",
+    "tòa thánh": "church/temple/pagoda", "holy see": "church/temple/pagoda",
+
+    # --- HISTORICAL / ROYAL ---
+    "hoàng thành": "citadel/palace", "citadel": "citadel/palace",
+    "đại nội": "citadel/palace", "imperial": "citadel/palace",
+    "dinh": "citadel/palace", "palace": "citadel/palace", "biệt điện": "citadel/palace",
+    "lăng": "citadel/palace", "tomb": "citadel/palace", "lăng tẩm": "citadel/palace",
+    "thành cổ": "citadel/palace", "cửa ngọ môn": "citadel/palace",
+
+    # --- BEACH / COAST (Expanded) ---
+    "bãi": "beach", "beach": "beach", "biển": "beach",
+    "vịnh": "beach", "bay": "beach", # Vịnh thường có biển
+    "mũi": "viewpoint", "cape": "viewpoint", # Mũi thường là chỗ ngắm cảnh biển
+    "hòn": "island", "island": "island", "cù lao": "island",
+    "bờ kè": "beach", "seaside": "beach", "coast": "beach",
+    "hải đăng": "viewpoint", "lighthouse": "viewpoint",
+
+    # --- WATERFALL ---
+    "thác": "waterfall", "waterfall": "waterfall", "cascade": "waterfall",
+
+    # --- RIVER / LAKE ---
+    "hồ": "river", "lake": "river", "đầm": "river", "lagoon": "river",
+    "sông": "river", "river": "river", "bến": "river", "wharf": "river",
+    "suối": "river", "stream": "river", # Suối nhỏ gộp vào river
+    "tuyền lâm": "river", "xuân hương": "river", "than thở": "river",
+
+    # --- MOUNTAIN / HILL ---
+    "núi": "mountain", "mountain": "mountain", "mt.": "mountain",
+    "đồi": "mountain", "hill": "mountain",
+    "đỉnh": "mountain", "peak": "mountain",
+    "đèo": "viewpoint", "pass": "viewpoint", # Đèo check-in chủ yếu là ngắm cảnh
+    "langbiang": "mountain", "fansipan": "mountain", "bidoup": "mountain",
+
+    # --- FLOWER / GARDEN / FARM ---
+    "vườn": "flower field/garden", "garden": "flower field/garden",
+    "hoa": "flower field/garden", "flower": "flower field/garden",
+    "thung lũng": "flower field/garden", "valley": "flower field/garden",
+    "đồng cừu": "flower field/garden", "sheep": "flower field/garden", # Check-in kiểu nông trại
+    "nông trại": "flower field/garden", "farm": "flower field/garden",
+    "rừng": "flower field/garden", "forest": "flower field/garden", # Rừng thông check-in
+    "cẩm tú cầu": "flower field/garden", "hydrangea": "flower field/garden",
+    "công viên": "flower field/garden", "park": "flower field/garden",
+
+    # --- VIEWPOINT / CHECK-IN ---
+    "view": "viewpoint", "tầm nhìn": "viewpoint", "panorama": "viewpoint",
+    "cổng trời": "viewpoint", "sky gate": "viewpoint", "heaven gate": "viewpoint",
+    "săn mây": "viewpoint", "cloud": "viewpoint", "mây": "viewpoint",
+    "nấc thang": "viewpoint", "stairway": "viewpoint",
+    "cầu kính": "viewpoint", "glass bridge": "viewpoint",
+    "quảng trường": "cultural performance", "square": "cultural performance",
+
+    # --- F&B (Aesthetic) ---
+    "cafe": "cafe", "coffee": "cafe", "cà phê": "cafe",
+    "tiệm nước": "cafe", "trà": "cafe", "tea": "cafe",
+    "túi mơ to": "cafe", # Tên quán nổi tiếng
+
+    # --- ACCOMMODATION ---
+    "resort": "resort", "khu nghỉ dưỡng": "resort",
+    "homestay": "homestay", "hostel": "homestay", "nhà bên suối": "homestay"
 }
 
+# ----------------------------------------------------------
+# 3. HELPER FUNCTIONS
 # ----------------------------------------------------------
 def extract_json(text):
     try:
@@ -134,16 +159,106 @@ def tags_from_types(types):
                 results.add(v)
     return list(results)
 
-# --- CẬP NHẬT PROMPT: PHOTOGRAPHY THEME ---
+# ----------------------------------------------------------
+# 4. LOGIC: CLEAN CATEGORIES (PHOTO SPECIFIC)
+# ----------------------------------------------------------
+def clean_categories(name, types, tags):
+    tags = list(set(tags))
+    lower_name = name.lower()
+    types_str = " ".join(types).lower()
+
+    # --- BƯỚC 1: NAME HINTS (Quét từ khóa chi tiết) ---
+    for k, v in NAME_HINTS.items():
+        if k in lower_name:
+            # Logic đặc biệt cho Đèo/Mũi (Vừa là viewpoint, vừa là nature)
+            if v == "viewpoint" and ("đèo" in lower_name or "mũi" in lower_name):
+                if "mountain" not in tags and "đèo" in lower_name: tags.append("mountain")
+                if "beach" not in tags and "mũi" in lower_name: tags.append("beach")
+            
+            if v not in tags:
+                tags.append(v)
+
+    # --- BƯỚC 2: LOGIC ƯU TIÊN (PRIORITY RULES) ---
+
+    # RULE A: Resort chụp ảnh đẹp hơn Hotel
+    if "resort" in tags:
+        if "hotel" in tags: tags.remove("hotel")
+        if "homestay" in tags: tags.remove("homestay")
+
+    # RULE B: Cafe check-in đè Restaurant (trừ khi tên có chữ Nhà hàng rõ ràng)
+    if "cafe" in tags and "restaurant" in tags:
+        if not any(x in lower_name for x in ["nhà hàng", "restaurant", "quán ăn", "ẩm thực", "bếp"]):
+            tags.remove("restaurant")
+
+    # RULE C: Nature Specificity (Cụ thể đè Chung chung)
+    # Nếu đã là Waterfall thì bỏ River/Mountain (để icon hiển thị chính xác hơn)
+    if "waterfall" in tags:
+        if "river" in tags: tags.remove("river")
+        if "mountain" in tags: tags.remove("mountain")
+
+    # RULE D: Săn mây (Cloud Hunting) -> Viewpoint + Mountain
+    if any(x in lower_name for x in ["săn mây", "cloud", "cổng trời", "đồi chè"]):
+        if "viewpoint" not in tags: tags.append("viewpoint")
+        if "mountain" not in tags: tags.append("mountain")
+
+    # RULE E: Biển Đảo
+    if "island" in tags and "beach" not in tags:
+        # Thường đảo sẽ có biển, thêm tag beach để user tìm biển cũng ra đảo
+        tags.append("beach")
+
+    # --- BƯỚC 3: SORT & FILTER (THEO MAPPING ID) ---
+    # Chỉ giữ lại các category có trong Mapping File
+    majors = [
+        "viewpoint",  # ID 25
+        "church/temple/pagoda", # ID 20
+        "citadel/palace", # ID 19
+        "museum", # ID 18
+        "flower field/garden", # ID 30
+        "mountain", # ID 14
+        "river", # ID 29 (Includes Lake)
+        "island", # ID 23
+        "beach", # ID 22
+        "waterfall", # ID 33
+        "resort", # ID 26
+        "homestay", # ID 27
+        "hotel", # ID 7
+        "cafe", # ID 3
+        "bar", # ID 31
+        "restaurant", # ID 2
+        "cultural performance" # ID 13 (Quảng trường...)
+    ]
+    
+    final_tags = []
+    for major in majors:
+        if major in tags:
+            final_tags.append(major)
+
+    # --- BƯỚC 4: FALLBACK ---
+    if not final_tags:
+        # Nếu rỗng, đoán lại lần cuối
+        if "garden" in lower_name: final_tags.append("flower field/garden")
+        elif "hotel" in lower_name: final_tags.append("hotel")
+        elif "coffee" in lower_name: final_tags.append("cafe")
+        else: final_tags.append("viewpoint") # Default cho chụp ảnh
+
+    return list(dict.fromkeys(final_tags))[:3] # Lấy tối đa 3 tag
+
+# ----------------------------------------------------------
+# 5. GEMINI PROMPT
+# ----------------------------------------------------------
 PROMPT_PHOTOGRAPHY = """
-Classify these places suitable for photography/check-in.
-Allowed categories: viewpoint, church/temple/pagoda, citadel/palace, restaurant, cafe, resort, homestay, hotel, flower field/garden, mountain, river, island, beach, waterfall.
+Classify these places suitable for photography/check-in/sightseeing.
+Allowed categories: viewpoint, church/temple/pagoda, citadel/palace, museum, restaurant, cafe, bar, resort, homestay, hotel, flower field/garden, mountain, river, island, beach, waterfall.
 
 RULES:
-- Religious sites: Pagodas, Churches, Temples -> "church/temple/pagoda".
-- Historical: Royal tombs, Citadels, Old Palaces -> "citadel/palace".
-- Nature: Distinguish between 'mountain', 'river' (lakes/streams), 'waterfall', and 'flower field/garden' (parks/flower farms).
-- Aesthetic Cafes: Cafes with views or decor -> "cafe".
+- Religious: Pagodas/Churches -> "church/temple/pagoda".
+- History: Citadels/Tombs -> "citadel/palace".
+- Nature: 
+  - "Hồ/Lake", "Suối/Stream" -> "river".
+  - "Đồi/Hill", "Đỉnh/Peak" -> "mountain".
+  - "Vườn hoa/Flower Farm" -> "flower field/garden".
+- Beach/Island: Distinct classification.
+- Aesthetic: Cafes with views -> "cafe".
 - JSON only.
 
 Format:
@@ -172,70 +287,12 @@ def classify_with_model(model, items):
             time.sleep(1)
     return [{"place": item["location_name"], "categories": []} for item in items]
 
-def clean_categories(name, types, tags):
-    tags = list(set(tags))
-    lower_name = name.lower()
-    types_str = " ".join(types).lower()
-
-    # 1. Name Hints
-    for k, v in NAME_HINTS.items():
-        if k in lower_name and v not in tags:
-            tags.append(v)
-            
-    # 2. Logic Accommodation (Simplified for Photo context)
-    # Vẫn ưu tiên Resort > Hotel > Homestay (vì Resort thường chụp ảnh đẹp hơn)
-    if "resort" in tags:
-        if "hotel" in tags: tags.remove("hotel")
-        if "homestay" in tags: tags.remove("homestay")
-    
-    # 3. Nature Logic (Fix specific keywords)
-    # Nếu tên có "Thác" -> Bắt buộc phải là waterfall
-    if "thác" in lower_name and "waterfall" not in tags:
-        tags.append("waterfall")
-    
-    # Nếu tên có "Đèo", "Cổng trời" -> thường là viewpoint + mountain
-    if any(k in lower_name for k in ["đèo", "cổng trời", "đỉnh"]):
-        if "mountain" not in tags: tags.append("mountain")
-        if "viewpoint" not in tags: tags.append("viewpoint")
-
-    # 4. Religious/Cultural Logic
-    # Đảm bảo gom nhóm đúng
-    if any(k in lower_name for k in ["chùa", "nhà thờ", "đền", "tòa thánh"]):
-        if "church/temple/pagoda" not in tags: tags.append("church/temple/pagoda")
-        
-    # 5. F&B Logic
-    cafe_keywords = ["coffee", "cafe", "cà phê", "tiệm nước"]
-    if any(k in lower_name for k in cafe_keywords):
-        if "cafe" not in tags: tags.append("cafe")
-        if "restaurant" in tags: tags.remove("restaurant")
-
-    # 6. Sort & Filter (Allowed categories only)
-    majors = [
-        "viewpoint", 
-        "church/temple/pagoda", "citadel/palace",
-        "flower field/garden", "mountain", "river", "island", "beach", "waterfall",
-        "resort", "homestay", "hotel", 
-        "cafe", "restaurant"
-    ]
-    
-    final_tags = []
-    for major in majors:
-        if major in tags:
-            final_tags.append(major)
-
-    # Fallback
-    if not final_tags:
-        final_tags = tags_from_types(types)
-    if not final_tags:
-        # Đoán dựa trên keywords phổ biến nếu type rỗng
-        if "garden" in lower_name or "vườn" in lower_name: final_tags = ["flower field/garden"]
-        elif "coffee" in lower_name: final_tags = ["cafe"]
-        elif "hotel" in lower_name: final_tags = ["hotel"]
-        else: final_tags = ["viewpoint"] # Viewpoint là default an toàn cho chụp ảnh
-
-    return list(dict.fromkeys(final_tags))[:3]
-
+# ----------------------------------------------------------
+# 6. MAIN RUNNER
+# ----------------------------------------------------------
 def run_photograph(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
+    print(f"📸 Bắt đầu xử lý Photograph cho file: {INPUT_FILE}")
+    
     with open(INPUT_FILE, "r", encoding="utf-8") as f:
         locations = json.load(f)
 
@@ -247,16 +304,17 @@ def run_photograph(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
         
         pre_tags_map = {item["location_name"]: tags_from_types(item["types"]) for item in block}
 
+        # Query AI nếu ít tag hoặc không chắc chắn
         to_query_items = []
         for item in block:
-            if len(pre_tags_map[item["location_name"]]) < 1:
+            if len(pre_tags_map[item["location_name"]]) < 2:
                 to_query_items.append(item)
 
         api_result = {}
         if to_query_items:
             results = classify_with_model(model, to_query_items)
             for r in results:
-                api_result[r["place"]] = r.get("categories", r.get("tags", []))
+                api_result[r["place"]] = r.get("categories", [])
 
         for item in block:
             name = item["location_name"]
@@ -266,13 +324,10 @@ def run_photograph(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
             if name in api_result:
                 tags.extend(api_result[name])
             
-            # Gán vào key 'categories'
+            # Xử lý Logic chi tiết
             item["categories"] = clean_categories(name, ttypes, tags)
             
-            # Xóa key 'tags' cũ
-            if "tags" in item:
-                del item["tags"]
-                
+            if "tags" in item: del item["tags"]
             all_results.append(item)
 
         print(f"✔ Done {min(i+BATCH_SIZE, total)}/{total}")
@@ -281,4 +336,4 @@ def run_photograph(model, INPUT_FILE, OUTPUT_FILE, BATCH_SIZE):
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(all_results, f, ensure_ascii=False, indent=2)
 
-    print("\n🎉 Hoàn tất! File output:", OUTPUT_FILE)
+    print("\n🎉 Hoàn tất Photograph! File output:", OUTPUT_FILE)

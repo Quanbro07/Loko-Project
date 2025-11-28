@@ -44,7 +44,7 @@ TAG_TO_ID = {
     "cultural performance": 13,
 
     # ID 14: MOUTAIN
-    "moutain": 14,
+    "mountain": 14,
 
     # ID 15: CAVE
     "cave": 15,
@@ -98,7 +98,10 @@ TAG_TO_ID = {
     "bar": 31,
 
     #ID 32: WALKING_STREET
-    "walking street": 32
+    "walking street": 32,
+
+    #ID 33: WATERFALL
+    "waterfall": 33
 }
 
 # --- TẠO TỪ ĐIỂN ĐẢO NGƯỢC (ID -> TAG) ---
