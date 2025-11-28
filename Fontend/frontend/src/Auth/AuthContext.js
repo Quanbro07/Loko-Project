@@ -36,11 +36,12 @@ export const AuthProvider = ({ children }) => {
                 }
                 setToken(data.accessToken);
                 const resolvedUser = data.user || { 
+                    id: data.id,
                     username: data.username, 
-                    role: data.role, // <--- THÊM DÒNG NÀY (Lấy role từ backend)
+                    role: data.role, 
                     age: data.age, 
                     gender: data.gender,
-                    fullName: data.fullName // Nếu backend có trả về
+                    fullName: data.fullName
                 };                
                 setUser(resolvedUser);
                 setIsAuthenticated(true);

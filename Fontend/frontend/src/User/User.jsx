@@ -7,50 +7,60 @@ import Navbar from '../Navbar/Navbar';
 import avatarChange from '../img/avatar-change.png';
 import VisitedMap from '../Map/VisitedMap';
 import { useLanguage } from '../Language/LanguageContext';
-// Removed import { useLanguage } from '../Language/LanguageContext';
+// 1. Import useAuth để lấy thông tin user và token
+import { useAuth } from '../Auth/AuthContext';
 
 const User = () => {
+    // 2. Lấy user, token và hàm setUser từ Context
+    const { user, token, setUser } = useAuth(); 
+    const { translate } = useLanguage();
+
     const [isEditing, setIsEditing] = useState(false);
-    const [avatar, setAvatar] = useState(avatarSample); // State for avatar
+    
+    // 3. Khởi tạo state từ dữ liệu thật của User (nếu có), nếu không dùng mặc định
+    const [name, setName] = useState(user?.fullName || 'NGUYỄN TRỌNG');
+    const [dob, setDob] = useState(user?.dob || '2000-01-01');
+    const [gender, setGender] = useState(user?.gender || 'NAM');
+    const [avatar, setAvatar] = useState(user?.avatarImg || avatarSample);
+
+    // State cho Map
     const [visitedSlugs, setVisitedSlugs] = useState(["ha-noi", "an-giang", "da-nang", "tp-ho-chi-minh"]);
     const [visitedNames, setVisitedNames] = useState([]);
-    const { translate, setLanguage } = useLanguage();
-    // Removed const { translate: dictionary } = useLanguage();
-        const [name, setName] = useState('NGUYỄN TRỌNG');
-    const [dob, setDob] = useState('01/01/2000');
-    const [gender, setGender] = useState('NAM');
 
-    
+    // State tạm để chỉnh sửa
     const [editName, setEditName] = useState(name);
     const [editDob, setEditDob] = useState(dob);
     const [editGender, setEditGender] = useState(gender);
 
+    // Cập nhật state khi user thay đổi (ví dụ sau khi login xong hoặc reload trang)
+    useEffect(() => {
+        if (user) {
+            setName(user.fullName || '');
+            setDob(user.dob || '');
+            // Backend có thể trả về 'MALE', 'FEMALE', cần map lại nếu muốn hiển thị tiếng Việt
+            setGender(user.gender || 'OTHER');
+            if (user.avatarImg) setAvatar(user.avatarImg);
+        }
+    }, [user]);
 
-    // Utility: remove diacritics and slugify (keeps same logic as VisitedMap)
-    function removeDiacritics(str) {
-        if (!str) return '';
-        return str
-            .normalize('NFD')
-            .replace(/[̀-ͯ]/g, '')
-            .replace(/[^\w\s-]/g, '')
-            .trim();
+    // --- Các hàm tiện ích xử lý chuỗi (cho Map) ---
+    function removeDiacritics(str) { 
+        if (!str) return ''; 
+        return str.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w\s-]/g, '').trim(); 
+    }
+    
+    function slugify(str) { 
+        if (!str) return ''; 
+        const noDia = removeDiacritics(str); 
+        return noDia.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/(^-|-$)/g, ''); 
+    }
+    
+    function prettifySlug(slug) { 
+        if (!slug) return ''; 
+        return slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()); 
     }
 
-    function slugify(str) {
-        if (!str) return '';
-        const noDia = removeDiacritics(str);
-        return noDia
-            .toLowerCase()
-            .replace(/\s+/g, '-')
-            .replace(/[^a-z0-9-]/g, '-')
-            .replace(/-+/g, '-')
-            .replace(/(^-|-$)/g, '');
-    }
-
-    // Fetch visited provinces from backend. Assumptions:
-    // - Endpoint: GET /api/user/visited (can be changed below)
-    // - Response: JSON array. Either array of slug strings ["ha-noi","da-nang"]
-    //   or array of objects with `name` or `slug` properties.
+    // Logic gọi API lấy tỉnh đã đi (Giữ nguyên logic cũ của bạn)
     useEffect(() => {
         let mounted = true;
         const endpoint = '/api/user/visited';
@@ -61,24 +71,18 @@ const User = () => {
             })
             .then((data) => {
                 if (!mounted) return;
-                if (!Array.isArray(data)) {
-                    // unexpected shape: keep default sample
-                    return;
-                }
+                if (!Array.isArray(data)) return;
 
-                // If array of strings and they look like slugs, use directly
                 if (data.length > 0 && typeof data[0] === 'string') {
                     const maybeSlugs = data.map((s) => slugify(s));
                     setVisitedSlugs(maybeSlugs);
                     return;
                 }
 
-                // If array of objects, try to pick slug or name
                 const slugs = data.map((item) => {
                     if (!item) return '';
                     if (item.slug) return slugify(item.slug);
                     if (item.name) return slugify(item.name);
-                    // try common keys
                     if (item.ten) return slugify(item.ten);
                     return '';
                 }).filter(Boolean);
@@ -86,15 +90,13 @@ const User = () => {
                 if (slugs.length) setVisitedSlugs(slugs);
             })
             .catch((err) => {
-                // keep default sample on error; optionally log
-                // eslint-disable-next-line no-console
-                console.warn('Could not load visited provinces from backend:', err);
+                // console.warn('Could not load visited provinces from backend:', err);
             });
 
         return () => { mounted = false; };
     }, []);
 
-    // Load province GeoJSON to build a slug -> official name map so we can display names next to counts.
+    // Logic GeoJSON để map tên tỉnh (Giữ nguyên logic cũ của bạn)
     useEffect(() => {
         let mounted = true;
         const GEOJSON_URL = '/vietnam-geojson-data/geojson/country-wide/vietnam-tinh-thanh-34.geojson';
@@ -109,22 +111,16 @@ const User = () => {
                     const name = props.ten_tinh || props.NAME_1 || props.NAME || props.name || props.ten || '';
                     if (name) map[slugify(name)] = name;
                 });
-                // map created; map current visitedSlugs
                 const names = visitedSlugs.map((s) => map[s] || prettifySlug(s));
                 setVisitedNames(names.filter(Boolean));
             })
             .catch(() => {
-                // ignore — we'll fallback to prettified slugs
                 const names = visitedSlugs.map((s) => prettifySlug(s));
                 setVisitedNames(names);
             });
         return () => { mounted = false; };
     }, [visitedSlugs]);
 
-    function prettifySlug(slug) {
-        if (!slug) return '';
-        return slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-    }
 
     // SVG Icon bút chì
     const EditIcon = ({ onClick }) => (
@@ -133,40 +129,69 @@ const User = () => {
         </svg>
     );
 
-    // Khi bấm vào icon bút chì
     const handleEditClick = () => {
-        // 1. Sao chép dữ liệu thật sang dữ liệu tạm
         setEditName(name);
         setEditDob(dob);
         setEditGender(gender);
-        // 2. Bật chế độ chỉnh sửa
         setIsEditing(true);
     };
 
-    // Khi bấm nút "Lưu"
-    const handleSave = () => {
-        // 1. Cập nhật dữ liệu thật từ dữ liệu tạm
-        setName(editName);
-        setDob(editDob);
-        setGender(editGender);
-        // 2. Tắt chế độ chỉnh sửa
-        setIsEditing(false);
-        // 3. (Thực tế) Gửi API request lên server để lưu
-        // fetch('/api/user/update', { method: 'POST', body: JSON.stringify({ name: editName, dob: editDob, gender: editGender }) })
-        console.log("Đã lưu:", { name: editName, dob: editDob, gender: editGender });
+    // --- HÀM LƯU THÔNG TIN (GỌI API) ---
+    const handleSave = async () => {
+        try {
+            // Chuẩn bị dữ liệu gửi đi (theo UserDTO của backend)
+            const payload = {
+                userId: user?.id, // Lấy ID từ user context (đã được thêm vào AuthContext)
+                userName: user?.username, // Backend yêu cầu username
+                fullName: editName,
+                dob: editDob,
+                gender: editGender // Gửi 'MALE', 'FEMALE' hoặc 'OTHER'
+            };
+
+            const response = await fetch('http://localhost:8080/api/v1/user/change-info', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Gửi kèm token xác thực
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                const updatedUserDTO = await response.json();
+                
+                // 1. Cập nhật UI
+                setName(updatedUserDTO.fullName);
+                setDob(updatedUserDTO.dob);
+                setGender(updatedUserDTO.gender);
+                
+                // 2. Cập nhật vào Context và LocalStorage để đồng bộ dữ liệu mới
+                const newUserState = { ...user, ...updatedUserDTO };
+                localStorage.setItem('user', JSON.stringify(newUserState));
+                if (setUser) setUser(newUserState);
+
+                setIsEditing(false);
+                alert("Cập nhật thông tin thành công!");
+            } else {
+                alert("Lỗi khi cập nhật thông tin. Vui lòng thử lại.");
+            }
+        } catch (error) {
+            console.error("Error updating user info:", error);
+            alert("Lỗi kết nối server.");
+        }
     };
 
-    // Khi bấm nút "Hủy"
     const handleCancel = () => {
-        // Chỉ cần tắt chế độ chỉnh sửa, các state tạm (editName,...) sẽ tự reset ở lần bấm bút chì sau
         setIsEditing(false);
     };
+
     const handleAvatarChange = (event) => {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setAvatar(reader.result);
+                // TODO: Gọi API upload avatar lên server tại đây nếu cần
             };
             reader.readAsDataURL(file);
         }
@@ -188,10 +213,11 @@ const User = () => {
                 )}
                 <div className='ticket-body'>
                     <div className='ticket-section passenger-info'>
+                        
+                        {/* HỌ VÀ TÊN */}
                         <div className='info-item'>
                             <div className='label'>
                                 <span>Họ và Tên</span>
-                                {/* Chỉ hiển thị icon khi KHÔNG edit */}
                                 {!isEditing && <EditIcon onClick={handleEditClick} />}
                             </div>
                             {isEditing ? (
@@ -204,6 +230,8 @@ const User = () => {
                                 <div className='value'>{name}</div>
                             )}
                         </div>
+
+                        {/* NGÀY SINH */}
                         <div className='info-item'>
                             <div className='label'>
                                 <span>Ngày tháng năm sinh</span>
@@ -212,7 +240,7 @@ const User = () => {
                             {isEditing ? (
                                 <input
                                     className='edit-input'
-                                    type="text" // hoặc type="date" nếu muốn
+                                    type="date" // Dùng type="date" để có lịch chọn
                                     value={editDob}
                                     onChange={(e) => setEditDob(e.target.value)}
                                 />
@@ -221,26 +249,35 @@ const User = () => {
                             )}
                         </div>
 
+                        {/* GIỚI TÍNH */}
                         <div className='info-item'>
                             <div className='label'>
                                 <span>Giới tính</span>
                                 {!isEditing && <EditIcon onClick={handleEditClick} />}
                             </div>
                             {isEditing ? (
-                                <input
-                                    className='edit-input'
+                                <select 
+                                    className='edit-input' 
                                     value={editGender}
                                     onChange={(e) => setEditGender(e.target.value)}
-                                />
+                                >
+                                    <option value="MALE">NAM</option>
+                                    <option value="FEMALE">NỮ</option>
+                                    <option value="OTHER">KHÁC</option>
+                                </select>
                             ) : (
-                                <div className='value'>{gender}</div>
+                                <div className='value'>
+                                    {gender === 'MALE' ? 'NAM' : gender === 'FEMALE' ? 'NỮ' : 'KHÁC'}
+                                </div>
                             )}
                         </div>
                     </div>
+
                     <div className='ticket-section travel-stats'>
                         <div className='info-item'>
                             <div className='label'>Ngày tham gia</div>
-                            <div className='value'>01/01/2023</div>
+                            {/* Lấy ngày tạo từ user, nếu không có thì dùng mặc định */}
+                            <div className='value'>{user?.createAt || '01/01/2023'}</div>
                         </div>
                         <div className='info-item'>
                             <div className='label'>Số tỉnh/thành đã đi cùng LOKO</div>
@@ -282,8 +319,6 @@ const User = () => {
                     <img src={barcodeSample} className="barcode-img" />
                 </div>
             </div>
-            {/* Visited provinces map: pass an array of province slugs (normalized, e.g. "ha-noi", "an-giang").
-                    The list is fetched from backend (GET /api/user/visited) when available. */}
             <VisitedMap visited={visitedSlugs} />
             <Footer/>
         </div>
