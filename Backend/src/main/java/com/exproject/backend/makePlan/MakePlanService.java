@@ -10,10 +10,7 @@ import com.exproject.backend.location.LocationService;
 import com.exproject.backend.location.dto.LocationDTO;
 import com.exproject.backend.location_category.dto.LocationCategoryDTO;
 import com.exproject.backend.location_category.info.ELocationCategory;
-import com.exproject.backend.makePlan.dto.MakePlanRequest;
-import com.exproject.backend.makePlan.dto.RegeneratePlanPartRequest;
-import com.exproject.backend.makePlan.dto.RegeneratePlanPartResponse;
-import com.exproject.backend.makePlan.dto.RejectedPlanPartDTO;
+import com.exproject.backend.makePlan.dto.*;
 import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip_detail.dto.TripDetailRequest;
 import com.exproject.backend.trip_section.dto.TripSectionRequest;
@@ -203,6 +200,55 @@ public class MakePlanService {
         return response;
     }
 
+    @Transactional(readOnly = true)
+    public TripRequest regeneratePlanFull(RegeneratePlanFullRequest request) {
+        MakePlanRequest makePlaneRequest = request.getMakePlanRequest();
+
+        EHobby hobby = makePlaneRequest.getHobby();
+        if(hobby == null) {
+            throw new RuntimeException("Hobby must not be null");
+        }
+
+        List<ELocationCategory> categories = HobbyCategoryMapping.getCategories(hobby);
+
+        if(categories.isEmpty()) {
+            throw new RuntimeException("No category mapping for hobby: " + hobby);
+        }
+
+        if(makePlaneRequest.getProvince() == null) {
+            throw new RuntimeException("Province must not be null");
+        }
+
+        Long provinceId = (long) (makePlaneRequest.getProvince().ordinal() + 1);
+
+        List<LocationDTO> locationDTOs = new ArrayList<>();
+
+        for(ELocationCategory category : categories) {
+            Long categoryId = (long) (category.ordinal() + 1);
+
+            List<LocationDTO> topLocations =
+                    locationService.getTopLocations(provinceId, categoryId);
+
+            locationDTOs.addAll(topLocations);
+        }
+
+        if(locationDTOs.isEmpty()) {
+            throw new RuntimeException("Cannot find suitable locations for hobby: " + hobby);
+        }
+
+        makePlaneRequest.setLocations(locationDTOs);
+
+        // Gọi API regenerateFull
+        TripRequest tripRequest = aiapiService.regenerateTripPlan(request);
+
+        if(tripRequest == null) {
+            throw new RuntimeException("AI service returned null TripRequest");
+        }
+
+        return tripRequest;
+    }
+
+    // Helper Function
     private String generateActivityDescription(String locationName, Set<String> categoryNames) {
         // 1. Làm sạch tên địa điểm (nếu data có rác kiểu "TOP 1", "HOT", etc.)
         // Ví dụ: "Highlands (TOP 1)" -> "Highlands"
@@ -258,4 +304,6 @@ public class MakePlanService {
         // Default nếu không khớp category nào hoặc list rỗng
         return "Ghé thăm và tham quan " + cleanName;
     }
+
+
 }

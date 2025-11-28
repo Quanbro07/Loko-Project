@@ -28,3 +28,10 @@ spring:
       file: ../docker-compose-dev.yml
       lifecycle-management: start-and-stop
 
+python:
+  api:
+    base-url: http://localhost:8000
+    version-url: /api/v1
+    get-location-url: /locations/sync-locations
+    make-plan-url: /schedule/generate
+    regenerate-plan-url: /schedule/generate

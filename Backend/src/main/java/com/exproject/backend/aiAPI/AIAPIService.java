@@ -10,6 +10,7 @@ import com.exproject.backend.location_category.LocationCategoryRepository;
 import com.exproject.backend.location_category.info.LocationCategory;
 import com.exproject.backend.location_img.LocationImg;
 import com.exproject.backend.location_img.LocationImgService;
+import com.exproject.backend.makePlan.dto.RegeneratePlanFullRequest;
 import com.exproject.backend.province.ProvinceRepository;
 import com.exproject.backend.province.info.Province;
 import lombok.RequiredArgsConstructor;
@@ -121,22 +122,39 @@ public class AIAPIService {
     // TODO: param là MakePlanRequest + Location + Location user dã đi tỉnh đó
     // TODO: return phải trả về TripResponse class/record
     // gọi AI sinh TripRequest từ MakePlanRequest
-        public TripRequest generateTripPlan(MakePlanRequest makePlanRequest) {
-            String url = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl() +
-                    pythonAPIConfig.getMakePlanUrl();
+    public TripRequest generateTripPlan(MakePlanRequest makePlanRequest) {
+        String generateURL = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl() +
+                pythonAPIConfig.getMakePlanUrl();
 
-            System.out.println(url);
+        System.out.println(generateURL);
 
-            ResponseEntity<TripRequest> response = restTemplate.exchange(
-                    url,
-                    HttpMethod.POST,
-                    new HttpEntity<>(makePlanRequest),
-                    TripRequest.class
-            );
+        ResponseEntity<TripRequest> response = restTemplate.exchange(
+                generateURL,
+                HttpMethod.POST,
+                new HttpEntity<>(makePlanRequest),
+                TripRequest.class
+        );
 
-            return response.getBody();
-        }
+        return response.getBody();
+    }
 
+    public TripRequest regenerateTripPlan(RegeneratePlanFullRequest regenerateRequest) {
+        String regenerateURL = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl()
+                + pythonAPIConfig.getMakePlanUrl();
+
+        System.out.println(regenerateURL);
+
+        ResponseEntity<TripRequest> response = restTemplate.exchange(
+                regenerateURL,
+                HttpMethod.POST,
+                new HttpEntity<>(regenerateRequest),
+                TripRequest.class
+        );
+
+        return response.getBody();
+    }
+
+    // Helper Function
     @Transactional
     public List<LocationDTO> convertRawToLocationDTO(List<RawLocationDTO> rawLocations) {
         List<Location> locationEntities = new ArrayList<>();
@@ -203,4 +221,6 @@ public class AIAPIService {
 
         return locationDTOList;
     }
+
+
 }

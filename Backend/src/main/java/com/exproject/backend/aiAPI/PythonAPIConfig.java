@@ -18,4 +18,6 @@ public class PythonAPIConfig {
     private String getLocationUrl;
 
     private String makePlanUrl;
+
+    private String regeneratePlanUrl;
 }

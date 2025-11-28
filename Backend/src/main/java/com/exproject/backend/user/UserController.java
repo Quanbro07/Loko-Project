@@ -90,4 +90,12 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/downgrade")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<Void> downgradeUser(@RequestParam Long userId) {
+        userService.downgradeUser(userId);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }
