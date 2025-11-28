@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 1. Phần CSS: Trang trí cho Widget giống bản gốc */
+        .my-weather-widget {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298); /* Màu xanh tối */
+            color: white;
+            width: 350px;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .widget-header {
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .widget-header h2 { margin: 0; font-size: 18px; }
+        .widget-header p { margin: 5px 0 0; font-size: 12px; opacity: 0.8; }
+
+        .day-row {
+            background: rgba(255,255,255,0.1);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .date-title {
+            font-weight: bold;
+            color: #ffcc00; /* Màu vàng cho ngày */
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .hour-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            padding: 3px 0;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+        }
+        .hour-time { width: 50px; font-weight: bold; }
+        .hour-temp { width: 50px; text-align: right; color: #fff; }
+        .hour-cond { flex-grow: 1; text-align: right; font-style: italic; font-size: 12px; opacity: 0.9;}
+    </style>
+</head>
+<body>
+
+    <div id="custom-weather-container"></div>
+
+    <script>
+        // Đây là dữ liệu JSON bạn đã lọc (tôi copy từ tin nhắn của bạn)
+        const weatherData = {
+            "location": "Binh Dinh",
+            "country": "Vietnam",
+            "daily_forecasts": [
+                {
+                    "date": "2025-11-27",
+                    "avg_temp": 21.5,
+                    "condition_text": "Patchy rain nearby",
+                    "selected_hours": [
+                        { "time": "08:00", "temp_c": 21.4, "condition": "Light drizzle", "rain_chance": 100, "wind_kph": 37.1 },
+                        { "time": "17:00", "temp_c": 21.0, "condition": "Patchy rain nearby", "rain_chance": 79, "wind_kph": 42.8 }
+                    ]
+                },
+                {
+                    "date": "2025-11-28",
+                    "avg_temp": 20.8,
+                    "condition_text": "Patchy rain nearby",
+                    "selected_hours": [
+                        { "time": "08:00", "temp_c": 20.6, "condition": "Patchy rain nearby", "rain_chance": 81, "wind_kph": 40.7 },
+                        { "time": "17:00", "temp_c": 20.6, "condition": "Overcast ", "rain_chance": 0, "wind_kph": 31.3 }
+                    ]
+                },
+                {
+                    "date": "2025-11-29",
+                    "avg_temp": 22.5,
+                    "condition_text": "Overcast ",
+                    "selected_hours": [
+                        { "time": "08:00", "temp_c": 22.1, "condition": "Overcast ", "rain_chance": 0, "wind_kph": 19.1 },
+                        { "time": "17:00", "temp_c": 23.4, "condition": "Overcast ", "rain_chance": 0, "wind_kph": 19.8 }
+                    ]
+                }
+            ]
+        };
+
+        // Hàm để tạo widget HTML từ JSON
+        function renderWidget(data) {
+            const container = document.getElementById('custom-weather-container');
+            
+            let htmlContent = `
+                <div class="my-weather-widget">
+                    <div class="widget-header">
+                        <h2>${data.location}</h2>
+                        <p>${data.country}</p>
+                    </div>
+            `;
+
+            // Duyệt qua từng ngày
+            data.daily_forecasts.forEach(day => {
+                htmlContent += `
+                    <div class="day-row">
+                        <div class="date-title">📅 ${day.date} (TB: ${day.avg_temp}°C)</div>
+                `;
+
+                // Duyệt qua 2 mốc giờ (08:00 và 17:00)
+                day.selected_hours.forEach(hour => {
+                    htmlContent += `
+                        <div class="hour-row">
+                            <span class="hour-time">🕒 ${hour.time}</span>
+                            <span class="hour-cond">${hour.condition}</span>
+                            <span class="hour-temp">${hour.temp_c}°C</span>
+                        </div>
+                    `;
+                });
+
+                htmlContent += `</div>`; // Đóng div day-row
+            });
+
+            htmlContent += `</div>`; // Đóng div my-weather-widget
+            container.innerHTML = htmlContent;
+        }
+
+        // Chạy hàm render
+        renderWidget(weatherData);
+
+    </script>
+
+</body>
+</html>
