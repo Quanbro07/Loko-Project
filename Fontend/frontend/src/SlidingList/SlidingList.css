@@ -1,0 +1,242 @@
+.list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 1000px;
+    margin: 50px auto;
+    margin-bottom: -20px;
+}
+
+.list-item-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    /* Add gap for spacing */
+}
+
+.list-item {
+    color: black;
+    flex-basis: 23%;
+    cursor: pointer;
+    /* Adjusted for 4 items with gap */
+}
+
+.list-title {
+    font-size: 30px;
+    font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+}
+
+#li1,
+#li2,
+#li3,
+#li4 {
+    position: relative;
+    background-image: url('../img/li1.jpg');
+    width: 230px;
+    height: 230px;
+    background-size: cover;
+    border-radius: 15px;
+    background-position: 60%;
+    transition: transform 0.3s ease;
+}
+
+.item-title {
+    text-align: center;
+    margin-top: 180px;
+    font-size: 25px;
+    color: #fff;
+}
+
+#li2 {
+    background-image: url('../img/li3.jpg');
+}
+
+#li3 {
+    background-image: url('../img/li2.jpg');
+}
+
+#li4 {
+    background-image: url('../img/li4.jpg');
+    background-position: 80%;
+}
+
+#li1:hover::before,
+#li2:hover::before,
+#li3:hover::before,
+#li4:hover::before {
+    opacity: 1;
+}
+
+#li1:hover,
+#li2:hover,
+#li3:hover,
+#li4:hover {
+    transform: scale(1.1);
+}
+
+.sample-tour-header {
+    position: relative;
+    text-align: center;
+    background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+    color: white;
+    z-index: -1;
+    border-radius: 15px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.logo {
+    width: 50px;
+    fill: white;
+    padding-right: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.inner-header {
+    height: 65vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.waves {
+    width: 1000px;
+    height: 400px;
+}
+
+.content {
+    position: relative;
+    height: 20vh;
+    text-align: center;
+    background-color: white;
+}
+
+
+.parallax>use {
+    animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+
+.parallax>use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.parallax>use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.parallax>use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.parallax>use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+.sample-tour {
+    width: 1000px;
+    height: 250px;
+    margin: 50px auto;
+    margin-bottom: 20px;
+}
+
+.sample-tour-content-container {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: -400px;
+    position: relative;
+    z-index: 1;
+    color: black;
+    animation: foldDown 0.5s ease-out forwards;
+}
+
+.planning-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+
+.table-header,
+.table-row {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1.5fr;
+    gap: 10px;
+    padding: 10px;
+    text-align: left;
+}
+
+.table-header {
+    font-weight: bold;
+    background-color: #003366;
+    color: white;
+}
+
+.table-row:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-row span,
+.table-header span {
+    padding: 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description-title {
+    text-align: center;
+}
+
+.list-item-ele {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.list-item-ele:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes foldDown {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+        transform-origin: top;
+    }
+
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+        transform-origin: top;
+    }
+}

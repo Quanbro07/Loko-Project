@@ -71,7 +71,24 @@ public class UserService {
             throw new CannotDisableAdminException("You can't upgrade user admin");
         }
 
+        else if(existUser.getRole() == Role.VIP) {
+            throw new RuntimeException("User already has VIP role");
+        }
+
         existUser.setRole(Role.VIP);
+
+        userRepository.save(existUser);
+    }
+
+    public void downgradeUser(Long userId) {
+        User existUser = userRepository.findById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+        if(existUser.getRole() == Role.ADMIN) {
+            throw new CannotDisableAdminException("You can't upgrade user admin");
+        }
+
+        existUser.setRole(Role.USER);
 
         userRepository.save(existUser);
     }

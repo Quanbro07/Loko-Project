@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @PostMapping("/disable")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Void> disableUser(@RequestParam Long userId) {
         userService.disableUser(userId);
 
@@ -86,6 +86,14 @@ public class UserController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<Void> upgradeUser(@RequestParam Long userId) {
         userService.upgradeUser(userId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/downgrade")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<Void> downgradeUser(@RequestParam Long userId) {
+        userService.downgradeUser(userId);
 
         return ResponseEntity.noContent().build();
     }
