@@ -15,6 +15,8 @@ import com.exproject.backend.province.ProvinceRepository;
 import com.exproject.backend.province.info.Province;
 import com.exproject.backend.route.dto.RouteRequest;
 import com.exproject.backend.route.dto.RouteResponse;
+import com.exproject.backend.weather.dto.WeatherRequest;
+import com.exproject.backend.weather.dto.WeatherResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -158,7 +160,7 @@ public class AIAPIService {
 
     public RouteResponse generateRoutePlan(RouteRequest routeRequest) {
         String routeURL = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl()
-                + pythonAPIConfig.getRouteURL();
+                + pythonAPIConfig.getRouteUrl();
 
         System.out.println(routeURL);
 
@@ -170,6 +172,23 @@ public class AIAPIService {
         );
 
         return response.getBody();
+    }
+
+    // Forcast Weather
+    public WeatherResponse forecastWeather(WeatherRequest request) {
+        String forecastURL = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl() +
+                pythonAPIConfig.getForecastUrl();
+
+        System.out.println(forecastURL);
+
+        ResponseEntity<WeatherResponse> response = restTemplate.exchange(
+                forecastURL,
+                HttpMethod.POST,
+                new HttpEntity<>(request),
+                WeatherResponse.class
+        );
+
+        return response.getBody();  
     }
 
     // Helper Function
@@ -239,6 +258,7 @@ public class AIAPIService {
 
         return locationDTOList;
     }
+
 
 
 }

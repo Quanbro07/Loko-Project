@@ -62,7 +62,7 @@ public class TripService {
 
     // * Tạo Full Trip
     @Transactional
-    public void createFullTrip(TripRequest tripRequest, RouteResponse routeResponse) {
+    public TripResponse createFullTrip(TripRequest tripRequest, RouteResponse routeResponse) {
         User user = userRepository.findById(tripRequest.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -155,6 +155,7 @@ public class TripService {
         }
 
         Trip savedTrip = tripRepository.save(newTrip);
+        return tripMapper.toTripResponse(savedTrip);
     }
 
     // Khi Trip đã hoàn thành

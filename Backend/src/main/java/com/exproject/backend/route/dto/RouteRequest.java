@@ -15,6 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RouteRequest {
+    @JsonProperty("mode")
+    private String mode;
+
     @JsonProperty("trip_section_requests")
     private List<TripSectionRouteRequest> tripSectionRequests;
 }

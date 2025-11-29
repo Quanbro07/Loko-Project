@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class LocationRoute {
     @JsonProperty("id")
-    private Long id;
+    private Long locationId;
 
     @JsonProperty("gg_palce_id")
     private String ggPlaceId;

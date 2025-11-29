@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class TripDetailRoute {
+public class TripDetailRouteRequest {
     @JsonProperty("sequenceOrder")
     private Integer sequenceOrder;
 

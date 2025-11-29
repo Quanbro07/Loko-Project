@@ -12,9 +12,16 @@ import com.exproject.backend.location.dto.LocationIdDTO;
 import com.exproject.backend.location_category.dto.LocationCategoryDTO;
 import com.exproject.backend.location_category.info.ELocationCategory;
 import com.exproject.backend.makePlan.dto.*;
+import com.exproject.backend.route.RouteService;
+import com.exproject.backend.route.dto.*;
+import com.exproject.backend.trip.TripService;
 import com.exproject.backend.trip.dto.TripRequest;
+import com.exproject.backend.trip.dto.TripResponse;
 import com.exproject.backend.trip_detail.dto.TripDetailRequest;
 import com.exproject.backend.trip_section.dto.TripSectionRequest;
+import com.exproject.backend.weather.WeatherService;
+import com.exproject.backend.weather.dto.WeatherRequest;
+import com.exproject.backend.weather.dto.WeatherResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,9 +34,18 @@ import java.util.stream.Collectors;
 public class MakePlanService {
 
     private final LocationService locationService;
+
     private final LocationMapper locationMapper;
+
     private final AIAPIService aiapiService;
+
     private final LocationRepository locationRepository;
+
+    private final TripService tripService;
+
+    private final WeatherService weatherService;
+
+    private final RouteService routeService;
 
     // ** Make Plan
     @Transactional(readOnly = true)
@@ -263,14 +279,91 @@ public class MakePlanService {
     }
 
     // TODO: CONFIRM MAKEPLAN
-    // TODO: Gọi hàm createFullTrip
+    // TODO: Gọi hàm get route #DONE
+    // TODO: Gọi hàm createFullTrip #DONE
+    // TODO: Gọi hàm getWeather #DONE
     // TODO: Tạo file PDF
     // TODO: Lưu file PDF
-    // TODO: gọi Python AI service lấy route
+    public MakePlanResponse confirmMakePlan(ConfirmPlanRequest confirmPlanRequest,Long userId) {
+        TripRequest tripRequest = confirmPlanRequest.getTripRequest();
+
+        // TODO: Handle VIP/USER
+        // convert to Route Request
+        RouteRequest routeRequest = convertToRouteRequest(tripRequest);
+
+        // Gọi api route
+        RouteResponse routeResponse = routeService.getRoute(routeRequest);
+
+        // Gọi hàm create full plan
+        TripResponse tripResponse = tripService.createFullTrip(tripRequest, routeResponse);
+
+        // TODO: Handle VIP/USER
+        // Tạo Weather Request
+        WeatherRequest weatherRequest = confirmPlanRequest.getWeatherRequest();
+
+        // Lấy weather Response
+        WeatherResponse weatherResponse = weatherService.getWeather(weatherRequest);
+
+        // Tạo Make plan Response
+        MakePlanResponse makePlanResponse = new MakePlanResponse();
+
+        // Set vào DTO
+        makePlanResponse.setTripPlan(tripResponse);
+        makePlanResponse.setRoute(routeResponse);
+        makePlanResponse.setWeather(weatherResponse);
+
+        return makePlanResponse;
+    }
 
 
 
-    // Helper Function
+    private RouteRequest convertToRouteRequest(TripRequest tripRequest) {
+        RouteRequest routeRequest = new RouteRequest();
+        routeRequest.setMode("Drive");
+
+        List<TripSectionRouteRequest> tripSectionRouteRequests = tripRequest.getTripSections().stream()
+                .map(this::convertToTripSectionRouteRequest)
+                .toList();
+        
+        routeRequest.setTripSectionRequests(tripSectionRouteRequests);
+        
+        return routeRequest;
+
+    }
+
+    private TripSectionRouteRequest convertToTripSectionRouteRequest(TripSectionRequest tripSectionRequest) {
+        TripSectionRouteRequest tripDetailRouteRequest = new TripSectionRouteRequest();
+        tripDetailRouteRequest.setDayNumber(tripSectionRequest.getDayNumber());
+
+        List<TripDetailRouteRequest> tripDetailRouteResponses = tripSectionRequest.getTripDetails().stream()
+                .map(this::convertToTripDetailRouteRequest)
+                .toList();
+
+        tripDetailRouteRequest.setTripDetailRoutes(tripDetailRouteResponses);
+        
+        return tripDetailRouteRequest;
+    }
+
+    private TripDetailRouteRequest convertToTripDetailRouteRequest(TripDetailRequest tripDetailRequest) {
+        TripDetailRouteRequest tripDetailRouteRequest = new TripDetailRouteRequest();
+        tripDetailRouteRequest.setSequenceOrder(tripDetailRequest.getSequenceOrder());
+
+        LocationRoute locationRoute = new LocationRoute();
+
+        LocationDTO location = tripDetailRequest.getLocation();
+
+        locationRoute.setLocationId(location.getId());
+
+        locationRoute.setLatitude(location.getLatitude());
+
+        locationRoute.setLongitude(location.getLongitude());
+
+        tripDetailRouteRequest.setLocationRoute(locationRoute);
+
+        return tripDetailRouteRequest;
+    }
+
+
     private String generateActivityDescription(String locationName, Set<String> categoryNames) {
         // 1. Làm sạch tên địa điểm (nếu data có rác kiểu "TOP 1", "HOT", etc.)
         // Ví dụ: "Highlands (TOP 1)" -> "Highlands"

@@ -21,5 +21,7 @@ public class PythonAPIConfig {
 
     private String regeneratePlanUrl;
 
-    private String routeURL;
+    private String routeUrl;
+
+    private String forecastUrl;
 }

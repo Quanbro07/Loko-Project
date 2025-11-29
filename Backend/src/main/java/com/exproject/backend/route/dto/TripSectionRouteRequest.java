@@ -11,5 +11,5 @@ public class TripSectionRouteRequest {
     private Integer dayNumber;
 
     @JsonProperty("trip_detail_routes")
-    private List<TripDetailRoute> tripDetailRoutes;
+    private List<TripDetailRouteRequest> tripDetailRoutes;
 }
