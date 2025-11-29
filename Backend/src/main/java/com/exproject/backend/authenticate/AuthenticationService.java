@@ -379,6 +379,7 @@ public class AuthenticationService {
                 .accessToken(jwtAccessToken)
                 .refreshToken(jwtRefreshToken)
 
+                .userId(user.getId())
                 .username(user.getDisplayUserName())
                 .fullName(user.getFullName())
                 .age(user.getAge())

@@ -18,6 +18,8 @@ public class AuthenticationResponse {
 
     private String refreshToken;
 
+    private Long userId;
+
     private String username;
 
     private String fullName;

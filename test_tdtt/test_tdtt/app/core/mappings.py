@@ -44,7 +44,7 @@ TAG_TO_ID = {
     "cultural performance": 13,
 
     # ID 14: MOUTAIN
-    "moutain": 14,
+    "mountain": 14,
 
     # ID 15: CAVE
     "cave": 15,
@@ -58,15 +58,50 @@ TAG_TO_ID = {
     # ID 18: MUSEUM
     "museum": 18,
 
-    # ID 19: CITADEL/PALACE
+    # ID 19: CITADEL_PALACE
     "citadel/palace": 19,
 
     # ID 20: CHURCH_TEMPLE_PAGODA
     "church/temple/pagoda": 20,
 
     # ID 21: OLD_BATTLEFIELD
-    "old battlefield": 21
+    "old battlefield": 21,
 
+    #ID 22: BEACH
+    "beach": 22,
+
+    #ID 23: ISLAND
+    "island": 23,
+
+    #ID 24: YATCH_CRUISE
+    "yatch/cruise": 24,
+
+    #ID 25: VIEWPOINT
+    "viewpoint": 25,
+
+    #ID 26: RESORT
+    "resort": 26,
+
+    #ID 27: HOMESTAY
+    "homestay": 27,
+
+    #ID 28: SPA
+    "spa": 28,
+
+    #ID 29: RIVER
+    "river": 29,
+
+    #ID 30: FLOWER_FIELD_GARDEN
+    "flower field/garden": 30,
+
+    #ID 31:BAR
+    "bar": 31,
+
+    #ID 32: WALKING_STREET
+    "walking street": 32,
+
+    #ID 33: WATERFALL
+    "waterfall": 33
 }
 
 # --- TẠO TỪ ĐIỂN ĐẢO NGƯỢC (ID -> TAG) ---

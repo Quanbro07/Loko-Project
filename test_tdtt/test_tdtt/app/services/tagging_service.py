@@ -7,6 +7,10 @@ from categories_creator.food import run_food
 from categories_creator.amusement import run_amusement
 from categories_creator.adventure import run_adventure
 from categories_creator.history import run_history
+from categories_creator.honeymoon import run_honeymoon
+from categories_creator.vacation import run_vacation
+from categories_creator.photograph import run_photograph
+from categories_creator.nightlife import run_nightlife
 
 # Import hàm mapping
 from app.core.mappings import get_category_id
@@ -33,6 +37,14 @@ def apply_ai_tags(places_data: list, category_name: str) -> list:
             run_adventure(MODEL, input_path, output_path, BATCH_SIZE)
         elif category_name == "History":
             run_history(MODEL, input_path, output_path, BATCH_SIZE)
+        elif category_name == "Honeymoon":
+            run_honeymoon(MODEL, input_path, output_path, BATCH_SIZE)
+        elif category_name == "Vacation":
+            run_vacation(MODEL, input_path, output_path, BATCH_SIZE)
+        elif category_name == "Photograph":
+            run_photograph(MODEL, input_path, output_path, BATCH_SIZE)
+        elif category_name == "Nightlife":
+            run_nightlife(MODEL, input_path, output_path, BATCH_SIZE)
         else:
             return places_data 
 

@@ -11,12 +11,9 @@ CATEGORY_KEYWORDS = {
     ],
     "Amusement": [
         "amusement",
-        "amusement park",
-        "water park",
         "zoo",
         "aquarium",
         "cultural performance",
-        "nightlife",
         "festival",
         "hotel",
         "restaurant"
@@ -37,8 +34,48 @@ CATEGORY_KEYWORDS = {
         "old battlefield",
         "church",
         "temple",
-        "pagoda" 
+        "pagoda",
         "hotel", 
+        "restaurant"
+    ],
+    "Honeymoon": [
+        "hotel", 
+        "beach",
+        "island",
+        "yatch",
+        "cruise",
+        "viewpoint",
+        "cafe",
+        "resort",
+        "homestay", 
+        "restaurant"
+    ],
+    "Vacation": [
+        "hotel", 
+        "beach",
+        "spa",
+        "camping",
+        "cafe",
+        "resort",
+        "restaurant"
+    ],
+    "Photograph": [
+        "hotel", 
+        "viewpoint",
+        "beach",
+        "cafe",
+        "resort",
+        "restaurant",
+        "waterfall",
+        "temple"
+    ],
+    "Nightlife": [
+        "hotel", 
+        "night market",
+        "bar",
+        "camping",
+        "cafe",
+        "walking street",
         "restaurant"
     ]
 }
