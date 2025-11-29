@@ -45,6 +45,7 @@ const Plan = () => {
         };
 
         if (currentToken) {
+          console.log("Đang sử dụng Token cho API Make Plan.");
           headers["Authorization"] = `Bearer ${currentToken}`;
         }
 
@@ -140,7 +141,8 @@ const Plan = () => {
           </div>
         )}
 
-        {!isSearching && isResultShown && planData && (
+        {
+          /*!isSearching && isResultShown && planData && */
           <Output
             key={searchIteration}
             data={planData}
@@ -148,7 +150,7 @@ const Plan = () => {
             onTryAgainClick={handleTryAgain}
             onAcceptClick={handleAccept}
           />
-        )}
+        }
       </div>
       <Footer />
     </div>
