@@ -38,10 +38,9 @@ const processScheduleData = (data, translate) => {
     });
 };
 
-const Output = ({ onTryAgainClick, onAcceptClick, tryCount }) => {
+const Output = ({data, tryCount, onTryAgainClick,onAcceptClick }) => {
     const { translate } = useLanguage();
-    
-    // Lưu trữ dữ liệu lịch trình đã được xử lý (mảng các ngày)
+    const [tripSections, setTripSections] = useState([]);
     const [itineraryByDay, setItineraryByDay] = useState([]);
     
     // Theo dõi ngày hiện tại đang được hiển thị (dùng index của mảng tripSections)
@@ -59,7 +58,7 @@ const Output = ({ onTryAgainClick, onAcceptClick, tryCount }) => {
             setItineraryByDay(processedData);
         }, 300);
 
-    }, [translate]); 
+    }, [data,translate]); 
 
     // Lấy dữ liệu của ngày hiện tại
     const currentDaySchedule = itineraryByDay.length > 0 ? itineraryByDay[currentDayIndex] : null;

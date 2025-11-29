@@ -187,27 +187,34 @@ const UserList = () => {
     };
 
     const handleChangeRole = async (userId, newRole) => {
-        const actionText = newRole === 'VIP_USER' ? "nâng lên VIP" : "xuống thường";
+        const actionText = newRole === 'VIP' ? "Nâng cấp" : "Hạ cấp";
+        const endpoint = newRole === 'VIP' ? 'upgrade' : 'downgrade';
         if (!window.confirm(`Bạn muốn ${actionText} cho user này?`)) return;
-
         try {
-            // LƯU Ý: Đảm bảo Backend có API hỗ trợ đổi role này
-            // Nếu Backend chỉ có /upgrade, logic "xuống thường" có thể chưa chạy được ở phía server
-            const url = `http://localhost:8080/api/v1/user/upgrade`; 
+            // 2. Tạo URL động dựa trên endpoint đã chọn ở trên
+            const url = `http://localhost:8080/api/v1/user/${endpoint}`;
             
             await axios.post(url, null, {
                 ...getAuthConfig(),
-                params: { userId: userId, role: newRole } // Gửi role lên để backend xử lý
+                // 3. Chỉ cần gửi userId, không cần gửi 'role' nữa vì tên API đã quyết định việc đó
+                params: { userId: userId } 
             });
 
+            // 4. Cập nhật giao diện
             setUsers(prevUsers => prevUsers.map(user => 
                 user.id === userId ? { ...user, role: newRole } : user
             ));
-            alert(`Đã chuyển thành công sang ${newRole}!`);
+            alert(`Đã ${actionText} thành công!`);
             
         } catch (err) {
             console.error("Lỗi đổi role:", err);
-            alert("Lỗi khi cập nhật quyền hạn.");
+            
+            // Xử lý thông báo lỗi chi tiết hơn nếu backend trả về message
+            const errMsg = err.response?.data ? JSON.stringify(err.response.data) : "Lỗi khi cập nhật quyền hạn.";
+            alert(errMsg);
+
+            // Nên load lại danh sách để đồng bộ nếu có lỗi
+            fetchUsers(currentPage);
         }
     };
 
@@ -306,7 +313,7 @@ const UserList = () => {
                                 </td>
                                 <td className='button-span'>
                                     {user.role === 'USER' ? (
-                                        <button className='admin-button to-vip-user-button' onClick={() => handleChangeRole(user.id, 'VIP_USER')}>Nâng cấp</button>
+                                        <button className='admin-button to-vip-user-button' onClick={() => handleChangeRole(user.id, 'VIP')}>Nâng cấp</button>
                                     ) : (
                                         <button className='admin-button to-normal-user-button' onClick={() => handleChangeRole(user.id, 'USER')}>Hạ cấp</button>
                                     )}
@@ -317,8 +324,6 @@ const UserList = () => {
                             </tr>
                         ))
                     ) : (
-                        // TRƯỜNG HỢP KHÔNG CÓ DỮ LIỆU (MẢNG RỖNG): Render hàng thông báo
-                        // colSpan="10" vì bảng của bạn có 10 cột headers
                         <tr>
                             <td colSpan="10" style={{ textAlign: 'center', padding: '30px', color: 'red', fontWeight: 'bold' }}>
                                 {error ? error : "Không tìm thấy người dùng nào trong danh sách."}

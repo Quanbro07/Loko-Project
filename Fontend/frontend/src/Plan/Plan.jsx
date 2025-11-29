@@ -1,102 +1,158 @@
 import Input from "../Input/Input";
 import Navbar from "../Navbar/Navbar";
-import './Plan.css';
-import React, { useState, useCallback } from 'react';
-import Lottie from 'lottie-react';
-import paperPlaneAnimation from '../lottie/Paper plane.json';
-import Output from '../Output/Output';
+import "./Plan.css";
+import React, { useState, useCallback } from "react";
+import Lottie from "lottie-react";
+import paperPlaneAnimation from "../lottie/Paper plane.json";
+import Output from "../Output/Output";
 import Footer from "../Footer/Footer";
-import { useLanguage } from '../Language/LanguageContext';
-import { useNavigate } from 'react-router-dom';
+import { useLanguage } from "../Language/LanguageContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Plan = () => {
-    // 🌟 TRẠNG THÁI CHÍNH ĐƯỢC QUẢN LÝ TẬP TRUNG 🌟
-    const [isSearching, setIsSearching] = useState(false); // Thay thế showLoadingAnimation
-    const [isResultShown, setIsResultShown] = useState(false);
-    
-    // searchIteration: 0 = Chưa tìm kiếm; 1 = Lần 1; 2 = Lần 2; v.v. Dùng làm key cho Output.
-    const [searchIteration, setSearchIteration] = useState(0); 
-    
-    // Số lần thử lại còn lại (ban đầu là 3)
-    const [tryCount, setTryCount] = useState(3); 
+  const [isSearching, setIsSearching] = useState(false); // Thay thế showLoadingAnimation
+  const [isResultShown, setIsResultShown] = useState(false);
 
-    const { translate } = useLanguage();
-    const navigate = useNavigate();
+  const [searchIteration, setSearchIteration] = useState(0);
 
-    // Hàm thực hiện tìm kiếm (có Loading Animation)
-    const startSearchProcess = useCallback(() => {
-        setIsSearching(true);
-        setIsResultShown(false);
-        
-        // Giả lập thời gian tìm kiếm
-        setTimeout(() => {
-            setIsSearching(false);
-            setIsResultShown(true);
-            console.log(`Tìm kiếm lần ${searchIteration} hoàn tất.`);
-        }, 4000);
-    }, [searchIteration]); 
+  const [planData, setPlanData] = useState(null);
+  const [tryCount, setTryCount] = useState(3);
 
-    // Hàm xử lý nút TÌM KIẾM (Chỉ chạy lần đầu tiên)
-    const handleSearch = useCallback(() => {
-        if (searchIteration === 0) {
-            setSearchIteration(1); // Bắt đầu lần 1
-            startSearchProcess();
+  const [lastRequestData, setLastRequestData] = useState(null);
+
+  const { translate } = useLanguage();
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
+
+  const callMakePlanApi = useCallback(
+    async (data) => {
+      if (!data) {
+        console.warn("Dữ liệu đầu vào rỗng, hủy gọi API.");
+        return;
+      }
+      setIsSearching(true);
+      setIsResultShown(false);
+      setPlanData(null);
+
+      try {
+        // 2. Lấy token NGAY TẠI THỜI ĐIỂM GỌI API để đảm bảo luôn mới nhất
+        const currentToken = localStorage.getItem("token");
+
+        const headers = {
+          "Content-Type": "application/json",
+        };
+
+        if (currentToken) {
+          headers["Authorization"] = `Bearer ${currentToken}`;
         }
-    }, [searchIteration, startSearchProcess]);
-    
-    // Hàm xử lý nút THỬ LẠI (Retry)
-    const handleTryAgain = useCallback(() => {
-        if (tryCount > 0) {
-            console.log(`Bắt đầu thử lại... Lượt còn lại: ${tryCount - 1}`);
-            setTryCount(prev => prev - 1);
-            setSearchIteration(prev => prev + 1); // Đảm bảo Output re-render (dùng key)
-            startSearchProcess();
-        } else {
-            console.log('Đã hết lượt thử lại (3 lần). Chuyển hướng.');
-            // Nếu hết lượt, bạn có thể chuyển hướng hoặc hiển thị thông báo
-            setIsResultShown(false);
-            // navigate('/currentplan');
+
+        const response = await axios.post(
+          "http://localhost:8080/api/v1/make-plan/make",
+          data,
+          { headers }
+        );
+
+        console.log("Kết quả từ Backend:", response.data);
+        setPlanData(response.data);
+        setIsResultShown(true);
+        setSearchIteration((prev) => prev + 1);
+      } catch (error) {
+        console.error("Lỗi khi gọi API Make Plan:", error);
+        let msg = "Có lỗi xảy ra";
+        if (error.response) {
+          // Lấy message lỗi chi tiết từ Backend trả về (nếu có)
+          const data = error.response.data;
+          const backendMessage =
+            data?.message || data?.error || JSON.stringify(data);
+
+          if (error.response.status === 403) {
+            msg =
+              "Lỗi 403: Backend từ chối truy cập. Kiểm tra @CrossOrigin hoặc Token.";
+          } else if (error.response.status === 500) {
+            msg = `Lỗi 500: Server gặp sự cố.\nChi tiết: ${backendMessage}\n\n(Kiểm tra lại xem Database có dữ liệu cho Tỉnh/Sở thích này chưa)`;
+          } else {
+            msg = `Lỗi ${error.response.status}: ${backendMessage}`;
+          }
+        } else if (error.request) {
+          msg = "Lỗi mạng hoặc Server không phản hồi.";
         }
-    }, [tryCount, startSearchProcess, navigate]);
 
-    // Hàm xử lý nút CHẤP NHẬN (Accept)
-    const handleAccept = useCallback(() => {
-        console.log('Chấp nhận lịch trình. Chuyển tiếp...');
-        navigate('/currentplan');
-    }, [navigate]);
+        alert(msg);
+      } finally {
+        setIsSearching(false);
+      }
+    },
+    [translate]
+  );
+  // Hàm thực hiện tìm kiếm (có Loading Animation)
+  const handleSearch = useCallback((requestData) => {
+    console.log("Nhận dữ liệu từ Input:", requestData);
 
-    return (
-        <div>
-            <div className="homepage-background">
-                <Navbar/>
-                <Input
-                    onSearch={handleSearch} // Hàm search lần đầu
-                    isResultShown={isResultShown}
-                    // Truyền số lần tìm kiếm để Input khóa nút
-                    searchIteration={searchIteration} 
-                />
-            </div>
-            <div className="itinerary-results-container">
-                {/* HIỂN THỊ LOTTIE KHI ĐANG TÌM KIẾM */}
-                {isSearching && (
-                    <div className="loading-animation-container">
-                        <Lottie animationData={paperPlaneAnimation} loop={true} />
-                    </div>
-                )}
-                
-                {/* HIỂN THỊ OUTPUT KHI CÓ KẾT QUẢ */}
-                {isResultShown && (
-                    <Output 
-                        key={searchIteration} // Quan trọng: Re-render Output khi tìm kiếm lại
-                        tryCount={tryCount}
-                        onTryAgainClick={handleTryAgain}
-                        onAcceptClick={handleAccept}
-                    />
-                )}
-            </div>
-            <Footer/>
-        </div>
-    );
+    // 1. Lưu lại dữ liệu để dùng cho Try Again
+    setLastRequestData(requestData);
+
+    // 2. Reset số lượt thử lại về 3 (mỗi lần search mới là một session mới)
+    setTryCount(3);
+
+    // 3. Gọi API
+    callMakePlanApi(requestData);
+  }, []);
+
+  const handleTryAgain = useCallback(() => {
+    if (tryCount > 0 && lastRequestData) {
+      console.log(`Đang thử lại... (Còn ${tryCount - 1} lượt)`);
+
+      // Giảm số lượt còn lại
+      setTryCount((prev) => prev - 1);
+
+      // Gọi lại API với dữ liệu cũ
+      callMakePlanApi(lastRequestData);
+    } else {
+      console.log("Đã hết lượt thử lại.");
+    }
+  }, [tryCount, lastRequestData]);
+
+  const handleAccept = useCallback(() => {
+    if (planData) {
+      console.log("Chấp nhận lịch trình:", planData);
+      // Chuyển hướng sang trang Current Plan và truyền dữ liệu theo
+      navigate("/currentplan", { state: { finalPlan: planData } });
+    }
+  }, [navigate, planData]);
+
+  return (
+    <div>
+      <div className="homepage-background">
+        <Navbar />
+        <Input
+          onSearch={handleSearch} // Hàm search lần đầu
+          isResultShown={isResultShown}
+          searchIteration={searchIteration}
+        />
+      </div>
+      <div className="itinerary-results-container">
+        {/* HIỂN THỊ LOTTIE KHI ĐANG TÌM KIẾM */}
+        {isSearching && (
+          <div className="loading-animation-container">
+            <Lottie animationData={paperPlaneAnimation} loop={true} />
+          </div>
+        )}
+
+        {!isSearching && isResultShown && planData && (
+          <Output
+            key={searchIteration}
+            data={planData}
+            tryCount={tryCount}
+            onTryAgainClick={handleTryAgain}
+            onAcceptClick={handleAccept}
+          />
+        )}
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default Plan;
