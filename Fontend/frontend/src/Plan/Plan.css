@@ -1,0 +1,43 @@
+.homepage-background {
+    background-image: url('../img/bgchomepage.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0;
+}
+
+.loko {
+    width: 100px;
+}
+
+.itinerary-results-container {
+    margin-top: 20px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tour-sample {
+    position: relative;
+    width: 100%;
+    margin: 0px auto;
+    overflow: hidden;
+    box-shadow: 8px 10px 15px #848484;
+    border-radius: 0px;
+    margin-bottom: 20px;
+}
+
+.flying-birds-animation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1500px;
+    z-index: 2;
+}

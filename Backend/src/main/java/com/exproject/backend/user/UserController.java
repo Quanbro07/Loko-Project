@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @PostMapping("/disable")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Void> disableUser(@RequestParam Long userId) {
         userService.disableUser(userId);
 

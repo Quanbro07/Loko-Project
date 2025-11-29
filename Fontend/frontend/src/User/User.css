@@ -1,0 +1,280 @@
+.ticket-container {
+    width: 800px;
+    height: 400px;
+    background-color: #fff;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: flex-start;
+    /* Aligned to the left */
+    align-items: center;
+    padding: 20px;
+    background-color: #003c72;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    gap: 10px;
+}
+
+.ticket-company {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.plane-icon {
+    height: 40px;
+}
+
+.ticket-body {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f7f7f7;
+    gap: 20px;
+}
+
+.ticket-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.passenger-info {
+    border-right: 2px dashed #999;
+    padding-right: 20px;
+}
+
+.travel-stats {
+    border-right: 2px dashed #999;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.avatar-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.avatar-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #003c72;
+}
+
+.avatar-change-label {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.info-item {
+    margin-bottom: 15px;
+}
+
+.label {
+    font-size: 14px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.value {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.visited-names {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #444;
+}
+
+.visited-names .pill {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #222;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+
+.ticket-footer {
+    display: flex;
+    flex-direction: row;
+    background-color: #003c72;
+    color: white;
+    padding: 10px 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barcode {
+    font-family: 'Libre Barcode 39', cursive;
+    letter-spacing: 2px;
+}
+
+.edit-sticky-button {
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    /* Adjusted for debugging */
+    background-color: #f0f0f0;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #003c72;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: rotate(-5deg);
+    /* Rotated to point from northeast to southwest */
+    z-index: 10;
+    cursor: pointer;
+    border: none;
+}
+
+.edit-controls {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+
+.save-button,
+.cancel-button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.save-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.barcode-img {
+    width: 200px;
+    height: 100px;
+}
+
+.user-page-background {
+    background-color: #dbdbdb;
+}
+
+.avatar-change {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ebe7e7;
+}
+
+.travel-history {
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #003c72;
+    background-color: #ebe7e7;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 4px 3px 2px #76767685;
+}
+
+class này vào file User.css của bạn */
+
+/* Căn chỉnh label và icon bút chì */
+.info-item .label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Đẩy icon qua phải */
+    width: 100%;
+}
+
+/* Kiểu cho icon bút chì */
+.edit-icon-button {
+    cursor: pointer;
+    stroke: #9ca3af;
+    /* Màu xám */
+    transition: stroke 0.2s;
+}
+
+.edit-icon-button:hover {
+    stroke: #1f2937;
+    /* Màu đen đậm hơn khi hover */
+}
+
+/* Kiểu cho ô input khi chỉnh sửa */
+.edit-input {
+    /* Sao chép style từ .value để nó trông giống nhất */
+    font-family: 'Montserrat', sans-serif;
+    /* Hoặc font bạn đang dùng */
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    /* Thêm style của input */
+    border: none;
+    border-bottom: 2px solid #004a99;
+    /* Thêm đường gạch dưới */
+    background-color: transparent;
+    /* Nền trong suốt */
+    width: 100%;
+    padding: 4px 0;
+    /* Thêm chút padding */
+    box-sizing: border-box;
+}
+
+.edit-input:focus {
+    outline: none;
+    /* Bỏ viền focus mặc định */
+    border-bottom: 2px solid #007bff;
+    /* Đổi màu khi focus */
+}

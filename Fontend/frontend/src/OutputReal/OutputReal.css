@@ -1,0 +1,105 @@
+.output-container {
+    margin: 20px 0px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.623);
+    width: 150%;
+    max-width: 900px;
+    overflow-x: auto;
+    position: relative; /* Quan trọng cho việc căn chỉnh số lần thử lại */
+}
+
+.itinerary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    table-layout: fixed;
+}
+
+.itinerary-table th,
+.itinerary-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top; 
+}
+
+.itinerary-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    vertical-align: middle; 
+}
+
+/* Giữ nguyên widths */
+.itinerary-table thead th:nth-child(1) {
+    width: 25%; 
+}
+.itinerary-table thead th:nth-child(2) {
+    width: 15%;
+}
+.itinerary-table thead th:nth-child(3) {
+    width: 45%; 
+}
+.itinerary-table thead th:nth-child(4) {
+    width: 10%;
+}
+
+.day-navigation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 5px 0;
+    border-bottom: 2px solid #eee;
+}
+
+.current-day-title {
+    margin: 0 20px;
+    font-size: 1.5rem;
+    color: #333;
+    min-width: 100px; /* Đảm bảo chiều rộng đủ cho tên ngày */
+    text-align: center;
+}
+
+.nav-button {
+    background: none;
+    border: 1px solid #ccc;
+    color: #555;
+    font-size: 1.2rem;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-button:hover:not(:disabled) {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.nav-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Kiểu dáng cho nút Chấp nhận */
+.output-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-accept-plan {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-accept-plan:hover {
+    background-color: #1e7e34;
+}
