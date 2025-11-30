@@ -6,10 +6,10 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const { translate, setLanguage } = useLanguage();
-    const { isAuthenticated, user, logout /* openAuthModal removed */ } = useAuth();
+    const { isAuthenticated, user, logout } = useAuth();
     const navigate = useNavigate();
 
-    console.log('User data:', user);
+    // console.log('User data:', user);
 
     const handleAuthClick = () => {
         if (isAuthenticated) {
@@ -54,10 +54,16 @@ const Navbar = () => {
                     <NavLink to="/aboutus" className={({ isActive }) => (isActive ? 'list-item active' : 'list-item')}>{translate('navbar_about_us')}</NavLink>
 
                 </div>
-                <div className='right-nav'>{/* Auth Button */}
+                <div className='right-nav'>
                     <div className='auth-container'>
                         {isAuthenticated ? (
                             <div className='user-info'>
+                                {/* --- NÚT UPGRADE PREMIUM MỚI --- */}
+                                {/* Bạn có thể thay chữ cứng bằng {translate('upgrade_premium')} sau khi cập nhật file ngôn ngữ */}
+                                <button className='upgrade-btn' onClick={() => navigate('/purchase')}>
+                                    👑 Upgrade Premium
+                                </button>
+                                
                                 <span className='user-name'>{translate('auth_welcome')} {user?.username}</span>
                                 <button className='auth-btn logout-btn' onClick={handleAuthClick}>
                                     {translate('auth_logout')}
@@ -80,4 +86,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar;

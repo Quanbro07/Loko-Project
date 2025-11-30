@@ -12,7 +12,7 @@ import CurrentPlan from './CurrentPlan/CurrentPlan';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute'; // Đảm bảo đường dẫn đúng
 import AdminDashboard from './AdminDashboard/AdminDashboard'; 
 import MainLayout from './MainLayout/MainLayout';
-
+import Purchase from './Purchase/Purchase';
 function App() {
   return (
     <LanguageProvider>
@@ -34,6 +34,7 @@ function App() {
               <Route path="/currentplan" element={<CurrentPlan />} />
             </Route>
           </Route>
+          <Route path="/purchase" element={<Purchase />} />
           <Route path="/login" element={<Navigate to="/auth?mode=login" replace />} />
           <Route path="/signup" element={<Navigate to="/auth?mode=register" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />

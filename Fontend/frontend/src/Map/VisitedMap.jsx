@@ -8,38 +8,34 @@ import { useLanguage } from '../Language/LanguageContext';
 const GEOJSON_URL = '/vietnam-geojson-data/geojson/country-wide/vietnam-tinh-thanh-34.geojson';
 
 const VISITED_COLORS = [
-  '#FF5733', '#33FF57', '#3357FF', '#F333FF', 
-  '#FFC300', '#00C9A7', '#845EC2'
+  '#F0E491', '#BBC863', '#658C58', '#31694E', '#8FABD4', '#A18D6D', '#F5AD18'
 ];
 
-// Hàm bỏ dấu tiếng Việt
-function removeDiacritics(str) {
-  if (!str) return '';
-  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\s-]/g, '').trim();
-}
-
-// === LOGIC MỚI: Hàm làm sạch tên tỉnh (Xóa "Tỉnh", "Thành phố") ===
+// 1. Hàm làm sạch tên tỉnh (Xóa "Tỉnh", "Thành phố", "TP.", "TP")
 function cleanProvinceName(str) {
   if (!str) return '';
-  // Regex xóa các tiền tố hành chính (không phân biệt hoa thường)
-  return str.replace(/^(Tỉnh|Thành phố|Thành Phố)\s+/i, '');
+  // Xóa tiền tố hành chính để lấy tên thuần (VD: "Tỉnh Đồng Tháp" -> "Đồng Tháp")
+  return str.replace(/^(Tỉnh|Thành phố|Thành Phố|TP\.?|TP)\s+/i, '');
 }
 
-// === LOGIC MỚI: Hàm Slugify sử dụng cleanProvinceName ===
+// 2. Hàm bỏ dấu tiếng Việt (FIX QUAN TRỌNG: Xử lý chữ 'đ')
+function removeDiacritics(str) {
+    if (!str) return '';
+    str = str.replace(/[đĐ]/g, 'd'); // Thay thế Đ trước khi chuẩn hóa
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\s-]/g, '').trim();
+}
+
+
+// 3. Hàm Slugify cốt lõi
 function slugify(str) {
   if (!str) return '';
-  
-  // 1. Làm sạch tiền tố trước (Tỉnh Điện Biên -> Điện Biên)
   const cleanName = cleanProvinceName(str);
-  
-  // 2. Bỏ dấu và chuyển thành slug (Điện Biên -> dien-bien)
   const noDia = removeDiacritics(cleanName);
-  
   return noDia.toLowerCase()
-    .replace(/\s+/g, '-')          // Thay khoảng trắng bằng dấu gạch ngang
+    .replace(/\s+/g, '-')          // Khoảng trắng thành gạch ngang
     .replace(/[^a-z0-9-]/g, '-')   // Bỏ ký tự đặc biệt
-    .replace(/-+/g, '-')           // Gộp nhiều dấu gạch ngang
-    .replace(/(^-|-$)/g, '');      // Xóa gạch ngang ở đầu/cuối
+    .replace(/-+/g, '-')           // Gộp gạch ngang liên tiếp
+    .replace(/(^-|-$)/g, '');      // Xóa gạch ngang đầu/cuối
 }
 
 function getColorForProvince(slug) {
@@ -60,7 +56,7 @@ const VisitedMap = ({ visited = [] }) => {
     let mounted = true;
     fetch(GEOJSON_URL)
       .then((res) => {
-        if (!res.ok) throw new Error('File not found');
+        if (!res.ok) throw new Error("File not found");
         return res.json();
       })
       .then((data) => {
@@ -72,13 +68,12 @@ const VisitedMap = ({ visited = [] }) => {
     return () => { mounted = false; };
   }, []);
 
-  // Tạo Set các slug có trong bản đồ để tính toán % chính xác
   const geoSlugSet = useMemo(() => {
     if (!geoData || !Array.isArray(geoData.features)) return new Set();
     return new Set(
       geoData.features.map((f) => {
         const p = f.properties || {};
-        // Lấy tên từ nhiều trường có thể có trong GeoJSON
+        // Lấy tên từ GeoJSON, ưu tiên biến ten_tinh
         const nm = p.ten_tinh || p.NAME_1 || p.NAME || p.name || p.ten || '';
         return slugify(nm || '');
       })
@@ -87,9 +82,8 @@ const VisitedMap = ({ visited = [] }) => {
 
   if (!geoData) return <div className="visited-map-loading">Đang tải bản đồ...</div>;
 
-  // Tính toán số liệu thống kê
-  const totalProvinces = geoSlugSet.size || 34; // Tổng số tỉnh trên bản đồ tìm thấy
-  const visitedCount = visited.filter((s) => geoSlugSet.has(s)).length; // Số tỉnh đã đi (khớp với bản đồ)
+  const totalProvinces = geoSlugSet.size || 34;
+  const visitedCount = visited.filter((s) => geoSlugSet.has(s)).length;
   const percent = totalProvinces > 0 ? Math.round((visitedCount / totalProvinces) * 100) : 0;
 
   return (
@@ -108,16 +102,13 @@ const VisitedMap = ({ visited = [] }) => {
                 const props = g.properties || {};
                 const rawName = props.ten_tinh || props.NAME_1 || props.NAME || props.name || props.ten || 'Không rõ';
                 
-                // Tạo slug chuẩn từ tên trong GeoJSON (đã xóa Tỉnh/TP)
+                // Tạo slug chuẩn cho tỉnh này trên bản đồ
                 const slug = slugify(rawName);
                 
-                // Kiểm tra xem slug này có trong danh sách đã đi (visited) không
+                // Kiểm tra xem tỉnh này có trong danh sách đã đi hay không
                 const isVisited = visited.includes(slug);
                 
-                // Chọn màu
                 const fillColor = isVisited ? getColorForProvince(slug) : '#e6e6e6';
-                
-                // Tạo nội dung tooltip (Hiển thị tên ngắn gọn cho đẹp)
                 const displayName = cleanProvinceName(rawName);
                 const tooltipText = `${displayName} — ${isVisited ? 'Đã đến' : 'Chưa'}`;
 

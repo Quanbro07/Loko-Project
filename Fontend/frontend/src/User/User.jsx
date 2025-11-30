@@ -9,66 +9,39 @@ import VisitedMap from '../Map/VisitedMap';
 import { useLanguage } from '../Language/LanguageContext';
 import { useAuth } from '../Auth/AuthContext';
 
-// === BẢNG MAPPING CHUẨN: BACKEND ENUM -> GEOJSON SLUG ===
-// Giúp bản đồ nhận diện đúng tên tỉnh từ Backend trả về
+// === BẢNG MAPPING: BACKEND ENUM -> GEOJSON SLUG ===
+// Key: Tên Enum từ Backend (Java)
+// Value: Slug chuẩn của GeoJSON (đã xử lý bởi hàm slugify bên dưới)
 const PROVINCE_MAPPING = {
-    // === 1. MIỀN BẮC (15) ===
-    "HaNoi": "ha-noi",
-    "HaiPhong": "hai-phong",
-    "HungYen": "hung-yen",
-    "BacNinh": "bac-ninh",
-    "NinhBinh": "ninh-binh",
-    "QuangNinh": "quang-ninh",
-    "ThaiNguyen": "thai-nguyen",
-    "PhuTho": "phu-tho",
-    "LaiChau": "lai-chau",
-    "DienBien": "dien-bien",
-    "SonLa": "son-la",
-    "LangSon": "lang-son",
-    "CaoBang": "cao-bang",
-    "TuyenQuang": "tuyen-quang",
-    "LaoCai": "lao-cai",
+    // 1. MIỀN BẮC
+    "HaNoi": "ha-noi", "HaiPhong": "hai-phong", "HungYen": "hung-yen", "BacNinh": "bac-ninh", 
+    "NinhBinh": "ninh-binh", "QuangNinh": "quang-ninh", "ThaiNguyen": "thai-nguyen", "PhuTho": "phu-tho", 
+    "LaiChau": "lai-chau", "DienBien": "dien-bien", "SonLa": "son-la", "LangSon": "lang-son", 
+    "CaoBang": "cao-bang", "TuyenQuang": "tuyen-quang", "LaoCai": "lao-cai",
 
-    // === 2. MIỀN TRUNG (7) ===
-    "ThanhHoa": "thanh-hoa",
-    "NgheAn": "nghe-an",
-    "HaTinh": "ha-tinh",
-    "QuangTri": "quang-tri",
-    "Hue": "thua-thien-hue",       
-    "DaNang": "da-nang",
-    "KhanhHoa": "khanh-hoa",
+    // 2. MIỀN TRUNG
+    "ThanhHoa": "thanh-hoa", "NgheAn": "nghe-an", "HaTinh": "ha-tinh", "QuangTri": "quang-tri", 
+    "Hue": "hue", "DaNang": "da-nang", "KhanhHoa": "khanh-hoa",
 
-    // === 3. TÂY NGUYÊN (4) ===
-    "QuangNgai": "quang-ngai",
-    "GiaLai": "gia-lai",
-    "DakLak": "dak-lak",
-    "LamDong": "lam-dong",
+    // 3. TÂY NGUYÊN
+    "QuangNgai": "quang-ngai", "GiaLai": "gia-lai", "DakLak": "dak-lak", "LamDong": "lam-dong",
 
-    // === 4. MIỀN NAM (8) ===
-    "TPHCM": "ho-chi-minh",        
-    "DongNai": "dong-nai",
-    "TayNinh": "tay-ninh",
-    "CanTho": "can-tho",
-    "VinhLong": "vinh-long",
-    "DongThap": "dong-thap",
-    "AnGiang": "an-giang",
-    "CaMau": "ca-mau"
+    // 4. MIỀN NAM
+    "TPHCM": "ho-chi-minh", "DongNai": "dong-nai", "TayNinh": "tay-ninh", "CanTho": "can-tho", 
+    "VinhLong": "vinh-long", "DongThap": "dong-thap", "AnGiang": "an-giang", "CaMau": "ca-mau"
 };
 
 const User = () => {
     const { user, token, setUser } = useAuth(); 
     const { translate } = useLanguage();
-
     const [isEditing, setIsEditing] = useState(false);
     
-    // Hàm helper: Chuyển Mảng [Y, M, D] -> Chuỗi "YYYY-MM-DD"
+    // Helper: Format Date
     const formatDateForInput = (dateData) => {
         if (!dateData) return '';
         if (Array.isArray(dateData)) {
             const [year, month, day] = dateData;
-            const strMonth = String(month).padStart(2, '0');
-            const strDay = String(day).padStart(2, '0');
-            return `${year}-${strMonth}-${strDay}`;
+            return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         }
         return dateData; 
     };
@@ -76,7 +49,6 @@ const User = () => {
     const [name, setName] = useState(user?.fullName || 'NGUYỄN TRỌNG');
     const [dob, setDob] = useState(formatDateForInput(user?.dob) || '2000-01-01');
     const [gender, setGender] = useState(user?.gender || 'MALE');
-    
     const [avatar, setAvatar] = useState(avatarSample);
     const [avatarFile, setAvatarFile] = useState(null);
 
@@ -91,13 +63,10 @@ const User = () => {
     useEffect(() => {
         if (user) {
             setName(user.fullName || '');
-            const formattedDob = formatDateForInput(user.dob);
-            setDob(formattedDob || '');
-            setEditDob(formattedDob || '');
-
+            setDob(formatDateForInput(user.dob));
+            setEditDob(formatDateForInput(user.dob));
             setGender(user.gender || 'MALE');
             setEditGender(user.gender || 'MALE');
-
             if (user.avatarImg) {
                 const imgSrc = user.avatarImg.startsWith('data:image') 
                     ? user.avatarImg 
@@ -107,17 +76,17 @@ const User = () => {
         }
     }, [user]);
 
-    // --- CÁC HÀM XỬ LÝ CHUỖI ---
+    // === CÁC HÀM XỬ LÝ CHUỖI (Đồng bộ logic với VisitedMap) ===
     function removeDiacritics(str) { 
         if (!str) return ''; 
-        // Thay thế Đ/đ trước khi chuẩn hóa (Quan trọng cho Đồng Tháp, Đà Nẵng)
+        // Thay đ/Đ thành d để khớp với dữ liệu backend trả về (DongThap, DaNang)
         str = str.replace(/[đĐ]/g, 'd');
         return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\s-]/g, '').trim(); 
     }
     
     function cleanProvinceName(str) {
         if (!str) return '';
-        // Xóa các tiền tố hành chính để lấy tên gốc
+        // Xóa tiền tố hành chính từ GeoJSON để lấy tên gốc
         return str.replace(/^(Tỉnh|Thành phố|Thành Phố|TP\.?|TP)\s+/i, '');
     }
 
@@ -134,27 +103,27 @@ const User = () => {
     
     function prettifySlug(slug) { if (!slug) return ''; return slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()); }
 
-    // --- LOGIC CHUYỂN ĐỔI TÊN TỪ BACKEND ---
+    // --- LOGIC CHUYỂN ĐỔI: BACKEND -> SLUG ---
     const convertBackendNameToSlug = (backendName) => {
         if (!backendName) return '';
         
-        // 1. Kiểm tra Mapping (Ưu tiên)
+        // 1. Ưu tiên tra cứu trong bảng Mapping (Để xử lý TPHCM, Hue, DienBien...)
         if (PROVINCE_MAPPING[backendName]) {
             return PROVINCE_MAPPING[backendName];
         }
 
-        // 2. Fallback: Tự động tách từ (CamelCase -> kebab-case)
+        // 2. Fallback: Tự động tách từ CamelCase -> kebab-case
         const splitName = backendName.replace(/([a-z])([A-Z])/g, '$1-$2');
         return slugify(splitName);
     };
 
-    // --- GỌI API BACKEND ---
+    // --- FETCH DATA TỪ BACKEND ---
     useEffect(() => {
         if (!user || !user.id) return;
         let mounted = true;
         
-        // Gọi API lấy danh sách tỉnh đã đi
         const endpoint = `/api/v1/province/getAll?userId=${user.id}`;
+        // Lưu ý: Đảm bảo URL backend đúng (thêm domain nếu cần)
         const fullEndpoint = endpoint.startsWith('http') ? endpoint : `http://localhost:8080${endpoint}`;
 
         fetch(fullEndpoint, { headers: { 'Authorization': `Bearer ${token}` } })
@@ -169,6 +138,7 @@ const User = () => {
                 setTotalVisitedCount(data.total_visited || 0);
 
                 const slugs = list.map((item) => {
+                    // Lấy tên thô từ backend (Enum String)
                     const rawName = item.province_name || item.provinceName || item.name || '';
                     return convertBackendNameToSlug(rawName);
                 }).filter(Boolean);
@@ -182,7 +152,7 @@ const User = () => {
         return () => { mounted = false; };
     }, [user, token]);
 
-    // --- TẢI GEOJSON ĐỂ LẤY TÊN HIỂN THỊ ĐẸP ---
+    // --- TẢI GEOJSON ĐỂ LẤY TÊN HIỂN THỊ ĐẸP (CHO LIST BÊN PHẢI) ---
     useEffect(() => {
         let mounted = true;
         const GEOJSON_URL = '/vietnam-geojson-data/geojson/country-wide/vietnam-tinh-thanh-34.geojson';
@@ -191,7 +161,7 @@ const User = () => {
             const map = {}; 
             
             data.features.forEach((f) => { 
-                const n = f.properties.ten_tinh || f.properties.name || ''; 
+                const n = f.properties.ten_tinh || f.properties.NAME_1 || f.properties.name || ''; 
                 if (n) {
                     const key = slugify(n);
                     map[key] = cleanProvinceName(n); // Lưu tên đẹp (Vd: "Đồng Tháp")

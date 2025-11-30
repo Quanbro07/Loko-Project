@@ -149,3 +149,25 @@
     justify-content: end;
     margin-right: 30px;
 }
+
+.upgrade-btn {
+    background: linear-gradient(45deg, #FFD700, #FFA500); /* Màu vàng Gold */
+    color: #333; /* Chữ màu tối cho dễ đọc */
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap; /* Không xuống dòng */
+    margin-right: 10px; /* Cách chữ Welcome một chút */
+}
+
+.upgrade-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
