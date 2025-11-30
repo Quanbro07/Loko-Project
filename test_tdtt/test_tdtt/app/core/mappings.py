@@ -128,3 +128,53 @@ def get_tag_from_id(cat_id: int) -> str:
     VD: 8 -> "amusement/water park"
     """
     return ID_TO_TAG.get(cat_id, "unknown")
+
+PROVINCE_ID_TO_NAME = {
+    # ======= 1. MIỀN BẮC =======
+    1: "Ha Noi",          # HaNoi (Enum Index bắt đầu từ 0 trong list Java, nhưng nếu Database ID khác thì bạn sửa lại key này nhé. Ở đây giả định theo thứ tự Enum)
+    2: "Hai Phong",       # HaiPhong
+    3: "Hung Yen",        # HungYen
+    4: "Bac Ninh",        # BacNinh
+    5: "Ninh Binh",       # NinhBinh
+    6: "Quang Ninh",      # QuangNinh
+    7: "Thai Nguyen",     # ThaiNguyen
+    8: "Phu Tho",         # PhuTho
+    9: "Lai Chau",        # LaiChau
+    10: "Dien Bien",       # DienBien
+    11: "Son La",         # SonLa
+    12: "Lang Son",       # LangSon
+    13: "Cao Bang",       # CaoBang
+    14: "Tuyen Quang",    # TuyenQuang
+    15: "Lao Cai",        # LaoCai
+
+    # ======= 2. MIỀN TRUNG =======
+    16: "Thanh Hoa",      # ThanhHoa
+    17: "Nghe An",        # NgheAn
+    18: "Ha Tinh",        # HaTinh
+    19: "Quang Tri",      # QuangTri
+    20: "Hue",            # Hue
+    21: "Da Nang",        # DaNang
+    22: "Khanh Hoa",      # KhanhHoa
+
+    # ======= 3. TÂY NGUYÊN =======
+    23: "Quang Ngai",     # QuangNgai
+    24: "Gia Lai",        # GiaLai
+    25: "Dak Lak",        # DakLak
+    26: "Lam Dong",       # LamDong
+
+    # ======= 4. MIỀN NAM =======
+    27: "Ho Chi Minh City", # TPHCM (Map đặc biệt)
+    28: "Dong Nai",       # DongNai
+    29: "Tay Ninh",       # TayNinh
+    30: "Can Tho",        # CanTho
+    31: "Vinh Long",      # VinhLong
+    32: "Dong Thap",      # DongThap
+    33: "An Giang",       # AnGiang
+    34: "Ca Mau"          # CaMau
+}
+
+def get_province_name_by_id(p_id: int) -> str:
+    """
+    Lấy tên tỉnh từ ID để query Google Maps.
+    """
+    return PROVINCE_ID_TO_NAME.get(p_id, "Vietnam") # Default fallback
