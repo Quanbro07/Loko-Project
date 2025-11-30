@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import { useLanguage } from "../Language/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import scheduleData from "../Output/schedule.json";
 
 const Plan = () => {
   const [isSearching, setIsSearching] = useState(false);
@@ -27,10 +28,14 @@ const Plan = () => {
   const navigate = useNavigate();
 
   const countTotalItems = (plan) => {
-    if (!plan || !plan.tripSections) return 0;
+    const sections = plan?.tripSections || plan?.trip_sections;
+    if (!sections) return 0;
+
     let count = 0;
-    plan.tripSections.forEach((section) => {
-      count += section.tripDetails.length;
+    sections.forEach((section) => {
+      // Kiểm tra cả tripDetails và trip_details
+      const details = section.tripDetails || section.trip_details || [];
+      count += details.length;
     });
     return count;
   };
@@ -95,25 +100,45 @@ const Plan = () => {
   );
 
   const callRegeneratePartAPI = useCallback(
-    async (currentPlan, rejectedLocation) => {
+    async (currentPlan, rejectedItems) => {
       setIsSearching(true);
+
+      // LOG: Kiểm tra xem Output gửi đúng chưa
+      console.log("Danh sách nhận từ Output (Đã chuẩn hóa):", rejectedItems);
+
+      // Vì Output đã map đúng tên key (id, googlePlaceId) nên ở đây lấy dùng luôn
+      // Chỉ cần filter bỏ các item null/undefined cho an toàn
+      const payloadDetail = rejectedItems.filter(
+        (item) => item && item.id && item.googlePlaceId
+      );
+
+      // Kiểm tra nếu danh sách rỗng thì chặn lại ngay
+      if (payloadDetail.length === 0) {
+        console.error("Lỗi: Danh sách rejected không hợp lệ hoặc rỗng");
+        alert("Không tìm thấy thông tin địa điểm để tái tạo.");
+        setIsSearching(false);
+        return;
+      }
+
       const payload = {
-        current_trip_plan: currentPlan,
-        rejected_detail: rejectedLocation,
+        current_trip_plan: scheduleData, // Lấy từ file json import
+        rejected_detail: payloadDetail,
       };
+
+      console.log("Payload gửi đi:", payload);
+
       try {
         const currentToken = localStorage.getItem("token");
         const headers = { "Content-Type": "application/json" };
         if (currentToken) headers["Authorization"] = `Bearer ${currentToken}`;
 
-        console.log("Calling API /regenerate-part with payload:", payload);
         const response = await axios.post(
           "http://localhost:8080/api/v1/make-plan/regenerate-part",
           payload,
           { headers }
         );
 
-        console.log("Regenerate Part Response:", response.data);
+        console.log("Regenerate Success:", response.data);
         const newTripData =
           response.data.newTrip || response.data.currentTrip || response.data;
 
@@ -145,28 +170,38 @@ const Plan = () => {
       setTryCount((prev) => prev - 1);
 
       const rejectedCount = rejectedItems.length;
-      const remainingCount = outputStats.total;
-      const realInitialTotal = remainingCount + rejectedCount;
-      const threshold = realInitialTotal / 2;
-      const difference = rejectedCount - threshold;
-      // Use the now defined setter
-      setTotalDiff(difference);
+
+      // FIX: Lấy tổng số item chuẩn. Nếu initialTotalItems = 0 thì tính lại từ planData hiện tại
+      let total = initialTotalItems;
+      if (total === 0 && planData) {
+        total = countTotalItems(planData);
+      }
+
+      // Nếu vẫn bằng 0 (trường hợp lỗi) thì fallback về cách cũ
+      if (total === 0) {
+        total = outputStats.total + rejectedCount;
+      }
+
+      const threshold = total / 2;
+
+      // Logic so sánh: Rejected phải LỚN HƠN 50% thì mới make plan
+      // Ví dụ: 11/22 = 50% -> Không lớn hơn -> Regenerate Part
+      // Ví dụ: 12/22 > 50% -> Lớn hơn -> Make Plan
+      const isOver50Percent = rejectedCount > threshold;
 
       console.log(
-        `Retry Logic: InitialTotal=${initialTotalItems}, Rejected=${rejectedCount}, Diff=${difference}`
+        `Retry Logic: Total=${total}, Rejected=${rejectedCount}, Threshold=${threshold}, Over50%=${isOver50Percent}`
       );
 
-      if (difference > 0) {
-        console.log("Difference > 0 (Over 50%) -> Calling /make API");
+      if (isOver50Percent) {
+        console.log("Rejected > 50% -> Calling /make API");
         if (lastRequestData) {
           callMakePlanApi(lastRequestData);
         } else {
-          console.error("Missing lastRequestData for full regeneration");
+          console.error("Missing lastRequestData");
         }
       } else {
-        console.log(
-          "Difference <= 0 (Under 50%) -> Calling /regenerate-part API"
-        );
+        console.log("Rejected <= 50% -> Calling /regenerate-part API");
         callRegeneratePartAPI(planData, rejectedItems);
       }
     },
@@ -174,7 +209,8 @@ const Plan = () => {
       tryCount,
       planData,
       lastRequestData,
-      initialTotalItems,
+      initialTotalItems, // Đảm bảo dependency này có mặt
+      outputStats,
       callMakePlanApi,
       callRegeneratePartAPI,
     ]
@@ -190,8 +226,6 @@ const Plan = () => {
   return (
     <div>
       {/* Now totalDiff is defined and can be displayed */}
-      <span>Total difference: {totalDiff}</span>
-
       <div className="homepage-background">
         <Navbar />
         <Input

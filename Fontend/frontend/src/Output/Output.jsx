@@ -14,7 +14,8 @@ const processScheduleData = (data, translate) => {
   if (!data || !data.tripSections) return [];
   return data.tripSections.map((section) => {
     const activities = section.tripDetails.map((item) => ({
-      diadiem: item.location?.location_name || translate("output_unknown_location"),
+      diadiem:
+        item.location?.location_name || translate("output_unknown_location"),
       thoigian: `${formatTime(item.startTime)} - ${formatTime(item.endTime)}`,
       mota: item.description || translate("output_no_description"),
       tripDetailID: item.tempId || item.id,
@@ -31,7 +32,12 @@ const processScheduleData = (data, translate) => {
 };
 
 // FIXED: Added 'onStatsChange' to the list of props here 👇
-const Output = ({ tryCount, onTryAgainClick, onAcceptClick, onStatsChange }) => {
+const Output = ({
+  tryCount,
+  onTryAgainClick,
+  onAcceptClick,
+  onStatsChange,
+}) => {
   const { translate } = useLanguage();
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const [schedule, setSchedule] = useState([]);
@@ -66,8 +72,11 @@ const Output = ({ tryCount, onTryAgainClick, onAcceptClick, onStatsChange }) => 
     }
   }, [translate]);
 
-  const currentDaySchedule = schedule.length > 0 ? schedule[currentDayIndex] : null;
-  const currentActivities = currentDaySchedule ? currentDaySchedule.activities : [];
+  const currentDaySchedule =
+    schedule.length > 0 ? schedule[currentDayIndex] : null;
+  const currentActivities = currentDaySchedule
+    ? currentDaySchedule.activities
+    : [];
 
   const handleDelete = (actIndex) => {
     const activityToDelete = currentActivities[actIndex];
@@ -89,12 +98,23 @@ const Output = ({ tryCount, onTryAgainClick, onAcceptClick, onStatsChange }) => 
 
   const handleSave = () => {
     setIsSaving(true);
-    console.log("Đang lưu dữ liệu gửi về Backend");
+    console.log("Đang chuẩn bị dữ liệu gửi về...");
+
     setTimeout(() => {
-      // console.log("Dữ liệu cần xóa:", rejectedLocation);
+      // --- SỬA ĐOẠN NÀY ---
+      // Map lại tên biến cho đúng chuẩn Backend trước khi bắn sang Plan.jsx
+      const cleanList = rejectedLocation.map((item) => ({
+        id: item.locationId, // Đổi locationId -> id
+        googlePlaceId: item.ggPlaceId, // Đổi ggPlaceId -> googlePlaceId
+      }));
+
+      console.log("Dữ liệu đã chuẩn hóa:", cleanList);
+
       if (onTryAgainClick) {
-        onTryAgainClick(rejectedLocation);
+        onTryAgainClick(cleanList); // Gửi list đã sạch
       }
+      // --------------------
+
       setIsSaving(false);
       alert("Đã gửi yêu cầu cập nhật lịch trình!");
     }, 2000);
@@ -115,20 +135,29 @@ const Output = ({ tryCount, onTryAgainClick, onAcceptClick, onStatsChange }) => 
   };
 
   const canGoPrev = currentDayIndex > 0;
-  const canGoNext = schedule.length > 0 && currentDayIndex < schedule.length - 1;
+  const canGoNext =
+    schedule.length > 0 && currentDayIndex < schedule.length - 1;
 
   return (
     <div className="output-container">
       <h3>{translate("output_suggested_itinerary")}</h3>
 
       <div className="day-navigation">
-        <button onClick={handlePrevDay} disabled={!canGoPrev} className="nav-button">
+        <button
+          onClick={handlePrevDay}
+          disabled={!canGoPrev}
+          className="nav-button"
+        >
           &larr; {translate("output_previous_day")}
         </button>
         {currentDaySchedule && (
           <h4 className="current-day-title">{currentDaySchedule.dayTitle}</h4>
         )}
-        <button onClick={handleNextDay} disabled={!canGoNext} className="nav-button">
+        <button
+          onClick={handleNextDay}
+          disabled={!canGoNext}
+          className="nav-button"
+        >
           {translate("output_next_day")} &rarr;
         </button>
       </div>
@@ -155,7 +184,10 @@ const Output = ({ tryCount, onTryAgainClick, onAcceptClick, onStatsChange }) => 
             currentActivities.map((item, index) => {
               const isDeleting = index === deletingIndex;
               return (
-                <tr key={`${currentDayIndex}-${index}`} className={isDeleting ? "deleting" : ""}>
+                <tr
+                  key={`${currentDayIndex}-${index}`}
+                  className={isDeleting ? "deleting" : ""}
+                >
                   <td className="location-cell">
                     <strong>{item.diadiem}</strong>
                   </td>
@@ -167,8 +199,7 @@ const Output = ({ tryCount, onTryAgainClick, onAcceptClick, onStatsChange }) => 
                       title="Remove item"
                       onClick={() => handleDelete(index)}
                       disabled={isDeleting}
-                    >
-                    </button>
+                    ></button>
                   </td>
                 </tr>
               );
@@ -205,8 +236,9 @@ const Output = ({ tryCount, onTryAgainClick, onAcceptClick, onStatsChange }) => 
             {rejectedLocation.map((item, idx) => (
               <li key={idx} className="deleted-item">
                 <span>
-                  Location ID: <span className="item-id">{item.locationId}</span>| 
-                  Google Place ID: <span className="item-id">{item.ggPlaceId}</span>
+                  Location ID:{" "}
+                  <span className="item-id">{item.locationId}</span>| Google
+                  Place ID: <span className="item-id">{item.ggPlaceId}</span>
                 </span>
               </li>
             ))}
