@@ -1,5 +1,5 @@
 @echo off
-set VOLUME_NAME=loko-project_db
+set VOLUME_NAME=loko-project_db_data
 set BACKUP_FILE=db_data_backup.tar.gz
 
 echo Backup volume "%VOLUME_NAME%"...
