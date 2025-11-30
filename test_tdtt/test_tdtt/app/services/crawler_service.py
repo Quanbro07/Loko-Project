@@ -31,6 +31,33 @@ def process_location_sync(city_name: str, category_name: str, province_id: int):
         for p in places:
             if p['gg_place_id'] not in seen_ids:
                 p['province_id'] = province_id
+                photos_link = p.get('photos_link') 
+                
+                if photos_link:
+                    print(f"   📸 Getting images for: {p.get('location_name')}...")
+                    # Gọi hàm mới trong query_module để lấy list ảnh
+                    detail_images = query_module.get_detail_images(photos_link)
+                    
+                    # Gán vào trường rawImgs (theo schema PlaceItem)
+                    if detail_images:
+                         p['rawImgs'] = detail_images
+                    else:
+                        # Fallback: Nếu không lấy được ảnh chi tiết, dùng thumbnail cũ làm 1 ảnh duy nhất
+                        p['rawImgs'] = [{
+                            "img_url": p.get('thumbnail'),
+                            "description": "Thumbnail"
+                        }] if p.get('thumbnail') else []
+                else:
+                     # Fallback cũ
+                     p['rawImgs'] = [{
+                            "img_url": p.get('thumbnail'),
+                            "description": "Thumbnail"
+                        }] if p.get('thumbnail') else []
+                
+                # Xóa các trường thừa không có trong Schema PlaceItem để tránh lỗi (optional)
+                p.pop('photos_link', None)
+                p.pop('thumbnail', None) # Đã chuyển vào rawImgs rồi
+                # -------------------------------------
                 seen_ids.add(p['gg_place_id'])
                 all_places.append(p)
 
