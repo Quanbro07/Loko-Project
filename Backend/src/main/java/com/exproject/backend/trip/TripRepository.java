@@ -26,6 +26,4 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
             "LEFT JOIN FETCH t.tripSections ts " +
             "WHERE t.id = :tripId")
     List<Trip> findTripWithSections(@Param("tripId") Long tripId);
-
-
 }

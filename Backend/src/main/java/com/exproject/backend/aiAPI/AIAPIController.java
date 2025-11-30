@@ -19,8 +19,11 @@ public class AIAPIController {
 
     @GetMapping("/test")
     public String test() {
-        return pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getGetLocationUrl()
-                + pythonAPIConfig.getMakePlanUrl();
+        return pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl() + System.lineSeparator() +
+                pythonAPIConfig.getGetLocationUrl() + System.lineSeparator() +
+                pythonAPIConfig.getMakePlanUrl() + System.lineSeparator() +
+                pythonAPIConfig.getRegeneratePlanUrl() + System.lineSeparator() +
+                pythonAPIConfig.getForecastUrl();
     }
 
     @PostMapping("/mock")
@@ -30,8 +33,8 @@ public class AIAPIController {
         List<LocationDTO> response = aiAPIService.convertRawToLocationDTO(rawLocations);
 
         return ResponseEntity.ok(response);
-
     }
+
 
 
 }

@@ -13,6 +13,10 @@ import com.exproject.backend.location_img.LocationImgService;
 import com.exproject.backend.makePlan.dto.RegeneratePlanFullRequest;
 import com.exproject.backend.province.ProvinceRepository;
 import com.exproject.backend.province.info.Province;
+import com.exproject.backend.route.dto.RouteRequest;
+import com.exproject.backend.route.dto.RouteResponse;
+import com.exproject.backend.weather.dto.WeatherRequest;
+import com.exproject.backend.weather.dto.WeatherResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -59,6 +63,7 @@ public class AIAPIService {
                 new HttpEntity<>(categorySyncStatDTOList),
                 new ParameterizedTypeReference<List<RawLocationDTO>>() {}
         );
+
         List<RawLocationDTO> rawLocationDTOList = rawLocationListResponse.getBody();
 
         // Rỗng
@@ -138,7 +143,7 @@ public class AIAPIService {
         return response.getBody();
     }
 
-    public TripRequest regenerateTripPlan(RegeneratePlanFullRequest regenerateRequest) {
+    /*public TripRequest regenerateTripPlan(RegeneratePlanFullRequest regenerateRequest) {
         String regenerateURL = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl()
                 + pythonAPIConfig.getMakePlanUrl();
 
@@ -152,6 +157,39 @@ public class AIAPIService {
         );
 
         return response.getBody();
+    }*/
+
+    public RouteResponse generateRoutePlan(RouteRequest routeRequest) {
+        String routeURL = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl()
+                + pythonAPIConfig.getRouteUrl();
+
+        System.out.println(routeURL);
+
+        ResponseEntity<RouteResponse> response = restTemplate.exchange(
+                routeURL,
+                HttpMethod.POST,
+                new HttpEntity<>(routeRequest),
+                RouteResponse.class
+        );
+
+        return response.getBody();
+    }
+
+    // Forcast Weather
+    public WeatherResponse forecastWeather(WeatherRequest request) {
+        String forecastURL = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl() +
+                pythonAPIConfig.getForecastUrl();
+
+        System.out.println(forecastURL);
+
+        ResponseEntity<WeatherResponse> response = restTemplate.exchange(
+                forecastURL,
+                HttpMethod.POST,
+                new HttpEntity<>(request),
+                WeatherResponse.class
+        );
+
+        return response.getBody();  
     }
 
     // Helper Function
@@ -221,6 +259,7 @@ public class AIAPIService {
 
         return locationDTOList;
     }
+
 
 
 }

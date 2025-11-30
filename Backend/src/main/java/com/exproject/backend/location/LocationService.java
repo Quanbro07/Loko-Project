@@ -2,6 +2,7 @@ package com.exproject.backend.location;
 
 import com.exproject.backend.aiAPI.dto.RawLocationDTO;
 import com.exproject.backend.location.dto.LocationDTO;
+import com.exproject.backend.location.dto.LocationIdDTO;
 import com.exproject.backend.location_category.dto.LocationCategoryDTO;
 import com.exproject.backend.location_category.info.LocationCategory;
 import com.exproject.backend.utils.GeoUtils;
@@ -135,6 +136,13 @@ public class LocationService {
         return best != null ? best.getLocation() : null;
     }
 
+    public List<LocationIdDTO> getVisitedLocations(Long userId) {
+        List<Location> visitedLocations = locationRepository.findAllVisitedLocations(userId);
+
+        return visitedLocations.stream()
+                .map(this::convertToLocationIdDTO)
+                .toList();
+    }
 
     // Hàm hỗ trợ Scheduler xóa cache sau khi update DB
     @CacheEvict(value = "top_locations", key = "#provinceId + '_' + #categoryId")
@@ -142,6 +150,11 @@ public class LocationService {
         System.out.println("Đã xóa cache Redis cho: " + provinceId + " - " + categoryId);
     }
 
-
+    public LocationIdDTO convertToLocationIdDTO(Location location) {
+        return LocationIdDTO.builder()
+                .locationId(location.getId())
+                .ggPlaceId(location.getGgPlaceId())
+                .build();
+    }
 
 }
