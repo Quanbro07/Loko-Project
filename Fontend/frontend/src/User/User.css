@@ -103,6 +103,7 @@
     margin-bottom: 5px;
 }
 
+
 .value {
     font-size: 20px;
     font-weight: bold;
@@ -277,4 +278,30 @@ class này vào file User.css của bạn */
     /* Bỏ viền focus mặc định */
     border-bottom: 2px solid #007bff;
     /* Đổi màu khi focus */
+}
+
+.empty-data-box {
+    display: inline-block;
+    width: 100%;             /* Chiếm hết chiều ngang cho đẹp */
+    min-width: 150px;        /* Độ rộng tối thiểu */
+    height: 26px;            /* Chiều cao bằng với dòng chữ bình thường */
+    background-color: #e9ecef; /* Màu xám nhạt */
+    border: 2px dashed #adb5bd; /* Viền nét đứt màu xám đậm hơn */
+    border-radius: 4px;
+    margin-top: 2px;
+}
+
+/* Đảm bảo ô input khi edit cũng đẹp tương tự */
+.edit-input {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333;
+    text-transform: uppercase;
+    border: none;
+    border-bottom: 2px solid #003c72;
+    background-color: transparent;
+    width: 100%;
+    padding: 2px 0;
+    outline: none;
 }
