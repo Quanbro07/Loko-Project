@@ -120,6 +120,9 @@ public class AIAPIService {
             locationEntities.add(location);
         }
 
+
+        locationRepository.saveAll(locationEntities);
+
         return locationEntities;
     }
 
