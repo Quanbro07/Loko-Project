@@ -40,11 +40,11 @@ TYPE_TO_TAG = {
     "wellness": "spa",
     "onsen": "spa",
     
-    "yacht": "yatch/cruise",
-    "cruise": "yatch/cruise",
-    "du thuyền": "yatch/cruise",
-    "bến tàu": "yatch/cruise",
-    "marina": "yatch/cruise",
+    "yacht": "yacht/cruise",
+    "cruise": "yacht/cruise",
+    "du thuyền": "yacht/cruise",
+    "bến tàu": "yacht/cruise",
+    "marina": "yacht/cruise",
     
     # --- ROMANTIC DINING & VIEW ---
     "restaurant": "restaurant",
@@ -84,7 +84,7 @@ NAME_HINTS = {
     
     # --- LUXURY / RELAX ---
     "spa": "spa", "massage": "spa", "tắm bùn": "spa", "onsen": "spa",
-    "du thuyền": "yatch/cruise", "cruise": "yatch/cruise", "emperor": "yatch/cruise",
+    "du thuyền": "yacht/cruise", "cruise": "yacht/cruise", "emperor": "yacht/cruise",
     
     # --- VIEW & CHILL ---
     "sunset": "viewpoint", "hoàng hôn": "viewpoint", # Ngắm hoàng hôn
@@ -155,7 +155,7 @@ def clean_categories(name, types, tags):
         if "viewpoint" not in tags: tags.append("viewpoint")
 
     # Rule D: Du thuyền (Luxury Dinner)
-    if "yatch/cruise" in tags:
+    if "yacht/cruise" in tags:
         # Giữ lại restaurant nếu là ăn tối trên tàu
         pass
 
@@ -165,7 +165,7 @@ def clean_categories(name, types, tags):
         "hotel",                # ID 7
         "homestay",             # ID 27
         "spa",                  # ID 28
-        "yatch/cruise",         # ID 24
+        "yacht/cruise",         # ID 24
         "beach",                # ID 22
         "island",               # ID 23
         "flower field/garden",  # ID 30 (Check-in lãng mạn)
@@ -195,7 +195,7 @@ def clean_categories(name, types, tags):
 # ----------------------------------------------------------
 PROMPT_HONEYMOON = """
 Classify these places for a Honeymoon/Romantic trip.
-Allowed categories: hotel, resort, homestay, beach, island, yatch/cruise, spa, restaurant, cafe, bar, flower field/garden, viewpoint.
+Allowed categories: hotel, resort, homestay, beach, island, yacht/cruise, spa, restaurant, cafe, bar, flower field/garden, viewpoint.
 
 RULES:
 - Atmosphere: Focus on Romantic, Luxury, Chill, Scenic.

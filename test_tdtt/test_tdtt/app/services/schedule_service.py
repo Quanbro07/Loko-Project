@@ -8,6 +8,14 @@ from app.tag_rules.amusement_profile import AmusementProfile
 from app.solvers.amusement_solver import AmusementSolver
 from app.tag_rules.food_profile import FoodProfile
 from app.solvers.food_solver import FoodSolver
+from app.tag_rules.adventure_profile  import AdventureProfile
+from app.solvers.adventure_solver import AdventureSolver
+from app.tag_rules.history_profile import HistoryProfile
+from app.solvers.history_solver import HistorySolver
+from app.tag_rules.honeymoon_profile import HoneymoonProfile
+from app.solvers.honeymoon_solver import HoneymoonSolver
+from app.tag_rules.nightlife_profile import NightlifeProfile
+from app.solvers.nightlife_solver import NightlifeSolver
 from app.schedule_utils import time_str_to_minutes, parse_operating_hours
 
 class ScheduleService:

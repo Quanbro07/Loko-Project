@@ -43,7 +43,7 @@ TAG_TO_ID = {
     # ID 13: CULTURE_PERFORMANCE
     "cultural performance": 13,
 
-    # ID 14: MOUTAIN
+    # ID 14: MOUNTAIN
     "mountain": 14,
 
     # ID 15: CAVE
@@ -73,8 +73,8 @@ TAG_TO_ID = {
     #ID 23: ISLAND
     "island": 23,
 
-    #ID 24: YATCH_CRUISE
-    "yatch/cruise": 24,
+    #ID 24: YACHT_CRUISE
+    "yacht/cruise": 24,
 
     #ID 25: VIEWPOINT
     "viewpoint": 25,

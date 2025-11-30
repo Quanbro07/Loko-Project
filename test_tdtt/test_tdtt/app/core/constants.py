@@ -19,7 +19,7 @@ CATEGORY_KEYWORDS = {
         "restaurant"
     ],
     "Adventure": [
-        "moutain", 
+        "mountain", 
         "cave",
         "waterfall",
         "camping",
@@ -42,7 +42,7 @@ CATEGORY_KEYWORDS = {
         "hotel", 
         "beach",
         "island",
-        "yatch",
+        "yacht",
         "cruise",
         "viewpoint",
         "cafe",
