@@ -1,0 +1,17 @@
+{
+    "Day 1": {
+        "statusCode": 400,
+        "error": "Bad Request",
+        "message": "No path could be found for input"
+    },
+    "Day 2": {
+        "statusCode": 400,
+        "error": "Bad Request",
+        "message": "No path could be found for input"
+    },
+    "Day 3": {
+        "statusCode": 400,
+        "error": "Bad Request",
+        "message": "No path could be found for input"
+    }
+}

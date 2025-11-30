@@ -88,10 +88,6 @@ public class UserService {
             throw new CannotDisableAdminException("You can't upgrade user admin");
         }
 
-        else if(existUser.getRole() == Role.USER) {
-            throw new RuntimeException("User already has USER role");
-        }
-
         existUser.setRole(Role.USER);
 
         userRepository.save(existUser);
