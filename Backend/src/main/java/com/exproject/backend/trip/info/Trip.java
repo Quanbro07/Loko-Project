@@ -69,6 +69,8 @@ public class Trip {
     @Column(name = "current_trip_detail_id")
     private Long currentTripDetailId;
 
+
+
     // Constructor
     public Trip(TripRequest tripRequest, User user) {
         this.user = user;

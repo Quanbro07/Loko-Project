@@ -312,9 +312,12 @@ public class MakePlanService {
         // Lấy weather Response
         WeatherResponse weatherResponse = weatherService.getWeather(weatherRequest);
 
+        // tạo PDF file
         byte[] pdfBytes = tripPdfService.generateTripPdf(tripRequest);
 
+        // Lưu PDF vào trip mối quan hệ 1:1
         String pdfPath = tripPdfService.savePdfFile(pdfBytes, tripResponse.getTripId());
+
         // Tạo Make plan Response
         MakePlanResponse makePlanResponse = new MakePlanResponse();
 

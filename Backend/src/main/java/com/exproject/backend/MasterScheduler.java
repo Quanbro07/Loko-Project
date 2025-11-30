@@ -6,6 +6,7 @@ import com.exproject.backend.categorySyncStat.dto.CategorySyncStatDTO;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location.LocationRepository;
 import com.exproject.backend.location.LocationService;
+import com.exproject.backend.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,16 +26,30 @@ public class MasterScheduler {
 
     private final LocationService locationService;
 
+    private final UserService userService;
+
     // *Còn đang test
     // @Scheduled(cron = "")
     public void runSchedule() {
         LocalDate today = LocalDate.now();
-        System.out.println("[MASTER JOB START] " + today);
 
-        runAllSchedules(today);
+        runGetLocationsSchedule(today);
     }
 
-    public void runAllSchedules(LocalDate date) {
+    // Giây | Phút | Giờ | Ngày trong tháng | Tháng | Thứ trong tuần
+    @Scheduled(cron = "0 0 1 * * ?")
+    public void runDailySchedule() {
+        userService.downgradeUserSchedule();
+    }
+
+    @Scheduled(cron = "0 0 0 1 */3 ?")
+    public void runQuarterlySchedule() {
+        runGetLocationsSchedule(LocalDate.now());
+    }
+
+    public void runGetLocationsSchedule(LocalDate date) {
+        System.out.println("[MASTER JOB START] " + date);
+
         // Lấy các tinh + category chuẩn bị cho api call lấy location
         List<CategorySyncStatDTO> tasksToSync = categorySyncStatService.getCategorySyncStatForAPICall(5);
 
@@ -73,4 +88,6 @@ public class MasterScheduler {
 
         System.out.println("[MASTER JOB END] " + date);
     }
+
+
 }
