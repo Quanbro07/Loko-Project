@@ -1,5 +1,6 @@
 package com.exproject.backend.makePlan;
 
+import com.exproject.backend.pdf.TripPdfService;
 import com.exproject.backend.aiAPI.AIAPIService;
 import com.exproject.backend.hobby.info.EHobby;
 import com.exproject.backend.hobby.info.HobbyCategoryMapping;
@@ -47,6 +48,7 @@ public class MakePlanService {
 
     private final RouteService routeService;
 
+    private final TripPdfService tripPdfService;
     // ** Make Plan
     @Transactional(readOnly = true)
     public TripRequest makePlan(MakePlanRequest request, Long userId) {
@@ -310,6 +312,9 @@ public class MakePlanService {
         // Lấy weather Response
         WeatherResponse weatherResponse = weatherService.getWeather(weatherRequest);
 
+        byte[] pdfBytes = tripPdfService.generateTripPdf(tripRequest);
+
+        String pdfPath = tripPdfService.savePdfFile(pdfBytes, tripResponse.getTripId());
         // Tạo Make plan Response
         MakePlanResponse makePlanResponse = new MakePlanResponse();
 
@@ -317,6 +322,7 @@ public class MakePlanService {
         makePlanResponse.setTripPlan(tripResponse);
         makePlanResponse.setRoute(routeResponse);
         makePlanResponse.setWeather(weatherResponse);
+        makePlanResponse.setPdfUrl(pdfPath);
 
         return makePlanResponse;
     }

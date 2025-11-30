@@ -22,38 +22,64 @@ public class HobbyCategoryMapping {
                 ELocationCategory.AMUSEMENT_WATER_PARK,
                 ELocationCategory.ZOO,
                 ELocationCategory.AQUARIUM,
-                ELocationCategory.MARKET
+                ELocationCategory.MOUNTAIN,
+                ELocationCategory.CAVE,
+                ELocationCategory.CAMPING,
+                ELocationCategory.WATERFALL,
+                ELocationCategory.DIVING,
+                ELocationCategory.VIEWPOINT
         ));
 
         MAPPING.put(EHobby.RELAXATION, List.of(
                 ELocationCategory.CAFE,
                 ELocationCategory.HOTEL,
-                ELocationCategory.SPECIALITY
+                ELocationCategory.RESORT,
+                ELocationCategory.SPA,
+                ELocationCategory.HOMESTAY,
+                ELocationCategory.RIVER,
+                ELocationCategory.FLOWER_FIELD_GARDEN
         ));
 
         MAPPING.put(EHobby.NIGHTLIFE, List.of(
                 ELocationCategory.NIGHT_MARKET,
                 ELocationCategory.RESTAURANT,
-                ELocationCategory.CAFE
+                ELocationCategory.CAFE,
+                ELocationCategory.BAR,
+                ELocationCategory.WALKING_STREET
         ));
 
         MAPPING.put(EHobby.HISTORYCULTURE, List.of(
                 ELocationCategory.CULTURE_PERFORMANCE,
                 ELocationCategory.FESTIVAL,
-                ELocationCategory.MARKET
+                ELocationCategory.MARKET,
+                ELocationCategory.MUSEUM,
+                ELocationCategory.CITADEL_PALACE,
+                ELocationCategory.CHURCH_TEMPLE_PAGODA,
+                ELocationCategory.OLD_BATTLEFIELD
         ));
 
         MAPPING.put(EHobby.HONEYMOON, List.of(
                 ELocationCategory.HOTEL,
+                ELocationCategory.RESORT,
                 ELocationCategory.CAFE,
                 ELocationCategory.RESTAURANT,
-                ELocationCategory.SPECIALITY
+                ELocationCategory.SPECIALITY,
+                ELocationCategory.BEACH,
+                ELocationCategory.ISLAND,
+                ELocationCategory.YATCH_CRUISE,
+                ELocationCategory.VIEWPOINT
         ));
 
         MAPPING.put(EHobby.BEACHISLANDTOUR, List.of(
+                ELocationCategory.BEACH,
+                ELocationCategory.ISLAND,
+                ELocationCategory.YATCH_CRUISE,
                 ELocationCategory.HOTEL,
+                ELocationCategory.RESORT,
                 ELocationCategory.AMUSEMENT_WATER_PARK,
-                ELocationCategory.MARKET
+                ELocationCategory.MARKET,
+                ELocationCategory.DIVING,
+                ELocationCategory.VIEWPOINT
         ));
 
         MAPPING.put(EHobby.PHOTOGRAPHY, List.of(
@@ -61,14 +87,21 @@ public class HobbyCategoryMapping {
                 ELocationCategory.MARKET,
                 ELocationCategory.SPECIALITY,
                 ELocationCategory.CULTURE_PERFORMANCE,
-                ELocationCategory.FESTIVAL
+                ELocationCategory.FESTIVAL,
+                ELocationCategory.VIEWPOINT,
+                ELocationCategory.FLOWER_FIELD_GARDEN,
+                ELocationCategory.RIVER,
+                ELocationCategory.MOUNTAIN,
+                ELocationCategory.WATERFALL
         ));
 
         MAPPING.put(EHobby.ENTERTAINMENT, List.of(
                 ELocationCategory.AMUSEMENT_WATER_PARK,
                 ELocationCategory.FESTIVAL,
                 ELocationCategory.CULTURE_PERFORMANCE,
-                ELocationCategory.RESTAURANT
+                ELocationCategory.RESTAURANT,
+                ELocationCategory.BAR,
+                ELocationCategory.WALKING_STREET
         ));
     }
 
