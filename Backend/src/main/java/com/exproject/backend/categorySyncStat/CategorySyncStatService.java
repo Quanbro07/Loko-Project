@@ -118,7 +118,7 @@ public class CategorySyncStatService {
     public void getLocation(CategorySyncStatDTO request) {
 
         // Gọi API
-        List<Location> locationsSync = aiAPIService.getLocations(List.of(request));
+        List<Location> locationsSync = aiAPIService.getLocations(request);
 
 
     }

@@ -53,6 +53,6 @@ public class RawLocationDTO {
     @JsonProperty("category_ids")
     private List<Long> categoryIds;
 
-    @JsonProperty("raw_imgs")
+    @JsonProperty("rawImgs")
     private List<RawLocationImgDTO> rawImgs;
 }

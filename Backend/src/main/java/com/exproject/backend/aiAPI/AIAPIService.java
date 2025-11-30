@@ -52,7 +52,7 @@ public class AIAPIService {
     private final LocationMapper locationMapper;
 
     // Gọi Api lấy location
-    public List<Location> getLocations(List<CategorySyncStatDTO> categorySyncStatDTOList) {
+    public List<Location> getLocations(CategorySyncStatDTO categorySyncStatDTOList) {
         // URL
         String getLocationUrl = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl() +
                 pythonAPIConfig.getGetLocationUrl();
@@ -119,6 +119,8 @@ public class AIAPIService {
 
             locationEntities.add(location);
         }
+
+        locationRepository.saveAll(locationEntities);
 
         return locationEntities;
     }

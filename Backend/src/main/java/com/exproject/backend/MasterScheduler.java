@@ -13,6 +13,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -72,8 +73,12 @@ public class MasterScheduler {
 
         System.out.println("[MASTER JOB] Sẽ đồng bộ " + tasksToSync.size() + " task.");
 
+        List<Location> locations = new ArrayList<>();
+
         // Gọi API lấy locations
-        List<Location> locations = aiAPIService.getLocations(tasksToSync);
+        for(CategorySyncStatDTO task : tasksToSync) {
+            locations.addAll(aiAPIService.getLocations(task));
+        }
 
         // Insert địa điểm mới
         // Địa điểm cũ thì bõ qua

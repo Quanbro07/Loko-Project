@@ -36,7 +36,7 @@ public class LocationInitializer implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-        boolean isTest = true;
+        boolean isTest = false;
 
         if(locationRepository.count() > 0) {
             return;

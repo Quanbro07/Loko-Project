@@ -28,10 +28,15 @@ public class SyncStatInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        boolean isTest = false;
+
         // 1. Nếu đã có dữ liệu rồi thì không chạy nữa
         if (categorySyncStatRepository.count() > 0) {
             return;
         }
+        if(!isTest) {
+            return;
+        }   
 
         System.out.println("[Initializer] Bắt đầu mồi dữ liệu cho CategorySyncStat...");
 

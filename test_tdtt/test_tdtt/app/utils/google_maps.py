@@ -131,6 +131,7 @@ def fetch_top_places(city_name, ll_string, type_of_place):
                 "province_id": 0,
                 "rawImgs": raw_imgs,
                 "description": item.get("description"),
+                "photos_link": item.get("photos_link"),
                 "categories": []
             }
             results.append(new_structure)
@@ -140,3 +141,44 @@ def fetch_top_places(city_name, ll_string, type_of_place):
         return []
 
     return results
+
+def get_detail_images(photos_link_url):
+    """
+    Truy vấn đường dẫn photos_link từ SerpApi để lấy danh sách ảnh chất lượng cao.
+    Lấy tối đa 5 ảnh từ trường 'image'.
+    """
+    if not photos_link_url:
+        return []
+
+    # photos_link trong JSON trả về thường có dạng: https://serpapi.com/search.json?data_id=...
+    # Cần nối thêm api_key vào
+    final_url = f"{photos_link_url}&api_key={SERP_API_KEY}"
+
+    try:
+        response = requests.get(final_url)
+        data = response.json()
+        
+        # Kiểm tra nếu có lỗi
+        if "error" in data:
+            print(f"Error fetching photos: {data['error']}")
+            return []
+
+        photos_list = data.get("photos", [])
+        result_imgs = []
+
+        # Lấy tối đa 5 ảnh
+        for item in photos_list[:5]:
+            # User yêu cầu lấy từ trường "image", nếu không có thì fallback sang "thumbnail"
+            img_src = item.get("image") or item.get("thumbnail")
+            
+            if img_src:
+                result_imgs.append({
+                    "img_url": img_src,
+                    "description": "Google Maps Photo" # Hoặc lấy item.get("caption") nếu muốn
+                })
+        
+        return result_imgs
+
+    except Exception as e:
+        print(f"❌ Exception fetching detailed photos: {e}")
+        return []
