@@ -63,6 +63,7 @@ public class AIAPIService {
                 new HttpEntity<>(categorySyncStatDTOList),
                 new ParameterizedTypeReference<List<RawLocationDTO>>() {}
         );
+
         List<RawLocationDTO> rawLocationDTOList = rawLocationListResponse.getBody();
 
         // Rỗng
@@ -142,7 +143,7 @@ public class AIAPIService {
         return response.getBody();
     }
 
-    public TripRequest regenerateTripPlan(RegeneratePlanFullRequest regenerateRequest) {
+    /*public TripRequest regenerateTripPlan(RegeneratePlanFullRequest regenerateRequest) {
         String regenerateURL = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl()
                 + pythonAPIConfig.getMakePlanUrl();
 
@@ -156,7 +157,7 @@ public class AIAPIService {
         );
 
         return response.getBody();
-    }
+    }*/
 
     public RouteResponse generateRoutePlan(RouteRequest routeRequest) {
         String routeURL = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl()

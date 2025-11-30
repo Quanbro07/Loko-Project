@@ -66,6 +66,9 @@ public class User implements UserDetails {
     @Column(name = "reset_password_expiration")
     private LocalDateTime resetPasswordExpiryAt;
 
+    @Column(name = "vip_end_date")
+    private LocalDate vipEndDate;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
