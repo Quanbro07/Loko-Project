@@ -40,6 +40,7 @@ public class TripResponse {
 
     private List<TripSectionResponse> tripSections;
 
+    private String pdfFileName;
 
-
+    private String pdfUrl;
 }

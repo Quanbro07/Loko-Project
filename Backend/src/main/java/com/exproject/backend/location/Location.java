@@ -4,6 +4,7 @@ import com.exproject.backend.location_category.info.LocationCategory;
 import com.exproject.backend.location_img.LocationImg;
 import com.exproject.backend.province.info.Province;
 import com.exproject.backend.review_location.ReviewLocation;
+import com.exproject.backend.trip_detail.TripDetail;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -86,6 +87,10 @@ public class Location {
 
     @Column(name = "update_at")
     private LocalDateTime updateAt;
+
+    @OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
+    @JsonIgnore // Thêm cái này để tránh vòng lặp vô tận khi convert sang JSON
+    private List<TripDetail> tripDetails;
 
     public void addLocationImg(LocationImg locationImg) {
         this.locationImgs.add(locationImg);

@@ -91,4 +91,10 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
 
     @Query("SELECT l FROM Location l JOIN FETCH l.locationCategories WHERE l.province.id = :provinceId")
     List<Location> findAllByProvince(@Param("provinceId") Long provinceId);
+
+    @Query("SELECT DISTINCT td.location FROM TripDetail td " +
+            "JOIN td.tripSection ts " +
+            "JOIN ts.trip t " +
+            "WHERE t.user.id = :userId")
+    List<Location> findAllVisitedLocations(@Param("userId") Long userId);
 }

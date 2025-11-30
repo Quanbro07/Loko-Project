@@ -1,6 +1,8 @@
 package com.exproject.backend.trip;
 
+import com.exproject.backend.route.dto.RouteResponse;
 import com.exproject.backend.trip.dto.ProgressUpdateDTO;
+import com.exproject.backend.trip.dto.SaveTripPayload;
 import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip.dto.TripResponse;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +20,8 @@ public class TripController {
     private final TripService tripService;
 
     @PostMapping("/create")
-    public ResponseEntity<String> createTrip(@RequestBody TripRequest tripRequest) {
-        tripService.createFullTrip(tripRequest);
+    public ResponseEntity<String> createTrip(@RequestBody SaveTripPayload request) {
+        tripService.createFullTrip(request.getTripRequest(),request.getRouteResponse());
 
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Create Trip successful");
