@@ -1,5 +1,6 @@
 package com.exproject.backend.makePlan.dto;
 
+import com.exproject.backend.pdf.dto.TripPdfResponse;
 import com.exproject.backend.route.dto.RouteResponse;
 import com.exproject.backend.trip.dto.TripResponse;
 import com.exproject.backend.weather.dto.WeatherResponse;
@@ -22,5 +23,8 @@ public class MakePlanResponse {
 
     @JsonProperty("weather")
     private WeatherResponse weather;
+
+    @JsonProperty("pdf_url")
+    private String pdfUrl;
 
 }
