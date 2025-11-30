@@ -31,18 +31,27 @@ export const AuthProvider = ({ children }) => {
 
             if (response.ok) {
                 const data = await response.json();
+                
                 if (!data.accessToken) {
-                    return { success: false, error: 'Tài khoản chưa được kích hoạt. Vui lòng kiểm tra email.' };
+                    return { 
+                        success: false, 
+                        error: 'Tài khoản chưa được kích hoạt.',
+                        isNotVerified: true 
+                    };
                 }
+
                 setToken(data.accessToken);
                 const resolvedUser = data.user || { 
-                    id: data.id,
+                    id: data.userId,
                     username: data.username, 
-                    role: data.role, 
+                    role: data.role,
+                    dob: data.dob, 
                     age: data.age, 
                     gender: data.gender,
-                    fullName: data.fullName
-                };                
+                    fullName: data.fullName,
+                    avatarImg: data.avatarImg
+                };
+
                 setUser(resolvedUser);
                 setIsAuthenticated(true);
                 localStorage.setItem('token', data.accessToken);
@@ -51,9 +60,15 @@ export const AuthProvider = ({ children }) => {
             } else {
                 const error = await response.json();
                 let errorMessage = error.message || 'Đăng nhập thất bại';
-                if (errorMessage.includes('Bad credentials')) errorMessage = 'Email hoặc mật khẩu không đúng';
-                else if (errorMessage.includes('disabled')) errorMessage = 'Tài khoản chưa được kích hoạt.';
-                return { success: false, error: errorMessage };
+                let isNotVerified = false;
+
+                if (errorMessage.includes('Bad credentials') || errorMessage.includes('User not found')) {
+                    errorMessage = 'Email hoặc mật khẩu không đúng';
+                } else if (errorMessage.includes('not verified') || errorMessage.includes('disabled')) {
+                     errorMessage = 'Tài khoản chưa được kích hoạt.';
+                     isNotVerified = true; 
+                }
+                return { success: false, error: errorMessage, isNotVerified: isNotVerified };
             }
         } catch (error) {
             return { success: false, error: 'Lỗi kết nối server' };
@@ -70,6 +85,8 @@ export const AuthProvider = ({ children }) => {
             });
 
             if (response.ok) {
+                // Đọc response để tránh lỗi pending promise nếu có
+                await response.json().catch(() => {});
                 return { success: true }; 
             } else {
                 const error = await response.json();
@@ -120,7 +137,7 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // 5. CHECK VERIFICATION CODE (VÀ LẤY TEMP TOKEN)
+    // 5. CHECK VERIFICATION CODE
     const checkVerificationCode = async (email, code) => {
         try {
             const response = await fetch('http://localhost:8080/api/v1/auth/verify-password', {
@@ -131,8 +148,6 @@ export const AuthProvider = ({ children }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                // --- QUAN TRỌNG: Lấy jwtToken từ phản hồi ---
-                // Backend trả về: { ..., jwtToken: "...", ... }
                 return { success: true, token: data.jwtToken }; 
             } else {
                 const error = await response.json();
@@ -143,24 +158,20 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // 6. RESET PASSWORD (GỬI KÈM TOKEN)
+    // 6. RESET PASSWORD
     const resetPassword = async (data) => {
         try {
             const headers = { 'Content-Type': 'application/json' };
-            
-            // --- QUAN TRỌNG: Nếu có token tạm thời, gắn vào Header ---
-            if (data.token) {
-                headers['Authorization'] = `Bearer ${data.token}`;
-            }
+            if (data.token) headers['Authorization'] = `Bearer ${data.token}`;
 
             const response = await fetch('http://localhost:8080/api/v1/auth/change-password', {
                 method: 'POST',
-                headers: headers, // Sử dụng headers đã cấu hình
+                headers: headers,
                 body: JSON.stringify({
                     email: data.email,
                     verificationCode: data.verificationCode,
                     password: data.password,
-                    confirmPassword: data.confirmPassword
+                    confirmPassword: data.confirmPassword 
                 }),
             });
 
@@ -174,6 +185,26 @@ export const AuthProvider = ({ children }) => {
             return { success: false, error: 'Lỗi kết nối server' };
         }
     }
+
+    // 7. RESEND VERIFICATION CODE (MỚI)
+    const resendVerificationCode = async (email) => {
+        try {
+            // Endpoint: POST /api/v1/auth/resend?email=...
+            const response = await fetch(`http://localhost:8080/api/v1/auth/resend?email=${encodeURIComponent(email)}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            if (response.ok) {
+                return { success: true, message: 'Mã xác thực mới đã được gửi.' };
+            } else {
+                const error = await response.json();
+                return { success: false, error: error.message || 'Không thể gửi lại mã.' };
+            }
+        } catch (error) {
+            return { success: false, error: 'Lỗi kết nối server' };
+        }
+    };
 
     const logout = async () => {
         setToken(null);
@@ -194,12 +225,14 @@ export const AuthProvider = ({ children }) => {
             user,
             token,
             authMode,
+            setUser, 
             login,
             register,
             verifyAccount,
             forgotPassword,
             checkVerificationCode,
             resetPassword,
+            resendVerificationCode,
             logout,
             setAuthMode,
             switchAuthMode

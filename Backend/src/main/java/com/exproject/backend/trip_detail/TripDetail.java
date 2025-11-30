@@ -46,15 +46,26 @@ public class TripDetail {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "route_polyline")
+    private String routePolyline;
 
+    @Column(name = "distance")
+    private Double distance;
 
-    public TripDetail(TripDetailRequest tripDetailRequest, Location location) {
+    @Column(name = "time_second")
+    private Integer time_second;
 
-        this.location = location;
+    public TripDetail(TripDetailRequest tripDetailRequest) {
+
         this.sequenceOrder = tripDetailRequest.getSequenceOrder();
         this.startTime = tripDetailRequest.getStartTime();
         this.endTime = tripDetailRequest.getEndTime();
         this.transportNote = tripDetailRequest.getTransportNote();
         this.description = tripDetailRequest.getDescription();
+    }
+
+    public void addLocation(Location location) {
+        this.setLocation(location);
+        location.getTripDetails().add(this);
     }
 }

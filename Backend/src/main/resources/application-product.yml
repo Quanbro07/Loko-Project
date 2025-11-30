@@ -29,7 +29,3 @@ spring:
 python:
   api:
     base-url: http://host.docker.internal:8000
-    version-url: /api/v1
-    get-location-url: /locations/sync-locations
-    make-plan-url: /schedule/generate
-    regenerate-plan-url: /schedule/generate

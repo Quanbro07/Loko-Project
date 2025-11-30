@@ -7,9 +7,12 @@ import com.exproject.backend.user.info.Role;
 import com.exproject.backend.user.info.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
@@ -77,6 +80,9 @@ public class UserService {
 
         existUser.setRole(Role.VIP);
 
+        // Set default khi admin bật lên là 7 ngày
+        existUser.setVipEndDate(LocalDate.now().plusDays(7));
+
         userRepository.save(existUser);
     }
 
@@ -89,6 +95,9 @@ public class UserService {
         }
 
         existUser.setRole(Role.USER);
+
+        // Ko phải VIP thì ko cần trường này
+        existUser.setVipEndDate(null);
 
         userRepository.save(existUser);
     }
@@ -141,6 +150,33 @@ public class UserService {
                 .build();
     }
 
+    public void downgradeUserSchedule() {
+
+        int pageSize = 100;
+
+        Pageable pageable = PageRequest.of(0, pageSize);
+
+        LocalDate today = LocalDate.now();
+
+        Page<User> users;
+
+        do {
+            users = userRepository.findAllRoleUserAndExpireDateBefore(Role.VIP, today, pageable);
+
+            if(users.getContent().isEmpty()) {
+                break;
+            }
+
+            for(User user: users.getContent()) {
+                user.setRole(Role.USER);
+                user.setVipEndDate(null);
+            }
+
+            userRepository.saveAll(users.getContent());
+
+            System.out.println("Đã xử lý batch " + users.getNumberOfElements() + " users.");
+        } while (users.hasNext());
+    }
 
 
 }
