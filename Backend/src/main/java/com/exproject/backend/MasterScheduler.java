@@ -49,12 +49,12 @@ public class MasterScheduler {
     }
 
     // Test: mỗi 4 phút
+    //@Scheduled(cron = "0 */4 * * * *")
 
     // Rea: 0h moi 3 tháng
-    // @Scheduled(cron = "0 0 0 1 */3 ?")
 
-    // *Test
-    @Scheduled(cron = "0 */4 * * * *")
+    // *Real
+    @Scheduled(cron = "0 0 0 1 */3 ?")
     public void runQuarterlySchedule() {
         runGetLocationsSchedule(LocalDate.now());
     }
