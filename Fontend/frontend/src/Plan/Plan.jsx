@@ -157,6 +157,7 @@ const Plan = () => {
     (requestData) => {
       console.log("Nhận dữ liệu từ Input:", requestData);
       setLastRequestData(requestData);
+      localStorage.setItem("lastRequestData", JSON.stringify(requestData));
       setTryCount(3);
       callMakePlanApi(requestData);
     },
@@ -194,15 +195,23 @@ const Plan = () => {
       );
 
       if (isOver50Percent) {
-        console.log("Rejected > 50% -> Calling /make API");
-        if (lastRequestData) {
-          callMakePlanApi(lastRequestData);
-        } else {
-          console.error("Missing lastRequestData");
+        let requestToUse = lastRequestData;
+
+        // Nếu state null, thử tìm trong localStorage
+        if (!requestToUse) {
+          const savedRequest = localStorage.getItem("lastRequestData");
+          if (savedRequest) {
+            requestToUse = JSON.parse(savedRequest);
+          }
         }
-      } else {
-        console.log("Rejected <= 50% -> Calling /regenerate-part API");
-        callRegeneratePartAPI(planData, rejectedItems);
+
+        if (requestToUse) {
+          callMakePlanApi(requestToUse);
+        } else {
+          alert(
+            "Vui lòng thực hiện tìm kiếm lại từ đầu để có dữ liệu tạo lịch trình!"
+          );
+        }
       }
     },
     [

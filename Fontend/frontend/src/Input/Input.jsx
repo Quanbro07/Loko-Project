@@ -73,7 +73,6 @@ const Input = ({
   const [hasElders, setHasElders] = useState(false);
 
   const [selectedHobbies, setSelectedHobbies] = useState([]);
-  const [budget, setBudget] = useState(5000000);
 
   const [destinationError, setDestinationError] = useState(false);
   const [dateGoError, setDateGoError] = useState(false);
