@@ -10,7 +10,7 @@ echo Dung container dang su dung volume (neu co)...
 docker stop postgres_container_name 2>NUL
 
 docker run --rm ^
-    -v %VOLUME_NAME/:to% ^
+    -v %VOLUME_NAME%:/to ^
     -v "%cd%":/from ^
     alpine sh -c "cd /to && tar -xzvf /from/%BACKUP_FILE%"
 
