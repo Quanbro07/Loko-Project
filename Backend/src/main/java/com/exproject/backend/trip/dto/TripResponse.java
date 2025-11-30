@@ -39,4 +39,8 @@ public class TripResponse {
     private LocalDateTime createAt;
 
     private List<TripSectionResponse> tripSections;
+
+    private String pdfFileName;
+
+    private String pdfUrl;
 }

@@ -1,5 +1,6 @@
 package com.exproject.backend.trip;
 
+
 import com.exproject.backend.categorySyncStat.CategorySyncStatService;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location.LocationRepository;
@@ -242,6 +243,12 @@ public class TripService {
             locationRepository.fetchLocationCategories(locationsToFetch);
         }
 
+        TripResponse response = tripMapper.toTripResponse(tripEntity);
+
+        if (tripEntity.getTripPdf() != null) {
+            response.setPdfFileName("trip-" + tripId + ".pdf");
+            response.setPdfUrl("/api/v1/trip-pdf/download/" + tripId);
+        }
         return tripMapper.toTripResponse(tripEntity);
     }
 

@@ -1,5 +1,6 @@
 package com.exproject.backend.trip.info;
 
+import com.exproject.backend.pdf.TripPdf;
 import com.exproject.backend.review_location.ReviewLocation;
 import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip_history.TripHistory;
@@ -68,6 +69,9 @@ public class Trip {
     
     @Column(name = "current_trip_detail_id")
     private Long currentTripDetailId;
+
+    @OneToOne(mappedBy = "trip", cascade = CascadeType.ALL)
+    private TripPdf tripPdf;
 
     // Constructor
     public Trip(TripRequest tripRequest, User user) {

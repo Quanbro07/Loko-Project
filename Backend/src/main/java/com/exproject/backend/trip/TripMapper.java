@@ -46,6 +46,11 @@ public class TripMapper {
 
         tripResponse.setTripSections(sectionResponses);
 
+        if (trip.getTripPdf() != null) {
+            tripResponse.setPdfUrl("/api/v1/trip-pdf/download/" + trip.getId());
+        } else {
+            tripResponse.setPdfUrl(null);
+        }
         return tripResponse;
     }
 
