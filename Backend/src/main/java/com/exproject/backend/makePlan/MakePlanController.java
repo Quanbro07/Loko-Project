@@ -58,7 +58,7 @@ public class MakePlanController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PostMapping("/regenerate-full")
+    /*@PostMapping("/regenerate-full")
     public ResponseEntity<TripRequest> regenerateFullPlan(
             @AuthenticationPrincipal User user,
             @RequestBody RegeneratePlanFullRequest request) {
@@ -66,7 +66,7 @@ public class MakePlanController {
         TripRequest response = makePlanService.regeneratePlanFull(request,user.getId());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
+    }*/
 
     // Test API
     @GetMapping("/test-plan")

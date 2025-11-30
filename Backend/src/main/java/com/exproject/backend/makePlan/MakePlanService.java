@@ -96,6 +96,12 @@ public class MakePlanService {
         // Set visitedLocation
         request.setVisitedLocations(visitedLocation);
 
+        // Lấy reject Locations
+        List<LocationIdDTO> rejectLocations = request.getRejectedLocations();
+
+        // Set reject Locations dù có hay không
+        request.setRejectedLocations(rejectLocations);
+
         // Gọi AI server -> trả TripRequest
         TripRequest tripRequest = aiapiService.generateTripPlan(request);
 
@@ -224,7 +230,7 @@ public class MakePlanService {
     }
 
     // Generate Full Plan
-    @Transactional(readOnly = true)
+    /*@Transactional(readOnly = true)
     public TripRequest regeneratePlanFull(RegeneratePlanFullRequest request,Long userId) {
         MakePlanRequest makePlaneRequest = request.getMakePlanRequest();
 
@@ -276,7 +282,7 @@ public class MakePlanService {
         }
 
         return tripRequest;
-    }
+    }*/
 
     // TODO: CONFIRM MAKEPLAN
     // TODO: Gọi hàm get route #DONE
@@ -419,6 +425,5 @@ public class MakePlanService {
         // Default nếu không khớp category nào hoặc list rỗng
         return "Ghé thăm và tham quan " + cleanName;
     }
-
 
 }

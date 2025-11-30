@@ -33,8 +33,8 @@ public class AIAPIController {
         List<LocationDTO> response = aiAPIService.convertRawToLocationDTO(rawLocations);
 
         return ResponseEntity.ok(response);
-
     }
+
 
 
 }

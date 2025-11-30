@@ -64,4 +64,7 @@ public class MakePlanRequest {
 
     @JsonProperty("visited_locations")
     private List<LocationIdDTO> visitedLocations;
+
+    @JsonProperty("rejected_locations")
+    private List<LocationIdDTO> rejectedLocations;
 }
