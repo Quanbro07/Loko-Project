@@ -37,12 +37,24 @@ public class MasterScheduler {
     }
 
     // Giây | Phút | Giờ | Ngày trong tháng | Tháng | Thứ trong tuần
-    @Scheduled(cron = "0 0 1 * * ?")
+    // Test: mỗi 3 phút
+
+    // Real: mỗi ngày lúc 1h
+    //@Scheduled(cron = "0 0 1 * * ?")
+
+    // *Test
+    @Scheduled(cron = "0 */3 * * * *")
     public void runDailySchedule() {
         userService.downgradeUserSchedule();
     }
 
-    @Scheduled(cron = "0 0 0 1 */3 ?")
+    // Test: mỗi 4 phút
+
+    // Rea: 0h moi 3 tháng
+    // @Scheduled(cron = "0 0 0 1 */3 ?")
+
+    // *Test
+    @Scheduled(cron = "0 */4 * * * *")
     public void runQuarterlySchedule() {
         runGetLocationsSchedule(LocalDate.now());
     }
