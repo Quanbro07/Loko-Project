@@ -47,6 +47,13 @@ class ActivityService:
        - Di tích/Bảo tàng: "Tham quan, tìm hiểu lịch sử và văn hóa..."
        - Vui chơi/Amusement: "Trải nghiệm các trò chơi thú vị..."
        - Chợ/Night Market: "Mua sắm, khám phá ẩm thực đường phố..."
+       - Bar/Nightlife: "Hòa mình vào không khí sôi động và thưởng thức đồ uống về đêm..."
+       - Thiên nhiên/Núi/Hang động/Thác: "Khám phá vẻ đẹp thiên nhiên hùng vĩ, hóng mát và check-in sống ảo..."
+       - Biển/Đảo/Sông nước: "Tận hưởng nắng vàng, tắm biển và ngắm cảnh sông nước thơ mộng..."
+       - Lặn biển/Diving: "Khám phá đại dương và ngắm nhìn những rạn san hô rực rỡ..."
+       - Du thuyền/Cruise: "Du ngoạn ngắm cảnh và tận hưởng dịch vụ sang trọng trên mặt nước..."
+       - Dã ngoại/Camping: "Trải nghiệm cắm trại, đốt lửa trại và hòa mình trọn vẹn vào thiên nhiên..."
+       - Spa/Thư giãn: "Thư giãn cơ thể, trị liệu và phục hồi năng lượng..."
 
     3. **YÊU CẦU ĐẦU RA**
        - Trả về đúng định dạng JSON.
