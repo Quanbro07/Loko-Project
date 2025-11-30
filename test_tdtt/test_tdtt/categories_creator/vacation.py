@@ -47,9 +47,9 @@ TYPE_TO_TAG = {
     "camping": "camping",
     "rv_park": "camping",
     
-    "marina": "yatch/cruise", # Bến du thuyền
-    "boat": "yatch/cruise",
-    "pier": "yatch/cruise",
+    "marina": "yacht/cruise", # Bến du thuyền
+    "boat": "yacht/cruise",
+    "pier": "yacht/cruise",
 
     # --- F&B (RELAX MODE) ---
     "bar": "bar",
@@ -76,8 +76,8 @@ NAME_HINTS = {
     "onsen": "spa", "xông hơi": "spa", "herbal": "spa",
     
     # --- CRUISE / YACHT ---
-    "du thuyền": "yatch/cruise", "cruise": "yatch/cruise",
-    "bến tàu": "yatch/cruise", "cano": "yatch/cruise", "yacht": "yatch/cruise",
+    "du thuyền": "yacht/cruise", "cruise": "yacht/cruise",
+    "bến tàu": "yacht/cruise", "cano": "yacht/cruise", "yacht": "yacht/cruise",
     
     # --- BEACH / ISLAND ---
     "bãi": "beach", "beach": "beach", "biển": "beach",
@@ -138,8 +138,8 @@ def clean_categories(name, types, tags):
         if "restaurant" in tags: tags.remove("restaurant") # Beach club là bar, ko phải quán ăn thường
 
     # Rule B: Du thuyền (Cruise) -> Có thể có Restaurant/Bar
-    if "yatch/cruise" in tags or "du thuyền" in lower_name:
-        if "yatch/cruise" not in tags: tags.append("yatch/cruise")
+    if "yacht/cruise" in tags or "du thuyền" in lower_name:
+        if "yacht/cruise" not in tags: tags.append("yacht/cruise")
         # Du thuyền thường có ăn uống, giữ lại restaurant/bar nếu có
 
     # Rule C: Tắm bùn/Onsen -> Spa + Resort (nếu là khu du lịch)
@@ -184,7 +184,7 @@ def clean_categories(name, types, tags):
         "hotel",        # ID 7
         "beach",        # ID 22
         "island",       # ID 23
-        "yatch/cruise", # ID 24 (Lưu ý chính tả trong mapping gốc là yatch)
+        "yacht/cruise", # ID 24 (Lưu ý chính tả trong mapping gốc là yacht)
         "spa",          # ID 28
         "camping",      # ID 16
         "bar",          # ID 31
@@ -212,12 +212,12 @@ def clean_categories(name, types, tags):
 # ----------------------------------------------------------
 PROMPT_VACATION = """
 Classify these places for a Vacation/Relaxation trip.
-Allowed categories: hotel, resort, homestay, beach, island, spa, camping, yatch/cruise, bar, cafe, restaurant.
+Allowed categories: hotel, resort, homestay, beach, island, spa, camping, yacht/cruise, bar, cafe, restaurant.
 
 RULES:
 - Hierarchy: A "Resort" is NOT a "Hotel". A "Glamping" site is "camping".
 - Wellness: "Massage", "Mud Bath" (Tắm bùn), "Onsen", "Hair Wash" (Gội đầu) -> "spa".
-- Cruises: "Du thuyền", "Boat Tour", "Pier" -> "yatch/cruise".
+- Cruises: "Du thuyền", "Boat Tour", "Pier" -> "yacht/cruise".
 - Beach Life: "Beach Club" -> ["bar", "beach"].
 - Island: "Hòn Tằm", "Cù Lao" -> "island".
 - JSON only.

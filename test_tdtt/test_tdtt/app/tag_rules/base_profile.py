@@ -25,7 +25,7 @@ class BaseProfile:
             "museum", "speciality", "flower", "ancient town", "history"
         ]
         self.elder_reduce_tags = [
-            "moutain", "climbing", "adventure", "water park", 
+            "mountain", "climbing", "adventure", "water park", 
             "diving", "nightlife", "bar", "pub", "theme park"
         ]
 

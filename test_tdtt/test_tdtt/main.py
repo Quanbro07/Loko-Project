@@ -64,7 +64,7 @@ def main_itinerary_loop():
         print("\n--- Đã chọn: Mạo hiểm (Adventure) ---")
         profile = AdventureProfile()
         SolverClass = AdventureSolver
-        preferred_tags = ["moutain", "cave", "waterfall", "camping", "diving", "restaurant"]
+        preferred_tags = ["mountain", "cave", "waterfall", "camping", "diving", "restaurant"]
 
     elif choice == "4":
         print("\n--- Đã chọn: Lịch sử (History) ---")
