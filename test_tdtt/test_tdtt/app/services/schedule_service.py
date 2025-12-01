@@ -95,11 +95,14 @@ class ScheduleService:
                 cat_ids = [c['id'] for c in loc.get('categories', [])]
                 loc['tags'] = [get_tag_from_id(cid) for cid in cat_ids]
 
+        visited_ids = {item.location_id for item in request.visited_locations}
+        rejected_ids = {item.location_id for item in request.rejected_locations}
+
         # 4. Gọi Matrix Service
         time_matrix = self.matrix_service.get_time_matrix(raw_locations)
 
         # 5. Lọc dữ liệu Depot
-        depot_index = self._find_best_depot_index(raw_locations)
+        depot_index = self._find_best_depot_index(raw_locations, visited_ids, rejected_ids)
         valid_indices = [depot_index] 
         for i, loc in enumerate(raw_locations):
             if i == depot_index: continue
@@ -113,6 +116,9 @@ class ScheduleService:
             for c_idx in valid_indices:
                 row.append(time_matrix[r_idx][c_idx])
             filtered_matrix.append(row)
+
+        visited_ids = {item.location_id for item in request.visited_locations}
+        rejected_ids = {item.location_id for item in request.rejected_locations}
 
         trip_sections = []
         penalty_overrides = {} 
@@ -130,7 +136,9 @@ class ScheduleService:
                 context, 
                 current_hobby=request.hobby,
                 is_children=request.isChildren, # MỚI
-                is_elder=request.isElder        # MỚI
+                is_elder=request.isElder,
+                visited_ids=visited_ids,
+                rejected_ids=rejected_ids     # MỚI
             )
             
             solver = SolverClass(instance, profile, context)
@@ -185,14 +193,26 @@ class ScheduleService:
             tripSections=trip_sections
         )
 
-    def _find_best_depot_index(self, locations):
+    def _find_best_depot_index(self, locations, visited_ids=None, rejected_ids=None):
+        if visited_ids is None: visited_ids = set()
+        if rejected_ids is None: rejected_ids = set()
+
         for i, loc in enumerate(locations):
+            if loc.get("id") in visited_ids or loc.get("id") in rejected_ids:
+                continue
+
             if "hotel" in loc.get("tags", []):
                 return i
         return 0 
 
     # --- UPDATE: Thêm tham số is_children, is_elder ---
-    def _create_instance(self, locs, matrix, profile, preferred_tags, penalty_overrides, context, current_hobby, is_children=False, is_elder=False):
+    def _create_instance(self, locs, matrix, profile, preferred_tags, penalty_overrides, 
+                         context, current_hobby, is_children=False, is_elder=False, 
+                         visited_ids=None, rejected_ids=None): # --- NEW params
+        
+        if visited_ids is None: visited_ids = set()
+        if rejected_ids is None: rejected_ids = set()
+
         service_times = []
         time_windows = []
         penalties = []
@@ -219,7 +239,7 @@ class ScheduleService:
                 if i in penalty_overrides:
                     base_penalty = penalty_overrides[i]
                 else:
-                    # 1. Lấy Base Score từ Profile (Amusement, Food...)
+                    # 1. Tính điểm gốc
                     base_penalty = profile.get_penalty(tags, rating)
                     
                     is_preferred = any(t in preferred_tags for t in tags)
@@ -233,9 +253,26 @@ class ScheduleService:
                         base_penalty = profile.adjust_by_preference(base_penalty, preferred_tags, tags)
                         base_penalty = int(base_penalty * profile.boost_priority(tags))
                     
-                    # 2. --- APPLY LOGIC TRẺ EM / NGƯỜI GIÀ Ở ĐÂY ---
-                    # Logic này sẽ nhân tiếp vào base_penalty đã tính ở trên
+                    # 2. Logic Demographic
                     base_penalty = profile.adjust_demographic_score(base_penalty, tags, is_children, is_elder)
+
+                    # 3. --- NEW: Logic Filter (Visited / Rejected) ---
+                    # Logic: Giảm điểm Penalty (Cost to drop) -> Solver sẽ dễ dàng drop node đó.
+                    
+                    loc_id = loc.get("id")
+                    
+                    if loc_id in visited_ids:
+                        # Đã đi rồi: Giảm cực mạnh (còn 1%). 
+                        # Solver thấy node này "rẻ rúng" (bỏ qua chả mất gì) -> Sẽ ưu tiên bỏ qua để đi chỗ khác điểm cao hơn.
+                        base_penalty = int(base_penalty * 0.01)
+                    
+                    elif loc_id in rejected_ids:
+                        # Đã từ chối: Giảm mạnh (còn 5%).
+                        # Vẫn có thể đi nếu KHÔNG CÒN CHỖ NÀO KHÁC (trường hợp cùng đường tuyệt đối), nhưng rất khó xảy ra.
+                        base_penalty = int(base_penalty * 0.05)
+
+                    # Đảm bảo penalty tối thiểu là 0 để tránh lỗi solver
+                    base_penalty = max(0, base_penalty)
 
             service_times.append(st)
             time_windows.append(tw)
