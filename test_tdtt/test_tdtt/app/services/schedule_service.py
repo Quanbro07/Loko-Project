@@ -16,6 +16,10 @@ from app.tag_rules.honeymoon_profile import HoneymoonProfile
 from app.solvers.honeymoon_solver import HoneymoonSolver
 from app.tag_rules.nightlife_profile import NightlifeProfile
 from app.solvers.nightlife_solver import NightlifeSolver
+from app.tag_rules.vacation_profile import VacationProfile
+from app.solvers.vacation_solver import VacationSolver
+from app.tag_rules.photograph_profile import PhotographProfile
+from app.solvers.photograph_solver import PhotographSolver
 from app.schedule_utils import time_str_to_minutes, parse_operating_hours
 
 class ScheduleService:
@@ -51,6 +55,30 @@ class ScheduleService:
             profile = FoodProfile()
             SolverClass = FoodSolver
             preferred_tags = ["restaurant", "night market", "speciality", "snack", "cafe"]
+        elif request.hobby == "ADVENTURE":
+            profile = AdventureProfile()
+            SolverClass = AdventureSolver
+            preferred_tags = ["mountain", "waterfall", "camping", "diving", "restaurant"]
+        elif request.hobby == "VACATION":
+            profile = VacationProfile()
+            SolverClass = VacationSolver
+            preferred_tags = ["resort", "homestay", "beach", "island", "spa", "camping", "yacht/cruise", "bar", "cafe", "restaurant"]
+        elif request.hobby == "NIGHTLIFE":
+            profile = NightlifeProfile()
+            SolverClass = NightlifeSolver
+            preferred_tags = ["night life", "bar", "walking street", "night market", "restaurant", "cafe"]
+        elif request.hobby == "HONEYMOON":
+            profile = HoneymoonProfile()
+            SolverClass = HoneymoonSolver
+            preferred_tags = ["resort", "homestay", "beach", "island", "yacht/cruise", "cafe", "bar", "flower field/garden", "viewpoint"]
+        elif request.hobby == "PHOTOGRAPH":
+            profile = PhotographProfile()
+            SolverClass = PhotographSolver
+            preferred_tags = ["viewpoint", "church/temple/pagoda", "citadel/palace", "museum", "restaurant", "cafe", "bar", "resort", "homestay", "flower field/garden", "mountain", "river", "island", "beach", "waterfall"]
+        elif request.hobby == "HISTORY":
+            profile = HistoryProfile()
+            SolverClass = HistorySolver
+            preferred_tags = ["museum", "citadel/palace", "church/temple/pagoda", "old battlefield", "restaurant"]
         else:
             profile = AmusementProfile()
             SolverClass = AmusementSolver
@@ -121,6 +149,18 @@ class ScheduleService:
                     title = f"Ngày {day_num}: Food Tour & Đặc sản"
                 elif request.hobby == "AMUSEMENT":
                     title = f"Ngày {day_num}: Vui chơi giải trí"
+                elif request.hobby == "ADVENTURE":
+                    title = f"Ngày {day_num}: Khám phá thiên nhiên & Mạo hiểm"
+                elif request.hobby == "VACATION":
+                    title = f"Ngày {day_num}: Nghỉ dưỡng & Thư giãn"
+                elif request.hobby == "NIGHTLIFE":
+                    title = f"Ngày {day_num}: Sôi động về đêm"
+                elif request.hobby == "HONEYMOON":
+                    title = f"Ngày {day_num}: Lãng mạn & Kỷ niệm"
+                elif request.hobby == "PHOTOGRAPH":
+                    title = f"Ngày {day_num}: Săn ảnh & Check-in"
+                elif request.hobby == "HISTORY":
+                    title = f"Ngày {day_num}: Tìm hiểu Lịch sử & Văn hóa"
                 else:
                     title = f"Ngày {day_num}: Khám phá"
 
