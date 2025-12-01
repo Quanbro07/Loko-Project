@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -84,8 +85,9 @@ public class UserController {
 
     @PostMapping("/upgrade")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public ResponseEntity<Void> upgradeUser(@RequestParam Long userId) {
-        userService.upgradeUser(userId);
+    public ResponseEntity<Void> upgradeUser(@RequestParam Long userId,
+        @RequestParam(defaultValue = "7") Integer duration) {
+        userService.upgradeUser(userId,duration);
 
         return ResponseEntity.noContent().build();
     }
@@ -98,4 +100,13 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/upgrade-duration")
+    public ResponseEntity<Void> upgradeDuration(
+            @AuthenticationPrincipal User user,
+            @RequestParam(defaultValue = "1") Integer duration) {
+
+        userService.upgradeUser(user.getId(),duration);
+
+        return ResponseEntity.noContent().build();
+    }
 }
