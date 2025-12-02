@@ -27,6 +27,10 @@ class LocationDTO(BaseModel):
     categories: List[CategoryDTO] = []
     imgs: List[Any] = []
 
+class LocationRefDTO(BaseModel):
+    location_id: int
+    gg_place_id: Optional[str] = None
+
 class ScheduleRequest(BaseModel):
     startDate: str
     endDate: str
@@ -41,6 +45,8 @@ class ScheduleRequest(BaseModel):
     fromOperateTime: str = "08:00"
     toOperateTime: str = "22:00"
     locations: List[LocationDTO]
+    rejected_locations: List[LocationRefDTO] = []
+    visited_locations: List[LocationRefDTO] = []
 
 # --- Output Schemas ---
 
