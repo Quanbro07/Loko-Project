@@ -2,6 +2,8 @@ package com.exproject.backend.aiAPI;
 
 import com.exproject.backend.aiAPI.dto.RawLocationDTO;
 import com.exproject.backend.location.dto.LocationDTO;
+import com.exproject.backend.route.dto.RouteRequest;
+import com.exproject.backend.route.dto.RouteResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +37,13 @@ public class AIAPIController {
         return ResponseEntity.ok(response);
     }
 
+    @PostMapping("/test-route")
+    public ResponseEntity<RouteResponse> testRoute(
+            @RequestBody RouteRequest routeRequest) {
 
+        RouteResponse response = aiAPIService.generateRoutePlan(routeRequest);
+
+        return ResponseEntity.ok(response);
+    }
 
 }
