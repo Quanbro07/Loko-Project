@@ -66,7 +66,7 @@ public class UserService {
 
     }
 
-    public void upgradeUser(Long userId) {
+    public void upgradeUser(Long userId,Integer duration) {
         User existUser = userRepository.findById(userId)
                 .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
 
@@ -81,7 +81,7 @@ public class UserService {
         existUser.setRole(Role.VIP);
 
         // Set default khi admin bật lên là 7 ngày
-        existUser.setVipEndDate(LocalDate.now().plusDays(7));
+        existUser.setVipEndDate(LocalDate.now().plusDays(duration));
 
         userRepository.save(existUser);
     }
