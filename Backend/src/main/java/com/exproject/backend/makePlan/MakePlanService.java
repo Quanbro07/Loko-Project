@@ -232,6 +232,7 @@ public class MakePlanService {
     }
 
     // Generate Full Plan
+    // Gộp vào make plan luôn
     /*@Transactional(readOnly = true)
     public TripRequest regeneratePlanFull(RegeneratePlanFullRequest request,Long userId) {
         MakePlanRequest makePlaneRequest = request.getMakePlanRequest();

@@ -12,8 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class RegeneratePlanFullRequest {
-    @JsonProperty("rejected_locations")
-    private List<LocationIdDTO> rejectedLocations;
 
     @JsonProperty("make_plan_request")
     private MakePlanRequest makePlanRequest;

@@ -10,23 +10,44 @@ class BaseProfile:
         
         # --- CẤU HÌNH NHÂN KHẨU HỌC (DEMOGRAPHICS) ---
         # 1. Cấu hình cho TRẺ EM
+        # 1. CẤU HÌNH CHO TRẺ EM
         self.child_boost_tags = [
-            "zoo", "amusement/water park", "aquarium", "snack", 
-            "night market", "park", "camping"
-        ]
-        self.child_reduce_tags = [
-            "nightlife", "bar", "pub", "club", "casino", 
-            "cave", "old battlefield", "historical site", "diving", "museum"
+            "zoo",
+            "amusement/water park",
+            "aquarium",
+            "snack",
+            "night market",
+            "flower field/garden",   # mapped from "park"
+            "camping"
         ]
 
-        # 2. Cấu hình cho NGƯỜI LỚN TUỔI
-        self.elder_boost_tags = [
-            "cultural performance", "citadel/palace", "church/temple/pagoda", 
-            "museum", "speciality", "flower", "ancient town", "history"
+        self.child_reduce_tags = [
+            "nightlife",
+            "bar",
+            "cave",
+            "old battlefield",
+            "diving",
+            "museum"
         ]
+
+        # 2. CẤU HÌNH CHO NGƯỜI LỚN TUỔI
+        self.elder_boost_tags = [
+            "cultural performance",
+            "citadel/palace",
+            "church/temple/pagoda",
+            "museum",
+            "speciality",
+            "flower field/garden",   # mapped from "flower"
+            "citadel/palace",        # mapped from "ancient town"
+            "museum"                 # mapped from "history"
+        ]
+
         self.elder_reduce_tags = [
-            "mountain", "climbing", "adventure", "water park", 
-            "diving", "nightlife", "bar", "pub", "theme park"
+            "mountain",
+            "mountain",              # mapped from "climbing"
+            "mountain",              # mapped from "adventure"
+            "diving",
+            "nightlife"
         ]
 
     def get_service_time(self, categories):

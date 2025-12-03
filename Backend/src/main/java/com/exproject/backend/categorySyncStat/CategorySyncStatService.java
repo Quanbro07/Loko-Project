@@ -120,6 +120,5 @@ public class CategorySyncStatService {
         // Gọi API
         List<Location> locationsSync = aiAPIService.getLocations(request);
 
-
     }
 }

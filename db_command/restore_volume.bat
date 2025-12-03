@@ -7,7 +7,7 @@ echo Đang restore dữ liệu vào volume "%VOLUME_NAME%"...
 docker volume create %VOLUME_NAME%
 
 echo Dung container dang su dung volume (neu co)...
-docker stop postgres_container_name 2>NUL
+docker stop postgres 2>NUL
 
 docker run --rm ^
     -v %VOLUME_NAME%:/to ^
