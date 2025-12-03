@@ -34,6 +34,8 @@ public class TripSection {
     @Column(name = "day_number")
     private Integer dayNumber;
 
+    // TODO: thêm biến date hiện tại
+
     @Column(nullable = false)
     private String title;
 
