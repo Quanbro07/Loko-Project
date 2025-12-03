@@ -62,6 +62,10 @@ public class TripService {
     private final LocationCategoryRepository locationCategoryRepository;
 
     // * Tạo Full Trip
+    //TODO: Handle: null routeReponse
+    // TODO: có thể thêm ROLE param để check
+    // TODO: thêm biến date hiện tại vào TripSection
+    // TODO: Set biến đó vào khi createFullTrip
     @Transactional
     public TripResponse createFullTrip(TripRequest tripRequest, RouteResponse routeResponse) {
         User user = userRepository.findById(tripRequest.getUserId())
@@ -210,6 +214,12 @@ public class TripService {
     }
 
     // Lấy Full Trip
+    // TODO: Handle lấy route với Weather
+    // TODO: trả về MakePlan Response
+    // TODO: lấy ngày hiện tại chạy tới section đó
+    // TODO: NẾu section đó ko có weather entity
+    // TODO: tạo Weather Request gọi API get Weather
+    // TODO: gắn vào DB và trả về
     @Cacheable(value = "full_trip", key = "#tripId")
     public TripResponse getFullTrip(Long tripId) {
 

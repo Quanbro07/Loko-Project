@@ -41,11 +41,12 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
     @Query(value = """
         INSERT INTO location (
             gg_place_id, province_id, location_name, latitude, longitude, 
-            open_time, avg_visit_time, ticket_price, average_rating, review_count, update_at
+            open_time, close_time, avg_visit_time, ticket_price, average_rating, review_count, update_at
         )
         VALUES (
             :#{#loc.ggPlaceId}, :#{#loc.province.id}, :#{#loc.locationName}, :#{#loc.latitude}, :#{#loc.longitude},
-            :#{#loc.openTime}, :#{#loc.avgVisitTime}, :#{#loc.ticketPrice}, :#{#loc.averageRating}, :#{#loc.reviewCount}, :#{#loc.updateAt}
+            :#{#loc.openTime}, :#{#loc.avgVisitTime}, :#{#loc.ticketPrice}, :#{#loc.averageRating}, :#{#loc.reviewCount}, 
+            :#{#loc.updateAt}, #{#loc.closeTime}
         )
         ON CONFLICT (gg_place_id) DO NOTHING
     """, nativeQuery = true)
