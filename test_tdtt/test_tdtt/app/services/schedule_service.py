@@ -122,6 +122,8 @@ class ScheduleService:
 
         trip_sections = []
         penalty_overrides = {} 
+
+        global_temp_id = 1
         
         for i in range(num_days):
             day_num = i + 1
@@ -148,6 +150,9 @@ class ScheduleService:
             if trip_details_raw:
                 # Clean up tags khỏi location output
                 for item in trip_details_raw:
+                    item["temp_id"] = global_temp_id
+                    global_temp_id += 1
+                    
                     if "location" in item and isinstance(item["location"], dict):
                         loc_copy = item["location"].copy()
                         loc_copy.pop("tags", None)
