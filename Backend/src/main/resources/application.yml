@@ -26,6 +26,6 @@ python:
     get-location-url: /locations/sync-locations
     make-plan-url: /schedule/generate
     regenerate-plan-url: /schedule/regenerate
-    route-url: /route/generate
+    route-url: /routing/generate
     forecast-url: /weather/forecast
     base-url: http://localhost:8000
