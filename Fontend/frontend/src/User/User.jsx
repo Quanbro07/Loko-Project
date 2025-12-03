@@ -26,7 +26,16 @@ const User = () => {
     const { user, token, setUser } = useAuth(); 
     const { translate } = useLanguage();
     const [isEditing, setIsEditing] = useState(false);
-    
+    const [toast, setToast] = useState({ show: false, message: '', type: 'success' }); // type: 'success' | 'error'
+
+    const showToast = (message, type = 'success') => {
+        setToast({ show: true, message, type });
+        
+        // Tự động tắt sau 3 giây
+        setTimeout(() => {
+            setToast((prev) => ({ ...prev, show: false }));
+        }, 3000);
+    };
     // Format Date Helper
     const formatDateForInput = (dateData) => {
         if (!dateData) return '';
@@ -111,9 +120,11 @@ const User = () => {
     const handleEditClick = () => { setEditName(name); setEditDob(dob); setEditGender(gender); setIsEditing(true); };
 
     const handleSave = async () => {
-        // ... (Giữ nguyên logic handleSave cũ của bạn) ...
         const currentUserId = user?.userId || user?.id;
-        if (!currentUserId) { alert("Vui lòng đăng nhập lại."); return; }
+        if (!currentUserId) { 
+            showToast("Vui lòng đăng nhập lại để thực hiện!", "error");
+            return; 
+        }
         try {
             const infoPayload = { userId: currentUserId, userName: user.username, fullName: editName, dob: editDob, gender: editGender };
             const infoResponse = await fetch('http://localhost:8080/api/v1/user/change-info', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(infoPayload) });
@@ -130,8 +141,11 @@ const User = () => {
             const newUserState = { ...user, fullName: editName, dob: editDob, gender: editGender, avatarImg: currentAvatarImg };
             localStorage.setItem('user', JSON.stringify(newUserState));
             if (setUser) setUser(newUserState);
-            setIsEditing(false); setAvatarFile(null); alert("Cập nhật thành công!");
-        } catch (error) { console.error("Error:", error); alert(`Lỗi: ${error.message}`); }
+            setIsEditing(false); setAvatarFile(null); showToast("Cập nhật thông tin thành công!", "success");
+        } catch (error) { 
+            console.error("Error:", error); 
+            showToast(`Lưu không thành công: ${error.message}`, "error");
+        }
     };
 
     const handleCancel = () => { setIsEditing(false); setAvatarFile(null); if (user?.avatarImg) { const imgSrc = user.avatarImg.startsWith('data:image') ? user.avatarImg : `data:image/png;base64,${user.avatarImg}`; setAvatar(imgSrc); } else { setAvatar(avatarSample); } };
@@ -243,6 +257,10 @@ const User = () => {
             
             <VisitedMap visited={visitedSlugs} />
             <Footer/>
+            <div className={`toast-notification ${toast.show ? 'show' : ''} ${toast.type}`}>
+                {toast.type === 'success' ? '✅ ' : '⚠️ '}
+                {toast.message}
+            </div>
         </div>
     )
 }

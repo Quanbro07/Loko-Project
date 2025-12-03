@@ -305,3 +305,43 @@ class này vào file User.css của bạn */
     padding: 2px 0;
     outline: none;
 }
+
+.toast-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 9999; /* Đảm bảo nằm trên cùng */
+    
+    /* Animation: Mặc định ẩn và trượt sang phải */
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Khi có class .show thì hiện ra */
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Màu cho Success (Thành công) */
+.toast-notification.success {
+    background-color: #28a745; /* Màu xanh lá */
+    border-left: 5px solid #1e7e34;
+}
+
+/* Màu cho Error (Lỗi) */
+.toast-notification.error {
+    background-color: #dc3545; /* Màu đỏ */
+    border-left: 5px solid #a71d2a;
+}
