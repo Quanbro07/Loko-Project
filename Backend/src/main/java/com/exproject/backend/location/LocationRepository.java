@@ -46,7 +46,7 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
         VALUES (
             :#{#loc.ggPlaceId}, :#{#loc.province.id}, :#{#loc.locationName}, :#{#loc.latitude}, :#{#loc.longitude},
             :#{#loc.openTime}, :#{#loc.avgVisitTime}, :#{#loc.ticketPrice}, :#{#loc.averageRating}, :#{#loc.reviewCount}, 
-            :#{#loc.updateAt}, #{#loc.closeTime}
+            :#{#loc.updateAt}, :#{#loc.closeTime}
         )
         ON CONFLICT (gg_place_id) DO NOTHING
     """, nativeQuery = true)

@@ -9,8 +9,6 @@ const Navbar = () => {
     const { isAuthenticated, user, logout } = useAuth();
     const navigate = useNavigate();
 
-    // console.log('User data:', user);
-
     const handleAuthClick = () => {
         if (isAuthenticated) {
             logout();
@@ -58,11 +56,16 @@ const Navbar = () => {
                     <div className='auth-container'>
                         {isAuthenticated ? (
                             <div className='user-info'>
-                                {/* --- NÚT UPGRADE PREMIUM MỚI --- */}
-                                {/* Bạn có thể thay chữ cứng bằng {translate('upgrade_premium')} sau khi cập nhật file ngôn ngữ */}
-                                <button className='upgrade-btn' onClick={() => navigate('/purchase')}>
-                                    👑 Upgrade Premium
-                                </button>
+                                {/* --- LOGIC KIỂM TRA VIP --- */}
+                                {user?.role === 'VIP' ? (
+                                    <div className='vip-badge'>
+                                        👑 Premium
+                                    </div>
+                                ) : (
+                                    <button className='upgrade-btn' onClick={() => navigate('/purchase')}>
+                                        ⭐ Upgrade Premium
+                                    </button>
+                                )}
                                 
                                 <span className='user-name'>{translate('auth_welcome')} {user?.username}</span>
                                 <button className='auth-btn logout-btn' onClick={handleAuthClick}>
