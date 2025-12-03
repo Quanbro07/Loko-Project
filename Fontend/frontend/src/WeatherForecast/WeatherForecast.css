@@ -1,0 +1,139 @@
+/* Container tổng (Nền xanh đậm) */
+.weather-figma-container {
+    background: linear-gradient(135deg, #0f172a 0%, #020D45 100%);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    font-family: sans-serif;
+}
+
+.weather-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size:40px;
+    background-color: #000;
+}
+
+.weather-title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.scope-badge {
+    font-size: 0.8rem;
+    background: rgba(255,255,255,0.2);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+/* --- WRAPPER CHỨA NÚT VÀ CARD --- */
+.weather-slider-wrapper {
+    display: flex;
+    align-items: center; /* Căn giữa dọc cho nút bấm */
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* --- CONTAINER CÁC THẺ (FLEX ROW) --- */
+.weather-card-container {
+    display: flex;         /* Kích hoạt Flexbox */
+    flex-direction: row;   /* Xếp theo hàng ngang */
+    gap: 15px;             /* Khoảng cách giữa các thẻ */
+    flex-grow: 1;          /* Chiếm hết khoảng trống giữa 2 nút */
+    justify-content: center;
+}
+
+/* --- STYLE CHO TỪNG THẺ --- */
+.glass-card {
+    /* Quan trọng: Chia đều không gian cho 4 thẻ */
+    flex: 1; 
+    min-width: 0; /* Ngăn vỡ layout nếu nội dung quá dài */
+    
+    background: rgba(255, 255, 255, 0.1); /* Kính mờ */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    height: 220px; /* Chiều cao cố định để đều nhau */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.2s;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.345);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.card-temp {
+    font-size: 2.5rem;
+    font-weight: 300; /* Chữ mảnh như Figma */
+    margin: 5px 0;
+}
+
+.card-time {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card-desc {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.rain-alert {
+    font-size: 0.75rem;
+    color: #85d3ff;
+    border: 1px solid #85d3ff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+/* NÚT ĐIỀU HƯỚNG */
+.nav-btn {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    flex-shrink: 0; /* Không bị co lại */
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: rgba(255,255,255,0.3);
+}
+
+.nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.slider-indicator {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
