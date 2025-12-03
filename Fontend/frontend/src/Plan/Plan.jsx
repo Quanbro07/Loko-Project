@@ -261,8 +261,8 @@ const Plan = () => {
         )}
 
         {/* Note: Ensure Output receives onStatsChange */}
-        {
-          /* !isSearching && isResultShown && planData && */ <Output
+        {!isSearching && isResultShown && planData && (
+          <Output
             key={searchIteration}
             data={planData}
             tryCount={tryCount}
@@ -270,7 +270,7 @@ const Plan = () => {
             onAcceptClick={handleAccept}
             onStatsChange={handleStatsUpdate}
           />
-        }
+        )}
       </div>
       <Footer />
     </div>
