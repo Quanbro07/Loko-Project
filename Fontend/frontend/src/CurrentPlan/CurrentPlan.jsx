@@ -6,19 +6,17 @@ import React, { useState, useMemo } from 'react';
 import MyLeafletMap from '../Map/MyLeafletMap';
 import OutputReal from '../OutputReal/OutputReal';
 import CurrentPlace from '../CurrentPlace/CurrentPlace';
-
+import WeatherForecast from '../WeatherForecast/WeatherForecast';
 // Import Data
-import allRouteGeometry from '../Map/route_geometry.json'; // Dữ liệu đường đi
-import allScheduleData from '../Output/schedule.json'; // Dữ liệu địa điểm
+import allScheduleData from '../Output/schedule.json'; 
 
 const CurrentPlan = () => {
     const { translate } = useLanguage();
     
     // 🌟 STATE QUẢN LÝ NGÀY CHUNG CHO TOÀN BỘ TRANG 🌟
-    // State này điều khiển cả OutputReal, CurrentPlace và Map cùng lúc
     const [currentDayIndex, setCurrentDayIndex] = useState(0);
 
-    // State cho Slider của CurrentPlace (Slide qua lại các địa điểm trong 1 ngày)
+    // State cho Slider của CurrentPlace
     const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0); 
 
     // 1. Lấy danh sách các ngày (Trip Sections)
@@ -34,7 +32,7 @@ const CurrentPlan = () => {
         return []; 
     }, [tripSections, currentDayIndex]);
     
-    // 3. Tạo Markers cho Map từ dữ liệu ngày hiện tại
+    // 3. Tạo Markers cho Map
     const itineraryPoints = useMemo(() => {
         return scheduleForCurrentDay.map(place => {
             const lat = place.location?.latitude || place.latitude;
@@ -46,14 +44,14 @@ const CurrentPlan = () => {
                 lat: lat,
                 lng: lng,
             };
-        }).filter(p => p.lat && p.lng); // Lọc bỏ điểm lỗi
+        }).filter(p => p.lat && p.lng); 
     }, [scheduleForCurrentDay]);
 
-    // Reset slider địa điểm về 0 mỗi khi chuyển ngày
+    // Reset slider khi đổi ngày
     const handleDayChange = (newIndex) => {
         console.log("Chuyển sang ngày index:", newIndex);
         setCurrentDayIndex(newIndex);
-        setCurrentPlaceIndex(0);
+        setCurrentPlaceIndex(0); // Reset slide địa điểm về đầu tiên
     };
     
     return (
@@ -61,12 +59,23 @@ const CurrentPlan = () => {
             <Navbar/>
             <div className='body-container'>
                 
-                {/* 🌟 OutputReal: Hiển thị danh sách & Điều khiển chuyển ngày 🌟 */}
-                <OutputReal 
-                    currentDayIndex={currentDayIndex}
-                    setCurrentDayIndex={handleDayChange} // Truyền hàm chuyển ngày xuống
-                    tripSections={tripSections}
-                />
+               <div className="plan-dashboard-wrapper">
+                    {/* OutputReal: Thanh chọn ngày */}
+                    <div className="plan-list-section">
+                        <OutputReal 
+                            currentDayIndex={currentDayIndex}
+                            setCurrentDayIndex={handleDayChange} 
+                            tripSections={tripSections}
+                        />
+                    </div>
+
+                    {/* WeatherForecast nằm NGAY BÊN DƯỚI */}
+                    {/* 🌟 CẬP NHẬT: Truyền currentDayIndex để đồng bộ */}
+                    <div className="weather-section-below">
+                        <WeatherForecast currentDayIndex={currentDayIndex} />
+                    </div>
+                </div>
+
                 
                 {/* Hiển thị luôn CurrentPlace và Map */}
                 {scheduleForCurrentDay.length > 0 ? (
@@ -80,11 +89,10 @@ const CurrentPlan = () => {
                             /> 
                             
                             {/* Map: Bản đồ */}
-                            {/* ⚠️ QUAN TRỌNG: Phải truyền currentDayIndex vào đây map mới đổi đường được */}
                             <MyLeafletMap 
                                 itineraryPoints={itineraryPoints}
-                                currentIndex={currentPlaceIndex} // Index của địa điểm (để highlight marker đỏ)
-                                currentDayIndex={currentDayIndex} // Index của NGÀY (để vẽ đường đi Day 1, Day 2...)
+                                currentIndex={currentPlaceIndex} 
+                                currentDayIndex={currentDayIndex} 
                             />
                         </div>
                     </>
