@@ -28,7 +28,7 @@ function App() {
             <Route path="/aboutus" element={<Aboutus />} />
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/auth/verify" element={<VerifyPage />} />
-            <Route element={<ProtectedRoute allowedRoles={['USER']}/>}>
+            <Route element={<ProtectedRoute allowedRoles={['USER', 'VIP']}/>}>
               <Route path="/user" element={<User />} />              
               <Route path="/search" element={<Plan />} /> 
               <Route path="/currentplan" element={<CurrentPlan />} />
