@@ -79,6 +79,9 @@ public class MakePlanService {
         for (ELocationCategory cate : categories) {
 
             Long categoryId = (long) (cate.ordinal() + 1);
+
+            System.out.println(cate.name() + ": " + categoryId);
+
             List<LocationDTO> topLocations =
                     locationService.getTopLocations(provinceId, categoryId);
 
@@ -98,8 +101,11 @@ public class MakePlanService {
         // Set visitedLocation
         request.setVisitedLocations(visitedLocation);
 
+        List<LocationIdDTO> rejectLocations = new ArrayList<>();
         // Lấy reject Locations
-        List<LocationIdDTO> rejectLocations = request.getRejectedLocations();
+        if(request.getRejectedLocations() != null) {
+            rejectLocations.addAll(request.getRejectedLocations());
+        }
 
         // Set reject Locations dù có hay không
         request.setRejectedLocations(rejectLocations);
@@ -288,11 +294,6 @@ public class MakePlanService {
     }*/
 
     // TODO: CONFIRM MAKEPLAN
-    // TODO: Gọi hàm get route #DONE
-    // TODO: Gọi hàm createFullTrip #DONE
-    // TODO: Gọi hàm getWeather #DONE
-    // TODO: Tạo file PDF
-    // TODO: Lưu file PDF
     public MakePlanResponse confirmMakePlan(ConfirmPlanRequest confirmPlanRequest,Long userId) {
         TripRequest tripRequest = confirmPlanRequest.getTripRequest();
 
@@ -306,13 +307,6 @@ public class MakePlanService {
         // Gọi hàm create full plan
         TripResponse tripResponse = tripService.createFullTrip(tripRequest, routeResponse);
 
-        // TODO: Handle VIP/USER
-        // Tạo Weather Request
-        WeatherRequest weatherRequest = confirmPlanRequest.getWeatherRequest();
-
-        // Lấy weather Response
-        WeatherResponse weatherResponse = weatherService.getWeather(weatherRequest);
-
         // tạo PDF file
         byte[] pdfBytes = tripPdfService.generateTripPdf(tripRequest);
 
@@ -325,8 +319,8 @@ public class MakePlanService {
         // Set vào DTO
         makePlanResponse.setTripPlan(tripResponse);
         makePlanResponse.setRoute(routeResponse);
-        makePlanResponse.setWeather(weatherResponse);
         makePlanResponse.setPdfUrl(pdfPath);
+
 
         return makePlanResponse;
     }

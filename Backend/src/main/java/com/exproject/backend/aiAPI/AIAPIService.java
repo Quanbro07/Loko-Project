@@ -85,6 +85,13 @@ public class AIAPIService {
                 continue;
             }
 
+            Optional<Location> existLocation = locationRepository.findByGgPlaceId(rawLocationDTO.getGgPlaceId());
+
+            if(existLocation.isPresent()) {
+                System.out.println("Location already exists(skipping): " + rawLocationDTO.getGgPlaceId());
+                continue;
+            }
+
             Province province = provinceOpt.get();
 
             List<LocationCategory> categories = locationCategoryRepository.
@@ -95,6 +102,8 @@ public class AIAPIService {
                 System.err.println("Cảnh báo: Một số category ID không tìm thấy cho location: "
                         + rawLocationDTO.getGgPlaceId());
             }
+
+
 
             Location location = Location.builder()
                     .ggPlaceId(rawLocationDTO.getGgPlaceId())
@@ -212,6 +221,13 @@ public class AIAPIService {
             }
 
             Province province = provinceOpt.get();
+
+
+            Optional<Location> existLocation = locationRepository.findByGgPlaceId(rawLocationDTO.getGgPlaceId());
+            if(existLocation.isPresent()) {
+                System.out.println("Location already exists(skipping): " + rawLocationDTO.getGgPlaceId());
+                continue;
+            }
 
             List<LocationCategory> categories = locationCategoryRepository.
                     findAllById(rawLocationDTO.getCategoryIds());

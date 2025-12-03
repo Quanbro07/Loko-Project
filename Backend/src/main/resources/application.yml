@@ -19,7 +19,6 @@ spring:
   profiles:
     active: product
 
-
 python:
   api:
     version-url: /api/v1
