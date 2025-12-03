@@ -120,11 +120,13 @@ const Plan = () => {
         return;
       }
 
+      const planToSend = currentPlan || scheduleData;
       const payload = {
-        current_trip_plan: scheduleData, // Lấy từ file json import
+        current_trip_plan: planToSend, // Lấy từ file json import
         rejected_detail: payloadDetail,
       };
 
+      console.log("Đã có schedule:", planToSend);
       console.log("Payload gửi đi:", payload);
 
       try {
@@ -149,6 +151,7 @@ const Plan = () => {
       } finally {
         setIsSearching(false);
       }
+      console.log(setPlanData);
     },
     []
   );
@@ -212,6 +215,13 @@ const Plan = () => {
             "Vui lòng thực hiện tìm kiếm lại từ đầu để có dữ liệu tạo lịch trình!"
           );
         }
+      } else {
+        console.log("Tiến hành gọi Regenerate Part API..."); // Thêm log này để debug
+
+        // Gọi hàm callRegeneratePartAPI
+        // Tham số 1: planData hiện tại (để làm current_trip_plan)
+        // Tham số 2: rejectedItems (danh sách địa điểm bị từ chối)
+        callRegeneratePartAPI(planData, rejectedItems);
       }
     },
     [

@@ -104,6 +104,11 @@ public class MakePlanService {
         // Lấy reject Locations
         List<LocationIdDTO> rejectLocations = request.getRejectedLocations();
 
+        // Kiểm tra null và khởi tạo list rỗng nếu cần
+        if (rejectLocations == null) {
+            rejectLocations = new ArrayList<>(); // <--- Thêm dấu ;
+        }
+
         // Set reject Locations dù có hay không
         request.setRejectedLocations(rejectLocations);
 
