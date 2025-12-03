@@ -1,38 +1,52 @@
 .visited-map-container {
   width: 100%; 
-  max-width: 1200px;
-  margin: 30px auto;
+  max-width: 1200px; /* Bạn có thể tăng lên hoặc xóa dòng này nếu muốn map to hết màn hình */
+  
+  /* --- THAY ĐỔI Ở ĐÂY --- */
+  margin: 30px 0; /* Đổi 'auto' thành '0' để khung container nằm sát lề trái */
+  /* ---------------------- */
+  
   padding: 0 20px;
   box-sizing: border-box;
   background: transparent;
   
-  /* Flexbox để chia 2 cột */
+  /* Flexbox */
   display: flex;
   flex-direction: row; 
-  align-items: center; /* Căn giữa theo chiều dọc */
-  justify-content: center;
-  gap: 40px; /* Khoảng cách giữa bản đồ và biểu đồ */
+  align-items: center; 
+  
+  /* --- THAY ĐỔI Ở ĐÂY --- */
+  justify-content: flex-start; /* Đổi 'center' thành 'flex-start' để nội dung dồn sang trái */
+  /* ---------------------- */
+  
+  gap: 70px; /* Khoảng cách giữa Map và Biểu đồ */
 }
 
 /* Cột trái: Bản đồ */
 .map-area {
-  flex: 3; /* Chiếm 3 phần không gian (khoảng 75%) */
-  width: 100%;
+  flex: 3; 
+  width: 200%;
+  padding-left: 200px;
+  /* Nếu muốn map nằm sát lề trái tuyệt đối, có thể thêm padding-right ở đây */
 }
 
 .map-area svg {
   width: 100%;
   height: auto;
-  min-height: 600px;
+  min-height: 700px;
   display: block;
   filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
+   transform: scale(1.2); /* Phóng to 1.2 lần (20%) */
+  transform-origin: center left; /* Phóng to từ tâm bên trái để không bị lệch */
+  /* -------------------------------- */
 }
 
 /* Cột phải: Biểu đồ phần trăm */
 .percent-panel {
-  flex: 1; /* Chiếm 1 phần không gian (khoảng 25%) */
+  flex: 1; 
   display: flex;
-  justify-content: center;
+  /* Nếu muốn biểu đồ nằm gần map hơn thì dùng flex-start, muốn xa ra thì flex-end */
+  justify-content: flex-start; 
   align-items: center;
 }
 
@@ -45,18 +59,17 @@
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  min-width: 200px; /* Đảm bảo không bị bé quá */
+  min-width: 200px;
 }
 
-/* Sửa lỗi hình tròn khổng lồ: Đặt kích thước cố định cho SVG biểu đồ */
 .progress-circle {
-  width: 160px;  /* Kích thước vừa phải */
+  width: 160px;
   height: 160px;
-  transform: rotate(0deg); /* Có thể xoay nếu muốn điểm bắt đầu khác */
+  transform: rotate(0deg);
 }
 
 .percentage {
-  font-size: 8px; /* Đơn vị của SVG viewBox, tương ứng tỉ lệ */
+  font-size: 8px;
   fill: #333;
   font-weight: 800;
 }
@@ -79,10 +92,12 @@
   font-weight: 500;
 }
 
-/* Responsive: Trên màn hình nhỏ (Mobile/Tablet dọc) thì xếp chồng lên nhau */
+/* Responsive */
 @media (max-width: 900px) {
   .visited-map-container {
-    flex-direction: column-reverse; /* Đưa biểu đồ lên trên hoặc xuống dưới tùy ý */
+    flex-direction: column-reverse;
+    align-items: center; /* Trên mobile thì nên căn giữa lại cho đẹp */
+    margin: 30px auto;   /* Mobile trả về căn giữa */
     gap: 20px;
   }
   
