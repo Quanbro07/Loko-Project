@@ -1,155 +1,253 @@
-.purchase-container {
-    width: 100%;
+/* Purchase.css - Theme Nền Trắng, Thẻ Xanh */
+
+/* --- LAYOUT CHÍNH --- */
+.purchase-page-wrapper {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
-    background-color: #F0F2F5; /* Màu nền xám nhẹ như hình */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* 1. NỀN TRẮNG (Theo yêu cầu) */
+.purchase-container {
+    flex-grow: 1;
+    background-color: #ffffff; /* Nền trắng */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 20px;
-    box-sizing: border-box;
+    padding: 60px 20px;
+    color: #333; /* Chữ mặc định màu đen xám */
 }
 
-.purchase-content {
+.purchase-content-new-layout {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     gap: 60px;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
-    flex-wrap: wrap; /* Để responsive trên màn hình nhỏ */
+    flex-wrap: wrap;
 }
 
-/* Phần giới thiệu (Text bên trái) */
-.purchase-intro {
+/* --- PHẦN TEXT BÊN TRÁI --- */
+.left-text-section {
     flex: 1;
     min-width: 300px;
-    margin-top: 20px;
+    max-width: 450px;
+    margin-top: 40px;
 }
 
-.purchase-intro h1 {
-    font-size: 56px;
-    color: #1a1a1a;
-    margin-bottom: 20px;
+.left-text-section h1 {
+    font-size: 64px;
+    font-weight: 800;
+    color: #F2994A; /* Tiêu đề màu Cam nổi bật trên nền trắng */
     line-height: 1.1;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 700;
+    margin-bottom: 25px;
 }
 
-.purchase-intro p {
-    color: #666;
-    font-size: 20px;
-    line-height: 1.6;
-    max-width: 400px;
+/* 2. CHỈNH SỬA DÒNG TEXT THEO Ý BẠN */
+.left-text-section p {
+    color: #1a1a1a;        /* Màu đen đậm cho dễ đọc */
+    line-height: 1.4;      /* Giãn dòng một chút cho thoáng */
+    
+    /* Yêu cầu của bạn: */
+    font-size: 32px;       /* Size 32 */
+    font-weight: 500;      /* Medium */
+    font-style: italic;    /* Italic */
 }
 
-/* Container chứa 2 thẻ giá */
-.pricing-cards {
-    flex: 1.5;
+/* --- PHẦN CARDS BÊN PHẢI --- */
+.right-cards-section {
+    flex: 1.8;
     display: flex;
     gap: 30px;
-    min-width: 320px;
+    justify-content: center;
 }
-
-/* Design từng thẻ giá */
-.pricing-card {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-    flex: 1;
+@keyframes flyInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px); /* Bắt đầu từ vị trí lệch trái 100px */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Về vị trí gốc */
+    }
+}
+/* 3. THẺ (CARDS): Chuyển sang màu XANH ĐẬM để nổi trên nền trắng */
+.orange-card {
+    background-color: #003459; /* Đổi thành màu xanh đậm */
+    border-radius: 25px;
+    padding: 40px;
+    color: white; /* Chữ trong thẻ màu trắng */
     display: flex;
     flex-direction: column;
-    min-width: 280px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15); /* Bóng đổ nhẹ nhàng hơn */
+    
+    width: 400px;
+    min-height: 668px;
+    position: relative;
     transition: transform 0.3s ease;
+
+    animation: flyInFromLeft 0.8s ease-out forwards;
+    opacity: 0;
 }
 
-.pricing-card:hover {
-    transform: translateY(-5px);
+.right-cards-section .orange-card:nth-child(2) {
+    animation-delay: 0.2s; /* Chậm hơn 0.2 giây */
+}
+.orange-card:hover {
+    transform: translateY(-10px);
 }
 
-.pricing-card h3 {
-    font-size: 28px;
-    margin-top: 0;
-    margin-bottom: 5px;
-    color: #000;
+/* === CARD 1: SAVE MORE === */
+.promo-card {
+    justify-content: space-between;
+    overflow: hidden;
 }
 
-.sub-head {
-    color: #999;
-    margin-bottom: 25px;
-    font-size: 16px;
+.promo-content {
+    position: relative;
+    z-index: 2;
 }
 
-.features-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 30px 0;
-    flex-grow: 1; /* Để đẩy giá tiền xuống dưới cùng nếu nội dung ngắn */
-}
-
-.features-list li {
+.promo-content h3 {
+    font-size: 30px;
+    font-weight: 700;
     margin-bottom: 15px;
+    color: white;
+    line-height: 1.2;
+}
+
+.promo-content p {
     font-size: 15px;
-    color: #333;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
+    font-weight: 400; /* Regular */
+    margin-bottom: 20px;
+    color: #e0e0e0; /* Màu trắng xám nhẹ */
     line-height: 1.4;
 }
 
-.features-list li .check {
-    color: #333;
-    font-weight: bold;
-    background: #e0e0e0;
+.arrow-icon {
+    color: white;
+    margin-top: 10px;
+    transform: scale(1.5);
+}
+
+.woman-image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110%;
+    max-height: 450px;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* === CARD 2: WORLD EXPLORER === */
+.pricing-card-final {
+    background-color: #003459; /* Nền xanh */
+}
+
+.pricing-card-final h3 {
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.sub-head-final {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: #cccccc; /* Màu xám nhạt */
+}
+
+.features-list-final {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 auto 0;
+}
+
+.features-list-final li {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* Dấu tích */
+.check-final {
+    color: #003459; /* Dấu tích màu xanh */
+    background: white; /* Nền tròn màu trắng */
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    font-size: 12px;
     flex-shrink: 0;
+    font-weight: bold;
 }
 
-.price-tag {
-    font-size: 36px;
-    font-weight: 800;
+.price-tag-final {
+    font-size: 48px;
+    font-weight: 900;
+    color: #F2994A; /* Giá tiền màu CAM cho nổi bật */
+    margin-top: 30px;
     margin-bottom: 20px;
-    color: #000;
 }
 
-.price-tag span {
-    font-size: 16px;
-    font-weight: normal;
-    color: #666;
+.price-tag-final span {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
 }
 
-.btn-choose {
-    background-color: #2E5C31; /* Màu xanh rêu đậm như hình */
+/* 4. NÚT CHOOSE: Màu Cam (để tương phản với thẻ Xanh) */
+.btn-choose-final {
+    background-color: #F2994A; /* Nút màu cam */
     color: white;
     border: none;
-    padding: 15px;
+    padding: 20px;
     width: 100%;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.3s;
+    box-shadow: 0 5px 15px rgba(242, 153, 74, 0.3);
 }
 
-.btn-choose:hover {
-    background-color: #1b3a1d;
+.btn-choose-final:hover {
+    background-color: #d9863d; /* Cam đậm hơn khi hover */
 }
 
-/* Responsive cho màn hình nhỏ */
-@media (max-width: 900px) {
-    .purchase-content {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .pricing-cards {
-        flex-direction: column;
-        width: 100%;
-    }
+/* --- MODAL CONFIRM --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Nền tối màu truyền thống */
+    display: flex; justify-content: center; align-items: center; z-index: 2000;
+}
+.modal-box {
+    background-color: #fff; padding: 40px; border-radius: 20px; width: 90%; max-width: 450px;
+    text-align: center; border: 1px solid #eee;
+}
+.modal-header h2 { color: #003459; font-size: 26px; font-weight: 800; margin-bottom: 10px; }
+.price-confirm { font-size: 36px !important; font-weight: 800; color: #F2994A !important; margin: 20px 0 !important; }
+.btn-cancel { background: #fff; color: #003459; border: 2px solid #003459; padding: 15px; border-radius: 10px; font-weight: bold; flex: 1; cursor: pointer; }
+.btn-confirm { background: #F2994A; color: #fff; border: none; padding: 15px; border-radius: 10px; font-weight: bold; flex: 1; cursor: pointer; }
+.modal-actions { display: flex; gap: 15px; margin-top: 30px; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1200px) {
+    .purchase-content-new-layout { flex-direction: column; align-items: center; text-align: center; }
+    .right-cards-section { flex-wrap: wrap; }
+    .left-text-section p { margin: 0 auto; color: #333; }
+}
+@media (max-width: 768px) {
+    .orange-card { width: 100%; min-height: auto; }
+    .woman-image { position: relative; width: 80%; transform: none; left: 0; margin: 0 auto; display: block; }
 }

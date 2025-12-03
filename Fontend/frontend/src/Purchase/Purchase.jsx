@@ -1,93 +1,126 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Purchase.css';
 import Navbar from '../Navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../Auth/AuthContext'; // Import AuthContext
+import { useAuth } from '../Auth/AuthContext';
 
 const Purchase = () => {
     const navigate = useNavigate();
-    const { token, user, setUser } = useAuth(); // Lấy token từ Context
+    const { token, user, setUser } = useAuth();
+    const [showModal, setShowModal] = useState(false);
 
-    const handleChoosePlan = async () => {
-        // 1. Lấy token ưu tiên từ Context, nếu không có thì lấy từ localStorage (dự phòng)
-        const currentToken = token || localStorage.getItem('token');
-
-        // 2. Kiểm tra đăng nhập
-        if (!user || !currentToken) {
-            alert("Vui lòng đăng nhập để thực hiện nâng cấp!");
+    // --- LOGIC XỬ LÝ THANH TOÁN (GIỮ NGUYÊN) ---
+    const handleChooseClick = () => {
+        if (!user) {
+            alert("Vui lòng đăng nhập trước!");
             navigate('/login');
             return;
         }
+        setShowModal(true);
+    };
 
-        const confirmUpgrade = window.confirm("Xác nhận nâng cấp lên World Explorer (VIP 1 năm) với giá $100?");
-        if (!confirmUpgrade) return;
-
-        // DEBUG: Kiểm tra token trong Console (F12)
-        console.log("Đang gửi request với Token:", currentToken);
-
+    const handleConfirmUpgrade = async () => {
+        const currentToken = token || localStorage.getItem('token');
         try {
-            // 3. Gọi API kích hoạt VIP
+            // Gọi API kích hoạt VIP 1 năm (365 ngày)
             const response = await fetch(`http://localhost:8080/api/v1/user/upgrade-duration?duration=365`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // QUAN TRỌNG: Gửi kèm Token trong Header
-                    'Authorization': `Bearer ${currentToken}` 
+                    'Authorization': `Bearer ${currentToken}`
                 }
             });
 
             if (response.ok) {
-                // 4. Cập nhật state ngay lập tức để Navbar đổi icon Vương miện
                 const updatedUser = { ...user, role: 'VIP' };
                 setUser(updatedUser);
-                localStorage.setItem('user', JSON.stringify(updatedUser)); // Lưu user mới vào storage
-
-                alert("Thanh toán thành công! Bạn đã là thành viên VIP.");
+                localStorage.setItem('user', JSON.stringify(updatedUser));
+                setShowModal(false);
                 navigate('/user');
             } else {
-                // Xử lý lỗi từ Backend (401, 403, 500)
-                if (response.status === 403 || response.status === 401) {
-                    alert("Lỗi xác thực (Forbidden). Vui lòng đăng xuất và đăng nhập lại.");
-                } else {
-                    alert(`Lỗi hệ thống: ${response.status}`);
-                }
+                alert("Lỗi nâng cấp. Vui lòng thử lại.");
+                setShowModal(false);
             }
         } catch (error) {
-            console.error("Lỗi kết nối:", error);
-            alert("Không thể kết nối đến máy chủ.");
+            console.error(error);
+            alert("Lỗi kết nối.");
+            setShowModal(false);
         }
     };
+    // -------------------------------------------
+
 
     return (
         <div className="purchase-page-wrapper">
             <Navbar />
             <div className="purchase-container">
-                <div className="purchase-content" style={{ justifyContent: 'center' }}>
+                <div className="purchase-content-new-layout">
                     
-                    <div className="pricing-cards single-card">
-                        {/* Gói World Explorer */}
-                        <div className="pricing-card">
+                    {/* --- PHẦN TEXT BÊN TRÁI --- */}
+                    <div className="left-text-section">
+                        <h1>Travel <br /> Without Limits</h1>
+                        <p>Unlimited planning, visual maps, and offline storage. Everything you need for the perfect trip.</p>
+                    </div>
+
+                    {/* --- PHẦN CARDS BÊN PHẢI --- */}
+                    <div className="right-cards-section">
+                        
+                        {/* CARD 1: Ảnh người phụ nữ */}
+                        <div className="orange-card promo-card">
+                            <div className="promo-content">
+                                <h3>Save More <br/> With Goodplans.</h3>
+                                <p>Choose a plan and get onboard in minutes. Then get $100 credits for your next payment.</p>
+                                {/* Icon mũi tên */}
+                                <div className="arrow-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </div>
+                            </div>
+                            {/* QUAN TRỌNG: Đổi tên file 'woman-demo.png' bên dưới 
+                                thành tên file thực tế trong thư mục public/img của bạn.
+                            */}
+                            <img src="/img/model.png" alt="Traveler" className="woman-image" />
+                        </div>
+
+                        {/* CARD 2: Gói World Explorer (Pricing) */}
+                        <div className="orange-card pricing-card-final">
                             <h3>World Explorer</h3>
-                            <p className="sub-head">Trải nghiệm trọn vẹn nhất</p>
-                            <ul className="features-list">
-                                <li><span className="check">✔</span> Xuất kế hoạch ra PDF không giới hạn</li>
-                                <li><span className="check">✔</span> Tạo kế hoạch không giới hạn số lần</li>
-                                <li><span className="check">✔</span> Lưu trữ lịch sử chuyến đi</li>
-                                <li><span className="check">✔</span> Bản đồ tương tác nâng cao</li>
+                            <p className="sub-head-final">What You'll Get</p>
+                            <ul className="features-list-final">
+                                <li><span className="check-final">✔</span> Export your plan with PDF file without limits</li>
+                                <li><span className="check-final">✔</span> Generate plan with 10 times per day</li>
+                                <li><span className="check-final">✔</span> Storage your plan</li>
+                                <li><span className="check-final">✔</span> Interactive map views</li>
                             </ul>
+                            <div className="price-tag-final">$100<span>/year</span></div>
                             
-                            <div className="price-tag">$100<span>/year</span></div>
-                            
-                            <button 
-                                className="btn-choose"
-                                onClick={handleChoosePlan}
-                            >
-                                Choose (Upgrade Now)
+                            <button className="btn-choose-final" onClick={handleChooseClick}>
+                                Choose
                             </button>
                         </div>
+
                     </div>
                 </div>
             </div>
+
+            {/* --- MODAL CONFIRM (GIỮ NGUYÊN LOGIC CŨ) --- */}
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal-box">
+                        <div className="modal-header">
+                            <h2>Xác nhận nâng cấp</h2>
+                        </div>
+                        <div className="modal-body">
+                            <p>Bạn sắp nâng cấp lên gói <strong>World Explorer (1 Năm)</strong>.</p>
+                            <p className="price-confirm">Giá: $100</p>
+                            <p>Bạn có chắc chắn muốn thực hiện giao dịch này không?</p>
+                        </div>
+                        <div className="modal-actions">
+                            <button className="btn-cancel" onClick={() => setShowModal(false)}>Hủy bỏ</button>
+                            <button className="btn-confirm" onClick={handleConfirmUpgrade}>Xác nhận thanh toán</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

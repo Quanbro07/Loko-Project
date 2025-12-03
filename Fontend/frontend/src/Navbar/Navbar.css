@@ -187,3 +187,49 @@
     border: 1px solid #fff;
     cursor: default; /* Không click được vì đã mua rồi */
 }
+
+/* --- STYLE MỚI CHO HUY HIỆU VIP (GOLD SHINY) --- */
+.vip-badge {
+    /* 1. Tạo nền màu Vàng Gold kim loại */
+    background: linear-gradient(
+        110deg, 
+        #bf953f 0%, 
+        #fcf6ba 25%, 
+        #b38728 50%, 
+        #fbf5b7 75%, 
+        #aa771c 100%
+    );
+    
+    /* 2. Kích thước background lớn hơn thẻ để tạo hiệu ứng chạy */
+    background-size: 200% auto;
+    
+    /* 3. Style cho chữ */
+    color: #3b2c00; /* Chữ màu nâu đậm để tương phản tốt nhất với màu vàng */
+    font-weight: 900; /* Chữ đậm */
+    font-size: 15px;
+    text-transform: uppercase; /* Chữ in hoa cho sang trọng */
+    letter-spacing: 1px; /* Giãn chữ ra một chút */
+    
+    /* 4. Căn chỉnh khung */
+    padding: 8px 18px;
+    border-radius: 30px; /* Bo tròn hoàn toàn */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 15px;
+    
+    /* 5. Hiệu ứng bóng đổ phát sáng (Glow) */
+    box-shadow: 0 0 10px rgba(253, 246, 186, 0.6);
+    border: 1px solid #fcf6ba; /* Viền sáng nhẹ */
+    
+    /* 6. Kích hoạt Animation */
+    animation: shine-gold 3s linear infinite;
+    cursor: default;
+}
+
+/* Định nghĩa chuyển động loáng bóng */
+@keyframes shine-gold {
+    to {
+        background-position: 200% center;
+    }
+}

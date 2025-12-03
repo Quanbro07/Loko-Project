@@ -59,7 +59,10 @@ const Navbar = () => {
                                 {/* --- LOGIC KIỂM TRA VIP --- */}
                                 {user?.role === 'VIP' ? (
                                     <div className='vip-badge'>
-                                        👑 Premium
+                                        <span>👑</span> 
+        
+        {/* Chữ Premium */}
+        PREMIUM
                                     </div>
                                 ) : (
                                     <button className='upgrade-btn' onClick={() => navigate('/purchase')}>
