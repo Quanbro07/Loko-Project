@@ -88,7 +88,7 @@ public class AIAPIService {
             Optional<Location> existLocation = locationRepository.findByGgPlaceId(rawLocationDTO.getGgPlaceId());
 
             if(existLocation.isPresent()) {
-                System.out.println("Location already exists: " + rawLocationDTO.getGgPlaceId());
+                System.out.println("Location already exists(skipping): " + rawLocationDTO.getGgPlaceId());
                 continue;
             }
 
@@ -222,6 +222,13 @@ public class AIAPIService {
             }
 
             Province province = provinceOpt.get();
+
+
+            Optional<Location> existLocation = locationRepository.findByGgPlaceId(rawLocationDTO.getGgPlaceId());
+            if(existLocation.isPresent()) {
+                System.out.println("Location already exists(skipping): " + rawLocationDTO.getGgPlaceId());
+                continue;
+            }
 
             List<LocationCategory> categories = locationCategoryRepository.
                     findAllById(rawLocationDTO.getCategoryIds());
