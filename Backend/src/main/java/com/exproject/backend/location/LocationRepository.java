@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -46,7 +47,7 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
         VALUES (
             :#{#loc.ggPlaceId}, :#{#loc.province.id}, :#{#loc.locationName}, :#{#loc.latitude}, :#{#loc.longitude},
             :#{#loc.openTime}, :#{#loc.avgVisitTime}, :#{#loc.ticketPrice}, :#{#loc.averageRating}, :#{#loc.reviewCount}, 
-            :#{#loc.updateAt}, #{#loc.closeTime}
+            :#{#loc.updateAt}, :#{#loc.closeTime}
         )
         ON CONFLICT (gg_place_id) DO NOTHING
     """, nativeQuery = true)
@@ -98,4 +99,6 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
             "JOIN ts.trip t " +
             "WHERE t.user.id = :userId")
     List<Location> findAllVisitedLocations(@Param("userId") Long userId);
+
+    Optional<Location> findByGgPlaceId(String ggPlaceId);
 }

@@ -101,8 +101,11 @@ public class MakePlanService {
         // Set visitedLocation
         request.setVisitedLocations(visitedLocation);
 
+        List<LocationIdDTO> rejectLocations = new ArrayList<>();
         // Lấy reject Locations
-        List<LocationIdDTO> rejectLocations = request.getRejectedLocations();
+        if(request.getRejectedLocations() != null) {
+            rejectLocations.addAll(request.getRejectedLocations());
+        }
 
         // Set reject Locations dù có hay không
         request.setRejectedLocations(rejectLocations);
