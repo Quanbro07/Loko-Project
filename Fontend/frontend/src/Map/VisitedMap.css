@@ -25,7 +25,7 @@
 /* Cột trái: Bản đồ */
 .map-area {
   flex: 3; 
-  width: 200%;
+  width: 300%;
   padding-left: 200px;
   /* Nếu muốn map nằm sát lề trái tuyệt đối, có thể thêm padding-right ở đây */
 }

@@ -325,12 +325,12 @@ class này vào file User.css của bạn */
 .content-stack-wrapper {
     position: relative;
     width: 100%;
-    max-width: 1400px;
+    max-width: 95%;
     margin: 30px auto; /* Khoảng cách với vé */
     
     /* Quan trọng: Để chiều cao tự động dãn theo nội dung bên trong */
     height: auto; 
-    min-height: 600px; /* Chiều cao tối thiểu để đẹp */
+    min-height: 700px; /* Chiều cao tối thiểu để đẹp */
     
     display: flex;
     justify-content: center;
