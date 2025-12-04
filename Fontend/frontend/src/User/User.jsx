@@ -312,7 +312,7 @@ const User = () => {
   return (
     <div className="user-page-background">
       <Navbar />
-
+      
       {/* === KHỐI VÉ (FIXED HEIGHT) === */}
       <div className="ticket-container">
         <div className="ticket-header">
@@ -323,7 +323,7 @@ const User = () => {
           />
           <div className="ticket-company">LOKO</div>
         </div>
-
+        
         {isEditing && (
           <div className="edit-controls">
             <button className="save-button" onClick={handleSave}>
