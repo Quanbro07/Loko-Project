@@ -323,10 +323,45 @@ class này vào file User.css của bạn */
 }
 
 .content-stack-wrapper {
-  position: relative;
-  margin: -10px auto 20px auto;
-  width: 800px; /* Đặt width bằng với width của vé để thẳng hàng */
-  min-height: 600px; /* Chiều cao vùng hiển thị */
-  background-color: transparent; /* Nền trong suốt để thấy background trang */
-  z-index: 1; /* Nằm dưới vé nếu có chồng lấn */
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 30px auto; /* Khoảng cách với vé */
+    
+    /* Quan trọng: Để chiều cao tự động dãn theo nội dung bên trong */
+    height: auto; 
+    min-height: 600px; /* Chiều cao tối thiểu để đẹp */
+    
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    z-index: 1;
+}
+
+/* --- CÁC ITEM BÊN TRONG (Map, History) --- */
+.content-stack-item {
+    /* Quan trọng: Ghi đè position absolute cũ */
+    position: relative !important; 
+    
+    /* Mặc định ẩn */
+    display: none;
+    width: 100%;
+}
+
+/* --- KHI ACTIVE (ĐƯỢC CHỌN) --- */
+.content-stack-item.active {
+    display: block; /* Hiện ra dạng khối để đẩy Footer xuống */
+    animation: slideUpFade 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* --- ANIMATION --- */
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
