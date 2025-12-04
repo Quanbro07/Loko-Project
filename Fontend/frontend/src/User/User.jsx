@@ -46,6 +46,11 @@ const User = () => {
         return dateData; 
     };
 
+    const formatDateForDisplay = (yyyy_mm_dd) => {
+        if (!yyyy_mm_dd) return '';
+        const [year, month, day] = yyyy_mm_dd.split('-');
+        return `${day}/${month}/${year}`;
+    };
     // --- STATE KHỞI TẠO (BỎ GIÁ TRỊ MẶC ĐỊNH ĐỂ TEST Ô TRỐNG) ---
     const [name, setName] = useState(user?.fullName || '');
     const [dob, setDob] = useState(formatDateForInput(user?.dob) || '');
@@ -192,7 +197,7 @@ const User = () => {
                                 <input className='edit-input' type="date" value={editDob} onChange={(e) => setEditDob(e.target.value)} />
                             ) : (
                                 <div className='value'>
-                                    {dob ? dob : <span className="empty-data-box"></span>}
+                                    {dob ? formatDateForDisplay(dob) : <span className="empty-data-box"></span>}
                                 </div>
                             )}
                         </div>
