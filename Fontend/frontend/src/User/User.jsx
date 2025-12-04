@@ -10,7 +10,7 @@ import { useLanguage } from "../Language/LanguageContext";
 import { useAuth } from "../Auth/AuthContext";
 import TripHistory from "../TripHistory/TripHistory";
 
-// === BẢNG MAPPING: BACKEND ENUM -> GEOJSON SLUG (GIỮ NGUYÊN) ===
+// === BẢNG MAPPING: BACKEND ENUM -> GEOJSON SLUG ===
 const PROVINCE_MAPPING = {
   HaNoi: "ha-noi",
   HaiPhong: "hai-phong",
@@ -51,8 +51,21 @@ const PROVINCE_MAPPING = {
 const User = () => {
   const { user, token, setUser } = useAuth();
   const { translate } = useLanguage();
+
+  // --- STATE QUẢN LÝ UI ---
   const [isEditing, setIsEditing] = useState(false);
   const [activeSection, setActiveSection] = useState("map");
+  const [toast, setToast] = useState({
+    show: false,
+    message: "",
+    type: "success",
+  }); // Thêm state cho Toast
+
+  // Helper hiển thị thông báo
+  const showToast = (message, type = "success") => {
+    setToast({ show: true, message, type });
+    setTimeout(() => setToast({ ...toast, show: false }), 3000);
+  };
 
   // Format Date Helper
   const formatDateForInput = (dateData) => {
@@ -67,21 +80,30 @@ const User = () => {
     return dateData;
   };
 
-  // --- STATE KHỞI TẠO ---
+  const formatDateForDisplay = (yyyy_mm_dd) => {
+    if (!yyyy_mm_dd) return "";
+    const [year, month, day] = yyyy_mm_dd.split("-");
+    return `${day}/${month}/${year}`;
+  };
+
+  // --- STATE DỮ LIỆU USER ---
   const [name, setName] = useState(user?.fullName || "");
   const [dob, setDob] = useState(formatDateForInput(user?.dob) || "");
   const [gender, setGender] = useState(user?.gender || "");
   const [avatar, setAvatar] = useState(avatarSample);
   const [avatarFile, setAvatarFile] = useState(null);
 
+  // --- STATE MAP ---
   const [visitedSlugs, setVisitedSlugs] = useState([]);
   const [visitedNames, setVisitedNames] = useState([]);
   const [totalVisitedCount, setTotalVisitedCount] = useState(0);
 
+  // --- STATE FORM EDIT ---
   const [editName, setEditName] = useState(name);
   const [editDob, setEditDob] = useState(dob);
   const [editGender, setEditGender] = useState(gender);
 
+  // Effect: Sync user data khi user thay đổi
   useEffect(() => {
     if (user) {
       setName(user.fullName || "");
@@ -98,7 +120,7 @@ const User = () => {
     }
   }, [user]);
 
-  // ... (Giữ nguyên các hàm xử lý chuỗi và fetch API của bạn) ...
+  // Các hàm xử lý chuỗi
   function removeDiacritics(str) {
     if (!str) return "";
     str = str.replace(/[đĐ]/g, "d");
@@ -134,6 +156,7 @@ const User = () => {
     return slugify(splitName);
   };
 
+  // Effect: Lấy danh sách tỉnh đã đi
   useEffect(() => {
     if (!user || !user.id) return;
     let mounted = true;
@@ -141,6 +164,7 @@ const User = () => {
     const fullEndpoint = endpoint.startsWith("http")
       ? endpoint
       : `http://localhost:8080${endpoint}`;
+
     fetch(fullEndpoint, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         if (!res.ok) throw new Error("Err");
@@ -165,6 +189,7 @@ const User = () => {
     };
   }, [user, token]);
 
+  // Effect: Lấy GeoJSON để map tên
   useEffect(() => {
     let mounted = true;
     const GEOJSON_URL =
@@ -192,6 +217,7 @@ const User = () => {
     };
   }, [visitedSlugs]);
 
+  // Component Icon Edit
   const EditIcon = ({ onClick }) => (
     <svg
       onClick={onClick}
@@ -209,6 +235,7 @@ const User = () => {
     </svg>
   );
 
+  // --- HANDLERS ---
   const handleEditClick = () => {
     setEditName(name);
     setEditDob(dob);
@@ -219,7 +246,7 @@ const User = () => {
   const handleSave = async () => {
     const currentUserId = user?.userId || user?.id;
     if (!currentUserId) {
-      alert("Vui lòng đăng nhập lại.");
+      showToast("Vui lòng đăng nhập lại!", "error");
       return;
     }
     try {
@@ -271,12 +298,13 @@ const User = () => {
       };
       localStorage.setItem("user", JSON.stringify(newUserState));
       if (setUser) setUser(newUserState);
+
       setIsEditing(false);
       setAvatarFile(null);
-      alert("Cập nhật thành công!");
+      showToast("Cập nhật thành công!", "success");
     } catch (error) {
       console.error("Error:", error);
-      alert(`Lỗi: ${error.message}`);
+      showToast(`Lỗi: ${error.message}`, "error");
     }
   };
 
@@ -292,11 +320,12 @@ const User = () => {
       setAvatar(avatarSample);
     }
   };
+
   const handleAvatarChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       if (file.size > 5 * 1024 * 1024) {
-        alert("Ảnh quá lớn!");
+        showToast("Ảnh quá lớn!", "error");
         return;
       }
       const reader = new FileReader();
@@ -312,8 +341,8 @@ const User = () => {
   return (
     <div className="user-page-background">
       <Navbar />
-      
-      {/* === KHỐI VÉ (FIXED HEIGHT) === */}
+
+      {/* === KHỐI VÉ (FIXED HEIGHT, Z-INDEX CAO) === */}
       <div className="ticket-container">
         <div className="ticket-header">
           <img
@@ -323,7 +352,7 @@ const User = () => {
           />
           <div className="ticket-company">LOKO</div>
         </div>
-        
+
         {isEditing && (
           <div className="edit-controls">
             <button className="save-button" onClick={handleSave}>
@@ -337,6 +366,7 @@ const User = () => {
 
         <div className="ticket-body">
           <div className="ticket-section passenger-info">
+            {/* 1. HỌ TÊN */}
             <div className="info-item">
               <div className="label">
                 <span>Họ và Tên</span>
@@ -355,6 +385,7 @@ const User = () => {
               )}
             </div>
 
+            {/* 2. NGÀY SINH */}
             <div className="info-item">
               <div className="label">
                 <span>Ngày tháng năm sinh</span>
@@ -369,11 +400,16 @@ const User = () => {
                 />
               ) : (
                 <div className="value">
-                  {dob ? dob : <span className="empty-data-box"></span>}
+                  {dob ? (
+                    formatDateForDisplay(dob)
+                  ) : (
+                    <span className="empty-data-box"></span>
+                  )}
                 </div>
               )}
             </div>
 
+            {/* 3. GIỚI TÍNH */}
             <div className="info-item">
               <div className="label">
                 <span>Giới tính</span>
@@ -490,9 +526,9 @@ const User = () => {
           <img src={barcodeSample} className="barcode-img" alt="barcode" />
         </div>
       </div>
-      {/* === ĐÓNG TICKET-CONTAINER TẠI ĐÂY === */}
+      {/* === KẾT THÚC TICKET CONTAINER === */}
 
-      {/* === NỘI DUNG SLIDE (NẰM BÊN NGOÀI VÉ) === */}
+      {/* === NỘI DUNG SLIDE (NẰM BÊN NGOÀI VÉ ĐỂ TRƯỢT LÊN XUỐNG) === */}
       <div className="content-stack-wrapper">
         <div
           className={`content-stack-item history-stack ${
@@ -508,11 +544,22 @@ const User = () => {
           }`}
           aria-hidden={activeSection !== "map"}
         >
+          {/* Map nằm ở đây, được CSS phóng to và căn giữa */}
           <VisitedMap visited={visitedSlugs} />
         </div>
       </div>
 
       <Footer />
+
+      {/* Toast Notification UI */}
+      <div
+        className={`toast-notification ${toast.show ? "show" : ""} ${
+          toast.type
+        }`}
+      >
+        {toast.type === "success" ? "✅ " : "⚠️ "}
+        {toast.message}
+      </div>
     </div>
   );
 };
