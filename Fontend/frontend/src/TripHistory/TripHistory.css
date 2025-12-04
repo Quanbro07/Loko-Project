@@ -1,0 +1,92 @@
+.trip-history-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trip-history-table {
+  width: 100%;
+  border-collapse: collapse; /* Gộp các đường biên lại */
+  margin-top: 15px;
+}
+
+.trip-history-table th,
+.trip-history-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.trip-history-table th {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+}
+
+.trip-history-table tbody tr:nth-child(4n-1) {
+  /* Chỉ áp dụng cho các hàng tóm tắt, bỏ qua hàng chi tiết */
+  background-color: #f2f2f2;
+}
+
+/* --- Hàng tóm tắt --- */
+.trip-summary-row:hover {
+  background-color: #e0e0e0;
+}
+
+/* --- Ô chứa nút dropdown --- */
+.detail-toggle-cell {
+  text-align: center;
+  width: 80px; /* Chiều rộng cố định cho cột nút */
+}
+
+.detail-toggle-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #4caf50;
+  padding: 5px;
+  transition: transform 0.2s;
+}
+
+/* --- Hàng chi tiết (Dropdown) --- */
+.trip-details-row td {
+  padding: 0; /* Loại bỏ padding để div bên trong kiểm soát */
+  background-color: #eafaea; /* Màu nền khác biệt cho chi tiết */
+}
+
+.details-content {
+  padding: 15px 20px;
+}
+
+.details-content h4 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.details-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.details-list li {
+  padding: 5px 0;
+  border-bottom: 1px dotted #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-item {
+  font-weight: 500;
+}
+
+.detail-cost {
+  color: #d9534f; /* Màu đỏ cho chi phí */
+  font-weight: bold;
+}
