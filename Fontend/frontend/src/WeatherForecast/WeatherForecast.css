@@ -1,16 +1,40 @@
 /* Container tổng (Nền xanh đậm) */
 .weather-figma-container {
-  background: linear-gradient(135deg, #0f172a 0%, #020d45 100%);
-  color: white;
-  padding: 20px 40px;
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
   border-radius: 20px;
-  margin-top: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  font-family: sans-serif;
+  color: white;
+  margin: 0 auto;
+  /* --- SETUP GRADIENT KHỔNG LỒ --- */
+  /* Thứ tự màu (Từ trái qua phải tương ứng 0h -> 24h):
+     1. Đêm (Xanh đen/Tím than)
+     2. Sáng sớm (Tím pha hồng)
+     3. Trưa/Chiều (Cam Vàng rực rỡ) - Điểm nhấn chính
+     4. Hoàng hôn (Cam Đỏ/Tím)
+     5. Đêm (Quay lại Xanh đen để khép kín vòng tròn)
+  */
+  background-image: linear-gradient(
+    90deg,
+    #5997be 0%,
+    /* 0h: Đêm sâu */ #8cced7 20%,
+    /* 4h-5h: Hửng sáng lạnh */ #dfd774 35%,
+    /* 7h-8h: Bình minh cam đỏ */ #fec540 50%,
+    /* 12h: Trưa nắng vàng rực (Cam Vàng) */ #d16d99 65%,
+    /* 24h: Về lại đêm */ #2f237d,
+    #110a38
+  );
+
+  /* Kéo dãn background ra thật to để chỉ hiển thị 1 phần nhỏ tại 1 thời điểm */
+  background-size: 400% 100%;
+
+  /* Hiệu ứng trượt mượt mà khi thay đổi vị trí */
+  transition: background-position 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .weather-header {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
@@ -47,6 +71,9 @@
 
 /* --- STYLE CHO TỪNG THẺ --- */
 .glass-card {
+  background: rgba(255, 255, 255, 0.15); /* Kính mờ để xuyên thấu màu nền */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   /* Quan trọng: Chia đều không gian cho 4 thẻ */
   flex: 1;
   min-width: 0; /* Ngăn vỡ layout nếu nội dung quá dài */
@@ -94,7 +121,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
+  width: 80px;
+  height: 200px;
 }
 
 .rain-alert {
@@ -134,4 +162,36 @@
   margin-top: 10px;
   font-size: 0.8rem;
   opacity: 0.6;
+}
+
+.rain-alert {
+  margin-top: 10px;
+  background: rgba(0, 168, 255, 0.2); /* Nền xanh dương trong suốt */
+  color: #a2d9ff; /* Chữ màu xanh sáng */
+  border: 1px solid rgba(162, 217, 255, 0.4);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 12px;
+
+  /* Thêm chút hiệu ứng shadow để nổi bật */
+  box-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
+
+  /* Animation nhẹ để thu hút sự chú ý (Optional) */
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
 }

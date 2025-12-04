@@ -557,7 +557,6 @@ const User = () => {
           toast.type
         }`}
       >
-        {toast.type === "success" ? "✅ " : "⚠️ "}
         {toast.message}
       </div>
     </div>
