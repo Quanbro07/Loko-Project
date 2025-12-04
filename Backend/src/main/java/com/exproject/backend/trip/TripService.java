@@ -315,13 +315,6 @@ public class TripService {
 
         // Gắn vào Trip Response
         TripResponse tripResponse = tripMapper.toTripResponse(tripEntity);
-
-        if (tripEntity.getTripPdf() != null) {
-            tripResponse.setPdfFileName("trip-" + tripId + ".pdf");
-            // Giả sử bạn có API download riêng
-            tripResponse.setPdfUrl("/api/v1/trip-pdf/download/" + tripId);
-        }
-
         // Tạo RouteResponse
         RouteResponse routeResponse = routeMapper.toRouteResponse(sectionsToFetch);
 
@@ -338,6 +331,16 @@ public class TripService {
 
         // TODO: set PDF
         //makePlanResponse.setPdf();
+        if (tripEntity.getTripPdf() != null) {
+            TripPdf pdf = tripEntity.getTripPdf();
+            makePlanResponse.setPdf(
+                    TripPdfResponse.builder()
+                            .fileName(pdf.getFileName())
+                            .downloadUrl(pdf.getFilePath())  // FE dùng cái này để gọi API download
+                            .build()
+            );
+        }
+
 
         // Set giá trị
         makePlanResponse.setTripPlan(tripResponse);
@@ -413,6 +416,11 @@ public class TripService {
         trip.setCurrentTripSectionId(progressUpdateDTO.getCurrentTripSectionId());
 
         trip.setCurrentTripDetailId(progressUpdateDTO.getCurrentTripDetailId());
+    }
+
+    public Trip getTripEntity(Long tripId) {
+        return tripRepository.findById(tripId)
+                .orElseThrow(() -> new RuntimeException("Trip not found with id: " + tripId));
     }
 
     // Helper Function
