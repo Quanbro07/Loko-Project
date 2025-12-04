@@ -1,6 +1,7 @@
 package com.exproject.backend.trip;
 
 
+import com.exproject.backend.aiAPI.AIAPIService;
 import com.exproject.backend.categorySyncStat.CategorySyncStatService;
 import com.exproject.backend.location.Location;
 import com.exproject.backend.location.LocationRepository;
@@ -10,7 +11,12 @@ import com.exproject.backend.location_category.dto.LocationCategoryDTO;
 import com.exproject.backend.location_category.info.LocationCategory;
 import com.exproject.backend.location_img.LocationImg;
 import com.exproject.backend.location_img.dto.LocationImgDTO;
+import com.exproject.backend.makePlan.dto.MakePlanResponse;
+import com.exproject.backend.pdf.TripPdf;
+import com.exproject.backend.pdf.dto.TripPdfResponse;
+import com.exproject.backend.province.ProvinceRepository;
 import com.exproject.backend.province.info.Province;
+import com.exproject.backend.route.RouteMapper;
 import com.exproject.backend.route.dto.RoutePathResponse;
 import com.exproject.backend.route.dto.RouteResponse;
 import com.exproject.backend.route.dto.SectionRouteResponse;
@@ -29,16 +35,22 @@ import com.exproject.backend.trip_section.dto.TripSectionRequest;
 import com.exproject.backend.user.info.User;
 import com.exproject.backend.user.UserRepository;
 import com.exproject.backend.utils.PolylineUltils;
+import com.exproject.backend.weather.AlertWeatherRepository;
+import com.exproject.backend.weather.WeatherMapper;
+import com.exproject.backend.weather.WeatherService;
+import com.exproject.backend.weather.dto.WeatherRequest;
+import com.exproject.backend.weather.dto.WeatherResponse;
+import com.exproject.backend.weather.info.AlertWeather;
+import com.exproject.backend.weather.info.WeatherSection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.RouteMatcher;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,6 +73,18 @@ public class TripService {
 
     private final LocationCategoryRepository locationCategoryRepository;
 
+    private final AlertWeatherRepository alertWeatherRepository;
+
+    private final WeatherService weatherService;
+
+    private final ProvinceRepository provinceRepository;
+
+    private final AIAPIService aiAPIService;
+
+    private final RouteMapper routeMapper;
+
+    private final WeatherMapper weatherMapper;
+
     // * Tạo Full Trip
     //TODO: Handle: null routeReponse
     // TODO: có thể thêm ROLE param để check
@@ -68,6 +92,7 @@ public class TripService {
     // TODO: Set biến đó vào khi createFullTrip
     @Transactional
     public TripResponse createFullTrip(TripRequest tripRequest, RouteResponse routeResponse) {
+
         User user = userRepository.findById(tripRequest.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -221,8 +246,8 @@ public class TripService {
     // TODO: tạo Weather Request gọi API get Weather
     // TODO: gắn vào DB và trả về
     @Cacheable(value = "full_trip", key = "#tripId")
-    public TripResponse getFullTrip(Long tripId) {
-
+    public MakePlanResponse getFullTrip(Long tripId) {
+        // 1. Lấy Trip + Trip Section
         List<Trip> trips = tripRepository.findTripWithSections(tripId);
 
         if(trips.isEmpty()) {
@@ -233,6 +258,14 @@ public class TripService {
 
         List<TripSection> sectionsToFetch = tripEntity.getTripSections();
 
+
+        // 1.1 Lấy Alert Weather
+        List<AlertWeather> alertWeathers = alertWeatherRepository.findAllByTripId(tripId);
+
+        // Gắn lại để chạy DTO
+        tripEntity.setAlertWeathers(alertWeathers);
+
+        // 2. Fetch Detail
         if(sectionsToFetch != null && !sectionsToFetch.isEmpty()) {
             tripSectionRepository.fetchDetailsForSections(sectionsToFetch);
         }
@@ -240,6 +273,10 @@ public class TripService {
             throw new RuntimeException("Trip Section not found");
         }
 
+        // 2.1 Fetch Weather
+        tripSectionRepository.fetchWeatherForSections(sectionsToFetch);
+
+        // 3. Lấy Img + Categories
         List<Location> locationsToFetch = tripEntity.getTripSections().stream()
                 .flatMap(sections->sections.getTripDetails().stream())
                 .map(TripDetail::getLocation)
@@ -253,15 +290,119 @@ public class TripService {
             locationRepository.fetchLocationCategories(locationsToFetch);
         }
 
-        TripResponse response = tripMapper.toTripResponse(tripEntity);
+
+        // Tìm Province Đại diện cho Weather Request
+        Long provinceId = sectionsToFetch.stream()
+                .flatMap(s -> s.getTripDetails().stream())
+                .map(d -> d.getLocation())
+                .filter(Objects::nonNull)
+                .map(loc -> loc.getProvince().getId()) // Giả sử Location có getProvince()
+                .findFirst()
+                .orElse(null);
+
+        if(provinceId != null) {
+            processWeatherForTripSection(tripEntity,sectionsToFetch,provinceId);
+        }
+        else {
+            throw new RuntimeException("Province not found for Process Weather");
+        }
+
+
+
+        // *Response
+        // Tạo Make Plan Response
+        MakePlanResponse makePlanResponse = new MakePlanResponse();
+
+        // Gắn vào Trip Response
+        TripResponse tripResponse = tripMapper.toTripResponse(tripEntity);
 
         if (tripEntity.getTripPdf() != null) {
-            response.setPdfFileName("trip-" + tripId + ".pdf");
-            response.setPdfUrl("/api/v1/trip-pdf/download/" + tripId);
+            tripResponse.setPdfFileName("trip-" + tripId + ".pdf");
+            // Giả sử bạn có API download riêng
+            tripResponse.setPdfUrl("/api/v1/trip-pdf/download/" + tripId);
         }
-        return tripMapper.toTripResponse(tripEntity);
+
+        // Tạo RouteResponse
+        RouteResponse routeResponse = routeMapper.toRouteResponse(sectionsToFetch);
+
+        // Tạo Weather Response
+        List<WeatherSection> validWeatherSections = sectionsToFetch.stream()
+                .map(TripSection::getWeatherSection)
+                .filter(Objects::nonNull) // <--- QUAN TRỌNG
+                .collect(Collectors.toList());
+
+        WeatherResponse weatherResponse = weatherMapper.toWeatherResponse(tripEntity,validWeatherSections);
+
+        // Tạo PDF response
+        // TODO: Set file pdf
+
+        // TODO: set PDF
+        //makePlanResponse.setPdf();
+
+        // Set giá trị
+        makePlanResponse.setTripPlan(tripResponse);
+        makePlanResponse.setRoute(routeResponse);
+
+        makePlanResponse.setWeather(weatherResponse);
+
+
+
+        return makePlanResponse;
     }
 
+    // Nhồi Weather vào Trip + gọi API để lấy weather về
+    private void processWeatherForTripSection(Trip trip, List<TripSection> sectionsToFetch, Long provinceId) {
+        LocalDate today = LocalDate.now();
+        LocalDate maxForcastDate = today.plusDays(3);
+        LocalDate minForcastDate = today.minusDays(7);
+
+        LocalDate tripStart = trip.getStartDate();
+        LocalDate tripEnd = trip.getEndDate();
+
+        List<TripSection> sectionsToUpdate = sectionsToFetch.stream()
+                .filter(section -> {
+                            LocalDate sectionDate = section.getDate();
+
+                            if(sectionDate == null || tripStart == null || tripEnd == null) {
+                                System.out.println("Date is null or tripStart is null or tripEnd is null");
+                                System.out.println("SectionDate: " + sectionDate);
+                                System.out.println("TripStart: " + tripStart);
+                                System.out.println("TripEnd: " + tripEnd);
+                                return false;
+                            }
+
+                            if(sectionDate.isBefore(tripStart) || sectionDate.isAfter(tripEnd)) {
+                                return false;
+                            }
+
+                            if(sectionDate.isBefore(minForcastDate) || sectionDate.isAfter(maxForcastDate)) {
+                                return false;
+                            }
+
+                            return weatherService.shouldFetchNewWeather(section.getWeatherSection());
+                        }
+                )
+                .collect(Collectors.toList());
+
+        if(sectionsToUpdate.isEmpty()) {
+            return;
+        }
+
+        LocalDate startDate = sectionsToUpdate.get(0).getDate();
+        LocalDate endDate = sectionsToUpdate.get(sectionsToUpdate.size() - 1).getDate();
+
+        Province province = provinceRepository.findById(provinceId)
+                .orElseThrow(() -> new RuntimeException("Province not found"));
+
+        // Tạo Weather Request
+        WeatherRequest weatherRequest = weatherService.buildWeatherRequest(trip, province,
+                startDate,endDate);
+
+        // Lấy response API thì AI service
+        WeatherResponse response = aiAPIService.forecastWeather(weatherRequest);
+
+        weatherService.createWeatherSection(trip,response,sectionsToUpdate);
+    }
 
     // Hàm Update Progress
     @Transactional

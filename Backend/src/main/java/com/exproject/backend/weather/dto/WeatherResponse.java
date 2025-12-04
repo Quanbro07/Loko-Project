@@ -17,5 +17,5 @@ public class WeatherResponse {
     List<WeatherSectionResponse> weatherSections;
 
     @JsonProperty("alerts")
-    List<AlertWeatherResponse> alers;
+    List<AlertWeatherResponse> alerts;
 }

@@ -16,18 +16,18 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @Builder
 public class WeatherRequest {
-    @JsonProperty("privateId")
-    private Long privateId;
+    @JsonProperty("provinceId")
+    private Long provinceId;
 
     @JsonProperty("provinceName")
     private String provinceName;
 
     @JsonProperty("startDate")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
     @JsonProperty("endDate")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
     @JsonProperty("fromOperateTime")

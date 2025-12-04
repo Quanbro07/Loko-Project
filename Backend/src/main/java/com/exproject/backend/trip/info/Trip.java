@@ -6,11 +6,13 @@ import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip_history.TripHistory;
 import com.exproject.backend.trip_section.TripSection;
 import com.exproject.backend.user.info.User;
+import com.exproject.backend.weather.info.AlertWeather;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,7 @@ public class Trip {
     private User user;
 
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("dayNumber ASC")
     private List<TripSection> tripSections = new ArrayList<>();
 
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -47,6 +50,12 @@ public class Trip {
 
     @Column(name = "end_date")
     private LocalDate endDate;
+
+    @Column(name = "from_operation_time")
+    private LocalTime fromOperationTime;
+
+    @Column(name = "to_operation_time")
+    private LocalTime toOperationTime;
 
     @Column(name = "num_adult")
     private Integer numAdult;
@@ -73,6 +82,12 @@ public class Trip {
     @OneToOne(mappedBy = "trip", cascade = CascadeType.ALL)
     private TripPdf tripPdf;
 
+    @OneToMany(mappedBy = "trip",cascade = CascadeType.ALL,orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<AlertWeather> alertWeathers = new ArrayList<>();
+
+
     // Constructor
     public Trip(TripRequest tripRequest, User user) {
         this.user = user;
@@ -81,6 +96,9 @@ public class Trip {
 
         this.startDate = tripRequest.getStartDate();
         this.endDate = tripRequest.getEndDate();
+
+        this.fromOperationTime = tripRequest.getFromOperationTime();
+        this.toOperationTime = tripRequest.getToOperationTime();
 
         this.numAdult = tripRequest.getNumAdult();
         this.numChild = tripRequest.getNumChild();
@@ -110,5 +128,11 @@ public class Trip {
         this.reviewLocations.add(reviewLocation);
 
         reviewLocation.setTrip(this);
+    }
+
+    public void addAlertWeather(AlertWeather newAlertWeather) {
+        this.alertWeathers.add(newAlertWeather);
+
+        newAlertWeather.setTrip(this);
     }
 }

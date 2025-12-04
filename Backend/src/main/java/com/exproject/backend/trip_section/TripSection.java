@@ -3,12 +3,11 @@ package com.exproject.backend.trip_section;
 import com.exproject.backend.trip.info.Trip;
 import com.exproject.backend.trip_detail.TripDetail;
 import com.exproject.backend.trip_section.dto.TripSectionRequest;
+import com.exproject.backend.weather.info.WeatherSection;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +33,17 @@ public class TripSection {
     @Column(name = "day_number")
     private Integer dayNumber;
 
-    // TODO: thêm biến date hiện tại
+    // TODO: thêm biến date hiện tại #DONE
+    @Column(name = "date")
+    private LocalDate date;
 
     @Column(nullable = false)
     private String title;
 
+    @OneToOne(mappedBy = "tripSection", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private WeatherSection weatherSection;
 
     // Constructor
     public TripSection(TripSectionRequest tripSectionRequest) {
@@ -51,5 +56,12 @@ public class TripSection {
         this.tripDetails.add(tripDetail);
 
         tripDetail.setTripSection(this);
+    }
+
+    public void addWeatherSection(WeatherSection weatherSection) {
+        this.weatherSection = weatherSection;
+        if (weatherSection != null) {
+            weatherSection.setTripSection(this);
+        }
     }
 }

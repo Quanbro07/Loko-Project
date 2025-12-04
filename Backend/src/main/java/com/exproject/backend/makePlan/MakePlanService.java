@@ -319,7 +319,8 @@ public class MakePlanService {
         // Set vào DTO
         makePlanResponse.setTripPlan(tripResponse);
         makePlanResponse.setRoute(routeResponse);
-        makePlanResponse.setPdfUrl(pdfPath);
+        // TODO: Chỉnh lại TripPDFResponse
+        //makePlanResponse.setPdf();
 
 
         return makePlanResponse;
