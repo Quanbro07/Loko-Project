@@ -24,7 +24,7 @@ class HourlyWeather(BaseModel):
     will_it_rain: int       # 0 or 1
 
 class DayWeatherScope(BaseModel):
-    scope: str              # "Day1", "Day2"
+    scope: int              
     date: str               # "2025-11-30"
     hourly_weather: List[HourlyWeather]
 
