@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './OutputReal.css';
 import { useLanguage } from '../Language/LanguageContext';
+import { useAuth } from '../Auth/AuthContext'; // <--- FIX LỖI: Import useAuth
 
 // Component giờ đây nhận currentDayIndex từ cha (CurrentPlan)
-const OutputReal = ({ currentDayIndex, setCurrentDayIndex, tripSections }) => {
+const OutputReal = ({ currentDayIndex, setCurrentDayIndex, tripSections, tripId }) => {
     const { translate } = useLanguage();
-
+    const { token } = useAuth(); // Lấy token để gọi API
+    const [isExporting, setIsExporting] = useState(false);
     // Tổng số ngày
     const totalDays = tripSections.length;
 
@@ -18,7 +20,42 @@ const OutputReal = ({ currentDayIndex, setCurrentDayIndex, tripSections }) => {
     
     // Lấy tiêu đề ngày
     const currentDayTitle = currentSection ? currentSection.title : `Day ${currentDayIndex + 1}`;
+    const handleExportPdf = async () => {
+        if (!tripId) {
+            alert("Không tìm thấy ID chuyến đi!");
+            return;
+        }
 
+        setIsExporting(true);
+        try {
+            // Gọi API Backend dựa trên TripPdfController.java
+            const response = await fetch(`http://localhost:8080/api/v1/trip-pdf/download/${tripId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) throw new Error("Lỗi khi tải PDF");
+
+            // Xử lý file Blob để tải về trình duyệt
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Trip_Plan_${tripId}.pdf`; // Tên file khi tải về
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+
+        } catch (error) {
+            console.error("Export error:", error);
+            alert("Không thể xuất file PDF. Vui lòng thử lại sau.");
+        } finally {
+            setIsExporting(false);
+        }
+    };
     // --- Logic Navigation (Gọi hàm của cha) ---
     const handlePrevDay = () => {
         if (currentDayIndex > 0) {
@@ -60,6 +97,28 @@ const OutputReal = ({ currentDayIndex, setCurrentDayIndex, tripSections }) => {
 
     return (
         <div className="output-container">
+            <button 
+                className="btn-export-pdf" 
+                onClick={handleExportPdf}
+                disabled={isExporting}
+                title="Xuất lịch trình ra file PDF"
+            >
+                {isExporting ? (
+                    <span>⏳ Đang xuất...</span>
+                ) : (
+                    <>
+                        {/* Icon PDF nhỏ (SVG) */}
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '5px'}}>
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        Export PDF
+                    </>
+                )}
+            </button>
             <h3>{translate('output_suggested_itinerary') || 'Lịch trình được đề xuất'}</h3>
             
             {/* Bộ điều khiển chuyển ngày */}
