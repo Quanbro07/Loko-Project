@@ -26,11 +26,11 @@ class RouteRequest(BaseModel):
 class RouteSegment(BaseModel):
     distance_meter: float
     duration_second: float
-    path: List[List[float]]  # List of [lat, lon]
+    path: str  # List of [lat, lon]
 
 class SectionRouteResponse(BaseModel):
     day_num: int
-    route_path: List[RouteSegment]
+    route_path: List[Optional[RouteSegment]]
 
 class RouteResponse(BaseModel):
     sections: List[SectionRouteResponse]
