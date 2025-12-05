@@ -18,7 +18,7 @@ const CurrentPlan = () => {
 
     // State cho Slider của CurrentPlace
     const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0); 
-
+    const tripId = allScheduleData.tripId;
     // 1. Lấy danh sách các ngày (Trip Sections)
     const tripSections = useMemo(() => {
         return allScheduleData.tripSections || [];
@@ -66,6 +66,7 @@ const CurrentPlan = () => {
                             currentDayIndex={currentDayIndex}
                             setCurrentDayIndex={handleDayChange} 
                             tripSections={tripSections}
+                            tripId={tripId}
                         />
                     </div>
 

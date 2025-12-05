@@ -103,3 +103,51 @@
 .btn-accept-plan:hover {
     background-color: #1e7e34;
 }
+
+.btn-export-pdf {
+    position: absolute;
+    top: 20px;   /* Cách lề trên 20px (bằng padding của container) */
+    right: 20px; /* Cách lề phải 20px */
+    
+    background-color: #dc3545; /* Màu đỏ đặc trưng của PDF */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.2s;
+    z-index: 10; /* Đảm bảo nổi lên trên các thành phần khác */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-export-pdf:hover {
+    background-color: #bb2d3b;
+    transform: translateY(-1px);
+}
+
+.btn-export-pdf:disabled {
+    background-color: #e2e6ea;
+    color: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* RESPONSIVE: Khi màn hình nhỏ, nút có thể đè lên tiêu đề, ta chỉnh lại */
+@media (max-width: 600px) {
+    .output-container h3 {
+        margin-top: 40px; /* Đẩy tiêu đề xuống để nhường chỗ cho nút */
+    }
+    
+    .btn-export-pdf {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
