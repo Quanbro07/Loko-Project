@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Data
@@ -22,6 +23,10 @@ public class TripRequest {
     private LocalDate startDate;
 
     private LocalDate endDate;
+
+    private LocalTime fromOperationTime;
+
+    private LocalTime toOperationTime;
 
     private Integer numAdult;
 

@@ -24,7 +24,6 @@ public class MakePlanResponse {
     @JsonProperty("weather")
     private WeatherResponse weather;
 
-    @JsonProperty("pdf_url")
-    private String pdfUrl;
-
+    @JsonProperty("pdf")
+    private TripPdfResponse pdf;
 }

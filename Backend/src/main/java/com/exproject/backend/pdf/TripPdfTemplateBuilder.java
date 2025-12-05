@@ -34,198 +34,150 @@ public class TripPdfTemplateBuilder {
     }
 
     public String buildHtml(TripRequest trip) {
+
         String tripName = trip.getTripName() != null ? trip.getTripName() : "Your Trip Plan";
 
         StringBuilder html = new StringBuilder();
 
-        // ---------- HEADER ----------
+        // ========== HTML + CSS HEADER ==========
         html.append("<!DOCTYPE html>");
         html.append("<html lang='en'>");
         html.append("<head>");
         html.append("<meta charset='UTF-8'/>");
-        html.append("<title>").append(escape(tripName)).append("</title>");
 
-        // ---------- CSS ----------
         html.append("<style>");
 
+        // ---------- FONT ----------
         html.append("@font-face { font-family: 'Roboto'; src: url('file:src/main/resources/fonts/Roboto-Regular.ttf'); }");
         html.append("@font-face { font-family: 'Roboto-Bold'; src: url('file:src/main/resources/fonts/Roboto-Bold.ttf'); }");
 
-        html.append("body { font-family: 'Roboto', sans-serif; font-size: 13px; line-height: 1.45; padding: 10px 25px; }");
+        // ---------- GLOBAL ----------
+        html.append("body { font-family: 'Roboto', sans-serif; padding: 25px 40px; font-size: 13px; color: #333; }");
 
-        html.append(".trip-title { font-size: 26px; font-family: 'Roboto-Bold'; color: #222; margin-bottom: 18px; }");
+        html.append(".header { text-align: center; margin-bottom: 35px; }");
+        html.append(".header-title { font-size: 30px; font-family:'Roboto-Bold'; color:#263b5e; }");
+        html.append(".header-sub { font-size: 14px; color:#7a7a7a; margin-top:4px; }");
 
-        // ===== NEW TRIP SUMMARY BOX =====
-        html.append(".trip-info-box {"
-                + "margin: 10px 0 28px 0;"
-                + "padding: 22px 26px;"
-                + "background: #f5f8ff;"
-                + "border: 1px solid #cdd8f0;"
-                + "border-radius: 10px;"
-                + "width: 65%;"
-                + "box-shadow: 0 1px 3px rgba(0,0,0,0.05);"
-                + "} ");
+        // ---------- SUMMARY CARD ----------
+        html.append(".summary-card { "
+                + "padding: 25px; border-radius: 12px; background:#f7f9ff; "
+                + "border:1px solid #d6def1; width:72%; margin-bottom:35px; "
+                + "box-shadow:0 2px 8px rgba(0,0,0,0.06); "
+                + "}");
+        html.append(".summary-title { font-size: 18px; font-family:'Roboto-Bold'; margin-bottom:18px; color:#1d2f6f; }");
+        html.append(".summary-grid { display:grid; grid-template-columns:150px auto; row-gap:12px; column-gap:15px; }");
+        html.append(".label { font-family:'Roboto-Bold'; color:#222; }");
+        html.append(".value { color:#555; }");
 
-        html.append(".trip-info-title {"
-                + "font-family: 'Roboto-Bold';"
-                + "font-size: 17px;"
-                + "margin-bottom: 16px;"
-                + "color: #213a7b;"
-                + "} ");
+        // ---------- DAY SECTION ----------
+        html.append(".day-section { margin-top:35px; }");
+        html.append(".day-header { "
+                + "font-size:18px; padding:12px 18px; background:#e3ebff; "
+                + "border-left:7px solid #4a6cf7; border-radius:6px; "
+                + "font-family:'Roboto-Bold'; color:#1d2f6f;"
+                + "}");
 
-        html.append(".trip-info-grid {"
-                + "display: grid;"
-                + "grid-template-columns: 130px auto;"
-                + "row-gap: 10px;"
-                + "column-gap: 10px;"
-                + "font-size: 14px;"
-                + "} ");
+        // ---------- TABLE ----------
+        html.append(".detail-table { width:100%; margin-top:12px; border-collapse: collapse; "
+                + "border-radius: 10px; overflow:hidden; font-size:13px; }");
 
-        html.append(".trip-info-label { font-family: 'Roboto-Bold'; color: #1e1e1e; }");
-        html.append(".trip-info-value { color: #333; }");
+        html.append(".detail-table th { background:#eff2fb; padding:10px; border:1px solid #d3d8e6; "
+                + "font-family:'Roboto-Bold'; text-align:left; color:#1a1a1a; }");
 
-        // ===== DAY TITLE =====
-        html.append(".day-title {"
-                + "font-size: 17px;"
-                + "font-family: 'Roboto-Bold';"
-                + "margin-top: 25px;"
-                + "margin-bottom: 10px;"
-                + "padding: 10px 14px;"
-                + "background: #e8f0fe;"
-                + "border-left: 6px solid #4285F4;"
-                + "border-radius: 4px;"
-                + "} ");
+        html.append(".detail-table td { padding:10px; border:1px solid #e5e7ec; vertical-align: top; }");
 
-        // ===== TABLE STYLE =====
-        html.append(".detail-table {"
-                + "width: 100%;"
-                + "border-collapse: collapse;"
-                + "margin-top: 6px;"
-                + "border: 1px solid #d0d4db;"
-                + "border-radius: 8px;"
-                + "overflow: hidden;"
-                + "table-layout: fixed;"
-                + "} ");
-
-        html.append(".detail-table th {"
-                + "background: #eef1f7;"
-                + "color: #1a2c63;"
-                + "padding: 10px;"
-                + "font-family: 'Roboto-Bold';"
-                + "border: 1px solid #d0d4db;"
-                + "} ");
-
-        html.append(".detail-table td {"
-                + "padding: 10px;"
-                + "border: 1px solid #e5e7ec;"
-                + "vertical-align: top;"
-                + "} ");
-
-        html.append(".detail-table th:nth-child(1), .detail-table td:nth-child(1) { width: 6%; text-align:center; }");
-        html.append(".detail-table th:nth-child(2), .detail-table td:nth-child(2) { width: 18%; }");
-        html.append(".detail-table th:nth-child(3), .detail-table td:nth-child(3) { width: 25%; }");
-        html.append(".detail-table th:nth-child(4), .detail-table td:nth-child(4) { width: 51%; }");
+        html.append(".col-no { width:6%; text-align:center; }");
+        html.append(".col-time { width:15%; }");
+        html.append(".col-location { width:25%; font-weight:bold; }");
+        html.append(".col-desc { width:54%; }");
 
         html.append("</style>");
         html.append("</head>");
         html.append("<body>");
 
-        // ---------- TRIP TITLE ----------
-        html.append("<div class='trip-title'>").append(escape(tripName)).append("</div>");
-
-        // ---------- TRIP SUMMARY ----------
-        html.append("<div class='trip-info-box'>");
-
-        html.append("<div class='trip-info-title'>Trip Summary</div>");
-
-        html.append("<div class='trip-info-grid'>");
-
-        html.append("<div class='trip-info-label'>Start date:</div>");
-        html.append("<div class='trip-info-value'>").append(formatNumber(trip.getStartDate())).append("</div>");
-
-        html.append("<div class='trip-info-label'>End date:</div>");
-        html.append("<div class='trip-info-value'>").append(formatNumber(trip.getEndDate())).append("</div>");
-
-        html.append("<div class='trip-info-label'>Adults:</div>");
-        html.append("<div class='trip-info-value'>").append(formatNumber(trip.getNumAdult())).append("</div>");
-
-        html.append("<div class='trip-info-label'>Children:</div>");
-        html.append("<div class='trip-info-value'>").append(formatNumber(trip.getNumChild())).append("</div>");
-
-        html.append("<div class='trip-info-label'>Elders:</div>");
-        html.append("<div class='trip-info-value'>").append(formatNumber(trip.getNumElder())).append("</div>");
-
-        html.append("</div>");
+        // ========== HEADER ==========
+        html.append("<div class='header'>");
+        html.append("<div class='header-title'>" + escape(tripName) + "</div>");
+        html.append("<div class='header-sub'>Generated Trip Plan</div>");
         html.append("</div>");
 
-        // ---------- DAY SECTIONS ----------
+        // ========== SUMMARY CARD ==========
+        html.append("<div class='summary-card'>");
+        html.append("<div class='summary-title'>Trip Overview</div>");
+        html.append("<div class='summary-grid'>");
+
+        html.append("<div class='label'>Start Date:</div><div class='value'>" + formatNumber(trip.getStartDate()) + "</div>");
+        html.append("<div class='label'>End Date:</div><div class='value'>" + formatNumber(trip.getEndDate()) + "</div>");
+        html.append("<div class='label'>Adults:</div><div class='value'>" + formatNumber(trip.getNumAdult()) + "</div>");
+        html.append("<div class='label'>Children:</div><div class='value'>" + formatNumber(trip.getNumChild()) + "</div>");
+        html.append("<div class='label'>Elders:</div><div class='value'>" + formatNumber(trip.getNumElder()) + "</div>");
+
+        html.append("</div></div>");
+
+        // ========== DAY SECTIONS ==========
         if (trip.getTripSections() != null) {
-
             for (TripSectionRequest section : trip.getTripSections()) {
 
-                html.append("<div class='day-title'>Day ").append(section.getDayNumber());
-                if (section.getTitle() != null && !section.getTitle().isBlank()) {
-                    html.append(" - ").append(escape(section.getTitle()));
-                }
+                html.append("<div class='day-section'>");
+
+                html.append("<div class='day-header'>Day " + section.getDayNumber());
+                if (section.getTitle() != null && !section.getTitle().isBlank())
+                    html.append(" - " + escape(section.getTitle()));
                 html.append("</div>");
 
                 html.append("<table class='detail-table'>");
                 html.append("<thead><tr>");
-                html.append("<th>No.</th>");
-                html.append("<th>Time</th>");
-                html.append("<th>Location</th>");
-                html.append("<th>Description</th>");
-                html.append("</tr></thead>");
-                html.append("<tbody>");
+                html.append("<th class='col-no'>No.</th>");
+                html.append("<th class='col-time'>Time</th>");
+                html.append("<th class='col-location'>Location</th>");
+                html.append("<th class='col-desc'>Description</th>");
+                html.append("</tr></thead><tbody>");
 
                 if (section.getTripDetails() != null) {
-
                     for (TripDetailRequest detail : section.getTripDetails()) {
 
                         html.append("<tr>");
 
-                        html.append("<td>").append(detail.getSequenceOrder()).append("</td>");
+                        html.append("<td class='col-no'>" + detail.getSequenceOrder() + "</td>");
 
                         String timeRange = formatTimeRange(detail.getStartTime(), detail.getEndTime());
-                        html.append("<td>").append(escape(timeRange)).append("</td>");
+                        html.append("<td class='col-time'>" + escape(timeRange) + "</td>");
 
                         LocationDTO loc = detail.getLocation();
                         String locName = (loc != null && loc.getLocationName() != null)
                                 ? loc.getLocationName() : "Unknown";
 
-                        html.append("<td><strong>").append(escape(locName)).append("</strong></td>");
+                        html.append("<td class='col-location'>" + escape(locName) + "</td>");
 
                         StringBuilder desc = new StringBuilder();
-
                         if (loc != null) {
                             if (loc.getOpenTime() != null)
-                                desc.append("Open: ").append(formatTime(loc.getOpenTime())).append("<br/>");
-
+                                desc.append("<div>Open: ").append(formatTime(loc.getOpenTime())).append("</div>");
                             if (loc.getAvgVisitTime() != null)
-                                desc.append("Visit: ").append(loc.getAvgVisitTime()).append(" phút<br/>");
-
+                                desc.append("<div>Visit: ").append(loc.getAvgVisitTime()).append(" min</div>");
                             if (loc.getTicketPrice() != null)
-                                desc.append("Price: ").append(loc.getTicketPrice()).append("<br/>");
-
+                                desc.append("<div>Price: ").append(loc.getTicketPrice()).append("</div>");
                             if (loc.getAverageRating() != null)
-                                desc.append("Rating: ").append(loc.getAverageRating())
-                                        .append(" (").append(loc.getReviewCount()).append(" reviews)<br/>");
+                                desc.append("<div>Rating: ").append(loc.getAverageRating())
+                                        .append(" (" + loc.getReviewCount() + " reviews)</div>");
                         }
 
                         if (detail.getDescription() != null)
                             desc.append("<br/><strong>").append(escape(detail.getDescription())).append("</strong>");
 
-                        html.append("<td>").append(desc.toString()).append("</td>");
+                        html.append("<td class='col-desc'>" + desc + "</td>");
 
                         html.append("</tr>");
                     }
                 }
 
                 html.append("</tbody></table>");
+                html.append("</div>");
             }
         }
 
         html.append("</body></html>");
+
         return html.toString();
     }
 }

@@ -36,6 +36,4 @@ public class TripDetailResponse {
 
     private LocationResponse location;
 
-    private RoutePathResponse routePath;
-
 }

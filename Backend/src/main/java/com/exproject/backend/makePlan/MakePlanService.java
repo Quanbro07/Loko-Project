@@ -1,5 +1,12 @@
 package com.exproject.backend.makePlan;
 
+import java.time.LocalDate;
+import com.exproject.backend.user.UserRepository;
+import com.exproject.backend.user.info.User;
+import com.exproject.backend.user.info.Role;
+import com.exproject.backend.trip.info.Trip;
+import com.exproject.backend.pdf.dto.TripPdfResponse;
+import com.exproject.backend.pdf.TripPdf;
 import com.exproject.backend.pdf.TripPdfService;
 import com.exproject.backend.aiAPI.AIAPIService;
 import com.exproject.backend.hobby.info.EHobby;
@@ -33,6 +40,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class MakePlanService {
+    private final UserRepository userRepository;
 
     private final LocationService locationService;
 
@@ -297,21 +305,23 @@ public class MakePlanService {
     public MakePlanResponse confirmMakePlan(ConfirmPlanRequest confirmPlanRequest,Long userId) {
         TripRequest tripRequest = confirmPlanRequest.getTripRequest();
 
-        // TODO: Handle VIP/USER
-        // convert to Route Request
-        RouteRequest routeRequest = convertToRouteRequest(tripRequest);
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Gọi api route
-        RouteResponse routeResponse = routeService.getRoute(routeRequest);
+        // TODO: Handle VIP/USER
+        RouteResponse routeResponse = null;
+        if(isVIP(user)) {
+            // convert to Route Request
+            RouteRequest routeRequest = convertToRouteRequest(tripRequest);
+
+            // Gọi api route
+            routeResponse = routeService.getRoute(routeRequest);
+
+        }
 
         // Gọi hàm create full plan
+        // TODO: Handle routeResponse null
         TripResponse tripResponse = tripService.createFullTrip(tripRequest, routeResponse);
 
-        // tạo PDF file
-        byte[] pdfBytes = tripPdfService.generateTripPdf(tripRequest);
-
-        // Lưu PDF vào trip mối quan hệ 1:1
-        String pdfPath = tripPdfService.savePdfFile(pdfBytes, tripResponse.getTripId());
 
         // Tạo Make plan Response
         MakePlanResponse makePlanResponse = new MakePlanResponse();
@@ -319,12 +329,38 @@ public class MakePlanService {
         // Set vào DTO
         makePlanResponse.setTripPlan(tripResponse);
         makePlanResponse.setRoute(routeResponse);
-        makePlanResponse.setPdfUrl(pdfPath);
+
+        if (isVIP(user)) {
+
+            byte[] pdfBytes = tripPdfService.generateTripPdf(tripRequest);
+            // Lưu PDF vào trip mối quan hệ 1:1
+            String filePath = tripPdfService.savePdfToFileSystem(pdfBytes, tripResponse.getTripId());
+
+            Trip tripEntity = tripService.getTripEntity(tripResponse.getTripId());
+            TripPdf tripPdf = tripPdfService.savePdfRecord(tripEntity, filePath);
+
+            TripPdfResponse pdfResponse = TripPdfResponse.builder()
+                    .fileName(tripPdf.getFileName())
+                    .downloadUrl(tripPdf.getFilePath())
+                    .build();
+
+            makePlanResponse.setPdf(pdfResponse);
+        }
+        else {
+            makePlanResponse.setPdf(null);
+        }
+        // TODO: Chỉnh lại TripPDFResponse  
+        //makePlanResponse.setPdf();
 
 
         return makePlanResponse;
     }
 
+    private boolean isVIP(User user) {
+        return user.getRole() == Role.VIP
+                && user.getVipEndDate() != null
+                && user.getVipEndDate().isAfter(LocalDate.now());
+    }
 
 
     private RouteRequest convertToRouteRequest(TripRequest tripRequest) {

@@ -1,5 +1,6 @@
 package com.exproject.backend.trip;
 
+import com.exproject.backend.makePlan.dto.MakePlanResponse;
 import com.exproject.backend.route.dto.RouteResponse;
 import com.exproject.backend.trip.dto.ProgressUpdateDTO;
 import com.exproject.backend.trip.dto.SaveTripPayload;
@@ -29,9 +30,9 @@ public class TripController {
 
     // Get Trip cùng với Trip Section, Trip Detail, Location, Location Img, Location Categories
     @GetMapping("/get")
-    public ResponseEntity<TripResponse> getTrip(@RequestParam Long tripId) {
+    public ResponseEntity<MakePlanResponse> getTrip(@RequestParam Long tripId) {
 
-        TripResponse response = tripService.getFullTrip(tripId);
+        MakePlanResponse response = tripService.getFullTrip(tripId);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }

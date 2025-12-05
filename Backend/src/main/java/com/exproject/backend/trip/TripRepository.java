@@ -24,6 +24,7 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     // Query 1: Lấy Trip và List Cấp 1
     @Query("SELECT DISTINCT t FROM Trip t " +
             "LEFT JOIN FETCH t.tripSections ts " +
+            "LEFT JOIN FETCH t.tripPdf tp " +
             "WHERE t.id = :tripId")
     List<Trip> findTripWithSections(@Param("tripId") Long tripId);
 }

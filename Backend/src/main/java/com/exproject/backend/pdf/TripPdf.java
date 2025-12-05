@@ -4,12 +4,12 @@ import com.exproject.backend.trip.info.Trip;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "trip_pdf")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class TripPdf {
 
     @Id
@@ -20,10 +20,9 @@ public class TripPdf {
     @JoinColumn(name = "trip_id", unique = true)
     private Trip trip;
 
-    @Column(name = "file_path")
-    private String filePath;
+    private String fileName;
 
-    @Lob
-    @Column(name = "file_data")
-    private byte[] fileData; // nếu muốn lưu dạng BLOB (optional)
+    private String fileType;
+
+    private String filePath;
 }
