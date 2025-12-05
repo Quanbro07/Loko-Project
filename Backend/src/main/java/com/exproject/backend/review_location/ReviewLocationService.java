@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ReviewLocationService {
+public class    ReviewLocationService {
 
     private final ReviewLocationRepository reviewLocationRepository;
 
