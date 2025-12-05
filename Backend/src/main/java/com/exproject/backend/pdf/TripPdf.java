@@ -21,6 +21,8 @@ public class TripPdf {
     private Trip trip;
 
     private String fileName;
+
     private String fileType;
+
     private String filePath;
 }

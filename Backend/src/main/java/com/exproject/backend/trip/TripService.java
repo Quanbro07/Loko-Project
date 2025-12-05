@@ -96,26 +96,36 @@ public class TripService {
         User user = userRepository.findById(tripRequest.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        if(tripRequest.getTripSections().size() != routeResponse.getSections().size()) {
-            throw new RuntimeException("Data mismatch: Section count does not match Routes");
+        // Handle RouteResponse null
+        boolean hasRouteData = routeResponse != null && routeResponse.getSections() != null;
+
+        // Chỉ check khi routeReponse != null
+        if (hasRouteData) {
+            if(tripRequest.getTripSections().size() != routeResponse.getSections().size()) {
+                throw new RuntimeException("Data mismatch: Section count does not match Routes");
+            }
         }
 
         Trip newTrip = new Trip(tripRequest,user);
 
         // Dùng vòng lặp Index để đồng bộ dữ liệu
         List<TripSectionRequest> sectionRequests = tripRequest.getTripSections();
-        List<SectionRouteResponse> sectionRoutes = routeResponse.getSections();
+        List<SectionRouteResponse> sectionRoutes = hasRouteData ? routeResponse.getSections() : null;
 
         // Loop qua Trip Section Request
         for (int i = 0 ; i < sectionRequests.size() ; i++) {
             TripSectionRequest tripSectionRequest = sectionRequests.get(i);
-            SectionRouteResponse sectionRoute = sectionRoutes.get(i);
+
+            // Handle null
+            SectionRouteResponse sectionRoute = (hasRouteData && sectionRoutes != null) ? sectionRoutes.get(i) : null;
 
             TripSection newSection = new TripSection(tripSectionRequest);
 
             // Lấy trip Detail cùng route Path ra
             List<TripDetailRequest> tripDetailRequests = tripSectionRequest.getTripDetails();
-            List<RoutePathResponse> routePaths = sectionRoute.getRoutePath();
+
+            // Handle Null
+            List<RoutePathResponse> routePaths = (sectionRoute != null) ? sectionRoute.getRoutePath() : null;
 
             if(tripDetailRequests.size() != routePaths.size()) {
                 throw new RuntimeException("Data mismatch: Route count does not match Trip Details");
@@ -124,9 +134,9 @@ public class TripService {
             // Loop qua Trip Detail Request
             for(int j = 0 ; j < tripDetailRequests.size() ; j++) {
                 TripDetailRequest tripDetailRequest = tripDetailRequests.get(j);
-                RoutePathResponse routePath = routePaths.get(j);
 
-                List<List<Double>> pathSegment = routePath.getPath();
+                // Handle null
+                RoutePathResponse routePath = (routePaths != null) ? routePaths.get(j) : null;
 
                 // Lấy locaiton DTO ra
                 LocationDTO locationDTO = tripDetailRequest.getLocation();
@@ -163,18 +173,26 @@ public class TripService {
 
                 newTripDetail.addLocation(location);
 
-                if(pathSegment != null && !pathSegment.isEmpty()) {
+                // Handle Null
+                if(routePath != null) {
+                    String pathSegment = routePath.getPolyline();
 
-                    String newPolyline = PolylineUltils.encode(pathSegment);
+                    if(pathSegment != null && !pathSegment.isEmpty()) {
 
-                    newTripDetail.setRoutePolyline(newPolyline);
-                    newTripDetail.setTime_second(routePath.getDurationSeconds());
-                    newTripDetail.setDistance(routePath.getDistanceMeters());
+                        String newPolyline = pathSegment;
+
+                        newTripDetail.setRoutePolyline(newPolyline);
+                        newTripDetail.setTime_second(routePath.getDurationSeconds());
+
+                        newTripDetail.setDistance(routePath.getDistanceMeters());
+                    }
+                    else {
+                        // Có object routePath nhưng path rỗng (điểm bắt đầu)
+                        setDefaultRouteValues(newTripDetail);
+                    }
                 }
                 else {
-                    newTripDetail.setRoutePolyline(null);
-                    newTripDetail.setTime_second(null);
-                    newTripDetail.setDistance(null);
+                    setDefaultRouteValues(newTripDetail);
                 }
 
                 newSection.addTripDetail(newTripDetail);
@@ -424,4 +442,10 @@ public class TripService {
     }
 
     // Helper Function
+    // Helper method để set giá trị mặc định cho gọn code
+    private void setDefaultRouteValues(TripDetail detail) {
+        detail.setRoutePolyline(null);
+        detail.setTime_second(null);
+        detail.setDistance(null);
+    }
 }

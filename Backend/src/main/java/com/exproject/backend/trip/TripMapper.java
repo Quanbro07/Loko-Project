@@ -103,14 +103,13 @@ public class TripMapper {
             tripDetailResponse.setLocation(locationResponse);
         }
 
-        List<List<Double>> path = PolylineUltils.decode(tripDetail.getRoutePolyline());
+        String polyline = tripDetail.getRoutePolyline();
 
         RoutePathResponse dto = new RoutePathResponse();
         dto.setDistanceMeters(tripDetail.getDistance());
         dto.setDurationSeconds(tripDetail.getTime_second());
-        dto.setPath(path);
+        dto.setPolyline(polyline);
 
-        tripDetailResponse.setRoutePath(dto);
 
         return tripDetailResponse;
     }

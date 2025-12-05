@@ -305,17 +305,21 @@ public class MakePlanService {
     public MakePlanResponse confirmMakePlan(ConfirmPlanRequest confirmPlanRequest,Long userId) {
         TripRequest tripRequest = confirmPlanRequest.getTripRequest();
 
-        // TODO: Handle VIP/USER
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
 
+        // TODO: Handle VIP/USER
+        RouteResponse routeResponse = null;
+        if(isVIP(user)) {
+            // convert to Route Request
+            RouteRequest routeRequest = convertToRouteRequest(tripRequest);
 
-        // convert to Route Request
-        RouteRequest routeRequest = convertToRouteRequest(tripRequest);
+            // Gọi api route
+            routeResponse = routeService.getRoute(routeRequest);
 
-        // Gọi api route
-        RouteResponse routeResponse = routeService.getRoute(routeRequest);
+        }
 
         // Gọi hàm create full plan
+        // TODO: Handle routeResponse null
         TripResponse tripResponse = tripService.createFullTrip(tripRequest, routeResponse);
 
 
@@ -325,6 +329,7 @@ public class MakePlanService {
         // Set vào DTO
         makePlanResponse.setTripPlan(tripResponse);
         makePlanResponse.setRoute(routeResponse);
+
         if (isVIP(user)) {
 
             byte[] pdfBytes = tripPdfService.generateTripPdf(tripRequest);
@@ -338,6 +343,7 @@ public class MakePlanService {
                     .fileName(tripPdf.getFileName())
                     .downloadUrl(tripPdf.getFilePath())
                     .build();
+
             makePlanResponse.setPdf(pdfResponse);
         }
         else {

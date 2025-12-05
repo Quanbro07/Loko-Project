@@ -44,9 +44,7 @@ public class RouteMapper {
         routePathResponse.setDistanceMeters(tripDetail.getDistance());
         routePathResponse.setDurationSeconds(tripDetail.getTime_second());
 
-        List<List<Double>> path = PolylineUltils.decode(tripDetail.getRoutePolyline());
-
-        routePathResponse.setPath(path);
+        routePathResponse.setPolyline(tripDetail.getRoutePolyline());
 
         return routePathResponse;
     }
