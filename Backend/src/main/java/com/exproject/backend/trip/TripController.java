@@ -1,13 +1,17 @@
 package com.exproject.backend.trip;
 
+import com.exproject.backend.makePlan.dto.MakePlanResponse;
 import com.exproject.backend.route.dto.RouteResponse;
-import com.exproject.backend.trip.dto.ProgressUpdateDTO;
-import com.exproject.backend.trip.dto.SaveTripPayload;
-import com.exproject.backend.trip.dto.TripRequest;
-import com.exproject.backend.trip.dto.TripResponse;
+import com.exproject.backend.trip.dto.*;
+import com.exproject.backend.user.info.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,9 +33,9 @@ public class TripController {
 
     // Get Trip cùng với Trip Section, Trip Detail, Location, Location Img, Location Categories
     @GetMapping("/get")
-    public ResponseEntity<TripResponse> getTrip(@RequestParam Long tripId) {
+    public ResponseEntity<MakePlanResponse> getTrip(@RequestParam Long tripId) {
 
-        TripResponse response = tripService.getFullTrip(tripId);
+        MakePlanResponse response = tripService.getFullTrip(tripId);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
@@ -51,5 +55,16 @@ public class TripController {
         tripService.updateTripProgress(progressUpdateDTO);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<Page<SimpleTripResponse>> getAllTrips(
+            @AuthenticationPrincipal User user,
+            @PageableDefault(page = 0, size = 20,sort = "startDate" ,direction = Sort.Direction.ASC)
+                Pageable pageable)
+    {
+        Page<SimpleTripResponse> response = tripService.getAllTripSimple(user,pageable);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

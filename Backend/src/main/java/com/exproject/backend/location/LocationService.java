@@ -38,7 +38,7 @@ public class LocationService {
     @Cacheable(value = "top_locations_dto", key = "#provinceId + '_' + #categoryId")
     public List<LocationDTO> getTopLocations(Long provinceId, Long categoryId) {
 
-        LocalDateTime minDate = LocalDateTime.now().minusDays(FRESH_TIME);
+        LocalDateTime minDate = LocalDateTime.now().minusDays(  FRESH_TIME);
 
         Pageable limits = PageRequest.of(0, Top_N);
 

@@ -20,6 +20,6 @@ public class RoutePathResponse {
     @JsonProperty("duration_second")
     private Integer durationSeconds;
 
-    @JsonProperty("path")
-    private List<List<Double>> path;
+    @JsonProperty("polyline")
+    private String polyline;
 }

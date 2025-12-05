@@ -1,37 +1,27 @@
 package com.exproject.backend.pdf;
 
-import com.exproject.backend.trip.dto.TripRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ContentDisposition;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/trip-pdf")
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/trip-pdf")
 public class TripPdfController {
 
     private final TripPdfService tripPdfService;
 
-    @PostMapping(value = "/generate", produces = MediaType.APPLICATION_PDF_VALUE)
-    public ResponseEntity<byte[]> generateTripPdf(@RequestBody TripRequest tripRequest) {
+    @GetMapping(value = "/download/{tripId}", produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<byte[]> downloadPdf(@PathVariable Long tripId) {
 
-        byte[] pdfBytes = tripPdfService.generateTripPdf(tripRequest);
-        String fileName = tripPdfService.buildFileName(tripRequest);
+        byte[] bytes = tripPdfService.downloadPdf(tripId);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentLength(pdfBytes.length);
         headers.setContentDisposition(
-                ContentDisposition
-                        .attachment()
-                        .filename(fileName)
-                        .build()
+                ContentDisposition.inline().filename("trip_" + tripId + ".pdf").build()
         );
 
-        return new ResponseEntity<>(pdfBytes, headers, HttpStatus.OK);
+        return new ResponseEntity<>(bytes, headers, HttpStatus.OK);
     }
 }
