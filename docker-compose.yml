@@ -29,6 +29,7 @@ services:
     depends_on:
       - db
       - redis
+      - python
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/loko_project
       SPRING_DATASOURCE_USERNAME: postgres
@@ -37,8 +38,7 @@ services:
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
       SPRING_PROFILE_PRODUCT: product
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+
     env_file:
       - Backend/.env
     volumes:
@@ -47,6 +47,17 @@ services:
       - "8080:8080"
     networks:
       - app-network
+
+  python:
+    build:
+      context: .\test_tdtt\test_tdtt
+      dockerfile: Dockerfile
+    container_name: loko-project-ai-service
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
 
 networks:
   app-network:

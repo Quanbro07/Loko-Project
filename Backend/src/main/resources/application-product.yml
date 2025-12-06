@@ -28,7 +28,7 @@ spring:
 
 python:
   api:
-    base-url: http://host.docker.internal:8000
+    base-url: http://loko-project-ai-service:8000
 
 file:
   upload-dir: /app/uploads/trip-pdf
