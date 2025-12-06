@@ -95,25 +95,28 @@ public class TripService {
     // TODO: Set biến đó vào khi createFullTrip
     @Transactional
     public TripResponse createFullTrip(TripRequest tripRequest, RouteResponse routeResponse) {
+        System.out.println("HI#1");
 
         User user = userRepository.findById(tripRequest.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         // Handle RouteResponse null
         boolean hasRouteData = routeResponse != null && routeResponse.getSections() != null;
-
+        System.out.println("HI#2");
         // Chỉ check khi routeReponse != null
         if (hasRouteData) {
             if(tripRequest.getTripSections().size() != routeResponse.getSections().size()) {
                 throw new RuntimeException("Data mismatch: Section count does not match Routes");
             }
         }
-
+        System.out.println("HI#3");
         Trip newTrip = new Trip(tripRequest,user);
 
         // Dùng vòng lặp Index để đồng bộ dữ liệu
         List<TripSectionRequest> sectionRequests = tripRequest.getTripSections();
         List<SectionRouteResponse> sectionRoutes = hasRouteData ? routeResponse.getSections() : null;
+
+        System.out.println("HI#4");
 
         // Loop qua Trip Section Request
         for (int i = 0 ; i < sectionRequests.size() ; i++) {
@@ -121,7 +124,7 @@ public class TripService {
 
             // Handle null
             SectionRouteResponse sectionRoute = (hasRouteData && sectionRoutes != null) ? sectionRoutes.get(i) : null;
-
+            System.out.println("HI#5");
             TripSection newSection = new TripSection(tripSectionRequest);
 
             // Lấy trip Detail cùng route Path ra
@@ -129,18 +132,20 @@ public class TripService {
 
             // Handle Null
             List<RoutePathResponse> routePaths = (sectionRoute != null) ? sectionRoute.getRoutePath() : null;
-
-            if(tripDetailRequests.size() != routePaths.size()) {
-                throw new RuntimeException("Data mismatch: Route count does not match Trip Details");
+            System.out.println("HI#6");
+            if (routePaths != null) {
+                if(tripDetailRequests.size() != routePaths.size()) {
+                    throw new RuntimeException("Data mismatch: Route count does not match Trip Details");
+                }
             }
-
+            System.out.println("HI#7");
             // Loop qua Trip Detail Request
             for(int j = 0 ; j < tripDetailRequests.size() ; j++) {
                 TripDetailRequest tripDetailRequest = tripDetailRequests.get(j);
 
                 // Handle null
                 RoutePathResponse routePath = (routePaths != null) ? routePaths.get(j) : null;
-
+                System.out.println("HI#8");
                 // Lấy locaiton DTO ra
                 LocationDTO locationDTO = tripDetailRequest.getLocation();
 
@@ -150,7 +155,7 @@ public class TripService {
 
                 // Logic: User chọn địa điểm này -> Hệ thống hiểu User đang quan tâm Tỉnh/Loại này
                 categorySyncStatService.increaseCategorySyncStat(location);
-
+                System.out.println("HI#9");
                 /*// Loop qua location img
                 for(LocationImgDTO imgDTO: locationDTO.getImgs()) {
                     // Them img mới
@@ -175,19 +180,20 @@ public class TripService {
                 TripDetail newTripDetail = new TripDetail(tripDetailRequest);
 
                 newTripDetail.addLocation(location);
-
+                System.out.println("HI#10");
                 // Handle Null
                 if(routePath != null) {
                     String pathSegment = routePath.getPolyline();
 
                     if(pathSegment != null && !pathSegment.isEmpty()) {
-
+                        System.out.println("HI#11");
                         String newPolyline = pathSegment;
 
                         newTripDetail.setRoutePolyline(newPolyline);
                         newTripDetail.setTime_second(routePath.getDurationSeconds());
 
                         newTripDetail.setDistance(routePath.getDistanceMeters());
+                        System.out.println("HI#12");
                     }
                     else {
                         // Có object routePath nhưng path rỗng (điểm bắt đầu)
