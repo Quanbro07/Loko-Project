@@ -104,4 +104,13 @@ public class MakePlanController {
 
         return ResponseEntity.ok(test);
     }
+    @PostMapping("/confirm")
+    public ResponseEntity<MakePlanResponse> confirmPlan(
+            @AuthenticationPrincipal User user,
+            @RequestBody ConfirmPlanRequest request
+    ) {
+        MakePlanResponse response = makePlanService.confirmMakePlan(request, user.getId());
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
 }
