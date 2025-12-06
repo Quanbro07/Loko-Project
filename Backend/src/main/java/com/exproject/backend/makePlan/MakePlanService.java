@@ -160,6 +160,8 @@ public class MakePlanService {
             }
         }
 
+        System.out.println(excludedLocationIds);
+
         Map<Long, List<LocationDTO>> provinceLocationDtosCache = new HashMap<>();
 
         // Logic chính
