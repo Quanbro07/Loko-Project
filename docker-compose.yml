@@ -50,7 +50,7 @@ services:
 
   python:
     build:
-      context: .\test_tdtt\test_tdtt
+      context: ./test_tdtt/test_tdtt
       dockerfile: Dockerfile
     container_name: loko-project-ai-service
     ports:
