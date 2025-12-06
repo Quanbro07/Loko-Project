@@ -63,6 +63,7 @@ public class MakePlanService {
 
         // Map Hobby -> categories
         EHobby hobby = request.getHobby();
+
         if (hobby == null) {
             throw new RuntimeException("Hobby must not be null");
         }
@@ -327,7 +328,7 @@ public class MakePlanService {
 
         // Gọi hàm create full plan
         // TODO: Handle routeResponse null
-        TripResponse tripResponse = tripService.createFullTrip(tripRequest, routeResponse);
+        TripResponse tripResponse = tripService.createFullTrip(userId, tripRequest, routeResponse);
 
 
         // Tạo Make plan Response
