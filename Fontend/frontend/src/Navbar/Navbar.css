@@ -1,0 +1,151 @@
+.navbar-background-wrapper {
+    width: 100%;
+    background-color: #003c72;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.flag-container {
+    display: flex;
+    gap: 10px;
+}
+
+.flag {
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.list-item {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.list-item.active {
+    color: orange;
+}
+
+#vietnamese {
+    background-image: url('../img/Vflag.png');
+}
+
+#english {
+    background-image: url('../img/Eflag.png');
+}
+
+.auth-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    width: 130px;
+}
+
+.login-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.login-btn:hover {
+    background-color: #ffffff;
+    color: #003c72;
+}
+
+.register-btn {
+    background-color: #ff6b35;
+    color: #ffffff;
+    border: 2px solid #ff6b35;
+}
+
+.register-btn:hover {
+    background-color: #e55a2b;
+    border-color: #e55a2b;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: 2px solid #dc3545;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-name {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+
+.mid-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 5;
+}
+
+.left-nav {
+    flex: 1;
+    margin: 0px 10px;
+}
+
+.navbar-logo {
+    height: 80px;
+    margin-left: 20px;
+}
+
+.right-nav {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    margin-right: 30px;
+}

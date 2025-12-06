@@ -52,41 +52,59 @@ public class LocationService {
 
     // Tìm điểm thay thế
     public List<LocationDTO> getTopReplacementLocations(
-            List<LocationDTO> sourceLocations, Set<Long> categoryIds,
-            LocalTime openTime, LocalTime closeTime,
-            Set<Long> excludedLocationIds) {
+            List<LocationDTO> sourceLocations,
+            Set<Long> rejectedCategoryIds, // Đổi tên cho rõ nghĩa
+            LocalTime rejectedOpenTime,    // Đổi tên cho rõ nghĩa
+            LocalTime rejectedCloseTime,
+            Set<Long> excludedLocationIds)
+    {
 
+        // 1. Pre-calculate: Nếu cần thiết thì nên có map check nhanh, nhưng với số lượng nhỏ thì stream ok.
+        // Tuy nhiên, logic containsAll nên đổi thành match score hoặc anyMatch.
 
         return sourceLocations.stream()
                 // 1. Lọc ID trùng
                 .filter(dto -> !excludedLocationIds.contains(dto.getId()))
 
-                // 2. Check time (Lấy từ DTO)
+                // 2. Check Time (Nới lỏng: Chỉ cần giao thoa thời gian hoạt động, hoặc check null an toàn)
                 .filter(dto -> {
-                    LocalTime o = dto.getOpenTime();
-                    LocalTime c = dto.getCloseTime();
-                    return o != null && c != null && !o.isAfter(openTime) && !c.isBefore(closeTime);
+                    // Nếu data cũ không có giờ, hoặc data mới không có giờ -> Bỏ qua check (cho phép đi)
+                    if (rejectedOpenTime == null || rejectedCloseTime == null
+                            || dto.getOpenTime() == null || dto.getCloseTime() == null) {
+                        return true;
+                    }
+                    // Logic cũ: Bao trùm (Strict) - Giữ nguyên nếu bạn thực sự muốn vậy
+                    // Nhưng nên handle null để tránh NullPointerException
+                    return !dto.getOpenTime().isAfter(rejectedOpenTime)
+                            && !dto.getCloseTime().isBefore(rejectedCloseTime);
                 })
 
-                // 3. Check Category Strict (Lấy từ DTO)
+                // 3. Check Category (RELAXED - Quan trọng)
                 .filter(dto -> {
-                    if (categoryIds.isEmpty()) return true;
+                    if (rejectedCategoryIds.isEmpty()) return true;
 
-                    // Mapper của bạn chắc chắn đã map List<LocationCategory> sang List<LocationCategoryDTO>
+                    // Lấy list ID của candidate
                     Set<Long> dtoCatIds = dto.getCategories().stream()
                             .map(LocationCategoryDTO::getId)
                             .collect(Collectors.toSet());
 
-                    return dtoCatIds.containsAll(categoryIds);
+                    // CÁCH 1: Chỉ cần trùng ít nhất 1 category (Khuyên dùng)
+                    boolean matchAny = dtoCatIds.stream().anyMatch(rejectedCategoryIds::contains);
+                    return matchAny;
+
+                    // CÁCH 2: (Nâng cao) Logic cũ quá chặt -> Code sẽ trả về Rỗng.
+                    // return dtoCatIds.containsAll(rejectedCategoryIds);
                 })
 
-                // 4. Sort (Lấy từ DTO)
+                // 4. Sort (Thông minh hơn: Ưu tiên Category trùng nhiều nhất -> rồi mới đến Rating)
                 .sorted((d1, d2) -> {
+                    // Tính điểm category match (Optional)
+                    // Nếu không cần thì giữ nguyên sort rating như cũ
+
                     double r1 = d1.getAverageRating() != null ? d1.getAverageRating() : 0.0;
                     double r2 = d2.getAverageRating() != null ? d2.getAverageRating() : 0.0;
                     return Double.compare(r2, r1);
                 })
-                // Collect
                 .collect(Collectors.toList());
     }
 

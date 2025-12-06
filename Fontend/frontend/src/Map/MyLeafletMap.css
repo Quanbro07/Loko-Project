@@ -1,0 +1,43 @@
+/* Container bao bọc Map - Kỹ thuật phá khung (Breakout) */
+.map-wrapper-full-width {
+    width: 100vw;               /* Chiều rộng bằng 100% màn hình thiết bị */
+    height: 600px;              /* Chiều cao cố định như yêu cầu */
+    position: relative;         /* Để căn chỉnh vị trí */
+    left: 50%;                  /* Đẩy sang giữa */
+    right: 50%;
+    margin-left: -50vw;         /* Kéo ngược lại 50% độ rộng màn hình để căn trái sát mép */
+    margin-right: -50vw;        /* Kéo ngược lại 50% độ rộng màn hình để căn phải sát mép */
+    background-color: #eee;     /* Màu nền chờ load */
+    z-index: 1;                 /* Đảm bảo nằm trên các phần tử nền */
+    overflow: hidden;           /* Ẩn thanh cuộn ngang nếu có dư */
+}
+
+/* Đảm bảo map bên trong luôn full */
+#map {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* --- POPUP STYLES --- */
+
+/* Tùy chỉnh wrapper của popup để bỏ margin mặc định và thêm padding đẹp hơn */
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+    margin: 0 !important; 
+    padding: 10px 15px; 
+    line-height: 1.4;
+}
+
+/* Class cho tên địa điểm trong popup */
+.location-name-content {
+    text-align: center;
+    white-space: nowrap; 
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Tùy chỉnh thêm cho mũi tên popup (optional) */
+.leaflet-popup-tip {
+    background: white;
+}

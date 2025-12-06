@@ -53,7 +53,7 @@ public class MakePlanController {
     @PostMapping("/regenerate-part")
     public ResponseEntity<RegeneratePlanPartResponse> regeneratePartPlan(
             @RequestBody RegeneratePlanPartRequest request) {
-        System.out.println("Regenerate Plan Request: " + request.getRejectedDetail());
+        System.out.println("Regenerate Plan Request: " + request.getRejectedDetail().size());
         RegeneratePlanPartResponse response = makePlanService.regeneratePlanPart(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);

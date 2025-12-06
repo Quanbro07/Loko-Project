@@ -17,7 +17,8 @@ public class WebConfig {
                         .addMapping("/api/**")
                         .allowedOrigins(
                                 "http://localhost:3000",
-                                "http://localhost:5000"
+                                "http://localhost:5000",
+                                "http://localhost:8000"
                                 )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
                         .allowedHeaders("*")
