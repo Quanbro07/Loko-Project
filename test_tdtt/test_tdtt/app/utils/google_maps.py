@@ -81,7 +81,7 @@ def parse_operating_hours(raw_hours):
 
 def fetch_top_places(city_name, ll_string, type_of_place):
     # ... (Giữ nguyên hàm này, nó sẽ gọi parse_operating_hours mới ở trên) ...
-    query = f"top {type_of_place} in {city_name}" 
+    query = f"{type_of_place} in {city_name}" 
     print(f"--- [Crawler Helper] Searching: '{query}' ---")
 
     params = {

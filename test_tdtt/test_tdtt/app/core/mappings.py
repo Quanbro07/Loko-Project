@@ -158,7 +158,7 @@ PROVINCE_ID_TO_NAME = {
 
     # ======= 3. TÂY NGUYÊN =======
     23: "Quang Ngai",     # QuangNgai
-    24: "Gia Lai",        # GiaLai
+    24: "BinhDinh",        # GiaLai
     25: "Dak Lak",        # DakLak
     26: "Lam Dong",       # LamDong
 
