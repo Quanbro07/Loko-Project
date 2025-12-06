@@ -20,9 +20,15 @@ public class WeatherMapper {
                 .map(this::toWeatherSectionResponse)
                 .toList();
 
-        List<AlertWeatherResponse> alertWeatherResponses = trip.getAlertWeathers().stream()
-                .map(this::toAlertWeatherResponse)
-                .toList();
+        List<AlertWeather> alerts = trip.getAlertWeathers();
+
+        List<AlertWeatherResponse> alertWeatherResponses = new ArrayList<>();
+
+        if (alerts != null && !alerts.isEmpty()) {
+            alertWeatherResponses = alerts.stream()
+                    .map(this::toAlertWeatherResponse)
+                    .toList();
+        }
 
         weatherResponse.setWeatherSections(weatherSectionResponses);
         weatherResponse.setAlerts(alertWeatherResponses);

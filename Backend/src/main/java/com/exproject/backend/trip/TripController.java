@@ -3,6 +3,8 @@ package com.exproject.backend.trip;
 import com.exproject.backend.makePlan.dto.MakePlanResponse;
 import com.exproject.backend.route.dto.RouteResponse;
 import com.exproject.backend.trip.dto.*;
+import com.exproject.backend.trip.info.Trip;
+import com.exproject.backend.user.UserService;
 import com.exproject.backend.user.info.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -23,14 +25,17 @@ public class TripController {
 
     private final TripService tripService;
 
+    private final TripMapper tripMapper;
+
     @PostMapping("/create")
-    public ResponseEntity<String> createTrip(
+    public ResponseEntity<TripResponse> createTrip(
             @AuthenticationPrincipal User user,
             @RequestBody SaveTripPayload request) {
-        tripService.createFullTrip( user.getId(),request.getTripRequest(),request.getRouteResponse());
+        Trip trip = tripService.createFullTrip( user.getId(),request.getTripRequest(),request.getRouteResponse());
 
+        TripResponse response = tripMapper.toTripResponse(trip);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("Create Trip successful");
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     // Get Trip cùng với Trip Section, Trip Detail, Location, Location Img, Location Categories

@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -24,6 +25,7 @@ public class CategorySyncStatService {
     private final AIAPIService aiAPIService;
 
     // Tăng usage Category Sunc Stat
+    @Async
     @Transactional
     public void increaseCategorySyncStat(Location location) {
         Province province = location.getProvince();

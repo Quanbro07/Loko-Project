@@ -2,6 +2,7 @@ package com.exproject.backend.makePlan.dto;
 
 import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.weather.dto.WeatherRequest;
+import com.exproject.backend.weather.dto.WeatherRequestFE;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,5 +13,5 @@ public class ConfirmPlanRequest {
     private TripRequest tripRequest;
 
     @JsonProperty("weather_request")
-    private WeatherRequest weatherRequest;
+    private WeatherRequestFE weatherRequest;
 }
