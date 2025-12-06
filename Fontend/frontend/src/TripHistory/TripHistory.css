@@ -9,7 +9,7 @@
 
 .trip-history-table {
   width: 100%;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   margin-top: 15px;
 }
 
@@ -36,7 +36,7 @@
 
 .detail-toggle-cell {
   text-align: center;
-  width: 80px; 
+  width: 80px;
 }
 
 .detail-toggle-button {
@@ -86,4 +86,62 @@
 .detail-cost {
   color: #d9534f; /* Màu đỏ cho chi phí */
   font-weight: bold;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.1rem;
+  color: #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.details-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.details-info-grid p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+.sub-details-list {
+  list-style-type: circle;
+  margin-left: 20px;
+  padding-left: 10px;
+  color: #555;
+}
+
+.section-item {
+  margin-bottom: 10px;
+  border-bottom: 1px dotted #eee;
+  padding-bottom: 5px;
+}
+
+.section-header {
+  background-color: #f0f8ff;
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 5px;
 }

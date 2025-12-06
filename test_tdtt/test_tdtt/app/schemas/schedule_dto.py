@@ -56,6 +56,7 @@ class TripDetailLocationDTO(LocationDTO):
 
 class TripDetailDTO(BaseModel):
     sequenceOrder: int
+    temp_id: Optional[int] = None
     startTime: str
     endTime: str
     description: str
