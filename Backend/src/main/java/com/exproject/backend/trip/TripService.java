@@ -94,7 +94,7 @@ public class TripService {
     // TODO: thêm biến date hiện tại vào TripSection
     // TODO: Set biến đó vào khi createFullTrip
     @Transactional
-    public TripResponse createFullTrip(Long userId,TripRequest tripRequest, RouteResponse routeResponse) {
+    public Trip createFullTrip(Long userId,TripRequest tripRequest, RouteResponse routeResponse) {
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -206,7 +206,7 @@ public class TripService {
         }
 
         Trip savedTrip = tripRepository.save(newTrip);
-        return tripMapper.toTripResponse(savedTrip);
+        return savedTrip;
     }
 
     // Khi Trip đã hoàn thành
@@ -345,7 +345,13 @@ public class TripService {
                 .filter(Objects::nonNull) // <--- QUAN TRỌNG
                 .collect(Collectors.toList());
 
-        WeatherResponse weatherResponse = weatherMapper.toWeatherResponse(tripEntity,validWeatherSections);
+        WeatherResponse weatherResponse = null;
+        if(!validWeatherSections.isEmpty()) {
+            weatherResponse = weatherMapper.toWeatherResponse(tripEntity,validWeatherSections);
+        }
+
+        // Set vào MakePlanResponse
+        makePlanResponse.setWeather(weatherResponse);
 
         // Tạo PDF response
         // TODO: Set file pdf
@@ -375,7 +381,7 @@ public class TripService {
     }
 
     // Nhồi Weather vào Trip + gọi API để lấy weather về
-    private void processWeatherForTripSection(Trip trip, List<TripSection> sectionsToFetch, Long provinceId) {
+    public void processWeatherForTripSection(Trip trip, List<TripSection> sectionsToFetch, Long provinceId) {
         LocalDate today = LocalDate.now();
         LocalDate maxForcastDate = today.plusDays(3);
         LocalDate minForcastDate = today.minusDays(7);
@@ -459,7 +465,17 @@ public class TripService {
         detail.setDistance(null);
     }
 
+    public Long findProvinceIdFromSections(List<TripSection> sections) {
+        if (sections == null || sections.isEmpty()) return null;
 
+        return sections.stream()
+                .flatMap(s -> s.getTripDetails().stream())
+                .map(TripDetail::getLocation)
+                .filter(Objects::nonNull)
+                .map(loc -> loc.getProvince().getId())
+                .findFirst()
+                .orElse(null);
+    }
 
     private SimpleTripResponse toSimpleResponse(Trip trip) {
         return SimpleTripResponse.builder()

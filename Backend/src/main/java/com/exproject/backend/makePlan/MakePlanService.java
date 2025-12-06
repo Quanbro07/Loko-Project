@@ -1,6 +1,10 @@
 package com.exproject.backend.makePlan;
 
 import java.time.LocalDate;
+
+import com.exproject.backend.province.ProvinceRepository;
+import com.exproject.backend.province.info.Province;
+import com.exproject.backend.trip.TripMapper;
 import com.exproject.backend.user.UserRepository;
 import com.exproject.backend.user.info.User;
 import com.exproject.backend.user.info.Role;
@@ -29,6 +33,7 @@ import com.exproject.backend.trip_detail.dto.TripDetailRequest;
 import com.exproject.backend.trip_section.dto.TripSectionRequest;
 import com.exproject.backend.weather.WeatherService;
 import com.exproject.backend.weather.dto.WeatherRequest;
+import com.exproject.backend.weather.dto.WeatherRequestFE;
 import com.exproject.backend.weather.dto.WeatherResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -57,6 +62,10 @@ public class MakePlanService {
     private final RouteService routeService;
 
     private final TripPdfService tripPdfService;
+
+    private final ProvinceRepository provinceRepository;
+    private final TripMapper tripMapper;
+
     // ** Make Plan
     @Transactional(readOnly = true)
     public TripRequest makePlan(MakePlanRequest request, Long userId) {
@@ -305,7 +314,9 @@ public class MakePlanService {
     }*/
 
     // TODO: CONFIRM MAKEPLAN
+    @Transactional(rollbackFor = Exception.class)
     public MakePlanResponse confirmMakePlan(ConfirmPlanRequest confirmPlanRequest,Long userId) {
+
         TripRequest tripRequest = confirmPlanRequest.getTripRequest();
 
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
@@ -323,8 +334,20 @@ public class MakePlanService {
 
         // Gọi hàm create full plan
         // TODO: Handle routeResponse null
-        TripResponse tripResponse = tripService.createFullTrip(userId, tripRequest, routeResponse);
+        Trip tripEntity = tripService.createFullTrip(userId, tripRequest, routeResponse);
 
+
+        // Lấy provinceId
+        Long provinceId = tripService.findProvinceIdFromSections(tripEntity.getTripSections());
+
+        if(provinceId != null) {
+            // Hàm này sẽ tự check ngày, gọi API AI, lưu DB
+            // VÀ QUAN TRỌNG: Nó phải set ngược lại WeatherSection vào tripEntity.getTripSections()
+            tripService.processWeatherForTripSection(tripEntity, tripEntity.getTripSections(), provinceId);
+        }
+
+        // Tạo lại Trip Response
+        TripResponse tripResponse = tripMapper.toTripResponse(tripEntity);
 
         // Tạo Make plan Response
         MakePlanResponse makePlanResponse = new MakePlanResponse();
@@ -339,7 +362,6 @@ public class MakePlanService {
             // Lưu PDF vào trip mối quan hệ 1:1
             String filePath = tripPdfService.savePdfToFileSystem(pdfBytes, tripResponse.getTripId());
 
-            Trip tripEntity = tripService.getTripEntity(tripResponse.getTripId());
             TripPdf tripPdf = tripPdfService.savePdfRecord(tripEntity, filePath);
 
             TripPdfResponse pdfResponse = TripPdfResponse.builder()
@@ -469,4 +491,17 @@ public class MakePlanService {
         return "Ghé thăm và tham quan " + cleanName;
     }
 
+    private WeatherRequest buildWeatherRequest(WeatherRequestFE weatherRequest) {
+        Province province = provinceRepository.findByProvinceName(weatherRequest.getProvince().name())
+                .orElseThrow(() -> new RuntimeException("Province not found"));
+
+        return WeatherRequest.builder()
+                .provinceId(province.getId())
+                .provinceName(province.getProvinceName())
+                .startDate(weatherRequest.getStartDate())
+                .endDate(weatherRequest.getEndDate())
+                .fromOperateTime(weatherRequest.getFromOperateTime())
+                .toOperateTime(weatherRequest.getToOperateTime())
+                .build();
+    }
 }
