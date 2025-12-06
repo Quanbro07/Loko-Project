@@ -21,6 +21,7 @@ import com.exproject.backend.route.dto.RoutePathResponse;
 import com.exproject.backend.route.dto.RouteResponse;
 import com.exproject.backend.route.dto.SectionRouteResponse;
 import com.exproject.backend.trip.dto.ProgressUpdateDTO;
+import com.exproject.backend.trip.dto.SimpleTripResponse;
 import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip.dto.TripResponse;
 import com.exproject.backend.trip.info.Trip;
@@ -44,6 +45,8 @@ import com.exproject.backend.weather.info.AlertWeather;
 import com.exproject.backend.weather.info.WeatherSection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.RouteMatcher;
@@ -441,11 +444,33 @@ public class TripService {
                 .orElseThrow(() -> new RuntimeException("Trip not found with id: " + tripId));
     }
 
-    // Helper Function
+    public Page<SimpleTripResponse> getAllTripSimple(User user, Pageable pageable) {
+        Page<Trip> tripList = tripRepository.findAllByUserId(user.getId(),pageable);
+
+        return tripList.map(this::toSimpleResponse);
+    }
+
+    // * Helper Function
+
     // Helper method để set giá trị mặc định cho gọn code
     private void setDefaultRouteValues(TripDetail detail) {
         detail.setRoutePolyline(null);
         detail.setTime_second(null);
         detail.setDistance(null);
+    }
+
+
+
+    private SimpleTripResponse toSimpleResponse(Trip trip) {
+        return SimpleTripResponse.builder()
+                .tripId(trip.getId())
+                .tripName(trip.getTripName())
+                .startDate(trip.getStartDate())
+                .endDate(trip.getEndDate())
+                .fromOperationTime(trip.getFromOperationTime())
+                .toOperationTime(trip.getToOperationTime())
+                .status(trip.getStatus())
+                .createdAt(trip.getCreateAt())
+                .build();
     }
 }
