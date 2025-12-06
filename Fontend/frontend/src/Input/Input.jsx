@@ -92,11 +92,15 @@ const Input = ({
   const [locations, setLocations] = useState([]);
   const handleHobbyChange = (event) => {
     const value = event.target.value;
+    
     setSelectedHobbies((prev) => {
+      // Nếu hobby đó đang được chọn thì bỏ chọn (trở về rỗng)
       if (prev.includes(value)) {
-        return prev.filter((item) => item !== value);
+        return []; 
       } else {
-        return [...prev, value];
+        // Nếu chưa chọn, thì set mảng chỉ chứa duy nhất hobby mới này
+        // (Điều này sẽ tự động bỏ chọn các hobby khác)
+        return [value]; 
       }
     });
   };
@@ -236,49 +240,61 @@ const Input = ({
     if (isSearching) {
       return;
     }
-    console.log(translate("input_fill_all_info"));
-    // Check if user is authenticated first
+
+    // 1. Kiểm tra đăng nhập
     if (!isAuthenticated) {
       navigate("/auth?mode=login");
       return;
     }
+
+    // 2. Kiểm tra điền đủ thông tin (Khai báo hasError ở đây)
     let hasError = false;
     if (!selectedProvince || !selectedDateGo || !selectedDateReturn) {
       hasError = true;
     }
+
+    // 3. Xử lý thời gian (Logic xuyên đêm)
     const startTimeVal = parseInt(startHour) * 60 + parseInt(startMinute);
     const endTimeVal = parseInt(endHour) * 60 + parseInt(endMinute);
 
-    // 1. Kiểm tra Giờ Kết thúc <= Giờ Bắt đầu
-    if (startTimeVal >= endTimeVal) {
-      alert(
-        translate
-          ? translate("input_error_time")
-          : "Giờ kết thúc phải lớn hơn giờ bắt đầu!"
-      );
-      return;
+    let duration = endTimeVal - startTimeVal;
+
+    // Nếu duration âm (Ví dụ: 02:00 - 08:00), tức là qua ngày hôm sau -> Cộng 24h (1440 phút)
+    if (duration < 0) {
+        duration += 1440; 
     }
 
-    // 2. Kiểm tra khoảng thời gian quá ngắn (dưới 2 tiếng) -> Gây lỗi 500 do Backend không xếp được lịch
-    if (endTimeVal - startTimeVal < 120) {
+    // Kiểm tra thời lượng tối thiểu (2 tiếng = 120 phút)
+    if (duration < 120) {
       alert(
         "Khoảng thời gian hoạt động quá ngắn! Vui lòng chọn ít nhất 2 tiếng để có lịch trình tốt nhất."
       );
       return;
     }
+
+    // 4. Xử lý lỗi nhập liệu
     if (hasError) {
-      // No alert for error, just visual cue
       console.log(translate("input_fill_all_info"));
-    } else setIsSearching(true);
+      // Bạn có thể thêm alert ở đây để nhắc người dùng
+      // alert("Vui lòng điền đầy đủ thông tin địa điểm và ngày tháng!");
+      return; 
+    } 
+    
+    // Nếu không có lỗi thì bắt đầu tìm kiếm
+    setIsSearching(true);
+
+    // 5. Chuẩn bị dữ liệu gửi đi
     let numAdults = 1;
     let numChildren = 0;
     let numElders = 0;
     let isAlone = travelType === "Solo";
+    
     if (travelType === "Group") {
       numAdults = 2;
       if (hasChildren) numChildren = 1;
       if (hasElders) numElders = 1;
     }
+
     const formatDateLocal = (date) => {
       if (!date) return "";
       const offset = date.getTimezoneOffset();
@@ -287,6 +303,7 @@ const Input = ({
     };
 
     const pad = (num) => num.toString().padStart(2, "0");
+    
     const requestData = {
       startDate: selectedDateGo ? formatDateLocal(selectedDateGo) : "",
       endDate: selectedDateReturn ? formatDateLocal(selectedDateReturn) : "",
@@ -310,9 +327,10 @@ const Input = ({
       onSearch(requestData);
     }
 
+    // Tự động tắt loading sau 10s nếu không có phản hồi (timeout thủ công)
     setTimeout(() => {
       setIsSearching(false);
-      setIsModalOpen(true);
+      // setIsModalOpen(true); // Cân nhắc bỏ dòng này nếu logic hiển thị modal nằm ở Plan.jsx
     }, 10000);
   };
   // setShowLoadingAnimation(true); // Remove internal showLoadingAnimation
