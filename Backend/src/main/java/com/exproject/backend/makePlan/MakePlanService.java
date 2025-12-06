@@ -340,11 +340,13 @@ public class MakePlanService {
         // Lấy provinceId
         Long provinceId = tripService.findProvinceIdFromSections(tripEntity.getTripSections());
 
-        if(provinceId != null) {
+        // TODO: Nhớ bò comment
+        // TODO: Comment để test cái này python đang chạy ko dc
+        /*if(provinceId != null) {
             // Hàm này sẽ tự check ngày, gọi API AI, lưu DB
             // VÀ QUAN TRỌNG: Nó phải set ngược lại WeatherSection vào tripEntity.getTripSections()
             tripService.processWeatherForTripSection(tripEntity, tripEntity.getTripSections(), provinceId);
-        }
+        }*/
 
         // Tạo lại Trip Response
         TripResponse tripResponse = tripMapper.toTripResponse(tripEntity);
@@ -381,6 +383,8 @@ public class MakePlanService {
         return makePlanResponse;
     }
 
+    // * Helper Function
+
     private boolean isVIP(User user) {
         return user.getRole() == Role.VIP
                 && user.getVipEndDate() != null
@@ -390,7 +394,7 @@ public class MakePlanService {
 
     private RouteRequest convertToRouteRequest(TripRequest tripRequest) {
         RouteRequest routeRequest = new RouteRequest();
-        routeRequest.setMode("Drive");
+        routeRequest.setMode("drive");
 
         List<TripSectionRouteRequest> tripSectionRouteRequests = tripRequest.getTripSections().stream()
                 .map(this::convertToTripSectionRouteRequest)
@@ -494,6 +498,9 @@ public class MakePlanService {
     private WeatherRequest buildWeatherRequest(WeatherRequestFE weatherRequest) {
         Province province = provinceRepository.findByProvinceName(weatherRequest.getProvince().name())
                 .orElseThrow(() -> new RuntimeException("Province not found"));
+
+        System.out.println(province.getId());
+        System.out.println(province.getProvinceName());
 
         return WeatherRequest.builder()
                 .provinceId(province.getId())

@@ -46,8 +46,9 @@ public class TripSection {
     private WeatherSection weatherSection;
 
     // Constructor
-    public TripSection(TripSectionRequest tripSectionRequest) {
+    public TripSection(TripSectionRequest tripSectionRequest, LocalDate starDate) {
         this.dayNumber = tripSectionRequest.getDayNumber();
+        this.date = starDate.plusDays(tripSectionRequest.getDayNumber() - 1);
         this.title = tripSectionRequest.getTitle();
     }
 

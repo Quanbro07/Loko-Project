@@ -12,6 +12,6 @@ public class ConfirmPlanRequest {
     @JsonProperty("trip_request")
     private TripRequest tripRequest;
 
-    @JsonProperty("weather_request")
-    private WeatherRequestFE weatherRequest;
+    /*@JsonProperty("weather_request")
+    private WeatherRequestFE weatherRequest;*/
 }
