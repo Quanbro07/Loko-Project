@@ -9,18 +9,16 @@ import Footer from "../Footer/Footer";
 import { useLanguage } from "../Language/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import scheduleData from "../Output/schedule.json";
 
 const Plan = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [isResultShown, setIsResultShown] = useState(false);
   const [searchIteration, setSearchIteration] = useState(0);
-  const [planData, setPlanData] = useState(null);
+  const [planData, setPlanData] = useState(null); // Dữ liệu thật sẽ nằm ở đây
   const [tryCount, setTryCount] = useState(3);
   const [lastRequestData, setLastRequestData] = useState(null);
   const [initialTotalItems, setInitialTotalItems] = useState(0);
 
-  // FIXED: Added the missing state definition here
   const [totalDiff, setTotalDiff] = useState(0);
   const [outputStats, setOutputStats] = useState({ total: 0, rejected: 0 });
 
@@ -28,12 +26,12 @@ const Plan = () => {
   const navigate = useNavigate();
 
   const countTotalItems = (plan) => {
+    // Xử lý linh hoạt cả camelCase (Frontend) và snake_case (Backend)
     const sections = plan?.tripSections || plan?.trip_sections;
     if (!sections) return 0;
 
     let count = 0;
     sections.forEach((section) => {
-      // Kiểm tra cả tripDetails và trip_details
       const details = section.tripDetails || section.trip_details || [];
       count += details.length;
     });
@@ -56,19 +54,18 @@ const Plan = () => {
 
   const handleStatsUpdate = useCallback((stats) => {
     setOutputStats(stats);
-    // console.log("Set total và rejected", stats);
   }, []);
 
+  // --- API 1: TẠO KẾ HOẠCH MỚI ---
   const callMakePlanApi = useCallback(
     async (data) => {
       if (!data) {
-        console.warn("Dữ liệu đầu vào rỗng, hủy gọi API.");
+        console.warn("Dữ liệu đầu vào rỗng.");
         return;
       }
       setIsSearching(true);
       setIsResultShown(false);
       setPlanData(null);
-      // Reset diff when making a new plan
       setTotalDiff(0);
 
       try {
@@ -76,18 +73,23 @@ const Plan = () => {
         const headers = { "Content-Type": "application/json" };
         if (currentToken) headers["Authorization"] = `Bearer ${currentToken}`;
 
+        // Gọi API Make Plan
         const response = await axios.post(
           "http://localhost:8080/api/v1/make-plan/make",
           data,
           { headers }
         );
 
-        console.log("Kết quả từ Backend:", response.data);
+        console.log("Make Plan Success:", response.data);
+        
+        // Cập nhật State bằng dữ liệu thật từ API
         const newPlanData = response.data;
         setPlanData(newPlanData);
+        
         const total = countTotalItems(newPlanData);
         setInitialTotalItems(total);
         console.log("Tổng số địa điểm:", total);
+        
         setIsResultShown(true);
         setSearchIteration((prev) => prev + 1);
       } catch (error) {
@@ -99,35 +101,39 @@ const Plan = () => {
     [translate]
   );
 
+  // --- API 2: TÁI TẠO LỊCH TRÌNH (Regenerate) ---
   const callRegeneratePartAPI = useCallback(
-    async (currentPlan, rejectedItems) => {
+    async (current_trip_plan, rejected_detail) => {
       setIsSearching(true);
 
-      // LOG: Kiểm tra xem Output gửi đúng chưa
-      console.log("Danh sách nhận từ Output (Đã chuẩn hóa):", rejectedItems);
+      console.log("Rejected List:", rejected_detail);
 
-      // Vì Output đã map đúng tên key (id, googlePlaceId) nên ở đây lấy dùng luôn
-      // Chỉ cần filter bỏ các item null/undefined cho an toàn
-      const payloadDetail = rejectedItems.filter(
+      const payloadDetail = rejected_detail.filter(
         (item) => item && item.id && item.googlePlaceId
       );
+      // if (payloadDetail.length === 0) {
+      //   alert("Không tìm thấy thông tin địa điểm để tái tạo.");
+      //   setIsSearching(false);
+      //   return;
+      // }
 
-      // Kiểm tra nếu danh sách rỗng thì chặn lại ngay
-      if (payloadDetail.length === 0) {
-        console.error("Lỗi: Danh sách rejected không hợp lệ hoặc rỗng");
-        alert("Không tìm thấy thông tin địa điểm để tái tạo.");
-        setIsSearching(false);
-        return;
+      // 2. SỬA QUAN TRỌNG: Chỉ dùng currentPlan (Dữ liệu thật), bỏ scheduleData
+      const planToSend = current_trip_plan; 
+
+      if (!planToSend) {
+          alert("Lỗi: Không có dữ liệu lịch trình hiện tại để tái tạo.");
+          setIsSearching(false);
+          return;
       }
 
-      const planToSend = currentPlan || scheduleData;
       const payload = {
-        current_trip_plan: planToSend, // Lấy từ file json import
+        current_trip_plan: planToSend,
         rejected_detail: payloadDetail,
       };
 
-      console.log("Đã có schedule:", planToSend);
-      console.log("Payload gửi đi:", payload);
+
+
+      console.log("Regenerate Payload:", payload);
 
       try {
         const currentToken = localStorage.getItem("token");
@@ -141,24 +147,24 @@ const Plan = () => {
         );
 
         console.log("Regenerate Success:", response.data);
-        const newTripData =
-          response.data.newTrip || response.data.currentTrip || response.data;
+        
+        // API có thể trả về cấu trúc khác nhau tùy backend, kiểm tra kỹ
+        const newTripData = response.data.new_trip_plan
 
-        setPlanData(newTripData);
+        setPlanData(newTripData); // Cập nhật lại giao diện với dữ liệu mới
         setSearchIteration((prev) => prev + 1);
       } catch (error) {
         handleAPIError(error);
       } finally {
         setIsSearching(false);
       }
-      console.log(setPlanData);
     },
     []
   );
 
   const handleSearch = useCallback(
     (requestData) => {
-      console.log("Nhận dữ liệu từ Input:", requestData);
+      console.log("Search Request:", requestData);
       setLastRequestData(requestData);
       localStorage.setItem("lastRequestData", JSON.stringify(requestData));
       setTryCount(3);
@@ -174,61 +180,45 @@ const Plan = () => {
       setTryCount((prev) => prev - 1);
 
       const rejectedCount = rejectedItems.length;
-
-      // FIX: Lấy tổng số item chuẩn. Nếu initialTotalItems = 0 thì tính lại từ planData hiện tại
       let total = initialTotalItems;
+      
       if (total === 0 && planData) {
         total = countTotalItems(planData);
       }
-
-      // Nếu vẫn bằng 0 (trường hợp lỗi) thì fallback về cách cũ
       if (total === 0) {
         total = outputStats.total + rejectedCount;
       }
 
       const threshold = total / 2;
-
-      // Logic so sánh: Rejected phải LỚN HƠN 50% thì mới make plan
-      // Ví dụ: 11/22 = 50% -> Không lớn hơn -> Regenerate Part
-      // Ví dụ: 12/22 > 50% -> Lớn hơn -> Make Plan
       const isOver50Percent = rejectedCount > threshold;
 
-      console.log(
-        `Retry Logic: Total=${total}, Rejected=${rejectedCount}, Threshold=${threshold}, Over50%=${isOver50Percent}`
-      );
+      console.log(`Retry: Rejected=${rejectedCount}/${total}`);
 
       if (isOver50Percent) {
+        // Nếu xóa quá nhiều -> Gọi lại Make Plan (Tạo mới hoàn toàn)
         let requestToUse = lastRequestData;
-
-        // Nếu state null, thử tìm trong localStorage
         if (!requestToUse) {
           const savedRequest = localStorage.getItem("lastRequestData");
-          if (savedRequest) {
-            requestToUse = JSON.parse(savedRequest);
-          }
+          if (savedRequest) requestToUse = JSON.parse(savedRequest);
         }
 
         if (requestToUse) {
+          console.log("Rejected > 50% -> Gọi Make Plan lại từ đầu");
           callMakePlanApi(requestToUse);
         } else {
-          alert(
-            "Vui lòng thực hiện tìm kiếm lại từ đầu để có dữ liệu tạo lịch trình!"
-          );
+          alert("Vui lòng thực hiện tìm kiếm lại từ đầu!");
         }
       } else {
-        console.log("Tiến hành gọi Regenerate Part API..."); // Thêm log này để debug
-
-        // Gọi hàm callRegeneratePartAPI
-        // Tham số 1: planData hiện tại (để làm current_trip_plan)
-        // Tham số 2: rejectedItems (danh sách địa điểm bị từ chối)
-        callRegeneratePartAPI(planData, rejectedItems);
+        // Nếu xóa ít -> Gọi Regenerate Part (Chỉ bù đắp phần thiếu)
+        console.log("Rejected <= 50% -> Gọi Regenerate Part");
+        callRegeneratePartAPI(planData, rejectedItems); // planData ở đây chắc chắn là dữ liệu từ API trước đó
       }
     },
     [
       tryCount,
       planData,
       lastRequestData,
-      initialTotalItems, // Đảm bảo dependency này có mặt
+      initialTotalItems,
       outputStats,
       callMakePlanApi,
       callRegeneratePartAPI,
@@ -237,14 +227,14 @@ const Plan = () => {
 
   const handleAccept = useCallback(() => {
     if (planData) {
-      console.log("Chấp nhận lịch trình:", planData);
+      console.log("Chấp nhận và chuyển trang:", planData);
+      // Chuyển sang trang CurrentPlan với dữ liệu thật
       navigate("/currentplan", { state: { finalPlan: planData } });
     }
   }, [navigate, planData]);
 
   return (
     <div>
-      {/* Now totalDiff is defined and can be displayed */}
       <div className="homepage-background">
         <Navbar />
         <Input
@@ -260,11 +250,11 @@ const Plan = () => {
           </div>
         )}
 
-        {/* Note: Ensure Output receives onStatsChange */}
+        {/* Chỉ hiện Output khi có planData thật sự */}
         {!isSearching && isResultShown && planData && (
           <Output
             key={searchIteration}
-            data={planData}
+            data={planData} // Truyền dữ liệu thật vào đây
             tryCount={tryCount}
             onTryAgainClick={handleTryAgain}
             onAcceptClick={handleAccept}

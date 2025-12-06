@@ -53,7 +53,7 @@ public class MakePlanController {
     @PostMapping("/regenerate-part")
     public ResponseEntity<RegeneratePlanPartResponse> regeneratePartPlan(
             @RequestBody RegeneratePlanPartRequest request) {
-        System.out.println("Regenerate Plan Request: " + request.getRejectedDetail());
+        System.out.println("Regenerate Plan Request: " + request.getRejectedDetail().size());
         RegeneratePlanPartResponse response = makePlanService.regeneratePlanPart(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -103,5 +103,13 @@ public class MakePlanController {
         test.setLocations(testLocationsMapper);
 
         return ResponseEntity.ok(test);
+    }
+
+    public ResponseEntity<MakePlanResponse> confirmMakePlan(
+            @AuthenticationPrincipal User user,
+            @RequestBody ConfirmPlanRequest request) {
+        MakePlanResponse response = makePlanService.confirmMakePlan(request, user.getId());
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }
