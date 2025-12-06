@@ -145,3 +145,20 @@
   border-radius: 4px;
   margin-bottom: 5px;
 }
+
+.trip-history-table th:last-child,
+.trip-history-table td:last-child {
+  text-align: center; /* Căn giữa cột cuối cùng */
+}
+
+.action-cell button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%; /* Làm nút tròn nếu muốn */
+}
+
+.action-cell button:hover {
+  background-color: #eef4ff !important; /* Hiệu ứng hover nhẹ */
+}

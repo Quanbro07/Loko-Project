@@ -1,112 +1,186 @@
-import './CurrentPlan.css';
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
-import { useLanguage } from '../Language/LanguageContext';
-import React, { useState, useMemo } from 'react'; 
-import MyLeafletMap from '../Map/MyLeafletMap';
-import OutputReal from '../OutputReal/OutputReal';
-import CurrentPlace from '../CurrentPlace/CurrentPlace';
-import WeatherForecast from '../WeatherForecast/WeatherForecast';
+import "./CurrentPlan.css";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import { useLanguage } from "../Language/LanguageContext";
+import React, { useState, useMemo } from "react";
+import MyLeafletMap from "../Map/MyLeafletMap";
+import OutputReal from "../OutputReal/OutputReal";
+import CurrentPlace from "../CurrentPlace/CurrentPlace";
+import WeatherForecast from "../WeatherForecast/WeatherForecast";
 // Import Data
-import allScheduleData from '../Output/schedule.json'; 
+import allScheduleData from "../Output/schedule.json";
+import axios from "axios";
+import { FaArrowLeft, FaSpinner } from "react-icons/fa";
+import TripHistory from "../TripHistory/TripHistory";
 
 const CurrentPlan = () => {
-    const { translate } = useLanguage();
-    
-    // 🌟 STATE QUẢN LÝ NGÀY CHUNG CHO TOÀN BỘ TRANG 🌟
-    const [currentDayIndex, setCurrentDayIndex] = useState(0);
+  const { translate } = useLanguage();
 
-    // State cho Slider của CurrentPlace
-    const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0); 
-    const tripId = allScheduleData.tripId;
-    // 1. Lấy danh sách các ngày (Trip Sections)
-    const tripSections = useMemo(() => {
-        return allScheduleData.tripSections || [];
-    }, []);
+  // 🌟 STATE QUẢN LÝ NGÀY CHUNG CHO TOÀN BỘ TRANG 🌟
+  const [currentDayIndex, setCurrentDayIndex] = useState(0);
+  const [selectedTripData, setSelectedTripData] = useState(null);
+  const [loadingTrip, setLoadingTrip] = useState(false);
+  // State cho Slider của CurrentPlace
+  const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
+  const tripId = allScheduleData.tripId;
+  const [viewMode, setViewMode] = useState("history");
+  // 1. Lấy danh sách các ngày (Trip Sections)
+  const tripSections = useMemo(() => {
+    return allScheduleData.tripSections || [];
+  }, []);
 
-    // 2. Lấy dữ liệu lịch trình của ngày ĐANG ĐƯỢC CHỌN
-    const scheduleForCurrentDay = useMemo(() => {
-        if (tripSections[currentDayIndex]) {
-            return tripSections[currentDayIndex].tripDetails;
+  // 2. Lấy dữ liệu lịch trình của ngày ĐANG ĐƯỢC CHỌN
+  const scheduleForCurrentDay = useMemo(() => {
+    if (tripSections[currentDayIndex]) {
+      return tripSections[currentDayIndex].tripDetails;
+    }
+    return [];
+  }, [tripSections, currentDayIndex]);
+  // 3. Tạo Markers cho Map
+  const itineraryPoints = useMemo(() => {
+    return scheduleForCurrentDay
+      .map((place) => {
+        const lat = place.location?.latitude || place.latitude;
+        const lng = place.location?.longitude || place.longitude;
+        const name = place.location?.location_name || place.title;
+
+        return {
+          name: name,
+          lat: lat,
+          lng: lng,
+        };
+      })
+      .filter((p) => p.lat && p.lng);
+  }, [scheduleForCurrentDay]);
+
+  // Reset slider khi đổi ngày
+  const handleDayChange = (newIndex) => {
+    console.log("Chuyển sang ngày index:", newIndex);
+    setCurrentDayIndex(newIndex);
+    setCurrentPlaceIndex(0); // Reset slide địa điểm về đầu tiên
+  };
+  const handleSelectTrip = async (tripId) => {
+    setLoadingTrip(true);
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        `http://localhost:8080/api/v1/trip/get`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          params: { tripId: tripId },
         }
-        return []; 
-    }, [tripSections, currentDayIndex]);
-    
-    // 3. Tạo Markers cho Map
-    const itineraryPoints = useMemo(() => {
-        return scheduleForCurrentDay.map(place => {
-            const lat = place.location?.latitude || place.latitude;
-            const lng = place.location?.longitude || place.longitude;
-            const name = place.location?.location_name || place.title;
+      );
 
-            return {
-                name: name,
-                lat: lat,
-                lng: lng,
-            };
-        }).filter(p => p.lat && p.lng); 
-    }, [scheduleForCurrentDay]);
+      setSelectedTripData(response.data);
 
-    // Reset slider khi đổi ngày
-    const handleDayChange = (newIndex) => {
-        console.log("Chuyển sang ngày index:", newIndex);
-        setCurrentDayIndex(newIndex);
-        setCurrentPlaceIndex(0); // Reset slide địa điểm về đầu tiên
-    };
-    
-    return (
-        <div>
-            <Navbar/>
-            <div className='body-container'>
-                
-               <div className="plan-dashboard-wrapper">
-                    {/* OutputReal: Thanh chọn ngày */}
-                    <div className="plan-list-section">
-                        <OutputReal 
-                            currentDayIndex={currentDayIndex}
-                            setCurrentDayIndex={handleDayChange} 
-                            tripSections={tripSections}
-                            tripId={tripId}
-                        />
-                    </div>
+      // Reset trạng thái hiển thị về ban đầu
+      setCurrentDayIndex(0);
+      setCurrentPlaceIndex(0);
 
-                    {/* WeatherForecast nằm NGAY BÊN DƯỚI */}
-                    {/* 🌟 CẬP NHẬT: Truyền currentDayIndex để đồng bộ */}
-                    <div className="weather-section-below">
-                        <WeatherForecast currentDayIndex={currentDayIndex} />
-                    </div>
-                </div>
+      // CHUYỂN VIEW MODE
+      setViewMode("detail");
+    } catch (error) {
+      console.error("Lỗi:", error);
+    } finally {
+      setLoadingTrip(false);
+    }
+  };
+  const handleBackToHistory = () => {
+    setViewMode("history");
+    // Không cần xóa data để lần sau mở lại cho nhanh, hoặc xóa nếu muốn
+  };
 
-                
-                {/* Hiển thị luôn CurrentPlace và Map */}
-                {scheduleForCurrentDay.length > 0 ? (
-                    <>
-                        <div className="current-plan-content">
-                            {/* CurrentPlace: Slider chi tiết */}
-                            <CurrentPlace 
-                                scheduleData={scheduleForCurrentDay} 
-                                currentIndex={currentPlaceIndex} 
-                                setCurrentIndex={setCurrentPlaceIndex} 
-                            /> 
-                            
-                            {/* Map: Bản đồ */}
-                            <MyLeafletMap 
-                                itineraryPoints={itineraryPoints}
-                                currentIndex={currentPlaceIndex} 
-                                currentDayIndex={currentDayIndex} 
-                            />
-                        </div>
-                    </>
-                ) : (
-                    <div className='current-plan-empty-state'>
-                        <h3>{translate('currentplace_no_plan') || "Chưa có dữ liệu cho ngày này."}</h3>
-                    </div>
-                )}
-                
+  return (
+    <div>
+      <Navbar />
+      <div className="body-container">
+        {loadingTrip && (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              padding: "50px",
+            }}
+          >
+            <FaSpinner className="icon-spin" size={30} color="#2157bb" />
+          </div>
+        )}
+        {!loadingTrip && viewMode === "history" && (
+          // TripHistory nằm trực tiếp trong body-container
+          <TripHistory onSelectTrip={handleSelectTrip} />
+        )}
+
+        {!loadingTrip && viewMode === "detail" && selectedTripData && (
+          // QUAN TRỌNG: Dùng thẻ ảo <>...</> (Fragment)
+          // Nó giúp gom code lại để dùng điều kiện if
+          // NHƯNG KHÔNG sinh ra thẻ div nào trên trình duyệt -> CSS không bị vỡ
+          <>
+            {/* Nút Back nhỏ, style inline để không ảnh hưởng layout */}
+            <div style={{ width: "100%", paddingBottom: "10px" }}>
+              <button
+                onClick={handleBackToHistory}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "#2157bb",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  fontWeight: "bold",
+                  fontSize: "16px",
+                }}
+              >
+                <FaArrowLeft />{" "}
+                {translate("back_to_history") || "Quay lại danh sách"}
+              </button>
             </div>
-            <Footer/>
-        </div>
-    );
-}
+
+            {/* --- BẮT ĐẦU PHẦN HTML GỐC CỦA BẠN --- */}
+            {/* Vì nằm trong <>, nên div này vẫn là con trực tiếp của body-container */}
+            <div className="plan-dashboard-wrapper">
+              <div className="plan-list-section">
+                <OutputReal
+                  currentDayIndex={currentDayIndex}
+                  setCurrentDayIndex={handleDayChange}
+                  tripSections={tripSections}
+                  tripId={tripId}
+                />
+              </div>
+              <div className="weather-section-below">
+                <WeatherForecast currentDayIndex={currentDayIndex} />
+              </div>
+            </div>
+
+            {scheduleForCurrentDay.length > 0 ? (
+              <div className="current-plan-content">
+                <CurrentPlace
+                  scheduleData={scheduleForCurrentDay}
+                  currentIndex={currentPlaceIndex}
+                  setCurrentIndex={setCurrentPlaceIndex}
+                />
+                <MyLeafletMap
+                  itineraryPoints={itineraryPoints}
+                  currentIndex={currentPlaceIndex}
+                  currentDayIndex={currentDayIndex}
+                />
+              </div>
+            ) : (
+              <div className="current-plan-empty-state">
+                <h3>
+                  {translate("currentplace_no_plan") ||
+                    "Chưa có dữ liệu cho ngày này."}
+                </h3>
+              </div>
+            )}
+            {/* --- KẾT THÚC PHẦN HTML GỐC --- */}
+          </>
+        )}
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
 export default CurrentPlan;
