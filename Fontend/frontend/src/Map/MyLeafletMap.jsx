@@ -12,13 +12,72 @@ const ICON_CONFIG = {
   blue: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png",
 };
 
-// Hàm tiện ích để format hiển thị
+// --- HÀM TIỆN ÍCH ---
+
+// 1. Hàm giải mã Polyline (An toàn hơn - Chống crash)
+const decodePolyline = (encoded) => {
+  // Case 1: Dữ liệu null/undefined -> Trả về mảng rỗng
+  if (!encoded) return [];
+
+  // Case 2: Nếu dữ liệu ĐÃ là mảng (Array) -> Trả về luôn (giả sử là tọa độ [lat, lng])
+  // Đây là nguyên nhân chính gây lỗi "charCodeAt is not a function" nếu input là array
+  if (Array.isArray(encoded)) {
+    return encoded;
+  }
+
+  // Case 3: Nếu KHÔNG phải string (ví dụ: number, object) -> Trả về mảng rỗng để tránh crash
+  if (typeof encoded !== "string") {
+    return [];
+  }
+
+  // Case 4: Dữ liệu là String -> Tiến hành giải mã
+  var poly = [];
+  var index = 0,
+    len = encoded.length;
+  var lat = 0,
+    lng = 0;
+
+  try {
+    while (index < len) {
+      var b,
+        shift = 0,
+        result = 0;
+      do {
+        b = encoded.charCodeAt(index++) - 63;
+        result |= (b & 0x1f) << shift;
+        shift += 5;
+      } while (b >= 0x20);
+      var dlat = (result & 1) !== 0 ? ~(result >> 1) : result >> 1;
+      lat += dlat;
+
+      shift = 0;
+      result = 0;
+      do {
+        b = encoded.charCodeAt(index++) - 63;
+        result |= (b & 0x1f) << shift;
+        shift += 5;
+      } while (b >= 0x20);
+      var dlng = (result & 1) !== 0 ? ~(result >> 1) : result >> 1;
+      lng += dlng;
+
+      var p = [lat / 1e5, lng / 1e5];
+      poly.push(p);
+    }
+  } catch (e) {
+    console.error("Error decoding polyline:", e);
+    return [];
+  }
+  return poly;
+};
+
+// 2. Format khoảng cách
 const formatDistance = (meters) => {
   if (!meters) return "0 m";
   if (meters >= 1000) return `${(meters / 1000).toFixed(2)} km`;
   return `${Math.round(meters)} m`;
 };
 
+// 3. Format thời gian
 const formatDuration = (seconds) => {
   if (!seconds) return "0 phút";
   const mins = Math.round(seconds / 60);
@@ -40,14 +99,13 @@ const MyLeafletMap = ({
   const layerGroupRef = useRef(null);
   const timerRef = useRef(null);
 
-  // --- 1. XỬ LÝ DỮ LIỆU MỚI ---
+  // --- 1. XỬ LÝ DỮ LIỆU TỪ JSON ---
   const { routeSegments, startCoordinate } = useMemo(() => {
     let segments = [];
     let startCoord = null;
 
     if (allRouteGeoJSON && allRouteGeoJSON.sections) {
-      // Tìm section tương ứng với ngày hiện tại (giả sử day_num bắt đầu từ 1, hoặc dùng index)
-      // Logic ở đây: Thử tìm theo day_num khớp với currentDayIndex + 1, nếu không thì lấy theo index mảng
+      // Tìm section theo ngày
       const activeSection =
         allRouteGeoJSON.sections.find(
           (s) => s.day_num === currentDayIndex + 1
@@ -56,26 +114,19 @@ const MyLeafletMap = ({
         allRouteGeoJSON.sections[0];
 
       if (activeSection && activeSection.route_path) {
-        // route_path là mảng các chặng
-        activeSection.route_path.forEach((leg) => {
-          // leg chứa: { distance_meter, duration_second, path: [[lat, lng], ...] }
+        // Lọc bỏ các phần tử null hoặc không hợp lệ
+        const validLegs = activeSection.route_path.filter(
+          (leg) => leg !== null && typeof leg === "object"
+        );
 
-          const rawPath = leg.path || [];
+        validLegs.forEach((leg) => {
+          // Lấy path an toàn
+          const rawPath = leg.path || leg.coords || ""; // Fallback nếu tên biến khác
 
-          // Convert raw path sang format Leaflet [lat, lng]
-          const leafletPath = rawPath
-            .map((coord) => {
-              // Dựa trên snippet bạn gửi: [10.77794, 106.703569] -> [Lat, Lng]
-              // Code cũ của bạn đảo ngược coord[1], coord[0], nhưng file mới có vẻ đã chuẩn Lat trước.
-              // Nếu vẽ ra bị sai vị trí, hãy đổi lại vị trí 2 biến này.
-              const lat = parseFloat(coord[0]);
-              const lng = parseFloat(coord[1]);
-              return !isNaN(lat) && !isNaN(lng) ? [lat, lng] : null;
-            })
-            .filter((pt) => pt !== null);
+          // Gọi hàm decode (đã được bọc try-catch và kiểm tra type)
+          const leafletPath = decodePolyline(rawPath);
 
           if (leafletPath.length > 0) {
-            // Lưu thêm thông tin meta vào segment
             segments.push({
               coords: leafletPath,
               details: {
@@ -84,7 +135,7 @@ const MyLeafletMap = ({
               },
             });
 
-            // Lấy điểm đầu tiên của chặng đầu tiên làm điểm start
+            // Lấy điểm đầu tiên làm startCoord
             if (!startCoord) startCoord = leafletPath[0];
           }
         });
@@ -94,7 +145,7 @@ const MyLeafletMap = ({
     return { routeSegments: segments, startCoordinate: startCoord };
   }, [currentDayIndex]);
 
-  // --- 2. KHỞI TẠO MAP (Giữ nguyên) ---
+  // --- 2. KHỞI TẠO MAP ---
   useEffect(() => {
     if (!mapContainerRef.current) return;
     if (mapInstanceRef.current) return;
@@ -145,36 +196,36 @@ const MyLeafletMap = ({
         shadowSize: [41, 41],
       });
 
-    // Vẽ đường đi
+    // Vẽ Polyline
     routeSegments.forEach((segmentObj, idx) => {
-      const isCurrentLeg = idx === currentIndex - 1;
+      // Logic Solid/Dotted
+      const isCurrentLeg = idx === currentIndex;
 
-      // segmentObj bây giờ là object { coords, details }
       const polyline = L.polyline(segmentObj.coords, {
         color: "#2157bb",
         weight: isCurrentLeg ? 6 : 4,
-        opacity: 0.8,
-        dashArray: isCurrentLeg ? null : "5, 10",
+        opacity: isCurrentLeg ? 1.0 : 0.6,
+        dashArray: isCurrentLeg ? null : "10, 10", // Solid vs Dotted
       });
 
-      // BIND POPUP ĐỂ HIỂN THỊ KHOẢNG CÁCH/THỜI GIAN
+      // Bind Popup info
       if (segmentObj.details) {
         const { distance, duration } = segmentObj.details;
         const infoContent = `
-                    <div style="text-align:center; font-size: 13px;">
-                        <b>Chặng ${idx + 1}</b><br/>
-                        Quãng đường: <b>${formatDistance(distance)}</b><br/>
-                        Thời gian: <b>${formatDuration(duration)}</b>
-                    </div>
-                `;
-        // Dùng bindTooltip để hiển thị khi hover, hoặc bindPopup để click
+          <div style="text-align:center; font-size: 13px; font-family: sans-serif;">
+            <b style="color: #2157bb;">Chặng ${idx + 1}</b><br/>
+            Quãng đường: <b>${formatDistance(distance)}</b><br/>
+            Thời gian: <b>${formatDuration(duration)}</b>
+          </div>
+        `;
         polyline.bindPopup(infoContent);
+        polyline.bindTooltip(infoContent, { sticky: true, opacity: 0.9 });
       }
 
       polyline.addTo(layerGroup);
     });
 
-    // Vẽ markers (Giữ nguyên logic cũ)
+    // Vẽ Markers
     itineraryPoints.forEach((point, index) => {
       const lat = parseFloat(point.lat);
       const lng = parseFloat(point.lng);
@@ -195,7 +246,7 @@ const MyLeafletMap = ({
     });
   }, [routeSegments, itineraryPoints, currentIndex]);
 
-  // --- 4. ZOOM LOGIC (Giữ nguyên) ---
+  // --- 4. ZOOM LOGIC ---
   useEffect(() => {
     const map = mapInstanceRef.current;
     if (startCoordinate && map) {
@@ -204,14 +255,22 @@ const MyLeafletMap = ({
         if (map && map.getContainer()) {
           try {
             map.invalidateSize();
-            map.setView(startCoordinate, 14, { animate: true });
+            if (routeSegments.length > 0) {
+              const allPoints = routeSegments.flatMap((s) => s.coords);
+              if (allPoints.length > 0) {
+                const bounds = L.latLngBounds(allPoints);
+                map.fitBounds(bounds, { padding: [50, 50], animate: true });
+              }
+            } else {
+              map.setView(startCoordinate, 14, { animate: true });
+            }
           } catch (err) {
             console.warn("Map zoom warning:", err);
           }
         }
-      }, 100);
+      }, 200);
     }
-  }, [startCoordinate]);
+  }, [startCoordinate, routeSegments]);
 
   return (
     <div
