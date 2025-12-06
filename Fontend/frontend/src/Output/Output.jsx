@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Output.css";
 import { useLanguage } from "../Language/LanguageContext";
-import scheduleData from "./schedule.json";
+// 1. XÓA DÒNG NÀY: import scheduleData from "./schedule.json";
 
 const formatTime = (timeString) => {
   if (!timeString) return "";
@@ -11,13 +11,20 @@ const formatTime = (timeString) => {
 let rejectedCount = 0;
 
 const processScheduleData = (data, translate) => {
-  if (!data || !data.tripSections) return [];
-  return data.tripSections.map((section) => {
-    const activities = section.tripDetails.map((item) => ({
-      diadiem:
-        item.location?.location_name || translate("output_unknown_location"),
+  // Kiểm tra cả snake_case (Backend) và camelCase (Frontend cũ)
+  const sections = data?.tripSections || data?.trip_sections;
+  
+  if (!sections) return [];
+
+  return sections.map((section) => {
+    const details = section.tripDetails || section.trip_details || [];
+    
+    const activities = details.map((item) => ({
+      diadiem: item.location?.location_name || item.title || translate("output_unknown_location"),
       thoigian: `${formatTime(item.startTime)} - ${formatTime(item.endTime)}`,
-      mota: item.description || translate("output_no_description"),
+      mota: item.activity || translate("output_no_description"),
+      
+      // Map các trường ID quan trọng để dùng cho chức năng Xóa/Tái tạo
       tripDetailID: item.tempId || item.id,
       locationId: item.location?.id,
       ggPlaceId: item.location?.gg_place_id,
@@ -31,8 +38,8 @@ const processScheduleData = (data, translate) => {
   });
 };
 
-// FIXED: Added 'onStatsChange' to the list of props here 👇
 const Output = ({
+  data, // <--- 2. QUAN TRỌNG: Nhận data từ Plan.jsx
   tryCount,
   onTryAgainClick,
   onAcceptClick,
@@ -45,16 +52,13 @@ const Output = ({
   const [deletingIndex, setDeletingIndex] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
 
-  // Calculate stats
   const currentTotalCount = schedule.reduce(
     (total, day) => total + day.activities.length,
     0
   );
   const currentRejectedCount = rejectedLocation.length;
 
-  // Sync stats with parent (Plan.jsx)
   useEffect(() => {
-    // Only call if the function exists
     if (onStatsChange) {
       onStatsChange({
         total: currentTotalCount,
@@ -63,20 +67,20 @@ const Output = ({
     }
   }, [currentTotalCount, currentRejectedCount, onStatsChange]);
 
+  // --- 3. SỬA USE EFFECT: Dùng 'data' thay vì 'scheduleData' ---
   useEffect(() => {
-    if (scheduleData) {
-      const processed = processScheduleData(scheduleData, translate);
+    if (data) {
+      console.log("Output nhận dữ liệu mới:", data); // Log để kiểm tra
+      const processed = processScheduleData(data, translate);
       setSchedule(processed);
-      setRejectedLocation([]);
-      setCurrentDayIndex(0);
+      setRejectedLocation([]); // Reset danh sách xóa khi có plan mới
+      setCurrentDayIndex(0);   // Reset về ngày 1
     }
-  }, [translate]);
+  }, [data, translate]); 
+  // -----------------------------------------------------------
 
-  const currentDaySchedule =
-    schedule.length > 0 ? schedule[currentDayIndex] : null;
-  const currentActivities = currentDaySchedule
-    ? currentDaySchedule.activities
-    : [];
+  const currentDaySchedule = schedule.length > 0 ? schedule[currentDayIndex] : null;
+  const currentActivities = currentDaySchedule ? currentDaySchedule.activities : [];
 
   const handleDelete = (actIndex) => {
     const activityToDelete = currentActivities[actIndex];
@@ -88,7 +92,7 @@ const Output = ({
     };
     rejectedCount += 1;
 
-    console.log("Deleting item:", newItem);
+    console.log("Xóa địa điểm:", newItem);
     setRejectedLocation((prev) => [...prev, newItem]);
 
     const newSchedule = [...schedule];
@@ -98,26 +102,20 @@ const Output = ({
 
   const handleSave = () => {
     setIsSaving(true);
-    console.log("Đang chuẩn bị dữ liệu gửi về...");
+    console.log("Đang gửi yêu cầu thử lại...");
 
     setTimeout(() => {
-      // --- SỬA ĐOẠN NÀY ---
-      // Map lại tên biến cho đúng chuẩn Backend trước khi bắn sang Plan.jsx
       const cleanList = rejectedLocation.map((item) => ({
-        id: item.locationId, // Đổi locationId -> id
-        googlePlaceId: item.ggPlaceId, // Đổi ggPlaceId -> googlePlaceId
+        id: item.locationId,
+        googlePlaceId: item.ggPlaceId,
       }));
 
-      console.log("Dữ liệu đã chuẩn hóa:", cleanList);
-
       if (onTryAgainClick) {
-        onTryAgainClick(cleanList); // Gửi list đã sạch
+        onTryAgainClick(cleanList);
       }
-      // --------------------
 
       setIsSaving(false);
-      alert("Đã gửi yêu cầu cập nhật lịch trình!");
-    }, 2000);
+    }, 1000); // Giảm timeout xuống 1s cho nhanh
   };
 
   const handleNextDay = () => {
@@ -135,8 +133,7 @@ const Output = ({
   };
 
   const canGoPrev = currentDayIndex > 0;
-  const canGoNext =
-    schedule.length > 0 && currentDayIndex < schedule.length - 1;
+  const canGoNext = schedule.length > 0 && currentDayIndex < schedule.length - 1;
 
   return (
     <div className="output-container">
@@ -174,7 +171,7 @@ const Output = ({
           </tr>
         </thead>
         <tbody>
-          {currentActivities.length === 0 && deletingIndex === null ? (
+          {currentActivities.length === 0 ? (
             <tr>
               <td colSpan="4" style={{ textAlign: "center", padding: "20px" }}>
                 {translate("output_no_itinerary_data")}
@@ -196,7 +193,7 @@ const Output = ({
                   <td className="delete-button-cell">
                     <button
                       className="delete"
-                      title="Remove item"
+                      title="Xóa địa điểm này"
                       onClick={() => handleDelete(index)}
                       disabled={isDeleting}
                     ></button>
@@ -227,28 +224,22 @@ const Output = ({
           {translate("output_accept_button")}
         </button>
       </div>
+      
+      {/* Log hiển thị các item đã xóa (chỉ để debug, có thể ẩn đi) */}
       {rejectedLocation.length > 0 && (
         <div className="deleted-log-container">
-          <div className="deleted-log-title">
-            ⚠️ Các vị trí đã xóa (Sẽ gửi về Backend để tái tạo):
+          <div className="deleted-log-title" style={{color:'red'}}>
+            Các địa điểm đã xóa ({currentRejectedCount}):
           </div>
           <ul className="deleted-list">
             {rejectedLocation.map((item, idx) => (
               <li key={idx} className="deleted-item">
-                <span>
-                  Location ID:{" "}
-                  <span className="item-id">{item.locationId}</span>| Google
-                  Place ID: <span className="item-id">{item.ggPlaceId}</span>
-                </span>
+                {item.locationId} - {item.ggPlaceId}
               </li>
             ))}
           </ul>
         </div>
       )}
-      <div>
-        <span>Total: {currentTotalCount}</span>
-        <span>Rejected: {currentRejectedCount}</span>
-      </div>
     </div>
   );
 };
