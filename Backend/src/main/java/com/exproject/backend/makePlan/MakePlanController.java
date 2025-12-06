@@ -105,6 +105,7 @@ public class MakePlanController {
         return ResponseEntity.ok(test);
     }
 
+    @PostMapping("/confirm")
     public ResponseEntity<MakePlanResponse> confirmMakePlan(
             @AuthenticationPrincipal User user,
             @RequestBody ConfirmPlanRequest request) {
