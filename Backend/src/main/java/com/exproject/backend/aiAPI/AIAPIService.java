@@ -52,6 +52,7 @@ public class AIAPIService {
     private final LocationMapper locationMapper;
 
     // Gọi Api lấy location
+    @Transactional
     public List<Location> getLocations(CategorySyncStatDTO categorySyncStatDTOList) {
         // URL
         String getLocationUrl = pythonAPIConfig.getBaseUrl() + pythonAPIConfig.getVersionUrl() +
@@ -95,7 +96,15 @@ public class AIAPIService {
             Province province = provinceOpt.get();
 
             List<LocationCategory> categories = locationCategoryRepository.
-                    findAllById(rawLocationDTO.getCategoryIds());
+                    findAllByIdIn(rawLocationDTO.getCategoryIds());
+            // LOG KIỂM TRA
+            System.out.println("Python gửi ID: " + rawLocationDTO.getCategoryIds());
+
+            System.out.println("Tìm thấy trong DB: " + categories.size() + " categories");
+
+            System.out.println(categories);
+
+            System.out.println("GG place Id: " + rawLocationDTO.getGgPlaceId());
 
             if(categories.size() != rawLocationDTO.getCategoryIds().size()) {
                 // Log cảnh báo nếu có category ID không tìm thấy

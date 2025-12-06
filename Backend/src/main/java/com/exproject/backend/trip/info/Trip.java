@@ -87,7 +87,6 @@ public class Trip {
     @EqualsAndHashCode.Exclude
     private List<AlertWeather> alertWeathers = new ArrayList<>();
 
-
     // Constructor
     public Trip(TripRequest tripRequest, User user) {
         this.user = user;

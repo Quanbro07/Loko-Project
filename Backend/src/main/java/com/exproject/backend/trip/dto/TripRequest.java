@@ -16,8 +16,6 @@ import java.util.List;
 @Builder
 public class TripRequest {
 
-    private Long userId;
-
     private String tripName;
 
     private LocalDate startDate;

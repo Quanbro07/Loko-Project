@@ -94,9 +94,9 @@ public class TripService {
     // TODO: thêm biến date hiện tại vào TripSection
     // TODO: Set biến đó vào khi createFullTrip
     @Transactional
-    public TripResponse createFullTrip(TripRequest tripRequest, RouteResponse routeResponse) {
+    public TripResponse createFullTrip(Long userId,TripRequest tripRequest, RouteResponse routeResponse) {
 
-        User user = userRepository.findById(tripRequest.getUserId())
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         // Handle RouteResponse null

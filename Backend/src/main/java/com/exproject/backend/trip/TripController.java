@@ -24,8 +24,10 @@ public class TripController {
     private final TripService tripService;
 
     @PostMapping("/create")
-    public ResponseEntity<String> createTrip(@RequestBody SaveTripPayload request) {
-        tripService.createFullTrip(request.getTripRequest(),request.getRouteResponse());
+    public ResponseEntity<String> createTrip(
+            @AuthenticationPrincipal User user,
+            @RequestBody SaveTripPayload request) {
+        tripService.createFullTrip( user.getId(),request.getTripRequest(),request.getRouteResponse());
 
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Create Trip successful");
