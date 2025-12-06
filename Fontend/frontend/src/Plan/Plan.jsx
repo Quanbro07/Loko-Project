@@ -246,12 +246,31 @@ const Plan = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${currentToken}`,
       };
+      const provinceId =
+        inputData.provinceId ||
+        inputData.province_id ||
+        inputData.province?.id ||
+        inputData.destination?.id || // Thử thêm trường hợp này
+        planData.provinceId ||
+        null;
+
+      const provinceName = inputData.province;
+
+      // --- 🔍 LOG KẾT QUẢ TRÍCH XUẤT ---
+      console.log("👉 EXTRACTED ProvinceID:", provinceId);
+      console.log("👉 EXTRACTED ProvinceName:", provinceName);
+
+      if (!provinceId) {
+        alert("Lỗi: Không tìm thấy Province ID! Xem console để biết chi tiết.");
+        console.groupEnd();
+        return; // Dừng lại, không gửi request lỗi
+      }
 
       // 2. CHUẨN BỊ GÓI WEATHER (weather_request)
       // Map từ inputData (dữ liệu lúc bạn nhập form tìm kiếm) sang WeatherRequest của Backend
       const weatherRequestPayload = {
-        provinceId: inputData.provinceId,
-        provinceName: inputData.provinceName,
+        provinceId: provinceId,
+        provinceName: provinceName,
         startDate: inputData.start_date || inputData.startDate,
         endDate: inputData.end_date || inputData.endDate,
         fromOperateTime: (
@@ -323,7 +342,6 @@ const Plan = () => {
           };
         }),
       };
-
       // 4. GÓI FINAL PAYLOAD (ConfirmPlanRequest)
       const payload = {
         trip_request: tripRequestPayload, // Khớp với @JsonProperty("trip_request")
