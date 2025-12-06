@@ -26,7 +26,7 @@ class RouteRequest(BaseModel):
 class RouteSegment(BaseModel):
     distance_meter: float
     duration_second: float
-    path: str  # List of [lat, lon]
+    polyline: str  # List of [lat, lon]
 
 class SectionRouteResponse(BaseModel):
     day_num: int
