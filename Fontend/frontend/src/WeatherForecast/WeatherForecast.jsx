@@ -1,21 +1,21 @@
 import React, { useMemo, useState, useEffect } from "react";
 import "./WeatherForecast.css";
-import weatherDataRaw from "./responseWeather.json";
+import defaultWeatherData from "./responseWeather.json";
 
-const WeatherForecast = ({ currentDayIndex = 0 }) => {
+const WeatherForecast = ({ currentDayIndex = 0, data = null }) => {
   const [startIndex, setStartIndex] = useState(0);
   const ITEMS_PER_ROW = 4;
-
+  const sourceData = data || defaultWeatherData;
   const currentDayWeather = useMemo(() => {
     if (
-      weatherDataRaw &&
-      Array.isArray(weatherDataRaw.scopes) &&
-      weatherDataRaw.scopes[currentDayIndex]
+      sourceData &&
+      Array.isArray(sourceData.scopes) &&
+      sourceData.scopes[currentDayIndex]
     ) {
-      return weatherDataRaw.scopes[currentDayIndex];
+      return sourceData.scopes[currentDayIndex];
     }
-    return weatherDataRaw?.scopes?.[0] || null;
-  }, [currentDayIndex]);
+    return sourceData?.scopes?.[0] || null;
+  }, [currentDayIndex, sourceData]);
 
   useEffect(() => {
     setStartIndex(0);

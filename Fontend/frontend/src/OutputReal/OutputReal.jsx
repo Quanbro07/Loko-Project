@@ -71,18 +71,25 @@ const OutputReal = ({ currentDayIndex, setCurrentDayIndex, tripSections, tripId 
 
     // --- Effect: Xử lý dữ liệu hiển thị khi ngày thay đổi ---
     useEffect(() => {
-        if (!scheduleForCurrentDay) return;
+        // Map dữ liệu từ Backend sang format hiển thị
+        const processedData = scheduleForCurrentDay.map(item => {
+            // Lấy tên địa điểm
+            const name = item.location?.location_name || item.locationName || item.title || translate('output_unknown_location');
+            
+            // Xử lý thời gian (backend có thể trả HH:mm:ss)
+            const start = item.startTime || item.start_time || '';
+            const end = item.endTime || item.end_time || '';
+            const timeStr = (start && end) 
+                ? `${start.substring(0, 5)} - ${end.substring(0, 5)}` 
+                : '';
 
-        const processedData = scheduleForCurrentDay.map(item => ({
-            diadiem: item.location?.location_name || item.title || translate('output_unknown_location'),
-            // Cắt chuỗi thời gian HH:MM:SS thành HH:MM
-            thoigian: `${item.startTime ? item.startTime.substring(0, 5) : ''} - ${item.endTime ? item.endTime.substring(0, 5) : ''}`,
-            mota: item.description || translate('output_no_description') 
-        }));
+            const desc = item.description || item.activity || translate('output_no_description');
+
+            return { diadiem: name, thoigian: timeStr, mota: desc };
+        });
 
         setItineraryData(processedData);
-
-    }, [scheduleForCurrentDay, translate]); 
+    }, [scheduleForCurrentDay, translate]);
 
     if (totalDays === 0) {
         return (
