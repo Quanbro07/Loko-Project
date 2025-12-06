@@ -87,7 +87,7 @@ class RoutingService:
                         route_segments.append(RouteSegment(
                             distance_meter=dist,
                             duration_second=dur,
-                            path=encoded_path
+                            polyline=encoded_path
                         ))
                     
                     return route_segments
@@ -108,7 +108,7 @@ class RoutingService:
             segments.append(RouteSegment(
                 distance_meter=0, 
                 duration_second=0,
-                path=encoded_path
+                polyline=encoded_path
             ))
         return segments
 
