@@ -27,25 +27,32 @@ const CurrentPlan = () => {
   // State quản lý UI
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
+  const [routeData, setRouteData] = useState(null);
 
   // --- EFFECT: KHỞI TẠO DỮ LIỆU ---
   useEffect(() => {
-    if (receivedPlan && receivedPlan.tripPlan) {
-      console.log("CurrentPlan nhận được dữ liệu:", receivedPlan);
-      setTripData(receivedPlan.tripPlan);
+    if (receivedPlan) {
+      console.log("CurrentPlan received data:", receivedPlan);
+      let extractedTrip = null;
+      let extractedRoute = null;
+      if (receivedPlan.tripPlan || receivedPlan.trip_plan) {
+        extractedTrip = receivedPlan.tripPlan || receivedPlan.trip_plan;
+        extractedRoute = receivedPlan.route;
+      } else if (receivedPlan.tripSections || receivedPlan.trip_sections) {
+        extractedTrip = receivedPlan;
+      }
 
-      // Nếu backend chưa trả về weather trong MakePlanResponse,
-      // bạn có thể gọi API weather ở đây hoặc set null để WeatherForecast tự xử lý fallback
-      // Giả sử ta chưa có weather từ backend MakePlan, ta để null hoặc fetch riêng
-      setWeatherData(null);
-
-      setIsLoading(false);
+      if (extractedTrip) {
+        setTripData(extractedTrip);
+        setRouteData(extractedRoute);
+        setWeatherData(null);
+        setIsLoading(false);
+      } else {
+        console.warn("Data structure not recognized");
+        setIsLoading(false);
+      }
     } else {
-      // Trường hợp không có dữ liệu (F5 trang hoặc vào trực tiếp)
-      // Có thể gọi API getTripById nếu có tripId trong URL, hoặc redirect về Home
-      console.warn("Không tìm thấy dữ liệu chuyến đi trong state!");
-      // alert("Không tìm thấy thông tin chuyến đi. Quay về trang chủ...");
-      // navigate('/');
+      console.warn("No state received in location!");
       setIsLoading(false);
     }
   }, [receivedPlan, navigate]);
@@ -117,6 +124,8 @@ const CurrentPlan = () => {
       </div>
     );
   }
+  if (isLoading) return <div className="loading-screen">Loading...</div>;
+  if (!tripData) return <div className="error-screen">No Data Found</div>;
 
   return (
     <div>
@@ -160,8 +169,7 @@ const CurrentPlan = () => {
                 itineraryPoints={itineraryPoints}
                 currentIndex={currentPlaceIndex}
                 currentDayIndex={currentDayIndex}
-                // Có thể truyền thêm route geometry nếu backend trả về trong receivedPlan.route
-                routeData={receivedPlan?.route}
+                routeData={routeData}
               />
             </div>
           </>

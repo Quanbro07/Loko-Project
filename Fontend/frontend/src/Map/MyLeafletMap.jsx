@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useMemo } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Import dữ liệu file JSON mới
-import allRouteGeoJSON from "./route_geometry.json";
+// 1. XÓA IMPORT JSON CŨ
+// import allRouteGeoJSON from "./route_geometry.json";
 
 const ICON_CONFIG = {
   shadowUrl:
@@ -16,21 +16,10 @@ const ICON_CONFIG = {
 
 // 1. Hàm giải mã Polyline (An toàn hơn - Chống crash)
 const decodePolyline = (encoded) => {
-  // Case 1: Dữ liệu null/undefined -> Trả về mảng rỗng
   if (!encoded) return [];
+  if (Array.isArray(encoded)) return encoded;
+  if (typeof encoded !== "string") return [];
 
-  // Case 2: Nếu dữ liệu ĐÃ là mảng (Array) -> Trả về luôn (giả sử là tọa độ [lat, lng])
-  // Đây là nguyên nhân chính gây lỗi "charCodeAt is not a function" nếu input là array
-  if (Array.isArray(encoded)) {
-    return encoded;
-  }
-
-  // Case 3: Nếu KHÔNG phải string (ví dụ: number, object) -> Trả về mảng rỗng để tránh crash
-  if (typeof encoded !== "string") {
-    return [];
-  }
-
-  // Case 4: Dữ liệu là String -> Tiến hành giải mã
   var poly = [];
   var index = 0,
     len = encoded.length;
@@ -93,25 +82,26 @@ const MyLeafletMap = ({
   itineraryPoints = [],
   currentIndex = 0,
   currentDayIndex = 0,
+  routeData = null, // 2. THÊM PROP MỚI ĐỂ NHẬN DỮ LIỆU TỪ BACKEND
 }) => {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const layerGroupRef = useRef(null);
   const timerRef = useRef(null);
 
-  // --- 1. XỬ LÝ DỮ LIỆU TỪ JSON ---
+  // --- 3. SỬA USEMEMO ĐỂ DÙNG routeData ---
   const { routeSegments, startCoordinate } = useMemo(() => {
     let segments = [];
     let startCoord = null;
 
-    if (allRouteGeoJSON && allRouteGeoJSON.sections) {
+    // Kiểm tra nếu có dữ liệu từ prop routeData
+    if (routeData && routeData.sections) {
       // Tìm section theo ngày
+      // Lưu ý: Backend có thể trả về mảng sections mà index tương ứng với ngày,
+      // hoặc có thuộc tính day_num. Logic dưới đây xử lý cả hai.
       const activeSection =
-        allRouteGeoJSON.sections.find(
-          (s) => s.day_num === currentDayIndex + 1
-        ) ||
-        allRouteGeoJSON.sections[currentDayIndex] ||
-        allRouteGeoJSON.sections[0];
+        routeData.sections.find((s) => s.day_num === currentDayIndex + 1) ||
+        routeData.sections[currentDayIndex];
 
       if (activeSection && activeSection.route_path) {
         // Lọc bỏ các phần tử null hoặc không hợp lệ
@@ -120,10 +110,10 @@ const MyLeafletMap = ({
         );
 
         validLegs.forEach((leg) => {
-          // Lấy path an toàn
-          const rawPath = leg.path || leg.coords || ""; // Fallback nếu tên biến khác
+          // Lấy path an toàn (backend có thể trả về 'path' hoặc 'coords')
+          const rawPath = leg.path || leg.coords || "";
 
-          // Gọi hàm decode (đã được bọc try-catch và kiểm tra type)
+          // Gọi hàm decode
           const leafletPath = decodePolyline(rawPath);
 
           if (leafletPath.length > 0) {
@@ -143,9 +133,9 @@ const MyLeafletMap = ({
     }
 
     return { routeSegments: segments, startCoordinate: startCoord };
-  }, [currentDayIndex]);
+  }, [currentDayIndex, routeData]); // Thêm routeData vào dependencies
 
-  // --- 2. KHỞI TẠO MAP ---
+  // --- 4. KHỞI TẠO MAP (Giữ nguyên) ---
   useEffect(() => {
     if (!mapContainerRef.current) return;
     if (mapInstanceRef.current) return;
@@ -177,7 +167,7 @@ const MyLeafletMap = ({
     };
   }, []);
 
-  // --- 3. VẼ LAYER & HIỂN THỊ THÔNG TIN ---
+  // --- 5. VẼ LAYER & HIỂN THỊ THÔNG TIN (Giữ nguyên logic vẽ) ---
   useEffect(() => {
     const map = mapInstanceRef.current;
     const layerGroup = layerGroupRef.current;
@@ -246,7 +236,7 @@ const MyLeafletMap = ({
     });
   }, [routeSegments, itineraryPoints, currentIndex]);
 
-  // --- 4. ZOOM LOGIC ---
+  // --- 6. ZOOM LOGIC (Giữ nguyên) ---
   useEffect(() => {
     const map = mapInstanceRef.current;
     if (startCoordinate && map) {
