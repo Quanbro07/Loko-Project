@@ -36,10 +36,13 @@ services:
 
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
+      SPRING_PROFILE_PRODUCT: product
     extra_hosts:
       - "host.docker.internal:host-gateway"
     env_file:
       - Backend/.env
+    volumes:
+      - ./data/uploads:/app/uploads/trip-pdf
     ports:
       - "8080:8080"
     networks:
@@ -51,3 +54,4 @@ networks:
 
 volumes:
   db_data:
+

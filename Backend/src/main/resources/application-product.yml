@@ -15,7 +15,7 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
 
   data:
     redis:
@@ -29,3 +29,6 @@ spring:
 python:
   api:
     base-url: http://host.docker.internal:8000
+
+file:
+  upload-dir: /app/uploads/trip-pdf

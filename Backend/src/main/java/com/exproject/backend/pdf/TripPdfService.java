@@ -4,6 +4,7 @@ import com.exproject.backend.pdf.TripPdfRepository;
 import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip.info.Trip;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -19,6 +20,9 @@ public class TripPdfService {
     private final PdfGenerator pdfGenerator;
     private final TripPdfRepository tripPdfRepository;
 
+    @Value("${file.upload-dir}")
+    private String uploadDir;
+
     public byte[] generateTripPdf(TripRequest tripRequest) {
         String html = tripPdfTemplateBuilder.buildHtml(tripRequest);
         return pdfGenerator.generatePdfFromHtml(html);
@@ -26,7 +30,7 @@ public class TripPdfService {
 
     public String savePdfToFileSystem(byte[] bytes, Long tripId) {
         try {
-            String folderPath = "uploads/trip-pdf/";
+            String folderPath = uploadDir; // "uploads/trip-pdf/"
             File folder = new File(folderPath);
             if (!folder.exists()) folder.mkdirs();
 
