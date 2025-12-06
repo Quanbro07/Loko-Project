@@ -448,8 +448,9 @@ const User = () => {
             <div className="info-item">
               <div className="label">Ngày tham gia</div>
               <div className="value">
-                {formatDateForInput(user?.createAt) || "2023-01-01"}
-              </div>
+{user?.createAt 
+      ? formatDateForDisplay(formatDateForInput(user.createAt)) 
+      : "01/01/2023"}              </div>
             </div>
             <div className="info-item">
               <div className="label">Số tỉnh/thành đã đi cùng LOKO</div>
