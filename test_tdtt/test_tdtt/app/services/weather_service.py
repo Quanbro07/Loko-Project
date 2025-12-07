@@ -31,12 +31,6 @@ class WeatherService:
             print(f"❌ Date/Time format error: {e}")
             return WeatherResponse(scopes=[], alerts=[])
 
-        # --- LOGIC MỚI: Lấy tên địa điểm từ ID thay vì dùng trực tiếp provinceName ---
-        search_query = get_province_name_by_id(request.provinceId)
-
-        print(f"👉 [WEATHER DEBUG] ID: {request.provinceId} -> Mapped Query: '{search_query}'")
-        # ---------------------------------------------------------------------------
-
         # Chuẩn bị container dữ liệu
         all_hours_map = {} # Key: epoch timestamp, Value: data object
         alerts_response = []
