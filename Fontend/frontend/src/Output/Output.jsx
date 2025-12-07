@@ -25,7 +25,7 @@ const processScheduleData = (data, translate) => {
       mota: item.activity || translate("output_no_description"),
       
       // Map các trường ID quan trọng để dùng cho chức năng Xóa/Tái tạo
-      tripDetailID: item.tempId || item.id,
+      tripDetailID: item.temp_id,
       locationId: item.location?.id,
       ggPlaceId: item.location?.gg_place_id,
       originalId: item.sequenceOrder,
@@ -87,6 +87,7 @@ const Output = ({
     if (!activityToDelete) return;
 
     const newItem = {
+      tripDetailID: activityToDelete.tripDetailID,
       locationId: activityToDelete.locationId,
       ggPlaceId: activityToDelete.ggPlaceId,
     };
@@ -106,8 +107,8 @@ const Output = ({
 
     setTimeout(() => {
       const cleanList = rejectedLocation.map((item) => ({
-        id: item.locationId,
-        googlePlaceId: item.ggPlaceId,
+        trip_detail_id: item.tripDetailID,
+        location_id: item.locationId
       }));
 
       if (onTryAgainClick) {

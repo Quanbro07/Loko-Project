@@ -7,6 +7,7 @@ import paperPlaneAnimation from "../lottie/Paper plane.json";
 import Output from "../Output/Output";
 import Footer from "../Footer/Footer";
 import { useLanguage } from "../Language/LanguageContext";
+import { useAuth } from "../Auth/AuthContext"; // Import useAuth
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -14,7 +15,7 @@ const Plan = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [isResultShown, setIsResultShown] = useState(false);
   const [searchIteration, setSearchIteration] = useState(0);
-  const [planData, setPlanData] = useState(null); // Dữ liệu thật sẽ nằm ở đây
+  const [planData, setPlanData] = useState(null);
   const [tryCount, setTryCount] = useState(3);
   const [lastRequestData, setLastRequestData] = useState(null);
   const [initialTotalItems, setInitialTotalItems] = useState(0);
@@ -24,9 +25,9 @@ const Plan = () => {
 
   const { translate } = useLanguage();
   const navigate = useNavigate();
+  const { token } = useAuth(); // Lấy token từ Context
 
   const countTotalItems = (plan) => {
-    // Xử lý linh hoạt cả camelCase (Frontend) và snake_case (Backend)
     const sections = plan?.tripSections || plan?.trip_sections;
     if (!sections) return 0;
 
@@ -42,10 +43,14 @@ const Plan = () => {
     console.error("API Error:", error);
     let msg = "Có lỗi xảy ra";
     if (error.response) {
-      const data = error.response.data;
-      msg = `Lỗi ${error.response.status}: ${
-        data?.message || data?.error || JSON.stringify(data)
-      }`;
+      if (error.response.status === 403) {
+        msg = "Phiên đăng nhập hết hạn hoặc không đủ quyền. Vui lòng đăng nhập lại.";
+      } else {
+        const data = error.response.data;
+        msg = `Lỗi ${error.response.status}: ${
+          data?.message || data?.error || JSON.stringify(data)
+        }`;
+      }
     } else if (error.request) {
       msg = "Không thể kết nối đến Server";
     }
@@ -56,7 +61,7 @@ const Plan = () => {
     setOutputStats(stats);
   }, []);
 
-  // --- API 1: TẠO KẾ HOẠCH MỚI ---
+  // --- API 1: TẠO KẾ HOẠCH MỚI (MAKE PLAN) ---
   const callMakePlanApi = useCallback(
     async (data) => {
       if (!data) {
@@ -69,11 +74,9 @@ const Plan = () => {
       setTotalDiff(0);
 
       try {
-        const currentToken = localStorage.getItem("token");
         const headers = { "Content-Type": "application/json" };
-        if (currentToken) headers["Authorization"] = `Bearer ${currentToken}`;
+        if (token) headers["Authorization"] = `Bearer ${token}`;
 
-        // Gọi API Make Plan
         const response = await axios.post(
           "http://localhost:8080/api/v1/make-plan/make",
           data,
@@ -81,15 +84,13 @@ const Plan = () => {
         );
 
         console.log("Make Plan Success:", response.data);
-
-        // Cập nhật State bằng dữ liệu thật từ API
         const newPlanData = response.data;
         setPlanData(newPlanData);
-
+        
         const total = countTotalItems(newPlanData);
         setInitialTotalItems(total);
         console.log("Tổng số địa điểm:", total);
-
+        
         setIsResultShown(true);
         setSearchIteration((prev) => prev + 1);
       } catch (error) {
@@ -98,26 +99,24 @@ const Plan = () => {
         setIsSearching(false);
       }
     },
-    [translate]
+    [token]
   );
 
-  // --- API 2: TÁI TẠO LỊCH TRÌNH (Regenerate) ---
+  // --- API 2: TÁI TẠO LỊCH TRÌNH (REGENERATE) ---
   const callRegeneratePartAPI = useCallback(
     async (current_trip_plan, rejected_detail) => {
       setIsSearching(true);
 
-      console.log("Rejected List:", rejected_detail);
+      console.log("Rejected List nhận được:", rejected_detail);
 
+      // Lọc danh sách rejected, đảm bảo đúng key mà Backend yêu cầu (trip_detail_id, location_id)
       const payloadDetail = rejected_detail.filter(
-        (item) => item && item.id && item.googlePlaceId
+        (item) => item && item.trip_detail_id && item.location_id
       );
-      // if (payloadDetail.length === 0) {
-      //   alert("Không tìm thấy thông tin địa điểm để tái tạo.");
-      //   setIsSearching(false);
-      //   return;
-      // }
 
-      // 2. SỬA QUAN TRỌNG: Chỉ dùng currentPlan (Dữ liệu thật), bỏ scheduleData
+      // Code cũ của bạn có check length, nếu muốn có thể giữ lại:
+      // if (payloadDetail.length === 0) { ... }
+
       const planToSend = current_trip_plan;
 
       if (!planToSend) {
@@ -127,16 +126,15 @@ const Plan = () => {
       }
 
       const payload = {
-        current_trip_plan: planToSend,
-        rejected_detail: payloadDetail,
+        current_trip_plan: planToSend, // Khớp @JsonProperty("current_trip_plan")
+        rejected_detail: payloadDetail, // Khớp @JsonProperty("rejected_detail")
       };
 
-      console.log("Regenerate Payload:", payload);
+      console.log("Regenerate Payload:", JSON.stringify(payload, null, 2));
 
       try {
-        const currentToken = localStorage.getItem("token");
         const headers = { "Content-Type": "application/json" };
-        if (currentToken) headers["Authorization"] = `Bearer ${currentToken}`;
+        if (token) headers["Authorization"] = `Bearer ${token}`;
 
         const response = await axios.post(
           "http://localhost:8080/api/v1/make-plan/regenerate-part",
@@ -146,10 +144,13 @@ const Plan = () => {
 
         console.log("Regenerate Success:", response.data);
 
-        // API có thể trả về cấu trúc khác nhau tùy backend, kiểm tra kỹ
-        const newTripData = response.data.new_trip_plan;
+        // Map kết quả trả về
+        const newTripData = 
+            response.data.newTrip || 
+            response.data.new_trip_plan || 
+            response.data;
 
-        setPlanData(newTripData); // Cập nhật lại giao diện với dữ liệu mới
+        setPlanData(newTripData); 
         setSearchIteration((prev) => prev + 1);
       } catch (error) {
         handleAPIError(error);
@@ -157,7 +158,7 @@ const Plan = () => {
         setIsSearching(false);
       }
     },
-    []
+    [token]
   );
 
   const handleSearch = useCallback(
@@ -179,7 +180,7 @@ const Plan = () => {
 
       const rejectedCount = rejectedItems.length;
       let total = initialTotalItems;
-
+      
       if (total === 0 && planData) {
         total = countTotalItems(planData);
       }
@@ -193,7 +194,6 @@ const Plan = () => {
       console.log(`Retry: Rejected=${rejectedCount}/${total}`);
 
       if (isOver50Percent) {
-        // Nếu xóa quá nhiều -> Gọi lại Make Plan (Tạo mới hoàn toàn)
         let requestToUse = lastRequestData;
         if (!requestToUse) {
           const savedRequest = localStorage.getItem("lastRequestData");
@@ -207,9 +207,9 @@ const Plan = () => {
           alert("Vui lòng thực hiện tìm kiếm lại từ đầu!");
         }
       } else {
-        // Nếu xóa ít -> Gọi Regenerate Part (Chỉ bù đắp phần thiếu)
         console.log("Rejected <= 50% -> Gọi Regenerate Part");
-        callRegeneratePartAPI(planData, rejectedItems); // planData ở đây chắc chắn là dữ liệu từ API trước đó
+        // Gọi Regenerate API với planData hiện tại và danh sách bị xóa
+        callRegeneratePartAPI(planData, rejectedItems); 
       }
     },
     [
@@ -223,10 +223,14 @@ const Plan = () => {
     ]
   );
 
+  // --- API 3: XÁC NHẬN VÀ LƯU (CONFIRM) ---
   const handleAccept = useCallback(async () => {
-    if (!planData) return;
+    if (!planData) {
+        alert("Chưa có kế hoạch!");
+        return;
+    }
 
-    // 1. Lấy dữ liệu input ban đầu (để lấy thông tin weather, số người, v.v...)
+    // Lấy lại input data để gửi kèm thông tin weather, số người
     let inputData = lastRequestData;
     if (!inputData) {
       const saved = localStorage.getItem("lastRequestData");
@@ -239,141 +243,80 @@ const Plan = () => {
     }
 
     try {
-      console.log("🛠 Đang chuẩn bị dữ liệu Confirm...");
+      console.log("🛠 Đang chuẩn bị Confirm...");
 
-      const currentToken = localStorage.getItem("token");
       const headers = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${currentToken}`,
       };
-      const provinceId =
-        inputData.provinceId ||
-        inputData.province_id ||
-        inputData.province?.id ||
-        inputData.destination?.id || // Thử thêm trường hợp này
-        planData.provinceId ||
-        null;
+      if (token) headers["Authorization"] = `Bearer ${token}`;
 
-      const provinceName = inputData.province;
-
-      // --- 🔍 LOG KẾT QUẢ TRÍCH XUẤT ---
-      console.log("👉 EXTRACTED ProvinceID:", provinceId);
-      console.log("👉 EXTRACTED ProvinceName:", provinceName);
-
-      if (!provinceId) {
-        alert("Lỗi: Không tìm thấy Province ID! Xem console để biết chi tiết.");
-        console.groupEnd();
-        return; // Dừng lại, không gửi request lỗi
-      }
-
-      // 2. CHUẨN BỊ GÓI WEATHER (weather_request)
-      // Map từ inputData (dữ liệu lúc bạn nhập form tìm kiếm) sang WeatherRequest của Backend
+      // 1. Weather Request
       const weatherRequestPayload = {
-        provinceId: provinceId,
-        provinceName: provinceName,
-        startDate: inputData.start_date || inputData.startDate,
-        endDate: inputData.end_date || inputData.endDate,
-        fromOperateTime: (
-          inputData.from_time ||
-          inputData.fromTime ||
-          "08:00"
-        ).substring(0, 5),
-        toOperateTime: (
-          inputData.to_time ||
-          inputData.toTime ||
-          "22:00"
-        ).substring(0, 5),
+        provinceId: inputData.provinceId || 0,
+        provinceName: inputData.province,
+        startDate: inputData.startDate,
+        endDate: inputData.endDate,
+        fromOperateTime: (inputData.fromOperateTime || "08:00").substring(0, 5),
+        toOperateTime: (inputData.toOperateTime || "22:00").substring(0, 5),
       };
 
-      // 3. CHUẨN BỊ GÓI TRIP (trip_request)
-      // Map từ planData (kết quả AI trả về) + inputData (số người...) sang TripRequest của Backend
+      // 2. Trip Request
       const tripRequestPayload = {
-        tripName:
-          planData.tripName ||
-          planData.trip_name ||
-          `Chuyến đi ${weatherRequestPayload.provinceName}`,
-        startDate: weatherRequestPayload.startDate, // Lấy từ input cho chắc chắn
-        endDate: weatherRequestPayload.endDate, // Lấy từ input cho chắc chắn
-        fromOperationTime: weatherRequestPayload.fromOperateTime + ":00", // Java LocalTime cần HH:mm:ss hoặc HH:mm tùy config, an toàn thì thêm :00 nếu cần
+        tripName: planData.tripName || `Chuyến đi ${inputData.province}`,
+        startDate: inputData.startDate,
+        endDate: inputData.endDate,
+        fromOperationTime: weatherRequestPayload.fromOperateTime + ":00",
         toOperationTime: weatherRequestPayload.toOperateTime + ":00",
+        
+        numAdult: inputData.numAdults || 1,
+        numChild: inputData.numChildren || 0,
+        numElder: inputData.numElders || 0,
 
-        numAdult: inputData.num_adult || inputData.numAdult || 1,
-        numChild: inputData.num_child || inputData.numChild || 0,
-        numElder: inputData.num_elder || inputData.numElder || 0,
-
-        tripSections: (
-          planData.tripSections ||
-          planData.trip_sections ||
-          []
-        ).map((section, index) => {
-          // TÍNH TOÁN NGÀY (DATE) CHO TỪNG SECTION
-          // Vì AI có thể không trả về ngày cụ thể cho từng section, ta phải tự tính dựa trên startDate + index
-          const baseDate = new Date(weatherRequestPayload.startDate);
-          baseDate.setDate(baseDate.getDate() + index); // Cộng thêm số ngày tương ứng với index (0, 1, 2...)
-          const dateString = baseDate.toISOString().split("T")[0]; // Format yyyy-MM-dd
+        tripSections: (planData.tripSections || []).map((section, index) => {
+          const baseDate = new Date(inputData.startDate);
+          baseDate.setDate(baseDate.getDate() + index);
+          const dateString = baseDate.toISOString().split("T")[0];
 
           return {
-            // Map các trường cơ bản
-            dayNum: section.dayNum || section.day_num || index + 1,
-            date: section.date || dateString, // QUAN TRỌNG: Nếu section không có date, dùng ngày tự tính
-            title: section.title || section.section_name || `Ngày ${index + 1}`,
-
-            // Map chi tiết (TripDetails)
-            tripDetails: (
-              section.tripDetails ||
-              section.trip_details ||
-              []
-            ).map((detail) => ({
-              startTime: (
-                detail.startTime ||
-                detail.start_time ||
-                "08:00"
-              ).substring(0, 5), // Cắt bỏ giây nếu có (HH:mm)
-              endTime: (detail.endTime || detail.end_time || "09:00").substring(
-                0,
-                5
-              ),
+            dayNum: section.dayNumber || index + 1,
+            date: dateString,
+            title: section.title || `Ngày ${index + 1}`,
+            tripDetails: (section.tripDetails || []).map((detail) => ({
+              startTime: (detail.startTime || "08:00").substring(0, 5),
+              endTime: (detail.endTime || "09:00").substring(0, 5),
               activity: detail.activity || detail.description || "Tham quan",
+              description: detail.description || "",
               price: detail.price || 0,
-              locationId: detail.location?.id || detail.locationId,
-              // Nếu backend cần googlePlaceId, thêm vào đây:
-              // googlePlaceId: detail.location?.googlePlaceId || detail.googlePlaceId
-            })),
+              locationId: detail.location?.id
+            }))
           };
         }),
       };
-      // 4. GÓI FINAL PAYLOAD (ConfirmPlanRequest)
+
+      // 3. Final Payload
       const payload = {
-        trip_request: tripRequestPayload, // Khớp với @JsonProperty("trip_request")
-        weather_request: weatherRequestPayload, // Khớp với @JsonProperty("weather_request")
+        trip_request: tripRequestPayload,
+        weather_request: weatherRequestPayload,
       };
 
-      console.log(
-        "🚀 PAYLOAD GỬI ĐI CONFIRM:",
-        JSON.stringify(payload, null, 2)
-      );
+      console.log("Payload Confirm:", payload);
 
-      // Gọi API
       const response = await axios.post(
         "http://localhost:8080/api/v1/make-plan/confirm",
         payload,
         { headers }
       );
 
-      console.log("✅ Confirm Success:", response.data);
+      console.log("Confirm Success:", response.data);
+      
+      const confirmedTrip = response.data.trip || response.data; 
+      navigate("/currentplan", { state: { finalPlan: confirmedTrip } });
 
-      // Chuyển trang
-      navigate("/currentplan", { state: { finalPlan: response.data } });
     } catch (error) {
-      console.error("❌ Lỗi khi Confirm:", error);
-      if (error.response) {
-        console.error("Chi tiết lỗi Backend:", error.response.data);
-        alert(`Lỗi Server: ${JSON.stringify(error.response.data)}`);
-      } else {
-        alert("Không thể kết nối đến server.");
-      }
+      console.error("Lỗi Confirm:", error);
+      handleAPIError(error);
     }
-  }, [navigate, planData, lastRequestData]);
+  }, [navigate, planData, lastRequestData, token]);
 
   return (
     <div>
@@ -392,11 +335,10 @@ const Plan = () => {
           </div>
         )}
 
-        {/* Chỉ hiện Output khi có planData thật sự */}
         {!isSearching && isResultShown && planData && (
           <Output
             key={searchIteration}
-            data={planData} // Truyền dữ liệu thật vào đây
+            data={planData}
             tryCount={tryCount}
             onTryAgainClick={handleTryAgain}
             onAcceptClick={handleAccept}
