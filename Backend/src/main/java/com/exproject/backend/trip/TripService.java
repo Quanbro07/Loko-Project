@@ -436,6 +436,8 @@ public class TripService {
         // Lấy response API thì AI service
         WeatherResponse response = aiAPIService.forecastWeather(weatherRequest);
 
+
+
         weatherService.createWeatherSection(trip,response,sectionsToUpdate);
     }
 
