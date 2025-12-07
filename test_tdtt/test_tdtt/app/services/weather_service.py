@@ -35,6 +35,8 @@ class WeatherService:
 
         # --- LOGIC MỚI: Lấy tên địa điểm từ ID thay vì dùng trực tiếp provinceName ---
         search_query = get_province_name_by_id(request.provinceId)
+
+        print(f"👉 [WEATHER DEBUG] ID: {request.provinceId} -> Mapped Query: '{search_query}'")
         # ---------------------------------------------------------------------------
 
         # Chuẩn bị container dữ liệu
