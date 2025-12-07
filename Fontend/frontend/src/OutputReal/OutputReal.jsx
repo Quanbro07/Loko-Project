@@ -71,23 +71,37 @@ const OutputReal = ({ currentDayIndex, setCurrentDayIndex, tripSections, tripId 
 
     // --- Effect: Xử lý dữ liệu hiển thị khi ngày thay đổi ---
     useEffect(() => {
-        // Map dữ liệu từ Backend sang format hiển thị
+        if (!scheduleForCurrentDay) return;
+
         const processedData = scheduleForCurrentDay.map(item => {
-            // Lấy tên địa điểm
-            const name = item.location?.location_name || item.locationName || item.title || translate('output_unknown_location');
+            // --- LOGIC LẤY TÊN ĐỊA ĐIỂM (SỬA Ở ĐÂY) ---
+            let placeName = translate('output_unknown_location');
+
+            // Ưu tiên 1: Lấy trong object location (nếu có)
+            if (item.location) {
+                placeName = item.location.locationName || 
+                            item.location.location_name || 
+                            item.location.name || 
+                            item.location.title;
+            }
             
-            // Xử lý thời gian (backend có thể trả HH:mm:ss)
-            const start = item.startTime || item.start_time || '';
-            const end = item.endTime || item.end_time || '';
-            const timeStr = (start && end) 
-                ? `${start.substring(0, 5)} - ${end.substring(0, 5)}` 
-                : '';
+            // Ưu tiên 2: Lấy trực tiếp từ item (nếu location null)
+            if (!placeName || placeName === translate('output_unknown_location')) {
+                placeName = item.locationName || 
+                            item.location_name || 
+                            item.title || 
+                            item.activity || // Fallback cuối cùng: lấy tên hoạt động
+                            translate('output_unknown_location');
+            }
+            // ------------------------------------------
 
-            const desc = item.description || item.activity || translate('output_no_description');
-
-            return { diadiem: name, thoigian: timeStr, mota: desc };
+            return {
+                diadiem: placeName,
+                // Cắt chuỗi thời gian HH:MM:SS -> HH:MM
+                thoigian: `${item.startTime ? item.startTime.substring(0, 5) : ''} - ${item.endTime ? item.endTime.substring(0, 5) : ''}`,
+                mota: item.description || item.activity || translate('output_no_description') 
+            };
         });
-
         setItineraryData(processedData);
     }, [scheduleForCurrentDay, translate]);
 
