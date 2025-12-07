@@ -320,7 +320,6 @@ public class MakePlanService {
         TripRequest tripRequest = confirmPlanRequest.getTripRequest();
 
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-
         // TODO: Handle VIP/USER
         RouteResponse routeResponse = null;
         if(isVIP(user)) {
@@ -331,11 +330,9 @@ public class MakePlanService {
             routeResponse = routeService.getRoute(routeRequest);
 
         }
-
         // Gọi hàm create full plan
         // TODO: Handle routeResponse null
         Trip tripEntity = tripService.createFullTrip(userId, tripRequest, routeResponse);
-
 
         // Lấy provinceId
         Long provinceId = tripService.findProvinceIdFromSections(tripEntity.getTripSections());
@@ -353,11 +350,9 @@ public class MakePlanService {
 
         // Tạo Make plan Response
         MakePlanResponse makePlanResponse = new MakePlanResponse();
-
         // Set vào DTO
         makePlanResponse.setTripPlan(tripResponse);
         makePlanResponse.setRoute(routeResponse);
-
         if (isVIP(user)) {
 
             byte[] pdfBytes = tripPdfService.generateTripPdf(tripRequest);
@@ -378,7 +373,6 @@ public class MakePlanService {
         }
         // TODO: Chỉnh lại TripPDFResponse  
         //makePlanResponse.setPdf();
-
 
         return makePlanResponse;
     }
