@@ -340,13 +340,12 @@ public class MakePlanService {
         // Lấy provinceId
         Long provinceId = tripService.findProvinceIdFromSections(tripEntity.getTripSections());
 
-        // TODO: Nhớ bò comment
-        // TODO: Comment để test cái này python đang chạy ko dc
-        /*if(provinceId != null) {
+        if(provinceId != null) {
+            System.out.println("Zo check provinceId thành cộng");
             // Hàm này sẽ tự check ngày, gọi API AI, lưu DB
             // VÀ QUAN TRỌNG: Nó phải set ngược lại WeatherSection vào tripEntity.getTripSections()
             tripService.processWeatherForTripSection(tripEntity, tripEntity.getTripSections(), provinceId);
-        }*/
+        }
 
         // Tạo lại Trip Response
         TripResponse tripResponse = tripMapper.toTripResponse(tripEntity);
