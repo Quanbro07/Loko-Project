@@ -108,7 +108,6 @@ const Plan = () => {
       const payloadDetail = rejected_detail.filter(
         (item) => item && item.trip_detail_id && item.location_id
       );
-
       const planToSend = current_trip_plan;
       if (!planToSend) {
         alert("Lỗi dữ liệu.");
@@ -157,7 +156,6 @@ const Plan = () => {
   const handleTryAgain = useCallback(
     (newRejectedItems = []) => {
       if (tryCount <= 0) return;
-
       setTryCount((prev) => prev - 1);
 
       // --- BƯỚC CỘNG DỒN ---
@@ -192,6 +190,8 @@ const Plan = () => {
         } else {
           alert("Vui lòng thực hiện tìm kiếm lại từ đầu!");
         }
+        if (requestToUse) callMakePlanApi(requestToUse);
+        else alert("Vui lòng thực hiện tìm kiếm lại từ đầu!");
       } else {
         console.log("Rejected <= 50% -> Gọi Regenerate Part với DANH SÁCH TỔNG");
         // QUAN TRỌNG: Gửi danh sách TỔNG (updatedTotalRejected) đi API
@@ -210,14 +210,29 @@ const Plan = () => {
     ]
   );
 
+  // --- API 3: XÁC NHẬN KẾ HOẠCH (ACCEPT) ---
   const handleAccept = useCallback(async () => {
     if (!planData) { alert("Chưa có kế hoạch!"); return; }
     let inputData = lastRequestData;
     if (!inputData) {
-      const saved = localStorage.getItem("lastRequestData");
-      if (saved) inputData = JSON.parse(saved);
+      try {
+        const saved = localStorage.getItem("lastRequestData");
+        if (saved) inputData = JSON.parse(saved);
+      } catch (e) {
+        console.error(e);
+      }
     }
     if (!inputData) { alert("Thiếu dữ liệu."); return; }
+
+    // Lấy user id từ local storage (để tránh gửi null)
+    let currentUserId = null;
+    try {
+      const userStr = localStorage.getItem("user");
+      if (userStr) {
+        const userObj = JSON.parse(userStr);
+        currentUserId = userObj.id || userObj.userId || userObj.user_id;
+      }
+    } catch (e) {}
 
     try {
       const headers = { "Content-Type": "application/json" };
