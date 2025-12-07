@@ -54,7 +54,7 @@ def fetch_top_places(city_name, ll_string, type_of_place):
     """
     Bước 2: Tìm top địa điểm và map sang cấu trúc JSON mới.
     """
-    query = f"{type_of_place} in {city_name} in vietnam"
+    query = f"top {type_of_place} in {city_name} in vietnam"
     print(f"\n--- [Bước 2] Tìm kiếm: '{query}' ---")
 
     params = {

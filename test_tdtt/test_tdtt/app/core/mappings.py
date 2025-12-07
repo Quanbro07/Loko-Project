@@ -152,13 +152,13 @@ PROVINCE_ID_TO_NAME = {
     17: "Nghe An",        # NgheAn
     18: "Ha Tinh",        # HaTinh
     19: "Quang Tri",      # QuangTri
-    20: "Huế",            # Hue
+    20: "Hue",            # Hue
     21: "Da Nang",        # DaNang
     22: "Khanh Hoa",      # KhanhHoa
 
     # ======= 3. TÂY NGUYÊN =======
     23: "Quang Ngai",     # QuangNgai
-    24: "BinhDinh",        # GiaLai
+    24: "Gia Lai",        # GiaLai
     25: "Dak Lak",        # DakLak
     26: "Lam Dong",       # LamDong
 
