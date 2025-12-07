@@ -15,6 +15,7 @@ public class RouteService {
     private final AIAPIService aiAPIService;
 
     public RouteResponse getRoute(RouteRequest routeRequest) {
+
         RouteResponse routeResponse = aiAPIService.generateRoutePlan(routeRequest);
 
         return routeResponse;

@@ -122,7 +122,7 @@ public class TripService {
             // Handle null
             SectionRouteResponse sectionRoute = (hasRouteData && sectionRoutes != null) ? sectionRoutes.get(i) : null;
 
-            TripSection newSection = new TripSection(tripSectionRequest);
+            TripSection newSection = new TripSection(tripSectionRequest,newTrip.getStartDate());
 
             // Lấy trip Detail cùng route Path ra
             List<TripDetailRequest> tripDetailRequests = tripSectionRequest.getTripDetails();
@@ -130,8 +130,10 @@ public class TripService {
             // Handle Null
             List<RoutePathResponse> routePaths = (sectionRoute != null) ? sectionRoute.getRoutePath() : null;
 
-            if(tripDetailRequests.size() != routePaths.size()) {
-                throw new RuntimeException("Data mismatch: Route count does not match Trip Details");
+            if(routePaths != null) {
+                if(tripDetailRequests.size() != routePaths.size()) {
+                    throw new RuntimeException("Data mismatch: Route count does not match Trip Details");
+                }
             }
 
             // Loop qua Trip Detail Request
@@ -149,8 +151,7 @@ public class TripService {
                         .orElseThrow(() -> new RuntimeException("Location not found"));
 
                 // Logic: User chọn địa điểm này -> Hệ thống hiểu User đang quan tâm Tỉnh/Loại này
-                categorySyncStatService.increaseCategorySyncStat(location);
-
+                categorySyncStatService.increaseCategorySyncStat(location.getId());
                 /*// Loop qua location img
                 for(LocationImgDTO imgDTO: locationDTO.getImgs()) {
                     // Them img mới
@@ -386,8 +387,10 @@ public class TripService {
         LocalDate maxForcastDate = today.plusDays(3);
         LocalDate minForcastDate = today.minusDays(7);
 
+
         LocalDate tripStart = trip.getStartDate();
         LocalDate tripEnd = trip.getEndDate();
+
 
         List<TripSection> sectionsToUpdate = sectionsToFetch.stream()
                 .filter(section -> {
@@ -423,6 +426,7 @@ public class TripService {
 
         Province province = provinceRepository.findById(provinceId)
                 .orElseThrow(() -> new RuntimeException("Province not found"));
+
 
         // Tạo Weather Request
         WeatherRequest weatherRequest = weatherService.buildWeatherRequest(trip, province,

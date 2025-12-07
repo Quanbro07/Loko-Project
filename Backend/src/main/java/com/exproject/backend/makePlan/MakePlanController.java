@@ -112,5 +112,4 @@ public class MakePlanController {
         MakePlanResponse response = makePlanService.confirmMakePlan(request, user.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-
 }
