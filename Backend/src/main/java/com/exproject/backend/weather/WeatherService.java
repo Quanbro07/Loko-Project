@@ -99,8 +99,8 @@ public class WeatherService {
     }
 
     public WeatherRequest buildWeatherRequest(Trip trip, Province province, LocalDate startDate, LocalDate endDate) {
-
-
+        System.out.println(province.getId());
+        System.out.println(province.getProvinceName());
         return WeatherRequest.builder()
                 .provinceId(province.getId())
                 .provinceName(province.getProvinceName())

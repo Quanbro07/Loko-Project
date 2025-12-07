@@ -3,6 +3,7 @@ package com.exproject.backend.categorySyncStat;
 import com.exproject.backend.aiAPI.AIAPIService;
 import com.exproject.backend.categorySyncStat.dto.CategorySyncStatDTO;
 import com.exproject.backend.location.Location;
+import com.exproject.backend.location.LocationRepository;
 import com.exproject.backend.location_category.info.LocationCategory;
 import com.exproject.backend.province.info.Province;
 import jakarta.transaction.Transactional;
@@ -24,10 +25,15 @@ public class CategorySyncStatService {
 
     private final AIAPIService aiAPIService;
 
+    private final LocationRepository locationRepository;
+
     // Tăng usage Category Sunc Stat
     @Async
     @Transactional
-    public void increaseCategorySyncStat(Location location) {
+    public void increaseCategorySyncStat(Long locationId) {
+        Location location = locationRepository.findById(locationId)
+                .orElseThrow(() -> new RuntimeException("Location not found"));
+
         Province province = location.getProvince();
 
         List<LocationCategory> categories = location.getLocationCategories();
