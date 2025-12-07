@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.exproject.backend.province.ProvinceRepository;
 import com.exproject.backend.province.info.Province;
 import com.exproject.backend.trip.TripMapper;
+import com.exproject.backend.trip_section.TripSection;
 import com.exproject.backend.user.UserRepository;
 import com.exproject.backend.user.info.User;
 import com.exproject.backend.user.info.Role;
@@ -31,10 +32,12 @@ import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip.dto.TripResponse;
 import com.exproject.backend.trip_detail.dto.TripDetailRequest;
 import com.exproject.backend.trip_section.dto.TripSectionRequest;
+import com.exproject.backend.weather.WeatherMapper;
 import com.exproject.backend.weather.WeatherService;
 import com.exproject.backend.weather.dto.WeatherRequest;
 import com.exproject.backend.weather.dto.WeatherRequestFE;
 import com.exproject.backend.weather.dto.WeatherResponse;
+import com.exproject.backend.weather.info.WeatherSection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,7 +67,10 @@ public class MakePlanService {
     private final TripPdfService tripPdfService;
 
     private final ProvinceRepository provinceRepository;
+
     private final TripMapper tripMapper;
+
+    private final WeatherMapper weatherMapper;
 
     // ** Make Plan
     @Transactional(readOnly = true)
@@ -347,6 +353,19 @@ public class MakePlanService {
             tripService.processWeatherForTripSection(tripEntity, tripEntity.getTripSections(), provinceId);
         }
 
+        List<TripSection> sectionsToFetch = tripEntity.getTripSections();
+
+        // Tạo Weather Response
+        List<WeatherSection> validWeatherSections = sectionsToFetch.stream()
+                .map(TripSection::getWeatherSection)
+                .filter(Objects::nonNull) // <--- QUAN TRỌNG
+                .collect(Collectors.toList());
+
+        WeatherResponse weatherResponse = null;
+        if(!validWeatherSections.isEmpty()) {
+            weatherResponse = weatherMapper.toWeatherResponse(tripEntity,validWeatherSections);
+        }
+
         // Tạo lại Trip Response
         TripResponse tripResponse = tripMapper.toTripResponse(tripEntity);
 
@@ -355,9 +374,14 @@ public class MakePlanService {
 
         // Set vào DTO
         makePlanResponse.setTripPlan(tripResponse);
+
+
+        makePlanResponse.setWeather(weatherResponse);
+
         makePlanResponse.setRoute(routeResponse);
 
         if (isVIP(user)) {
+
 
             byte[] pdfBytes = tripPdfService.generateTripPdf(tripRequest);
             // Lưu PDF vào trip mối quan hệ 1:1
