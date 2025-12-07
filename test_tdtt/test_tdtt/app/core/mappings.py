@@ -152,7 +152,7 @@ PROVINCE_ID_TO_NAME = {
     17: "Nghe An",        # NgheAn
     18: "Ha Tinh",        # HaTinh
     19: "Quang Tri",      # QuangTri
-    20: "Huế",            # Hue
+    20: "Hue",            # Hue
     21: "Da Nang",        # DaNang
     22: "Khanh Hoa",      # KhanhHoa
 
