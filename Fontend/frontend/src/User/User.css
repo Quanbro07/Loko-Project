@@ -211,22 +211,40 @@
 }
 
 .travel-history {
-  width: 200px;
+  width: auto;           /* Tự động giãn theo nội dung */
+  min-width: 200px;      /* Đảm bảo không bé hơn 200px */
+  padding: 0 20px;       /* Thêm khoảng đệm 2 bên cho thoáng */
+  
   height: 40px;
   cursor: pointer;
-  font-size: 18px;
-  text-transform: uppercase;
-  border-radius: 5px;
+  
+  /* --- SỬA FONT CHỮ --- */
+  font-size: 18px;       /* Giảm nhẹ size chữ (cũ là 18px hơi to) để vừa vặn hơn */
   font-weight: bold;
+  text-transform: uppercase;
+  
+  /* --- CẤU TRÚC GIỮ NGUYÊN --- */
   color: #003c72;
   background-color: #ebe7e7;
   border-radius: 10px;
   border: none;
   box-shadow: 4px 3px 2px #76767685;
+
+  /* --- FLEXBOX (ĐỂ CĂN GIỮA ICON VÀ CHỮ) --- */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  
+  /* --- QUAN TRỌNG: CHỐNG RỚT DÒNG --- */
+  white-space: nowrap;
 }
 
-class này vào file User.css của bạn */
 
+.lock-icon {
+  font-size: 1.2rem;
+  margin-bottom: 2px; /* Tinh chỉnh nhỏ để icon cân đối với chữ */
+}
 /* Căn chỉnh label và icon bút chì */
 .info-item .label {
   display: flex;
@@ -325,17 +343,16 @@ class này vào file User.css của bạn */
 .content-stack-wrapper {
     position: relative;
     width: 100%;
-    max-width: 95%;
-    margin: 30px auto; /* Khoảng cách với vé */
+    max-width: 800px; /* Khớp độ rộng với ticket-container */
     
-    /* Quan trọng: Để chiều cao tự động dãn theo nội dung bên trong */
+    /* QUAN TRỌNG: Kéo ngược lên để dính vào chân vé */
+    margin: -15px auto 30px auto; 
+    
     height: auto; 
-    min-height: 700px; /* Chiều cao tối thiểu để đẹp */
-    
+    min-height: 400px;
     display: flex;
     justify-content: center;
-    background: transparent;
-    z-index: 1;
+    z-index: 0; /* Nằm dưới vé (Vé thường là z-index 1 hoặc cao hơn) */
 }
 
 /* --- CÁC ITEM BÊN TRONG (Map, History) --- */
@@ -364,4 +381,242 @@ class này vào file User.css của bạn */
         opacity: 1;
         transform: translateY(0);
     }
+}
+/* --- TOAST NOTIFICATION (THÔNG BÁO NỔI) --- */
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 10000; /* Đảm bảo nổi lên trên cùng */
+  
+  /* Hiệu ứng ẩn/hiện */
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease-in-out;
+  pointer-events: none; /* Không chặn click khi ẩn */
+}
+
+.toast-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* Màu sắc theo loại thông báo */
+.toast-notification.success {
+  background-color: #28a745; /* Xanh lá */
+  border-left: 5px solid #1e7e34;
+}
+
+.toast-notification.error {
+  background-color: #dc3545; /* Đỏ */
+  border-left: 5px solid #bd2130;
+}
+
+.toast-notification.warning {
+  background-color: #ffc107; /* Vàng */
+  color: #333; /* Chữ đen cho dễ đọc trên nền vàng */
+  border-left: 5px solid #d39e00;
+}
+
+/* --- PREMIUM UPGRADE BANNER (Cho User thường) --- */
+
+/* --- PREMIUM UPGRADE BANNER (NEW DESIGN) --- */
+
+/* Khung bao ngoài: Nền xám nhẹ để tách biệt với vé trắng phía trên */
+.premium-upgrade-container {
+  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Căn lên trên */
+    
+    /* Padding top lớn để nội dung không bị footer của vé che mất */
+    padding: 60px 20px 20px 20px; 
+    
+    /* Màu nền: Để trong suốt hoặc trùng màu nền user-page-background (#dbdbdb) */
+    background-color: transparent; 
+    
+    /* Hiệu ứng trượt ra (nếu muốn) */
+    animation: slideDown 0.5s ease-out;
+}
+
+/* Nội dung bên trong: Màu xanh đậm sang trọng */
+.premium-banner-content {
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); /* Gradient tối màu sang trọng */
+  color: #ffffff;
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); /* Đổ bóng sâu tạo độ nổi */
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Viền sáng nhẹ */
+}
+
+/* Hiệu ứng ánh sáng nền (trang trí) */
+.premium-banner-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Phần chữ bên trái */
+.premium-text-section {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.premium-text-section h3 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 800;
+  color: #FFD700; /* Vàng kim loại */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.premium-subtitle {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* Danh sách lợi ích */
+.premium-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Chia 2 cột cho gọn */
+  gap: 15px;
+}
+
+.premium-benefits-list li {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.check-icon {
+  color: #00ff88; /* Màu xanh neon nổi bật */
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background: rgba(0, 255, 136, 0.1);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Nút bấm hành động (CTA) */
+.upgrade-button {
+  background: linear-gradient(90deg, #FFD700 0%, #FDB931 100%); /* Gradient vàng */
+  color: #0f2027; /* Chữ màu tối tương phản */
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 5px 15px rgba(253, 185, 49, 0.4);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.upgrade-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(253, 185, 49, 0.6);
+  background: linear-gradient(90deg, #FDB931 0%, #FFD700 100%);
+}
+
+/* Responsive: Trên điện thoại sẽ xếp dọc */
+@media (max-width: 768px) {
+  .premium-banner-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .premium-text-section {
+    padding-right: 0;
+  }
+
+  .premium-benefits-list {
+    grid-template-columns: 1fr; /* Về 1 cột */
+    text-align: left;
+    display: inline-block; /* Để canh giữa khối text */
+  }
+  
+  .premium-text-section h3 {
+    justify-content: center;
+  }
+}
+
+.check-icon {
+  color: #FFD700; /* Màu vàng gold cho dấu tick */
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.upgrade-button {
+  background: linear-gradient(to right, #FFD700, #FFC107); /* Nút màu vàng gold nổi bật */
+  color: #003c72; /* Chữ màu xanh đậm tương phản */
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.upgrade-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(to right, #FFC107, #FFB300);
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+  .premium-banner-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .premium-benefits-list li {
+    justify-content: center;
+  }
+
+  .premium-text-section h3 {
+    justify-content: center;
+  }
 }
