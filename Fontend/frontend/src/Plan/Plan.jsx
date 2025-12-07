@@ -7,7 +7,7 @@ import paperPlaneAnimation from "../lottie/Paper plane.json";
 import Output from "../Output/Output";
 import Footer from "../Footer/Footer";
 import { useLanguage } from "../Language/LanguageContext";
-import { useAuth } from "../Auth/AuthContext"; // Import useAuth
+import { useAuth } from "../Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -20,17 +20,18 @@ const Plan = () => {
   const [lastRequestData, setLastRequestData] = useState(null);
   const [initialTotalItems, setInitialTotalItems] = useState(0);
 
-  const [totalDiff, setTotalDiff] = useState(0);
   const [outputStats, setOutputStats] = useState({ total: 0, rejected: 0 });
+
+  // 1. THÊM STATE MỚI: Lưu trữ danh sách tích lũy các địa điểm đã xóa qua các lần
+  const [allRejectedItems, setAllRejectedItems] = useState([]); 
 
   const { translate } = useLanguage();
   const navigate = useNavigate();
-  const { token } = useAuth(); // Lấy token từ Context
+  const { token } = useAuth();
 
   const countTotalItems = (plan) => {
     const sections = plan?.tripSections || plan?.trip_sections;
     if (!sections) return 0;
-
     let count = 0;
     sections.forEach((section) => {
       const details = section.tripDetails || section.trip_details || [];
@@ -61,17 +62,16 @@ const Plan = () => {
     setOutputStats(stats);
   }, []);
 
-  // --- API 1: TẠO KẾ HOẠCH MỚI (MAKE PLAN) ---
+  // --- API 1: TẠO KẾ HOẠCH MỚI ---
   const callMakePlanApi = useCallback(
     async (data) => {
-      if (!data) {
-        console.warn("Dữ liệu đầu vào rỗng.");
-        return;
-      }
+      if (!data) return;
       setIsSearching(true);
       setIsResultShown(false);
       setPlanData(null);
-      setTotalDiff(0);
+      
+      // 2. RESET KHI TÌM KIẾM MỚI: Xóa sạch lịch sử cũ
+      setAllRejectedItems([]); 
 
       try {
         const headers = { "Content-Type": "application/json" };
@@ -83,14 +83,9 @@ const Plan = () => {
           { headers }
         );
 
-        console.log("Make Plan Success:", response.data);
         const newPlanData = response.data;
         setPlanData(newPlanData);
-        
-        const total = countTotalItems(newPlanData);
-        setInitialTotalItems(total);
-        console.log("Tổng số địa điểm:", total);
-        
+        setInitialTotalItems(countTotalItems(newPlanData));
         setIsResultShown(true);
         setSearchIteration((prev) => prev + 1);
       } catch (error) {
@@ -102,35 +97,29 @@ const Plan = () => {
     [token]
   );
 
-  // --- API 2: TÁI TẠO LỊCH TRÌNH (REGENERATE) ---
+  // --- API 2: TÁI TẠO LỊCH TRÌNH ---
   const callRegeneratePartAPI = useCallback(
     async (current_trip_plan, rejected_detail) => {
       setIsSearching(true);
 
-      console.log("Rejected List nhận được:", rejected_detail);
+      // Log để kiểm tra xem danh sách có cộng dồn không
+      console.log("🔥 Gửi đi danh sách TỔNG các địa điểm bị xóa:", rejected_detail.length, "items", rejected_detail);
 
-      // Lọc danh sách rejected, đảm bảo đúng key mà Backend yêu cầu (trip_detail_id, location_id)
       const payloadDetail = rejected_detail.filter(
         (item) => item && item.trip_detail_id && item.location_id
       );
 
-      // Code cũ của bạn có check length, nếu muốn có thể giữ lại:
-      // if (payloadDetail.length === 0) { ... }
-
       const planToSend = current_trip_plan;
-
       if (!planToSend) {
-        alert("Lỗi: Không có dữ liệu lịch trình hiện tại để tái tạo.");
+        alert("Lỗi dữ liệu.");
         setIsSearching(false);
         return;
       }
 
       const payload = {
-        current_trip_plan: planToSend, // Khớp @JsonProperty("current_trip_plan")
-        rejected_detail: payloadDetail, // Khớp @JsonProperty("rejected_detail")
+        current_trip_plan: planToSend,
+        rejected_detail: payloadDetail,
       };
-
-      console.log("Regenerate Payload:", JSON.stringify(payload, null, 2));
 
       try {
         const headers = { "Content-Type": "application/json" };
@@ -142,15 +131,8 @@ const Plan = () => {
           { headers }
         );
 
-        console.log("Regenerate Success:", response.data);
-
-        // Map kết quả trả về
-        const newTripData = 
-            response.data.newTrip || 
-            response.data.new_trip_plan || 
-            response.data;
-
-        setPlanData(newTripData); 
+        const newTripData = response.data.newTrip || response.data.new_trip_plan || response.data;
+        setPlanData(newTripData);
         setSearchIteration((prev) => prev + 1);
       } catch (error) {
         handleAPIError(error);
@@ -163,7 +145,6 @@ const Plan = () => {
 
   const handleSearch = useCallback(
     (requestData) => {
-      console.log("Search Request:", requestData);
       setLastRequestData(requestData);
       localStorage.setItem("lastRequestData", JSON.stringify(requestData));
       setTryCount(3);
@@ -172,26 +153,30 @@ const Plan = () => {
     [callMakePlanApi]
   );
 
+  // 3. SỬA LOGIC THỬ LẠI: CỘNG DỒN DANH SÁCH XÓA
   const handleTryAgain = useCallback(
-    (rejectedItems = []) => {
+    (newRejectedItems = []) => {
       if (tryCount <= 0) return;
 
       setTryCount((prev) => prev - 1);
 
-      const rejectedCount = rejectedItems.length;
-      let total = initialTotalItems;
+      // --- BƯỚC CỘNG DỒN ---
+      // Lấy danh sách cũ + danh sách mới vừa chọn
+      const updatedTotalRejected = [...allRejectedItems, ...newRejectedItems];
       
-      if (total === 0 && planData) {
-        total = countTotalItems(planData);
-      }
-      if (total === 0) {
-        total = outputStats.total + rejectedCount;
-      }
+      // Lưu lại vào state để dùng cho lần sau
+      setAllRejectedItems(updatedTotalRejected);
+
+      // Tính toán ngưỡng 50% dựa trên tổng số lượng item đã xóa tích lũy
+      const totalRejectedCount = updatedTotalRejected.length;
+      let total = initialTotalItems;
+      if (total === 0 && planData) total = countTotalItems(planData);
+      if (total === 0) total = outputStats.total + totalRejectedCount;
 
       const threshold = total / 2;
-      const isOver50Percent = rejectedCount > threshold;
+      const isOver50Percent = totalRejectedCount > threshold;
 
-      console.log(`Retry: Rejected=${rejectedCount}/${total}`);
+      console.log(`Retry: Total Rejected Accumulative=${totalRejectedCount}/${total}`);
 
       if (isOver50Percent) {
         let requestToUse = lastRequestData;
@@ -202,14 +187,15 @@ const Plan = () => {
 
         if (requestToUse) {
           console.log("Rejected > 50% -> Gọi Make Plan lại từ đầu");
+          // Khi gọi lại Make Plan, nhớ reset luôn list đã xóa (đã xử lý trong callMakePlanApi)
           callMakePlanApi(requestToUse);
         } else {
           alert("Vui lòng thực hiện tìm kiếm lại từ đầu!");
         }
       } else {
-        console.log("Rejected <= 50% -> Gọi Regenerate Part");
-        // Gọi Regenerate API với planData hiện tại và danh sách bị xóa
-        callRegeneratePartAPI(planData, rejectedItems); 
+        console.log("Rejected <= 50% -> Gọi Regenerate Part với DANH SÁCH TỔNG");
+        // QUAN TRỌNG: Gửi danh sách TỔNG (updatedTotalRejected) đi API
+        callRegeneratePartAPI(planData, updatedTotalRejected); 
       }
     },
     [
@@ -218,39 +204,25 @@ const Plan = () => {
       lastRequestData,
       initialTotalItems,
       outputStats,
+      allRejectedItems, // Thêm dependency này
       callMakePlanApi,
       callRegeneratePartAPI,
     ]
   );
 
-  // --- API 3: XÁC NHẬN VÀ LƯU (CONFIRM) ---
   const handleAccept = useCallback(async () => {
-    if (!planData) {
-        alert("Chưa có kế hoạch!");
-        return;
-    }
-
-    // Lấy lại input data để gửi kèm thông tin weather, số người
+    if (!planData) { alert("Chưa có kế hoạch!"); return; }
     let inputData = lastRequestData;
     if (!inputData) {
       const saved = localStorage.getItem("lastRequestData");
       if (saved) inputData = JSON.parse(saved);
     }
-
-    if (!inputData) {
-      alert("Thiếu dữ liệu đầu vào (Input Data). Vui lòng tìm kiếm lại.");
-      return;
-    }
+    if (!inputData) { alert("Thiếu dữ liệu."); return; }
 
     try {
-      console.log("🛠 Đang chuẩn bị Confirm...");
-
-      const headers = {
-        "Content-Type": "application/json",
-      };
+      const headers = { "Content-Type": "application/json" };
       if (token) headers["Authorization"] = `Bearer ${token}`;
 
-      // 1. Weather Request
       const weatherRequestPayload = {
         provinceId: inputData.provinceId || 0,
         provinceName: inputData.province,
@@ -260,26 +232,22 @@ const Plan = () => {
         toOperateTime: (inputData.toOperateTime || "22:00").substring(0, 5),
       };
 
-      // 2. Trip Request
       const tripRequestPayload = {
         tripName: planData.tripName || `Chuyến đi ${inputData.province}`,
         startDate: inputData.startDate,
         endDate: inputData.endDate,
         fromOperationTime: weatherRequestPayload.fromOperateTime + ":00",
         toOperationTime: weatherRequestPayload.toOperateTime + ":00",
-        
         numAdult: inputData.numAdults || 1,
         numChild: inputData.numChildren || 0,
         numElder: inputData.numElders || 0,
-
         tripSections: (planData.tripSections || []).map((section, index) => {
           const baseDate = new Date(inputData.startDate);
           baseDate.setDate(baseDate.getDate() + index);
           const dateString = baseDate.toISOString().split("T")[0];
-
           return {
-            dayNum: section.dayNumber || index + 1,
-            date: dateString,
+            dayNumber: section.dayNumber,
+            date: section.date,
             title: section.title || `Ngày ${index + 1}`,
             tripDetails: (section.tripDetails || []).map((detail) => ({
               startTime: (detail.startTime || "08:00").substring(0, 5),
@@ -287,33 +255,20 @@ const Plan = () => {
               activity: detail.activity || detail.description || "Tham quan",
               description: detail.description || "",
               price: detail.price || 0,
-              locationId: detail.location?.id
+              location: {
+        id: detail.location.id
+    }
             }))
           };
         }),
       };
 
-      // 3. Final Payload
-      const payload = {
-        trip_request: tripRequestPayload,
-        weather_request: weatherRequestPayload,
-      };
-
-      console.log("Payload Confirm:", payload);
-
-      const response = await axios.post(
-        "http://localhost:8080/api/v1/make-plan/confirm",
-        payload,
-        { headers }
-      );
-
-      console.log("Confirm Success:", response.data);
-      
+      const payload = { trip_request: tripRequestPayload, weather_request: weatherRequestPayload };
+      const response = await axios.post("http://localhost:8080/api/v1/make-plan/confirm", payload, { headers });
       const confirmedTrip = response.data.trip || response.data; 
       navigate("/currentplan", { state: { finalPlan: confirmedTrip } });
 
     } catch (error) {
-      console.error("Lỗi Confirm:", error);
       handleAPIError(error);
     }
   }, [navigate, planData, lastRequestData, token]);
@@ -322,11 +277,7 @@ const Plan = () => {
     <div>
       <div className="homepage-background">
         <Navbar />
-        <Input
-          onSearch={handleSearch}
-          isResultShown={isResultShown}
-          searchIteration={searchIteration}
-        />
+        <Input onSearch={handleSearch} isResultShown={isResultShown} searchIteration={searchIteration} />
       </div>
       <div className="itinerary-results-container">
         {isSearching && (
@@ -334,7 +285,6 @@ const Plan = () => {
             <Lottie animationData={paperPlaneAnimation} loop={true} />
           </div>
         )}
-
         {!isSearching && isResultShown && planData && (
           <Output
             key={searchIteration}
