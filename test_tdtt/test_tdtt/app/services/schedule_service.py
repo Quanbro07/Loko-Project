@@ -47,11 +47,11 @@ class ScheduleService:
         }
 
         # 2. Chọn Profile & Solver
-        if request.hobby == "AMUSEMENT":
+        if request.hobby == "ENTERTAINMENT":
             profile = AmusementProfile()
             SolverClass = AmusementSolver
             preferred_tags = ["zoo", "amusement/water park", "cultural performance", "nightlife", "aquarium"]
-        elif request.hobby == "FOOD":
+        elif request.hobby == "CUISINE":
             profile = FoodProfile()
             SolverClass = FoodSolver
             preferred_tags = ["restaurant", "night market", "speciality", "snack", "cafe"]
@@ -59,7 +59,7 @@ class ScheduleService:
             profile = AdventureProfile()
             SolverClass = AdventureSolver
             preferred_tags = ["mountain", "waterfall", "camping", "diving", "restaurant"]
-        elif request.hobby == "VACATION":
+        elif request.hobby == "RELAXATION":
             profile = VacationProfile()
             SolverClass = VacationSolver
             preferred_tags = ["resort", "homestay", "beach", "island", "spa", "camping", "yacht/cruise", "bar", "cafe", "restaurant"]
@@ -71,11 +71,11 @@ class ScheduleService:
             profile = HoneymoonProfile()
             SolverClass = HoneymoonSolver
             preferred_tags = ["resort", "homestay", "beach", "island", "yacht/cruise", "cafe", "bar", "flower field/garden", "viewpoint"]
-        elif request.hobby == "PHOTOGRAPH":
+        elif request.hobby == "PHOTOGRAPHY":
             profile = PhotographProfile()
             SolverClass = PhotographSolver
             preferred_tags = ["viewpoint", "church/temple/pagoda", "citadel/palace", "museum", "restaurant", "cafe", "bar", "resort", "homestay", "flower field/garden", "mountain", "river", "island", "beach", "waterfall"]
-        elif request.hobby == "HISTORY":
+        elif request.hobby == "HISTORYCULTURE":
             profile = HistoryProfile()
             SolverClass = HistorySolver
             preferred_tags = ["museum", "citadel/palace", "church/temple/pagoda", "old battlefield", "restaurant"]
@@ -158,21 +158,21 @@ class ScheduleService:
                         loc_copy.pop("tags", None)
                         item["location"] = loc_copy
                 
-                if request.hobby == "FOOD":
+                if request.hobby == "CUISINE":
                     title = f"Ngày {day_num}: Food Tour & Đặc sản"
-                elif request.hobby == "AMUSEMENT":
+                elif request.hobby == "ENTERTAINMENT":
                     title = f"Ngày {day_num}: Vui chơi giải trí"
                 elif request.hobby == "ADVENTURE":
                     title = f"Ngày {day_num}: Khám phá thiên nhiên & Mạo hiểm"
-                elif request.hobby == "VACATION":
+                elif request.hobby == "RELAXATION":
                     title = f"Ngày {day_num}: Nghỉ dưỡng & Thư giãn"
                 elif request.hobby == "NIGHTLIFE":
                     title = f"Ngày {day_num}: Sôi động về đêm"
                 elif request.hobby == "HONEYMOON":
                     title = f"Ngày {day_num}: Lãng mạn & Kỷ niệm"
-                elif request.hobby == "PHOTOGRAPH":
+                elif request.hobby == "PHOTOGRAPHY":
                     title = f"Ngày {day_num}: Săn ảnh & Check-in"
-                elif request.hobby == "HISTORY":
+                elif request.hobby == "HISTORYCULTURE":
                     title = f"Ngày {day_num}: Tìm hiểu Lịch sử & Văn hóa"
                 else:
                     title = f"Ngày {day_num}: Khám phá"
