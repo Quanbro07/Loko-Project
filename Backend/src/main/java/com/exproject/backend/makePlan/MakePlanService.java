@@ -181,6 +181,7 @@ public class MakePlanService {
             for(int i = 0 ; i < section.getTripDetails().size(); i++) {
 
                 TripDetailRequest detail = section.getTripDetails().get(i);
+
                 // Neu Detail khong nằm trong rejected detail thì bỏ qua
                 if(!rejectedDetailIds.contains(detail.getTempId())) {
                     continue;
@@ -212,6 +213,10 @@ public class MakePlanService {
                 Set<Long> categoryIds = rejected_location.getCategories().stream()
                         .map(LocationCategoryDTO::getId)
                         .collect(Collectors.toSet());
+
+                // Log ra check thử
+                System.out.println("Đang tìm thay thế cho ID: " + rejected_location.getId());
+                System.out.println("Danh sách bị loại trừ hiện tại: " + excludedLocationIds);
 
                 // Tìm start và end (Neighbors)
                 LocationDTO start = (i > 0) ? section.getTripDetails().get(i-1).getLocation() : null;
