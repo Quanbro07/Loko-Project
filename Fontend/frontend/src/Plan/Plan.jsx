@@ -223,6 +223,7 @@ const Plan = () => {
 
   // --- API 3: XÁC NHẬN KẾ HOẠCH (ACCEPT) ---
   const handleAccept = useCallback(async () => {
+    // 1. Kiểm tra dữ liệu
     if (!planData) {
         alert("Chưa có dữ liệu kế hoạch!");
         return;
@@ -242,18 +243,19 @@ const Plan = () => {
     }
 
     try {
-      console.log("🛠 Đang chuẩn bị Confirm...", inputData);
+      console.log("🛠 Đang chuẩn bị dữ liệu Confirm...", inputData);
 
       const headers = { "Content-Type": "application/json" };
       if (token) headers["Authorization"] = `Bearer ${token}`;
 
+      // Helper: Chuẩn hóa giờ HH:mm
       const fmtTime = (t) => {
          if (!t) return "08:00"; 
          if (typeof t === 'string' && t.length >= 5) return t.substring(0, 5);
          return "08:00";
       };
 
-      // 1. Weather Request
+      // 2. TẠO PAYLOAD WEATHER
       const weatherRequestPayload = {
         provinceId: Number(inputData.provinceId) || 0,
         provinceName: inputData.province || "",
@@ -263,7 +265,7 @@ const Plan = () => {
         toOperateTime: fmtTime(inputData.toOperateTime),
       };
 
-      // 2. Trip Request
+      // 3. TẠO PAYLOAD TRIP
       const tripRequestPayload = {
         tripName: planData.tripName || `Chuyến đi ${inputData.province}`,
         startDate: inputData.startDate,
@@ -293,30 +295,36 @@ const Plan = () => {
                 .map((detail, idx) => ({
                   startTime: fmtTime(detail.startTime),
                   endTime: fmtTime(detail.endTime),
-                  activity: detail.activity || detail.description || "Tham quan",
+                  activity: /*detail.activity || detail.description ||*/ "Tham quan",
                   description: detail.description || "",
                   price: Number(detail.price) || 0,
                   
-                  // --- FIX LỖI 422: Gửi thêm thông tin tọa độ và thứ tự ---
+                  // --- QUAN TRỌNG: GỬI FULL DATA ĐỂ TRÁNH LỖI 422 & 500 ---
                   location: {
                       id: Number(detail.location.id),
-                      latitude: detail.location.latitude || 0,   // AI cần cái này
-                      longitude: detail.location.longitude || 0, // AI cần cái này
-                      locationName: detail.location.location_name || detail.location.locationName || ""
+                      locationName: detail.location.location_name || detail.location.locationName || "",
+                      latitude: detail.location.latitude || 0,
+                      longitude: detail.location.longitude || 0
                   },
-                  // Nếu Backend Java map thẳng sequenceOrder từ đây:
-                  sequenceOrder: detail.sequenceOrder || (idx + 1)
+                  sequenceOrder: idx + 1 // Đảm bảo luôn có thứ tự
             }))
           };
         }),
       };
 
+      // 4. GÓI PAYLOAD FINAL
       const payload = {
         trip_request: tripRequestPayload
       };
 
-      console.log("🚀 Payload Confirm Full:", JSON.stringify(payload, null, 2));
+      // =================================================================
+      // 🔥 IN RA JSON ĐỂ KIỂM TRA (Sẽ hiện trong Tab Console F12)
+      // =================================================================
+      console.log("👇👇👇 ĐÂY LÀ FILE JSON SẼ GỬI ĐI 👇👇👇");
+      console.log(JSON.stringify(payload, null, 2)); 
+      // =================================================================
 
+      // 5. GỌI API
       const response = await axios.post(
         "http://localhost:8080/api/v1/make-plan/confirm",
         payload,
@@ -326,10 +334,13 @@ const Plan = () => {
       console.log("✅ Confirm Success:", response.data);
       const confirmedTrip = response.data.trip || response.data; 
       navigate("/currentplan", { state: { finalPlan: confirmedTrip } });
+
     } catch (error) {
       console.error("❌ Lỗi Confirm:", error);
       if (error.response && error.response.data) {
-          alert("Lỗi dữ liệu: " + JSON.stringify(error.response.data));
+          // In chi tiết lỗi từ backend nếu có
+          console.log("🔥 LỖI TỪ BACKEND TRẢ VỀ:", JSON.stringify(error.response.data, null, 2));
+          alert("Lỗi Backend: " + JSON.stringify(error.response.data));
       } else {
           handleAPIError(error);
       }
