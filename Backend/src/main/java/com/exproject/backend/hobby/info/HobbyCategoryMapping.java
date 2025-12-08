@@ -20,17 +20,13 @@ public class HobbyCategoryMapping {
         ));
 
         MAPPING.put(EHobby.ADVENTURE, List.of(
-                ELocationCategory.AMUSEMENT_WATER_PARK,
                 ELocationCategory.HOTEL,
-                ELocationCategory.ZOO,
-                ELocationCategory.AQUARIUM,
                 ELocationCategory.MOUNTAIN,
                 ELocationCategory.RESTAURANT,
                 ELocationCategory.CAVE,
                 ELocationCategory.CAMPING,
                 ELocationCategory.WATERFALL,
-                ELocationCategory.DIVING,
-                ELocationCategory.VIEWPOINT
+                ELocationCategory.DIVING
         ));
 
         MAPPING.put(EHobby.RELAXATION, List.of(
@@ -40,7 +36,6 @@ public class HobbyCategoryMapping {
                 ELocationCategory.RESTAURANT,
                 ELocationCategory.SPA,
                 ELocationCategory.HOMESTAY,
-                ELocationCategory.RIVER,
                 ELocationCategory.FLOWER_FIELD_GARDEN
         ));
 
@@ -56,7 +51,6 @@ public class HobbyCategoryMapping {
         MAPPING.put(EHobby.HISTORYCULTURE, List.of(
                 ELocationCategory.CULTURE_PERFORMANCE,
                 ELocationCategory.FESTIVAL,
-                ELocationCategory.MARKET,
                 ELocationCategory.MUSEUM,
                 ELocationCategory.RESTAURANT,
                 ELocationCategory.HOTEL,
@@ -70,7 +64,6 @@ public class HobbyCategoryMapping {
                 ELocationCategory.RESORT,
                 ELocationCategory.CAFE,
                 ELocationCategory.RESTAURANT,
-                ELocationCategory.SPECIALITY,
                 ELocationCategory.BEACH,
                 ELocationCategory.ISLAND,
                 ELocationCategory.YATCH_CRUISE,
@@ -93,25 +86,23 @@ public class HobbyCategoryMapping {
         MAPPING.put(EHobby.PHOTOGRAPHY, List.of(
                 ELocationCategory.CAFE,
                 ELocationCategory.HOTEL,
-                ELocationCategory.MARKET,
-                ELocationCategory.SPECIALITY,
                 ELocationCategory.CULTURE_PERFORMANCE,
                 ELocationCategory.FESTIVAL,
                 ELocationCategory.VIEWPOINT,
                 ELocationCategory.FLOWER_FIELD_GARDEN,
                 ELocationCategory.RESTAURANT,
                 ELocationCategory.RIVER,
-                ELocationCategory.MOUNTAIN,
                 ELocationCategory.WATERFALL
         ));
 
         MAPPING.put(EHobby.ENTERTAINMENT, List.of(
                 ELocationCategory.AMUSEMENT_WATER_PARK,
+                ELocationCategory.ZOO,
                 ELocationCategory.FESTIVAL,
                 ELocationCategory.CULTURE_PERFORMANCE,
                 ELocationCategory.RESTAURANT,
                 ELocationCategory.HOTEL,
-                ELocationCategory.BAR,
+                ELocationCategory.AQUARIUM,
                 ELocationCategory.WALKING_STREET
         ));
     }

@@ -46,7 +46,7 @@ public class TripDetail {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "route_polyline")
+    @Column(name = "route_polyline", columnDefinition = "TEXT")
     private String routePolyline;
 
     @Column(name = "distance")
