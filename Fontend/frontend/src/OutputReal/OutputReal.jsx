@@ -99,7 +99,7 @@ const OutputReal = ({ currentDayIndex, setCurrentDayIndex, tripSections, tripId 
                 diadiem: placeName,
                 // Cắt chuỗi thời gian HH:MM:SS -> HH:MM
                 thoigian: `${item.startTime ? item.startTime.substring(0, 5) : ''} - ${item.endTime ? item.endTime.substring(0, 5) : ''}`,
-                mota: item.description || item.activity || translate('output_no_description') 
+                mota: item.activity || translate('output_no_description') 
             };
         });
         setItineraryData(processedData);

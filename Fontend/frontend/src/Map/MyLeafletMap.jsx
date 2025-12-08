@@ -97,6 +97,7 @@ const MyLeafletMap = ({
         const pathList = activeSection.route_path || [];
 
         pathList.forEach((leg) => {
+          if(!leg) return;
           // 3. Lấy chuỗi mã hóa (Thường tên là 'polyline')
           const rawPath = leg.polyline || leg.geometry || ""; 
           

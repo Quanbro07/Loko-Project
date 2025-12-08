@@ -295,9 +295,7 @@ const Plan = () => {
                 .map((detail, idx) => ({
                   startTime: fmtTime(detail.startTime),
                   endTime: fmtTime(detail.endTime),
-                  activity: /*detail.activity || detail.description ||*/ "Tham quan",
-                  description: detail.description || "",
-                  price: Number(detail.price) || 0,
+                  activity: detail.activity,
                   
                   // --- QUAN TRỌNG: GỬI FULL DATA ĐỂ TRÁNH LỖI 422 & 500 ---
                   location: {

@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalTime;
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class TripDetailResponse {
 
     private String transportNote;
 
+    @JsonProperty("activity")
     private String description;
 
     private LocationResponse location;
