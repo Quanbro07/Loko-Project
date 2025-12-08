@@ -75,6 +75,12 @@ public class AuthenticationService {
                 .dob(registerRequest.getDob())
                 .createAt(LocalDate.now())
 
+                .makeFullPlanTime(1)
+                .lastMakeFullPlanDate(LocalDate.now())
+                .makePartPlanTime(3)
+                .lastMakePartPlanDate(LocalDate.now())
+
+
                 .enabled(false)
                 .verificationCode(generateVerificationCode())
                 .verificationExpireAt(LocalDateTime.now().plusMinutes(15))

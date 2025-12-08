@@ -69,6 +69,22 @@ public class User implements UserDetails {
     @Column(name = "vip_end_date")
     private LocalDate vipEndDate;
 
+    @Column(name = "make_full_plan_time")
+    @Builder.Default
+    private Integer makeFullPlanTime = 1;
+
+    @Column(name = "last_make_full_plan_date")
+    @Builder.Default
+    private LocalDate lastMakeFullPlanDate = LocalDate.now();
+
+    @Column(name = "make_part_plan_time")
+    @Builder.Default
+    private Integer makePartPlanTime = 3;
+
+    @Column(name = "last_make_part_plan_date")
+    @Builder.Default
+    private LocalDate lastMakePartPlanDate = LocalDate.now();
+
     @ManyToMany(fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude

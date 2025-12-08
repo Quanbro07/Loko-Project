@@ -2,11 +2,13 @@ package com.exproject.backend.makePlan;
 
 import java.time.LocalDate;
 
+import com.exproject.backend.exception.customException.ExceededRegenerateLimitException;
 import com.exproject.backend.province.ProvinceRepository;
 import com.exproject.backend.province.info.Province;
 import com.exproject.backend.trip.TripMapper;
 import com.exproject.backend.trip_section.TripSection;
 import com.exproject.backend.user.UserRepository;
+import com.exproject.backend.user.UserService;
 import com.exproject.backend.user.info.User;
 import com.exproject.backend.user.info.Role;
 import com.exproject.backend.trip.info.Trip;
@@ -60,8 +62,6 @@ public class MakePlanService {
 
     private final TripService tripService;
 
-    private final WeatherService weatherService;
-
     private final RouteService routeService;
 
     private final TripPdfService tripPdfService;
@@ -72,9 +72,33 @@ public class MakePlanService {
 
     private final WeatherMapper weatherMapper;
 
+    private final UserService userService;
+
     // ** Make Plan
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = false)
     public TripRequest makePlan(MakePlanRequest request, Long userId) {
+        // Tìm User để check số lần
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Check Coi
+        LocalDate today = LocalDate.now();
+        if(user.getLastMakeFullPlanDate().isBefore(today) || user.getLastMakePartPlanDate().isBefore(today)) {
+            user = userService.resetUserMakePlan(userId);
+
+        }
+
+        // Lấy số lần MakePlan Check
+        Integer makeFullPlanTime = user.getMakeFullPlanTime();
+        System.out.println("Regenerate Full Time: " + makeFullPlanTime);
+        if(makeFullPlanTime <= 0) {
+            throw new ExceededRegenerateLimitException("Excceed Make Full Plan Limmit: " + makeFullPlanTime);
+        }
+        else {
+            makeFullPlanTime -= 1;
+            user.setMakeFullPlanTime(makeFullPlanTime);
+            userRepository.save(user);
+        }
 
         // Map Hobby -> categories
         EHobby hobby = request.getHobby();
@@ -150,8 +174,32 @@ public class MakePlanService {
     }
 
     // ** Regenerate Plan  Some Part
-    @Transactional(readOnly = true)
-    public RegeneratePlanPartResponse regeneratePlanPart(RegeneratePlanPartRequest request) {
+    @Transactional(readOnly = false)
+    public RegeneratePlanPartResponse regeneratePlanPart(RegeneratePlanPartRequest request, Long userId) {
+        // Tìm User để check số lần
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Check Coi có nên Reset số lần make plan
+        LocalDate today = LocalDate.now();
+        if(user.getLastMakeFullPlanDate().isBefore(today) || user.getLastMakePartPlanDate().isBefore(today)) {
+            System.out.println("RESET PLAN");
+            user = userService.resetUserMakePlan(userId);
+
+        }
+
+        // Lấy số lần MakePlan Check
+        Integer makePartPlanTime = user.getMakePartPlanTime();
+        System.out.println("Regenerate Part Time: " + makePartPlanTime);
+        if(makePartPlanTime <= 0) {
+            throw new ExceededRegenerateLimitException("Excceed Make Full Part Limmit: " + makePartPlanTime);
+        }
+        else {
+            makePartPlanTime -= 1;
+            user.setMakePartPlanTime(makePartPlanTime);
+            userRepository.save(user);
+        }
+
         // List chứa các TempID/DetailID bị lỗi
         List<Long> failedTripDetailIds = new ArrayList<>();
 

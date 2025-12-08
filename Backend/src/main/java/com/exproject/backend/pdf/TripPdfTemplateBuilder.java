@@ -7,9 +7,17 @@ import com.exproject.backend.trip_section.dto.TripSectionRequest;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
+import java.time.LocalDate;
 
 @Component
 public class TripPdfTemplateBuilder {
+
+    // Màu sắc chủ đạo mới
+    private static final String BRAND_BLUE = "#4d6ef0";
+    private static final String DARK_TEXT = "#1e1e1e";
+    private static final String GRAY_TEXT = "#666";
+    private static final String LIGHT_BG = "#f8faff";
+    private static final String LIGHT_BORDER = "#d7e0f2";
 
     private String escape(String input) {
         if (input == null) return "";
@@ -26,158 +34,305 @@ public class TripPdfTemplateBuilder {
         if (start == null && end == null) return "";
         if (start != null && end == null) return start.toString();
         if (start == null) return end.toString();
-        return start + " - " + end;
+        return start + " — " + end;
     }
 
     private String formatNumber(Object num) {
         return num != null ? num.toString() : "-";
     }
 
+
+    // =============================================
+    //                BUILD HTML
+    // =============================================
+
     public String buildHtml(TripRequest trip) {
 
-        String tripName = trip.getTripName() != null ? trip.getTripName() : "Your Trip Plan";
+        String tripName = trip.getTripName() != null ? trip.getTripName() : "Your Trip";
 
         StringBuilder html = new StringBuilder();
 
-        // ========== HTML + CSS HEADER ==========
         html.append("<!DOCTYPE html>");
         html.append("<html lang='en'>");
         html.append("<head>");
         html.append("<meta charset='UTF-8'/>");
 
+        // =============================================
+        //                   CSS
+        // =============================================
+
         html.append("<style>");
 
-        // ---------- FONT ----------
-        html.append("@font-face { font-family: 'Roboto'; src: url('file:src/main/resources/fonts/Roboto-Regular.ttf'); }");
-        html.append("@font-face { font-family: 'Roboto-Bold'; src: url('file:src/main/resources/fonts/Roboto-Bold.ttf'); }");
+        html.append("@page { size: A4; margin: 20mm 15mm 20mm 15mm; }");
 
-        // ---------- GLOBAL ----------
-        html.append("body { font-family: 'Roboto', sans-serif; padding: 25px 40px; font-size: 13px; color: #333; }");
+        html.append("body { font-family: 'Roboto'; font-size: 13px; line-height: 1.5; color: ").append(DARK_TEXT).append("; }");
 
-        html.append(".header { text-align: center; margin-bottom: 35px; }");
-        html.append(".header-title { font-size: 30px; font-family:'Roboto-Bold'; color:#263b5e; }");
-        html.append(".header-sub { font-size: 14px; color:#7a7a7a; margin-top:4px; }");
+        /* ===== COVER PAGE STYLE – CENTRALIZED & PROFESSIONAL ===== */
 
-        // ---------- SUMMARY CARD ----------
-        html.append(".summary-card { "
-                + "padding: 25px; border-radius: 12px; background:#f7f9ff; "
-                + "border:1px solid #d6def1; width:72%; margin-bottom:35px; "
-                + "box-shadow:0 2px 8px rgba(0,0,0,0.06); "
-                + "}");
-        html.append(".summary-title { font-size: 18px; font-family:'Roboto-Bold'; margin-bottom:18px; color:#1d2f6f; }");
-        html.append(".summary-grid { display:grid; grid-template-columns:150px auto; row-gap:12px; column-gap:15px; }");
-        html.append(".label { font-family:'Roboto-Bold'; color:#222; }");
-        html.append(".value { color:#555; }");
+        html.append(".cover-page {"
+                + "width: 100%;"
+                + "text-align: center;"
+                + "padding-top: 100px;"
+                + "} ");
 
-        // ---------- DAY SECTION ----------
-        html.append(".day-section { margin-top:35px; }");
-        html.append(".day-header { "
-                + "font-size:18px; padding:12px 18px; background:#e3ebff; "
-                + "border-left:7px solid #4a6cf7; border-radius:6px; "
-                + "font-family:'Roboto-Bold'; color:#1d2f6f;"
-                + "}");
+        html.append(".cover-title {"
+                + "font-size: 44px;"
+                + "font-family: 'Roboto-Bold';"
+                + "color: #222;"
+                + "margin-bottom: 8px;"
+                + "letter-spacing: 1.5px;"
+                + "} ");
 
-        // ---------- TABLE ----------
-        html.append(".detail-table { width:100%; margin-top:12px; border-collapse: collapse; "
-                + "border-radius: 10px; overflow:hidden; font-size:13px; }");
+        html.append(".cover-subtitle {"
+                + "font-size: 17px;"
+                + "color: #555;"
+                + "margin-bottom: 25px;"
+                + "letter-spacing: 1px;"
+                + "} ");
 
-        html.append(".detail-table th { background:#eff2fb; padding:10px; border:1px solid #d3d8e6; "
-                + "font-family:'Roboto-Bold'; text-align:left; color:#1a1a1a; }");
+        html.append(".cover-divider {"
+                + "width: 100px;"
+                + "height: 4px;"
+                + "background: ").append(BRAND_BLUE).append(";"
+                + "border-radius: 5px;"
+                + "margin: 0 auto 50px auto;"
+                + "} ");
 
-        html.append(".detail-table td { padding:10px; border:1px solid #e5e7ec; vertical-align: top; }");
+        html.append(".info-card {"
+                + "width: 60%;"
+                + "margin: 0 auto;"
+                + "background: ").append(LIGHT_BG).append(";"
+                + "border-radius: 12px;"
+                + "border: 1px solid #c8d4e9;"
+                + "box-shadow: 0 4px 15px rgba(0,0,0,0.06);"
+                + "padding: 0;"
+                + "} ");
+        
+        html.append(".info-row {"
+                + "display: flex;"
+                + "justify-content: space-between;"
+                + "padding: 14px 25px;"
+                + "border-bottom: 1px solid ").append(LIGHT_BORDER).append(";"
+                + "} ");
 
-        html.append(".col-no { width:6%; text-align:center; }");
-        html.append(".col-time { width:15%; }");
-        html.append(".col-location { width:25%; font-weight:bold; }");
-        html.append(".col-desc { width:54%; }");
+        html.append(".info-row.duration {"
+                + "display: block;"
+                + "background: ").append(BRAND_BLUE).append(";"
+                + "border-top-left-radius: 12px;"
+                + "border-top-right-radius: 12px;"
+                + "padding: 18px 25px;"
+                + "text-align: center;"
+                + "} ");
+
+        html.append(".duration-title {"
+                + "font-size: 16px;"
+                + "color: #ffffff;"
+                + "font-family: 'Roboto-Bold';"
+                + "margin-bottom: 10px;" // Tăng khoảng cách so với dòng date bên dưới
+                + "} ");
+
+        html.append(".duration-dates-inline {"
+                + "display: flex;" // SỬA: Dùng flexbox để căn chỉnh trên một dòng
+                + "justify-content: space-around;" // Căn đều khoảng cách giữa 2 mục
+                + "width: 100%;"
+                + "font-size: 15px;"
+                + "} ");
+
+        html.append(".date-item {"
+                + "color: #ffffff;"
+                + "text-align: center;"
+                + "} ");
+
+        html.append(".date-item .label { color: #ffffff; font-size: 13px; margin-right: 5px; }");
+        html.append(".date-item .value { color: #ffffff; font-family: 'Roboto-Bold'; font-size: 15px; }");
+        html.append(".date-item-flex { display: flex; align-items: center; justify-content: center; }"); // Dùng flex để đưa label và value trên cùng một hàng
+
+        html.append(".info-row:last-child { border-bottom: none; }");
+
+        html.append(".info-label { font-size: 14px; color: ").append(GRAY_TEXT).append("; }");
+        html.append(".info-value { font-size: 15px; font-family: 'Roboto-Bold'; color: ").append(DARK_TEXT).append("; }");
+
+        html.append(".cover-footer {"
+                + "margin-top: 40px;"
+                + "font-size: 12px;"
+                + "color: #a0a0a0;"
+                + "} ");
+
+
+        html.append(".day-section { page-break-before: always; }");
+
+        html.append(".day-title {"
+                + "font-size: 17px;"
+                + "font-family: 'Roboto-Bold';"
+                + "margin-bottom: 10px;"
+                + "padding: 10px 12px;"
+                + "background: #e8f0fe;"
+                + "border-left: 6px solid #4285F4;"
+                + "border-radius: 4px;"
+                + "} ");
+
+        html.append(".detail-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 6px; }");
+
+        html.append(".detail-table th {"
+                + "background: #eef1f7;"
+                + "border: 1px solid #d0d4db;"
+                + "padding: 10px;"
+                + "font-family: 'Roboto-Bold';"
+                + "page-break-inside: avoid;"
+                + "} ");
+
+        html.append(".detail-table tr { page-break-inside: avoid; }");
+
+        html.append(".detail-table td {"
+                + "border: 1px solid #e5e7ec;"
+                + "padding: 10px;"
+                + "vertical-align: top;"
+                + "word-wrap: break-word;"
+                + "} ");
+
+        html.append(".detail-table td:nth-child(3) { font-family: 'Roboto-Bold'; color: ").append(DARK_TEXT).append("; }");
+
+        html.append(".detail-table th:nth-child(1), .detail-table td:nth-child(1) { width: 6%; text-align:center; }");
+        html.append(".detail-table th:nth-child(2), .detail-table td:nth-child(2) { width: 17%; }");
+        html.append(".detail-table th:nth-child(3), .detail-table td:nth-child(3) { width: 25%; }");
+        html.append(".detail-table th:nth-child(4), .detail-table td:nth-child(4) { width: 52%; }");
 
         html.append("</style>");
         html.append("</head>");
         html.append("<body>");
 
-        // ========== HEADER ==========
-        html.append("<div class='header'>");
-        html.append("<div class='header-title'>" + escape(tripName) + "</div>");
-        html.append("<div class='header-sub'>Generated Trip Plan</div>");
+
+        // =============================================
+        //                COVER PAGE CONTENT
+        // =============================================
+
+        html.append("<div class='cover-page'>");
+
+        html.append("<div class='cover-title'>").append(escape(tripName)).append("</div>");
+        html.append("<div class='cover-subtitle'>— Your Personalized Travel Itinerary —</div>");
+        html.append("<div class='cover-divider'></div>");
+
+        html.append("<div class='info-card'>");
+
+        html.append(infoRowDates(formatNumber(trip.getStartDate()), formatNumber(trip.getEndDate())));
+
+        html.append(infoRow("Adults", formatNumber(trip.getNumAdult())));
+        html.append(infoRow("Children", formatNumber(trip.getNumChild())));
+        html.append(infoRow("Elders", formatNumber(trip.getNumElder())));
+
         html.append("</div>");
 
-        // ========== SUMMARY CARD ==========
-        html.append("<div class='summary-card'>");
-        html.append("<div class='summary-title'>Trip Overview</div>");
-        html.append("<div class='summary-grid'>");
+        html.append("<div class='cover-footer'>Plan Generated by AI Travel Planner | Date: ").append(LocalDate.now()).append("</div>");
 
-        html.append("<div class='label'>Start Date:</div><div class='value'>" + formatNumber(trip.getStartDate()) + "</div>");
-        html.append("<div class='label'>End Date:</div><div class='value'>" + formatNumber(trip.getEndDate()) + "</div>");
-        html.append("<div class='label'>Adults:</div><div class='value'>" + formatNumber(trip.getNumAdult()) + "</div>");
-        html.append("<div class='label'>Children:</div><div class='value'>" + formatNumber(trip.getNumChild()) + "</div>");
-        html.append("<div class='label'>Elders:</div><div class='value'>" + formatNumber(trip.getNumElder()) + "</div>");
+        html.append("</div>"); // cover-page
 
-        html.append("</div></div>");
 
-        // ========== DAY SECTIONS ==========
+        // =============================================
+        //             DAY SECTIONS (NO CHANGE)
+        // =============================================
+
         if (trip.getTripSections() != null) {
+
             for (TripSectionRequest section : trip.getTripSections()) {
 
                 html.append("<div class='day-section'>");
 
-                html.append("<div class='day-header'>Day " + section.getDayNumber());
-                if (section.getTitle() != null && !section.getTitle().isBlank())
-                    html.append(" - " + escape(section.getTitle()));
+                html.append("<div class='day-title'>Day ").append(section.getDayNumber());
+                if (section.getTitle() != null && !section.getTitle().isBlank()) {
+                    html.append(" - ").append(escape(section.getTitle()));
+                }
                 html.append("</div>");
 
                 html.append("<table class='detail-table'>");
                 html.append("<thead><tr>");
-                html.append("<th class='col-no'>No.</th>");
-                html.append("<th class='col-time'>Time</th>");
-                html.append("<th class='col-location'>Location</th>");
-                html.append("<th class='col-desc'>Description</th>");
-                html.append("</tr></thead><tbody>");
+                html.append("<th>No.</th>");
+                html.append("<th>Time</th>");
+                html.append("<th>Location</th>");
+                html.append("<th>Description</th>");
+                html.append("</tr></thead>");
+                html.append("<tbody>");
 
                 if (section.getTripDetails() != null) {
                     for (TripDetailRequest detail : section.getTripDetails()) {
 
                         html.append("<tr>");
 
-                        html.append("<td class='col-no'>" + detail.getSequenceOrder() + "</td>");
+                        html.append("<td>").append(detail.getSequenceOrder()).append("</td>");
 
                         String timeRange = formatTimeRange(detail.getStartTime(), detail.getEndTime());
-                        html.append("<td class='col-time'>" + escape(timeRange) + "</td>");
+                        html.append("<td>").append(escape(timeRange)).append("</td>");
 
                         LocationDTO loc = detail.getLocation();
                         String locName = (loc != null && loc.getLocationName() != null)
                                 ? loc.getLocationName() : "Unknown";
 
-                        html.append("<td class='col-location'>" + escape(locName) + "</td>");
+                        html.append("<td>").append(escape(locName)).append("</td>");
 
                         StringBuilder desc = new StringBuilder();
+
                         if (loc != null) {
                             if (loc.getOpenTime() != null)
-                                desc.append("<div>Open: ").append(formatTime(loc.getOpenTime())).append("</div>");
+                                desc.append("Open: ").append(formatTime(loc.getOpenTime())).append("<br/>");
+
                             if (loc.getAvgVisitTime() != null)
-                                desc.append("<div>Visit: ").append(loc.getAvgVisitTime()).append(" min</div>");
+                                desc.append("Visit: ").append(loc.getAvgVisitTime()).append(" min<br/>");
+
                             if (loc.getTicketPrice() != null)
-                                desc.append("<div>Price: ").append(loc.getTicketPrice()).append("</div>");
+                                desc.append("Price: ").append(loc.getTicketPrice()).append("<br/>");
+
                             if (loc.getAverageRating() != null)
-                                desc.append("<div>Rating: ").append(loc.getAverageRating())
-                                        .append(" (" + loc.getReviewCount() + " reviews)</div>");
+                                desc.append("Rating: ").append(loc.getAverageRating())
+                                        .append(" (").append(loc.getReviewCount()).append(" reviews)<br/>");
                         }
 
                         if (detail.getDescription() != null)
                             desc.append("<br/><strong>").append(escape(detail.getDescription())).append("</strong>");
 
-                        html.append("<td class='col-desc'>" + desc + "</td>");
+                        html.append("<td>").append(desc).append("</td>");
 
                         html.append("</tr>");
                     }
                 }
 
                 html.append("</tbody></table>");
-                html.append("</div>");
+                html.append("</div>"); // end day-section
             }
         }
 
         html.append("</body></html>");
-
         return html.toString();
+    }
+
+
+    // =============================================
+    //             SUPPORT: LIST ROW HELPERS
+    // =============================================
+
+    private String infoRowDates(String startDate, String endDate) {
+        // Dùng class "duration" để CSS có thể đặt màu nền xanh
+        return "<div class='info-row duration'>"
+                + "<div class='duration-title'>TRIP DURATION</div>"
+                // SỬA CẤU TRÚC HTML: Dùng flex để đặt 2 mục Start/End trên cùng 1 dòng
+                + "<div class='duration-dates-inline'>"
+
+                + "<div class='date-item date-item-flex'>"
+                + "<span class='label'>Start Date:</span>"
+                + "<span class='value'>" + startDate + "</span>"
+                + "</div>"
+
+                + "<div class='date-item date-item-flex'>"
+                + "<span class='label'>End Date:</span>"
+                + "<span class='value'>" + endDate + "</span>"
+                + "</div>"
+
+                + "</div>"
+                + "</div>";
+    }
+
+    private String infoRow(String label, String value) {
+        return "<div class='info-row'>"
+                + "<div class='info-label'>" + label + ":</div>"
+                + "<div class='info-value'>" + value + "</div>"
+                + "</div>";
     }
 }

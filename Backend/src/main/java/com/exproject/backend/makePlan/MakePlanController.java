@@ -44,7 +44,6 @@ public class MakePlanController {
     public ResponseEntity<TripRequest> makePlan(
             @AuthenticationPrincipal User user,
             @RequestBody MakePlanRequest request) {
-        System.out.println("Make Plan Request: " + request.getRejectedLocations());
         TripRequest response = makePlanService.makePlan(request,user.getId());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -52,9 +51,10 @@ public class MakePlanController {
 
     @PostMapping("/regenerate-part")
     public ResponseEntity<RegeneratePlanPartResponse> regeneratePartPlan(
+            @AuthenticationPrincipal User user,
             @RequestBody RegeneratePlanPartRequest request) {
-        System.out.println("Regenerate Plan Request: " + request.getRejectedDetail().size());
-        RegeneratePlanPartResponse response = makePlanService.regeneratePlanPart(request);
+
+        RegeneratePlanPartResponse response = makePlanService.regeneratePlanPart(request,user.getId());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

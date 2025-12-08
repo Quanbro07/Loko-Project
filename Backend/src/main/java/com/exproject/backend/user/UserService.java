@@ -179,4 +179,27 @@ public class UserService {
     }
 
 
+    // Update số lần makePlanFull và MakePlanPart
+    public User resetUserMakePlan(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
+
+        LocalDate today = LocalDate.now();
+
+        if(user.getRole() == Role.VIP) {
+            user.setMakeFullPlanTime(10);
+            user.setMakePartPlanTime(20000);
+            user.setLastMakeFullPlanDate(today);
+            user.setLastMakePartPlanDate(today);
+        }
+        else if(user.getRole() == Role.USER) {
+            user.setMakeFullPlanTime(3);
+            user.setMakePartPlanTime(10);
+            user.setLastMakeFullPlanDate(today);
+            user.setLastMakePartPlanDate(today);
+        }
+
+        return userRepository.save(user);
+    }
+
 }
