@@ -202,7 +202,8 @@ const CurrentPlan = () => {
                       fontWeight: "bold",
                     }}
                   >
-                    <FaArrowLeft /> Trở lại danh sách
+                    <FaArrowLeft />
+                    LỊCH SỬ CHUYẾN ĐI
                   </button>
                 </div>
 

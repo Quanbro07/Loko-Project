@@ -92,15 +92,15 @@ const Input = ({
   const [locations, setLocations] = useState([]);
   const handleHobbyChange = (event) => {
     const value = event.target.value;
-    
+
     setSelectedHobbies((prev) => {
       // Nếu hobby đó đang được chọn thì bỏ chọn (trở về rỗng)
       if (prev.includes(value)) {
-        return []; 
+        return [];
       } else {
         // Nếu chưa chọn, thì set mảng chỉ chứa duy nhất hobby mới này
         // (Điều này sẽ tự động bỏ chọn các hobby khác)
-        return [value]; 
+        return [value];
       }
     });
   };
@@ -261,7 +261,7 @@ const Input = ({
 
     // Nếu duration âm (Ví dụ: 02:00 - 08:00), tức là qua ngày hôm sau -> Cộng 24h (1440 phút)
     if (duration < 0) {
-        duration += 1440; 
+      duration += 1440;
     }
 
     // Kiểm tra thời lượng tối thiểu (2 tiếng = 120 phút)
@@ -277,9 +277,9 @@ const Input = ({
       console.log(translate("input_fill_all_info"));
       // Bạn có thể thêm alert ở đây để nhắc người dùng
       // alert("Vui lòng điền đầy đủ thông tin địa điểm và ngày tháng!");
-      return; 
-    } 
-    
+      return;
+    }
+
     // Nếu không có lỗi thì bắt đầu tìm kiếm
     setIsSearching(true);
 
@@ -288,7 +288,7 @@ const Input = ({
     let numChildren = 0;
     let numElders = 0;
     let isAlone = travelType === "Solo";
-    
+
     if (travelType === "Group") {
       numAdults = 2;
       if (hasChildren) numChildren = 1;
@@ -303,7 +303,7 @@ const Input = ({
     };
 
     const pad = (num) => num.toString().padStart(2, "0");
-    
+
     const requestData = {
       startDate: selectedDateGo ? formatDateLocal(selectedDateGo) : "",
       endDate: selectedDateReturn ? formatDateLocal(selectedDateReturn) : "",
@@ -325,6 +325,8 @@ const Input = ({
 
     if (onSearch) {
       onSearch(requestData);
+      console.log(requestData);
+      
     }
 
     // Tự động tắt loading sau 10s nếu không có phản hồi (timeout thủ công)
