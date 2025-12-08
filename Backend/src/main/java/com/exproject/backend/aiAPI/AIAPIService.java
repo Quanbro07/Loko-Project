@@ -202,6 +202,13 @@ public class AIAPIService {
 
         System.out.println(forecastURL);
 
+        System.out.println("ProvinceId: " + request.getProvinceId());
+        System.out.println("Province Name: " + request.getProvinceName());
+        System.out.println("Start Date: " + request.getStartDate());
+        System.out.println("End Date: " + request.getEndDate());
+        System.out.println("From operation: " + request.getFromOperateTime());
+        System.out.println("To operation: " + request.getToOperateTime());
+
         ResponseEntity<WeatherResponse> response = restTemplate.exchange(
                 forecastURL,
                 HttpMethod.POST,

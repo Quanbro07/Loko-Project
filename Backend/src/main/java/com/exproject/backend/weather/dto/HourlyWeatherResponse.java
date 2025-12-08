@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Builder
 public class HourlyWeatherResponse {
     @JsonProperty("time")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime time;
 
     @JsonProperty("temp_c")

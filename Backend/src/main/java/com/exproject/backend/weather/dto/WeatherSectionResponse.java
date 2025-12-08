@@ -19,7 +19,7 @@ public class WeatherSectionResponse {
     private Integer dayNum;
 
     @JsonProperty("date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-mm-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     @JsonProperty("hourly_weather")
