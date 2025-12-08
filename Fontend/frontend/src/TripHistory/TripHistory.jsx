@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-// Import icon phù hợp: FaMapMarkedAlt (Bản đồ) hoặc FaEye (Xem)
 import { FaSpinner, FaMapMarkedAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "./TripHistory.css";
 
 const TripHistory = ({ onSelectTrip }) => {
-  // --- STATE ---
+  const navigate = useNavigate();
   const [trips, setTrips] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  // --- HELPER ---
+  // Helper format ngày
   const formatDate = (dateData) => {
     if (!dateData) return "N/A";
     if (Array.isArray(dateData)) {
@@ -22,18 +22,18 @@ const TripHistory = ({ onSelectTrip }) => {
     return new Date(dateData).toLocaleDateString("vi-VN");
   };
 
-  // --- API: Lấy danh sách ---
+  // API lấy danh sách
   const fetchAllTrips = useCallback(async () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      if (!token) return;
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+      const headers = { Authorization: `Bearer ${token}` };
 
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      };
-
+      // Gọi API getAll
       const response = await axios.get(
         "http://localhost:8080/api/v1/trip/getAll",
         {
@@ -46,7 +46,7 @@ const TripHistory = ({ onSelectTrip }) => {
         setTrips(response.data.content);
       }
     } catch (error) {
-      console.error("Lỗi khi lấy danh sách chuyến đi:", error);
+      console.error("Lỗi lấy danh sách:", error);
     } finally {
       setLoading(false);
     }
@@ -56,76 +56,81 @@ const TripHistory = ({ onSelectTrip }) => {
     fetchAllTrips();
   }, [fetchAllTrips]);
 
+  // 1. Loading
+  if (loading) {
+    return (
+      <div
+        className="trip-history-container"
+        style={{ textAlign: "center", marginTop: "50px" }}
+      >
+        <FaSpinner className="spinner" /> Đang tải dữ liệu...
+      </div>
+    );
+  }
+
+  // 2. Nếu RỖNG -> Hiển thị giao diện Empty giống CurrentPlan cũ
+  if (trips.length === 0) {
+    return (
+      <div className="error-screen" style={{ minHeight: "50vh" }}>
+        <div className="body-error">
+          <h3 className="alert-error">Chưa có dữ liệu chuyến đi.</h3>
+          <button onClick={() => navigate("/search")} className="get-started">
+            Lên kế hoạch ngay
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // 3. Nếu CÓ DỮ LIỆU -> Hiển thị Bảng
   return (
     <div className="trip-history-container">
-      <h2>Lịch Sử Chuyến Đi</h2>
-      {loading ? (
-        <div className="loading-container">
-          <FaSpinner className="spinner" /> Đang tải...
-        </div>
-      ) : (
-        <table className="trip-history-table">
-          <thead>
-            <tr>
-              <th>STT</th>
-              <th>Tên chuyến đi</th>
-              <th>Ngày đi - Về</th>
-              <th style={{ textAlign: "center" }}>Chi tiết</th>{" "}
-              {/* Căn giữa tiêu đề cột */}
-            </tr>
-          </thead>
-          <tbody>
-            {trips.length > 0 ? (
-              trips.map((trip, index) => {
-                const currentId = trip.trip_id || trip.tripId || trip.id;
-
-                return (
-                  <tr key={currentId || index} className="trip-summary-row">
-                    <td>{index + 1}</td>
-                    <td>{trip.trip_name || trip.tripName || "Chưa đặt tên"}</td>
-                    <td>
-                      {formatDate(trip.start_date || trip.startDate)} -{" "}
-                      {formatDate(trip.end_date || trip.endDate)}
-                    </td>
-
-                    {/* CỘT 4: CHỈ CHỨA ICON CHUYỂN VIEWMODE */}
-                    <td className="action-cell" style={{ textAlign: "center" }}>
-                      <button
-                        className="detail-toggle-button" // Giữ class cũ để tận dụng CSS tròn/vuông nếu có
-                        onClick={() => onSelectTrip(currentId)} // Gọi hàm chuyển ViewMode
-                        title="Xem chi tiết bản đồ"
-                        style={{
-                          cursor: "pointer",
-                          background: "transparent",
-                          border: "none",
-                          fontSize: "1.2rem",
-                          color: "#2157bb",
-                          transition: "transform 0.2s",
-                        }}
-                        onMouseOver={(e) =>
-                          (e.currentTarget.style.transform = "scale(1.2)")
-                        }
-                        onMouseOut={(e) =>
-                          (e.currentTarget.style.transform = "scale(1)")
-                        }
-                      >
-                        {/* Dùng icon Bản đồ để biểu thị ý nghĩa chuyển trang */}
-                        <FaMapMarkedAlt />
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
-              <tr>
-                <td colSpan="4" style={{ textAlign: "center" }}>
-                  Chưa có chuyến đi nào.
+      <h2 style={{ color: "#003c72", marginBottom: "20px" }}>
+        Lịch Sử Chuyến Đi
+      </h2>
+      <table className="trip-history-table">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên chuyến đi</th>
+            <th>Thời gian</th>
+            <th style={{ textAlign: "center" }}>Xem chi tiết</th>
+          </tr>
+        </thead>
+        <tbody>
+          {trips.map((trip, index) => {
+            const currentId = trip.trip_id || trip.tripId || trip.id;
+            return (
+              <tr key={currentId || index} className="trip-summary-row">
+                <td>{index + 1}</td>
+                <td>
+                  {trip.trip_name || trip.tripName || "Chuyến đi chưa đặt tên"}
+                </td>
+                <td>
+                  {formatDate(trip.start_date || trip.startDate)} -{" "}
+                  {formatDate(trip.end_date || trip.endDate)}
+                </td>
+                <td className="action-cell" style={{ textAlign: "center" }}>
+                  <button
+                    className="detail-toggle-button"
+                    onClick={() => onSelectTrip(currentId)} // Gửi ID lên CurrentPlan
+                    title="Xem chi tiết"
+                    style={{
+                      cursor: "pointer",
+                      background: "transparent",
+                      border: "none",
+                      fontSize: "1.2rem",
+                      color: "#2157bb",
+                    }}
+                  >
+                    <FaMapMarkedAlt />
+                  </button>
                 </td>
               </tr>
-            )}
-          </tbody>
-        </table>
-      )}
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
