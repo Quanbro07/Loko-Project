@@ -9,7 +9,7 @@ import OutputReal from "../OutputReal/OutputReal";
 import CurrentPlace from "../CurrentPlace/CurrentPlace";
 import WeatherForecast from "../WeatherForecast/WeatherForecast";
 import TripHistory from "../TripHistory/TripHistory";
-import { FaArrowLeft } from "react-icons/fa"; // Icon nút back
+import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 
 const CurrentPlan = () => {
@@ -17,60 +17,65 @@ const CurrentPlan = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Nhận dữ liệu từ trang Search/Plan (nếu vừa tạo xong)
   const receivedPlan = location.state?.finalPlan;
 
-  // --- STATE QUẢN LÝ ---
-  // viewMode: 'history' (xem bảng) hoặc 'detail' (xem map/weather)
+  // --- STATE ---
   const [viewMode, setViewMode] = useState(receivedPlan ? "detail" : "history");
-
   const [isLoading, setIsLoading] = useState(false);
-  const [tripData, setTripData] = useState(null); // Dữ liệu Trip (OutputReal/CurrentPlace)
-  const [routeData, setRouteData] = useState(null); // Dữ liệu Route (Map)
-  const [weatherData, setWeatherData] = useState(null); // Dữ liệu Weather
 
-  // State quản lý slide ngày/địa điểm
+  const [tripData, setTripData] = useState(null);
+  const [routeData, setRouteData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
+
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
 
-  // --- HÀM GỌI API /get KHI BẤM ICON ---
+  // --- HÀM GỌI API CHI TIẾT ---
   const fetchTripDetail = async (tripId) => {
+    if (!tripId) return;
+
     setIsLoading(true);
     try {
-      console.log(`🔄 Đang lấy chi tiết Trip ID: ${tripId}...`);
+      console.log(`🔄 Start fetching Trip ID: ${tripId}...`);
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
 
-      // Gọi API Get Trip (Trả về MakePlanResponse)
       const response = await axios.get(
         `http://localhost:8080/api/v1/trip/get`,
         { params: { tripId: tripId }, headers: headers }
       );
 
-      const data = response.data; // MakePlanResponse
-      console.log("✅ Dữ liệu chi tiết:", data);
+      console.log("✅ API Response Raw:", response.data);
+      const data = response.data;
 
-      // --- PHÂN TÁCH DỮ LIỆU TỪ MakePlanResponse ---
-      // 1. Trip Data (Trip + Sections)
-      if (data.tripPlan) {
-        setTripData(data.tripPlan);
+      // --- [FIX] XỬ LÝ DỮ LIỆU ROBUST (Bắt cả snake_case và camelCase) ---
+
+      // 1. Lấy Trip Object
+      let extractedTrip = null;
+      if (data.tripPlan) extractedTrip = data.tripPlan;
+      else if (data.trip_plan)
+        extractedTrip = data.trip_plan; // Fix: snake_case
+      else extractedTrip = data; // Fallback
+
+      // 2. Lấy Route & Weather
+      const extractedRoute = data.route || null;
+      const extractedWeather = data.weather || null;
+
+      console.log("📌 Extracted Trip Data:", extractedTrip);
+
+      if (extractedTrip) {
+        setTripData(extractedTrip);
+        setRouteData(extractedRoute);
+        setWeatherData(extractedWeather);
+
+        // Reset Index
+        setCurrentDayIndex(0);
+        setCurrentPlaceIndex(0);
+
+        setViewMode("detail");
       } else {
-        // Fallback nếu API trả thẳng Trip obj
-        setTripData(data);
+        console.error("⚠️ Không tìm thấy object Trip hợp lệ trong response");
       }
-
-      // 2. Route Data
-      setRouteData(data.route || null);
-
-      // 3. Weather Data
-      setWeatherData(data.weather || null);
-
-      // Reset index về ngày đầu tiên
-      setCurrentDayIndex(0);
-      setCurrentPlaceIndex(0);
-
-      // Chuyển sang chế độ xem chi tiết
-      setViewMode("detail");
     } catch (error) {
       console.error("❌ Lỗi tải chi tiết chuyến đi:", error);
     } finally {
@@ -78,65 +83,105 @@ const CurrentPlan = () => {
     }
   };
 
-  // --- EFFECT: XỬ LÝ DỮ LIỆU KHI VỪA TẠO PLAN MỚI ---
+  // --- EFFECT: DATA TỪ TRANG TẠO PLAN ---
   useEffect(() => {
     if (receivedPlan) {
-      // Nếu có receivedPlan từ trang trước chuyển sang, set data luôn
-      const extractedTrip = receivedPlan.tripPlan || receivedPlan;
+      // Logic tương tự như trên
+      const data = receivedPlan;
+      let extractedTrip = null;
+      if (data.tripPlan) extractedTrip = data.tripPlan;
+      else if (data.trip_plan) extractedTrip = data.trip_plan;
+      else extractedTrip = data;
+
       setTripData(extractedTrip);
-      setRouteData(receivedPlan.route || null);
-      setWeatherData(receivedPlan.weather || null);
+      setRouteData(data.route || null);
+      setWeatherData(data.weather || null);
       setViewMode("detail");
     }
   }, [receivedPlan]);
 
-  // --- LOGIC TÍNH TOÁN (CHO DETAIL VIEW) ---
+  // --- [FIX] LOGIC TÍNH TOÁN (QUAN TRỌNG) ---
+
+  // 1. Lấy Trip Sections (Bắt cả snake_case)
   const tripSections = useMemo(() => {
-    return tripData?.tripSections || tripData?.trip_sections || [];
+    if (!tripData) return [];
+    // Kiểm tra kỹ các trường hợp
+    return tripData.tripSections || tripData.trip_sections || [];
   }, [tripData]);
 
+  // 2. Lấy Trip ID
   const tripId = tripData?.tripId || tripData?.trip_id;
 
+  // 3. Lấy Danh sách địa điểm ngày hiện tại (Bắt cả snake_case)
   const scheduleForCurrentDay = useMemo(() => {
-    if (tripSections[currentDayIndex]) {
-      return (
-        tripSections[currentDayIndex].tripDetails ||
-        tripSections[currentDayIndex].trip_details ||
-        []
-      );
+    if (tripSections && tripSections[currentDayIndex]) {
+      const section = tripSections[currentDayIndex];
+      // Kiểm tra tripDetails hoặc trip_details
+      return section.tripDetails || section.trip_details || [];
     }
     return [];
   }, [tripSections, currentDayIndex]);
 
+  // 4. Tạo Marker Map (Kiểm tra location object)
   const itineraryPoints = useMemo(() => {
     return scheduleForCurrentDay
       .map((place) => {
-        const lat = parseFloat(place.location?.latitude || place.latitude);
-        const lng = parseFloat(place.location?.longitude || place.longitude);
+        // place.location có thể là null nếu cấu trúc phẳng, hoặc nằm trong object
+        const locObj = place.location || place;
+
+        const lat = parseFloat(locObj.latitude || place.latitude);
+        const lng = parseFloat(locObj.longitude || place.longitude);
+
+        // Tên địa điểm
         const name =
-          place.location?.location_name || place.title || place.locationName;
+          locObj.location_name ||
+          locObj.locationName ||
+          place.title ||
+          "Điểm đến";
+
         return { name, lat, lng };
       })
       .filter((p) => !isNaN(p.lat) && !isNaN(p.lng));
   }, [scheduleForCurrentDay]);
+
+  // Debug Log để kiểm tra xem dữ liệu đã vào chưa
+  useEffect(() => {
+    if (viewMode === "detail") {
+      console.log("📊 Debug UI Data:");
+      console.log("- Trip Sections:", tripSections);
+      console.log(`- Schedule Day ${currentDayIndex}:`, scheduleForCurrentDay);
+      console.log("- Map Points:", itineraryPoints);
+    }
+  }, [
+    tripSections,
+    scheduleForCurrentDay,
+    itineraryPoints,
+    viewMode,
+    currentDayIndex,
+  ]);
 
   // --- RENDER ---
   return (
     <div>
       <Navbar />
       <div className="body-container">
-        {/* === MODE 1: HISTORY LIST === */}
+        {/* MODE 1: LIST */}
         {viewMode === "history" && (
           <div style={{ padding: "20px", minHeight: "60vh" }}>
             <TripHistory onSelectTrip={fetchTripDetail} />
           </div>
         )}
 
-        {/* === MODE 2: DETAIL VIEW (OutputReal, Weather, CurrentPlace, Map) === */}
+        {/* MODE 2: DETAIL */}
         {viewMode === "detail" && (
           <>
             {isLoading ? (
-              <div className="loading-screen">Đang tải dữ liệu chi tiết...</div>
+              <div
+                className="loading-screen"
+                style={{ textAlign: "center", padding: "50px" }}
+              >
+                <h2>Đang tải dữ liệu...</h2>
+              </div>
             ) : tripData ? (
               <>
                 {/* NÚT BACK */}
@@ -201,15 +246,28 @@ const CurrentPlan = () => {
                   </div>
                 ) : (
                   <div className="current-plan-empty-state">
-                    <h3>Chưa có dữ liệu cho ngày này.</h3>
+                    <h3>
+                      Chưa có dữ liệu địa điểm cho ngày này (
+                      {tripSections.length > 0
+                        ? `Ngày ${currentDayIndex + 1}`
+                        : "Không xác định"}
+                      ).
+                    </h3>
                   </div>
                 )}
               </>
             ) : (
-              // Nếu loading xong mà không có data (lỗi)
-              <div className="error-screen">
-                <h3>Không thể tải dữ liệu chuyến đi.</h3>
-                <button onClick={() => setViewMode("history")}>Quay lại</button>
+              <div
+                className="error-screen"
+                style={{ padding: "50px", textAlign: "center" }}
+              >
+                <h3>Không thể hiển thị dữ liệu.</h3>
+                <button
+                  onClick={() => setViewMode("history")}
+                  style={{ cursor: "pointer", padding: "10px" }}
+                >
+                  Quay lại
+                </button>
               </div>
             )}
           </>

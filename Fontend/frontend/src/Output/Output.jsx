@@ -13,17 +13,20 @@ let rejectedCount = 0;
 const processScheduleData = (data, translate) => {
   // Kiểm tra cả snake_case (Backend) và camelCase (Frontend cũ)
   const sections = data?.tripSections || data?.trip_sections;
-  
+
   if (!sections) return [];
 
   return sections.map((section) => {
     const details = section.tripDetails || section.trip_details || [];
-    
+
     const activities = details.map((item) => ({
-      diadiem: item.location?.location_name || item.title || translate("output_unknown_location"),
+      diadiem:
+        item.location?.location_name ||
+        item.title ||
+        translate("output_unknown_location"),
       thoigian: `${formatTime(item.startTime)} - ${formatTime(item.endTime)}`,
       mota: item.activity || translate("output_no_description"),
-      
+
       // Map các trường ID quan trọng để dùng cho chức năng Xóa/Tái tạo
       tripDetailID: item.temp_id,
       locationId: item.location?.id,
@@ -74,13 +77,16 @@ const Output = ({
       const processed = processScheduleData(data, translate);
       setSchedule(processed);
       setRejectedLocation([]); // Reset danh sách xóa khi có plan mới
-      setCurrentDayIndex(0);   // Reset về ngày 1
+      setCurrentDayIndex(0); // Reset về ngày 1
     }
-  }, [data, translate]); 
+  }, [data, translate]);
   // -----------------------------------------------------------
 
-  const currentDaySchedule = schedule.length > 0 ? schedule[currentDayIndex] : null;
-  const currentActivities = currentDaySchedule ? currentDaySchedule.activities : [];
+  const currentDaySchedule =
+    schedule.length > 0 ? schedule[currentDayIndex] : null;
+  const currentActivities = currentDaySchedule
+    ? currentDaySchedule.activities
+    : [];
 
   const handleDelete = (actIndex) => {
     const activityToDelete = currentActivities[actIndex];
@@ -108,7 +114,7 @@ const Output = ({
     setTimeout(() => {
       const cleanList = rejectedLocation.map((item) => ({
         trip_detail_id: item.tripDetailID,
-        location_id: item.locationId
+        location_id: item.locationId,
       }));
 
       if (onTryAgainClick) {
@@ -134,7 +140,8 @@ const Output = ({
   };
 
   const canGoPrev = currentDayIndex > 0;
-  const canGoNext = schedule.length > 0 && currentDayIndex < schedule.length - 1;
+  const canGoNext =
+    schedule.length > 0 && currentDayIndex < schedule.length - 1;
 
   return (
     <div className="output-container">
@@ -225,22 +232,8 @@ const Output = ({
           {translate("output_accept_button")}
         </button>
       </div>
-      
+
       {/* Log hiển thị các item đã xóa (chỉ để debug, có thể ẩn đi) */}
-      {rejectedLocation.length > 0 && (
-        <div className="deleted-log-container">
-          <div className="deleted-log-title" style={{color:'red'}}>
-            Các địa điểm đã xóa ({currentRejectedCount}):
-          </div>
-          <ul className="deleted-list">
-            {rejectedLocation.map((item, idx) => (
-              <li key={idx} className="deleted-item">
-                {item.locationId} - {item.ggPlaceId}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 };
