@@ -124,8 +124,10 @@ public class TripMapper {
         locationResponse.setLatitude(location.getLatitude());
         locationResponse.setLongitude(location.getLongitude());
         locationResponse.setOpenTime(location.getOpenTime());
+        locationResponse.setCloseTime(location.getCloseTime());
         locationResponse.setAvgVisitTime(location.getAvgVisitTime());
         locationResponse.setTicketPrice(location.getTicketPrice());
+        locationResponse.setDescription(location.getDescription());
 
         // Map Province
         if(location.getProvince() != null) {
