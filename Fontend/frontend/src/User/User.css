@@ -211,167 +211,107 @@
 }
 
 .travel-history {
-  width: auto;           /* Tự động giãn theo nội dung */
-  min-width: 200px;      /* Đảm bảo không bé hơn 200px */
-  padding: 0 20px;       /* Thêm khoảng đệm 2 bên cho thoáng */
+  width: auto;
+  min-width: 200px;
+  padding: 0 20px;
   
   height: 40px;
   cursor: pointer;
   
-  /* --- SỬA FONT CHỮ --- */
-  font-size: 18px;       /* Giảm nhẹ size chữ (cũ là 18px hơi to) để vừa vặn hơn */
+  font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
   
-  /* --- CẤU TRÚC GIỮ NGUYÊN --- */
   color: #003c72;
   background-color: #ebe7e7;
   border-radius: 10px;
   border: none;
   box-shadow: 4px 3px 2px #76767685;
 
-  /* --- FLEXBOX (ĐỂ CĂN GIỮA ICON VÀ CHỮ) --- */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   
-  /* --- QUAN TRỌNG: CHỐNG RỚT DÒNG --- */
   white-space: nowrap;
 }
 
-
 .lock-icon {
   font-size: 1.2rem;
-  margin-bottom: 2px; /* Tinh chỉnh nhỏ để icon cân đối với chữ */
+  margin-bottom: 2px;
 }
-/* Căn chỉnh label và icon bút chì */
+
 .info-item .label {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Đẩy icon qua phải */
   width: 100%;
 }
 
-/* Kiểu cho icon bút chì */
 .edit-icon-button {
   cursor: pointer;
   stroke: #9ca3af;
-  /* Màu xám */
   transition: stroke 0.2s;
 }
 
 .edit-icon-button:hover {
   stroke: #1f2937;
-  /* Màu đen đậm hơn khi hover */
 }
 
-/* Kiểu cho ô input khi chỉnh sửa */
 .edit-input {
-  /* Sao chép style từ .value để nó trông giống nhất */
   font-family: "Montserrat", sans-serif;
-  /* Hoặc font bạn đang dùng */
   font-weight: 700;
   font-size: 1.1rem;
   color: #333;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-
-  /* Thêm style của input */
   border: none;
   border-bottom: 2px solid #004a99;
-  /* Thêm đường gạch dưới */
   background-color: transparent;
-  /* Nền trong suốt */
   width: 100%;
   padding: 4px 0;
-  /* Thêm chút padding */
   box-sizing: border-box;
 }
 
 .edit-input:focus {
   outline: none;
-  /* Bỏ viền focus mặc định */
   border-bottom: 2px solid #007bff;
-  /* Đổi màu khi focus */
 }
 
 .empty-data-box {
   display: inline-block;
-  width: 100%; /* Chiếm hết chiều ngang cho đẹp */
-  min-width: 150px; /* Độ rộng tối thiểu */
-  height: 26px; /* Chiều cao bằng với dòng chữ bình thường */
-  background-color: #e9ecef; /* Màu xám nhạt */
-  border: 2px dashed #adb5bd; /* Viền nét đứt màu xám đậm hơn */
+  width: 100%;
+  min-width: 150px;
+  height: 26px;
+  background-color: #e9ecef;
+  border: 2px dashed #adb5bd;
   border-radius: 4px;
   margin-top: 2px;
-}
-
-.edit-input {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #333;
-  text-transform: uppercase;
-  border: none;
-  border-bottom: 2px solid #003c72;
-  background-color: transparent;
-  width: 100%;
-  padding: 2px 0;
-  outline: none;
-}
-
-.content-stack-item {
-  position: absolute;
-  width: 100%;
-  /* Bắt đầu từ vị trí thấp hơn (bị ẩn phía dưới) */
-  transform: translateY(100%);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.5s ease-in;
-}
-
-.content-stack-item.active {
-  /* Trượt lên vị trí gốc */
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: all;
 }
 
 .content-stack-wrapper {
     position: relative;
     width: 100%;
-    max-width: 800px; /* Khớp độ rộng với ticket-container */
-    
-    /* QUAN TRỌNG: Kéo ngược lên để dính vào chân vé */
+    max-width: 800px;
     margin: -15px auto 30px auto; 
-    
     height: auto; 
     min-height: 400px;
     display: flex;
     justify-content: center;
-    z-index: 0; /* Nằm dưới vé (Vé thường là z-index 1 hoặc cao hơn) */
+    z-index: 0;
 }
 
-/* --- CÁC ITEM BÊN TRONG (Map, History) --- */
 .content-stack-item {
-    /* Quan trọng: Ghi đè position absolute cũ */
     position: relative !important; 
-    
-    /* Mặc định ẩn */
     display: none;
     width: 100%;
 }
 
-/* --- KHI ACTIVE (ĐƯỢC CHỌN) --- */
 .content-stack-item.active {
-    display: block; /* Hiện ra dạng khối để đẩy Footer xuống */
+    display: block;
     animation: slideUpFade 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* --- ANIMATION --- */
 @keyframes slideUpFade {
     0% {
         opacity: 0;
@@ -382,7 +322,7 @@
         transform: translateY(0);
     }
 }
-/* --- TOAST NOTIFICATION (THÔNG BÁO NỔI) --- */
+
 .toast-notification {
   position: fixed;
   top: 20px;
@@ -392,13 +332,11 @@
   padding: 15px 25px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: 10000; /* Đảm bảo nổi lên trên cùng */
-  
-  /* Hiệu ứng ẩn/hiện */
+  z-index: 10000;
   opacity: 0;
   transform: translateY(-20px);
   transition: all 0.3s ease-in-out;
-  pointer-events: none; /* Không chặn click khi ẩn */
+  pointer-events: none;
 }
 
 .toast-notification.show {
@@ -407,51 +345,65 @@
   pointer-events: all;
 }
 
-/* Màu sắc theo loại thông báo */
 .toast-notification.success {
-  background-color: #28a745; /* Xanh lá */
+  background-color: #28a745;
   border-left: 5px solid #1e7e34;
 }
 
 .toast-notification.error {
-  background-color: #dc3545; /* Đỏ */
+  background-color: #dc3545;
   border-left: 5px solid #bd2130;
 }
 
 .toast-notification.warning {
-  background-color: #ffc107; /* Vàng */
-  color: #333; /* Chữ đen cho dễ đọc trên nền vàng */
+  background-color: #ffc107;
+  color: #333;
   border-left: 5px solid #d39e00;
 }
 
-/* --- PREMIUM UPGRADE BANNER (Cho User thường) --- */
-
-/* --- PREMIUM UPGRADE BANNER (NEW DESIGN) --- */
-
-/* Khung bao ngoài: Nền xám nhẹ để tách biệt với vé trắng phía trên */
-.premium-upgrade-container {
-  width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Căn lên trên */
-    
-    /* Padding top lớn để nội dung không bị footer của vé che mất */
-    padding: 60px 20px 20px 20px; 
-    
-    /* Màu nền: Để trong suốt hoặc trùng màu nền user-page-background (#dbdbdb) */
-    background-color: transparent; 
-    
-    /* Hiệu ứng trượt ra (nếu muốn) */
-    animation: slideDown 0.5s ease-out;
+/* === MAP CONTAINER STYLE (Để định vị overlay) === */
+.map-stack {
+  position: relative; 
 }
 
-/* Nội dung bên trong: Màu xanh đậm sang trọng */
+/* === CLASS MỚI: Overlay đè lên Map với hiệu ứng Glass === */
+.premium-upgrade-container.glass-overlay {
+  position: absolute;  /* Đè lên map */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;          /* Xóa padding gốc để căn giữa overlay */
+  
+  /* HIỆU ỨNG GLASS LÀM MỜ MAP BÊN DƯỚI */
+  background-color: rgba(255, 255, 255, 0.1); /* Lớp phủ trong suốt nhẹ */
+  backdrop-filter: blur(6px);                 /* Làm mờ map */
+  -webkit-backdrop-filter: blur(6px);
+  
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Căn giữa banner theo chiều dọc */
+}
+
+/* Các class gốc của Banner - KHÔNG THAY ĐỔI THUỘC TÍNH (chỉ hiển thị như cũ) */
+.premium-upgrade-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 20px 20px 20px; /* Padding này chỉ dùng khi banner đứng 1 mình */
+  background-color: transparent;
+  animation: slideDown 0.5s ease-out;
+}
+
 .premium-banner-content {
-  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); /* Gradient tối màu sang trọng */
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
   color: #ffffff;
   padding: 40px 50px;
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); /* Đổ bóng sâu tạo độ nổi */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
   max-width: 900px;
   width: 100%;
   display: flex;
@@ -460,10 +412,9 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Viền sáng nhẹ */
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Hiệu ứng ánh sáng nền (trang trí) */
 .premium-banner-content::before {
   content: '';
   position: absolute;
@@ -471,152 +422,78 @@
   right: -20%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
   border-radius: 50%;
   pointer-events: none;
 }
 
-/* Phần chữ bên trái */
 .premium-text-section {
   flex: 1;
   padding-right: 20px;
 }
 
 .premium-text-section h3 {
-  font-size: 2rem;
-  margin-top: 0;
+  font-size: 1.8rem;
   margin-bottom: 15px;
-  font-weight: 800;
-  color: #FFD700; /* Vàng kim loại */
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.premium-subtitle {
-  font-size: 1.1rem;
-  color: #e0e0e0;
-  margin-bottom: 25px;
-  line-height: 1.6;
+.crown-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 5px gold);
 }
 
-/* Danh sách lợi ích */
+.premium-subtitle {
+  font-size: 1rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
 .premium-benefits-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 30px 0;
+  margin-bottom: 30px;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Chia 2 cột cho gọn */
+  grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
 .premium-benefits-list li {
-  font-size: 1rem;
   display: flex;
   align-items: center;
-  color: #fff;
+  font-size: 0.95rem;
 }
 
 .check-icon {
-  color: #00ff88; /* Màu xanh neon nổi bật */
-  margin-right: 10px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  background: rgba(0, 255, 136, 0.1);
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Nút bấm hành động (CTA) */
-.upgrade-button {
-  background: linear-gradient(90deg, #FFD700 0%, #FDB931 100%); /* Gradient vàng */
-  color: #0f2027; /* Chữ màu tối tương phản */
-  border: none;
-  padding: 15px 40px;
-  font-size: 1.1rem;
-  font-weight: 800;
-  border-radius: 50px;
-  cursor: pointer;
-  text-transform: uppercase;
-  box-shadow: 0 5px 15px rgba(253, 185, 49, 0.4);
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.upgrade-button:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(253, 185, 49, 0.6);
-  background: linear-gradient(90deg, #FDB931 0%, #FFD700 100%);
-}
-
-/* Responsive: Trên điện thoại sẽ xếp dọc */
-@media (max-width: 768px) {
-  .premium-banner-content {
-    flex-direction: column;
-    text-align: center;
-    padding: 30px 20px;
-  }
-
-  .premium-text-section {
-    padding-right: 0;
-  }
-
-  .premium-benefits-list {
-    grid-template-columns: 1fr; /* Về 1 cột */
-    text-align: left;
-    display: inline-block; /* Để canh giữa khối text */
-  }
-  
-  .premium-text-section h3 {
-    justify-content: center;
-  }
-}
-
-.check-icon {
-  color: #FFD700; /* Màu vàng gold cho dấu tick */
+  color: #FFD700;
   margin-right: 10px;
   font-weight: bold;
   font-size: 1.2rem;
 }
 
 .upgrade-button {
-  background: linear-gradient(to right, #FFD700, #FFC107); /* Nút màu vàng gold nổi bật */
-  color: #003c72; /* Chữ màu xanh đậm tương phản */
+  background: linear-gradient(to right, #FFD700, #FFC107);
+  color: #003c72;
   border: none;
   padding: 12px 30px;
   font-size: 1.1rem;
   font-weight: 700;
-  border-radius: 30px;
+  border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-  transition: all 0.3s ease;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
 }
 
 .upgrade-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
-  background: linear-gradient(to right, #FFC107, #FFB300);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
 }
 
-/* Responsive cho màn hình nhỏ */
-@media (max-width: 768px) {
-  .premium-banner-content {
-    flex-direction: column;
-    text-align: center;
-    padding: 30px 20px;
-  }
-
-  .premium-benefits-list li {
-    justify-content: center;
-  }
-
-  .premium-text-section h3 {
-    justify-content: center;
-  }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

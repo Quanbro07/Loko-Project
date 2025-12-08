@@ -56,13 +56,14 @@ const User = () => {
   const navigate = useNavigate();
 
   // --- KIỂM TRA ROLE PREMIUM ---
-  const isVip = user?.role === 'VIP' || user?.role === 'ADMIN';
+  const isVip = user?.role === "VIP" || user?.role === "ADMIN";
 
   // --- STATE QUẢN LÝ UI ---
   const [isEditing, setIsEditing] = useState(false);
-  // Nếu là VIP thì mặc định hiện map, nếu không thì rỗng (hoặc hiện banner)
-  const [activeSection, setActiveSection] = useState(isVip ? "map" : "");
-  
+
+  // Mặc định luôn là "map" để hiển thị bản đồ cho tất cả mọi người
+  const [activeSection, setActiveSection] = useState("map");
+
   const [toast, setToast] = useState({
     show: false,
     message: "",
@@ -133,6 +134,8 @@ const User = () => {
     str = str.replace(/[đĐ]/g, "d");
     return str
       .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^\w\s-]/g, "")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^\w\s-]/g, "")
       .trim();
@@ -347,7 +350,14 @@ const User = () => {
 
   // --- HÀM XỬ LÝ KHI BẤM NÚT TAB (PHÂN QUYỀN) ---
   const handleTabClick = (tabName) => {
-    if (!isVip) {
+    // Luôn cho phép chuyển sang tab map
+    if (tabName === "map") {
+      setActiveSection("map");
+      return;
+    }
+
+    // Chặn tab lịch sử nếu không phải VIP
+    if (tabName === "history" && !isVip) {
       showToast("Tính năng này chỉ dành cho thành viên Premium!", "warning");
       return;
     }
@@ -359,14 +369,17 @@ const User = () => {
     if (!tripId) return;
     try {
       // Gọi API lấy chi tiết chuyến đi
-      const response = await axios.get(`http://localhost:8080/api/v1/trip/get/${tripId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await axios.get(
+        `http://localhost:8080/api/v1/trip/get/${tripId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (response.data) {
         console.log("Xem lại chuyến đi:", response.data);
-        navigate("/currentplan", { 
-            state: { finalPlan: response.data } 
+        navigate("/currentplan", {
+          state: { finalPlan: response.data },
         });
       }
     } catch (error) {
@@ -388,7 +401,14 @@ const User = () => {
             className="plane-icon"
           />
           <div className="ticket-company">
-            LOKO {isVip && <span style={{color:'gold', fontSize:'0.6em', marginLeft:'5px'}}>PREMIUM</span>}
+            LOKO{" "}
+            {isVip && (
+              <span
+                style={{ color: "gold", fontSize: "0.6em", marginLeft: "5px" }}
+              >
+                PREMIUM
+              </span>
+            )}
           </div>
         </div>
 
@@ -487,8 +507,8 @@ const User = () => {
             <div className="info-item">
               <div className="label">Ngày tham gia</div>
               <div className="value">
-                {user?.createAt 
-                  ? formatDateForDisplay(formatDateForInput(user.createAt)) 
+                {user?.createAt
+                  ? formatDateForDisplay(formatDateForInput(user.createAt))
                   : "01/01/2023"}
               </div>
             </div>
@@ -555,7 +575,15 @@ const User = () => {
               activeSection === "history" ? "active-tab" : ""
             } ${!isVip ? "disabled-btn" : ""}`}
             onClick={() => handleTabClick("history")}
-            style={!isVip ? { opacity: 0.6, cursor: 'not-allowed', filter: 'grayscale(100%)' } : {}}
+            style={
+              !isVip
+                ? {
+                    opacity: 0.6,
+                    cursor: "not-allowed",
+                    filter: "grayscale(100%)",
+                  }
+                : {}
+            }
           >
             <span>{translate("travel_history_button")}</span>
             {!isVip && <span className="lock-icon">🔒</span>}
@@ -565,14 +593,14 @@ const User = () => {
           <button
             className={`travel-history ${
               activeSection === "map" ? "active-tab" : ""
-            } ${!isVip ? "disabled-btn" : ""}`}
+            }`}
             onClick={() => handleTabClick("map")}
-            style={!isVip ? { opacity: 0.6, cursor: 'not-allowed', filter: 'grayscale(100%)' } : {}}
+            // Bỏ style disabled để nút luôn sáng
           >
             {translate("travel_achievement_button")}
             {!isVip && " 🔒"}
           </button>
-          
+
           <img src={barcodeSample} className="barcode-img" alt="barcode" />
         </div>
       </div>
@@ -580,67 +608,82 @@ const User = () => {
 
       {/* === NỘI DUNG SLIDE (NẰM BÊN NGOÀI VÉ ĐỂ TRƯỢT LÊN XUỐNG) === */}
       <div className="content-stack-wrapper">
-        {/* Chỉ VIP mới thấy nội dung bên dưới */}
-        {isVip ? (
-          <>
-            <div
-              className={`content-stack-item history-stack ${
-                activeSection === "history" ? "active" : ""
-              }`}
-              aria-hidden={activeSection !== "history"}
-            >
-              <TripHistory onSelectTrip={handleSelectTripFromHistory} />
-            </div>
-            <div
-              className={`content-stack-item map-stack ${
-                activeSection === "map" ? "active" : ""
-              }`}
-              aria-hidden={activeSection !== "map"}
-            >
-              <VisitedMap visited={visitedSlugs} />
-            </div>
-          </>
-        ) : (
-          // USER THƯỜNG: Hiện Banner quảng cáo hoặc thông báo
-          <div className="premium-upgrade-container">
-      <div className="premium-banner-content">
-        <div className="premium-text-section">
-          <h3>
-            <span className="crown-icon">👑</span> Nâng tầm trải nghiệm cùng LOKO Premium
-          </h3>
-          <p className="premium-subtitle">
-            Mở khóa toàn bộ tính năng và lưu giữ hành trình của bạn mãi mãi.
-          </p>
-          <ul className="premium-benefits-list">
-            <li>
-              <span className="check-icon">✓</span> <span> Xem lại toàn bộ <strong> Lịch sử chuyến đi</strong>.</span>
-            </li>
-            <li>
-              <span className="check-icon">✓</span> <span>Khoe chiến tích với <strong> Bản đồ thành tựu</strong>.</span>
-            </li>
-            <li>
-              <span className="check-icon">✓</span> <span><strong>Không giới hạn </strong> lượt tạo và tìm kiếm lịch trình.</span>
-            </li>
-            <li>
-              <span className="check-icon">✓</span> <span>Xuất lịch trình ra file  <strong> PDF</strong>.</span>
-            </li>
-          </ul>
-          <button 
-              className="upgrade-button"
-              onClick={() => {
-                  navigate('/purchase');
-              }}
+        {/* Phần Lịch sử (Chỉ VIP thấy) */}
+        {isVip && (
+          <div
+            className={`content-stack-item history-stack ${
+              activeSection === "history" ? "active" : ""
+            }`}
+            aria-hidden={activeSection !== "history"}
           >
-            Khám phá Premium ngay
-          </button>
-        </div>
-        {/* Bạn có thể thêm một hình ảnh minh họa ở đây nếu muốn */}
-        {/* <div className="premium-image-section">
-            <img src="/img/premium-travel-illustration.png" alt="Premium Travel" />
-        </div> */}
-      </div>
-    </div>
+            <TripHistory onSelectTrip={handleSelectTripFromHistory} />
+          </div>
         )}
+
+        {/* Phần Bản đồ + Banner (Luôn render) */}
+        <div
+          className={`content-stack-item map-stack ${
+            activeSection === "map" ? "active" : ""
+          }`}
+          aria-hidden={activeSection !== "map"}
+        >
+          {/* Map luôn hiển thị */}
+          <VisitedMap visited={visitedSlugs} />
+
+          {/* Nếu KHÔNG phải VIP: Render Banner đè lên Map */}
+          {!isVip && (
+            <div className="premium-upgrade-container glass-overlay">
+              <div className="premium-banner-content">
+                <div className="premium-text-section">
+                  <h3>
+                    <span className="crown-icon">👑</span> Nâng tầm trải nghiệm
+                    cùng LOKO Premium
+                  </h3>
+                  <p className="premium-subtitle">
+                    Mở khóa toàn bộ tính năng và lưu giữ hành trình của bạn mãi
+                    mãi.
+                  </p>
+                  <ul className="premium-benefits-list">
+                    <li>
+                      <span className="check-icon">✓</span>{" "}
+                      <span>
+                        {" "}
+                        Xem lại toàn bộ <strong> Lịch sử chuyến đi</strong>.
+                      </span>
+                    </li>
+                    <li>
+                      <span className="check-icon">✓</span>{" "}
+                      <span>
+                        Khoe chiến tích với <strong> Bản đồ thành tựu</strong>.
+                      </span>
+                    </li>
+                    <li>
+                      <span className="check-icon">✓</span>{" "}
+                      <span>
+                        <strong>Không giới hạn </strong> lượt tạo và tìm kiếm
+                        lịch trình.
+                      </span>
+                    </li>
+                    <li>
+                      <span className="check-icon">✓</span>{" "}
+                      <span>
+                        Xuất lịch trình ra file <strong> PDF</strong>.
+                      </span>
+                    </li>
+                  </ul>
+                  <button
+                    className="upgrade-button"
+                    onClick={() => {
+                      navigate("/purchase");
+                    }}
+                  >
+                    Khám phá Premium ngay
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       <Footer />
