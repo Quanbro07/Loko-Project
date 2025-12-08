@@ -23,7 +23,7 @@ const Plan = () => {
   const [outputStats, setOutputStats] = useState({ total: 0, rejected: 0 });
 
   // 1. THÊM STATE MỚI: Lưu trữ danh sách tích lũy các địa điểm đã xóa qua các lần
-  const [allRejectedItems, setAllRejectedItems] = useState([]); 
+  const [allRejectedItems, setAllRejectedItems] = useState([]);
 
   const { translate } = useLanguage();
   const navigate = useNavigate();
@@ -45,7 +45,8 @@ const Plan = () => {
     let msg = "Có lỗi xảy ra";
     if (error.response) {
       if (error.response.status === 403) {
-        msg = "Phiên đăng nhập hết hạn hoặc không đủ quyền. Vui lòng đăng nhập lại.";
+        msg =
+          "Phiên đăng nhập hết hạn hoặc không đủ quyền. Vui lòng đăng nhập lại.";
       } else {
         const data = error.response.data;
         msg = `Lỗi ${error.response.status}: ${
@@ -69,9 +70,9 @@ const Plan = () => {
       setIsSearching(true);
       setIsResultShown(false);
       setPlanData(null);
-      
+
       // 2. RESET KHI TÌM KIẾM MỚI: Xóa sạch lịch sử cũ
-      setAllRejectedItems([]); 
+      setAllRejectedItems([]);
 
       try {
         const headers = { "Content-Type": "application/json" };
@@ -103,7 +104,12 @@ const Plan = () => {
       setIsSearching(true);
 
       // Log để kiểm tra xem danh sách có cộng dồn không
-      console.log("🔥 Gửi đi danh sách TỔNG các địa điểm bị xóa:", rejected_detail.length, "items", rejected_detail);
+      console.log(
+        "🔥 Gửi đi danh sách TỔNG các địa điểm bị xóa:",
+        rejected_detail.length,
+        "items",
+        rejected_detail
+      );
 
       const payloadDetail = rejected_detail.filter(
         (item) => item && item.trip_detail_id && item.location_id
@@ -130,7 +136,8 @@ const Plan = () => {
           { headers }
         );
 
-        const newTripData = response.data.newTrip || response.data.new_trip_plan || response.data;
+        const newTripData =
+          response.data.newTrip || response.data.new_trip_plan || response.data;
         setPlanData(newTripData);
         setSearchIteration((prev) => prev + 1);
       } catch (error) {
@@ -161,7 +168,7 @@ const Plan = () => {
       // --- BƯỚC CỘNG DỒN ---
       // Lấy danh sách cũ + danh sách mới vừa chọn
       const updatedTotalRejected = [...allRejectedItems, ...newRejectedItems];
-      
+
       // Lưu lại vào state để dùng cho lần sau
       setAllRejectedItems(updatedTotalRejected);
 
@@ -174,7 +181,9 @@ const Plan = () => {
       const threshold = total / 2;
       const isOver50Percent = totalRejectedCount > threshold;
 
-      console.log(`Retry: Total Rejected Accumulative=${totalRejectedCount}/${total}`);
+      console.log(
+        `Retry: Total Rejected Accumulative=${totalRejectedCount}/${total}`
+      );
 
       if (isOver50Percent) {
         let requestToUse = lastRequestData;
@@ -193,9 +202,11 @@ const Plan = () => {
         if (requestToUse) callMakePlanApi(requestToUse);
         else alert("Vui lòng thực hiện tìm kiếm lại từ đầu!");
       } else {
-        console.log("Rejected <= 50% -> Gọi Regenerate Part với DANH SÁCH TỔNG");
+        console.log(
+          "Rejected <= 50% -> Gọi Regenerate Part với DANH SÁCH TỔNG"
+        );
         // QUAN TRỌNG: Gửi danh sách TỔNG (updatedTotalRejected) đi API
-        callRegeneratePartAPI(planData, updatedTotalRejected); 
+        callRegeneratePartAPI(planData, updatedTotalRejected);
       }
     },
     [
@@ -212,7 +223,10 @@ const Plan = () => {
 
   // --- API 3: XÁC NHẬN KẾ HOẠCH (ACCEPT) ---
   const handleAccept = useCallback(async () => {
-    if (!planData) { alert("Chưa có kế hoạch!"); return; }
+    if (!planData) {
+      alert("Chưa có kế hoạch!");
+      return;
+    }
     let inputData = lastRequestData;
     if (!inputData) {
       try {
@@ -222,7 +236,10 @@ const Plan = () => {
         console.error(e);
       }
     }
-    if (!inputData) { alert("Thiếu dữ liệu."); return; }
+    if (!inputData) {
+      alert("Thiếu dữ liệu.");
+      return;
+    }
 
     // Lấy user id từ local storage (để tránh gửi null)
     let currentUserId = null;
@@ -271,18 +288,36 @@ const Plan = () => {
               description: detail.description || "",
               price: detail.price || 0,
               location: {
-        id: detail.location.id
-    }
-            }))
+                id: detail.location?.id,
+                latitude: parseFloat(
+                  detail.location?.latitude || detail.latitude || 0
+                ),
+                longitude: parseFloat(
+                  detail.location?.longitude || detail.longitude || 0
+                ),
+                locationName:
+                  detail.location?.location_name ||
+                  detail.title ||
+                  detail.locationName,
+                googlePlaceId:
+                  detail.location?.gg_place_id || detail.googlePlaceId,
+              },
+            })),
           };
         }),
       };
 
-      const payload = { trip_request: tripRequestPayload, weather_request: weatherRequestPayload };
-      const response = await axios.post("http://localhost:8080/api/v1/make-plan/confirm", payload, { headers });
-      const confirmedTrip = response.data.trip || response.data; 
+      const payload = {
+        trip_request: tripRequestPayload,
+        weather_request: weatherRequestPayload,
+      };
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/make-plan/confirm",
+        payload,
+        { headers }
+      );
+      const confirmedTrip = response.data.trip || response.data;
       navigate("/currentplan", { state: { finalPlan: confirmedTrip } });
-
     } catch (error) {
       handleAPIError(error);
     }
@@ -292,7 +327,11 @@ const Plan = () => {
     <div>
       <div className="homepage-background">
         <Navbar />
-        <Input onSearch={handleSearch} isResultShown={isResultShown} searchIteration={searchIteration} />
+        <Input
+          onSearch={handleSearch}
+          isResultShown={isResultShown}
+          searchIteration={searchIteration}
+        />
       </div>
       <div className="itinerary-results-container">
         {isSearching && (
