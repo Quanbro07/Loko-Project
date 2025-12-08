@@ -1,27 +1,26 @@
 import React, { useMemo, useState, useEffect } from "react";
 import "./WeatherForecast.css";
-import defaultWeatherData from "./responseWeather.json";
 
 const WeatherForecast = ({ currentDayIndex = 0, data = null }) => {
   const [startIndex, setStartIndex] = useState(0);
   const ITEMS_PER_ROW = 4;
-  const sourceData = data || defaultWeatherData;
-  const currentDayWeather = useMemo(() => {
-    if (
-      sourceData &&
-      Array.isArray(sourceData.scopes) &&
-      sourceData.scopes[currentDayIndex]
-    ) {
-      return sourceData.scopes[currentDayIndex];
-    }
-    return sourceData?.scopes?.[0] || null;
-  }, [currentDayIndex, sourceData]);
 
+  // Logic lấy dữ liệu thời tiết cho ngày hiện tại
+  const currentDayWeather = useMemo(() => {
+    if (data && Array.isArray(data.scopes)) {
+      // Tìm scope tương ứng với currentDayIndex
+      // Nếu index vượt quá độ dài mảng, fallback về ngày đầu tiên (hoặc null)
+      return data.scopes[currentDayIndex] || data.scopes[0] || null;
+    }
+    return null;
+  }, [currentDayIndex, data]);
+
+  // Reset slider về vị trí đầu khi chuyển ngày
   useEffect(() => {
     setStartIndex(0);
   }, [currentDayIndex]);
 
-  // Logic tính vị trí background (Giữ nguyên logic "trượt" mượt mà)
+  // Logic tính vị trí background
   const getBackgroundPosition = (timeString) => {
     if (!timeString) return "0% 50%";
     let hour = 0;
@@ -37,8 +36,21 @@ const WeatherForecast = ({ currentDayIndex = 0, data = null }) => {
     return `${positionPercent}% 50%`;
   };
 
-  if (!currentDayWeather)
-    return <div style={{ color: "white" }}>Đang tải dữ liệu...</div>;
+  // --- TRƯỜNG HỢP KHÔNG CÓ DỮ LIỆU ---
+  // Nếu data null (đang loading hoặc lỗi), hiển thị thông báo
+  if (!currentDayWeather) {
+    return (
+      <div className="weather-figma-container loading-state">
+        <p style={{ color: "white", textAlign: "center", padding: "20px" }}>
+          {data
+            ? "Không có dữ liệu thời tiết cho ngày này."
+            : "Đang tải thông tin thời tiết..."}
+        </p>
+      </div>
+    );
+  }
+
+  console.log(currentDayWeather);
 
   const allHours = currentDayWeather.hourly_weather || [];
   const visibleHours = allHours.slice(startIndex, startIndex + ITEMS_PER_ROW);
@@ -102,14 +114,16 @@ const WeatherForecast = ({ currentDayIndex = 0, data = null }) => {
                   <p className="card-desc">{hour.condition?.text}</p>
                 </div>
 
-                {/* --- [MỚI] CHÈN CẢNH BÁO MƯA TẠI ĐÂY --- */}
+                {/* Cảnh báo mưa */}
                 {Number(hour.will_it_rain) === 1 && (
                   <div className="rain-alert">💧 Có mưa</div>
                 )}
               </div>
             ))
           ) : (
-            <p>Không có dữ liệu</p>
+            <p style={{ color: "white", width: "100%", textAlign: "center" }}>
+              Không có dữ liệu giờ
+            </p>
           )}
         </div>
 
@@ -123,8 +137,12 @@ const WeatherForecast = ({ currentDayIndex = 0, data = null }) => {
       </div>
 
       <div className="slider-indicator">
-        Hiển thị {startIndex + 1} - {startIndex + visibleHours.length} trong số{" "}
-        {allHours.length} giờ
+        {allHours.length > 0
+          ? `Hiển thị ${startIndex + 1} - ${Math.min(
+              startIndex + visibleHours.length,
+              allHours.length
+            )} trong số ${allHours.length} giờ`
+          : ""}
       </div>
     </div>
   );

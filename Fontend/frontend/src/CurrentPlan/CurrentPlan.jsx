@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { useLanguage } from "../Language/LanguageContext";
 import React, { useState, useMemo, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // Import hooks điều hướng
+import { useLocation, useNavigate } from "react-router-dom";
 import MyLeafletMap from "../Map/MyLeafletMap";
 import OutputReal from "../OutputReal/OutputReal";
 import CurrentPlace from "../CurrentPlace/CurrentPlace";
@@ -15,8 +15,7 @@ const CurrentPlan = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // 🌟 1. NHẬN DỮ LIỆU TỪ TRANG PLAN (qua location.state) 🌟
-  // finalPlan cấu trúc: { tripPlan: {...}, route: {...}, pdf: {...} }
+  // 1. NHẬN DỮ LIỆU TỪ TRANG PLAN (qua location.state)
   const receivedPlan = location.state?.finalPlan;
 
   // State lưu dữ liệu chuyến đi
@@ -29,46 +28,127 @@ const CurrentPlan = () => {
   const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
   const [routeData, setRouteData] = useState(null);
 
-  // --- EFFECT: KHỞI TẠO DỮ LIỆU ---
-  useEffect(() => {
-    if (receivedPlan) {
-      console.log("CurrentPlan received data:", receivedPlan);
-      let extractedTrip = null;
-      let extractedRoute = null;
-      if (receivedPlan.tripPlan || receivedPlan.trip_plan) {
-        extractedTrip = receivedPlan.tripPlan || receivedPlan.trip_plan;
-        extractedRoute = receivedPlan.route;
-      } else if (receivedPlan.tripSections || receivedPlan.trip_sections) {
-        extractedTrip = receivedPlan;
-      }
+  // --- HÀM GỌI API KHI RELOAD ---
+  const fetchTripById = async (tripId) => {
+    try {
+      console.log(`🔄 Reload: Đang tải lại Trip ID: ${tripId}...`);
+      const token = localStorage.getItem("token");
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      };
 
-      if (extractedTrip) {
-        setTripData(extractedTrip);
-        setRouteData(extractedRoute);
-        setWeatherData(null);
-        setIsLoading(false);
+      const response = await axios.get(
+        "http://localhost:8080/api/v1/trip/get",
+        { params: { tripId: tripId }, headers: headers }
+      );
+
+      console.log("✅ Dữ liệu tải lại thành công:", response.data);
+
+      // Xử lý Trip Data
+      const fetchedTrip = response.data;
+      setTripData(fetchedTrip);
+
+      // --- XỬ LÝ ROUTE DATA ---
+      // Nếu API /trip/get trả về kèm route (lý tưởng), ta dùng nó.
+      // Nếu không (thường gặp), ta set null => Map sẽ tự vẽ đường thẳng (fallback).
+      if (fetchedTrip.route || response.data.route) {
+        setRouteData(fetchedTrip.route || response.data.route);
       } else {
-        console.warn("Data structure not recognized");
-        setIsLoading(false);
+        console.warn(
+          "⚠️ API /trip/get không trả về 'route'. Map sẽ dùng chế độ vẽ đường thẳng."
+        );
+        setRouteData(null);
       }
-    } else {
-      console.warn("No state received in location!");
+    } catch (error) {
+      console.error("❌ Lỗi tải lại dữ liệu:", error);
+      // Nếu lỗi 403/401 thì có thể logout user tại đây
+    } finally {
       setIsLoading(false);
     }
+  };
+
+  // --- EFFECT: KHỞI TẠO DỮ LIỆU ---
+  useEffect(() => {
+    const initData = async () => {
+      // TRƯỜNG HỢP 1: Có dữ liệu từ trang Plan chuyển sang (Vừa bấm Accept)
+      if (receivedPlan) {
+        console.log("🌟 Dữ liệu từ State (Mới tạo):", receivedPlan);
+
+        let extractedTrip = null;
+        let extractedRoute = null;
+        let extractedWeather = null;
+        // Xử lý cấu trúc MakePlanResponse vs TripResponse
+        if (receivedPlan.tripPlan || receivedPlan.trip_plan) {
+          extractedTrip = receivedPlan.tripPlan || receivedPlan.trip_plan;
+          extractedRoute = receivedPlan.route;
+          extractedWeather = receivedPlan.weather;
+        } else if (receivedPlan.tripSections || receivedPlan.trip_sections) {
+          extractedTrip = receivedPlan;
+        }
+
+        if (extractedTrip) {
+          setTripData(extractedTrip);
+          setRouteData(extractedRoute);
+
+          // Xử lý Weather Data
+          if (extractedWeather) {
+            console.log("🌦️ Đã nhận được Weather Data:", extractedWeather);
+            setWeatherData(extractedWeather);
+            // Lưu vào localStorage để reload không bị mất
+            localStorage.setItem(
+              "currentWeatherData",
+              JSON.stringify(extractedWeather)
+            );
+          } else {
+            setWeatherData(null);
+          }
+
+          // Lưu Trip ID
+          const tId = extractedTrip.tripId || extractedTrip.trip_id;
+          if (tId) {
+            localStorage.setItem("currentTripId", tId);
+          }
+
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // TRƯỜNG HỢP 2: Reload trang (State mất) -> Tìm ID trong LocalStorage
+      console.log("🔄 Không thấy State, tìm ID trong LocalStorage...");
+      const savedTripId = localStorage.getItem("currentTripId");
+      const savedWeather = localStorage.getItem("currentWeatherData");
+      if (savedWeather) {
+        try {
+          setWeatherData(JSON.parse(savedWeather));
+        } catch (e) {
+          console.error("Lỗi parse weather", e);
+        }
+      }
+
+      if (savedTripId) {
+        await fetchTripById(savedTripId);
+      } else {
+        console.warn("⚠️ Không tìm thấy dữ liệu nào.");
+        setIsLoading(false);
+      }
+    };
+
+    initData();
   }, [receivedPlan, navigate]);
 
-  // --- LOGIC TÍNH TOÁN DỮ LIỆU (Dựa trên tripData state) ---
+  // --- LOGIC TÍNH TOÁN DỮ LIỆU ---
 
   // 1. ID chuyến đi
   const tripId = tripData?.tripId || tripData?.trip_id;
 
-  // 2. Danh sách các ngày (Trip Sections)
+  // 2. Danh sách các ngày
   const tripSections = useMemo(() => {
-    // Kiểm tra cả snake_case và camelCase
     return tripData?.tripSections || tripData?.trip_sections || [];
   }, [tripData]);
 
-  // 3. Lấy lịch trình của ngày ĐANG CHỌN
+  // 3. Lịch trình ngày hiện tại
   const scheduleForCurrentDay = useMemo(() => {
     if (tripSections[currentDayIndex]) {
       return (
@@ -84,8 +164,8 @@ const CurrentPlan = () => {
   const itineraryPoints = useMemo(() => {
     return scheduleForCurrentDay
       .map((place) => {
-        const lat = place.location?.latitude || place.latitude;
-        const lng = place.location?.longitude || place.longitude;
+        const lat = parseFloat(place.location?.latitude || place.latitude);
+        const lng = parseFloat(place.location?.longitude || place.longitude);
         const name =
           place.location?.location_name || place.title || place.locationName;
 
@@ -95,10 +175,9 @@ const CurrentPlan = () => {
           lng: lng,
         };
       })
-      .filter((p) => p.lat && p.lng);
+      .filter((p) => !isNaN(p.lat) && !isNaN(p.lng));
   }, [scheduleForCurrentDay]);
 
-  // Reset slider khi đổi ngày
   const handleDayChange = (newIndex) => {
     console.log("Chuyển sang ngày index:", newIndex);
     setCurrentDayIndex(newIndex);
@@ -109,7 +188,6 @@ const CurrentPlan = () => {
     return <div className="loading-screen">Đang tải dữ liệu chuyến đi...</div>;
   }
 
-  // Nếu không có dữ liệu tripData sau khi load xong
   if (!tripData) {
     return (
       <div className="error-screen">
@@ -124,8 +202,6 @@ const CurrentPlan = () => {
       </div>
     );
   }
-  if (isLoading) return <div className="loading-screen">Loading...</div>;
-  if (!tripData) return <div className="error-screen">No Data Found</div>;
 
   return (
     <div>
@@ -142,13 +218,11 @@ const CurrentPlan = () => {
             />
           </div>
 
-          {/* WeatherForecast: Hiển thị thời tiết */}
-          {/* Nếu WeatherForecast chưa nhận data động, nó vẫn dùng file json cũ (fallback) 
-                        hoặc bạn cần sửa WeatherForecast để nhận prop `weatherData` */}
+          {/* WeatherForecast */}
           <div className="weather-section-below">
             <WeatherForecast
               currentDayIndex={currentDayIndex}
-              // data={weatherData} // <-- Bỏ comment khi WeatherForecast đã sẵn sàng nhận prop
+              data={weatherData}
             />
           </div>
         </div>
@@ -157,14 +231,12 @@ const CurrentPlan = () => {
         {scheduleForCurrentDay.length > 0 ? (
           <>
             <div className="current-plan-content">
-              {/* CurrentPlace: Slider chi tiết */}
               <CurrentPlace
                 scheduleData={scheduleForCurrentDay}
                 currentIndex={currentPlaceIndex}
                 setCurrentIndex={setCurrentPlaceIndex}
               />
 
-              {/* Map: Bản đồ */}
               <MyLeafletMap
                 itineraryPoints={itineraryPoints}
                 currentIndex={currentPlaceIndex}
