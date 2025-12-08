@@ -34,7 +34,7 @@ public class TripController {
         Trip trip = tripService.createFullTrip( user.getId(),request.getTripRequest(),request.getRouteResponse());
 
         TripResponse response = tripMapper.toTripResponse(trip);
-
+    
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

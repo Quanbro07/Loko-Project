@@ -223,106 +223,129 @@ const Plan = () => {
 
   // --- API 3: XÁC NHẬN KẾ HOẠCH (ACCEPT) ---
   const handleAccept = useCallback(async () => {
+    // 1. Kiểm tra dữ liệu
     if (!planData) {
-      alert("Chưa có kế hoạch!");
-      return;
+        alert("Chưa có dữ liệu kế hoạch!");
+        return;
     }
+
     let inputData = lastRequestData;
     if (!inputData) {
       try {
         const saved = localStorage.getItem("lastRequestData");
         if (saved) inputData = JSON.parse(saved);
-      } catch (e) {
-        console.error(e);
-      }
+      } catch (e) {}
     }
+
     if (!inputData) {
-      alert("Thiếu dữ liệu.");
+      alert("Dữ liệu tìm kiếm bị mất. Vui lòng thử lại!");
       return;
     }
 
-    // Lấy user id từ local storage (để tránh gửi null)
-    let currentUserId = null;
     try {
-      const userStr = localStorage.getItem("user");
-      if (userStr) {
-        const userObj = JSON.parse(userStr);
-        currentUserId = userObj.id || userObj.userId || userObj.user_id;
-      }
-    } catch (e) {}
+      console.log("🛠 Đang chuẩn bị dữ liệu Confirm...", inputData);
 
-    try {
       const headers = { "Content-Type": "application/json" };
       if (token) headers["Authorization"] = `Bearer ${token}`;
 
-      const weatherRequestPayload = {
-        provinceId: inputData.provinceId || 0,
-        provinceName: inputData.province,
-        startDate: inputData.startDate,
-        endDate: inputData.endDate,
-        fromOperateTime: (inputData.fromOperateTime || "08:00").substring(0, 5),
-        toOperateTime: (inputData.toOperateTime || "22:00").substring(0, 5),
+      // Helper: Chuẩn hóa giờ HH:mm
+      const fmtTime = (t) => {
+         if (!t) return "08:00"; 
+         if (typeof t === 'string' && t.length >= 5) return t.substring(0, 5);
+         return "08:00";
       };
 
+      // 2. TẠO PAYLOAD WEATHER
+      const weatherRequestPayload = {
+        provinceId: Number(inputData.provinceId) || 0,
+        provinceName: inputData.province || "",
+        startDate: inputData.startDate,
+        endDate: inputData.endDate,
+        fromOperateTime: fmtTime(inputData.fromOperateTime),
+        toOperateTime: fmtTime(inputData.toOperateTime),
+      };
+
+      // 3. TẠO PAYLOAD TRIP
       const tripRequestPayload = {
         tripName: planData.tripName || `Chuyến đi ${inputData.province}`,
         startDate: inputData.startDate,
         endDate: inputData.endDate,
-        fromOperationTime: weatherRequestPayload.fromOperateTime + ":00",
-        toOperationTime: weatherRequestPayload.toOperateTime + ":00",
-        numAdult: inputData.numAdults || 1,
-        numChild: inputData.numChildren || 0,
-        numElder: inputData.numElders || 0,
+        fromOperationTime: fmtTime(inputData.fromOperateTime),
+        toOperationTime: fmtTime(inputData.toOperateTime),
+        
+        numAdult: Number(inputData.numAdults) || 1,
+        numChild: Number(inputData.numChildren) || 0,
+        numElder: Number(inputData.numElders) || 0,
+
         tripSections: (planData.tripSections || []).map((section, index) => {
-          const baseDate = new Date(inputData.startDate);
-          baseDate.setDate(baseDate.getDate() + index);
-          const dateString = baseDate.toISOString().split("T")[0];
+          let dateString = section.date;
+          if (!dateString) {
+             const baseDate = new Date(inputData.startDate);
+             baseDate.setDate(baseDate.getDate() + index);
+             dateString = baseDate.toISOString().split("T")[0];
+          }
+
           return {
-            dayNumber: section.dayNumber,
-            date: section.date,
+            dayNumber: Number(section.dayNumber) || (index + 1), 
+            date: dateString,
             title: section.title || `Ngày ${index + 1}`,
-            tripDetails: (section.tripDetails || []).map((detail) => ({
-              startTime: (detail.startTime || "08:00").substring(0, 5),
-              endTime: (detail.endTime || "09:00").substring(0, 5),
-              activity: detail.activity || detail.description || "Tham quan",
-              description: detail.description || "",
-              price: detail.price || 0,
-              location: {
-                id: detail.location?.id,
-                latitude: parseFloat(
-                  detail.location?.latitude || detail.latitude || 0
-                ),
-                longitude: parseFloat(
-                  detail.location?.longitude || detail.longitude || 0
-                ),
-                locationName:
-                  detail.location?.location_name ||
-                  detail.title ||
-                  detail.locationName,
-                googlePlaceId:
-                  detail.location?.gg_place_id || detail.googlePlaceId,
-              },
-            })),
+            
+            tripDetails: (section.tripDetails || [])
+                .filter(d => d.location && d.location.id) 
+                .map((detail, idx) => ({
+                  startTime: fmtTime(detail.startTime),
+                  endTime: fmtTime(detail.endTime),
+                  activity: /*detail.activity || detail.description ||*/ "Tham quan",
+                  description: detail.description || "",
+                  price: Number(detail.price) || 0,
+                  
+                  // --- QUAN TRỌNG: GỬI FULL DATA ĐỂ TRÁNH LỖI 422 & 500 ---
+                  location: {
+                      id: Number(detail.location.id),
+                      locationName: detail.location.location_name || detail.location.locationName || "",
+                      latitude: detail.location.latitude || 0,
+                      longitude: detail.location.longitude || 0
+                  },
+                  sequenceOrder: idx + 1 // Đảm bảo luôn có thứ tự
+            }))
           };
         }),
       };
 
+      // 4. GÓI PAYLOAD FINAL
       const payload = {
-        trip_request: tripRequestPayload,
-        weather_request: weatherRequestPayload,
+        trip_request: tripRequestPayload
       };
+
+      // =================================================================
+      // 🔥 IN RA JSON ĐỂ KIỂM TRA (Sẽ hiện trong Tab Console F12)
+      // =================================================================
+      console.log("👇👇👇 ĐÂY LÀ FILE JSON SẼ GỬI ĐI 👇👇👇");
+      console.log(JSON.stringify(payload, null, 2)); 
+      // =================================================================
+
+      // 5. GỌI API
       const response = await axios.post(
         "http://localhost:8080/api/v1/make-plan/confirm",
         payload,
         { headers }
       );
-      const confirmedTrip = response.data.trip || response.data;
+
+      console.log("✅ Confirm Success:", response.data);
+      const confirmedTrip = response.data.trip || response.data; 
       navigate("/currentplan", { state: { finalPlan: confirmedTrip } });
+
     } catch (error) {
-      handleAPIError(error);
+      console.error("❌ Lỗi Confirm:", error);
+      if (error.response && error.response.data) {
+          // In chi tiết lỗi từ backend nếu có
+          console.log("🔥 LỖI TỪ BACKEND TRẢ VỀ:", JSON.stringify(error.response.data, null, 2));
+          alert("Lỗi Backend: " + JSON.stringify(error.response.data));
+      } else {
+          handleAPIError(error);
+      }
     }
   }, [navigate, planData, lastRequestData, token]);
-
   return (
     <div>
       <div className="homepage-background">
