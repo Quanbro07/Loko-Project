@@ -65,4 +65,6 @@ networks:
 
 volumes:
   db_data:
+    external: true
+    name: loko-project_db_data
 

@@ -109,6 +109,7 @@ public class MakePlanController {
             @AuthenticationPrincipal User user,
             @RequestBody ConfirmPlanRequest request
     ) {
+
         MakePlanResponse response = makePlanService.confirmMakePlan(request, user.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

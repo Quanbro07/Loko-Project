@@ -29,8 +29,7 @@ public class MasterScheduler {
 
     private final UserService userService;
 
-    // *Còn đang test
-    // @Scheduled(cron = "")
+    // *Test
     public void runSchedule() {
         LocalDate today = LocalDate.now();
 
@@ -46,17 +45,19 @@ public class MasterScheduler {
     // *Test
     @Scheduled(cron = "0 */3 * * * *")
     public void runDailySchedule() {
+        System.out.println("Run daily schedule");
         userService.downgradeUserSchedule();
     }
 
     // Test: mỗi 4 phút
     //@Scheduled(cron = "0 */4 * * * *")
 
-    // Rea: 0h moi 3 tháng
+    // Real: 0h moi 3 tháng
 
     // *Real
     @Scheduled(cron = "0 0 0 1 */3 ?")
     public void runQuarterlySchedule() {
+        System.out.println("Run quarterly schedule");
         runGetLocationsSchedule(LocalDate.now());
     }
 
