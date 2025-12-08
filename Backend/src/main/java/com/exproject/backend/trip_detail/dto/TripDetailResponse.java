@@ -3,6 +3,7 @@ package com.exproject.backend.trip_detail.dto;
 import com.exproject.backend.location.dto.LocationResponse;
 import com.exproject.backend.route.dto.RoutePathResponse;
 import com.exproject.backend.trip_detail.TripDetail;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,6 +33,7 @@ public class TripDetailResponse {
 
     private String transportNote;
 
+    @JsonProperty("activity")
     private String description;
 
     private LocationResponse location;

@@ -206,6 +206,22 @@ public class GlobalExceptionHandle {
                 );
     }
 
+    // Vượt ngưỡng RegenerateLimit
+    @ExceptionHandler(ExceededRegenerateLimitException.class)
+    public ResponseEntity<?> handlePasswordConflict(ExceededRegenerateLimitException ex) {
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(
+                        Map.of(
+                                "timestamp", LocalDateTime.now().toString(),
+                                "status", HttpStatus.CONFLICT.value(),
+                                "error", "Conflict",
+                                "message", ex.getMessage()
+                        )
+                );
+    }
+
     // Bắt Exception Còn lại
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleGenericException(Exception ex) {

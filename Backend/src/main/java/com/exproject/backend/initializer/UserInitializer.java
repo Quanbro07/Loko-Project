@@ -46,6 +46,10 @@ public class UserInitializer implements CommandLineRunner {
                     .dob(LocalDate.of(2006,1,6))
                     .role(Role.USER)
                     .gender(Gender.MALE)
+                    .makeFullPlanTime(1)
+                    .lastMakeFullPlanDate(LocalDate.now())
+                    .makePartPlanTime(3)
+                    .lastMakePartPlanDate(LocalDate.now())
                     .createAt(LocalDate.now())
                     .enabled(true)
                     .build();
@@ -62,9 +66,15 @@ public class UserInitializer implements CommandLineRunner {
             User existUser1 = checkExistUser1.get();
             existUser1.setPassword(passwordEncoder.encode("Quanbroisdead"));
             existUser1.setEnabled(true);
+            existUser1.setMakeFullPlanTime(1);
+            existUser1.setLastMakeFullPlanDate(LocalDate.now());
+            existUser1.setMakePartPlanTime(3);
+            existUser1.setLastMakePartPlanDate(LocalDate.now());
+
             userRepository.save(existUser1);
             System.out.println("User 1 existed. Forced ENABLED = true and reset password.");
         }
+
 
         // User2 chua co
         // Mồi vào DB
