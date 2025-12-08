@@ -9,6 +9,8 @@ import VisitedMap from "../Map/VisitedMap";
 import { useLanguage } from "../Language/LanguageContext";
 import { useAuth } from "../Auth/AuthContext";
 import TripHistory from "../TripHistory/TripHistory";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // === BẢNG MAPPING: BACKEND ENUM -> GEOJSON SLUG ===
 const PROVINCE_MAPPING = {
@@ -51,23 +53,28 @@ const PROVINCE_MAPPING = {
 const User = () => {
   const { user, token, setUser } = useAuth();
   const { translate } = useLanguage();
+  const navigate = useNavigate();
+
+  // --- KIỂM TRA ROLE PREMIUM ---
+  const isVip = user?.role === 'VIP' || user?.role === 'ADMIN';
 
   // --- STATE QUẢN LÝ UI ---
   const [isEditing, setIsEditing] = useState(false);
-  const [activeSection, setActiveSection] = useState("map");
+  // Nếu là VIP thì mặc định hiện map, nếu không thì rỗng (hoặc hiện banner)
+  const [activeSection, setActiveSection] = useState(isVip ? "map" : "");
+  
   const [toast, setToast] = useState({
     show: false,
     message: "",
     type: "success",
-  }); // Thêm state cho Toast
+  });
 
-  // Helper hiển thị thông báo
   const showToast = (message, type = "success") => {
     setToast({ show: true, message, type });
     setTimeout(() => setToast({ ...toast, show: false }), 3000);
   };
 
-  // Format Date Helper
+  // Helper date
   const formatDateForInput = (dateData) => {
     if (!dateData) return "";
     if (Array.isArray(dateData)) {
@@ -338,6 +345,36 @@ const User = () => {
     }
   };
 
+  // --- HÀM XỬ LÝ KHI BẤM NÚT TAB (PHÂN QUYỀN) ---
+  const handleTabClick = (tabName) => {
+    if (!isVip) {
+      showToast("Tính năng này chỉ dành cho thành viên Premium!", "warning");
+      return;
+    }
+    setActiveSection(tabName);
+  };
+
+  // --- HÀM XỬ LÝ KHI PREMIUM BẤM VÀO 1 CHUYẾN ĐI TRONG LỊCH SỬ ---
+  const handleSelectTripFromHistory = async (tripId) => {
+    if (!tripId) return;
+    try {
+      // Gọi API lấy chi tiết chuyến đi
+      const response = await axios.get(`http://localhost:8080/api/v1/trip/get/${tripId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (response.data) {
+        console.log("Xem lại chuyến đi:", response.data);
+        navigate("/currentplan", { 
+            state: { finalPlan: response.data } 
+        });
+      }
+    } catch (error) {
+      console.error("Lỗi tải chuyến đi:", error);
+      showToast("Không thể tải dữ liệu chuyến đi này.", "error");
+    }
+  };
+
   return (
     <div className="user-page-background">
       <Navbar />
@@ -350,7 +387,9 @@ const User = () => {
             alt="Plane Ticket"
             className="plane-icon"
           />
-          <div className="ticket-company">LOKO</div>
+          <div className="ticket-company">
+            LOKO {isVip && <span style={{color:'gold', fontSize:'0.6em', marginLeft:'5px'}}>PREMIUM</span>}
+          </div>
         </div>
 
         {isEditing && (
@@ -448,9 +487,10 @@ const User = () => {
             <div className="info-item">
               <div className="label">Ngày tham gia</div>
               <div className="value">
-{user?.createAt 
-      ? formatDateForDisplay(formatDateForInput(user.createAt)) 
-      : "01/01/2023"}              </div>
+                {user?.createAt 
+                  ? formatDateForDisplay(formatDateForInput(user.createAt)) 
+                  : "01/01/2023"}
+              </div>
             </div>
             <div className="info-item">
               <div className="label">Số tỉnh/thành đã đi cùng LOKO</div>
@@ -507,23 +547,32 @@ const User = () => {
           </div>
         </div>
 
+        {/* --- FOOTER: PHÂN QUYỀN NÚT BẤM --- */}
         <div className="ticket-footer">
+          {/* NÚT LỊCH SỬ CHUYẾN ĐI (CHỈ VIP) */}
           <button
             className={`travel-history ${
               activeSection === "history" ? "active-tab" : ""
-            }`}
-            onClick={() => setActiveSection("history")}
+            } ${!isVip ? "disabled-btn" : ""}`}
+            onClick={() => handleTabClick("history")}
+            style={!isVip ? { opacity: 0.6, cursor: 'not-allowed', filter: 'grayscale(100%)' } : {}}
           >
-            {translate("travel_history_button")}
+            <span>{translate("travel_history_button")}</span>
+            {!isVip && <span className="lock-icon">🔒</span>}
           </button>
+
+          {/* NÚT THÀNH TỰU (CHỈ VIP) */}
           <button
             className={`travel-history ${
               activeSection === "map" ? "active-tab" : ""
-            }`}
-            onClick={() => setActiveSection("map")}
+            } ${!isVip ? "disabled-btn" : ""}`}
+            onClick={() => handleTabClick("map")}
+            style={!isVip ? { opacity: 0.6, cursor: 'not-allowed', filter: 'grayscale(100%)' } : {}}
           >
             {translate("travel_achievement_button")}
+            {!isVip && " 🔒"}
           </button>
+          
           <img src={barcodeSample} className="barcode-img" alt="barcode" />
         </div>
       </div>
@@ -531,23 +580,67 @@ const User = () => {
 
       {/* === NỘI DUNG SLIDE (NẰM BÊN NGOÀI VÉ ĐỂ TRƯỢT LÊN XUỐNG) === */}
       <div className="content-stack-wrapper">
-        <div
-          className={`content-stack-item history-stack ${
-            activeSection === "history" ? "active" : ""
-          }`}
-          aria-hidden={activeSection !== "history"}
-        >
-          <TripHistory />
+        {/* Chỉ VIP mới thấy nội dung bên dưới */}
+        {isVip ? (
+          <>
+            <div
+              className={`content-stack-item history-stack ${
+                activeSection === "history" ? "active" : ""
+              }`}
+              aria-hidden={activeSection !== "history"}
+            >
+              <TripHistory onSelectTrip={handleSelectTripFromHistory} />
+            </div>
+            <div
+              className={`content-stack-item map-stack ${
+                activeSection === "map" ? "active" : ""
+              }`}
+              aria-hidden={activeSection !== "map"}
+            >
+              <VisitedMap visited={visitedSlugs} />
+            </div>
+          </>
+        ) : (
+          // USER THƯỜNG: Hiện Banner quảng cáo hoặc thông báo
+          <div className="premium-upgrade-container">
+      <div className="premium-banner-content">
+        <div className="premium-text-section">
+          <h3>
+            <span className="crown-icon">👑</span> Nâng tầm trải nghiệm cùng LOKO Premium
+          </h3>
+          <p className="premium-subtitle">
+            Mở khóa toàn bộ tính năng và lưu giữ hành trình của bạn mãi mãi.
+          </p>
+          <ul className="premium-benefits-list">
+            <li>
+              <span className="check-icon">✓</span> <span> Xem lại toàn bộ <strong> Lịch sử chuyến đi</strong>.</span>
+            </li>
+            <li>
+              <span className="check-icon">✓</span> <span>Khoe chiến tích với <strong> Bản đồ thành tựu</strong>.</span>
+            </li>
+            <li>
+              <span className="check-icon">✓</span> <span><strong>Không giới hạn </strong> lượt tạo và tìm kiếm lịch trình.</span>
+            </li>
+            <li>
+              <span className="check-icon">✓</span> <span>Xuất lịch trình ra file  <strong> PDF</strong>.</span>
+            </li>
+          </ul>
+          <button 
+              className="upgrade-button"
+              onClick={() => {
+                  navigate('/purchase');
+              }}
+          >
+            Khám phá Premium ngay
+          </button>
         </div>
-        <div
-          className={`content-stack-item map-stack ${
-            activeSection === "map" ? "active" : ""
-          }`}
-          aria-hidden={activeSection !== "map"}
-        >
-          {/* Map nằm ở đây, được CSS phóng to và căn giữa */}
-          <VisitedMap visited={visitedSlugs} />
-        </div>
+        {/* Bạn có thể thêm một hình ảnh minh họa ở đây nếu muốn */}
+        {/* <div className="premium-image-section">
+            <img src="/img/premium-travel-illustration.png" alt="Premium Travel" />
+        </div> */}
+      </div>
+    </div>
+        )}
       </div>
 
       <Footer />

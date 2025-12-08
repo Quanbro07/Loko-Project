@@ -2,6 +2,8 @@ import httpx
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
 from app.core.config import settings
+# Import hàm map ID -> Tên tỉnh
+from app.core.mappings import get_province_name_by_id
 from app.schemas.weather_dto import (
     WeatherRequest, WeatherResponse, DayWeatherScope, 
     HourlyWeather, Condition, WeatherAlertDetail
@@ -31,6 +33,12 @@ class WeatherService:
             print(f"❌ Date/Time format error: {e}")
             return WeatherResponse(scopes=[], alerts=[])
 
+        # --- LOGIC MỚI: Lấy tên địa điểm từ ID thay vì dùng trực tiếp provinceName ---
+        search_query = get_province_name_by_id(request.provinceId)
+
+        print(f"👉 [WEATHER DEBUG] ID: {request.provinceId} -> Mapped Query: '{search_query}'")
+        # ---------------------------------------------------------------------------
+
         # Chuẩn bị container dữ liệu
         all_hours_map = {} # Key: epoch timestamp, Value: data object
         alerts_response = []
@@ -41,11 +49,9 @@ class WeatherService:
             # Chỉ chạy nếu startDate < today
             
             # URL cho history (thay thế forecast.json bằng history.json)
-            # Giả định base_url dạng "http://.../v1/forecast.json"
             history_base_url = self.base_url.replace("forecast.json", "history.json")
             
             # Duyệt từ ngày bắt đầu chuyến đi đến ngày kết thúc HOẶC ngày hôm qua (tùy cái nào đến trước)
-            # Vì Forecast API sẽ lo từ ngày 'today' trở đi.
             iter_date = trip_start_date
             
             while iter_date.date() < today_date and iter_date <= trip_end_date:
@@ -56,8 +62,8 @@ class WeatherService:
                     dt_str = iter_date.strftime("%Y-%m-%d")
                     params_hist = {
                         'key': self.api_key,
-                        'q': request.provinceName,
-                        'dt': dt_str, # YYYY-MM-DD
+                        'q': search_query, # Sử dụng tên map từ ID
+                        'dt': dt_str,
                         'lang': 'vi'
                     }
                     
@@ -84,13 +90,12 @@ class WeatherService:
             if trip_end_date.date() >= today_date:
                 
                 # Tính toán số ngày cần request tính từ Hôm Nay
-                # Days needed = (TripEnd - Today).days + 1 + buffer
                 days_diff = (trip_end_date - now).days + 2
                 days_to_request = max(1, days_diff)
 
                 params_forecast = {
                     'key': self.api_key,
-                    'q': request.provinceName,
+                    'q': search_query, # Sử dụng tên map từ ID
                     'days': days_to_request,
                     'aqi': 'no',
                     'alerts': 'yes',
@@ -116,8 +121,6 @@ class WeatherService:
                         forecast_days = data_fore.get('forecast', {}).get('forecastday', [])
                         for fday in forecast_days:
                             for hour_data in fday.get('hour', []):
-                                # Logic ghi đè: Nếu key đã tồn tại (từ history) thì forecast sẽ ghi đè,
-                                # nhưng về lý thuyết time_epoch sẽ không trùng giữa history và forecast
                                 all_hours_map[hour_data['time_epoch']] = hour_data
                     else:
                         print(f"⚠️ Forecast API Error: {resp_fore.text}")
@@ -126,7 +129,6 @@ class WeatherService:
                     print(f"⚠️ Forecast Connection Error: {e}")
 
         # 3. Xây dựng Scopes theo lịch trình chuyến đi (LOGIC CŨ KHÔNG ĐỔI)
-        # Vì all_hours_map giờ đã chứa cả data quá khứ và tương lai
         scopes_response = []
         
         current_date = trip_start_date

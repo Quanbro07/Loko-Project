@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.exproject.backend.province.ProvinceRepository;
 import com.exproject.backend.province.info.Province;
 import com.exproject.backend.trip.TripMapper;
+import com.exproject.backend.trip_section.TripSection;
 import com.exproject.backend.user.UserRepository;
 import com.exproject.backend.user.info.User;
 import com.exproject.backend.user.info.Role;
@@ -31,10 +32,12 @@ import com.exproject.backend.trip.dto.TripRequest;
 import com.exproject.backend.trip.dto.TripResponse;
 import com.exproject.backend.trip_detail.dto.TripDetailRequest;
 import com.exproject.backend.trip_section.dto.TripSectionRequest;
+import com.exproject.backend.weather.WeatherMapper;
 import com.exproject.backend.weather.WeatherService;
 import com.exproject.backend.weather.dto.WeatherRequest;
 import com.exproject.backend.weather.dto.WeatherRequestFE;
 import com.exproject.backend.weather.dto.WeatherResponse;
+import com.exproject.backend.weather.info.WeatherSection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,7 +67,10 @@ public class MakePlanService {
     private final TripPdfService tripPdfService;
 
     private final ProvinceRepository provinceRepository;
+
     private final TripMapper tripMapper;
+
+    private final WeatherMapper weatherMapper;
 
     // ** Make Plan
     @Transactional(readOnly = true)
@@ -180,6 +186,7 @@ public class MakePlanService {
             for(int i = 0 ; i < section.getTripDetails().size(); i++) {
 
                 TripDetailRequest detail = section.getTripDetails().get(i);
+
                 // Neu Detail khong nằm trong rejected detail thì bỏ qua
                 if(!rejectedDetailIds.contains(detail.getTempId())) {
                     continue;
@@ -211,6 +218,10 @@ public class MakePlanService {
                 Set<Long> categoryIds = rejected_location.getCategories().stream()
                         .map(LocationCategoryDTO::getId)
                         .collect(Collectors.toSet());
+
+                // Log ra check thử
+                System.out.println("Đang tìm thay thế cho ID: " + rejected_location.getId());
+                System.out.println("Danh sách bị loại trừ hiện tại: " + excludedLocationIds);
 
                 // Tìm start và end (Neighbors)
                 LocationDTO start = (i > 0) ? section.getTripDetails().get(i-1).getLocation() : null;
@@ -345,13 +356,25 @@ public class MakePlanService {
         // Lấy provinceId
         Long provinceId = tripService.findProvinceIdFromSections(tripEntity.getTripSections());
 
-        // TODO: Nhớ bò comment
-        // TODO: Comment để test cái này python đang chạy ko dc
-        /*if(provinceId != null) {
+        if(provinceId != null) {
+            System.out.println("Zo check provinceId thành cộng");
             // Hàm này sẽ tự check ngày, gọi API AI, lưu DB
             // VÀ QUAN TRỌNG: Nó phải set ngược lại WeatherSection vào tripEntity.getTripSections()
             tripService.processWeatherForTripSection(tripEntity, tripEntity.getTripSections(), provinceId);
-        }*/
+        }
+
+        List<TripSection> sectionsToFetch = tripEntity.getTripSections();
+
+        // Tạo Weather Response
+        List<WeatherSection> validWeatherSections = sectionsToFetch.stream()
+                .map(TripSection::getWeatherSection)
+                .filter(Objects::nonNull) // <--- QUAN TRỌNG
+                .collect(Collectors.toList());
+
+        WeatherResponse weatherResponse = null;
+        if(!validWeatherSections.isEmpty()) {
+            weatherResponse = weatherMapper.toWeatherResponse(tripEntity,validWeatherSections);
+        }
 
         // Tạo lại Trip Response
         TripResponse tripResponse = tripMapper.toTripResponse(tripEntity);
@@ -361,9 +384,14 @@ public class MakePlanService {
 
         // Set vào DTO
         makePlanResponse.setTripPlan(tripResponse);
+
+
+        makePlanResponse.setWeather(weatherResponse);
+
         makePlanResponse.setRoute(routeResponse);
 
         if (isVIP(user)) {
+
 
             byte[] pdfBytes = tripPdfService.generateTripPdf(tripRequest);
             // Lưu PDF vào trip mối quan hệ 1:1

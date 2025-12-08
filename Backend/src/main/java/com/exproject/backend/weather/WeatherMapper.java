@@ -71,6 +71,7 @@ public class WeatherMapper {
         hourlyWeatherResponse.setCondition(condition);
         hourlyWeatherResponse.setTempC(hourlyWeather.getTemperatureC());
         hourlyWeatherResponse.setTime(hourlyWeather.getDateTime());
+        hourlyWeatherResponse.setWillRain(hourlyWeather.getWillItRain());
 
         return hourlyWeatherResponse;
     }
