@@ -10,7 +10,7 @@ import CurrentPlace from "../CurrentPlace/CurrentPlace";
 import WeatherForecast from "../WeatherForecast/WeatherForecast";
 import TripHistory from "../TripHistory/TripHistory";
 import { FaArrowLeft } from "react-icons/fa";
-import PremiumFeature from "../PremiumFeature/PremiumFeature"; 
+import PremiumFeature from "../PremiumFeature/PremiumFeature";
 import axios from "axios";
 
 const CurrentPlan = () => {
@@ -21,6 +21,8 @@ const CurrentPlan = () => {
 
   const [viewMode, setViewMode] = useState(receivedPlan ? "detail" : "history");
   const [isLoading, setIsLoading] = useState(false);
+
+  // Dữ liệu chuyến đi
   const [tripData, setTripData] = useState(null);
   const [routeData, setRouteData] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
@@ -38,12 +40,15 @@ const CurrentPlan = () => {
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
 
+      console.log(`🔄 Fetching Trip ID: ${tripId}`);
+
       const response = await axios.get(
         `http://localhost:8080/api/v1/trip/get`,
         { params: { tripId: tripId }, headers: headers }
       );
 
       const data = response.data;
+      // Bắt lỗi cấu trúc dữ liệu linh hoạt (Snake/Camel)
       let extractedTrip = data.tripPlan || data.trip_plan || data;
       const extractedRoute = data.route || null;
       const extractedWeather = data.weather || null;
@@ -53,14 +58,16 @@ const CurrentPlan = () => {
         setRouteData(extractedRoute);
         setWeatherData(extractedWeather);
 
-        // --- 👇 KHÔI PHỤC TIẾN ĐỘ TỪ DB 👇 ---
-        // Giả sử Backend trả về field: currentDayIndex và currentPlaceIndex trong object Trip
-        const savedDay =
-          extractedTrip.currentDayIndex || extractedTrip.current_day_index || 0;
-        const savedPlace =
-          extractedTrip.currentPlaceIndex ||
-          extractedTrip.current_place_index ||
-          0;
+        // --- 👇 KHÔI PHỤC TIẾN ĐỘ TỪ DB (FIX NUMBER) 👇 ---
+        // Ép kiểu Number để đảm bảo không bị lỗi so sánh chuỗi
+        const savedDay = Number(
+          extractedTrip.currentDayIndex ?? extractedTrip.current_day_index ?? 0
+        );
+        const savedPlace = Number(
+          extractedTrip.currentPlaceIndex ??
+            extractedTrip.current_place_index ??
+            0
+        );
 
         console.log(
           `📥 Restoring Progress: Day ${savedDay}, Place ${savedPlace}`
@@ -86,14 +93,15 @@ const CurrentPlan = () => {
       setRouteData(data.route || null);
       setWeatherData(data.weather || null);
 
-      // Nếu là plan mới tạo thì start từ 0
       setCurrentDayIndex(0);
       setCurrentPlaceIndex(0);
       setViewMode("detail");
     }
   }, [receivedPlan]);
 
-  // ... (Giữ nguyên logic tính toán tripSections, itineraryPoints như cũ) ...
+  // --- TÍNH TOÁN DỮ LIỆU ---
+
+  // 1. Lấy Trip Sections
   const tripSections = useMemo(() => {
     if (!tripData) return [];
     return tripData.tripSections || tripData.trip_sections || [];
@@ -101,13 +109,33 @@ const CurrentPlan = () => {
 
   const tripId = tripData?.tripId || tripData?.trip_id;
 
+  // 2. Lấy Danh sách địa điểm ngày hiện tại
   const scheduleForCurrentDay = useMemo(() => {
-    if (tripSections && tripSections[currentDayIndex]) {
+    // Kiểm tra an toàn để tránh crash
+    if (
+      tripSections &&
+      Array.isArray(tripSections) &&
+      tripSections[currentDayIndex]
+    ) {
       const section = tripSections[currentDayIndex];
       return section.tripDetails || section.trip_details || [];
     }
     return [];
   }, [tripSections, currentDayIndex]);
+
+  // LOG DEBUG: Kiểm tra xem tại sao không hiện
+  useEffect(() => {
+    if (tripData) {
+      console.log(
+        `📊 Day Index: ${currentDayIndex}, Places Count: ${scheduleForCurrentDay.length}`
+      );
+      if (scheduleForCurrentDay.length === 0) {
+        console.warn(
+          "⚠️ Warning: No places found for current day. CurrentPlace will be hidden."
+        );
+      }
+    }
+  }, [scheduleForCurrentDay, currentDayIndex, tripData]);
 
   const itineraryPoints = useMemo(() => {
     return scheduleForCurrentDay
@@ -133,7 +161,6 @@ const CurrentPlan = () => {
   return (
     <div>
       <Navbar />
-  
       <div className="body-container">
         {viewMode === "history" && (
           <div style={{ padding: "20px", minHeight: "60vh" }}>
@@ -179,7 +206,7 @@ const CurrentPlan = () => {
                       currentDayIndex={currentDayIndex}
                       setCurrentDayIndex={(idx) => {
                         setCurrentDayIndex(idx);
-                        setCurrentPlaceIndex(0);
+                        setCurrentPlaceIndex(0); // Reset place về 0 khi đổi ngày
                       }}
                       tripSections={tripSections}
                       tripId={tripId}
@@ -187,35 +214,42 @@ const CurrentPlan = () => {
                   </div>
                   <div className="weather-section-below">
                     <PremiumFeature fallbackText="Dự báo thời tiết chi tiết chỉ dành cho Premium">
-                        <WeatherForecast currentDayIndex={currentDayIndex} 
-                          data={weatherData}
-                        />
+                      <WeatherForecast
+                        currentDayIndex={currentDayIndex}
+                        data={weatherData}
+                      />
                     </PremiumFeature>
                   </div>
                 </div>
 
+                {/* --- RENDER CURRENT PLACE --- */}
                 {scheduleForCurrentDay.length > 0 ? (
                   <div className="current-plan-content">
-                    {/* 👇 CurrentPlace sẽ lo việc gọi API Update Progress 👇 */}
                     <CurrentPlace
                       scheduleData={scheduleForCurrentDay}
                       currentIndex={currentPlaceIndex}
                       setCurrentIndex={setCurrentPlaceIndex}
                       tripId={tripId}
-                      dayIndex={currentDayIndex + 1} // Index hiển thị (1-based)
-                      rawDayIndex={currentDayIndex} // Index thực (0-based) để gửi API
+                      dayIndex={currentDayIndex + 1}
+                      rawDayIndex={currentDayIndex}
                       isLastDay={isLastDay}
                     />
-                    <div style={{ width: '100%', height: '600px', position: 'relative' }}>
-        <PremiumFeature fallbackText="Bản đồ tương tác chỉ dành cho Premium">
-            <MyLeafletMap
-                itineraryPoints={itineraryPoints}
-                currentIndex={currentPlaceIndex}
-                currentDayIndex={currentDayIndex}
-                routeData={routeData}
-            />
-        </PremiumFeature>
-    </div>
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "600px",
+                        position: "relative",
+                      }}
+                    >
+                      <PremiumFeature fallbackText="Bản đồ tương tác chỉ dành cho Premium">
+                        <MyLeafletMap
+                          itineraryPoints={itineraryPoints}
+                          currentIndex={currentPlaceIndex}
+                          currentDayIndex={currentDayIndex}
+                          routeData={routeData}
+                        />
+                      </PremiumFeature>
+                    </div>
                   </div>
                 ) : (
                   <div className="current-plan-empty-state">
