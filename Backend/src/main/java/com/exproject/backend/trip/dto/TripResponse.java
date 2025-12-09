@@ -38,6 +38,10 @@ public class TripResponse {
 
     private LocalDateTime createAt;
 
+    private Long currentTripSectionId;
+
+    private Long currentTripDetailId;
+
     private List<TripSectionResponse> tripSections;
 
 }

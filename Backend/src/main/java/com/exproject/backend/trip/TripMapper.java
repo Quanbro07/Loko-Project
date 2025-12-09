@@ -39,6 +39,8 @@ public class TripMapper {
         tripResponse.setNumChild(trip.getNumChild());
         tripResponse.setStatus(trip.getStatus());
         tripResponse.setCreateAt(trip.getCreateAt());
+        tripResponse.setCurrentTripSectionId(trip.getCurrentTripSectionId());
+        tripResponse.setCurrentTripDetailId(trip.getCurrentTripDetailId());
 
         List<TripSectionResponse> sectionResponses = trip.getTripSections().stream()
                 .map(this::toTripSectionResponse)
