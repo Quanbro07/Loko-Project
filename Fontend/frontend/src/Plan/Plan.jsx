@@ -13,26 +13,28 @@ import axios from "axios";
 
 const Plan = () => {
   const { user, token } = useAuth();
-  const isVip = user?.role === 'VIP' || user?.role === 'ADMIN';
+  const isVip = user?.role === "VIP" || user?.role === "ADMIN";
   const { translate } = useLanguage();
   const navigate = useNavigate();
 
   // --- CẤU HÌNH GIỚI HẠN (CONFIG) ---
-  const LIMIT_SEARCH_USER = 1;   // User thường: 1 lần tìm/ngày
-  const LIMIT_SEARCH_VIP = 10;   // VIP: 10 lần tìm/ngày
-  
-  const LIMIT_RETRY_USER = 3;    // User thường: 3 lần thử lại
-  const LIMIT_RETRY_VIP = 9999;  // VIP: Vô hạn (đặt số lớn)
+  const LIMIT_SEARCH_USER = 1; // User thường: 1 lần tìm/ngày
+  const LIMIT_SEARCH_VIP = 10; // VIP: 10 lần tìm/ngày
+
+  const LIMIT_RETRY_USER = 3; // User thường: 3 lần thử lại
+  const LIMIT_RETRY_VIP = 9999; // VIP: Vô hạn (đặt số lớn)
 
   // --- STATE ---
   const [isSearching, setIsSearching] = useState(false);
   const [isResultShown, setIsResultShown] = useState(false);
   const [searchIteration, setSearchIteration] = useState(0);
   const [planData, setPlanData] = useState(null);
-  
+
   // Khởi tạo số lần thử lại dựa trên quyền hạn
-  const [tryCount, setTryCount] = useState(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
-  
+  const [tryCount, setTryCount] = useState(
+    isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER
+  );
+
   const [lastRequestData, setLastRequestData] = useState(null);
   const [initialTotalItems, setInitialTotalItems] = useState(0);
   const [outputStats, setOutputStats] = useState({ total: 0, rejected: 0 });
@@ -40,7 +42,7 @@ const Plan = () => {
 
   // Cập nhật lại tryCount khi user đăng nhập/đổi quyền
   useEffect(() => {
-      setTryCount(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
+    setTryCount(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
   }, [isVip]);
 
   const countTotalItems = (plan) => {
@@ -59,10 +61,13 @@ const Plan = () => {
     let msg = "Có lỗi xảy ra";
     if (error.response) {
       if (error.response.status === 403) {
-        msg = "Phiên đăng nhập hết hạn hoặc không đủ quyền. Vui lòng đăng nhập lại.";
+        msg =
+          "Phiên đăng nhập hết hạn hoặc không đủ quyền. Vui lòng đăng nhập lại.";
       } else {
         const data = error.response.data;
-        msg = `Lỗi ${error.response.status}: ${data?.message || data?.error || JSON.stringify(data)}`;
+        msg = `Lỗi ${error.response.status}: ${
+          data?.message || data?.error || JSON.stringify(data)
+        }`;
       }
     } else if (error.request) {
       msg = "Không thể kết nối đến Server";
@@ -76,20 +81,24 @@ const Plan = () => {
 
   // --- HÀM KIỂM TRA GIỚI HẠN TÌM KIẾM TRONG NGÀY ---
   const checkSearchLimit = () => {
-    const today = new Date().toISOString().split('T')[0]; // Lấy ngày YYYY-MM-DD
+    const today = new Date().toISOString().split("T")[0]; // Lấy ngày YYYY-MM-DD
     const storageKey = `search_cnt_${user?.id}_${today}`;
     const currentCount = parseInt(localStorage.getItem(storageKey) || "0");
     const maxLimit = isVip ? LIMIT_SEARCH_VIP : LIMIT_SEARCH_USER;
 
     if (currentCount >= maxLimit) {
-        alert(`Bạn đã dùng hết ${currentCount}/${maxLimit} lượt tạo lịch trình hôm nay. ${!isVip ? 'Nâng cấp Premium để có thêm lượt!' : ''}`);
-        return false;
+      alert(
+        `Bạn đã dùng hết ${currentCount}/${maxLimit} lượt tạo lịch trình hôm nay. ${
+          !isVip ? "Nâng cấp Premium để có thêm lượt!" : ""
+        }`
+      );
+      return false;
     }
     return true;
   };
 
   const incrementSearchCount = () => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split("T")[0];
     const storageKey = `search_cnt_${user?.id}_${today}`;
     const currentCount = parseInt(localStorage.getItem(storageKey) || "0");
     localStorage.setItem(storageKey, currentCount + 1);
@@ -138,7 +147,7 @@ const Plan = () => {
         (item) => item && item.trip_detail_id && item.location_id
       );
       const planToSend = current_trip_plan;
-      
+
       if (!planToSend) {
         alert("Lỗi dữ liệu plan.");
         setIsSearching(false);
@@ -160,7 +169,8 @@ const Plan = () => {
           { headers }
         );
 
-        const newTripData = response.data.newTrip || response.data.new_trip_plan || response.data;
+        const newTripData =
+          response.data.newTrip || response.data.new_trip_plan || response.data;
         setPlanData(newTripData);
         setSearchIteration((prev) => prev + 1);
       } catch (error) {
@@ -183,10 +193,10 @@ const Plan = () => {
 
       setLastRequestData(requestData);
       localStorage.setItem("lastRequestData", JSON.stringify(requestData));
-      
+
       // 3. Reset số lần thử lại (User=3, VIP=9999)
       setTryCount(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
-      
+
       callMakePlanApi(requestData);
     },
     [callMakePlanApi, isVip, user]
@@ -197,13 +207,17 @@ const Plan = () => {
     (newRejectedItems = []) => {
       // Kiểm tra số lượt còn lại
       if (tryCount <= 0) {
-          alert(!isVip ? "Bạn đã hết lượt thử lại. Nâng cấp Premium để không giới hạn!" : "Đã đạt giới hạn hệ thống.");
-          return;
+        alert(
+          !isVip
+            ? "Bạn đã hết lượt thử lại. Nâng cấp Premium để không giới hạn!"
+            : "Đã đạt giới hạn hệ thống."
+        );
+        return;
       }
 
       // Giảm số lượt (Nếu là VIP thì không cần giảm, hoặc giảm từ số rất lớn)
       if (!isVip) {
-          setTryCount((prev) => prev - 1);
+        setTryCount((prev) => prev - 1);
       }
       // Nếu là VIP, ta có thể giữ nguyên số 9999 hoặc giảm cũng được vì nó quá lớn
 
@@ -249,13 +263,16 @@ const Plan = () => {
       allRejectedItems,
       callMakePlanApi,
       callRegeneratePartAPI,
-      isVip 
+      isVip,
     ]
   );
 
   // --- API 3: XÁC NHẬN (CONFIRM) ---
   const handleAccept = useCallback(async () => {
-    if (!planData) { alert("Chưa có dữ liệu kế hoạch!"); return; }
+    if (!planData) {
+      alert("Chưa có dữ liệu kế hoạch!");
+      return;
+    }
 
     let inputData = lastRequestData;
     if (!inputData) {
@@ -264,14 +281,20 @@ const Plan = () => {
         if (saved) inputData = JSON.parse(saved);
       } catch (e) {}
     }
-    if (!inputData) { alert("Dữ liệu input bị mất."); return; }
+    if (!inputData) {
+      alert("Dữ liệu input bị mất.");
+      return;
+    }
 
     try {
       console.log("🛠 Đang Confirm...");
       const headers = { "Content-Type": "application/json" };
       if (token) headers["Authorization"] = `Bearer ${token}`;
 
-      const fmtTime = (t) => (t && typeof t === 'string' && t.length >= 5) ? t.substring(0, 5) : "08:00";
+      const fmtTime = (t) =>
+        t && typeof t === "string" && t.length >= 5
+          ? t.substring(0, 5)
+          : "08:00";
 
       const weatherRequestPayload = {
         provinceId: Number(inputData.provinceId) || 0,
@@ -294,45 +317,58 @@ const Plan = () => {
         tripSections: (planData.tripSections || []).map((section, index) => {
           let dateString = section.date;
           if (!dateString) {
-             const baseDate = new Date(inputData.startDate);
-             baseDate.setDate(baseDate.getDate() + index);
-             dateString = baseDate.toISOString().split("T")[0];
+            const baseDate = new Date(inputData.startDate);
+            baseDate.setDate(baseDate.getDate() + index);
+            dateString = baseDate.toISOString().split("T")[0];
           }
           return {
-            dayNumber: Number(section.dayNumber) || (index + 1), 
+            dayNumber: Number(section.dayNumber) || index + 1,
             date: dateString,
             title: section.title || `Ngày ${index + 1}`,
-            tripDetails: (section.tripDetails || []).filter(d => d.location && d.location.id).map((detail, idx) => ({
-                  startTime: fmtTime(detail.startTime),
-                  endTime: fmtTime(detail.endTime),
-                  activity: detail.activity,
-                  price: Number(detail.price) || 0,
-                  description: detail.description || "",
-                  location: {
-                      id: Number(detail.location.id),
-                      locationName: detail.location.location_name || detail.location.locationName || "",
-                      latitude: detail.location.latitude || 0,
-                      longitude: detail.location.longitude || 0
-                  },
-                  sequenceOrder: idx + 1
-            }))
+            tripDetails: (section.tripDetails || [])
+              .filter((d) => d.location && d.location.id)
+              .map((detail, idx) => ({
+                startTime: fmtTime(detail.startTime),
+                endTime: fmtTime(detail.endTime),
+                activity: detail.activity,
+                price: Number(detail.price) || 0,
+                description: detail.description || "",
+                location: {
+                  id: Number(detail.location.id),
+                  locationName:
+                    detail.location.location_name ||
+                    detail.location.locationName ||
+                    "",
+                  latitude: detail.location.latitude || 0,
+                  longitude: detail.location.longitude || 0,
+                },
+                sequenceOrder: idx + 1,
+              })),
           };
         }),
       };
 
-      const payload = { trip_request: tripRequestPayload, weather_request: weatherRequestPayload };
+      const payload = {
+        trip_request: tripRequestPayload,
+        weather_request: weatherRequestPayload,
+      };
       console.log("JSON Confirm:", JSON.stringify(payload));
 
-      const response = await axios.post("http://localhost:8080/api/v1/make-plan/confirm", payload, { headers });
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/make-plan/confirm",
+        payload,
+        { headers }
+      );
       console.log("Success:", response.data);
-      const confirmedTrip = response.data.trip || response.data; 
+      const confirmedTrip = response.data.trip || response.data;
       navigate("/currentplan", { state: { finalPlan: confirmedTrip } });
-
     } catch (error) {
       console.error("Lỗi Confirm:", error);
       if (error.response && error.response.data) {
-          alert("Lỗi Backend: " + JSON.stringify(error.response.data));
-      } else { handleAPIError(error); }
+        alert("Lỗi Backend: " + JSON.stringify(error.response.data));
+      } else {
+        handleAPIError(error);
+      }
     }
   }, [navigate, planData, lastRequestData, token]);
 
