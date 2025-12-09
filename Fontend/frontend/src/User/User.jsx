@@ -10,6 +10,7 @@ import { useLanguage } from "../Language/LanguageContext";
 import { useAuth } from "../Auth/AuthContext";
 import TripHistory from "../TripHistory/TripHistory";
 import { useNavigate } from "react-router-dom";
+import PremiumFeature from "../PremiumFeature/PremiumFeature"; 
 import axios from "axios";
 
 // === BẢNG MAPPING TỈNH THÀNH (Giữ nguyên) ===
@@ -40,6 +41,15 @@ const User = () => {
   const [activeSection, setActiveSection] = useState("map"); 
   
   const [toast, setToast] = useState({ show: false, message: "", type: "success" });
+
+
+  const handleTabClick = (tabName) => {
+    if (tabName === "map" && !isVip) {
+       // Không làm gì cả
+       return; 
+    }
+    setActiveSection(tabName);
+  };
 
   const showToast = (message, type = "success") => {
     setToast({ show: true, message, type });
@@ -187,8 +197,24 @@ const User = () => {
           </div>
           <div className="ticket-section travel-stats">
             <div className="info-item"><div className="label">Ngày tham gia</div><div className="value">{user?.createAt ? formatDateForDisplay(formatDateForInput(user.createAt)) : "01/01/2023"}</div></div>
-            <div className="info-item"><div className="label">Số tỉnh/thành đã đi cùng LOKO</div><div className="value" style={{ fontSize: "1.2rem", fontWeight: 600 }}>{totalVisitedCount > 0 ? totalVisitedCount : visitedSlugs.length}/34 tỉnh</div><div className="visited-names">{visitedNames && visitedNames.length > 0 ? (<>{visitedNames.slice(0, 6).map((n, idx) => <span key={n + idx} className="pill">{n}</span>)}{visitedNames.length > 6 && <span className="pill">và {visitedNames.length - 6} tỉnh khác</span>}</>) : <div style={{ color: "#777" }}>Chưa có dữ liệu tỉnh đã đi</div>}</div></div>
-          </div>
+<div className="info-item">
+            <div className="label">Số tỉnh/thành đã đi cùng LOKO</div>
+            
+            {isVip ? (
+                // Nếu là VIP: Hiện số liệu bình thường
+                <>
+                    <div className="value" style={{ fontSize: "1.2rem", fontWeight: 600 }}>
+                        {totalVisitedCount > 0 ? totalVisitedCount : visitedSlugs.length}/34 tỉnh
+                    </div>
+                    <div className="visited-names">...</div>
+                </>
+            ) : (
+                // Nếu là User: Ẩn số liệu
+                <div style={{color: '#999', fontStyle: 'italic', marginTop: '5px', fontSize: '0.9rem'}}>
+                    🔒 Dữ liệu thống kê chỉ dành cho Premium
+                </div>
+            )}
+        </div>          </div>
           <div className="ticket-section avatar-section">
             <div className="avatar-wrapper"><img src={avatar} alt="Avatar" className="avatar-img" /><input type="file" id="avatarUpload" accept="image/*" style={{ display: "none" }} onChange={handleAvatarChange} /><label htmlFor="avatarUpload" className="avatar-change-label"><img src={avatarChange} alt="Change Avatar" className="avatar-change" /></label></div>
           </div>
@@ -204,12 +230,14 @@ const User = () => {
           </button>
 
           {/* NÚT THÀNH TỰU - ĐÃ MỞ KHÓA */}
-          <button 
-            className={`travel-history ${activeSection === "map" ? "active-tab" : ""}`} 
-            onClick={() => setActiveSection("map")}
-          >
-            {translate("travel_achievement_button")}
-          </button>
+          <button
+            className={`travel-history ${activeSection === "map" ? "active-tab" : ""}`}
+            onClick={() => handleTabClick("map")}
+            // Thêm style làm mờ và chặn chuột
+            style={!isVip ? { opacity: 0.5, cursor: 'not-allowed', filter: 'grayscale(100%)' } : {}}
+        >
+            {translate("travel_achievement_button")} {!isVip && "🔒"}
+        </button>
           <img src={barcodeSample} className="barcode-img" alt="barcode" />
         </div>
       </div>
@@ -220,7 +248,9 @@ const User = () => {
           <TripHistory onSelectTrip={handleSelectTripFromHistory} />
         </div>
         <div className={`content-stack-item map-stack ${activeSection === "map" ? "active" : ""}`}>
-          <VisitedMap visited={visitedSlugs} />
+             <PremiumFeature fallbackText="Bản đồ thành tựu chỉ dành cho Premium">
+                 <VisitedMap visited={visitedSlugs} />
+             </PremiumFeature>
         </div>
       </div>
 

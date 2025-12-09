@@ -19,15 +19,38 @@ const Plan = () => {
   const [tryCount, setTryCount] = useState(3);
   const [lastRequestData, setLastRequestData] = useState(null);
   const [initialTotalItems, setInitialTotalItems] = useState(0);
-
+  const { user } = useAuth();
+  const isVip = user?.role === 'VIP' || user?.role === 'ADMIN';
   const [outputStats, setOutputStats] = useState({ total: 0, rejected: 0 });
-
+  const MAX_SEARCH_DAILY = isVip ? 10 : 1; 
+  const MAX_REGENERATE = isVip ? 9999 : 3;
   // 1. THÊM STATE MỚI: Lưu trữ danh sách tích lũy các địa điểm đã xóa qua các lần
   const [allRejectedItems, setAllRejectedItems] = useState([]);
 
+
+  const [regenerateCount, setRegenerateCount] = useState(0);
   const { translate } = useLanguage();
   const navigate = useNavigate();
   const { token } = useAuth();
+
+  const checkSearchLimit = () => {
+      const today = new Date().toISOString().split('T')[0];
+      const key = `search_count_${user?.id}_${today}`;
+      const count = parseInt(localStorage.getItem(key) || "0");
+      
+      if (count >= MAX_SEARCH_DAILY) {
+          alert(`Bạn đã hết lượt tạo lịch trình hôm nay (${count}/${MAX_SEARCH_DAILY}). ${!isVip ? 'Nâng cấp Premium để có 10 lượt!' : ''}`);
+          return false;
+      }
+      return true;
+  };
+
+  const incrementSearchCount = () => {
+      const today = new Date().toISOString().split('T')[0];
+      const key = `search_count_${user?.id}_${today}`;
+      const count = parseInt(localStorage.getItem(key) || "0");
+      localStorage.setItem(key, count + 1);
+  };
 
   const countTotalItems = (plan) => {
     const sections = plan?.tripSections || plan?.trip_sections;
@@ -151,17 +174,26 @@ const Plan = () => {
 
   const handleSearch = useCallback(
     (requestData) => {
+      if (!checkSearchLimit()) return; // <--- CHẶN NẾU QUÁ GIỚI HẠN
+
+      incrementSearchCount(); // Tăng biến đếm
+      setRegenerateCount(0); // Reset số lần regenerate cho plan mới
       setLastRequestData(requestData);
       localStorage.setItem("lastRequestData", JSON.stringify(requestData));
       setTryCount(3);
       callMakePlanApi(requestData);
     },
-    [callMakePlanApi]
+    [callMakePlanApi,isVip]
   );
 
   // 3. SỬA LOGIC THỬ LẠI: CỘNG DỒN DANH SÁCH XÓA
   const handleTryAgain = useCallback(
     (newRejectedItems = []) => {
+      if (regenerateCount >= MAX_REGENERATE) {
+          alert(`Bạn đã hết lượt tạo lại (${MAX_REGENERATE} lần). ${!isVip ? 'Nâng cấp Premium để không giới hạn!' : ''}`);
+          return;
+      }
+      setRegenerateCount(prev => prev + 1);
       if (tryCount <= 0) return;
       setTryCount((prev) => prev - 1);
 
@@ -218,6 +250,7 @@ const Plan = () => {
       allRejectedItems, // Thêm dependency này
       callMakePlanApi,
       callRegeneratePartAPI,
+      regenerateCount,isVip
     ]
   );
 
