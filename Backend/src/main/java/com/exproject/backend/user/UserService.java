@@ -20,6 +20,14 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final Integer USER_MAKE_FULL_PER_DAY = 1;
+
+    private final Integer USER_MAKE_PART_PER_DAY = 10;
+
+    private final Integer VIP_MAKE_FULL_PER_DAY = 3;
+
+    private final Integer VIP_MAKE_PART_PER_DAY = 20000;
+
     public UserResponse getUser(Long id) {
         User existUser = userRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("User not Found"));
@@ -79,6 +87,10 @@ public class UserService {
         }
 
         existUser.setRole(Role.VIP);
+        existUser.setMakeFullPlanTime(VIP_MAKE_FULL_PER_DAY);
+        existUser.setMakePartPlanTime(VIP_MAKE_PART_PER_DAY);
+        existUser.setLastMakeFullPlanDate(LocalDate.now());
+        existUser.setLastMakePartPlanDate(LocalDate.now());
 
         // Set default khi admin bật lên là 7 ngày
         existUser.setVipEndDate(LocalDate.now().plusDays(duration));
@@ -95,6 +107,10 @@ public class UserService {
         }
 
         existUser.setRole(Role.USER);
+        existUser.setMakeFullPlanTime(USER_MAKE_FULL_PER_DAY);
+        existUser.setMakePartPlanTime(USER_MAKE_PART_PER_DAY);
+        existUser.setLastMakeFullPlanDate(LocalDate.now());
+        existUser.setLastMakePartPlanDate(LocalDate.now());
 
         // Ko phải VIP thì ko cần trường này
         existUser.setVipEndDate(null);
@@ -126,30 +142,6 @@ public class UserService {
         return UserMapToDTO(savedUser);
     }
 
-    // Helper Function
-    private UserDTO UserMapToDTO(User user) {
-        return UserDTO.builder()
-                .userId(user.getId())
-                .userName(user.getDisplayUserName())
-                .fullName(user.getFullName())
-                .dob(user.getDob())
-                .gender(user.getGender())
-                .build();
-    }
-
-
-    private UserResponse convertToUserResponse(User user) {
-        return UserResponse.builder()
-                .id(user.getId())
-                .username(user.getDisplayUserName())
-                .email(user.getEmail())
-                .age(user.getAge())
-                .gender(user.getGender())
-                .role(user.getRole())
-                .enabled(user.isEnabled())
-                .build();
-    }
-
     public void downgradeUserSchedule() {
 
         int pageSize = 100;
@@ -170,6 +162,10 @@ public class UserService {
             for(User user: users.getContent()) {
                 user.setRole(Role.USER);
                 user.setVipEndDate(null);
+                user.setMakeFullPlanTime(USER_MAKE_FULL_PER_DAY);
+                user.setMakePartPlanTime(USER_MAKE_PART_PER_DAY);
+                user.setLastMakeFullPlanDate(today);
+                user.setLastMakePartPlanDate(today);
             }
 
             userRepository.saveAll(users.getContent());
@@ -201,5 +197,31 @@ public class UserService {
 
         return userRepository.save(user);
     }
+
+    // Helper Function
+    private UserDTO UserMapToDTO(User user) {
+        return UserDTO.builder()
+                .userId(user.getId())
+                .userName(user.getDisplayUserName())
+                .fullName(user.getFullName())
+                .dob(user.getDob())
+                .gender(user.getGender())
+                .build();
+    }
+
+
+    private UserResponse convertToUserResponse(User user) {
+        return UserResponse.builder()
+                .id(user.getId())
+                .username(user.getDisplayUserName())
+                .email(user.getEmail())
+                .age(user.getAge())
+                .gender(user.getGender())
+                .role(user.getRole())
+                .enabled(user.isEnabled())
+                .build();
+    }
+
+
 
 }
