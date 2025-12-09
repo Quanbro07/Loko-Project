@@ -5,56 +5,73 @@ const WeatherForecast = ({ currentDayIndex = 0, data = null }) => {
   const [startIndex, setStartIndex] = useState(0);
   const ITEMS_PER_ROW = 4;
 
-  // Logic lấy dữ liệu thời tiết cho ngày hiện tại
+  // Helper: Lấy giờ (integer) từ chuỗi thời gian "YYYY-MM-DD HH:mm"
+  const getHour = (timeString) => {
+    if (!timeString) return -1;
+    try {
+      const timePart = timeString.includes(" ")
+        ? timeString.split(" ")[1] // Lấy phần "HH:mm"
+        : timeString;
+      return parseInt(timePart.split(":")[0], 10); // Lấy phần HH
+    } catch (e) {
+      return -1;
+    }
+  };
+
+  // Logic lấy dữ liệu: Lấy toàn bộ 24h và sắp xếp từ 0h -> 23h
   const currentDayWeather = useMemo(() => {
     if (data && Array.isArray(data.scopes)) {
-      // Tìm scope tương ứng với currentDayIndex
-      // Nếu index vượt quá độ dài mảng, fallback về ngày đầu tiên (hoặc null)
-      return data.scopes[currentDayIndex] || data.scopes[0] || null;
+      // Lấy dữ liệu ngày hiện tại
+      // Lưu ý: data.scopes[currentDayIndex] có thể undefined nếu index > length
+      // Ta fallback về null để xử lý hiển thị lỗi ở dưới
+      const currentScope = data.scopes[currentDayIndex];
+
+      if (!currentScope) return null;
+
+      // Clone mảng hourly_weather để tránh mutate dữ liệu gốc
+      let sortedHours = [...(currentScope.hourly_weather || [])];
+
+      // SẮP XẾP: Đảm bảo thứ tự từ 0h sáng -> 23h tối
+      sortedHours.sort((a, b) => getHour(a.time) - getHour(b.time));
+
+      return {
+        ...currentScope,
+        hourly_weather: sortedHours,
+      };
     }
     return null;
   }, [currentDayIndex, data]);
 
-  // Reset slider về vị trí đầu khi chuyển ngày
+  // Reset slider về vị trí đầu (0h sáng) khi chuyển ngày
   useEffect(() => {
     setStartIndex(0);
   }, [currentDayIndex]);
 
   // Logic tính vị trí background
   const getBackgroundPosition = (timeString) => {
-    if (!timeString) return "0% 50%";
-    let hour = 0;
-    try {
-      const timePart = timeString.includes(" ")
-        ? timeString.split(" ")[1]
-        : timeString;
-      hour = parseInt(timePart.split(":")[0], 10);
-    } catch (e) {
-      hour = 0;
-    }
+    const hour = getHour(timeString);
+    if (hour < 0) return "0% 50%"; // Fallback
     const positionPercent = (hour / 24) * 100;
     return `${positionPercent}% 50%`;
   };
 
   // --- TRƯỜNG HỢP KHÔNG CÓ DỮ LIỆU ---
-  // Nếu data null (đang loading hoặc lỗi), hiển thị thông báo
   if (!currentDayWeather) {
     return (
       <div className="weather-figma-container loading-state">
         <p style={{ color: "white", textAlign: "center", padding: "20px" }}>
           {data
-            ? "Không có dữ liệu thời tiết cho ngày này."
+            ? "Chưa có dữ liệu thời tiết cho ngày này."
             : "Đang tải thông tin thời tiết..."}
         </p>
       </div>
     );
   }
 
-  console.log(currentDayWeather);
-
   const allHours = currentDayWeather.hourly_weather || [];
   const visibleHours = allHours.slice(startIndex, startIndex + ITEMS_PER_ROW);
 
+  // Lấy background dựa trên giờ đầu tiên đang hiển thị
   const bgPosition =
     visibleHours.length > 0
       ? getBackgroundPosition(visibleHours[0].time)
@@ -141,7 +158,7 @@ const WeatherForecast = ({ currentDayIndex = 0, data = null }) => {
           ? `Hiển thị ${startIndex + 1} - ${Math.min(
               startIndex + visibleHours.length,
               allHours.length
-            )} trong số ${allHours.length} giờ`
+            )} trong số ${allHours.length} mốc giờ (0h - 23h)`
           : ""}
       </div>
     </div>

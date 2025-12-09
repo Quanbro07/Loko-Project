@@ -237,6 +237,7 @@ const CurrentPlan = () => {
                       scheduleData={scheduleForCurrentDay}
                       currentIndex={currentPlaceIndex}
                       setCurrentIndex={setCurrentPlaceIndex}
+                      tripId={tripId}
                     />
                     <MyLeafletMap
                       itineraryPoints={itineraryPoints}
