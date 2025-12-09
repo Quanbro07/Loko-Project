@@ -216,6 +216,8 @@ public class AIAPIService {
                 WeatherResponse.class
         );
 
+        System.out.println("Response Section Size: " + response.getBody().getWeatherSections());
+
         return response.getBody();  
     }
 

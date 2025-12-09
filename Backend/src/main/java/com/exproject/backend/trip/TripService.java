@@ -385,8 +385,8 @@ public class TripService {
     public void processWeatherForTripSection(Trip trip, List<TripSection> sectionsToFetch, Long provinceId) {
         System.out.println("Chạy weather started");
         LocalDate today = LocalDate.now();
-        LocalDate maxForcastDate = today.plusDays(3);
-        LocalDate minForcastDate = today.minusDays(7);
+        LocalDate maxForcastDate = today.plusDays(2);
+        LocalDate minForcastDate = today.minusDays(6);
 
 
         LocalDate tripStart = trip.getStartDate();
@@ -422,6 +422,8 @@ public class TripService {
             return;
         }
 
+        System.out.println("Section To Update Size: " + sectionsToUpdate.size());
+
         LocalDate startDate = sectionsToUpdate.get(0).getDate();
         LocalDate endDate = sectionsToUpdate.get(sectionsToUpdate.size() - 1).getDate();
 
@@ -436,7 +438,8 @@ public class TripService {
         // Lấy response API thì AI service
         WeatherResponse response = aiAPIService.forecastWeather(weatherRequest);
 
-
+        System.out.println(sectionsToUpdate.size());
+        System.out.println(response.getWeatherSections().size());
 
         weatherService.createWeatherSection(trip,response,sectionsToUpdate);
     }
