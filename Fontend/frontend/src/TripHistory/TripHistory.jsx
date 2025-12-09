@@ -1,11 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import {
-  FaSpinner,
-  FaMapMarkedAlt,
-  FaCheckCircle,
-  FaClock,
-} from "react-icons/fa";
+import { FaSpinner, FaMapMarkedAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./TripHistory.css";
 
@@ -95,7 +90,7 @@ const TripHistory = ({ onSelectTrip }) => {
             <th>STT</th>
             <th>Tên chuyến đi</th>
             <th>Thời gian</th>
-            {/* 👇 THÊM CỘT TRẠNG THÁI 👇 */}
+            {/* CỘT TRẠNG THÁI */}
             <th style={{ textAlign: "center" }}>Trạng thái</th>
             <th style={{ textAlign: "center" }}>Xem chi tiết</th>
           </tr>
@@ -103,7 +98,7 @@ const TripHistory = ({ onSelectTrip }) => {
         <tbody>
           {trips.map((trip, index) => {
             const currentId = trip.trip_id || trip.tripId || trip.id;
-            // Logic kiểm tra status (Giả sử backend trả về enum "COMPLETED")
+            // Logic kiểm tra status
             const isCompleted = trip.status === "COMPLETED";
 
             return (
@@ -117,12 +112,40 @@ const TripHistory = ({ onSelectTrip }) => {
                   {formatDate(trip.end_date || trip.endDate)}
                 </td>
 
-                {/* 👇 HIỂN THỊ TRẠNG THÁI Y / N 👇 */}
-                <td style={{ textAlign: "center", fontWeight: "bold" }}>
+                {/* 👇 HIỂN THỊ TEXT TRẠNG THÁI 👇 */}
+                <td
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    fontSize: "0.9rem",
+                  }}
+                >
                   {isCompleted ? (
-                    <span style={{ color: "#28a745" }}>Y</span> // Hoàn thành
+                    <span
+                      style={{
+                        color: "#28a745", // Màu xanh lá
+                        backgroundColor: "#e6f9ec", // Nền xanh nhạt
+                        padding: "5px 10px",
+                        borderRadius: "15px",
+                        display: "inline-block",
+                        minWidth: "120px",
+                      }}
+                    >
+                      HOÀN THÀNH
+                    </span>
                   ) : (
-                    <span style={{ color: "#6c757d" }}>N</span> // Chưa hoàn thành
+                    <span
+                      style={{
+                        color: "#ff9800", // Màu cam
+                        backgroundColor: "#fff8e1", // Nền vàng nhạt
+                        padding: "5px 10px",
+                        borderRadius: "15px",
+                        display: "inline-block",
+                        minWidth: "120px",
+                      }}
+                    >
+                      ĐANG DIỄN RA
+                    </span>
                   )}
                 </td>
 

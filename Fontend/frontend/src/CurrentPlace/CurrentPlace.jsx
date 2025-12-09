@@ -11,6 +11,8 @@ const CurrentPlace = ({
   setCurrentIndex,
   tripId,
   dayIndex = 1,
+  // 👇 Nhận ID Section từ cha để update progress đúng
+  currentSectionId,
   rawDayIndex = 0,
   isLastDay = false,
 }) => {
@@ -22,7 +24,6 @@ const CurrentPlace = ({
   const [isTripFinished, setIsTripFinished] = useState(false);
   const [zoomedImg, setZoomedImg] = useState(null);
 
-  // Đảm bảo dataArray luôn là mảng
   const dataArray = useMemo(
     () => (Array.isArray(scheduleData) ? scheduleData : []),
     [scheduleData]
@@ -34,13 +35,11 @@ const CurrentPlace = ({
   );
   const [hoverRating, setHoverRating] = useState(0);
 
-  // Reset state khi data thay đổi
   useEffect(() => {
     setIsDayCompleted(false);
     setPlaceRatings(new Array(totalPlaces).fill(0));
   }, [scheduleData, totalPlaces]);
 
-  // Kiểm tra bounds index để tránh lỗi render
   const safeIndex =
     currentIndex >= 0 && currentIndex < totalPlaces ? currentIndex : 0;
   const isLastSlide = safeIndex === totalPlaces - 1;
@@ -53,36 +52,51 @@ const CurrentPlace = ({
     });
   };
 
-  // --- API Functions ---
+  // --- API 1: GỬI REVIEW (ĐÃ SỬA URL) ---
   const submitReviewToBackend = async (locationId, ratingValue) => {
-    if (!tripId || !locationId || ratingValue === 0) return;
+    // Chỉ gửi nếu có rating > 0
+    if (!tripId || !locationId || !ratingValue || ratingValue <= 0) return;
+
+    const payload = {
+      locationId: Number(locationId),
+      tripId: Number(tripId),
+      rating: Number(ratingValue),
+      comment: "",
+    };
+
+    console.log("🚀 Đang gửi review:", payload);
+
     try {
-      const payload = {
-        locationId: Number(locationId),
-        tripId: Number(tripId),
-        rating: Number(ratingValue),
-        comment: "",
-      };
-      await axios.post("http://localhost:8080/api/reviews/rate", payload, {
+      // ✅ FIX: Thêm /create vào đường dẫn
+      const API_URL = "http://localhost:8080/api/v1/review/create";
+
+      await axios.post(API_URL, payload, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log("✅ Gửi đánh giá thành công!");
     } catch (e) {
-      console.error("Rating Error", e);
+      if (e.response) {
+        console.error("❌ Lỗi Backend Review:", e.response.data);
+      } else {
+        console.error("❌ Lỗi kết nối Review:", e);
+      }
     }
   };
 
-  const updateProgressBackend = async (nextDayIdx, nextPlaceIdx) => {
-    if (!tripId) return;
+  // --- API 2: UPDATE TIẾN ĐỘ ---
+  const updateProgressBackend = async (sectionId, detailId) => {
+    if (!tripId || !sectionId || !detailId) return;
     try {
+      // Gửi theo ID (Chuẩn xác hơn Index)
       const payload = {
         tripId: Number(tripId),
-        currentDayIndex: nextDayIdx,
-        currentPlaceIndex: nextPlaceIdx,
+        currentTripSectionId: Number(sectionId),
+        currentTripDetailId: Number(detailId),
       };
-      console.log("💾 Saving Progress:", payload);
+      // console.log("💾 Saving Progress:", payload);
       await axios.post(
         "http://localhost:8080/api/v1/trip/update-progress",
         payload,
@@ -94,10 +108,11 @@ const CurrentPlace = ({
         }
       );
     } catch (e) {
-      console.error("Progress Error", e);
+      console.error("⚠️ Lỗi lưu tiến độ:", e);
     }
   };
 
+  // --- API 3: HOÀN THÀNH TRIP ---
   const completeTripOnBackend = async () => {
     try {
       await axios.post(`http://localhost:8080/api/v1/trip/complete`, null, {
@@ -105,32 +120,47 @@ const CurrentPlace = ({
         params: { tripId: tripId },
       });
       setIsTripFinished(true);
-      navigate("/Plan");
+      navigate("/currentplan");
     } catch (e) {
-      console.error("Complete Error", e);
+      console.error("❌ Lỗi hoàn thành chuyến đi:", e);
     }
   };
 
+  // --- XỬ LÝ NÚT BẤM ---
   const handleProcessStep = async () => {
     const currentPlace = dataArray[safeIndex];
-    if (!currentPlace) return; // Guard clause
+    if (!currentPlace) return;
 
     const placeId = currentPlace.location?.id || currentPlace.id;
     const currentRating = placeRatings[safeIndex] || 0;
 
+    // 1. Gửi Rating
     await submitReviewToBackend(placeId, currentRating);
 
+    // 2. Chuyển bước & Lưu tiến độ
     if (!isLastSlide) {
+      // --> Next slide
       const nextIndex = safeIndex + 1;
+      const nextPlace = dataArray[nextIndex];
       setCurrentIndex(nextIndex);
-      await updateProgressBackend(rawDayIndex, nextIndex);
+
+      // Lưu progress: ID ngày hiện tại + ID địa điểm tiếp theo
+      const nextDetailId =
+        nextPlace.tripDetailId || nextPlace.trip_detail_id || nextPlace.id;
+      await updateProgressBackend(currentSectionId, nextDetailId);
     } else {
+      // --> Hết ngày
       if (isLastDay) {
         await completeTripOnBackend();
       } else {
         setIsDayCompleted(true);
-        // Lưu sang ngày mới, place 0
-        await updateProgressBackend(rawDayIndex + 1, 0);
+        // Lưu progress: Đánh dấu địa điểm cuối cùng của ngày này đã xong
+        // (Lần sau vào lại load đúng điểm này hoặc cần logic backend tự nhảy sang ngày mới)
+        const lastDetailId =
+          currentPlace.tripDetailId ||
+          currentPlace.trip_detail_id ||
+          currentPlace.id;
+        await updateProgressBackend(currentSectionId, lastDetailId);
       }
     }
   };
@@ -151,7 +181,7 @@ const CurrentPlace = ({
   if (totalPlaces === 0)
     return (
       <div className="currplace-container">
-        <p>No Data Available</p>
+        <p>Không có dữ liệu địa điểm.</p>
       </div>
     );
 
@@ -181,7 +211,7 @@ const CurrentPlace = ({
               place.title ||
               "Địa điểm";
 
-            // --- FIX IMAGE MAPPING ROBUST ---
+            // Xử lý ảnh
             let imageList = [];
             const rawImgs = loc.locationImgs || place.imgs || [];
             if (Array.isArray(rawImgs)) {
@@ -203,7 +233,6 @@ const CurrentPlace = ({
               >
                 <h3 className="place-title">{title}</h3>
 
-                {/* Rating */}
                 <div className="place-rating-input">
                   <div className="star-rating-container">
                     {stars.map((star) => (
@@ -217,7 +246,8 @@ const CurrentPlace = ({
                               ? "#FFD700"
                               : "#ccc",
                           cursor: "pointer",
-                          fontSize: "24px",
+                          marginBottom: "20px",
+                          fontSize: "40px",
                         }}
                         onClick={() =>
                           index === safeIndex && handleRatingSelect(index, star)
@@ -235,7 +265,6 @@ const CurrentPlace = ({
                   </div>
                 </div>
 
-                {/* Images */}
                 <div className="place-gallery-list">
                   {imageList.map((url, i) => (
                     <img
@@ -244,6 +273,7 @@ const CurrentPlace = ({
                       className="gallery-thumbnail"
                       onClick={() => setZoomedImg(url)}
                       onError={(e) => (e.target.style.display = "none")}
+                      alt="place"
                     />
                   ))}
                 </div>
@@ -277,7 +307,6 @@ const CurrentPlace = ({
         <div className="image-modal-overlay" onClick={() => setZoomedImg(null)}>
           <div className="image-modal-content">
             <img src={zoomedImg} className="zoomed-image" alt="zoom" />
-            <button onClick={() => setZoomedImg(null)}>x</button>
           </div>
         </div>
       )}
