@@ -1,7 +1,7 @@
 import Input from "../Input/Input";
 import Navbar from "../Navbar/Navbar";
 import "./Plan.css";
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import Lottie from "lottie-react";
 import paperPlaneAnimation from "../lottie/Paper plane.json";
 import Output from "../Output/Output";
@@ -13,37 +13,45 @@ import axios from "axios";
 
 const Plan = () => {
   const { user, token } = useAuth();
-  const isVip = user?.role === "VIP" || user?.role === "ADMIN";
+  const isVip = user?.role === 'VIP' || user?.role === 'ADMIN';
   const { translate } = useLanguage();
   const navigate = useNavigate();
 
-  // --- CẤU HÌNH GIỚI HẠN (CONFIG) ---
-  const LIMIT_SEARCH_USER = 1; // User thường: 1 lần tìm/ngày
-  const LIMIT_SEARCH_VIP = 10; // VIP: 10 lần tìm/ngày
+  // --- CẤU HÌNH GIỚI HẠN ---
+  const LIMIT_SEARCH_USER = 1;
+  const LIMIT_SEARCH_VIP = 10;
+  const LIMIT_RETRY_USER = 3;
+  const LIMIT_RETRY_VIP = 9999; 
 
-  const LIMIT_RETRY_USER = 3; // User thường: 3 lần thử lại
-  const LIMIT_RETRY_VIP = 9999; // VIP: Vô hạn (đặt số lớn)
+  // --- STATE TOAST (THÔNG BÁO) ---
+  const [toast, setToast] = useState({ show: false, message: "", type: "info" });
+  const toastTimeoutRef = useRef(null); // Dùng ref để clear timeout tránh lỗi
 
-  // --- STATE ---
+  // --- STATE APP ---
   const [isSearching, setIsSearching] = useState(false);
   const [isResultShown, setIsResultShown] = useState(false);
   const [searchIteration, setSearchIteration] = useState(0);
   const [planData, setPlanData] = useState(null);
-
-  // Khởi tạo số lần thử lại dựa trên quyền hạn
-  const [tryCount, setTryCount] = useState(
-    isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER
-  );
-
+  const [tryCount, setTryCount] = useState(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
   const [lastRequestData, setLastRequestData] = useState(null);
   const [initialTotalItems, setInitialTotalItems] = useState(0);
   const [outputStats, setOutputStats] = useState({ total: 0, rejected: 0 });
   const [allRejectedItems, setAllRejectedItems] = useState([]);
 
-  // Cập nhật lại tryCount khi user đăng nhập/đổi quyền
   useEffect(() => {
-    setTryCount(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
+      setTryCount(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
   }, [isVip]);
+
+  // --- HÀM HIỂN THỊ TOAST ---
+  const showToast = (message, type = "info") => {
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current);
+    }
+    setToast({ show: true, message, type });
+    toastTimeoutRef.current = setTimeout(() => {
+      setToast((prev) => ({ ...prev, show: false }));
+    }, 3500); // Tự ẩn sau 3.5 giây
+  };
 
   const countTotalItems = (plan) => {
     const sections = plan?.tripSections || plan?.trip_sections;
@@ -56,62 +64,56 @@ const Plan = () => {
     return count;
   };
 
+  // --- XỬ LÝ LỖI API (Thay Alert bằng Toast) ---
   const handleAPIError = (error) => {
     console.error("API Error:", error);
     let msg = "Có lỗi xảy ra";
     if (error.response) {
       if (error.response.status === 403) {
-        msg =
-          "Phiên đăng nhập hết hạn hoặc không đủ quyền. Vui lòng đăng nhập lại.";
+        msg = "Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.";
       } else {
         const data = error.response.data;
-        msg = `Lỗi ${error.response.status}: ${
-          data?.message || data?.error || JSON.stringify(data)
-        }`;
+        msg = `Lỗi ${error.response.status}: ${data?.message || data?.error || JSON.stringify(data)}`;
       }
     } else if (error.request) {
       msg = "Không thể kết nối đến Server";
     }
-    alert(msg);
+    showToast(msg, "error"); // <--- DÙNG TOAST ERROR
   };
 
   const handleStatsUpdate = useCallback((stats) => {
     setOutputStats(stats);
   }, []);
 
-  // --- HÀM KIỂM TRA GIỚI HẠN TÌM KIẾM TRONG NGÀY ---
   const checkSearchLimit = () => {
-    const today = new Date().toISOString().split("T")[0]; // Lấy ngày YYYY-MM-DD
+    const today = new Date().toISOString().split('T')[0];
     const storageKey = `search_cnt_${user?.id}_${today}`;
     const currentCount = parseInt(localStorage.getItem(storageKey) || "0");
     const maxLimit = isVip ? LIMIT_SEARCH_VIP : LIMIT_SEARCH_USER;
 
     if (currentCount >= maxLimit) {
-      alert(
-        `Bạn đã dùng hết ${currentCount}/${maxLimit} lượt tạo lịch trình hôm nay. ${
-          !isVip ? "Nâng cấp Premium để có thêm lượt!" : ""
-        }`
-      );
-      return false;
+        // <--- DÙNG TOAST WARNING
+        showToast(`Bạn đã hết ${maxLimit} lượt tạo hôm nay. ${!isVip ? 'Nâng cấp Premium để có thêm!' : ''}`, "warning");
+        return false;
     }
     return true;
   };
 
   const incrementSearchCount = () => {
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date().toISOString().split('T')[0];
     const storageKey = `search_cnt_${user?.id}_${today}`;
     const currentCount = parseInt(localStorage.getItem(storageKey) || "0");
     localStorage.setItem(storageKey, currentCount + 1);
   };
 
-  // --- API 1: TẠO KẾ HOẠCH MỚI ---
+  // --- API 1: MAKE PLAN ---
   const callMakePlanApi = useCallback(
     async (data) => {
       if (!data) return;
       setIsSearching(true);
       setIsResultShown(false);
       setPlanData(null);
-      setAllRejectedItems([]); // Reset danh sách xóa
+      setAllRejectedItems([]); 
 
       try {
         const headers = { "Content-Type": "application/json" };
@@ -128,6 +130,7 @@ const Plan = () => {
         setInitialTotalItems(countTotalItems(newPlanData));
         setIsResultShown(true);
         setSearchIteration((prev) => prev + 1);
+        showToast("Đã tạo kế hoạch thành công!", "success"); // Toast success
       } catch (error) {
         handleAPIError(error);
       } finally {
@@ -137,19 +140,17 @@ const Plan = () => {
     [token]
   );
 
-  // --- API 2: TÁI TẠO LỊCH TRÌNH ---
+  // --- API 2: REGENERATE ---
   const callRegeneratePartAPI = useCallback(
     async (current_trip_plan, rejected_detail) => {
       setIsSearching(true);
-      console.log("🔥 Regenerate List:", rejected_detail);
-
       const payloadDetail = rejected_detail.filter(
         (item) => item && item.trip_detail_id && item.location_id
       );
       const planToSend = current_trip_plan;
-
+      
       if (!planToSend) {
-        alert("Lỗi dữ liệu plan.");
+        showToast("Lỗi dữ liệu plan.", "error");
         setIsSearching(false);
         return;
       }
@@ -169,10 +170,10 @@ const Plan = () => {
           { headers }
         );
 
-        const newTripData =
-          response.data.newTrip || response.data.new_trip_plan || response.data;
+        const newTripData = response.data.newTrip || response.data.new_trip_plan || response.data;
         setPlanData(newTripData);
         setSearchIteration((prev) => prev + 1);
+        showToast("Đã cập nhật lịch trình mới!", "success");
       } catch (error) {
         handleAPIError(error);
       } finally {
@@ -182,50 +183,32 @@ const Plan = () => {
     [token]
   );
 
-  // --- HANDLE SEARCH (KHI BẤM NÚT LÊN KẾ HOẠCH) ---
   const handleSearch = useCallback(
     (requestData) => {
-      // 1. Kiểm tra giới hạn số lần tìm kiếm
       if (!checkSearchLimit()) return;
-
-      // 2. Nếu OK -> Tăng số lần đã dùng
       incrementSearchCount();
-
       setLastRequestData(requestData);
       localStorage.setItem("lastRequestData", JSON.stringify(requestData));
-
-      // 3. Reset số lần thử lại (User=3, VIP=9999)
       setTryCount(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
-
       callMakePlanApi(requestData);
     },
     [callMakePlanApi, isVip, user]
   );
 
-  // --- HANDLE TRY AGAIN (KHI BẤM NÚT TẠO LẠI) ---
   const handleTryAgain = useCallback(
     (newRejectedItems = []) => {
-      // Kiểm tra số lượt còn lại
       if (tryCount <= 0) {
-        alert(
-          !isVip
-            ? "Bạn đã hết lượt thử lại. Nâng cấp Premium để không giới hạn!"
-            : "Đã đạt giới hạn hệ thống."
-        );
-        return;
+          showToast(!isVip ? "Hết lượt thử lại. Nâng cấp Premium!" : "Hết lượt hệ thống.", "warning");
+          return;
       }
-
-      // Giảm số lượt (Nếu là VIP thì không cần giảm, hoặc giảm từ số rất lớn)
+      
       if (!isVip) {
-        setTryCount((prev) => prev - 1);
+          setTryCount((prev) => prev - 1);
       }
-      // Nếu là VIP, ta có thể giữ nguyên số 9999 hoặc giảm cũng được vì nó quá lớn
 
-      // Logic cộng dồn danh sách xóa
       const updatedTotalRejected = [...allRejectedItems, ...newRejectedItems];
       setAllRejectedItems(updatedTotalRejected);
 
-      // Tính toán ngưỡng 50%
       const totalRejectedCount = updatedTotalRejected.length;
       let total = initialTotalItems;
       if (total === 0 && planData) total = countTotalItems(planData);
@@ -234,46 +217,26 @@ const Plan = () => {
       const threshold = total / 2;
       const isOver50Percent = totalRejectedCount > threshold;
 
-      console.log(`Retry: Total Rejected=${totalRejectedCount}/${total}`);
-
       if (isOver50Percent) {
         let requestToUse = lastRequestData;
         if (!requestToUse) {
           const savedRequest = localStorage.getItem("lastRequestData");
           if (savedRequest) requestToUse = JSON.parse(savedRequest);
         }
-
         if (requestToUse) {
-          console.log("Rejected > 50% -> Gọi Make Plan lại từ đầu");
-          callMakePlanApi(requestToUse);
-        } else {
-          alert("Vui lòng thực hiện tìm kiếm lại từ đầu!");
+            showToast("Thay đổi quá 50%, đang tạo lại từ đầu...", "info");
+            callMakePlanApi(requestToUse);
         }
+        else showToast("Vui lòng thực hiện tìm kiếm lại từ đầu!", "warning");
       } else {
-        console.log("Rejected <= 50% -> Gọi Regenerate Part");
         callRegeneratePartAPI(planData, updatedTotalRejected);
       }
     },
-    [
-      tryCount,
-      planData,
-      lastRequestData,
-      initialTotalItems,
-      outputStats,
-      allRejectedItems,
-      callMakePlanApi,
-      callRegeneratePartAPI,
-      isVip,
-    ]
+    [tryCount, planData, lastRequestData, initialTotalItems, outputStats, allRejectedItems, callMakePlanApi, callRegeneratePartAPI, isVip]
   );
 
-  // --- API 3: XÁC NHẬN (CONFIRM) ---
   const handleAccept = useCallback(async () => {
-    if (!planData) {
-      alert("Chưa có dữ liệu kế hoạch!");
-      return;
-    }
-
+    if (!planData) { showToast("Chưa có dữ liệu kế hoạch!", "warning"); return; }
     let inputData = lastRequestData;
     if (!inputData) {
       try {
@@ -281,20 +244,13 @@ const Plan = () => {
         if (saved) inputData = JSON.parse(saved);
       } catch (e) {}
     }
-    if (!inputData) {
-      alert("Dữ liệu input bị mất.");
-      return;
-    }
+    if (!inputData) { showToast("Dữ liệu tìm kiếm bị mất.", "error"); return; }
 
     try {
-      console.log("🛠 Đang Confirm...");
       const headers = { "Content-Type": "application/json" };
       if (token) headers["Authorization"] = `Bearer ${token}`;
 
-      const fmtTime = (t) =>
-        t && typeof t === "string" && t.length >= 5
-          ? t.substring(0, 5)
-          : "08:00";
+      const fmtTime = (t) => (t && typeof t === 'string' && t.length >= 5) ? t.substring(0, 5) : "08:00";
 
       const weatherRequestPayload = {
         provinceId: Number(inputData.provinceId) || 0,
@@ -317,58 +273,46 @@ const Plan = () => {
         tripSections: (planData.tripSections || []).map((section, index) => {
           let dateString = section.date;
           if (!dateString) {
-            const baseDate = new Date(inputData.startDate);
-            baseDate.setDate(baseDate.getDate() + index);
-            dateString = baseDate.toISOString().split("T")[0];
+             const baseDate = new Date(inputData.startDate);
+             baseDate.setDate(baseDate.getDate() + index);
+             dateString = baseDate.toISOString().split("T")[0];
           }
           return {
-            dayNumber: Number(section.dayNumber) || index + 1,
+            dayNumber: Number(section.dayNumber) || (index + 1), 
             date: dateString,
             title: section.title || `Ngày ${index + 1}`,
-            tripDetails: (section.tripDetails || [])
-              .filter((d) => d.location && d.location.id)
-              .map((detail, idx) => ({
-                startTime: fmtTime(detail.startTime),
-                endTime: fmtTime(detail.endTime),
-                activity: detail.activity,
-                price: Number(detail.price) || 0,
-                description: detail.description || "",
-                location: {
-                  id: Number(detail.location.id),
-                  locationName:
-                    detail.location.location_name ||
-                    detail.location.locationName ||
-                    "",
-                  latitude: detail.location.latitude || 0,
-                  longitude: detail.location.longitude || 0,
-                },
-                sequenceOrder: idx + 1,
-              })),
+            tripDetails: (section.tripDetails || []).filter(d => d.location && d.location.id).map((detail, idx) => ({
+                  startTime: fmtTime(detail.startTime),
+                  endTime: fmtTime(detail.endTime),
+                  activity: detail.activity,
+                  price: Number(detail.price) || 0,
+                  description: detail.description || "",
+                  location: {
+                      id: Number(detail.location.id),
+                      locationName: detail.location.location_name || detail.location.locationName || "",
+                      latitude: detail.location.latitude || 0,
+                      longitude: detail.location.longitude || 0
+                  },
+                  sequenceOrder: idx + 1
+            }))
           };
         }),
       };
 
-      const payload = {
-        trip_request: tripRequestPayload,
-        weather_request: weatherRequestPayload,
-      };
-      console.log("JSON Confirm:", JSON.stringify(payload));
+      const payload = { trip_request: tripRequestPayload, weather_request: weatherRequestPayload };
+      const response = await axios.post("http://localhost:8080/api/v1/make-plan/confirm", payload, { headers });
+      
+      const confirmedTrip = response.data.trip || response.data; 
+      showToast("Xác nhận thành công! Đang chuyển trang...", "success");
+      
+      setTimeout(() => {
+          navigate("/currentplan", { state: { finalPlan: confirmedTrip } });
+      }, 1000); // Delay 1 chút để user kịp nhìn thấy toast success
 
-      const response = await axios.post(
-        "http://localhost:8080/api/v1/make-plan/confirm",
-        payload,
-        { headers }
-      );
-      console.log("Success:", response.data);
-      const confirmedTrip = response.data.trip || response.data;
-      navigate("/currentplan", { state: { finalPlan: confirmedTrip } });
     } catch (error) {
       console.error("Lỗi Confirm:", error);
-      if (error.response && error.response.data) {
-        alert("Lỗi Backend: " + JSON.stringify(error.response.data));
-      } else {
-        handleAPIError(error);
-      }
+      if (error.response && error.response.data) showToast("Lỗi Backend: " + JSON.stringify(error.response.data), "error");
+      else handleAPIError(error);
     }
   }, [navigate, planData, lastRequestData, token]);
 
@@ -392,8 +336,8 @@ const Plan = () => {
           <Output
             key={searchIteration}
             data={planData}
-            tryCount={tryCount} // Truyền số lần thử lại đã tính toán
-            isVip={isVip}
+            tryCount={tryCount}
+            isVip={isVip} 
             onTryAgainClick={handleTryAgain}
             onAcceptClick={handleAccept}
             onStatsChange={handleStatsUpdate}
@@ -401,6 +345,11 @@ const Plan = () => {
         )}
       </div>
       <Footer />
+
+      {/* --- RENDER TOAST COMPONENT --- */}
+      <div className={`toast-notification ${toast.show ? "show" : ""} ${toast.type}`}>
+        {toast.message}
+      </div>
     </div>
   );
 };
