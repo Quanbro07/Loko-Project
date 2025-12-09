@@ -10,6 +10,7 @@ import CurrentPlace from "../CurrentPlace/CurrentPlace";
 import WeatherForecast from "../WeatherForecast/WeatherForecast";
 import TripHistory from "../TripHistory/TripHistory";
 import { FaArrowLeft } from "react-icons/fa";
+import PremiumFeature from "../PremiumFeature/PremiumFeature"; 
 import axios from "axios";
 
 const CurrentPlan = () => {
@@ -164,6 +165,7 @@ const CurrentPlan = () => {
   return (
     <div>
       <Navbar />
+  
       <div className="body-container">
         {/* MODE 1: LIST */}
         {viewMode === "history" && (
@@ -223,10 +225,11 @@ const CurrentPlan = () => {
 
                   {/* THỜI TIẾT */}
                   <div className="weather-section-below">
-                    <WeatherForecast
-                      currentDayIndex={currentDayIndex}
-                      data={weatherData}
-                    />
+                    <PremiumFeature fallbackText="Dự báo thời tiết chi tiết chỉ dành cho Premium">
+                        <WeatherForecast currentDayIndex={currentDayIndex} 
+                          data={weatherData}
+                        />
+                    </PremiumFeature>
                   </div>
                 </div>
 
@@ -238,12 +241,16 @@ const CurrentPlan = () => {
                       currentIndex={currentPlaceIndex}
                       setCurrentIndex={setCurrentPlaceIndex}
                     />
-                    <MyLeafletMap
-                      itineraryPoints={itineraryPoints}
-                      currentIndex={currentPlaceIndex}
-                      currentDayIndex={currentDayIndex}
-                      routeData={routeData}
-                    />
+                    <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+        <PremiumFeature fallbackText="Bản đồ tương tác chỉ dành cho Premium">
+            <MyLeafletMap
+                itineraryPoints={itineraryPoints}
+                currentIndex={currentPlaceIndex}
+                currentDayIndex={currentDayIndex}
+                routeData={routeData}
+            />
+        </PremiumFeature>
+    </div>
                   </div>
                 ) : (
                   <div className="current-plan-empty-state">

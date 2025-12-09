@@ -1,0 +1,49 @@
+.premium-feature-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px; /* Bo góc nhẹ */
+}
+
+.premium-feature-content.blurred {
+    filter: blur(5px);
+    pointer-events: none; /* Chặn click vào nội dung bên dưới */
+    opacity: 0.6;
+    user-select: none;
+}
+
+.premium-lock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.3); /* Lớp phủ nhẹ */
+}
+
+.lock-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.btn-upgrade-sm {
+    background-color: #FFD700;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #003c72;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s;
+}
+
+.btn-upgrade-sm:hover {
+    transform: scale(1.05);
+}
