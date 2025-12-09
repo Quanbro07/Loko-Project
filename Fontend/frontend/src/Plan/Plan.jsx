@@ -236,6 +236,7 @@ const Plan = () => {
   );
 
   const handleAccept = useCallback(async () => {
+    console.log("CODE MỚI ĐÃ CHẠY")
     if (!planData) { showToast("Chưa có dữ liệu kế hoạch!", "warning"); return; }
     let inputData = lastRequestData;
     if (!inputData) {
@@ -289,8 +290,7 @@ const Plan = () => {
                   description: detail.description || "",
                   location: {
                       id: Number(detail.location.id),
-                      locationName: detail.location.location_name || detail.location.locationName || "",
-                      latitude: detail.location.latitude || 0,
+locationName: detail.location.locationName || detail.location.name || "Không tên",                      latitude: detail.location.latitude || 0,
                       longitude: detail.location.longitude || 0
                   },
                   sequenceOrder: idx + 1
