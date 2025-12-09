@@ -240,6 +240,7 @@ const CurrentPlan = () => {
                       scheduleData={scheduleForCurrentDay}
                       currentIndex={currentPlaceIndex}
                       setCurrentIndex={setCurrentPlaceIndex}
+                      tripId={tripId}
                     />
                     <div style={{ width: '100%', height: '600px', position: 'relative' }}>
         <PremiumFeature fallbackText="Bản đồ tương tác chỉ dành cho Premium">

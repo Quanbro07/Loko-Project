@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ReviewLocationRequest {
-    private Long userId;
 
     private Long locationId;
 
