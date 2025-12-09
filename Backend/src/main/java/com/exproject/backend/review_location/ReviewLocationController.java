@@ -2,6 +2,7 @@ package com.exproject.backend.review_location;
 
 import com.exproject.backend.review_location.dto.ReviewLocationRequest;
 import com.exproject.backend.review_location.dto.ReviewLocationResponse;
+import com.exproject.backend.user.info.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,9 +24,10 @@ public class ReviewLocationController {
 
     @PostMapping("/create")
     public ResponseEntity<ReviewLocationResponse> create(
+            @AuthenticationPrincipal User user,
             @RequestBody ReviewLocationRequest request) {
 
-        ReviewLocationResponse response = reviewLocationService.createReviewLocation(request);
+        ReviewLocationResponse response = reviewLocationService.createReviewLocation(request, user.getId());
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }

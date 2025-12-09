@@ -206,7 +206,7 @@ public class GlobalExceptionHandle {
                 );
     }
 
-    // Vượt ngưỡng RegenerateLimit
+    // Vượt ngưỡng Regenerate Limit
     @ExceptionHandler(ExceededRegenerateLimitException.class)
     public ResponseEntity<?> handlePasswordConflict(ExceededRegenerateLimitException ex) {
 

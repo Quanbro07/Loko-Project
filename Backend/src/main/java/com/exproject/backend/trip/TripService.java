@@ -383,7 +383,6 @@ public class TripService {
 
     // Nhồi Weather vào Trip + gọi API để lấy weather về
     public void processWeatherForTripSection(Trip trip, List<TripSection> sectionsToFetch, Long provinceId) {
-        System.out.println("Chạy weather started");
         LocalDate today = LocalDate.now();
         LocalDate maxForcastDate = today.plusDays(2);
         LocalDate minForcastDate = today.minusDays(6);
@@ -422,7 +421,6 @@ public class TripService {
             return;
         }
 
-        System.out.println("Section To Update Size: " + sectionsToUpdate.size());
 
         LocalDate startDate = sectionsToUpdate.get(0).getDate();
         LocalDate endDate = sectionsToUpdate.get(sectionsToUpdate.size() - 1).getDate();
