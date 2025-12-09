@@ -29,14 +29,14 @@ const CurrentPlan = () => {
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
 
-  // Helper function: Tìm Index từ ID
+  // --- HÀM HỖ TRỢ: Tìm Index Ngày và Index Địa điểm từ ID ---
   const findIndicesFromIds = (tripData, savedSectionId, savedDetailId) => {
     let foundDayIndex = 0;
     let foundPlaceIndex = 0;
 
     const sections = tripData.tripSections || tripData.trip_sections || [];
 
-    // 1. Tìm Day Index
+    // 1. Tìm Day Index dựa trên Section ID
     if (savedSectionId) {
       const dIndex = sections.findIndex(
         (s) => (s.tripSectionId || s.id) === Number(savedSectionId)
@@ -44,23 +44,19 @@ const CurrentPlan = () => {
       if (dIndex !== -1) foundDayIndex = dIndex;
     }
 
-    // 2. Tìm Place Index (Trong ngày đã tìm thấy)
+    // 2. Tìm Place Index dựa trên Detail ID (trong ngày đã tìm thấy)
     if (savedDetailId && sections[foundDayIndex]) {
       const details =
         sections[foundDayIndex].tripDetails ||
         sections[foundDayIndex].trip_details ||
         [];
-      // Tìm xem detail nào có ID khớp
+
       const pIndex = details.findIndex(
         (d) => (d.tripDetailId || d.id) === Number(savedDetailId)
       );
 
       if (pIndex !== -1) {
         foundPlaceIndex = pIndex;
-      } else {
-        // Nếu lưu ID của place cuối cùng đã hoàn thành, có thể ta muốn hiển thị place tiếp theo?
-        // Hiện tại cứ load đúng place đó đã.
-        foundPlaceIndex = 0;
       }
     }
 
@@ -89,14 +85,15 @@ const CurrentPlan = () => {
         setRouteData(extractedRoute);
         setWeatherData(extractedWeather);
 
-        // --- 🔥 KHÔI PHỤC TIẾN ĐỘ TỪ ID 🔥 ---
-        // Giả sử Backend trả về: currentTripSectionId, currentTripDetailId
+        // --- KHÔI PHỤC TIẾN ĐỘ TỪ DB ---
         const savedSectionId = extractedTrip.currentTripSectionId;
         const savedDetailId = extractedTrip.currentTripDetailId;
 
-        console.log(
-          `📥 Saved Progress IDs: Section=${savedSectionId}, Detail=${savedDetailId}`
-        );
+        // 👉 LOG THEO YÊU CẦU: Log ra khi vừa tải trang
+        console.log("🔄 [PAGE LOAD] Đã khôi phục tiến độ từ lần trước:", {
+          Last_Saved_SectionID: savedSectionId,
+          Last_Saved_DetailID: savedDetailId,
+        });
 
         if (savedSectionId || savedDetailId) {
           const { foundDayIndex, foundPlaceIndex } = findIndicesFromIds(
@@ -104,14 +101,16 @@ const CurrentPlan = () => {
             savedSectionId,
             savedDetailId
           );
-          console.log(
-            `📍 Calculated Indices: Day=${foundDayIndex}, Place=${foundPlaceIndex}`
-          );
 
           setCurrentDayIndex(foundDayIndex);
           setCurrentPlaceIndex(foundPlaceIndex);
+
+          console.log(
+            `📍 [NAVIGATE] Nhảy tới: Ngày ${foundDayIndex + 1}, Địa điểm số ${
+              foundPlaceIndex + 1
+            }`
+          );
         } else {
-          // Nếu chưa có progress, về 0
           setCurrentDayIndex(0);
           setCurrentPlaceIndex(0);
         }
@@ -127,7 +126,6 @@ const CurrentPlan = () => {
 
   useEffect(() => {
     if (receivedPlan) {
-      // Logic cho plan mới tạo -> reset về 0
       const data = receivedPlan;
       let extractedTrip = data.tripPlan || data.trip_plan || data;
       setTripData(extractedTrip);
@@ -139,7 +137,7 @@ const CurrentPlan = () => {
     }
   }, [receivedPlan]);
 
-  // ... (Logic tính toán memo giữ nguyên)
+  // Các useMemo tính toán dữ liệu hiển thị
   const tripSections = useMemo(() => {
     if (!tripData) return [];
     return tripData.tripSections || tripData.trip_sections || [];
@@ -155,7 +153,6 @@ const CurrentPlan = () => {
     return [];
   }, [tripSections, currentDayIndex]);
 
-  // Lấy ID của ngày hiện tại để truyền xuống con
   const currentSectionId = useMemo(() => {
     if (tripSections && tripSections[currentDayIndex]) {
       return (
@@ -166,7 +163,6 @@ const CurrentPlan = () => {
     return null;
   }, [tripSections, currentDayIndex]);
 
-  // ... (Map, ItineraryPoints giữ nguyên)
   const itineraryPoints = useMemo(() => {
     return scheduleForCurrentDay
       .map((place) => {
@@ -233,7 +229,7 @@ const CurrentPlan = () => {
                       currentDayIndex={currentDayIndex}
                       setCurrentDayIndex={(idx) => {
                         setCurrentDayIndex(idx);
-                        setCurrentPlaceIndex(0);
+                        setCurrentPlaceIndex(0); // Reset về 0 khi đổi ngày thủ công
                       }}
                       tripSections={tripSections}
                       tripId={tripId}
@@ -253,12 +249,12 @@ const CurrentPlan = () => {
                   <div className="current-plan-content">
                     <CurrentPlace
                       scheduleData={scheduleForCurrentDay}
+                      // Truyền state index để điều khiển slide
                       currentIndex={currentPlaceIndex}
                       setCurrentIndex={setCurrentPlaceIndex}
                       tripId={tripId}
                       dayIndex={currentDayIndex + 1}
-                      rawDayIndex={currentDayIndex} // Vẫn giữ để log logic nếu cần
-                      // 🔥 TRUYỀN ID NGÀY HIỆN TẠI XUỐNG
+                      rawDayIndex={currentDayIndex}
                       currentSectionId={currentSectionId}
                       isLastDay={isLastDay}
                     />
