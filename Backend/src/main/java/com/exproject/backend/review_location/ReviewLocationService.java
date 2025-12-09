@@ -31,8 +31,8 @@ public class    ReviewLocationService {
     private final TripRepository tripRepository;
 
     // Tạo mơới Review Location
-    public ReviewLocationResponse createReviewLocation(ReviewLocationRequest reviewLocationRequest) {
-        User user = userRepository.findById(reviewLocationRequest.getUserId())
+    public ReviewLocationResponse createReviewLocation(ReviewLocationRequest reviewLocationRequest, Long userId) {
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Location location = locationRepository.findById(reviewLocationRequest.getLocationId())
