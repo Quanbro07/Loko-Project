@@ -2,17 +2,25 @@
     position: relative;
     width: 100%;
     height: 100%;
+    min-height: 100%; /* Quan trọng để fill đầy chiều cao cha */
+    border-radius: 8px;
     overflow: hidden;
-    border-radius: 8px; /* Bo góc nhẹ */
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
 }
 
-.premium-feature-content.blurred {
-    filter: blur(5px);
-    pointer-events: none; /* Chặn click vào nội dung bên dưới */
-    opacity: 0.6;
-    user-select: none;
+/* --- CHẾ ĐỘ KHÓA: THÊM HÌNH NỀN GIẢ --- */
+.premium-feature-wrapper.locked-mode {
+    /* Tạo hình nền giả (Map pattern) */
+    background-image: url("https://img.freepik.com/free-vector/city-map-navigation-gps-app-concept_23-2148605026.jpg"); 
+    /* Hoặc dùng đường dẫn ảnh local: url('/img/blurred-map-bg.jpg') */
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
+/* Lớp phủ đè lên hình nền giả */
 .premium-lock-overlay {
     position: absolute;
     top: 0;
@@ -24,26 +32,24 @@
     justify-content: center;
     align-items: center;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.3); /* Lớp phủ nhẹ */
+    
+    /* Làm tối hình nền giả một chút để chữ nổi bật */
+    background: rgba(255, 255, 255, 0.75); 
+    backdrop-filter: blur(5px); /* Làm nhòe hình nền giả */
 }
 
-.lock-icon {
-    font-size: 30px;
-    margin-bottom: 10px;
-}
+.lock-icon-lg { font-size: 40px; margin-bottom: 10px; }
+.lock-text { font-weight: bold; color: #333; margin-bottom: 15px; text-align: center; font-size: 16px; }
 
 .btn-upgrade-sm {
-    background-color: #FFD700;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
     border: none;
-    padding: 8px 16px;
+    padding: 10px 25px;
     border-radius: 20px;
-    font-weight: bold;
     color: #003c72;
+    font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
-    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    font-size: 14px;
 }
-
-.btn-upgrade-sm:hover {
-    transform: scale(1.05);
-}
+.btn-upgrade-sm:hover { transform: scale(1.05); }
