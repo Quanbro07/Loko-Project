@@ -16,27 +16,24 @@ const CurrentPlan = () => {
   const { translate } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
-
   const receivedPlan = location.state?.finalPlan;
 
-  // --- STATE ---
   const [viewMode, setViewMode] = useState(receivedPlan ? "detail" : "history");
   const [isLoading, setIsLoading] = useState(false);
-
   const [tripData, setTripData] = useState(null);
   const [routeData, setRouteData] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
 
+  // State vị trí hiện tại
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
 
-  // --- HÀM GỌI API CHI TIẾT ---
+  // --- HÀM GỌI API CHI TIẾT & KHÔI PHỤC PROGRESS ---
   const fetchTripDetail = async (tripId) => {
     if (!tripId) return;
 
     setIsLoading(true);
     try {
-      console.log(`🔄 Start fetching Trip ID: ${tripId}...`);
       const token = localStorage.getItem("token");
       const headers = { Authorization: `Bearer ${token}` };
 
@@ -45,36 +42,33 @@ const CurrentPlan = () => {
         { params: { tripId: tripId }, headers: headers }
       );
 
-      console.log("✅ API Response Raw:", response.data);
       const data = response.data;
-
-      // --- [FIX] XỬ LÝ DỮ LIỆU ROBUST (Bắt cả snake_case và camelCase) ---
-
-      // 1. Lấy Trip Object
-      let extractedTrip = null;
-      if (data.tripPlan) extractedTrip = data.tripPlan;
-      else if (data.trip_plan)
-        extractedTrip = data.trip_plan; // Fix: snake_case
-      else extractedTrip = data; // Fallback
-
-      // 2. Lấy Route & Weather
+      let extractedTrip = data.tripPlan || data.trip_plan || data;
       const extractedRoute = data.route || null;
       const extractedWeather = data.weather || null;
-
-      console.log("📌 Extracted Trip Data:", extractedTrip);
 
       if (extractedTrip) {
         setTripData(extractedTrip);
         setRouteData(extractedRoute);
         setWeatherData(extractedWeather);
 
-        // Reset Index
-        setCurrentDayIndex(0);
-        setCurrentPlaceIndex(0);
+        // --- 👇 KHÔI PHỤC TIẾN ĐỘ TỪ DB 👇 ---
+        // Giả sử Backend trả về field: currentDayIndex và currentPlaceIndex trong object Trip
+        const savedDay =
+          extractedTrip.currentDayIndex || extractedTrip.current_day_index || 0;
+        const savedPlace =
+          extractedTrip.currentPlaceIndex ||
+          extractedTrip.current_place_index ||
+          0;
+
+        console.log(
+          `📥 Restoring Progress: Day ${savedDay}, Place ${savedPlace}`
+        );
+
+        setCurrentDayIndex(savedDay);
+        setCurrentPlaceIndex(savedPlace);
 
         setViewMode("detail");
-      } else {
-        console.error("⚠️ Không tìm thấy object Trip hợp lệ trong response");
       }
     } catch (error) {
       console.error("❌ Lỗi tải chi tiết chuyến đi:", error);
@@ -83,96 +77,68 @@ const CurrentPlan = () => {
     }
   };
 
-  // --- EFFECT: DATA TỪ TRANG TẠO PLAN ---
   useEffect(() => {
     if (receivedPlan) {
-      // Logic tương tự như trên
       const data = receivedPlan;
-      let extractedTrip = null;
-      if (data.tripPlan) extractedTrip = data.tripPlan;
-      else if (data.trip_plan) extractedTrip = data.trip_plan;
-      else extractedTrip = data;
-
+      let extractedTrip = data.tripPlan || data.trip_plan || data;
       setTripData(extractedTrip);
       setRouteData(data.route || null);
       setWeatherData(data.weather || null);
+
+      // Nếu là plan mới tạo thì start từ 0
+      setCurrentDayIndex(0);
+      setCurrentPlaceIndex(0);
       setViewMode("detail");
     }
   }, [receivedPlan]);
 
-  // --- [FIX] LOGIC TÍNH TOÁN (QUAN TRỌNG) ---
-
-  // 1. Lấy Trip Sections (Bắt cả snake_case)
+  // ... (Giữ nguyên logic tính toán tripSections, itineraryPoints như cũ) ...
   const tripSections = useMemo(() => {
     if (!tripData) return [];
-    // Kiểm tra kỹ các trường hợp
     return tripData.tripSections || tripData.trip_sections || [];
   }, [tripData]);
 
-  // 2. Lấy Trip ID
   const tripId = tripData?.tripId || tripData?.trip_id;
 
-  // 3. Lấy Danh sách địa điểm ngày hiện tại (Bắt cả snake_case)
   const scheduleForCurrentDay = useMemo(() => {
     if (tripSections && tripSections[currentDayIndex]) {
       const section = tripSections[currentDayIndex];
-      // Kiểm tra tripDetails hoặc trip_details
       return section.tripDetails || section.trip_details || [];
     }
     return [];
   }, [tripSections, currentDayIndex]);
 
-  // 4. Tạo Marker Map (Kiểm tra location object)
   const itineraryPoints = useMemo(() => {
     return scheduleForCurrentDay
       .map((place) => {
-        // place.location có thể là null nếu cấu trúc phẳng, hoặc nằm trong object
         const locObj = place.location || place;
-
         const lat = parseFloat(locObj.latitude || place.latitude);
         const lng = parseFloat(locObj.longitude || place.longitude);
-
-        // Tên địa điểm
         const name =
           locObj.location_name ||
           locObj.locationName ||
           place.title ||
           "Điểm đến";
-
         return { name, lat, lng };
       })
       .filter((p) => !isNaN(p.lat) && !isNaN(p.lng));
   }, [scheduleForCurrentDay]);
 
-  // Debug Log để kiểm tra xem dữ liệu đã vào chưa
-  useEffect(() => {
-    if (viewMode === "detail") {
-      console.log("📊 Debug UI Data:");
-      console.log("- Trip Sections:", tripSections);
-      console.log(`- Schedule Day ${currentDayIndex}:`, scheduleForCurrentDay);
-      console.log("- Map Points:", itineraryPoints);
-    }
-  }, [
-    tripSections,
-    scheduleForCurrentDay,
-    itineraryPoints,
-    viewMode,
-    currentDayIndex,
-  ]);
+  const isLastDay = useMemo(() => {
+    if (tripSections.length === 0) return false;
+    return currentDayIndex === tripSections.length - 1;
+  }, [currentDayIndex, tripSections]);
 
-  // --- RENDER ---
   return (
     <div>
       <Navbar />
       <div className="body-container">
-        {/* MODE 1: LIST */}
         {viewMode === "history" && (
           <div style={{ padding: "20px", minHeight: "60vh" }}>
             <TripHistory onSelectTrip={fetchTripDetail} />
           </div>
         )}
 
-        {/* MODE 2: DETAIL */}
         {viewMode === "detail" && (
           <>
             {isLoading ? (
@@ -184,7 +150,6 @@ const CurrentPlan = () => {
               </div>
             ) : tripData ? (
               <>
-                {/* NÚT BACK */}
                 <div style={{ padding: "10px 40px" }}>
                   <button
                     onClick={() => setViewMode("history")}
@@ -202,13 +167,11 @@ const CurrentPlan = () => {
                       fontWeight: "bold",
                     }}
                   >
-                    <FaArrowLeft />
-                    LỊCH SỬ CHUYẾN ĐI
+                    <FaArrowLeft /> LỊCH SỬ CHUYẾN ĐI
                   </button>
                 </div>
 
                 <div className="plan-dashboard-wrapper">
-                  {/* BẢNG LỊCH TRÌNH */}
                   <div className="plan-list-section">
                     <OutputReal
                       currentDayIndex={currentDayIndex}
@@ -220,8 +183,6 @@ const CurrentPlan = () => {
                       tripId={tripId}
                     />
                   </div>
-
-                  {/* THỜI TIẾT */}
                   <div className="weather-section-below">
                     <WeatherForecast
                       currentDayIndex={currentDayIndex}
@@ -230,14 +191,17 @@ const CurrentPlan = () => {
                   </div>
                 </div>
 
-                {/* CURRENT PLACE & MAP */}
                 {scheduleForCurrentDay.length > 0 ? (
                   <div className="current-plan-content">
+                    {/* 👇 CurrentPlace sẽ lo việc gọi API Update Progress 👇 */}
                     <CurrentPlace
                       scheduleData={scheduleForCurrentDay}
                       currentIndex={currentPlaceIndex}
                       setCurrentIndex={setCurrentPlaceIndex}
                       tripId={tripId}
+                      dayIndex={currentDayIndex + 1} // Index hiển thị (1-based)
+                      rawDayIndex={currentDayIndex} // Index thực (0-based) để gửi API
+                      isLastDay={isLastDay}
                     />
                     <MyLeafletMap
                       itineraryPoints={itineraryPoints}
@@ -249,11 +213,7 @@ const CurrentPlan = () => {
                 ) : (
                   <div className="current-plan-empty-state">
                     <h3>
-                      Chưa có dữ liệu địa điểm cho ngày này (
-                      {tripSections.length > 0
-                        ? `Ngày ${currentDayIndex + 1}`
-                        : "Không xác định"}
-                      ).
+                      Chưa có dữ liệu địa điểm cho ngày {currentDayIndex + 1}.
                     </h3>
                   </div>
                 )}
@@ -264,12 +224,7 @@ const CurrentPlan = () => {
                 style={{ padding: "50px", textAlign: "center" }}
               >
                 <h3>Không thể hiển thị dữ liệu.</h3>
-                <button
-                  onClick={() => setViewMode("history")}
-                  style={{ cursor: "pointer", padding: "10px" }}
-                >
-                  Quay lại
-                </button>
+                <button onClick={() => setViewMode("history")}>Quay lại</button>
               </div>
             )}
           </>

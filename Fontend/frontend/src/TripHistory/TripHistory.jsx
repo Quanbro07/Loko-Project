@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { FaSpinner, FaMapMarkedAlt } from "react-icons/fa";
+import {
+  FaSpinner,
+  FaMapMarkedAlt,
+  FaCheckCircle,
+  FaClock,
+} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./TripHistory.css";
 
@@ -33,7 +38,6 @@ const TripHistory = ({ onSelectTrip }) => {
       }
       const headers = { Authorization: `Bearer ${token}` };
 
-      // Gọi API getAll
       const response = await axios.get(
         "http://localhost:8080/api/v1/trip/getAll",
         {
@@ -56,7 +60,6 @@ const TripHistory = ({ onSelectTrip }) => {
     fetchAllTrips();
   }, [fetchAllTrips]);
 
-  // 1. Loading
   if (loading) {
     return (
       <div
@@ -68,7 +71,6 @@ const TripHistory = ({ onSelectTrip }) => {
     );
   }
 
-  // 2. Nếu RỖNG -> Hiển thị giao diện Empty giống CurrentPlan cũ
   if (trips.length === 0) {
     return (
       <div className="error-screen" style={{ minHeight: "50vh" }}>
@@ -82,7 +84,6 @@ const TripHistory = ({ onSelectTrip }) => {
     );
   }
 
-  // 3. Nếu CÓ DỮ LIỆU -> Hiển thị Bảng
   return (
     <div className="trip-history-container">
       <h2 style={{ color: "#003c72", marginBottom: "20px" }}>
@@ -94,12 +95,17 @@ const TripHistory = ({ onSelectTrip }) => {
             <th>STT</th>
             <th>Tên chuyến đi</th>
             <th>Thời gian</th>
+            {/* 👇 THÊM CỘT TRẠNG THÁI 👇 */}
+            <th style={{ textAlign: "center" }}>Trạng thái</th>
             <th style={{ textAlign: "center" }}>Xem chi tiết</th>
           </tr>
         </thead>
         <tbody>
           {trips.map((trip, index) => {
             const currentId = trip.trip_id || trip.tripId || trip.id;
+            // Logic kiểm tra status (Giả sử backend trả về enum "COMPLETED")
+            const isCompleted = trip.status === "COMPLETED";
+
             return (
               <tr key={currentId || index} className="trip-summary-row">
                 <td>{index + 1}</td>
@@ -110,10 +116,20 @@ const TripHistory = ({ onSelectTrip }) => {
                   {formatDate(trip.start_date || trip.startDate)} -{" "}
                   {formatDate(trip.end_date || trip.endDate)}
                 </td>
+
+                {/* 👇 HIỂN THỊ TRẠNG THÁI Y / N 👇 */}
+                <td style={{ textAlign: "center", fontWeight: "bold" }}>
+                  {isCompleted ? (
+                    <span style={{ color: "#28a745" }}>Y</span> // Hoàn thành
+                  ) : (
+                    <span style={{ color: "#6c757d" }}>N</span> // Chưa hoàn thành
+                  )}
+                </td>
+
                 <td className="action-cell" style={{ textAlign: "center" }}>
                   <button
                     className="detail-toggle-button"
-                    onClick={() => onSelectTrip(currentId)} // Gửi ID lên CurrentPlan
+                    onClick={() => onSelectTrip(currentId)}
                     title="Xem chi tiết"
                     style={{
                       cursor: "pointer",
