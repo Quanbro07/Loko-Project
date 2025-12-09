@@ -107,7 +107,7 @@ public class TripPdfTemplateBuilder {
                 + "box-shadow: 0 4px 15px rgba(0,0,0,0.06);"
                 + "padding: 0;"
                 + "} ");
-        
+
         html.append(".info-row {"
                 + "display: flex;"
                 + "justify-content: space-between;"
@@ -128,12 +128,12 @@ public class TripPdfTemplateBuilder {
                 + "font-size: 16px;"
                 + "color: #ffffff;"
                 + "font-family: 'Roboto-Bold';"
-                + "margin-bottom: 10px;" // Tăng khoảng cách so với dòng date bên dưới
+                + "margin-bottom: 10px;"
                 + "} ");
 
         html.append(".duration-dates-inline {"
-                + "display: flex;" // SỬA: Dùng flexbox để căn chỉnh trên một dòng
-                + "justify-content: space-around;" // Căn đều khoảng cách giữa 2 mục
+                + "display: flex;"
+                + "justify-content: space-around;"
                 + "width: 100%;"
                 + "font-size: 15px;"
                 + "} ");
@@ -145,7 +145,7 @@ public class TripPdfTemplateBuilder {
 
         html.append(".date-item .label { color: #ffffff; font-size: 13px; margin-right: 5px; }");
         html.append(".date-item .value { color: #ffffff; font-family: 'Roboto-Bold'; font-size: 15px; }");
-        html.append(".date-item-flex { display: flex; align-items: center; justify-content: center; }"); // Dùng flex để đưa label và value trên cùng một hàng
+        html.append(".date-item-flex { display: flex; align-items: center; justify-content: center; }");
 
         html.append(".info-row:last-child { border-bottom: none; }");
 
@@ -270,6 +270,9 @@ public class TripPdfTemplateBuilder {
 
                         StringBuilder desc = new StringBuilder();
 
+                        // ----------- ĐÃ SỬA ĐỔI TẠI ĐÂY -----------
+                        // LOẠI BỎ THÔNG TIN LOCATION (Open Time, Rating, Price)
+                        /*
                         if (loc != null) {
                             if (loc.getOpenTime() != null)
                                 desc.append("Open: ").append(formatTime(loc.getOpenTime())).append("<br/>");
@@ -284,9 +287,16 @@ public class TripPdfTemplateBuilder {
                                 desc.append("Rating: ").append(loc.getAverageRating())
                                         .append(" (").append(loc.getReviewCount()).append(" reviews)<br/>");
                         }
+                        */
+                        // ------------------------------------------
 
-                        if (detail.getDescription() != null)
-                            desc.append("<br/><strong>").append(escape(detail.getDescription())).append("</strong>");
+                        // CHỈ GIỮ LẠI ACTIVITY/DESCRIPTION (ghi chú của người dùng)
+                        if (detail.getDescription() != null) {
+                            // Dùng strong để làm nổi bật activity
+                            desc.append("<strong>").append(escape(detail.getDescription())).append("</strong>");
+                        }
+
+                        // Nếu activity là null, desc sẽ là chuỗi rỗng
 
                         html.append("<td>").append(desc).append("</td>");
 
@@ -309,10 +319,8 @@ public class TripPdfTemplateBuilder {
     // =============================================
 
     private String infoRowDates(String startDate, String endDate) {
-        // Dùng class "duration" để CSS có thể đặt màu nền xanh
         return "<div class='info-row duration'>"
                 + "<div class='duration-title'>TRIP DURATION</div>"
-                // SỬA CẤU TRÚC HTML: Dùng flex để đặt 2 mục Start/End trên cùng 1 dòng
                 + "<div class='duration-dates-inline'>"
 
                 + "<div class='date-item date-item-flex'>"
