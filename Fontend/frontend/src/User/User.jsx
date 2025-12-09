@@ -221,13 +221,7 @@ const User = () => {
         </div>
 
         <div className="ticket-footer">
-          {/* NÚT LỊCH SỬ CHUYẾN ĐI - ĐÃ MỞ KHÓA */}
-          <button 
-            className={`travel-history ${activeSection === "history" ? "active-tab" : ""}`} 
-            onClick={() => setActiveSection("history")}
-          >
-            {translate("travel_history_button")}
-          </button>
+          
 
           {/* NÚT THÀNH TỰU - ĐÃ MỞ KHÓA */}
           <button

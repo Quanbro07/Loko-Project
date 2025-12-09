@@ -12,7 +12,7 @@
 /* --- CHẾ ĐỘ KHÓA: THÊM HÌNH NỀN GIẢ --- */
 .premium-feature-wrapper.locked-mode {
     /* Tạo hình nền giả (Map pattern) */
-    background-image: url("https://img.freepik.com/free-vector/city-map-navigation-gps-app-concept_23-2148605026.jpg"); 
+    background-color: #f8f9fa;
     /* Hoặc dùng đường dẫn ảnh local: url('/img/blurred-map-bg.jpg') */
     
     background-size: cover;
