@@ -11,7 +11,6 @@ const CurrentPlace = ({
   setCurrentIndex,
   tripId,
   dayIndex = 1,
-  // 👇 Nhận ID Section từ cha để update progress đúng
   currentSectionId,
   rawDayIndex = 0,
   isLastDay = false,
@@ -52,51 +51,36 @@ const CurrentPlace = ({
     });
   };
 
-  // --- API 1: GỬI REVIEW (ĐÃ SỬA URL) ---
   const submitReviewToBackend = async (locationId, ratingValue) => {
-    // Chỉ gửi nếu có rating > 0
     if (!tripId || !locationId || !ratingValue || ratingValue <= 0) return;
-
     const payload = {
       locationId: Number(locationId),
       tripId: Number(tripId),
       rating: Number(ratingValue),
       comment: "",
     };
-
-    console.log("🚀 Đang gửi review:", payload);
-
     try {
-      // ✅ FIX: Thêm /create vào đường dẫn
       const API_URL = "http://localhost:8080/api/v1/review/create";
-
       await axios.post(API_URL, payload, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("✅ Gửi đánh giá thành công!");
     } catch (e) {
-      if (e.response) {
-        console.error("❌ Lỗi Backend Review:", e.response.data);
-      } else {
-        console.error("❌ Lỗi kết nối Review:", e);
-      }
+      console.error("❌ Review Error:", e);
     }
   };
 
-  // --- API 2: UPDATE TIẾN ĐỘ ---
   const updateProgressBackend = async (sectionId, detailId) => {
     if (!tripId || !sectionId || !detailId) return;
     try {
-      // Gửi theo ID (Chuẩn xác hơn Index)
       const payload = {
         tripId: Number(tripId),
         currentTripSectionId: Number(sectionId),
         currentTripDetailId: Number(detailId),
       };
-      // console.log("💾 Saving Progress:", payload);
+
       await axios.post(
         "http://localhost:8080/api/v1/trip/update-progress",
         payload,
@@ -108,11 +92,10 @@ const CurrentPlace = ({
         }
       );
     } catch (e) {
-      console.error("⚠️ Lỗi lưu tiến độ:", e);
+      console.error("⚠️ Update Progress Error:", e);
     }
   };
 
-  // --- API 3: HOÀN THÀNH TRIP ---
   const completeTripOnBackend = async () => {
     try {
       await axios.post(`http://localhost:8080/api/v1/trip/complete`, null, {
@@ -122,11 +105,11 @@ const CurrentPlace = ({
       setIsTripFinished(true);
       navigate("/currentplan");
     } catch (e) {
-      console.error("❌ Lỗi hoàn thành chuyến đi:", e);
+      console.error("❌ Error completing trip:", e);
     }
   };
 
-  // --- XỬ LÝ NÚT BẤM ---
+  // --- 🔥 LOGIC XỬ LÝ NÚT NEXT & LOG ---
   const handleProcessStep = async () => {
     const currentPlace = dataArray[safeIndex];
     if (!currentPlace) return;
@@ -135,32 +118,50 @@ const CurrentPlace = ({
     const currentRating = placeRatings[safeIndex] || 0;
 
     // 1. Gửi Rating
-    await submitReviewToBackend(placeId, currentRating);
+    submitReviewToBackend(placeId, currentRating);
 
-    // 2. Chuyển bước & Lưu tiến độ
     if (!isLastSlide) {
-      // --> Next slide
+      // --- TRƯỜNG HỢP: CHUYỂN QUA BƯỚC TIẾP THEO ---
+
       const nextIndex = safeIndex + 1;
       const nextPlace = dataArray[nextIndex];
+
+      // Chuyển UI ngay
       setCurrentIndex(nextIndex);
 
-      // Lưu progress: ID ngày hiện tại + ID địa điểm tiếp theo
+      // Lấy ID của bước tiếp theo để lưu
       const nextDetailId =
         nextPlace.tripDetailId || nextPlace.trip_detail_id || nextPlace.id;
+
       await updateProgressBackend(currentSectionId, nextDetailId);
+
+      // 👉 LOG THEO YÊU CẦU: Log ra location và ngày vừa lưu
+      console.log("👉 [NEXT CLICKED] Đã lưu tiến độ mới:", {
+        Day_SectionID: currentSectionId,
+        Location_Saved_ID: nextDetailId,
+        Location_Name: nextPlace.location?.location_name || nextPlace.title,
+      });
     } else {
-      // --> Hết ngày
+      // --- TRƯỜNG HỢP: SLIDE CUỐI CÙNG CỦA NGÀY ---
+
       if (isLastDay) {
         await completeTripOnBackend();
+        console.log("🏁 [FINISH] Đã hoàn thành chuyến đi");
       } else {
         setIsDayCompleted(true);
-        // Lưu progress: Đánh dấu địa điểm cuối cùng của ngày này đã xong
-        // (Lần sau vào lại load đúng điểm này hoặc cần logic backend tự nhảy sang ngày mới)
+        // Lưu lại vị trí cuối cùng này
         const lastDetailId =
           currentPlace.tripDetailId ||
           currentPlace.trip_detail_id ||
           currentPlace.id;
         await updateProgressBackend(currentSectionId, lastDetailId);
+
+        console.log("✅ [END OF DAY] Đã lưu địa điểm cuối ngày:", {
+          Day_SectionID: currentSectionId,
+          Location_Saved_ID: lastDetailId,
+          Location_Name:
+            currentPlace.location?.location_name || currentPlace.title,
+        });
       }
     }
   };
@@ -181,7 +182,7 @@ const CurrentPlace = ({
   if (totalPlaces === 0)
     return (
       <div className="currplace-container">
-        <p>Không có dữ liệu địa điểm.</p>
+        <p>No Data</p>
       </div>
     );
 
@@ -210,16 +211,13 @@ const CurrentPlace = ({
               loc.locationName ||
               place.title ||
               "Địa điểm";
-
-            // Xử lý ảnh
             let imageList = [];
             const rawImgs = loc.locationImgs || place.imgs || [];
             if (Array.isArray(rawImgs)) {
               imageList = rawImgs
-                .map((img) => {
-                  if (!img) return null;
-                  return typeof img === "string" ? img : img.url || img.img_url;
-                })
+                .map((img) =>
+                  typeof img === "string" ? img : img.url || img.img_url
+                )
                 .filter(
                   (u) => u && typeof u === "string" && u.startsWith("http")
                 );
@@ -232,7 +230,6 @@ const CurrentPlace = ({
                 style={{ width: "100%", flexShrink: 0 }}
               >
                 <h3 className="place-title">{title}</h3>
-
                 <div className="place-rating-input">
                   <div className="star-rating-container">
                     {stars.map((star) => (
@@ -264,7 +261,6 @@ const CurrentPlace = ({
                     ))}
                   </div>
                 </div>
-
                 <div className="place-gallery-list">
                   {imageList.map((url, i) => (
                     <img
