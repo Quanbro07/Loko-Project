@@ -58,6 +58,17 @@ services:
     networks:
       - app-network
 
+  frontend:
+    build:
+      context: ./Fontend/frontend
+      dockerfile: Dockerfile
+    container_name: loko-project-frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
 
 networks:
   app-network:
