@@ -222,7 +222,6 @@ const CurrentPlan = () => {
                     <FaArrowLeft /> LỊCH SỬ CHUYẾN ĐI
                   </button>
                 </div>
-
                 <div className="plan-dashboard-wrapper">
                   <div className="plan-list-section">
                     <OutputReal
