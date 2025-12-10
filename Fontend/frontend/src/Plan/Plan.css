@@ -41,3 +41,54 @@
     width: 1500px;
     z-index: 2;
 }
+
+/* --- TOAST NOTIFICATION STYLES --- */
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 9999; /* Đảm bảo nổi lên trên cùng */
+  
+  /* Hiệu ứng trượt */
+  transform: translateX(120%);
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  
+  font-weight: 500;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.toast-notification.show {
+  transform: translateX(0);
+}
+
+/* Màu sắc theo loại */
+.toast-notification.success {
+  background-color: #fff;
+  border-left: 6px solid #28a745;
+  color: #333;
+}
+
+.toast-notification.error {
+  background-color: #fff;
+  border-left: 6px solid #dc3545;
+  color: #dc3545;
+}
+
+.toast-notification.warning {
+  background-color: #fff;
+  border-left: 6px solid #ffc107;
+  color: #d39e00;
+}
+
+.toast-notification.info {
+  background-color: #fff;
+  border-left: 6px solid #17a2b8;
+  color: #17a2b8;
+}

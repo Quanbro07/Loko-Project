@@ -13,7 +13,8 @@ const OutputReal = ({ currentDayIndex, setCurrentDayIndex, tripSections, tripId 
 
     // State cho dữ liệu hiển thị bảng (được map từ props)
     const [itineraryData, setItineraryData] = useState([]);
-
+const { user } = useAuth();
+  const isVip = user?.role === 'VIP' || user?.role === 'ADMIN';
     // Lấy dữ liệu chi tiết từ section của ngày hiện tại (được truyền từ props)
     const currentSection = tripSections[currentDayIndex];
     const scheduleForCurrentDay = currentSection ? currentSection.tripDetails : [];
@@ -118,6 +119,7 @@ const OutputReal = ({ currentDayIndex, setCurrentDayIndex, tripSections, tripId 
 
     return (
         <div className="output-container">
+            {isVip? (
             <button 
                 className="btn-export-pdf" 
                 onClick={handleExportPdf}
@@ -139,7 +141,20 @@ const OutputReal = ({ currentDayIndex, setCurrentDayIndex, tripSections, tripId 
                         Export PDF
                     </>
                 )}
-            </button>
+            </button>):(<button 
+                    className="btn-export-pdf locked"
+                    disabled={true} 
+                    title="Nâng cấp Premium để mở khóa tính năng này"
+                    style={{ 
+                        backgroundColor: '#ccc', 
+                        cursor: 'not-allowed', 
+                        filter: 'grayscale(100%)',
+                        color: '#666' 
+                    }}
+                >
+                    Export PDF 🔒
+                </button>
+            )}
             <h3>{translate('output_suggested_itinerary') || 'Lịch trình được đề xuất'}</h3>
             
             {/* Bộ điều khiển chuyển ngày */}

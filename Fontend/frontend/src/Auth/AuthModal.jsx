@@ -76,7 +76,7 @@ const AuthModal = () => {
 
                 <div className={styles.content}>
                     <div className={styles.header}>
-                        <img src={authMode === 'login' ? "/img/logo (1).PNG" : "/img/logo (1).PNG"} alt="Loko logo" className={styles.logo} />
+                        <img src={authMode === 'login' ? "/img/logo.PNG" : "/img/logo.PNG"} alt="Loko logo" className={styles.logo} />
                         <button className={styles.closeBtn} onClick={closeAuthModal} aria-label="Close">×</button>
                     </div>
 

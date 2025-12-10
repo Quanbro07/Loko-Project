@@ -58,6 +58,23 @@ services:
     networks:
       - app-network
 
+  frontend:
+    build:
+      context: ./Fontend/frontend
+      dockerfile: Dockerfile
+    container_name: loko-project-frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    volumes:
+      - ./Fontend/frontend/src:/app/src        # Map thư mục src máy thật vào src container
+      - ./Fontend/frontend/public:/app/public  # Map thư mục public (nếu cần)
+      - /app/node_modules                      # Giữ nguyên thư viện của container, không cho máy thật ghi đè
+    environment:
+      - WATCHPACK_POLLING=true
 
 networks:
   app-network:

@@ -1,29 +1,16 @@
-# Build stage
-FROM node:18-alpine AS build
+# Chỉ dùng 1 stage duy nhất là Node
+FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
-# Copy source code
 COPY . .
 
-# Build the app
-RUN npm run build
-
-# Production stage
-FROM nginx:alpine
-
-# Copy built assets from build stage
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
+# Mở cổng 3000
 EXPOSE 3000
 
-CMD ["nginx", "-g", "daemon off;"]
+# Chạy lệnh npm start thay vì build và dùng nginx
+CMD ["npm", "start"]
