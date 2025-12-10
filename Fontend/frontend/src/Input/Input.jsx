@@ -666,8 +666,25 @@ console.log("Request Data Sent:", requestData); // Log ra để kiểm tra
         </div>
       </div>
       <div className="input-footer">
-        <div className="counting-item">
-          -------{currentStep + 1}/{totalSteps}-------
+       <div className="counting-item">
+          
+          {/* 1. Phần chữ hiển thị rõ ràng */}
+          <div className="step-text">
+            <span className="current">Bước {currentStep + 1}</span>
+            <span className="total"> / {totalSteps}</span>
+            
+          </div>
+
+          {/* 2. Phần thanh ngang phân đoạn */}
+          <div className="progress-track">
+            {Array.from({ length: totalSteps }, (_, index) => (
+              <div
+                key={index}
+                className={`progress-segment ${index <= currentStep ? 'filled' : ''}`}
+              ></div>
+            ))}
+          </div>
+
         </div>
         <div className="button-list">
           {/* Nút PREV: Luôn hiển thị, nhưng bị vô hiệu hóa khi ở bước 0 */}
@@ -681,25 +698,25 @@ console.log("Request Data Sent:", requestData); // Log ra để kiểm tra
             {translate("input_prev_button")}
           </button>
 
-          {/* Nút SEARCH: Luôn hiển thị ở giữa */}
-          <button
-            className="search-button"
-            onClick={handleSearch}
-            disabled={isResultShown}
-          >
-            {translate("input_search_button")}
-          </button>
-
-          {/* Nút NEXT: Luôn hiển thị, nhưng bị vô hiệu hóa khi ở bước cuối */}
-          <button
-            className={`next-button ${
-              currentStep === totalSteps - 1 ? "hidden-button" : ""
-            }`}
-            onClick={handleNext}
-            disabled={currentStep === totalSteps - 1} // Vô hiệu hóa nút
-          >
-            {translate("input_next_button")}
-          </button>
+          {/* 2. LOGIC ĐỔI NÚT: Nếu chưa phải bước cuối -> Hiện NEXT. Nếu là bước cuối -> Hiện SEARCH */}
+          {currentStep < totalSteps - 1 ? (
+            // TRƯỜNG HỢP: Slide 1, 2, 3 -> Hiện nút NEXT
+            <button
+              className="next-button"
+              onClick={handleNext}
+            >
+              {translate("input_next_button")}
+            </button>
+          ) : (
+            // TRƯỜNG HỢP: Slide 4 (Cuối cùng) -> Hiện nút SEARCH
+            <button
+              className="search-button"
+              onClick={handleSearch}
+              disabled={isResultShown}
+            >
+              {translate("input_search_button")}
+            </button>
+          )}
         </div>
       </div>
     </div>
