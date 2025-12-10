@@ -72,7 +72,7 @@ const TripHistory = ({ onSelectTrip }) => {
         <div className="body-error">
           <h3 className="alert-error">Chưa có dữ liệu chuyến đi.</h3>
           <button onClick={() => navigate("/search")} className="get-started">
-            Lên kế hoạch ngay
+            Lên kế hoạch 
           </button>
         </div>
       </div>
