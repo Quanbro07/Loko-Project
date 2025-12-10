@@ -13,7 +13,7 @@ import axios from "axios";
 
 const Plan = () => {
   const { user, token } = useAuth();
-  const isVip = user?.role === 'VIP' || user?.role === 'ADMIN';
+  const isVip = user?.role === "VIP" || user?.role === "ADMIN";
   const { translate } = useLanguage();
   const navigate = useNavigate();
 
@@ -21,10 +21,14 @@ const Plan = () => {
   const LIMIT_SEARCH_USER = 1;
   const LIMIT_SEARCH_VIP = 10;
   const LIMIT_RETRY_USER = 3;
-  const LIMIT_RETRY_VIP = 9999; 
+  const LIMIT_RETRY_VIP = 9999;
 
   // --- STATE TOAST (THÔNG BÁO) ---
-  const [toast, setToast] = useState({ show: false, message: "", type: "info" });
+  const [toast, setToast] = useState({
+    show: false,
+    message: "",
+    type: "info",
+  });
   const toastTimeoutRef = useRef(null); // Dùng ref để clear timeout tránh lỗi
 
   // --- STATE APP ---
@@ -32,14 +36,16 @@ const Plan = () => {
   const [isResultShown, setIsResultShown] = useState(false);
   const [searchIteration, setSearchIteration] = useState(0);
   const [planData, setPlanData] = useState(null);
-  const [tryCount, setTryCount] = useState(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
+  const [tryCount, setTryCount] = useState(
+    isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER
+  );
   const [lastRequestData, setLastRequestData] = useState(null);
   const [initialTotalItems, setInitialTotalItems] = useState(0);
   const [outputStats, setOutputStats] = useState({ total: 0, rejected: 0 });
   const [allRejectedItems, setAllRejectedItems] = useState([]);
 
   useEffect(() => {
-      setTryCount(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
+    setTryCount(isVip ? LIMIT_RETRY_VIP : LIMIT_RETRY_USER);
   }, [isVip]);
 
   // --- HÀM HIỂN THỊ TOAST ---
@@ -73,7 +79,9 @@ const Plan = () => {
         msg = "Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.";
       } else {
         const data = error.response.data;
-        msg = `Lỗi ${error.response.status}: ${data?.message || data?.error || JSON.stringify(data)}`;
+        msg = `Lỗi ${error.response.status}: ${
+          data?.message || data?.error || JSON.stringify(data)
+        }`;
       }
     } else if (error.request) {
       msg = "Không thể kết nối đến Server";
@@ -86,21 +94,26 @@ const Plan = () => {
   }, []);
 
   const checkSearchLimit = () => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split("T")[0];
     const storageKey = `search_cnt_${user?.id}_${today}`;
     const currentCount = parseInt(localStorage.getItem(storageKey) || "0");
     const maxLimit = isVip ? LIMIT_SEARCH_VIP : LIMIT_SEARCH_USER;
 
     if (currentCount >= maxLimit) {
-        // <--- DÙNG TOAST WARNING
-        showToast(`Bạn đã hết ${maxLimit} lượt tạo hôm nay. ${!isVip ? 'Nâng cấp Premium để có thêm!' : ''}`, "warning");
-        return false;
+      // <--- DÙNG TOAST WARNING
+      showToast(
+        `Bạn đã hết ${maxLimit} lượt tạo hôm nay. ${
+          !isVip ? "Nâng cấp Premium để có thêm!" : ""
+        }`,
+        "warning"
+      );
+      return false;
     }
     return true;
   };
 
   const incrementSearchCount = () => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split("T")[0];
     const storageKey = `search_cnt_${user?.id}_${today}`;
     const currentCount = parseInt(localStorage.getItem(storageKey) || "0");
     localStorage.setItem(storageKey, currentCount + 1);
@@ -108,26 +121,32 @@ const Plan = () => {
 
   // --- API 1: MAKE PLAN ---
   const callMakePlanApi = useCallback(
-    async (data) => {
+    async (data, rejected_detail = []) => {
       if (!data) return;
       setIsSearching(true);
       setIsResultShown(false);
       setPlanData(null);
-      setAllRejectedItems([]); 
+      setAllRejectedItems(rejected_detail);
 
       try {
         const headers = { "Content-Type": "application/json" };
         if (token) headers["Authorization"] = `Bearer ${token}`;
-
+        const payload = {
+          ...data,
+          rejected_locations: rejected_detail.map((item) => ({
+            id: item.location_id, // Lấy location_id từ item bị từ chối
+          })),
+        };
         const response = await axios.post(
           "http://localhost:8080/api/v1/make-plan/make",
-          data,
+          payload,
           { headers }
         );
 
         const newPlanData = response.data;
         setPlanData(newPlanData);
         setInitialTotalItems(countTotalItems(newPlanData));
+
         setIsResultShown(true);
         setSearchIteration((prev) => prev + 1);
         showToast("Đã tạo kế hoạch thành công!", "success"); // Toast success
@@ -148,7 +167,7 @@ const Plan = () => {
         (item) => item && item.trip_detail_id && item.location_id
       );
       const planToSend = current_trip_plan;
-      
+
       if (!planToSend) {
         showToast("Lỗi dữ liệu plan.", "error");
         setIsSearching(false);
@@ -170,7 +189,8 @@ const Plan = () => {
           { headers }
         );
 
-        const newTripData = response.data.newTrip || response.data.new_trip_plan || response.data;
+        const newTripData =
+          response.data.newTrip || response.data.new_trip_plan || response.data;
         setPlanData(newTripData);
         setSearchIteration((prev) => prev + 1);
         showToast("Đã cập nhật lịch trình mới!", "success");
@@ -198,12 +218,15 @@ const Plan = () => {
   const handleTryAgain = useCallback(
     (newRejectedItems = []) => {
       if (tryCount <= 0) {
-          showToast(!isVip ? "Hết lượt thử lại. Nâng cấp Premium!" : "Hết lượt hệ thống.", "warning");
-          return;
+        showToast(
+          !isVip ? "Hết lượt thử lại. Nâng cấp Premium!" : "Hết lượt hệ thống.",
+          "warning"
+        );
+        return;
       }
-      
+
       if (!isVip) {
-          setTryCount((prev) => prev - 1);
+        setTryCount((prev) => prev - 1);
       }
 
       const updatedTotalRejected = [...allRejectedItems, ...newRejectedItems];
@@ -224,20 +247,32 @@ const Plan = () => {
           if (savedRequest) requestToUse = JSON.parse(savedRequest);
         }
         if (requestToUse) {
-            showToast("Thay đổi quá 50%, đang tạo lại từ đầu...", "info");
-            callMakePlanApi(requestToUse);
-        }
-        else showToast("Vui lòng thực hiện tìm kiếm lại từ đầu!", "warning");
+          showToast("Thay đổi quá 50%, đang tạo lại từ đầu...", "info");
+          callMakePlanApi(requestToUse, updatedTotalRejected);
+        } else showToast("Vui lòng thực hiện tìm kiếm lại từ đầu!", "warning");
       } else {
         callRegeneratePartAPI(planData, updatedTotalRejected);
       }
     },
-    [tryCount, planData, lastRequestData, initialTotalItems, outputStats, allRejectedItems, callMakePlanApi, callRegeneratePartAPI, isVip]
+    [
+      tryCount,
+      planData,
+      lastRequestData,
+      initialTotalItems,
+      outputStats,
+      allRejectedItems,
+      callMakePlanApi,
+      callRegeneratePartAPI,
+      isVip,
+    ]
   );
 
   const handleAccept = useCallback(async () => {
-    console.log("CODE MỚI ĐÃ CHẠY")
-    if (!planData) { showToast("Chưa có dữ liệu kế hoạch!", "warning"); return; }
+    console.log("CODE MỚI ĐÃ CHẠY");
+    if (!planData) {
+      showToast("Chưa có dữ liệu kế hoạch!", "warning");
+      return;
+    }
     let inputData = lastRequestData;
     if (!inputData) {
       try {
@@ -245,13 +280,19 @@ const Plan = () => {
         if (saved) inputData = JSON.parse(saved);
       } catch (e) {}
     }
-    if (!inputData) { showToast("Dữ liệu tìm kiếm bị mất.", "error"); return; }
+    if (!inputData) {
+      showToast("Dữ liệu tìm kiếm bị mất.", "error");
+      return;
+    }
 
     try {
       const headers = { "Content-Type": "application/json" };
       if (token) headers["Authorization"] = `Bearer ${token}`;
 
-      const fmtTime = (t) => (t && typeof t === 'string' && t.length >= 5) ? t.substring(0, 5) : "08:00";
+      const fmtTime = (t) =>
+        t && typeof t === "string" && t.length >= 5
+          ? t.substring(0, 5)
+          : "08:00";
 
       const weatherRequestPayload = {
         provinceId: Number(inputData.provinceId) || 0,
@@ -274,46 +315,62 @@ const Plan = () => {
         tripSections: (planData.tripSections || []).map((section, index) => {
           let dateString = section.date;
           if (!dateString) {
-             const baseDate = new Date(inputData.startDate);
-             baseDate.setDate(baseDate.getDate() + index);
-             dateString = baseDate.toISOString().split("T")[0];
+            const baseDate = new Date(inputData.startDate);
+            baseDate.setDate(baseDate.getDate() + index);
+            dateString = baseDate.toISOString().split("T")[0];
           }
           return {
-            dayNumber: Number(section.dayNumber) || (index + 1), 
+            dayNumber: Number(section.dayNumber) || index + 1,
             date: dateString,
             title: section.title || `Ngày ${index + 1}`,
-            tripDetails: (section.tripDetails || []).filter(d => d.location && d.location.id).map((detail, idx) => ({
-                  startTime: fmtTime(detail.startTime),
-                  endTime: fmtTime(detail.endTime),
-                  activity: detail.activity,
-                  price: Number(detail.price) || 0,
-                  description: detail.description || "",
-                  location: {
-                      id: Number(detail.location.id),
-                      location_name: detail.location.locationName || detail.location.name || detail.location.location_name|| "Không tên", 
-                      latitude: detail.location.latitude || 0,
-                      longitude: detail.location.longitude || 0
-                  },
-                  sequenceOrder: idx + 1
-            }))
+            tripDetails: (section.tripDetails || [])
+              .filter((d) => d.location && d.location.id)
+              .map((detail, idx) => ({
+                startTime: fmtTime(detail.startTime),
+                endTime: fmtTime(detail.endTime),
+                activity: detail.activity,
+                price: Number(detail.price) || 0,
+                description: detail.description || "",
+                location: {
+                  id: Number(detail.location.id),
+                  location_name:
+                    detail.location.locationName ||
+                    detail.location.name ||
+                    detail.location.location_name ||
+                    "Không tên",
+                  latitude: detail.location.latitude || 0,
+                  longitude: detail.location.longitude || 0,
+                },
+                sequenceOrder: idx + 1,
+              })),
           };
         }),
       };
 
-      const payload = { trip_request: tripRequestPayload, weather_request: weatherRequestPayload };
-      console.log(payload)
-      const response = await axios.post("http://localhost:8080/api/v1/make-plan/confirm", payload, { headers });
-      
-      const confirmedTrip = response.data.trip || response.data; 
-      showToast("Xác nhận thành công! Đang chuyển trang...", "success");
-      
-      setTimeout(() => {
-          navigate("/currentplan", { state: { finalPlan: confirmedTrip } });
-      }, 1000); // Delay 1 chút để user kịp nhìn thấy toast success
+      const payload = {
+        trip_request: tripRequestPayload,
+        weather_request: weatherRequestPayload,
+      };
+      console.log(payload);
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/make-plan/confirm",
+        payload,
+        { headers }
+      );
 
+      const confirmedTrip = response.data.trip || response.data;
+      showToast("Xác nhận thành công! Đang chuyển trang...", "success");
+
+      setTimeout(() => {
+        navigate("/currentplan", { state: { finalPlan: confirmedTrip } });
+      }, 1000); // Delay 1 chút để user kịp nhìn thấy toast success
     } catch (error) {
       console.error("Lỗi Confirm:", error);
-      if (error.response && error.response.data) showToast("Lỗi Backend: " + JSON.stringify(error.response.data), "error");
+      if (error.response && error.response.data)
+        showToast(
+          "Lỗi Backend: " + JSON.stringify(error.response.data),
+          "error"
+        );
       else handleAPIError(error);
     }
   }, [navigate, planData, lastRequestData, token]);
@@ -339,7 +396,7 @@ const Plan = () => {
             key={searchIteration}
             data={planData}
             tryCount={tryCount}
-            isVip={isVip} 
+            isVip={isVip}
             onTryAgainClick={handleTryAgain}
             onAcceptClick={handleAccept}
             onStatsChange={handleStatsUpdate}
@@ -349,7 +406,11 @@ const Plan = () => {
       <Footer />
 
       {/* --- RENDER TOAST COMPONENT --- */}
-      <div className={`toast-notification ${toast.show ? "show" : ""} ${toast.type}`}>
+      <div
+        className={`toast-notification ${toast.show ? "show" : ""} ${
+          toast.type
+        }`}
+      >
         {toast.message}
       </div>
     </div>
