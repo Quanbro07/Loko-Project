@@ -127,16 +127,23 @@ const Plan = () => {
       setIsResultShown(false);
       setPlanData(null);
       setAllRejectedItems(rejected_detail);
+      const payloadDetail = rejected_detail.filter(
+        (item) => item && item.trip_detail_id && item.location_id
+      );
 
       try {
         const headers = { "Content-Type": "application/json" };
         if (token) headers["Authorization"] = `Bearer ${token}`;
+
         const payload = {
           ...data,
-          rejected_locations: rejected_detail.map((item) => ({
-            id: item.location_id, // Lấy location_id từ item bị từ chối
-          })),
+          rejected_locations: payloadDetail,
+
+          visited_locations: data.visitedLocation || [],
         };
+
+        console.log("Payload Safe Sent:", payload);
+
         const response = await axios.post(
           "http://localhost:8080/api/v1/make-plan/make",
           payload,
@@ -149,7 +156,7 @@ const Plan = () => {
 
         setIsResultShown(true);
         setSearchIteration((prev) => prev + 1);
-        showToast("Đã tạo kế hoạch thành công!", "success"); // Toast success
+        showToast("Đã tạo kế hoạch thành công!", "success");
       } catch (error) {
         handleAPIError(error);
       } finally {
