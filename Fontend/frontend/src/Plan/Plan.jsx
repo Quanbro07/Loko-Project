@@ -290,7 +290,8 @@ const Plan = () => {
                   description: detail.description || "",
                   location: {
                       id: Number(detail.location.id),
-locationName: detail.location.locationName || detail.location.name || "Không tên",                      latitude: detail.location.latitude || 0,
+                      location_name: detail.location.locationName || detail.location.name || detail.location.location_name|| "Không tên", 
+                      latitude: detail.location.latitude || 0,
                       longitude: detail.location.longitude || 0
                   },
                   sequenceOrder: idx + 1
@@ -300,6 +301,7 @@ locationName: detail.location.locationName || detail.location.name || "Không t�
       };
 
       const payload = { trip_request: tripRequestPayload, weather_request: weatherRequestPayload };
+      console.log(payload)
       const response = await axios.post("http://localhost:8080/api/v1/make-plan/confirm", payload, { headers });
       
       const confirmedTrip = response.data.trip || response.data; 

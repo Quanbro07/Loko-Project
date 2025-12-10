@@ -22,7 +22,7 @@ public class LocationDTO {
     @JsonProperty("gg_place_id")
     private String ggPlaceId;
 
-    @JsonProperty("locationName")
+    @JsonProperty("location_name")
     private String locationName;
 
     private Double latitude;

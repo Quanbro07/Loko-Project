@@ -320,13 +320,23 @@ const Input = ({
       fromOperateTime: `${pad(startHour)}:${pad(startMinute)}`,
       toOperateTime: `${pad(endHour)}:${pad(endMinute)}`,
 
-      locations: locations,
+      locations: locations.map(loc => ({
+          id: Number(loc.id),
+          
+          // QUAN TRỌNG NHẤT: Ép về locationName
+          locationName: loc.locationName || loc.location_name || loc.name || "",
+          
+          // Giữ lại các trường khác mà Backend cần (dựa theo log lỗi)
+          latitude: loc.latitude || 0,
+          longitude: loc.longitude || 0,
+          gg_place_id: loc.gg_place_id || "",
+          // Nếu cần các trường khác như open_time, description thì thêm vào đây
+      })),
     };
 
     if (onSearch) {
       onSearch(requestData);
-      console.log(requestData);
-      
+console.log("Request Data Sent:", requestData); // Log ra để kiểm tra      
     }
 
     // Tự động tắt loading sau 10s nếu không có phản hồi (timeout thủ công)
