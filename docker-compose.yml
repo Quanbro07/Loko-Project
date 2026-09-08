@@ -1,16 +1,17 @@
 include:
   - docker-compose-dev.yml
 
+# Moi bien ${...} duoi day duoc doc tu file .env o thu muc goc.
+# Copy .env.example -> .env va dien gia tri truoc khi chay `docker compose up`.
 services:
 
   db:
     container_name: postgres
     image: postgres:17
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: quanbro7
-      POSTGRES_DB: loko_project
-
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD chua duoc set - xem .env.example}
+      POSTGRES_DB: ${POSTGRES_DB:-loko_project}
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
@@ -18,8 +19,6 @@ services:
     networks:
       - app-network
     restart: unless-stopped
-
-
 
   backend:
     build:
@@ -29,16 +28,17 @@ services:
     depends_on:
       - db
       - redis
-      - python
+      - ai-service
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/loko_project
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: quanbro7
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB:-loko_project}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD chua duoc set - xem .env.example}
 
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
       SPRING_PROFILE_PRODUCT: product
 
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET chua duoc set - xem .env.example}
     env_file:
       - Backend/.env
     volumes:
@@ -48,11 +48,14 @@ services:
     networks:
       - app-network
 
-  python:
+  ai-service:
     build:
-      context: ./test_tdtt/test_tdtt
+      context: ./AI-Service
       dockerfile: Dockerfile
     container_name: loko-project-ai-service
+    # Cac API key (Gemini / Geoapify / Weather / SERP) duoc nap tu day.
+    env_file:
+      - AI-Service/.env
     ports:
       - "8000:8000"
     networks:
@@ -60,7 +63,7 @@ services:
 
   frontend:
     build:
-      context: ./Fontend/frontend
+      context: ./Frontend
       dockerfile: Dockerfile
     container_name: loko-project-frontend
     depends_on:
@@ -70,9 +73,9 @@ services:
     networks:
       - app-network
     volumes:
-      - ./Fontend/frontend/src:/app/src        # Map thư mục src máy thật vào src container
-      - ./Fontend/frontend/public:/app/public  # Map thư mục public (nếu cần)
-      - /app/node_modules                      # Giữ nguyên thư viện của container, không cho máy thật ghi đè
+      - ./Frontend/src:/app/src        # Map thu muc src may that vao src container
+      - ./Frontend/public:/app/public  # Map thu muc public (neu can)
+      - /app/node_modules              # Giu nguyen thu vien cua container, khong cho may that ghi de
     environment:
       - WATCHPACK_POLLING=true
 
@@ -84,4 +87,3 @@ volumes:
   db_data:
     external: true
     name: loko-project_db_data
-

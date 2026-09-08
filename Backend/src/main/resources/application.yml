@@ -1,6 +1,10 @@
 server:
   port: 8080
 
+jwt:
+  # Khoa ky JWT (HS512, base64). Bat buoc truyen qua bien moi truong - xem .env.example
+  secret: ${JWT_SECRET}
+
 spring:
   application:
     name: loko-backend

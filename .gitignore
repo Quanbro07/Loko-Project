@@ -69,7 +69,6 @@ lerna-debug.log*
 .DS_Store
 .vscode/*
 !.vscode/extensions.json
-!.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 .history/*
@@ -83,3 +82,19 @@ lerna-debug.log*
 .env
 .env.local
 .env.*.local
+# ...nhung van commit cac file mau
+!.env.example
+
+# === Du lieu sinh ra luc chay (khong commit) ===
+# Ban dump volume Postgres (moi file ~10 MB)
+db_command/*.gz
+db_command/*.tar
+# PDF lich trinh do backend xuat ra
+data/uploads/
+# Anh/HTML debug cua Playwright
+tests/**/*.png
+tests/**/*.html
+
+# === File tam cua editor / draw.io ===
+.$*.bkp
+*.lnk

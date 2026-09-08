@@ -1,0 +1,13 @@
+# Runtime cua AI Service
+fastapi
+uvicorn[standard]
+pydantic
+httpx
+requests
+# `from dotenv import load_dotenv` can package python-dotenv,
+# KHONG phai package ten `dotenv` tren PyPI (goi nham se loi import luc chay)
+python-dotenv
+# Bo giai VRPTW - trai tim cua tang solver
+ortools
+# Gan tag dia diem + sinh mo ta hoat dong
+google-generativeai
