@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,10 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private final String SECRET_KEY = "bvSA188iHf0fK0pfyqbT2LFlVGdP4g4AkiMY1Mbv52EmcSVHJtMCYhnachbPqfMlxM7+cuBK9S6O2J1fXDihtw==";
+    // Khoa ky HS512, doc tu bien moi truong JWT_SECRET (xem .env.example).
+    // Khong dat gia tri mac dinh: thieu bien nay thi app fail-fast luc khoi dong.
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
     private final long ACESS_TOKEN_EXPIRATION = 1000 * 60 * 30; // 30p
     private final long REFRESH_TOKEN_EXPIRATION = 1000 * 60 * 60 * 24; // 24h
 
