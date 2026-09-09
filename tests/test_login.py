@@ -12,9 +12,17 @@ import os
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
 BASE_URL = os.environ.get("BASE_URL", "http://localhost:3000")
-TEST_USER = os.environ.get("TEST_USER", "quanbro7612006@gmail.com")
-TEST_PASS = os.environ.get("TEST_PASS", "Quanbro7@")
 EXPECTED_TITLE = os.environ.get("EXPECTED_TITLE", "Dashboard")
+
+# Khong hardcode tai khoan that trong source. Truyen qua bien moi truong:
+#   TEST_USER=... TEST_PASS=... python tests/test_login.py
+TEST_USER = os.environ.get("TEST_USER")
+TEST_PASS = os.environ.get("TEST_PASS")
+if not TEST_USER or not TEST_PASS:
+    raise SystemExit(
+        "Thieu bien moi truong TEST_USER / TEST_PASS. "
+        "Vi du: TEST_USER=demo@example.com TEST_PASS=secret python tests/test_login.py"
+    )
 
 
 def fill_any(page, selectors, value):

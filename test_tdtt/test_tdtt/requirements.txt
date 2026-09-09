@@ -1,8 +1,0 @@
-ortools
-google-generativeai
-httpx 
-fastapi 
-pydantic 
-uvicorn 
-dotenv
-requests
