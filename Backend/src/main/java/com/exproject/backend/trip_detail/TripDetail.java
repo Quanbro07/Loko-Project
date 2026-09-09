@@ -40,10 +40,11 @@ public class TripDetail {
     @Column(name = "end_time")
     private LocalTime endTime;
 
-    @Column(name = "transport_note")
+    // Mo ta hoat dong do LLM sinh ra, thuong dai hon 255 ky tu -> dung TEXT
+    @Column(name = "transport_note", columnDefinition = "TEXT")
     private String transportNote;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "route_polyline", columnDefinition = "TEXT")

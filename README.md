@@ -69,6 +69,17 @@ một điểm rồi xếp lại phần lịch trình liên quan.
 
 ![Lịch trình chi tiết theo khung giờ](docs/screenshots/itinerary.png)
 
+### Chuyến đi đã xác nhận
+
+Sau khi xác nhận, lịch trình được lưu vào cơ sở dữ liệu và mở ở màn hình chuyến đi hiện
+tại, kèm bản đồ lộ trình và nút xuất PDF dành cho tài khoản Premium.
+
+![Chuyến đi đã xác nhận](docs/screenshots/confirmed-trip.png)
+
+> Cột **Mô tả** trong ảnh đang hiển thị câu mặc định vì `GEMINI_API_KEY` dùng lúc chụp đã
+> hết hạn. Với key hợp lệ, `activity_service.py` sẽ điền mô tả hoạt động riêng cho từng
+> điểm.
+
 ---
 
 ## Kiến trúc
@@ -246,6 +257,16 @@ docker exec redis_container redis-cli FLUSHALL
 ```
 
 Cần `FLUSHALL` vì `getTopLocations` có `@Cacheable`, và danh sách rỗng cũng bị cache lại.
+
+Bản dump cũ còn một điểm lệch schema: ba cột của `trip_detail` vẫn là `varchar(255)` trong
+khi entity đã khai `TEXT`. `ddl-auto: update` không đổi kiểu cột đã tồn tại, nên bước xác
+nhận lịch trình sẽ trả về 500 với thông báo *value too long*. Chạy một lần:
+
+```bash
+docker exec postgres psql -U postgres -d loko_project -c "ALTER TABLE trip_detail ALTER COLUMN route_polyline TYPE text, ALTER COLUMN description TYPE text, ALTER COLUMN transport_note TYPE text;"
+```
+
+Database tạo mới hoàn toàn thì không cần bước này — Hibernate sẽ tạo đúng kiểu ngay từ đầu.
 
 ### Chạy AI-Service riêng
 
