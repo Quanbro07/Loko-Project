@@ -11,6 +11,7 @@ dụng chạy thật bằng `docker compose up`, dữ liệu Hà Nội khôi ph�
 | `plan-input.jpg` | `/search` bước 1 | Chọn tỉnh/thành điểm đến |
 | `plan-preferences.jpg` | `/search` bước 4 | Chọn thể loại chuyến đi và khung giờ hoạt động |
 | `itinerary.png` | `/search` sau khi tìm kiếm | Lịch trình sinh tự động, từng điểm có khung giờ |
+| `confirmed-trip.png` | `/currentplan` | Chuyến đi đã xác nhận và lưu vào cơ sở dữ liệu |
 
 Ảnh chụp ở khung 1440×900, xuất từ Playwright ở 2× rồi thu nhỏ, nên nét trên màn hình
 retina mà vẫn dưới 300 KB mỗi file.
@@ -19,9 +20,15 @@ retina mà vẫn dưới 300 KB mỗi file.
 
 | Màn hình | Vì sao chưa chụp được |
 |---|---|
-| Bản đồ tỉnh thành đã đi (`/user`) | Bản đồ render đúng nhưng đang ở trạng thái rỗng `0/34 tỉnh`, vì tài khoản demo chưa hoàn thành chuyến đi nào. Cần một chuyến đi đã xác nhận và đánh dấu hoàn thành thì ảnh mới có ý nghĩa. |
-| Chuyến đi hiện tại (`/currentplan`) | Bước xác nhận lịch trình lỗi 500: cột `trip_detail.route_polyline` khai `varchar(255)` nhưng chuỗi polyline dài hơn nhiều. Sửa kiểu cột thành `text` là qua được. |
-| Dự báo thời tiết | Nằm trong màn hình chuyến đi hiện tại, phụ thuộc lỗi trên. |
+| Dự báo thời tiết | Khối thời tiết đứng ở trạng thái *Đang tải* và bảng `weather_section` không có dòng nào. Cần `WEATHER_API_KEY` còn hiệu lực. |
+| Bản đồ tỉnh thành đã đi (`/user`) | Bản đồ render được nhưng chập chờn: file geojson 33 MB thường lỗi `ERR_CACHE_WRITE_FAILURE` khi tải trong trình duyệt headless. Rút gọn hình học hoặc chuyển sang file theo từng tỉnh sẽ xử lý được cả vấn đề này lẫn thời gian tải trang. |
+| Bản đồ lộ trình trong chuyến đi | Marker và đường đi vẽ đúng, nhưng tile nền OpenStreetMap không kịp tải trong headless nên ảnh ra nền xám. |
+
+## Lưu ý về API key
+
+Lúc chụp, `GEMINI_API_KEY` đã hết hạn — log của AI-Service báo `API_KEY_INVALID`. Vì vậy
+cột **Mô tả** trong ảnh lịch trình hiển thị câu mặc định thay vì mô tả do LLM sinh. Phần
+xếp lịch bằng OR-Tools không phụ thuộc Gemini nên vẫn chạy đúng.
 
 ## Chụp lại như thế nào
 
