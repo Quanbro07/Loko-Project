@@ -17,6 +17,7 @@ tiên" tính từ đánh giá cộng với sở thích người dùng.
 ## Mục lục
 
 - [Tính năng](#tính-năng)
+- [Giao diện](#giao-diện)
 - [Kiến trúc](#kiến-trúc)
 - [Công nghệ](#công-nghệ)
 - [Thuật toán lập lịch](#thuật-toán-lập-lịch)
@@ -42,6 +43,31 @@ tiên" tính từ đánh giá cộng với sở thích người dùng.
 
 8 phong cách chuyến đi, mỗi phong cách là một solver riêng với bộ ràng buộc khác nhau:
 `adventure` · `amusement` · `food` · `history` · `honeymoon` · `nightlife` · `photograph` · `vacation`
+
+---
+
+## Giao diện
+
+### Nhập yêu cầu chuyến đi
+
+Wizard 4 bước: điểm đến, ngày đi và ngày về, số lượng và thành phần nhóm, cuối cùng là
+phong cách chuyến đi cùng khung giờ hoạt động trong ngày.
+
+![Màn hình chọn điểm đến](docs/screenshots/plan-input.jpg)
+
+Các ô thể loại ở bước cuối ánh xạ sang những profile trong `AI-Service/app/tag_rules/`,
+mỗi profile quy định service time và penalty riêng cho từng loại địa điểm. Khung giờ
+hoạt động chính là `max_duration` của bài toán VRPTW.
+
+![Màn hình chọn phong cách chuyến đi](docs/screenshots/plan-preferences.jpg)
+
+### Lịch trình sinh tự động
+
+Kết quả của bộ giải: từng điểm được gán một khung giờ cụ thể, tôn trọng giờ mở cửa của
+địa điểm và thời gian di chuyển thực tế giữa các điểm. Nút đỏ ở mỗi dòng cho phép từ chối
+một điểm rồi xếp lại phần lịch trình liên quan.
+
+![Lịch trình chi tiết theo khung giờ](docs/screenshots/itinerary.png)
 
 ---
 
@@ -191,6 +217,35 @@ docker compose up --build
 | Backend | http://localhost:8080 |
 | AI-Service (Swagger UI) | http://localhost:8000/docs |
 | PostgreSQL | `localhost:5332` |
+
+Nếu một trong các cổng trên đã bị chiếm bởi thứ khác đang chạy trên máy, khai báo lại
+trong `.env` (`FRONTEND_PORT`, `BACKEND_PORT`, `AI_SERVICE_PORT`, `POSTGRES_PORT`,
+`REDIS_PORT`) — các service gọi nhau qua mạng nội bộ Docker nên đổi cổng publish không
+ảnh hưởng gì.
+
+### Nạp dữ liệu địa điểm
+
+> **Database mới sẽ rỗng và không sinh được lịch trình nào.**
+
+Job crawl địa điểm chạy theo lịch `0 0 0 1 */3 ?` trong `MasterScheduler` — tức **mỗi quý
+một lần** — nên một database vừa tạo sẽ không có địa điểm nào cho tới đầu quý sau. Cách
+làm việc thực tế của nhóm là khôi phục từ bản dump volume:
+
+```bash
+cd db_command
+./restore_volume.bat        # doc file db_data_backup.tar.gz trong cung thu muc
+```
+
+Ngoài ra query lấy địa điểm còn lọc `update_at >= now() - 60 ngày`
+(`LocationRepository.findTopLocations`). Nếu bản dump cũ hơn 60 ngày, mọi địa điểm sẽ bị
+coi là hết hạn và lịch trình vẫn không sinh ra được. Làm mới mốc thời gian:
+
+```bash
+docker exec postgres psql -U postgres -d loko_project -c "update location set update_at = now();"
+docker exec redis_container redis-cli FLUSHALL
+```
+
+Cần `FLUSHALL` vì `getTopLocations` có `@Cacheable`, và danh sách rỗng cũng bị cache lại.
 
 ### Chạy AI-Service riêng
 
