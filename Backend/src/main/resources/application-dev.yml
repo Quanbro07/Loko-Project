@@ -1,7 +1,3 @@
-jwt:
-  # Khoa CHI DUNG CHO MAY LOCAL. Moi truong that bat buoc truyen JWT_SECRET.
-  secret: ${JWT_SECRET:PpIa6KLV34hPPVYpiBdIYBL8LtAXzil7cPghOKNsqSVDK4KJjMgSRvEA4mvUnQZTc0/wrcvsvKxe6TCfaSbbRw==}
-
 spring:
   application:
     name: Backend
