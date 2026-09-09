@@ -149,9 +149,21 @@ nằm trong quỹ thời gian của ngày.
 **Yêu cầu:** Docker + Docker Compose.
 
 ```bash
-git clone https://github.com/Quanbro07/Loko-Project.git
+git clone --recurse-submodules https://github.com/dnagkoah/Loko-Project.git
 cd Loko-Project
 ```
+
+Cờ `--recurse-submodules` là **bắt buộc**: dữ liệu ranh giới tỉnh thành dùng cho bản đồ
+nằm ở submodule [`vietnam-geojson-data`](https://github.com/LyondVa/vietnam-geojson-data).
+Nếu đã lỡ clone thiếu, chạy bù:
+
+```bash
+git submodule update --init
+```
+
+> Submodule này nặng ~33 MB và trình duyệt tải nguyên file khi mở bản đồ tỉnh thành.
+> Đây là điểm còn có thể tối ưu — hoặc rút gọn hình học, hoặc chuyển sang các file
+> geojson theo từng tỉnh mà repo nguồn cũng có sẵn.
 
 Tạo các file môi trường từ file mẫu rồi điền giá trị thật:
 
