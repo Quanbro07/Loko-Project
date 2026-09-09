@@ -1,70 +1,37 @@
 # Ảnh chụp màn hình
 
-Thư mục này chứa ảnh dùng cho mục **Giao diện** ở [README gốc](../../README.md).
+Ảnh dùng cho mục **Giao diện** ở [README gốc](../../README.md). Tất cả đều chụp từ ứng
+dụng chạy thật bằng `docker compose up`, dữ liệu Hà Nội khôi phục từ dump trong
+`db_command/`.
 
-## Cần chụp những gì
+## Đã có
 
-Chụp đúng 5 ảnh dưới đây, lưu vào chính thư mục này với đúng tên file. Ảnh nào
-chưa có thì bỏ dòng tương ứng ra khỏi khối markdown ở cuối file này.
-
-| Tên file | Màn hình | Chụp cái gì |
+| File | Màn hình | Nội dung |
 |---|---|---|
-| `plan-input.png` | `/search` | Form nhập điểm đến, số ngày, sở thích, nhóm đi cùng — cho thấy hệ thống nhận vào gì |
-| `itinerary.png` | `/currentplan` | **Ảnh quan trọng nhất.** Lịch trình đã sinh, thấy rõ khung giờ từng điểm trong ngày |
-| `regenerate.png` | `/currentplan` | Thao tác từ chối một điểm và tạo lại phần lịch trình đó |
-| `visited-map.png` | `/user` | Bản đồ tỉnh thành đã đi qua |
-| `weather.png` | `/currentplan` | Dự báo thời tiết gắn theo ngày trong lịch trình |
+| `plan-input.jpg` | `/search` bước 1 | Chọn tỉnh/thành điểm đến |
+| `plan-preferences.jpg` | `/search` bước 4 | Chọn thể loại chuyến đi và khung giờ hoạt động |
+| `itinerary.png` | `/search` sau khi tìm kiếm | Lịch trình sinh tự động, từng điểm có khung giờ |
 
-## Cách chụp cho đẹp
+Ảnh chụp ở khung 1440×900, xuất từ Playwright ở 2× rồi thu nhỏ, nên nét trên màn hình
+retina mà vẫn dưới 300 KB mỗi file.
 
-- Chụp ở cửa sổ rộng khoảng **1440×900**, đừng chụp cả màn hình.
-- Dùng dữ liệu thật, đừng để form trống hay danh sách rỗng.
-- Che email và tên thật nếu có hiện trên màn hình.
-- Xuất PNG. Nếu file quá 1 MB thì nén lại (TinyPNG hoặc `pngquant`) —
-  repo này vừa được dọn cho gọn, đừng làm nó phình lại.
+## Chưa có
 
-## Cách chạy để có dữ liệu chụp
+| Màn hình | Vì sao chưa chụp được |
+|---|---|
+| Bản đồ tỉnh thành đã đi (`/user`) | Bản đồ render đúng nhưng đang ở trạng thái rỗng `0/34 tỉnh`, vì tài khoản demo chưa hoàn thành chuyến đi nào. Cần một chuyến đi đã xác nhận và đánh dấu hoàn thành thì ảnh mới có ý nghĩa. |
+| Chuyến đi hiện tại (`/currentplan`) | Bước xác nhận lịch trình lỗi 500: cột `trip_detail.route_polyline` khai `varchar(255)` nhưng chuỗi polyline dài hơn nhiều. Sửa kiểu cột thành `text` là qua được. |
+| Dự báo thời tiết | Nằm trong màn hình chuyến đi hiện tại, phụ thuộc lỗi trên. |
+
+## Chụp lại như thế nào
 
 ```bash
-docker compose up --build
+docker compose up -d
 ```
 
-Chờ cả 4 service lên, mở http://localhost:3000, đăng ký một tài khoản, rồi tạo
-một chuyến đi thật. Lịch trình sinh ra mới là thứ đáng chụp.
+Đợi frontend compile xong, mở http://localhost:3000, đăng nhập, rồi tạo một chuyến đi
+thật. Xem mục [Nạp dữ liệu địa điểm](../../README.md#nạp-dữ-liệu-địa-điểm) ở README gốc
+nếu lịch trình không sinh ra được.
 
-## Khối markdown để dán vào README gốc
-
-Chụp xong thì chèn nguyên khối này vào `README.md`, đặt ngay sau mục
-**Tính năng** và trước mục **Kiến trúc**:
-
-```markdown
----
-
-## Giao diện
-
-### Nhập yêu cầu chuyến đi
-
-![Màn hình nhập yêu cầu chuyến đi](docs/screenshots/plan-input.png)
-
-### Lịch trình sinh tự động
-
-Kết quả của bộ giải VRPTW: từng điểm được gán khung giờ cụ thể, tôn trọng giờ
-mở cửa và thời gian di chuyển thực tế giữa các điểm.
-
-![Lịch trình chi tiết theo khung giờ](docs/screenshots/itinerary.png)
-
-### Tạo lại một phần lịch trình
-
-Từ chối một điểm thì chỉ phần lịch trình liên quan được xếp lại, các điểm đã
-từ chối bị hạ mức ưu tiên nên không lặp lại.
-
-![Tạo lại một phần lịch trình](docs/screenshots/regenerate.png)
-
-### Bản đồ tỉnh thành đã đi qua
-
-![Bản đồ tỉnh thành đã đi qua](docs/screenshots/visited-map.png)
-
-### Thời tiết theo ngày
-
-![Dự báo thời tiết theo ngày](docs/screenshots/weather.png)
-```
+Lưu ảnh mới vào chính thư mục này, giữ nguyên tên file để README không phải sửa. Nếu file
+vượt 700 KB thì nén lại trước khi commit — repo này vừa được dọn cho gọn.
