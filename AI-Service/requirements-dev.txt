@@ -1,0 +1,3 @@
+# Phu thuoc chi dung khi chay test (khong cai vao image production)
+-r requirements.txt
+pytest
